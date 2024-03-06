@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Jumia.Application\Jumia.Application.csproj" />
+    <ProjectReference Include="..\Jumia.Context\Jumia.Context.csproj" />
+    <ProjectReference Include="..\Jumia.Model\Jumia.Model.csproj" />
+  </ItemGroup>
+
+</Project>
