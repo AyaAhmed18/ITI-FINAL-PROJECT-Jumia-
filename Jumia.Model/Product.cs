@@ -18,7 +18,7 @@ namespace Jumia.Model
         public float? Weight { get; set; }
         public string? Size { get; set; }
         public string Color { get; set; }
-        public HashSet<byte[]> Images { get; set; }
+        public HashSet<byte[]>? Images { get; set; }
         [ForeignKey("Category")]
         public int CategoryId {  get; set; }
         [ForeignKey("SubCategory")]

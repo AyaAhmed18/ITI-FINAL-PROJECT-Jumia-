@@ -10,7 +10,7 @@ namespace Jumia.Model
     {
         public string Name { get; set; }
         public string? Description { get; set; }
-        public byte[] Image { get; set; }
+        public byte[]? Image { get; set; }
         public virtual ICollection<SubCategory> SubCategory { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         public Category()
