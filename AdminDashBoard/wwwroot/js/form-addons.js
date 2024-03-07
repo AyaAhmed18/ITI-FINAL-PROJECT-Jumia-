@@ -26,7 +26,7 @@
         theme: 'bars-movie'
       });
 
-      $('#example-movie').barrating('set', 'Mediocre');
+      $('#example-movie').barrating('', 'Mediocre');
 
       $('#example-square').barrating('show', {
         theme: 'bars-square',

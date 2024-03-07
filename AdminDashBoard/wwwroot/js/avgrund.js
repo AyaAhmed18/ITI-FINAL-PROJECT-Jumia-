@@ -5,7 +5,7 @@
       height: 500,
       holderClass: 'custom',
       showClose: true,
-      showCloseText: 'x',
+      showCloext: 'x',
       onBlurContainer: '.container-scroller',
       template: '<p>So implement your design and place content here! If you want to close modal, please hit "Esc", click somewhere on the screen or use special button.</p>' +
         '<div>' +

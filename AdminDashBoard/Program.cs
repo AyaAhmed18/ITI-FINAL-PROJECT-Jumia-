@@ -1,7 +1,6 @@
 using Jumia.Application.Contract;
+using Jumia.Application.IServices;
 using Jumia.Application.Services;
-using Jumia.Application.Services.IServices;
-using Jumia.Application.Services.Services;
 using Jumia.Context;
 using Jumia.Infrastructure;
 using Jumia.Model;
@@ -29,8 +28,7 @@ namespace AdminDashBoard
 
             //builder.Services.AddScoped<IProductServices, ProductService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-
+            builder.Services.AddScoped<IProductServices,ProductService>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddIdentity<UserIdentity, UserRole>()
             .AddEntityFrameworkStores<JumiaContext>()

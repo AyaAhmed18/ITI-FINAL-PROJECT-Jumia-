@@ -57,64 +57,64 @@
   if ($('#ace_html').length) {
     $(function() {
       var editor = ace.edit("ace_html");
-      editor.setTheme("ace/theme/monokai");
-      editor.getSession().setMode("ace/mode/html");
+      editor.Theme("ace/theme/monokai");
+      editor.getSession().Mode("ace/mode/html");
       document.getElementById('ace_html');
     });
   }
   if ($('#ace_javaScript').length) {
     $(function() {
       var editor = ace.edit("ace_javaScript");
-      editor.setTheme("ace/theme/monokai");
-      editor.getSession().setMode("ace/mode/javascript");
+      editor.Theme("ace/theme/monokai");
+      editor.getSession().Mode("ace/mode/javascript");
       document.getElementById('aceExample');
     });
   }
   if ($('#ace_json').length) {
     $(function() {
       var editor = ace.edit("ace_json");
-      editor.setTheme("ace/theme/monokai");
-      editor.getSession().setMode("ace/mode/json");
+      editor.Theme("ace/theme/monokai");
+      editor.getSession().Mode("ace/mode/json");
       document.getElementById('ace_json');
     });
   }
   if ($('#ace_css').length) {
     $(function() {
       var editor = ace.edit("ace_css");
-      editor.setTheme("ace/theme/monokai");
-      editor.getSession().setMode("ace/mode/css");
+      editor.Theme("ace/theme/monokai");
+      editor.getSession().Mode("ace/mode/css");
       document.getElementById('ace_css');
     });
   }
   if ($('#ace_scss').length) {
     $(function() {
       var editor = ace.edit("ace_scss");
-      editor.setTheme("ace/theme/monokai");
-      editor.getSession().setMode("ace/mode/scss");
+      editor.Theme("ace/theme/monokai");
+      editor.getSession().Mode("ace/mode/scss");
       document.getElementById('ace_scss');
     });
   }
   if ($('#ace_php').length) {
     $(function() {
       var editor = ace.edit("ace_php");
-      editor.setTheme("ace/theme/monokai");
-      editor.getSession().setMode("ace/mode/php");
+      editor.Theme("ace/theme/monokai");
+      editor.getSession().Mode("ace/mode/php");
       document.getElementById('ace_php');
     });
   }
   if ($('#ace_ruby').length) {
     $(function() {
       var editor = ace.edit("ace_ruby");
-      editor.setTheme("ace/theme/monokai");
-      editor.getSession().setMode("ace/mode/ruby");
+      editor.Theme("ace/theme/monokai");
+      editor.getSession().Mode("ace/mode/ruby");
       document.getElementById('ace_ruby');
     });
   }
   if ($('#ace_coffee').length) {
     $(function() {
       var editor = ace.edit("ace_coffee");
-      editor.setTheme("ace/theme/monokai");
-      editor.getSession().setMode("ace/mode/coffee");
+      editor.Theme("ace/theme/monokai");
+      editor.getSession().Mode("ace/mode/coffee");
       document.getElementById('ace_coffee');
     });
   }

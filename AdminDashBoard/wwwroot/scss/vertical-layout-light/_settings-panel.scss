@@ -1,13 +1,13 @@
-/* Settings Panel */
+/* tings Panel */
 
-.settings-panel {
+.tings-panel {
   border-left: 1px solid $border-color;
   display: block;
   position: fixed;
   top:$navbar-height;
-  right: -$settings-panel-width;
+  right: -$tings-panel-width;
   bottom: 0;
-  width: $settings-panel-width;
+  width: $tings-panel-width;
   height: 100vh;
   min-height: 100%;
   background: $white;
@@ -54,7 +54,7 @@
       }
     }
   }
-  .settings-heading {
+  .tings-heading {
     padding: 16px 0 13px 35px;
     font-size: $default-font-size;
     font-family: $type1;
@@ -70,7 +70,7 @@
       text-align: right;
     }
   }
-  small.settings-heading {
+  small.tings-heading {
     .rtl &{
       padding: 16px 0 13px 12px;
     }
@@ -212,7 +212,7 @@
   &.open {
     right:0;
   }
-  .settings-close {
+  .tings-close {
     position: absolute;
     top: 16px;
     right: 10px;
@@ -227,7 +227,7 @@
       background: rgba($white,0.3);
     }
     .rtl & {
-      right: unset;
+      right: un;
       left: 10px;
     }
   }
@@ -247,8 +247,8 @@
     }
   }
   .rtl & {
-    right: unset;
-    left: -$settings-panel-width;
+    right: un;
+    left: -$tings-panel-width;
     @include transition-property(left);
     .chat-list{
       padding-right: 0;
@@ -268,19 +268,19 @@
     }
     &.open{
       left: 0;
-      right: unset;
+      right: un;
     }
   }
 }
 
-#theme-settings{
-  .settings-close{
+#theme-tings{
+  .tings-close{
     top: 12px;
     background: transparent;
   }
 }
 
-#settings-trigger{
+#tings-trigger{
   position: fixed;
   bottom: 40px;
   right: 30px;

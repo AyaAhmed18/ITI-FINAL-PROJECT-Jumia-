@@ -101,7 +101,7 @@ dl {
   list-style-type: none;
   margin-bottom: 0;
   .rtl & {
-    padding-left: unset;
+    padding-left: un;
     padding-right: 30px;
   }
 
@@ -119,7 +119,7 @@ dl {
       background: $text-muted;
 
       .rtl & {
-        left: unset;
+        left: un;
         right: -45px;
       }
     }
@@ -139,7 +139,7 @@ dl {
     bottom: 0;
     left: 7px;
     .rtl & {
-      left: unset;
+      left: un;
       right: 7px;
     }
   }
