@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Jumia.Infrastructure
 {
-    internal class UnitOfWork : IUnitOfWork, IDisposable
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly JumiaContext _jumiaContext;
         //private readonly ILogger _logger;

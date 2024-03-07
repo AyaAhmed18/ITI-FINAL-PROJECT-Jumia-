@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jumia.Application.Services
+namespace Jumia.Application.Services.IServices
 {
-    public interface ICategoryService
+    public class ICategoryService
     {
     }
 }

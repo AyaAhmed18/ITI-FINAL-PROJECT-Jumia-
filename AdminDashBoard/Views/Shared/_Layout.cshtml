@@ -374,6 +374,11 @@
                             <span class="menu-title">Product</span>
                             <i class="menu-arrow"></i>
                         </a>
+                         <div class="collapse" id="form-elements">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="#"> Product</a></li>
+                            </ul>
+                        </div>
                         <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"><a class="nav-link" href="#">Add Product</a></li>
@@ -384,11 +389,11 @@
                                 <li class="nav-item"><a class="nav-link" href="#">Updata Product</a></li>
                             </ul>
                         </div>
-                        <div class="collapse" id="form-elements">
+                        @* <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"><a class="nav-link" href="#">Delete Product</a></li>
                             </ul>
-                        </div>
+                        </div> *@
                     </li>
 
 
@@ -400,7 +405,7 @@
                         </a>
                         <div class="collapse" id="charts">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#">Add Order</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> Orders</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="charts">
@@ -424,7 +429,17 @@
                         </a>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html"> Category</a></li>
+                            </ul>
+                        </div>
+                        <div class="collapse" id="tables">
+                            <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Add Category</a></li>
+                            </ul>
+                        </div>
+                        <div class="collapse" id="tables">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Update Category</a></li>
                             </ul>
                         </div>
                     </li>
@@ -433,12 +448,22 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#suptables" aria-expanded="false" aria-controls="tables">
                             <i class="menu-icon mdi mdi-package-variant-closed"></i>
-                            <span class="menu-title">Sup Category</span>
+                            <span class="menu-title">SubCategory</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="suptables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Add Category</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html"> SubCategory</a></li>
+                            </ul>
+                        </div>
+                         <div class="collapse" id="suptables">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Add SubCategory</a></li>
+                            </ul>
+                        </div>
+                         <div class="collapse" id="suptables">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Update SubCategory</a></li>
                             </ul>
                         </div>
                     </li>

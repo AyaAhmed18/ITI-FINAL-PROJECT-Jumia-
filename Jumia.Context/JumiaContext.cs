@@ -22,6 +22,7 @@ namespace Jumia.Context
         public virtual DbSet<OrderItems> OrderItems { get; set; }
         public virtual DbSet<Shippment> Shippments { get; set; }
         public virtual DbSet<Payment> Payment { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
 
         public JumiaContext(DbContextOptions<JumiaContext> dbContextOptions) : base(dbContextOptions) { }
 

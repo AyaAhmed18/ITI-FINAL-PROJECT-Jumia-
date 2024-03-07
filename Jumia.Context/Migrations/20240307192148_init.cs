@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Jumia.Context.Migrations
 {
     /// <inheritdoc />
-    public partial class Start : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -50,6 +50,22 @@ namespace Jumia.Context.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Brands",
+                columns: table => new
+                {
+                    BrandID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LogoURL = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    Website = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Brands", x => x.BrandID);
                 });
 
             migrationBuilder.CreateTable(
@@ -267,18 +283,18 @@ namespace Jumia.Context.Migrations
                     Size = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Color = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Images = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
                     SubCategoryID = table.Column<int>(type: "int", nullable: false),
+                    BrandID = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Category_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Category",
-                        principalColumn: "Id",
+                        name: "FK_Products_Brands_BrandID",
+                        column: x => x.BrandID,
+                        principalTable: "Brands",
+                        principalColumn: "BrandID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_SubCategory_SubCategoryID",
@@ -440,9 +456,9 @@ namespace Jumia.Context.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId",
+                name: "IX_Products_BrandID",
                 table: "Products",
-                column: "CategoryId");
+                column: "BrandID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_SubCategoryID",
@@ -511,6 +527,9 @@ namespace Jumia.Context.Migrations
 
             migrationBuilder.DropTable(
                 name: "Order");
+
+            migrationBuilder.DropTable(
+                name: "Brands");
 
             migrationBuilder.DropTable(
                 name: "SubCategory");
