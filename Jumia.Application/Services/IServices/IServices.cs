@@ -1,4 +1,5 @@
 ﻿using Jumia.DTOS.ViewResultDtos;
+using Jumia.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Jumia.Application.Services.IServices
 {
-    public interface IServices<T> where T : class
+    public interface IServices<TEntity,Tid,T> where TEntity : class where T : BaseEntity
     {
-        Task<ResultView<T>> Create(T entity);
-        Task<ResultView<T>> HardDelete(T entity);
-        Task<ResultView<T>> SoftDelete(T entity);
-        Task<ResultDataForPagination<T>> GetAllPagination(int items, int pagenumber);
-        Task<T> GetOne(int ID);
-        Task<ResultView<T>> UpdateAsync(T book);
+        Task<ResultView<TEntity>> CreateAsync(TEntity entity);
+        Task<ResultView<TEntity>> HardDelete(TEntity entity);
+        Task<ResultView<TEntity>> SoftDelete(TEntity entity);
+        Task<ResultDataForPagination<TEntity>> GetAllPagination(int items, int pagenumber);
+        Task<TEntity> GetOne(Tid ID);
+        Task<ResultView<TEntity>> UpdateAsync(TEntity book);
     }
 }
