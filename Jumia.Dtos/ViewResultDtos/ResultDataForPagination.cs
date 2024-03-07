@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jumia.DTOS.ViewResultDtos
 {
-    internal class ResultDataForPagination<TEntity>
+    public class ResultDataForPagination<TEntity>
     {
         public List<TEntity> Entities { get; set; }
         public int count { get; set; }
