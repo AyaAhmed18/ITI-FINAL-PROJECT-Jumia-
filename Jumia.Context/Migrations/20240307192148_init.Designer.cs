@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jumia.Context.Migrations
 {
     [DbContext(typeof(JumiaContext))]
-    [Migration("20240306173330_Start")]
-    partial class Start
+    [Migration("20240307192148_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,32 @@ namespace Jumia.Context.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Jumia.Model.Brand", b =>
+                {
+                    b.Property<int>("BrandID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BrandID"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("LogoURL")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Website")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BrandID");
+
+                    b.ToTable("Brands");
+                });
 
             modelBuilder.Entity("Jumia.Model.Category", b =>
                 {
@@ -183,7 +209,7 @@ namespace Jumia.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("BrandID")
                         .HasColumnType("int");
 
                     b.Property<string>("Color")
@@ -226,7 +252,7 @@ namespace Jumia.Context.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("BrandID");
 
                     b.HasIndex("SubCategoryID");
 
@@ -591,9 +617,9 @@ namespace Jumia.Context.Migrations
 
             modelBuilder.Entity("Jumia.Model.Product", b =>
                 {
-                    b.HasOne("Jumia.Model.Category", "Category")
+                    b.HasOne("Jumia.Model.Brand", "Brand")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("BrandID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -603,7 +629,7 @@ namespace Jumia.Context.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.Navigation("Brand");
 
                     b.Navigation("SubCategory");
                 });
@@ -700,10 +726,13 @@ namespace Jumia.Context.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Jumia.Model.Category", b =>
+            modelBuilder.Entity("Jumia.Model.Brand", b =>
                 {
                     b.Navigation("Products");
+                });
 
+            modelBuilder.Entity("Jumia.Model.Category", b =>
+                {
                     b.Navigation("SubCategory");
                 });
 
