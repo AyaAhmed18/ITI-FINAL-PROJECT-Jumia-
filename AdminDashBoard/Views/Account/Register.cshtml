@@ -3,95 +3,47 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    // Layout = "_Layout";
+    Layout = "_AccountLayout";
 }
 @model RegisterDtos
-<html>
-    <head>
-        <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            margin: 20px;
-        }
+<div class="center">
+ <div class="container">
+    <form  method="post" class="form">
+      <h1>Sign Up</h1>
+      <div class="form-field">
+        <input type="text" placeholder="Enter Username" asp-for="Username" />
+        <small> <span asp-validation-for="Username" style="color: red"></span></small>
+      </div>
 
-        .forms-sample {
-            max-width: 400px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+      <div class="form-field">
+        <input type="text" placeholder="Enter Email"  asp-for="Email" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-times-circle"></i>
+        <small> <span asp-validation-for="Email" style="color: red" ></span></small>
+      </div>
 
-        .form-label {
-            font-weight: bold;
-        }
+      <div class="form-field">
+        <input type="text" placeholder="Enter Phone"  asp-for="Phone" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-times-circle"></i>
+        <small>   <span asp-validation-for="Phone" style="color: red"></span></small>
+      </div>
 
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-        }
+      <div class="form-field">
+        <input type="password" placeholder="Password" asp-for="Password"/>
+        <small> <span asp-validation-for="Password" style="color: red"></span></small>
+      </div>
 
-        .btn-primary {
-            background-color: #007bff;
-            color: #fff;
-        }
+      <div class="form-field">
+        <input type="password" placeholder="Confirm Password"  asp-for="Confirmpass" />
+        <small> <span asp-validation-for="Confirmpass" style="color: red"></span></small>
+      </div>
 
-        .btn-light {
-            background-color: #f8f9fa;
-            color: #212529;
-        }
+      <div class="form-field">
+        <button type="submit"  class="btn">Sign Up</button>
+      </div>
+    </form>
+  </div>
+  </div>
 
-        button {
-            margin-right: 10px;
-        }
 
-        </style>
-    </head>
-    <body>
-
-<form class="forms-sample" method="post">
-    <div class="mb-3">
-        <label class="form-label">UserName</label>
-        <input type="text" class="form-control" asp-for="Username">
-            <span asp-validation-for="Username" style="color: red"></span>
-
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Email Adress</label>
-        <input type="text" class="form-control" asp-for="Email">
-        <span asp-validation-for="Email" style="color: red" ></span>
-
-    </div>
-    <div class="mb-3">
-        <label class="form-label">phone</label>
-        <input type="text" class="form-control" asp-for="Phone">
-            <span asp-validation-for="Phone" style="color: red"></span>
-
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input type="text" class="form-control" asp-for="Password">
-            <span asp-validation-for="Password" style="color: red"></span>
-
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Confirm Password</label>
-        <input type="text" class="form-control" asp-for="Confirmpass">
-            <span asp-validation-for="Confirmpass" style="color: red"></span>
-
-    </div>
-
-    <button type="submit" class="btn btn-primary me-2">Submit</button>
-    <button class="btn btn-light">Cancel</button>
-</form>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-</body>
-</html>
