@@ -146,6 +146,41 @@
                             </a>
                         </div>
                     </li>
+
+
+                      @if (User.Identity.IsAuthenticated)
+                    {
+                    <li class="nav-item">
+                        <a asp-action="Register" asp-controller="Account" class="nav-link count-indicator" aria-expanded="false">
+                            <i class="mdi mdi-logout"></i>
+
+                        </a>
+
+                    </li>
+                    }
+                    else
+                    {
+                    <li class="nav-item">
+                       
+                        <a asp-action="Login" asp-controller="Account" class="nav-link count-indicator" aria-expanded="false">
+                            <i class="mdi mdi-login"></i>
+                           
+                        </a>
+                       
+                    </li>
+                    <li class="nav-item">
+                        <a asp-action="Register" asp-controller="Account" class="nav-link count-indicator" aria-expanded="false">
+                            <i class="mdi mdi-account-plus"></i>
+
+                        </a>
+
+                    </li>
+                    }
+                  
+
+                    
+
+
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             <img class="img-xs rounded-circle" src="~/images/dashboard/Admin_Avatar.png" alt="Profile image">

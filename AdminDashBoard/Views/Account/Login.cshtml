@@ -9,16 +9,12 @@
 }
 
 
-@if (ViewData["ErrorMessage"] != null)
-{
-    <p>@ViewData["ErrorMessage"]</p>
-}
 
 
 
 
 <div class="center">
-<div class="container">
+    <div class="contn">
     <form asp-action="Login" method="post" class="form">
         <h1>Login</h1>
         <div class="form-field">
@@ -31,9 +27,17 @@
         <div class="form-field">
             <input type="password" placeholder="Password" name="password" id="password" />
             <small> <span asp-validation-for="Password" style="color: red"></span></small>
+
+                @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+                {
+                    <small> <span style="color: red">  @ViewData["ErrorMessage"]</span></small>
+                    
+                }
+
+               
         </div>
         <div class="form-field">
-            <button type="submit"  class="btn">Login</button>
+            <button type="submit"  class="btne">Login</button>
         </div>
     </form>
 </div>
