@@ -1,16 +1,16 @@
 ﻿using Jumia.Dtos.User;
 using Jumia.DTOS.ViewResultDtos;
-using Jumia.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jumia.Application.Contract
+namespace Jumia.Application.Services.IServices
 {
-    public interface IUserRoleRepository : IRepository<UserRole, int>
+    public interface  IRoleService
     {
-         Task<IQueryable<RoleUser>> GetUsername();
+        Task<ResultDataForPagination<GetRole>> GetAll();
+        Task<IQueryable<RoleUser>> GetUsername();
     }
 }
