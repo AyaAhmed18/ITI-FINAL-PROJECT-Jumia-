@@ -29,7 +29,6 @@ namespace AdminDashBoard
             //builder.Services.AddScoped<IProductServices, ProductService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IProductServices,ProductService>();
-            builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddIdentity<UserIdentity, UserRole>()
             .AddEntityFrameworkStores<JumiaContext>()

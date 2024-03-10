@@ -23,35 +23,21 @@ namespace Jumia.Application.Services
             _mapper = mapper;
         }
 
-        public Task<List<GetAllOrderItemsDto>> GetAllOrderItems()
-        {
-            throw new NotImplementedException();
-        }
-
+       
         public async Task<CreatOrUpdateOrderItemsDto> GetOrderItems(int id)
         {
+            try { 
             var b = await _unitOfWork.OrderItemsRepository.GetOneAsync(id);
             var REturnb = _mapper.Map<CreatOrUpdateOrderItemsDto>(b);
             return REturnb;
-        }
-
-        public async Task<ResultView<CreatOrUpdateOrderItemsDto>> Update(CreatOrUpdateOrderItemsDto orderItemDto)
-        {
-            var b = _mapper.Map<OrderItems>(orderItemDto);
-            try
-            {
-                var updateorderStatus = await _unitOfWork.OrderItemsRepository.UpdateAsync(b);
-                await _unitOfWork.SaveChangesAsync();
-                var orderitemDTO = _mapper.Map<CreatOrUpdateOrderItemsDto>(updateorderStatus);
-                return new ResultView<CreatOrUpdateOrderItemsDto> { Entity = orderitemDTO, IsSuccess = true, Message = "Created Successfully" };
-
             }
             catch (Exception ex)
             {
-                return new ResultView<CreatOrUpdateOrderItemsDto> { Entity = null, IsSuccess = false, Message = ex.Message };
-
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                throw;
             }
         }
 
+        
         }
 }

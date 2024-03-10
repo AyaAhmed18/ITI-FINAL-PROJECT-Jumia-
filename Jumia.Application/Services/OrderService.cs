@@ -22,7 +22,13 @@ namespace Jumia.Application.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<List<GetAllOrdersDTO>> GetAllOrders()
+
+        public Task<ResultView<CreateOrUpdateOrderDto>> Create(CreateOrUpdateOrderDto bookDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        /*public async Task<List<GetAllOrdersDTO>> GetAllOrders()
         {
             try
             {
@@ -56,17 +62,89 @@ namespace Jumia.Application.Services
                 throw;
             }
 
-        }
+        }*/
 
-        public Task<ResultDataForPagination<GetAllOrdersDTO>> GetAllPagination(int items, int pagenumber)
+        public async Task<ResultDataForPagination<GetAllOrdersDTO>> GetAllPagination(int items, int pagenumber)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var AlldAta = (await _unitOfWork.OrderRepository.GetAllAsync());
+                var Orders = AlldAta.Skip(items * (pagenumber - 1)).Take(items)
+                                                  .Select(p => new GetAllOrdersDTO()
+                                                  {
+                                                      Id = p.Id,
+                                                     
+                                                  }).ToList();
+                ResultDataForPagination<GetAllOrdersDTO> resultDataList = new ResultDataForPagination<GetAllOrdersDTO>();
+                resultDataList.Entities = Orders;
+                resultDataList.count = AlldAta.Count();
+                return resultDataList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                throw;
+            }
+
         }
         public async Task<CreateOrUpdateOrderDto> GetOrder(int id)
         {
-            var b = await _unitOfWork.OrderRepository.GetOneAsync(id);
-            var REturnb = _mapper.Map<CreateOrUpdateOrderDto>(b);
-            return REturnb;
+            try
+            {
+                var b = await _unitOfWork.OrderRepository.GetOneAsync(id);
+                var REturnb = _mapper.Map<CreateOrUpdateOrderDto>(b);
+                return REturnb;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task<ResultView<CreateOrUpdateOrderDto>> HardDelete(int id)
+        {
+            try
+            {
+                // var book = _mapper.Map<Book>(bookDTO);
+                var existingBook = await _unitOfWork.OrderRepository.GetOneAsync(id);
+                if (existingBook == null)
+                {
+                    return new ResultView<CreateOrUpdateOrderDto> { Entity = null, IsSuccess = false, Message = "Book not found" };
+                }
+                var Oldbook = _unitOfWork.OrderRepository.DeleteAsync(existingBook);
+                await _unitOfWork.SaveChangesAsync();
+
+                var bDto = _mapper.Map<CreateOrUpdateOrderDto>(Oldbook);
+                return new ResultView<CreateOrUpdateOrderDto> { Entity = bDto, IsSuccess = true, Message = "Deleted Successfully" };
+            }
+            catch (Exception ex)
+            {
+                return new ResultView<CreateOrUpdateOrderDto> { Entity = null, IsSuccess = false, Message = ex.Message };
+
+            }
+        }
+
+        
+
+        public async Task<ResultView<CreateOrUpdateOrderDto>> Update(CreateOrUpdateOrderDto bookDTO)
+        {
+            try
+            {
+                var order = _mapper.Map<Order>(bookDTO);
+                var updateOrder = await _unitOfWork.OrderRepository.UpdateAsync(order);
+                await _unitOfWork.SaveChangesAsync();
+                var ODto = _mapper.Map<CreateOrUpdateOrderDto>(updateOrder);
+                return new ResultView<CreateOrUpdateOrderDto> { Entity = ODto, IsSuccess = true, Message = "Updated Successfully" };
+
+            }
+            catch (Exception ex)
+            {
+                return new ResultView<CreateOrUpdateOrderDto> { Entity = null, IsSuccess = false, Message = "Something went wrong" };
+
+                // Console.WriteLine($"An error occurred: {ex.Message}");
+                //throw;
+            }
         }
     }
 }
