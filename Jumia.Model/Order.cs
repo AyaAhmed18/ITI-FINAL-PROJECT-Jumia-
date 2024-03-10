@@ -29,6 +29,7 @@ namespace Jumia.Model
         public Payment payment { get; set; }
         public ICollection<OrderItems> OrderItems { get; set; }
         public virtual Shippment Shipping { get; set; }
+      //  public virtual OrderLog OrderLog { get; set; }
         public Order()
         {
             OrderItems = new List<OrderItems>();

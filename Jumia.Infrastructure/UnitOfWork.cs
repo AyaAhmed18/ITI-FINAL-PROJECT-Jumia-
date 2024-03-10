@@ -13,6 +13,7 @@ namespace Jumia.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
+
         private readonly JumiaContext _jumiaContext;
         //private readonly ILogger _logger;
         //private Hashtable _repositories;
