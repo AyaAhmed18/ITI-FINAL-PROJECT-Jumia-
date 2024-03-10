@@ -17,7 +17,7 @@ namespace Jumia.Model
         public decimal? Discount { get; set; }
         public float? Weight { get; set; }
         public string? Size { get; set; }
-        public string Color { get; set; }
+        public HashSet<string>? Color { get; set; }
         public HashSet<byte[]>? Images { get; set; }
         //[ForeignKey("Category")]
        // public int CategoryId {  get; set; }
@@ -28,7 +28,6 @@ namespace Jumia.Model
         public virtual ICollection<Review>? Reviews { get; set; }
         public virtual ICollection<OrderItems>? OrderItems { get; set; }
         public int BrandID { get; set; }
-
         public Brand Brand { get; set; }
         public Product() 
         {
