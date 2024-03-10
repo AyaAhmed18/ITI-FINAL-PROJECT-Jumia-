@@ -8,10 +8,15 @@ namespace Jumia.Model
 {
     public class Payment:BaseEntity
     {
-        public string Type { get; set; }
+        public PaymentType Type { get; set; }
         public decimal? CreditAmount { get; set; }
-        public decimal? DebitAmount { get; set; }
         public decimal? Balance { get; set; }
-        public DateTime? PaymentDateTime { get; set; }
+        public DateTime? PaymentDate { get; set; }
+    }
+    public enum PaymentType
+    {
+        CreditCard,
+        Cash,
+        MobileMoney
     }
 }
