@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
 {
-    public class _ِAdminController : Controller
+    public class AdminController : Controller
     {
         private readonly IRoleService _roleService;
         private readonly IUserService _userService;
 
-        public _ِAdminController(IRoleService roleService, IUserService userService) {
+        public AdminController(IRoleService roleService, IUserService userService) {
 
             _roleService= roleService;
             _userService = userService;
