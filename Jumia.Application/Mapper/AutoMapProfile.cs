@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Jumia.Dtos.User;
+using Jumia.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,11 @@ namespace Jumia.Application.Mapper
     {
         public AutoMapProfile()
         {
+
+            CreateMap<GetAllUsers, UserIdentity>().ReverseMap();
+            CreateMap<GetRole, UserRole>().ReverseMap();
+            CreateMap<GetAllUsers, UserRole>().ReverseMap();
+            CreateMap<GetAllUsers, UserIdentity>().ReverseMap();
 
         }
     }
