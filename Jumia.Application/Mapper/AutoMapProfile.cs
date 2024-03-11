@@ -17,10 +17,12 @@ namespace Jumia.Application.Mapper
             //Category
             CreateMap<CreateOrUpdateCategoryDto, Category>().ReverseMap();
             CreateMap<GetAllCategoryDto, Category>().ReverseMap();
+            CreateMap<GetAllCategoryDto, CreateOrUpdateCategoryDto>().ReverseMap();
 
             //SubCategory
             CreateMap<CreateOrUpdateSubDto, SubCategory>().ReverseMap();
             CreateMap<GetAllSubDto, SubCategory>().ReverseMap();
+            CreateMap<GetAllSubDto , CreateOrUpdateSubDto>().ReverseMap() ;
 
 
         }

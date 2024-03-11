@@ -17,13 +17,11 @@ namespace AdminDashBoard
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
-            /* builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+             builder.Services.AddScoped<ICategoryService, CategoryService>();
              builder.Services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
-             builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
-             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-             builder.Services.AddScoped<IOrderItemsRepository, OrderItemRepository>();
-             builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
-             builder.Services.AddScoped<IShippmentRepository, ShippmentRepository>();*/
+            builder.Services.AddScoped<ISubCategoryService, SubCategoryService>();
+            
 
             builder.Services.AddScoped<IProductService, ProductService>();
 

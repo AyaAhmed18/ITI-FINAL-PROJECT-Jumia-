@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ResultDataForPagination<GetAllSubDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Model.count</h1>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>All Category</h1>
+
+    <table class="table" border="1">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Image</th>
+                <th scope="col">Category Name</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Entities)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Image</td>
+                    <td>@item.CategoryName</td>
+                    <td>
+                        <a asp-action="Update" asp-controller="SubCategory" asp-route-id="@item.Id">Update</a>
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-controller="SubCategory" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <a asp-action="Create" asp-controller="SubCategory" class="btn btn-primary">Add SubCategory</a>
+</body>
+</html>
+
+

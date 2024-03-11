@@ -1,0 +1,68 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model CreateOrUpdateCategoryDto
+@{
+    ViewData["Title"] = "Update";
+    
+}
+
+<h1>Update Category</h1>
+
+
+<html>
+<head>
+
+
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+
+
+
+    <form method="post" asp-action="Update" asp-controller="Category">
+
+
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control">
+            <span asp-validation-for="Name" style="color:red"></span>
+
+        </div>
+        <div class="mb-3" hidden>
+
+            <input asp-for="Id" class="form-control">
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <input asp-for="Description" class="form-control">
+            <span asp-validation-for="Description" style="color:red"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Image" class="form-label"></label>
+            <input asp-for="Image" class="form-control">
+            <span asp-validation-for="Image" style="color:red"></span>
+        </div>
+
+
+        <br />
+
+
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+
+
+
+
+
+
+</body>
+</html>

@@ -16,5 +16,7 @@ namespace Jumia.Dtos.SubCategory
 
         public byte[]? Image { get; set; }
 
+        public string? CategoryName { get; set; }
+
     }
 }

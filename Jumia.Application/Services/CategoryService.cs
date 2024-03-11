@@ -76,30 +76,30 @@ namespace Jumia.Application.Services
 
 
 
-
-        // Delete
+        // delete
         public async Task<ResultView<CreateOrUpdateCategoryDto>> Delete(CreateOrUpdateCategoryDto categoryDto)
         {
             try
             {
-                var Category = _mapper.Map<Category>(categoryDto);
-                var OldCategory = (await _repository.GetAllAsync()).FirstOrDefault(c => c.Id == categoryDto.Id);
+                var category = await _repository.GetOneAsync(categoryDto.Id);
+                if (category == null)
+                {
+                    return new ResultView<CreateOrUpdateCategoryDto> { Entity = null, IsSuccess = false, Message = "Category Not Found!" };
+                }
 
-                OldCategory.IsDeleted = true;
-
+                await _repository.DeleteAsync(category);
                 await _repository.SaveChangesAsync();
-                var CategoryDe = _mapper.Map<CreateOrUpdateCategoryDto>(OldCategory);
 
-                return new ResultView<CreateOrUpdateCategoryDto> { Entity = CategoryDe, IsSuccess = true, Message = "Category Deleted Successfully" };
-
+                var CategoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(category);
+                return new ResultView<CreateOrUpdateCategoryDto> { Entity = categoryDto, IsSuccess = true, Message = "Deleted Successfully" };
             }
             catch (Exception ex)
             {
-                return new ResultView<CreateOrUpdateCategoryDto> { Entity = null , IsSuccess = false, Message = ex.Message };
+                return new ResultView<CreateOrUpdateCategoryDto> { Entity = null, IsSuccess = false, Message = ex.Message };
             }
-            
-
         }
+
+
 
         // GetAll
         public async Task<ResultDataForPagination<GetAllCategoryDto>> GetAll(int item , int pagnumber)
@@ -112,7 +112,7 @@ namespace Jumia.Application.Services
                  Name = c.Name,
                  Description = c.Description,
                  Image = c.Image,
-                 SubCategoryName = c.SubCategory.ToList().First().Name,
+                 
 
              }).ToList();
 
@@ -155,6 +155,7 @@ namespace Jumia.Application.Services
 
 
 
+       
 
 
 
@@ -195,6 +196,5 @@ namespace Jumia.Application.Services
 
 
 
-        
     }
 }

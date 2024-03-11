@@ -180,9 +180,6 @@ namespace Jumia.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Color")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -222,8 +219,6 @@ namespace Jumia.Context.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("SubCategoryID");
 
@@ -324,7 +319,7 @@ namespace Jumia.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -588,19 +583,11 @@ namespace Jumia.Context.Migrations
 
             modelBuilder.Entity("Jumia.Model.Product", b =>
                 {
-                    b.HasOne("Jumia.Model.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Jumia.Model.SubCategory", "SubCategory")
                         .WithMany("Products")
                         .HasForeignKey("SubCategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Category");
 
                     b.Navigation("SubCategory");
                 });
@@ -641,9 +628,13 @@ namespace Jumia.Context.Migrations
 
             modelBuilder.Entity("Jumia.Model.SubCategory", b =>
                 {
-                    b.HasOne("Jumia.Model.Category", null)
+                    b.HasOne("Jumia.Model.Category", "Category")
                         .WithMany("SubCategory")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -699,8 +690,6 @@ namespace Jumia.Context.Migrations
 
             modelBuilder.Entity("Jumia.Model.Category", b =>
                 {
-                    b.Navigation("Products");
-
                     b.Navigation("SubCategory");
                 });
 

@@ -74,29 +74,30 @@ namespace Jumia.Application.Services
 
         }
 
-        // Delete
+        //Delete
         public async Task<ResultView<CreateOrUpdateSubDto>> Delete(CreateOrUpdateSubDto subcategoryDto)
         {
             try
             {
-                var SubCategory = _mapper.Map<SubCategory>(subcategoryDto);
-                var OldSubCategory = (await _subCategoryRepository.GetAllAsync()).FirstOrDefault(c => c.Id == subcategoryDto.Id);
+                var Subcategory = await _subCategoryRepository.GetOneAsync(subcategoryDto.Id);
+                if (Subcategory == null)
+                {
+                    return new ResultView<CreateOrUpdateSubDto> { Entity = null, IsSuccess = false, Message = "SubCategory Not Found!" };
+                }
 
-                OldSubCategory.IsDeleted = true;
-
+                await _subCategoryRepository.DeleteAsync(Subcategory);
                 await _subCategoryRepository.SaveChangesAsync();
-                var SubCategoryDe = _mapper.Map<CreateOrUpdateSubDto>(OldSubCategory);
 
-                return new ResultView<CreateOrUpdateSubDto> { Entity = SubCategoryDe, IsSuccess = true, Message = "SubCategory Deleted Successfully" };
-
+                var SubCategoryDto = _mapper.Map<CreateOrUpdateSubDto>(Subcategory);
+                return new ResultView<CreateOrUpdateSubDto> { Entity = SubCategoryDto, IsSuccess = true, Message = "Deleted Successfully" };
             }
             catch (Exception ex)
             {
                 return new ResultView<CreateOrUpdateSubDto> { Entity = null, IsSuccess = false, Message = ex.Message };
             }
-
-
         }
+
+
 
 
         // GetAll
@@ -110,14 +111,16 @@ namespace Jumia.Application.Services
                  Name = c.Name,
                  Description = c.Description,
                  Image = c.Image,
+                 CategoryName = c.Category.Name,
                  
+
 
              }).ToList();
 
             ResultDataForPagination<GetAllSubDto> resultDataFor = new ResultDataForPagination<GetAllSubDto>();
 
             resultDataFor.Entities = SubCategorys;
-            resultDataFor.count = AllData.Count(c => c.IsDeleted != true);
+            resultDataFor.count = AllData.Count();
 
 
             return resultDataFor;

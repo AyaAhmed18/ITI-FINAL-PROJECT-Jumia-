@@ -16,6 +16,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Jumia.Application\Jumia.Application.csproj" />
+    <ProjectReference Include="..\Jumia.Context\Jumia.Context.csproj" />
+    <ProjectReference Include="..\Jumia.Dtos\Jumia.Dtos.csproj" />
     <ProjectReference Include="..\Jumia.Infrastructure\Jumia.Infrastructure.csproj" />
   </ItemGroup>
 
