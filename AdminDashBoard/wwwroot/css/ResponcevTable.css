@@ -1,0 +1,121 @@
+﻿@import 'https://fonts.googleapis.com/css?family=Open+Sans:600,700';
+
+
+
+
+h1 {
+    text-align: center;
+    font-size: 2.4em;
+    color: #100e2e;
+    text-shadow: 0 0 3px #27009c, 0 0 5px #6c6ccf;
+}
+
+.contTable {
+    display: block;
+    text-align: center;
+}
+
+.rwd-table {
+    margin: auto;
+    min-width: 300px;
+    max-width: 100%;
+    border-collapse: collapse;
+}
+
+    .rwd-table tr:first-child {
+        border-top: none;
+        background: #4e4e4e;
+        color: #fff;
+    }
+
+    .rwd-table tr {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        background-color: #afafaf;
+    }
+
+        .rwd-table tr:nth-child(odd):not(:first-child) {
+            background-color: #bbbbbb;
+        }
+
+    .rwd-table th {
+        display: none;
+    }
+
+    .rwd-table td {
+        display: block;
+    }
+
+        .rwd-table td:first-child {
+            margin-top: .5em;
+        }
+
+        .rwd-table td:last-child {
+            margin-bottom: .5em;
+        }
+
+        .rwd-table td:before {
+            content: attr(data-th) ": ";
+            font-weight: bold;
+            width: 120px;
+            display: inline-block;
+            color: #000;
+        }
+
+    .rwd-table th,
+    .rwd-table td {
+        text-align: left;
+    }
+
+.rwd-table {
+    border-radius: .4em;
+    overflow: hidden;
+    opacity: 0.9;
+    box-shadow: 0px 0px 20px 6px rgb(172, 194, 241);
+}
+
+    .rwd-table tr {
+        border-color: #bfbfbf;
+    }
+
+    .rwd-table th,
+    .rwd-table td {
+        padding: .5em 1em;
+    }
+
+@media screen and (max-width: 601px) {
+    .rwd-table tr:nth-child(2) {
+        border-top: none;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .rwd-table tr:hover:not(:first-child) {
+        background-color: #d8e7f3;
+    }
+
+    .rwd-table td:before {
+        display: none;
+    }
+
+    .rwd-table th,
+    .rwd-table td {
+        display: table-cell;
+        padding: .25em .5em;
+    }
+
+        .rwd-table th:first-child,
+        .rwd-table td:first-child {
+            padding-left: 0;
+        }
+
+        .rwd-table th:last-child,
+        .rwd-table td:last-child {
+            padding-right: 0;
+        }
+
+    .rwd-table th,
+    .rwd-table td {
+        padding: 1em !important;
+    }
+}

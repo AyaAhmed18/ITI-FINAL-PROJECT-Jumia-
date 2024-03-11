@@ -1,114 +1,66 @@
 ﻿@using Jumia.Dtos.User
 
 @model List<RoleUser>
-
+<link href="~/css/responcevtable.css" rel="stylesheet" />
 @{
     Layout = "_Layout";
 }
-@* <html>
-    <head>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/AdminDashBoard.styles.css" asp-append-version="true" />
-    </head>
-<body> *@
- 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        <label>UserId</label>
-                    </th>
-                    <th>
-                        <label>User Name</label>
 
-                    </th>
-                    <th>
-                        <label>Role</label>
 
-                    </th>
 
-                    <th>
-                        <label>Email</label>
 
-                    </th>
-                    <th>
-                        <label>phone number</label>
 
-                    </th>
-            </thead>
+
+
+
+
+@foreach (var role in ViewBag.Roles)
+{
+    <div class="contTable">
+        <h1>@role.Name</h1>
+        <table class="rwd-table">
             <tbody>
-            
-                @foreach (var item in Model)
-                {
-                if (item.RoleName=="Admin")
-                {
-                    
-                
-                            <tr>
+                <tr>
+                <th>UserId</th>
+                <th>User Name</th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>Email</th>
+                <th> phone number</th>
                    
-                                <td>@item.Id</td>
-                                <td>@item.UserName</td>
-                                <td>@item.RoleName</td>
-                                <td>@item.Email</td>
-                                <td>@item.PhoneNumber</td>
-                    
-                            </tr>
-                
+                </tr>
+                @foreach (var item in Model.Where(u => u.RoleName == role.Name))
+                {
 
-                        }
+                <tr>
+                <td data-th=" UserId">
+                            @item.Id
+                    </td>
+                <td data-th=" User Name">
+                            @item.UserName
+                    </td>
+                <td data-th=" Role">
+                            @item.RoleName
+                    </td>
+                <td data-th=" Email">
+                            @item.Email
+                    </td>
+                        <td data-th=" Email">
+                            @item.Email
+                        </td>
+                <td data-th=" phone number">
+                            @item.PhoneNumber
+                    </td>
+                    
+
+                </tr>
+                 
                  }
             </tbody>
         </table>
-    
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    <label>UserId</label>
-                </th>
-                <th>
-                    <label>User Name</label>
 
-                </th>
-                <th>
-                    <label>Role</label>
-
-                </th>
-
-                <th>
-                    <label>Email</label>
-
-                </th>
-                <th>
-                    <label>phone number</label>
-
-                </th>
-        </thead>
-        <tbody>
-
-            @foreach (var item in Model)
-            {
-                if (item.RoleName == "User")
-                {
+    </div>
+    }
 
 
-                    <tr>
 
-                        <td>@item.Id</td>
-                        <td>@item.UserName</td>
-                        <td>@item.RoleName</td>
-                        <td>@item.Email</td>
-                        <td>@item.PhoneNumber</td>
-
-                    </tr>
-
-
-                }
-            }
-        </tbody>
-    </table>
-
-@* </body>
-</html>
- *@
