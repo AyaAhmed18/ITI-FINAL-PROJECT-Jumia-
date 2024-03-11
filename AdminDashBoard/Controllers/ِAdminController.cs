@@ -1,10 +1,13 @@
 ﻿using Jumia.Application.Contract;
 using Jumia.Application.Services.IServices;
 using Jumia.Context;
+using Jumia.Dtos.AccountDtos;
 using Jumia.Dtos.User;
 using Jumia.Infrastructure;
 using Jumia.Model;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AdminDashBoard.Controllers
 {
@@ -12,49 +15,77 @@ namespace AdminDashBoard.Controllers
     {
         private readonly IRoleService _roleService;
         private readonly IUserService _userService;
+        private readonly UserManager<UserIdentity> _userManager;
+        private readonly SignInManager<UserIdentity> _signinManager;
+        private readonly RoleManager<UserRole> _roleManager;
 
-        public _ِAdminController(IRoleService roleService, IUserService userService) {
+        public _ِAdminController(IRoleService roleService, IUserService userService, UserManager<UserIdentity> userManager, SignInManager<UserIdentity> signInManager, RoleManager<UserRole> roleManager)
+        {
 
-            _roleService= roleService;
+            _roleService = roleService;
             _userService = userService;
+            _userManager = userManager;
+            _signinManager = signInManager;
+            _roleManager = roleManager;
 
         }
-        public async Task<IActionResult>Admin()
+        public async Task<IActionResult> Admin()
         {
             var rolesResult = await _roleService.GetUsername();
 
-            return View( rolesResult.ToList());  
+            return View(rolesResult.ToList());
         }
 
-        public async Task<IActionResult> AddUser()
+
+
+        public IActionResult Adduser()
         {
-            var Role = await _roleService.GetAll();
-            ViewBag.Role = Role.Entities;
+            var roles = _roleManager.Roles.ToList();
+            ViewBag.Roles = roles;
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddUser(GetAllUsers getAllUsers)
+        public async Task<IActionResult> Adduser(GetAllUsers getAllUsers)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var res = await _userService.CreateAsync(getAllUsers);
-                if (res.IsSuccess == true)
+                var user = new UserIdentity()
                 {
-                    return RedirectToAction("Admin");
+                    UserName = getAllUsers.UserName,
+                    Email = getAllUsers.Email,
+                    PhoneNumber = getAllUsers.PhoneNumber
+                };
+
+                IdentityResult res = await _userManager.CreateAsync(user, getAllUsers.Password);
+
+                if (res.Succeeded)
+                {
+                    if (!string.IsNullOrEmpty(getAllUsers.RoleName) && await _roleManager.RoleExistsAsync(getAllUsers.RoleName))
+
+                        await _userManager.AddToRoleAsync(user, getAllUsers.RoleName);
+                    
+
+                    return RedirectToAction("Index"); // Redirect to the desired action
                 }
                 else
                 {
-                    ViewBag.Error = res.Message;
+                    foreach (var error in res.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+
+                    // Repopulate the roles dropdown in case of validation errors
+                    ViewBag.Roles = _roleManager.Roles.ToList();
+
                     return View(getAllUsers);
                 }
             }
-            catch
-            {
-                return View();
-            }
+
+            // Repopulate the roles dropdown in case of validation errors
+            ViewBag.Roles = _roleManager.Roles.ToList();
+
+            return View(getAllUsers);
         }
-
-
     }
 }
