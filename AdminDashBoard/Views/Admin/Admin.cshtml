@@ -1,0 +1,66 @@
+﻿@using Jumia.Dtos.User
+
+@model List<RoleUser>
+<link href="~/css/responcevtable.css" rel="stylesheet" />
+@{
+    Layout = "_Layout";
+}
+
+
+
+
+
+
+
+
+
+@foreach (var role in ViewBag.Roles)
+{
+    <div class="contTable">
+        <h1>@role.Name</h1>
+        <table class="rwd-table">
+            <tbody>
+                <tr>
+                <th>UserId</th>
+                <th>User Name</th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>Email</th>
+                <th> phone number</th>
+                   
+                </tr>
+                @foreach (var item in Model.Where(u => u.RoleName == role.Name))
+                {
+
+                <tr>
+                <td data-th=" UserId">
+                            @item.Id
+                    </td>
+                <td data-th=" User Name">
+                            @item.UserName
+                    </td>
+                <td data-th=" Role">
+                            @item.RoleName
+                    </td>
+                <td data-th=" Email">
+                            @item.Email
+                    </td>
+                        <td data-th=" Email">
+                            @item.Email
+                        </td>
+                <td data-th=" phone number">
+                            @item.PhoneNumber
+                    </td>
+                    
+
+                </tr>
+                 
+                 }
+            </tbody>
+        </table>
+
+    </div>
+    }
+
+
+
