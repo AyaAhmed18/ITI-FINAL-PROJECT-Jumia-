@@ -4,6 +4,7 @@ using Jumia.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jumia.Context.Migrations
 {
     [DbContext(typeof(JumiaContext))]
-    partial class JumiaContextModelSnapshot : ModelSnapshot
+    [Migration("20240308123241_login1")]
+    partial class login1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,12 +59,6 @@ namespace Jumia.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -74,12 +71,6 @@ namespace Jumia.Context.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -97,12 +88,6 @@ namespace Jumia.Context.Migrations
                     b.Property<bool?>("CancelOrder")
                         .HasColumnType("bit");
 
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
@@ -118,6 +103,9 @@ namespace Jumia.Context.Migrations
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime?>("OrderDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("PaymentId")
                         .HasColumnType("int");
 
@@ -127,20 +115,15 @@ namespace Jumia.Context.Migrations
                     b.Property<DateTime?>("ShippedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TotalAmount")
                         .HasColumnType("int");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -159,12 +142,6 @@ namespace Jumia.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int?>("Discount")
                         .HasColumnType("int");
 
@@ -182,12 +159,6 @@ namespace Jumia.Context.Migrations
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -209,29 +180,21 @@ namespace Jumia.Context.Migrations
                     b.Property<decimal?>("Balance")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<decimal?>("CreditAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("DebitAmount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime?>("PaymentDate")
+                    b.Property<DateTime?>("PaymentDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UpdatedBy")
+                    b.Property<string>("Type")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -249,11 +212,9 @@ namespace Jumia.Context.Migrations
                     b.Property<int>("BrandID")
                         .HasColumnType("int");
 
-                    b.Property<string>("CreatedBy")
+                    b.Property<string>("Color")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<decimal?>("Discount")
                         .HasColumnType("decimal(18,2)");
@@ -277,17 +238,17 @@ namespace Jumia.Context.Migrations
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Size")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("StockQuantity")
                         .HasColumnType("int");
 
                     b.Property<int>("SubCategoryID")
                         .HasColumnType("int");
 
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
+                    b.Property<float?>("Weight")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
@@ -298,57 +259,6 @@ namespace Jumia.Context.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Jumia.Model.ProductItems", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Color")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Images")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ItemQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Pro_Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Pro_Size")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<float?>("Pro_Weight")
-                        .HasColumnType("real");
-
-                    b.Property<int?>("Storge")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Pro_Id");
-
-                    b.ToTable("ProductItems");
-                });
-
             modelBuilder.Entity("Jumia.Model.Review", b =>
                 {
                     b.Property<int>("Id")
@@ -356,12 +266,6 @@ namespace Jumia.Context.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -378,12 +282,6 @@ namespace Jumia.Context.Migrations
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("review")
                         .IsRequired()
@@ -410,10 +308,6 @@ namespace Jumia.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AdressInformation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -421,39 +315,22 @@ namespace Jumia.Context.Migrations
                     b.Property<decimal>("Cost")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("DelivaryWay")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Regin")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<int?>("UserIdentityId")
                         .HasColumnType("int");
@@ -479,12 +356,6 @@ namespace Jumia.Context.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -497,12 +368,6 @@ namespace Jumia.Context.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -769,17 +634,6 @@ namespace Jumia.Context.Migrations
                     b.Navigation("SubCategory");
                 });
 
-            modelBuilder.Entity("Jumia.Model.ProductItems", b =>
-                {
-                    b.HasOne("Jumia.Model.Product", "Product")
-                        .WithMany("Items")
-                        .HasForeignKey("Pro_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("Jumia.Model.Review", b =>
                 {
                     b.HasOne("Jumia.Model.UserIdentity", "Customer")
@@ -801,7 +655,7 @@ namespace Jumia.Context.Migrations
 
             modelBuilder.Entity("Jumia.Model.Shippment", b =>
                 {
-                    b.HasOne("Jumia.Model.Order", null)
+                    b.HasOne("Jumia.Model.Order", "Order")
                         .WithOne("Shipping")
                         .HasForeignKey("Jumia.Model.Shippment", "OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -810,6 +664,8 @@ namespace Jumia.Context.Migrations
                     b.HasOne("Jumia.Model.UserIdentity", null)
                         .WithMany("Shippments")
                         .HasForeignKey("UserIdentityId");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("Jumia.Model.SubCategory", b =>
@@ -890,8 +746,6 @@ namespace Jumia.Context.Migrations
 
             modelBuilder.Entity("Jumia.Model.Product", b =>
                 {
-                    b.Navigation("Items");
-
                     b.Navigation("OrderItems");
 
                     b.Navigation("Reviews");

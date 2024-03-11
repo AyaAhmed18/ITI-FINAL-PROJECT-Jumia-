@@ -1,4 +1,5 @@
-﻿using Jumia.Dtos.AccountDtos;
+﻿using Jumia.Context.Migrations;
+using Jumia.Dtos.AccountDtos;
 using Jumia.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -60,6 +61,49 @@ namespace AdminDashBoard.Controllers
                     return View(registerDtos);
                 }
             }
+
+
+
+
+
+        public IActionResult Login()
+        {
+            return View("Login");
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginDtos loginDtos)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var result = await _signinManager.PasswordSignInAsync(loginDtos.Username, loginDtos.Password, false, false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewData["ErrorMessage"] = "Invalid username or password.";
+                    return View("Login", loginDtos);
+                }
+            }
+
+            return View("Login", loginDtos);
+        }
+
+
+
+
+        public async Task<IActionResult> logout()
+        {
+            await _signinManager.SignOutAsync();
+            return RedirectToAction("Login", "Account");
+        }
+
+
+    }
 
     }
