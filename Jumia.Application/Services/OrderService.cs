@@ -28,7 +28,7 @@ namespace Jumia.Application.Services
             throw new NotImplementedException();
         }
 
-        /*public async Task<List<GetAllOrdersDTO>> GetAllOrders()
+        public async Task<List<GetAllOrdersDTO>> GetAllOrders()
         {
             try
             {
@@ -39,21 +39,19 @@ namespace Jumia.Application.Services
                     {
                         Id = p.Id,
                         Customer = p.Customer.UserName,
-                        Status = p.Status,
-                        ShippingStatus = p.Shipping.DelivaryWay,
-                        PaymentStatus = p.payment.Type,
-                        OrderDate = p.OrderDate,
+                        Status = p.Status.ToString(),
+                        OrderDate = p.CreatedDate,
                         TotalPrice = p.TotalPrice,
+                        Discount=p.Discount
                     }).ToList();
 
-                    //   var orders1 = allOrders.ToList();
                     return orders;
                 }
                 else
                 {
                     return new List<GetAllOrdersDTO>();
                 }
-               
+
 
             }
             catch (Exception ex)
@@ -62,7 +60,7 @@ namespace Jumia.Application.Services
                 throw;
             }
 
-        }*/
+        }
 
         public async Task<ResultDataForPagination<GetAllOrdersDTO>> GetAllPagination(int items, int pagenumber)
         {

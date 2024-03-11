@@ -1,6 +1,7 @@
 ﻿@using Jumia.DTOS.ViewResultDtos
 @using Jumia.Dtos.Order
-@model ResultDataForPagination<GetAllOrdersDTO>
+@model List<GetAllOrdersDTO>
+<h1>Orders</h1>
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
@@ -18,28 +19,33 @@
                                         <th>Id</th>
                                         <th>Customer</th>
                                         <th>Status</th>
-                                        <th>PaymentStatus</th>
-                                        <th>ShippingStatus</th>
                                         <th>OrderDate</th>
                                         <th>TotalPrice</th>
+                                        <th>Discount</th>
                                         <th>View</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                     @foreach (var item in Model.Entities)
-                                 {
-              
-                                    <tr>
-                                            <td>@item.Id</td>
-                                        <td>@item.Customer</td>
-                                         <td><label class="badge badge-danger">@item.Status</label></td>
-                                        <td><label class="badge badge-danger">@item.PaymentStatus</label></td>
-                                        <td><label class="badge badge-danger">@item.ShippingStatus</label></td>
-                                        <td>@item.OrderDate</td>
-                                        <td class="text-danger"> @item.TotalPrice <i class="ti-arrow-down"></i></td>
-                                    </tr>
+                                    @if(Model!=null){
+                                        @foreach (var item in Model)
+                                        {
+
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.Customer</td>
+                                                <td><label class="badge badge-danger">@item.Status</label></td>
+                                                <td>@item.OrderDate</td>
+                                                <td><label class="badge badge-danger">@item.TotalPrice</label></td>
+                                                <td class="text-danger"> @item.Discount <i class="ti-arrow-down"></i></td>
+                                                <td><a asp-action="Details" asp-controller="Order" asp-route-Id="@item.Id">View</a> </td>
+                                                <td><a asp-action="Edit" asp-controller="Order" asp-route-Id="@item.Id">Edit Status</a> </td>
+
+
+                                            </tr>
+                                        }
                                     }
+                                   
                                    
                                    
                                 </tbody>

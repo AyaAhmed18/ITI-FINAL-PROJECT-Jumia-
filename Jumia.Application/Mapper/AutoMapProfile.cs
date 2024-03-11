@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Jumia.Dtos.Order;
+using Jumia.Dtos.OrderItems;
 using Jumia.Model;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,9 @@ namespace Jumia.Application.Mapper
         public AutoMapProfile()
         {
             CreateMap<GetAllOrdersDTO, Order>().ReverseMap();
+            CreateMap<CreateOrUpdateOrderDto, Order>().ReverseMap();
+            CreateMap<GetAllOrderItemsDto, OrderItems>().ReverseMap();
+            CreateMap<GetAllOrderItemsDto, OrderItems>().ReverseMap();
         }
     }
 }

@@ -11,5 +11,6 @@ namespace Jumia.Application.IServices
     public interface IOrderItemService
     {
         Task<CreatOrUpdateOrderItemsDto> GetOrderItems(int id);
+        Task<List<GetAllOrderItemsDto>> GetAllOrderItems();
     }
 }

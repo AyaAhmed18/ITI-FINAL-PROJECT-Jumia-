@@ -15,7 +15,7 @@ namespace Jumia.Application.IServices
         Task<ResultView<CreateOrUpdateOrderDto>> HardDelete(int id);
         Task<ResultDataForPagination<GetAllOrdersDTO>> GetAllPagination(int items, int pagenumber);
 
-      //  Task<List<GetAllOrdersDTO>> GetAllOrders();
+        Task<List<GetAllOrdersDTO>> GetAllOrders();
         Task<CreateOrUpdateOrderDto> GetOrder(int id);
     }
 }

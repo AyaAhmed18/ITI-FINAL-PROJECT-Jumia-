@@ -23,7 +23,39 @@ namespace Jumia.Application.Services
             _mapper = mapper;
         }
 
-       
+        public async Task<List<GetAllOrderItemsDto>> GetAllOrderItems()
+        {
+            try
+            {
+                if (_unitOfWork.OrderRepository != null)
+                {
+                    var items = (await _unitOfWork.OrderItemsRepository.GetAllAsync());
+                    List<GetAllOrderItemsDto> item = items.Select(p => new GetAllOrderItemsDto()
+                    {
+                        OrderId = p.OrderId,
+                        ProductImage = p.Product.Images.ToString(), /////
+                        ProductName = p.Product.Name,
+                        ProductQuantity=p.ProductQuantity,
+                        TotalPrice = p.TotalPrice,
+                        Discount = p.Discount
+                    }).ToList();
+
+                    return item;
+                }
+                else
+                {
+                    return new List<GetAllOrderItemsDto>();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                throw;
+            }
+        }
+
         public async Task<CreatOrUpdateOrderItemsDto> GetOrderItems(int id)
         {
             try { 

@@ -1,6 +1,8 @@
 ﻿using Jumia.Application.IServices;
+using Jumia.Dtos.Order;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AdminDashBoard.Controllers
 {
@@ -17,14 +19,23 @@ namespace AdminDashBoard.Controllers
         // GET: OrderController
         public async Task<ActionResult> Index()
         {
-            var orders = await _orderService.GetAllOrders();
+            if (_orderService != null)
+            {
+                var orders = await _orderService.GetAllOrders();
+            }
+            
             return View();
         }
 
         // GET: OrderController/Details/5
         public async Task<ActionResult> Details(int id)
         {
-            var orderDetails = await _orderItemService.GetOrderItems(id);
+            if (_orderItemService != null)
+            {
+                var ordersDetails = await _orderItemService.GetAllOrderItems();
+                var items =  ordersDetails.Where(i => i.OrderId == id);
+
+            }
             return View();
         }
 
@@ -50,8 +61,18 @@ namespace AdminDashBoard.Controllers
         }
 
         // GET: OrderController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
+            var order = await _orderService.GetOrder(id);
+            var orderStatusValues = Enum.GetValues(typeof(CreateOrUpdateOrderDto.OrderStatus))
+                                .Cast<CreateOrUpdateOrderDto.OrderStatus>()
+                                .Select(status => new SelectListItem
+                                {
+                                    Value = status.ToString(),
+                                    Text = status.ToString()
+                                })
+                                .ToList();
+            ViewBag.orderStatus = orderStatusValues;
             return View();
         }
 
