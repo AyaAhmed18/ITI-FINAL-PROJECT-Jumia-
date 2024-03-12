@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jumia.Application.Services
+namespace Jumia.Application.Services.IServices
 {
     public interface ISubCategoryService
     {
@@ -22,7 +22,7 @@ namespace Jumia.Application.Services
         Task<ResultDataForPagination<GetAllSubDto>> GetAll(int item, int pagnumber);
 
         Task<ResultView<GetAllSubDto>> GetOne(int id);
-       
+
 
 
 

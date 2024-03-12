@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Jumia.Application.Contract;
+using Jumia.Application.Services.IServices;
 using Jumia.Dtos.Category;
 using Jumia.Dtos.SubCategory;
 using Jumia.DTOS.ViewResultDtos;
@@ -10,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jumia.Application.Services
+namespace Jumia.Application.Services.Services
 {
     public class SubCategoryService : ISubCategoryService
     {
@@ -18,7 +19,7 @@ namespace Jumia.Application.Services
         private readonly IMapper _mapper;
 
 
-        public SubCategoryService(ISubCategoryRepository subCategoryRepository , IMapper mapper)
+        public SubCategoryService(ISubCategoryRepository subCategoryRepository, IMapper mapper)
         {
             _subCategoryRepository = subCategoryRepository;
             _mapper = mapper;
@@ -103,7 +104,7 @@ namespace Jumia.Application.Services
         // GetAll
         public async Task<ResultDataForPagination<GetAllSubDto>> GetAll(int item, int pagnumber)
         {
-            var AllData = (await _subCategoryRepository.GetAllAsync());
+            var AllData = await _subCategoryRepository.GetAllAsync();
             var SubCategorys = AllData.Skip(item * (pagnumber - 1)).Take(item)
              .Select(c => new GetAllSubDto
              {
@@ -112,7 +113,7 @@ namespace Jumia.Application.Services
                  Description = c.Description,
                  Image = c.Image,
                  CategoryName = c.Category.Name,
-                 
+
 
 
              }).ToList();

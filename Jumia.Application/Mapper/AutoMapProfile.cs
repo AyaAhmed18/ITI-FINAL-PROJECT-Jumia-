@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Jumia.Dtos.Category;
 using Jumia.Dtos.SubCategory;
+using Jumia.Dtos.User;
 using Jumia.Model;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,12 @@ namespace Jumia.Application.Mapper
             CreateMap<CreateOrUpdateSubDto, SubCategory>().ReverseMap();
             CreateMap<GetAllSubDto, SubCategory>().ReverseMap();
             CreateMap<GetAllSubDto , CreateOrUpdateSubDto>().ReverseMap() ;
+
+            //User&Role
+            CreateMap<GetAllUsers, UserIdentity>().ReverseMap();
+            CreateMap<GetRole, UserRole>().ReverseMap();
+            CreateMap<GetAllUsers, UserRole>().ReverseMap();
+            CreateMap<GetAllUsers, UserIdentity>().ReverseMap();
 
 
         }

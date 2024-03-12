@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Jumia.Application.Services;
+using Jumia.Application.Services.IServices;
 using Jumia.Dtos.Category;
 using Jumia.Dtos.SubCategory;
 using Microsoft.AspNetCore.Mvc;
