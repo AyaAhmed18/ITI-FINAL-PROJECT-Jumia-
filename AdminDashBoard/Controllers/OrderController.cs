@@ -90,14 +90,14 @@ namespace AdminDashBoard.Controllers
         // POST: OrderController/Edit/5
         [HttpPost]
        // [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditAsync(int id, IFormCollection collection)
+        public async Task<ActionResult> EditAsync(int id, CreateOrUpdateOrderDto Status)
         {
             var order = await _orderService.GetOrder(id);
             try
             {
                 if (ModelState.IsValid)
                 {
-                    
+                    order.Status = Status.Status;
                     var Res = await _orderService.Update(order);
                     return RedirectToAction("Index");
                 }

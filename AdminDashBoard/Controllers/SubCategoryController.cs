@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Jumia.Application.IServices;
 using Jumia.Application.Services.IServices;
 using Jumia.Dtos.Category;
 using Jumia.Dtos.SubCategory;

@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Jumia.Dtos.Category;
+using Jumia.Dtos.Order;
+using Jumia.Dtos.OrderItems;
 using Jumia.Dtos.SubCategory;
 using Jumia.Dtos.User;
 using Jumia.Model;
@@ -32,6 +34,11 @@ namespace Jumia.Application.Mapper
             CreateMap<GetAllUsers, UserRole>().ReverseMap();
             CreateMap<GetAllUsers, UserIdentity>().ReverseMap();
 
+            //Order&OrderItmes
+            CreateMap<GetAllOrdersDTO, Order>().ReverseMap();
+            CreateMap<CreateOrUpdateOrderDto, Order>().ReverseMap();
+            CreateMap<GetAllOrderItemsDto, OrderItems>().ReverseMap();
+            CreateMap<CreatOrUpdateOrderItemsDto, OrderItems>().ReverseMap();
 
         }
     }

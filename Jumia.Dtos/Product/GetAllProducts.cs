@@ -26,7 +26,7 @@ namespace Jumia.Dtos.Product
 
         public GetAllProducts(Jumia.Model.Product product)
         {
-            Id = product.Id;
+           /* Id = product.Id;
             Name = product.Name;
             ShortDescription = product.ShortDescription;
             RealPrice = product.RealPrice;
@@ -35,7 +35,7 @@ namespace Jumia.Dtos.Product
             Size = product.Size;
             Color = product.Color;
             SubCategoryID = product.SubCategoryID;
-            BrandID = product.BrandID;
+            BrandID = product.BrandID;*/
 
             // Include logic to populate SubCategoryName and BrandName based on your data access approach
             // (e.g., eager loading, separate queries)

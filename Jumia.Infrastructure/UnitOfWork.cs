@@ -104,7 +104,7 @@ namespace Jumia.Infrastructure
         //{
         //    if (_repositories == null) _repositories = new Hashtable();
 
-            var type = typeof(TEntity).Name;
+           /* var type = typeof(TEntity).Name;
 
             if (!_repositories.ContainsKey(type))
             {
@@ -114,8 +114,8 @@ namespace Jumia.Infrastructure
                 _repositories.Add(type, repositoryInstance);
             }
 
-            return (IRepository<TEntity,Tid>)_repositories[type];
+            return (IRepository<TEntity,Tid>)_repositories[type];*/
 
         }
     }
-}
+

@@ -14,4 +14,8 @@
     <ProjectReference Include="..\Jumia.Model\Jumia.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Enums\" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
 using Jumia.Application.Contract;
+using Jumia.Application.IServices;
 using Jumia.Application.Services;
 using Jumia.Application.Services.IServices;
 using Jumia.Application.Services.Services;
@@ -33,7 +34,8 @@ namespace AdminDashBoard
             builder.Services.AddScoped<IRoleService, RoleService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<ISubCategoryService, SubCategoryService>();
-
+            builder.Services.AddScoped<IOrderService, OrderService>();
+            builder.Services.AddScoped<IOrderItemService, OrderItemService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
