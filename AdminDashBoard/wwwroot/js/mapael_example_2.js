@@ -9,7 +9,7 @@ $(function() {
             enabled: false,
             maxLevel: 10
         }
-        // Set default plots and areas style
+        //  default plots and areas style
         , defaultPlot: {
             attrs: {
                 fill: "#004a9b"

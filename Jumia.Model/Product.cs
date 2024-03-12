@@ -16,11 +16,11 @@ namespace Jumia.Model
         public decimal RealPrice { get; set; }
         public decimal? Discount { get; set; }
         public HashSet<byte[]>? Images { get; set; }
-        //[ForeignKey("Category")]
-       // public int CategoryId {  get; set; }
+        [ForeignKey("Category")]
+        public int CategoryId {  get; set; }
         [ForeignKey("SubCategory")]
         public int SubCategoryID {  get; set; }
-       // public virtual Category Category { get; set; }
+        public virtual Category Category { get; set; }
         public virtual SubCategory SubCategory { get; set; }
         public virtual ICollection<Review>? Reviews { get; set; }
         public virtual ICollection<OrderItems>? OrderItems { get; set; }

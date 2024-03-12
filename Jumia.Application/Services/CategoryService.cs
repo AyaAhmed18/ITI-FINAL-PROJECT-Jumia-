@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jumia.Application.Services.Services
+namespace Jumia.Application.Services
 {
     public class CategoryService : ICategoryService
     {

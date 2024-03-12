@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jumia.Application.Services.IServices
+namespace Jumia.Application.IServices
 {
     public interface ICategoryService
     {

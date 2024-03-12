@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jumia.Application.Services.IServices
+namespace Jumia.Application.IServices
 {
     public interface IServices<TEntity,Tid,T> where TEntity : class where T : BaseEntity
     {

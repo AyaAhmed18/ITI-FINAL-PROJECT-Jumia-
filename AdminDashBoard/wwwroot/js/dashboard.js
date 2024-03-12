@@ -12,7 +12,7 @@
       saleGradientBg2.addColorStop(1, 'rgba(0, 208, 255, 0.03)');
       var salesTopData = {
           labels: ["SUN","sun", "MON", "mon", "TUE","tue", "WED", "wed", "THU", "thu", "FRI", "fri", "SAT"],
-          datasets: [{
+          datas: [{
               label: 'This week',
               data: [50, 110, 60, 290, 200, 115, 130, 170, 90, 210, 240, 280, 200],
               backgroundColor: saleGradientBg,
@@ -80,11 +80,11 @@
           legendCallback: function (chart) {
             var text = [];
             text.push('<div class="chartjs-legend"><ul>');
-            for (var i = 0; i < chart.data.datasets.length; i++) {
-              console.log(chart.data.datasets[i]); // see what's inside the obj.
+            for (var i = 0; i < chart.data.datas.length; i++) {
+              console.log(chart.data.datas[i]); // see what's inside the obj.
               text.push('<li>');
-              text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
-              text.push(chart.data.datasets[i].label);
+              text.push('<span style="background-color:' + chart.data.datas[i].borderColor + '">' + '</span>');
+              text.push(chart.data.datas[i].label);
               text.push('</li>');
             }
             text.push('</ul></div>');
@@ -118,7 +118,7 @@
       saleGradientBg2.addColorStop(1, 'rgba(34, 36, 55, 0.2)');
       var salesTopDataDark = {
           labels: ["SUN","sun", "MON", "mon", "TUE","tue", "WED", "wed", "THU", "thu", "FRI", "fri", "SAT"],
-          datasets: [{
+          datas: [{
               label: '# of Votes',
               data: [50, 110, 60, 290, 200, 115, 130, 170, 90, 210, 240, 280, 200],
               backgroundColor: saleGradientBg,
@@ -186,11 +186,11 @@
           legendCallback: function (chart) {
             var text = [];
             text.push('<div class="chartjs-legend"><ul>');
-            for (var i = 0; i < chart.data.datasets.length; i++) {
-              console.log(chart.data.datasets[i]); // see what's inside the obj.
+            for (var i = 0; i < chart.data.datas.length; i++) {
+              console.log(chart.data.datas[i]); // see what's inside the obj.
               text.push('<li>');
-              text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
-              text.push(chart.data.datasets[i].label);
+              text.push('<span style="background-color:' + chart.data.datas[i].borderColor + '">' + '</span>');
+              text.push(chart.data.datas[i].label);
               text.push('</li>');
             }
             text.push('</ul></div>');
@@ -218,13 +218,13 @@
         enableOnReadonly: true,
         todayHighlight: true,
       });
-      $("#datepicker-popup").datepicker("setDate", "0");
+      $("#datepicker-popup").datepicker("Date", "0");
     }
     if ($("#status-summary").length) {
       var statusSummaryChartCanvas = document.getElementById("status-summary").getContext('2d');;
       var statusData = {
           labels: ["SUN", "MON", "TUE", "WED", "THU", "FRI"],
-          datasets: [{
+          datas: [{
               label: '# of Votes',
               data: [50, 68, 70, 10, 12, 80],
               backgroundColor: "#ffcc00",
@@ -310,16 +310,16 @@
           color: '#677ae4',
           width: 15
         },
-        // Set default step function for all animate calls
+        //  default step function for all animate calls
         step: function(state, circle) {
-          circle.path.setAttribute('stroke', state.color);
-          circle.path.setAttribute('stroke-width', state.width);
+          circle.path.Attribute('stroke', state.color);
+          circle.path.Attribute('stroke-width', state.width);
   
           var value = Math.round(circle.value() * 100);
           if (value === 0) {
-            circle.setText('');
+            circle.Text('');
           } else {
-            circle.setText(value);
+            circle.Text(value);
           }
   
         }
@@ -348,16 +348,16 @@
           color: '#677ae4',
           width: 15
         },
-        // Set default step function for all animate calls
+        //  default step function for all animate calls
         step: function(state, circle) {
-          circle.path.setAttribute('stroke', state.color);
-          circle.path.setAttribute('stroke-width', state.width);
+          circle.path.Attribute('stroke', state.color);
+          circle.path.Attribute('stroke-width', state.width);
   
           var value = Math.round(circle.value() * 100);
           if (value === 0) {
-            circle.setText('');
+            circle.Text('');
           } else {
-            circle.setText(value);
+            circle.Text(value);
           }
   
         }
@@ -370,7 +370,7 @@
       var marketingOverviewChart = document.getElementById("marketingOverview").getContext('2d');
       var marketingOverviewData = {
           labels: ["JAN","FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
-          datasets: [{
+          datas: [{
               label: 'Last week',
               data: [110, 220, 200, 190, 220, 110, 210, 110, 205, 202, 201, 150],
               backgroundColor: "#52CDFF",
@@ -431,11 +431,11 @@
           legendCallback: function (chart) {
             var text = [];
             text.push('<div class="chartjs-legend"><ul>');
-            for (var i = 0; i < chart.data.datasets.length; i++) {
-              console.log(chart.data.datasets[i]); // see what's inside the obj.
+            for (var i = 0; i < chart.data.datas.length; i++) {
+              console.log(chart.data.datas[i]); // see what's inside the obj.
               text.push('<li class="text-muted text-small">');
-              text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
-              text.push(chart.data.datasets[i].label);
+              text.push('<span style="background-color:' + chart.data.datas[i].borderColor + '">' + '</span>');
+              text.push(chart.data.datas[i].label);
               text.push('</li>');
             }
             text.push('</ul></div>');
@@ -462,7 +462,7 @@
       var marketingOverviewChartDark = document.getElementById("marketingOverview-dark").getContext('2d');
       var marketingOverviewDataDark = {
           labels: ["JAN","FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
-          datasets: [{
+          datas: [{
               label: 'Last week',
               data: [110, 220, 200, 190, 220, 110, 210, 110, 205, 202, 201, 150],
               backgroundColor: "#52CDFF",
@@ -523,11 +523,11 @@
           legendCallback: function (chart) {
             var text = [];
             text.push('<div class="chartjs-legend"><ul>');
-            for (var i = 0; i < chart.data.datasets.length; i++) {
-              console.log(chart.data.datasets[i]); // see what's inside the obj.
+            for (var i = 0; i < chart.data.datas.length; i++) {
+              console.log(chart.data.datas[i]); // see what's inside the obj.
               text.push('<li class="text-muted text-small">');
-              text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
-              text.push(chart.data.datasets[i].label);
+              text.push('<span style="background-color:' + chart.data.datas[i].borderColor + '">' + '</span>');
+              text.push(chart.data.datas[i].label);
               text.push('</li>');
             }
             text.push('</ul></div>');
@@ -553,7 +553,7 @@
     if ($("#doughnutChart").length) {
       var doughnutChartCanvas = $("#doughnutChart").get(0).getContext("2d");
       var doughnutPieData = {
-        datasets: [{
+        datas: [{
           data: [40, 20, 30, 10],
           backgroundColor: [
             "#1F3BB3",
@@ -589,8 +589,8 @@
         legendCallback: function (chart) {
           var text = [];
           text.push('<div class="chartjs-legend"><ul class="justify-content-center">');
-          for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
-            text.push('<li><span style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
+          for (var i = 0; i < chart.data.datas[0].data.length; i++) {
+            text.push('<li><span style="background-color:' + chart.data.datas[0].backgroundColor[i] + '">');
             text.push('</span>');
             if (chart.data.labels[i]) {
               text.push(chart.data.labels[i]);
@@ -615,7 +615,7 @@
               return data['labels'][tooltipItem[0]['index']];
             },
             label: function(tooltipItem, data) {
-              return data['datasets'][0]['data'][tooltipItem['index']];
+              return data['datas'][0]['data'][tooltipItem['index']];
             }
           },
             
@@ -638,7 +638,7 @@
       var leaveReportChart = document.getElementById("leaveReport").getContext('2d');
       var leaveReportData = {
           labels: ["Jan","Feb", "Mar", "Apr", "May"],
-          datasets: [{
+          datas: [{
               label: 'Last week',
               data: [18, 25, 39, 11, 24],
               backgroundColor: "#52CDFF",
@@ -706,7 +706,7 @@
       var leaveReportChartDark = document.getElementById("leaveReport-dark").getContext('2d');
       var leaveReportDataDark = {
           labels: ["JAN","FEB", "MAR", "APR", "MAY"],
-          datasets: [{
+          datas: [{
               label: 'Last week',
               data: [18, 25, 39, 11, 24],
               backgroundColor: "#52CDFF",
