@@ -9,8 +9,10 @@ namespace Jumia.Dtos.Order
 {
     public class CreateOrUpdateOrderDto
     {
+        public int Id { get; set; }
         public int TotalAmount { get; set; }
         public decimal TotalPrice { get; set; }
+        public DateTime CreatedDate { get; set; }
         public int? Discount { get; set; }
         public OrderStatus Status { get; set; }  //for admin only
         public bool? Shipped { get; set; } //for admin only

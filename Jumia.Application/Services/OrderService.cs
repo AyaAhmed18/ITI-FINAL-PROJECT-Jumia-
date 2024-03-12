@@ -15,10 +15,12 @@ namespace Jumia.Application.Services
 {
     public class OrderService : IOrderService
     {
+        private readonly IOrderRepository _OrderRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public OrderService(IUnitOfWork unitOfWork, IMapper mapper)
+        public OrderService(IUnitOfWork unitOfWork, IMapper mapper, IOrderRepository OrderRepository)
         {
+            _OrderRepository = OrderRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
@@ -34,7 +36,7 @@ namespace Jumia.Application.Services
             {
                 if (_unitOfWork.OrderRepository != null)
                 {
-                    var allOrders = (await _unitOfWork.OrderRepository.GetAllAsync());
+                    var allOrders = (await _OrderRepository.GetAllAsync());
                     List<GetAllOrdersDTO> orders = allOrders.Select(p => new GetAllOrdersDTO()
                     {
                         Id = p.Id,

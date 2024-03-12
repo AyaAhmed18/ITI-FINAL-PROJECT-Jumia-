@@ -25,11 +25,12 @@ namespace AdminDashBoard
              builder.Services.AddScoped<IOrderItemsRepository, OrderItemRepository>();
              builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
              builder.Services.AddScoped<IShippmentRepository, ShippmentRepository>();*/
-
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<IOrderItemsRepository, OrderItemRepository>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IProductServices, ProductService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IOrderItemService, OrderItemService>();
-            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IProductServices,ProductService>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddIdentity<UserIdentity, UserRole>()

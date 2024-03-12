@@ -1,8 +1,10 @@
 ﻿using Jumia.Application.IServices;
 using Jumia.Dtos.Order;
+using Jumia.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Cryptography;
 
 namespace AdminDashBoard.Controllers
 {
@@ -22,9 +24,15 @@ namespace AdminDashBoard.Controllers
             if (_orderService != null)
             {
                 var orders = await _orderService.GetAllOrders();
+                // var ord = orders.ToList();
+                return View(orders);
+            }
+            else
+            {
+                return View();
             }
             
-            return View();
+           
         }
 
         // GET: OrderController/Details/5
@@ -34,7 +42,7 @@ namespace AdminDashBoard.Controllers
             {
                 var ordersDetails = await _orderItemService.GetAllOrderItems();
                 var items =  ordersDetails.Where(i => i.OrderId == id);
-
+                return View(items);
             }
             return View();
         }
@@ -47,7 +55,7 @@ namespace AdminDashBoard.Controllers
 
         // POST: OrderController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
+      //  [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
             try
@@ -65,29 +73,65 @@ namespace AdminDashBoard.Controllers
         {
             var order = await _orderService.GetOrder(id);
             var orderStatusValues = Enum.GetValues(typeof(CreateOrUpdateOrderDto.OrderStatus))
-                                .Cast<CreateOrUpdateOrderDto.OrderStatus>()
-                                .Select(status => new SelectListItem
-                                {
-                                    Value = status.ToString(),
-                                    Text = status.ToString()
-                                })
-                                .ToList();
-            ViewBag.orderStatus = orderStatusValues;
-            return View();
+            .Cast<CreateOrUpdateOrderDto.OrderStatus>()
+            .Select(status => new SelectListItem
+            {
+                Value = status.ToString(),
+                Text = status.ToString(),
+                Selected = (status == order.Status) // Set the selected status based on the order
+            })
+            .ToList();
+
+            // Set the SelectListItems in ViewBag
+            ViewBag.OrderStatusOptions = orderStatusValues;
+            return View(order);
         }
 
         // POST: OrderController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+       // [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditAsync(int id, IFormCollection collection)
         {
+            var order = await _orderService.GetOrder(id);
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    
+                    var Res = await _orderService.Update(order);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    var orderStatusValues = Enum.GetValues(typeof(CreateOrUpdateOrderDto.OrderStatus))
+                       .Cast<CreateOrUpdateOrderDto.OrderStatus>()
+                       .Select(status => new SelectListItem
+                       {
+                           Value = status.ToString(),
+                           Text = status.ToString(),
+                           Selected = (status == order.Status) // Set the selected status based on the order
+                       })
+                       .ToList();
+
+                    // Set the SelectListItems in ViewBag
+                    ViewBag.OrderStatusOptions = orderStatusValues;
+                    return View("Update", order);
+
+                }
             }
             catch
             {
-                return View();
+                var orderStatusValues = Enum.GetValues(typeof(CreateOrUpdateOrderDto.OrderStatus))
+                .Cast<CreateOrUpdateOrderDto.OrderStatus>()
+                .Select(status => new SelectListItem
+                {
+                    Value = status.ToString(),
+                    Text = status.ToString(),
+                    Selected = (status == order.Status) 
+                })
+                .ToList();
+                ViewBag.OrderStatusOptions = orderStatusValues;
+                return View("Update");
             }
         }
 

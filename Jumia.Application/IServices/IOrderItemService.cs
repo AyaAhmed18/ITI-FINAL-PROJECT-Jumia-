@@ -1,4 +1,5 @@
-﻿using Jumia.Dtos.OrderItems;
+﻿using Jumia.Dtos.Order;
+using Jumia.Dtos.OrderItems;
 using Jumia.DTOS.ViewResultDtos;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace Jumia.Application.IServices
     {
         Task<CreatOrUpdateOrderItemsDto> GetOrderItems(int id);
         Task<List<GetAllOrderItemsDto>> GetAllOrderItems();
+        Task<ResultView<CreatOrUpdateOrderItemsDto>> HardDelete(int id);
     }
 }

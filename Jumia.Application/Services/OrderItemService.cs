@@ -15,10 +15,12 @@ namespace Jumia.Application.Services
 {
     public class OrderItemService : IOrderItemService
     {
+        private readonly IOrderItemsRepository _orderItemsRepository; 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public OrderItemService(IUnitOfWork unitOfWork, IMapper mapper)
+        public OrderItemService(IUnitOfWork unitOfWork, IMapper mapper,IOrderItemsRepository orderItemsRepository)
         {
+            _orderItemsRepository = orderItemsRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
@@ -27,9 +29,9 @@ namespace Jumia.Application.Services
         {
             try
             {
-                if (_unitOfWork.OrderRepository != null)
+                if (_orderItemsRepository != null)
                 {
-                    var items = (await _unitOfWork.OrderItemsRepository.GetAllAsync());
+                    var items = (await _orderItemsRepository.GetAllAsync());
                     List<GetAllOrderItemsDto> item = items.Select(p => new GetAllOrderItemsDto()
                     {
                         OrderId = p.OrderId,
@@ -59,7 +61,7 @@ namespace Jumia.Application.Services
         public async Task<CreatOrUpdateOrderItemsDto> GetOrderItems(int id)
         {
             try { 
-            var b = await _unitOfWork.OrderItemsRepository.GetOneAsync(id);
+            var b = await _orderItemsRepository.GetOneAsync(id);
             var REturnb = _mapper.Map<CreatOrUpdateOrderItemsDto>(b);
             return REturnb;
             }
@@ -70,6 +72,27 @@ namespace Jumia.Application.Services
             }
         }
 
-        
+        public async Task<ResultView<CreatOrUpdateOrderItemsDto>> HardDelete(int id)
+        {
+            try
+            {
+                // var book = _mapper.Map<Book>(bookDTO);
+                var existingOrder = await _orderItemsRepository.GetOneAsync(id);
+                if (existingOrder == null)
+                {
+                    return new ResultView<CreatOrUpdateOrderItemsDto> { Entity = null, IsSuccess = false, Message = "Order not found" };
+                }
+                var OldOrder = _orderItemsRepository.DeleteAsync(existingOrder);
+                await _unitOfWork.SaveChangesAsync();
+
+                var OrderDto = _mapper.Map<CreatOrUpdateOrderItemsDto>(OldOrder);
+                return new ResultView<CreatOrUpdateOrderItemsDto> { Entity = OrderDto, IsSuccess = true, Message = "Deleted Successfully" };
+            }
+            catch (Exception ex)
+            {
+                return new ResultView<CreatOrUpdateOrderItemsDto> { Entity = null, IsSuccess = false, Message = ex.Message };
+
+            }
         }
+    }
 }
