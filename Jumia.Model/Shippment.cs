@@ -11,14 +11,18 @@ namespace Jumia.Model
 {
     public class Shippment : BaseEntity
     {
-        public DateTime DateTime { get; set; }
-        public string DelivaryWay { get; set; }
-        public string Description { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
         public string Address { get; set; }
+        public string AdressInformation { get; set; }
+        public string Regin { get; set; }
         public string City { get; set; }
         public decimal Cost { get; set; }
         [ForeignKey("Order")] ////////
         public int OrderId { get; set; }
-        public virtual Order Order { get; set; }
+        //public virtual ICollection<Order> Order { get; set; }
+       
+
     }
-}
+    }
