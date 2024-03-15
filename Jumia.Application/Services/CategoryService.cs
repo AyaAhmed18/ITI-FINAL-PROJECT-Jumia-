@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace Jumia.Application.Services
 {
@@ -24,7 +26,7 @@ namespace Jumia.Application.Services
 
 
         //Create
-        public async Task<ResultView<CreateOrUpdateCategoryDto>> Create(CreateOrUpdateCategoryDto categoryDto)
+        public async Task<ResultView<CreateOrUpdateCategoryDto>> Create(CreateOrUpdateCategoryDto categoryDto, IFormFile image)
         {
             var Data = await _repository.GetAllAsync();
             var OldCategory = Data.Where(c => c.Name == categoryDto.Name).FirstOrDefault();
@@ -36,6 +38,17 @@ namespace Jumia.Application.Services
             }
             else
             {
+
+                if (image != null && image.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await image.CopyToAsync(memoryStream);
+                        categoryDto.Image = memoryStream.ToArray();
+                    }
+                }
+
+
                 var Category = _mapper.Map<Category>(categoryDto);
                 var NewCategory = await _repository.CreateAsync(Category);
                 await _repository.SaveChangesAsync();
@@ -51,10 +64,10 @@ namespace Jumia.Application.Services
 
          
         //Update
-       public async Task<ResultView<CreateOrUpdateCategoryDto>> Update(CreateOrUpdateCategoryDto categoryDto)
+       public async Task<ResultView<CreateOrUpdateCategoryDto>> Update(CreateOrUpdateCategoryDto categoryDto, IFormFile image)
         {
-            var Data = await _repository.GetAllAsync();
-            var OldCategory = Data.FirstOrDefault(c => c.Name == categoryDto.Name && c.Id == categoryDto.Id);
+            
+            var OldCategory = await _repository.GetOneAsync(categoryDto.Id);
             if (OldCategory == null) 
             {
                 return new ResultView<CreateOrUpdateCategoryDto> { Entity = null, IsSuccess = false, Message = "Category Not Found!" };
@@ -62,8 +75,21 @@ namespace Jumia.Application.Services
             }
             else
             {
-                var Category = _mapper.Map<Category>(categoryDto);
-                var UPCategory = await _repository.UpdateAsync(Category);
+                //_mapper.Map<Category>(categoryDto);
+                _mapper.Map(categoryDto, OldCategory);
+
+                if (image != null && image.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await image.CopyToAsync(memoryStream);
+                        OldCategory.Image = memoryStream.ToArray();
+                    }
+                }
+
+
+                
+                var UPCategory = await _repository.UpdateAsync(OldCategory);
                 await _repository.SaveChangesAsync();
                 var CategoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(UPCategory);
 

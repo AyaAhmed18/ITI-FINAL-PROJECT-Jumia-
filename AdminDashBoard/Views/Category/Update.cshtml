@@ -24,7 +24,7 @@
 
 
 
-    <form method="post" asp-action="Update" asp-controller="Category">
+    <form method="post" asp-action="Update" asp-controller="Category" enctype="multipart/form-data">
 
 
 
@@ -47,7 +47,7 @@
 
         <div class="mb-3">
             <label asp-for="Image" class="form-label"></label>
-            <input asp-for="Image" class="form-control">
+            <input asp-for="Image" type ="file" class="form-control">
             <span asp-validation-for="Image" style="color:red"></span>
         </div>
 
