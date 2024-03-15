@@ -8,7 +8,7 @@ using System.IO;
 
 namespace AdminDashBoard.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
@@ -149,7 +149,7 @@ namespace AdminDashBoard.Controllers
 
 
 
-
+        
 
 
 

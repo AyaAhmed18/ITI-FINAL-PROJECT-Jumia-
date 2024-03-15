@@ -9,7 +9,7 @@
     
 }
 
-<h1>Update Category</h1>
+<h1>@AdminDashBoard.Languages.Resource.UpdateCategory</h1>
 
 
 <html>
@@ -29,7 +29,7 @@
 
 
         <div class="mb-3">
-            <label asp-for="Name" class="form-label"></label>
+            <label  class=" form-label">@AdminDashBoard.Languages.Resource.Name</label>
             <input asp-for="Name" class="form-control">
             <span asp-validation-for="Name" style="color:red"></span>
 
@@ -40,13 +40,13 @@
 
         </div>
         <div class="mb-3">
-            <label asp-for="Description" class="form-label"></label>
+            <label  class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
             <input asp-for="Description" class="form-control">
             <span asp-validation-for="Description" style="color:red"></span>
         </div>
 
         <div class="mb-3">
-            <label asp-for="Image" class="form-label"></label>
+            <label  class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
             <input asp-for="Image" type ="file" class="form-control">
             <span asp-validation-for="Image" style="color:red"></span>
         </div>
@@ -56,7 +56,7 @@
 
 
 
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-primary">@AdminDashBoard.Languages.Resource.Update</button>
     </form>
 
 

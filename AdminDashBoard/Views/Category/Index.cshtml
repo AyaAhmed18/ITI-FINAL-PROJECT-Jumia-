@@ -13,16 +13,16 @@
 <body>
     <div class="container">
 
-    <h1>All Category</h1>
+        <h1>@AdminDashBoard.Languages.Resource.AllCategory</h1>
 
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Image</th>
-                <th scope="col">Update</th>
-                <th scope="col">Delete</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Name</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Description</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Image</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
             </tr>
         </thead>
         <tbody>
@@ -43,7 +43,7 @@
         </tbody>
     </table>
     <br />
-    <a asp-action="Create" asp-controller="Category"  class="btn btn-success">Add Category</a>
+        <a asp-action="Create" asp-controller="Category" class="btn btn-success">@AdminDashBoard.Languages.Resource.AddCategory</a>
     </div>
 </body>
 </html>
