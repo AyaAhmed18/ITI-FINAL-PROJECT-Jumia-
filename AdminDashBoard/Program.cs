@@ -36,6 +36,7 @@ namespace AdminDashBoard
             builder.Services.AddScoped<ISubCategoryService, SubCategoryService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IOrderItemService, OrderItemService>();
+            builder.Services.AddScoped<IShippmentService, ShippmentService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 

@@ -1,26 +1,56 @@
 ﻿@model CreateOrUpdateOrderDto
 @{
     Layout = "_Layout";
-    //SelectList list = new SelectList(ViewBag.orderStatus);
+   // SelectList list = new SelectList(ViewBag.OrderStatusOptions,"Status","Status");
 }
-<div class="col-md-8 grid-margin grid-margin-md-0 stretch-card">
+<style>
+   
+    span{
+        font-weight:bold;
+        
+    }
+    li{
+        padding-bottom:5px;
+        letter-spacing:2
+    }
+    
+    .card-description a {
+        text-decoration:none;
+        color:#fff;
+        background-color:darksalmon;
+        border-radius:5px;
+        padding: 10px
+
+    }
+  
+   
+</style>
+
+<div class="col-md-12 grid-margin grid-margin-md-0 stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">List with icon</h4>
-            <p class="card-description">Add class <code>.list-star</code> to <code>&lt;ul&gt;</code></p>
+            <h4 class="card-title">Order Info</h4>
+            <br />
+        <p class="card-description">
+            <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@Model.Id">Shipping Info</a>
+            <a asp-action="Details" asp-controller="Order" asp-route-Id="@Model.Id">Products</a>
+            <a asp-action="Edit" asp-controller="Order" asp-route-Id="@Model.Id">Change Status</a>
+                <a class="back" style="background-color:#fff;color:darksalmon;padding:0;float:right" asp-action="Index" asp-controller="Order"> Back <i class="mdi mdi-arrow-right"></i></a>
+        </p>
             <ul class="list-star">
-                <li>@Model.Customer</li>
-                <li>@Model.Status</li>
-                <li>@Model.TotalAmount</li>
-                <li>@Model.CreatedDate</li>
                 <form method="post">
-                @Html.DropDownListFor(model => model.Status, (IEnumerable<SelectListItem>)ViewBag.OrderStatusOptions, new { @class = "form-control" })
-              <br />
+                <li> <span>Order        <i class="mdi mdi-help-circle"></i> </span>  @Model.Id</li>
+                <li> <span>Customer     <i class="mdi mdi-help-circle"></i></span>   @ViewBag.User</li>
+                <li> <span>Order Status <i class="mdi mdi-help-circle"></i></span>   <select asp-for="Status" asp-items="ViewBag.OrderStatusOptions" class="form-control"></select></li>
+                <li> <span>Order Price  <i class="mdi mdi-help-circle"></i></span>  $ @Model.TotalPrice </li>
+                <li> <span>Order Date   <i class="mdi mdi-help-circle"></i></span>   @Model.CreatedDate</li>
+                            <br />
                     <div class="col-12">
-                 <button type="submit" class="btn btn-info">Update</button>
+                 <button type="submit" class="btn btn-secondary">Update</button>
                </div>
                 </form>
             </ul>
         </div>
-    </div>
+        </div>
+    
 </div>

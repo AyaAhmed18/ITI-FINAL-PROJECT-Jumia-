@@ -20,8 +20,9 @@ namespace Jumia.Dtos.Order
         public bool? Delivered { get; set; } //for admin only
         public DateTime? DeliveredDate { get; set; } 
         public bool? CancelOrder { get; set; }
-        public string Customer { get; set; }
-        public int Payment { get; set; }
+        public int CustomerId { get; set; }
+       // public string Customer { get; set; }
+        public int PaymentId { get; set; }
         public int shippment { get; set; }
 
 
@@ -30,7 +31,8 @@ namespace Jumia.Dtos.Order
             Processing ,
             Shipped ,
             Delivered ,
-            Canceled
+            Canceled,
+            Returned
         }
     }
 }

@@ -1,0 +1,70 @@
+﻿@model GetShippmentDto
+@{
+    Layout = "_Layout";
+}
+<style>
+  a{
+      text-align:center
+  }
+  .card-description a {
+        text-decoration: none;
+        color: #fff;
+        background-color: darksalmon;
+        padding:10px;
+        border-radius: 5px;
+    }
+</style>
+
+
+<div class="col-md-8 grid-margin stretch-card ">
+    <div class="card">
+        <div class="card-body">
+            <h3>Order Delivary Details</h3>
+            <br />
+            <p class="card-description">
+                <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@ViewBag.orderId ">Shipping Info</a>
+                <a asp-action="Details" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">Products</a>
+                <a asp-action="Edit" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">Change Status</a>
+                <a class="back" style="background-color:#fff;color:darksalmon;padding:0;float:right" asp-action="Index" asp-controller="Order"> Back <i class="mdi mdi-arrow-right"></i></a>
+            
+        </div>
+        <div class="card-body">
+            <h4 class="card-title text-info">Customer Information</h4>
+            <p class="card-description">
+                User Data.. <code>Call</code>
+            </p>
+            <p class="">
+               <span>First Name :</span> @Model.FirstName
+            </p>
+            <p class="">
+               <span>Last Name :</span>  @Model.LastName
+            </p>
+            <p class="">
+                <span>Phone Number :</span> @Model.PhoneNumber
+            </p>
+            
+        </div>
+        <div class="card-body">
+            <h4 class="card-title text-warning">Address</h4>
+            <p class="card-description">
+               City__ <code>Region</code>
+            </p>
+           
+            <p class="">
+                <span>Address :</span>  @Model.Address
+            </p>
+            <p class="">
+                <span>AdressInformation :</span> @Model.AdressInformation
+            </p>
+            <p class="">
+                <span>City :</span>    @Model.City
+            </p>
+            <p class="">
+                <span>Region :</span>  @Model.Region
+            </p>
+            <p class="">
+                <span>Delivary Cost :</span> @Model.Cost
+            </p>
+        </div>
+    </div>
+</div>

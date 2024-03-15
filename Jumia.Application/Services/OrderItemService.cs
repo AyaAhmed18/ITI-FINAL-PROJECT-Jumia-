@@ -35,7 +35,7 @@ namespace Jumia.Application.Services
                     List<GetAllOrderItemsDto> item = items.Select(p => new GetAllOrderItemsDto()
                     {
                         OrderId = p.OrderId,
-                        ProductImage = p.Product.Images.ToString(), /////
+                       // ProductImage = p.Product.Images.ToString(), /////
                         ProductName = p.Product.Name,
                         ProductQuantity=p.ProductQuantity,
                         TotalPrice = p.TotalPrice,
