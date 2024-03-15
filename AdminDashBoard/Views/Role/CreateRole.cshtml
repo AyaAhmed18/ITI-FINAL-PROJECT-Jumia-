@@ -1,0 +1,66 @@
+﻿@using Jumia.Dtos.User
+@model RoleDtos
+@{
+    Layout = "_Layout";
+}
+<link href="~/css/Log_Reg.css" rel="stylesheet" />
+
+@* 
+
+<h2>Create Role</h2>
+
+<form asp-action="CreateRole" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="RoleName">Role Name:</label>
+        <input asp-for="RoleName" class="form-control" />
+        <span asp-validation-for="RoleName" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</form> *@
+
+
+
+
+
+<div class="login-root">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+
+
+        <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+            <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+                <h1>Create Role</h1>
+            </div>
+            <div class="formbg-outer">
+                <div class="formbg">
+                    <div class="formbg-inner padding-horizontal--48">
+                       
+
+
+                        <form asp-action="CreateRole"  method="post">
+
+
+                            <div class="field padding-bottom--24">
+                                <label asp-for="RoleName">Role Name</label>
+                                <input asp-for="RoleName" type="text" placeholder="&#xf044;  Enter Role Name" class="fa form-control _ge_de_ol" style="font-family: 'FontAwesome';" />
+                           
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                            </div>
+
+
+                            <div class="field padding-bottom--24">
+                                <input type="submit" name="submit" value="ADD">
+                            </div>
+
+
+
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

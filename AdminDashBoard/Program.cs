@@ -7,6 +7,7 @@ using Jumia.Infrastructure;
 using Jumia.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace AdminDashBoard
 {
@@ -15,6 +16,23 @@ namespace AdminDashBoard
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+
+
+
+
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
+            builder.Services.AddIdentity<UserIdentity, UserRole>()
+            .AddEntityFrameworkStores<JumiaContext>()
+            .AddDefaultTokenProviders();
+
+            builder.Services.AddDbContext<JumiaContext>(op =>
+            {
+                op.UseSqlServer(builder.Configuration.GetConnectionString("Db"));
+            });
+
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -35,15 +53,9 @@ namespace AdminDashBoard
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
-            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            builder.Services.AddIdentity<UserIdentity, UserRole>()
-            .AddEntityFrameworkStores<JumiaContext>()
-            .AddDefaultTokenProviders();
+           
 
-            builder.Services.AddDbContext<JumiaContext>(op =>
-            {
-                op.UseSqlServer(builder.Configuration.GetConnectionString("Db"));
-            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

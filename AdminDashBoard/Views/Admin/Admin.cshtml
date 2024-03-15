@@ -16,7 +16,7 @@
 
 @foreach (var role in ViewBag.Roles)
 {
-    <div class="contTable">
+    <div class="contTable m-5">
         <h1>@role.Name</h1>
         <table class="rwd-table">
             <tbody>
@@ -25,7 +25,7 @@
                 <th>User Name</th>
                 <th>Role</th>
                 <th>Email</th>
-                <th>Email</th>
+             
                 <th> phone number</th>
                    
                 </tr>
@@ -45,9 +45,7 @@
                 <td data-th=" Email">
                             @item.Email
                     </td>
-                        <td data-th=" Email">
-                            @item.Email
-                        </td>
+                       
                 <td data-th=" phone number">
                             @item.PhoneNumber
                     </td>
@@ -60,6 +58,7 @@
         </table>
 
     </div>
+    
     }
 
 

@@ -17,7 +17,7 @@ namespace Jumia.Application.Mapper
             CreateMap<GetAllUsers, UserIdentity>().ReverseMap();
             CreateMap<GetRole, UserRole>().ReverseMap();
             CreateMap<GetAllUsers, UserRole>().ReverseMap();
-            CreateMap<GetAllUsers, UserIdentity>().ReverseMap();
+       
 
         }
     }
