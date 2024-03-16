@@ -3,10 +3,13 @@ using Jumia.Application.IServices;
 using Jumia.Application.Services;
 using Jumia.Dtos.Category;
 using Microsoft.AspNetCore.Mvc;
+using static System.Net.Mime.MediaTypeNames;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace AdminDashBoard.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
@@ -35,11 +38,24 @@ namespace AdminDashBoard.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Create(CreateOrUpdateCategoryDto CategoryDto)
+        public async Task<ActionResult> Create(CreateOrUpdateCategoryDto CategoryDto, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
-                var res = await _categoryService.Create(CategoryDto);
+
+                if (Image != null && Image.Length > 0)
+                {
+                   
+                    var imageBytes = new byte[Image.Length];
+                    using (var stream = Image.OpenReadStream())
+                    {
+                        await stream.ReadAsync(imageBytes, 0, imageBytes.Length);
+                    }
+                    CategoryDto.Image = imageBytes;
+                }
+
+
+                var res = await _categoryService.Create(CategoryDto, Image);
 
                 if (res.IsSuccess)
                 {
@@ -73,18 +89,30 @@ namespace AdminDashBoard.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Update(CreateOrUpdateCategoryDto categoryDto)
+        public async Task<ActionResult> Update(CreateOrUpdateCategoryDto categoryDto, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
+
                 var category = await _categoryService.GetOne(categoryDto.Id);
                 if (category == null)
                 {
                     return NotFound(nameof(categoryDto));
                 }
 
+                if (Image != null && Image.Length > 0)
+                {
 
-                await _categoryService.Update(categoryDto);
+                    var imageBytes = new byte[Image.Length];
+                    using (var stream = Image.OpenReadStream())
+                    {
+                        await stream.ReadAsync(imageBytes, 0, imageBytes.Length);
+                    }
+                    categoryDto.Image = imageBytes;
+                }
+
+
+                await _categoryService.Update(categoryDto, Image);
 
                 return RedirectToAction(nameof(Index));
 
@@ -122,7 +150,7 @@ namespace AdminDashBoard.Controllers
 
 
 
-
+        
 
 
 

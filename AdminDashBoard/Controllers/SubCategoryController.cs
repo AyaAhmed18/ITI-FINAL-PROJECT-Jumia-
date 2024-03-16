@@ -50,11 +50,24 @@ namespace AdminDashBoard.Controllers
         
         [HttpPost]
 
-        public async Task<ActionResult> Create(CreateOrUpdateSubDto SubDto)
+        public async Task<ActionResult> Create(CreateOrUpdateSubDto SubDto, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
-                var res = await _subCategoryService.Create(SubDto);
+
+                if (Image != null && Image.Length > 0)
+                {
+
+                    var imageBytes = new byte[Image.Length];
+                    using (var stream = Image.OpenReadStream())
+                    {
+                        await stream.ReadAsync(imageBytes, 0, imageBytes.Length);
+                    }
+                    SubDto.Image = imageBytes;
+                }
+
+
+                var res = await _subCategoryService.Create(SubDto, Image);
 
                 if (res.IsSuccess)
                 {
@@ -101,11 +114,11 @@ namespace AdminDashBoard.Controllers
      
 
         [HttpPost]
-        public async Task<ActionResult> Update(CreateOrUpdateSubDto SubDto)
+        public async Task<ActionResult> Update(CreateOrUpdateSubDto SubDto, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
-
+               
 
                 var SubCategory = await _subCategoryService.GetOne(SubDto.Id);
                 if (SubCategory == null)
@@ -114,9 +127,21 @@ namespace AdminDashBoard.Controllers
                 }
 
 
+                if (Image != null && Image.Length > 0)
+                {
+
+                    var imageBytes = new byte[Image.Length];
+                    using (var stream = Image.OpenReadStream())
+                    {
+                        await stream.ReadAsync(imageBytes, 0, imageBytes.Length);
+                    }
+                    SubDto.Image = imageBytes;
+                }
 
 
-                await _subCategoryService.Update(SubDto);
+
+
+                await _subCategoryService.Update(SubDto, Image);
 
                 return RedirectToAction(nameof(Index));
 

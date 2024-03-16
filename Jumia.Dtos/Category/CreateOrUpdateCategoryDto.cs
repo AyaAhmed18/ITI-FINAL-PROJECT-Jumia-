@@ -20,8 +20,8 @@ namespace Jumia.Dtos.Category
         public string? Description { get; set; }
 
         public byte[]? Image { get; set; }
-        
 
+        
         public int? SubCategoryId { get; set; }
     }
 }

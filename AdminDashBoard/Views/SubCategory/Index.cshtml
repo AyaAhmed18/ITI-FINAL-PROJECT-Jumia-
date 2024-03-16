@@ -16,9 +16,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
+
+    <div class="container">
+
     <h1>All Category</h1>
 
-    <table class="table" border="1">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Name</th>
@@ -35,20 +38,21 @@
                 <tr>
                     <td>@item.Name</td>
                     <td>@item.Description</td>
-                    <td>@item.Image</td>
+                    <td><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="100px" , height="100px" alt="Category Image" /></td>
                     <td>@item.CategoryName</td>
                     <td>
-                        <a asp-action="Update" asp-controller="SubCategory" asp-route-id="@item.Id">Update</a>
+                        <a asp-action="Update" asp-controller="SubCategory" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
                     </td>
                     <td>
-                        <a asp-action="Delete" asp-controller="SubCategory" asp-route-id="@item.Id">Delete</a>
+                        <a asp-action="Delete" asp-controller="SubCategory" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
     <br />
-    <a asp-action="Create" asp-controller="SubCategory" class="btn btn-primary">Add SubCategory</a>
+    <a asp-action="Create" asp-controller="SubCategory" class="btn btn-success">Add SubCategory</a>
+    </div>
 </body>
 </html>
 

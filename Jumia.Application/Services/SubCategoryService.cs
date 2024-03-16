@@ -5,11 +5,14 @@ using Jumia.Dtos.Category;
 using Jumia.Dtos.SubCategory;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Jumia.Application.Services.Services
 {
@@ -26,7 +29,7 @@ namespace Jumia.Application.Services.Services
         }
 
         //Create 
-        public async Task<ResultView<CreateOrUpdateSubDto>> Create(CreateOrUpdateSubDto subcategoryDto)
+        public async Task<ResultView<CreateOrUpdateSubDto>> Create(CreateOrUpdateSubDto subcategoryDto, IFormFile image)
         {
             var Data = await _subCategoryRepository.GetAllAsync();
             var OldSubCategory = Data.Where(c => c.Name == subcategoryDto.Name).FirstOrDefault();
@@ -38,6 +41,16 @@ namespace Jumia.Application.Services.Services
             }
             else
             {
+                if (image != null && image.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await image.CopyToAsync(memoryStream);
+                        subcategoryDto.Image = memoryStream.ToArray();
+                    }
+                }
+
+
                 var SubCategory = _mapper.Map<SubCategory>(subcategoryDto);
                 var NewSubCategory = await _subCategoryRepository.CreateAsync(SubCategory);
                 await _subCategoryRepository.SaveChangesAsync();
@@ -52,10 +65,10 @@ namespace Jumia.Application.Services.Services
 
 
         // Update 
-        public async Task<ResultView<CreateOrUpdateSubDto>> Update(CreateOrUpdateSubDto subcategoryDto)
+        public async Task<ResultView<CreateOrUpdateSubDto>> Update(CreateOrUpdateSubDto subcategoryDto, IFormFile image)
         {
-            var Data = await _subCategoryRepository.GetAllAsync();
-            var OldSubCategory = Data.FirstOrDefault(c => c.Name == subcategoryDto.Name && c.Id == subcategoryDto.Id);
+            
+            var OldSubCategory = await _subCategoryRepository.GetOneAsync(subcategoryDto.Id);
             if (OldSubCategory == null)
             {
                 return new ResultView<CreateOrUpdateSubDto> { Entity = null, IsSuccess = false, Message = "SubCategory Not Found!" };
@@ -63,8 +76,18 @@ namespace Jumia.Application.Services.Services
             }
             else
             {
-                var SubCategory = _mapper.Map<SubCategory>(subcategoryDto);
-                var UPSubCategory = await _subCategoryRepository.UpdateAsync(SubCategory);
+                 _mapper.Map(subcategoryDto, OldSubCategory);
+
+                if (image != null && image.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await image.CopyToAsync(memoryStream);
+                        OldSubCategory.Image = memoryStream.ToArray();
+                    }
+                }
+
+                var UPSubCategory = await _subCategoryRepository.UpdateAsync(OldSubCategory);
                 await _subCategoryRepository.SaveChangesAsync();
                 var SubCategoryDto = _mapper.Map<CreateOrUpdateSubDto>(UPSubCategory);
 

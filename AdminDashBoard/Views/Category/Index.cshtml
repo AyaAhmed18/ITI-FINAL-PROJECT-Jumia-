@@ -11,16 +11,18 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>All Category</h1>
+    <div class="container">
 
-    <table class="table" border="1">
+        <h1>@AdminDashBoard.Languages.Resource.AllCategory</h1>
+
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Image</th>
-                <th scope="col">Update</th>
-                <th scope="col">Delete</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Name</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Description</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Image</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
             </tr>
         </thead>
         <tbody>
@@ -29,19 +31,20 @@
                 <tr>
                     <td>@item.Name</td>
                     <td>@item.Description</td>
-                    <td>@item.Image</td>
+                    <td><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="100px" , height="100px"  alt="Category Image" /></td>
                     <td>
-                        <a asp-action="Update" asp-controller="Category" asp-route-id="@item.Id">Update</a>
+                        <a asp-action="Update" asp-controller="Category" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
                     </td>
                     <td>
-                        <a asp-action="Delete" asp-controller="Category" asp-route-id="@item.Id">Delete</a>
+                        <a asp-action="Delete" asp-controller="Category" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
     <br />
-    <a asp-action="Create" asp-controller="Category" class="btn btn-primary">Add Category</a>
+        <a asp-action="Create" asp-controller="Category" class="btn btn-success">@AdminDashBoard.Languages.Resource.AddCategory</a>
+    </div>
 </body>
 </html>
 
