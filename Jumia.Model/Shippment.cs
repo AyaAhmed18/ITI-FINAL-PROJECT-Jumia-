@@ -16,8 +16,14 @@ namespace Jumia.Model
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public string AdressInformation { get; set; }
-        public string Regin { get; set; } 
+        public string Region { get; set; } 
         public string City { get; set; }
+        public string FirstNameAr { get; set; }
+        public string LastNameAr { get; set; }
+        public string AddressAr { get; set; }
+        public string AdressInformationAr { get; set; }
+        public string RegionAr { get; set; }
+        public string CityAr { get; set; }
         public decimal Cost { get; set; }
         [ForeignKey("Order")] ////////
         public int OrderId { get; set; }

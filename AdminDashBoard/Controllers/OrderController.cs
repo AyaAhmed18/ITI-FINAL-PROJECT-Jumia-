@@ -42,6 +42,8 @@ namespace AdminDashBoard.Controllers
         // GET: OrderController/Details/5
         public async Task<ActionResult> Details(int id)
         {
+            try
+            { 
             if (_orderItemService != null)
             {
                 var ordersDetails = await _orderItemService.GetAllOrderItems();
@@ -50,6 +52,11 @@ namespace AdminDashBoard.Controllers
                 return View(items);
             }
             return View();
+            }
+            catch
+            {
+                return Content("SomeThing Went Wrong, Try again");
+            }
         }
 
         // GET: OrderController/Create
