@@ -57,7 +57,7 @@ namespace Jumia.Application.Services
                         Address=p.Address,
                         AdressInformation=p.AdressInformation,
                         City=p.City,
-                        Region=p.Regin,
+                        Region=p.Region,
                         Cost=p.Cost,
                         OrderId=p.OrderId
                     }).ToList();
