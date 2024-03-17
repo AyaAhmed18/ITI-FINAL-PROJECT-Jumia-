@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using static System.Net.Mime.MediaTypeNames;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Jumia.Application.Services.IServices;
 
 namespace AdminDashBoard.Controllers
 {
@@ -109,8 +110,12 @@ namespace AdminDashBoard.Controllers
                     }
                     categoryDto.Image = imageBytes;
                 }
-
-
+                else
+                {
+                    // If no new image is provided, retain the existing image
+                    categoryDto.Image = category.Entity.Image;
+                }
+              
                 await _categoryService.Update(categoryDto, Image);
 
                 return RedirectToAction(nameof(Index));

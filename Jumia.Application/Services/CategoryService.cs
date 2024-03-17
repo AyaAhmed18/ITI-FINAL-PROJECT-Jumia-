@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Jumia.Application.Services.IServices;
 
 namespace Jumia.Application.Services
 {
@@ -38,6 +39,12 @@ namespace Jumia.Application.Services
             }
             else
             {
+
+                var CategoryWithSameImage = Data.FirstOrDefault(c => c.Image.SequenceEqual(categoryDto.Image));
+                if (CategoryWithSameImage != null)
+                {
+                    return new ResultView<CreateOrUpdateCategoryDto> { Entity = null, IsSuccess = false, Message = "Cannot add the same image for a category added before" };
+                }
 
                 if (image != null && image.Length > 0)
                 {
@@ -73,28 +80,42 @@ namespace Jumia.Application.Services
                 return new ResultView<CreateOrUpdateCategoryDto> { Entity = null, IsSuccess = false, Message = "Category Not Found!" };
 
             }
+
+
+            var Data = await _repository.GetAllAsync();
+            var CategoryWithSameImage = Data.FirstOrDefault(c => c.Id != categoryDto.Id && c.Image.SequenceEqual(categoryDto.Image));
+
+            if (CategoryWithSameImage != null)
+            {
+                return new ResultView<CreateOrUpdateCategoryDto> { Entity = null, IsSuccess = false, Message = "image already in use by another category." };
+            }
+
+
+            if (image == null || image.Length == 0)
+             {
+                    categoryDto.Image = OldCategory.Image;
+             }
             else
             {
-                //_mapper.Map<Category>(categoryDto);
-                _mapper.Map(categoryDto, OldCategory);
-
-                if (image != null && image.Length > 0)
-                {
+                    
                     using (var memoryStream = new MemoryStream())
                     {
                         await image.CopyToAsync(memoryStream);
-                        OldCategory.Image = memoryStream.ToArray();
+                        categoryDto.Image = memoryStream.ToArray();
                     }
-                }
+             }
+
+              
 
 
-                
+                _mapper.Map(categoryDto, OldCategory);
+
                 var UPCategory = await _repository.UpdateAsync(OldCategory);
                 await _repository.SaveChangesAsync();
                 var CategoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(UPCategory);
 
                 return new ResultView<CreateOrUpdateCategoryDto> { Entity = CategoryDto, IsSuccess = true, Message = "Category Updated Successfully" };
-            }
+            
 
 
 

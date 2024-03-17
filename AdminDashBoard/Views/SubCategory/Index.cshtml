@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = "_Layout";
 }
 @model ResultDataForPagination<GetAllSubDto>
 
@@ -9,7 +10,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>@Model.count</h1>
+@* <h1>@Model.count</h1> *@
 
 <html>
 <head>
@@ -19,17 +20,17 @@
 
     <div class="container">
 
-    <h1>All Category</h1>
+        <h1>@AdminDashBoard.Languages.Resource.AllSubCategory</h1>
 
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Image</th>
-                <th scope="col">Category Name</th>
-                <th scope="col">Update</th>
-                <th scope="col">Delete</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Name</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Description</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Image</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.CategoryName</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
             </tr>
         </thead>
         <tbody>
@@ -38,20 +39,20 @@
                 <tr>
                     <td>@item.Name</td>
                     <td>@item.Description</td>
-                    <td><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="100px" , height="100px" alt="Category Image" /></td>
+                    <td><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="100px" , height="100px" alt="SubCategory Image" /></td>
                     <td>@item.CategoryName</td>
                     <td>
-                        <a asp-action="Update" asp-controller="SubCategory" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
+                            <a asp-action="Update" asp-controller="SubCategory" asp-route-id="@item.Id" class="btn btn-primary">@AdminDashBoard.Languages.Resource.Update</a>
                     </td>
                     <td>
-                        <a asp-action="Delete" asp-controller="SubCategory" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                            <a asp-action="Delete" asp-controller="SubCategory" asp-route-id="@item.Id" class="btn btn-danger">@AdminDashBoard.Languages.Resource.Delete</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
     <br />
-    <a asp-action="Create" asp-controller="SubCategory" class="btn btn-success">Add SubCategory</a>
+        <a asp-action="Create" asp-controller="SubCategory" class="btn btn-success">@AdminDashBoard.Languages.Resource.AddSubCategory</a>
     </div>
 </body>
 </html>

@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using Jumia.Application.Services;
+using Jumia.Application.Services.IServices;
 using Jumia.Dtos.Category;
 using Jumia.Dtos.SubCategory;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
 {
-    public class SubCategoryController : Controller
+    public class SubCategoryController : BaseController
     {
         private readonly ISubCategoryService _subCategoryService;
         private readonly ICategoryService _categoryService;
