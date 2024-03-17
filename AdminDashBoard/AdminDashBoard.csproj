@@ -7,12 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\images\.DS_Store" />
-    <None Include="wwwroot\scss\.DS_Store" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="bootstrap" Version="5.3.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2">
       <PrivateAssets>all</PrivateAssets>
@@ -22,7 +17,27 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Jumia.Application\Jumia.Application.csproj" />
+    <ProjectReference Include="..\Jumia.Context\Jumia.Context.csproj" />
+    <ProjectReference Include="..\Jumia.Dtos\Jumia.Dtos.csproj" />
     <ProjectReference Include="..\Jumia.Infrastructure\Jumia.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Languages\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Languages\Resource.ar-EG.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Languages\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

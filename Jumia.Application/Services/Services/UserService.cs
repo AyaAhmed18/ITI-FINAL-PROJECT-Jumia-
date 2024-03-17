@@ -17,12 +17,12 @@ namespace Jumia.Application.Services.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-
-        public UserService(IUserRepository userRepository , IMapper mapper) {
+        private readonly IUserRoleRepository  _userRoleRepository;
+        public UserService(IUserRepository userRepository , IMapper mapper , IUserRoleRepository userRoleRepository) {
 
             _userRepository =   userRepository;
             _mapper = mapper;
-
+            _userRoleRepository = userRoleRepository;
 
         }
 
@@ -40,6 +40,9 @@ namespace Jumia.Application.Services.Services
                 {
                     var User = _mapper.Map<UserIdentity>(getAllUsers);
                     var NewUser = await _userRepository.CreateAsync(User);
+                          await _userRepository.SaveChangesAsync();
+                    var userRole = _mapper.Map<UserRole>(getAllUsers);
+                    await _userRoleRepository.CreateAsync(userRole);
                     await _userRepository.SaveChangesAsync();
                     var UserDto = _mapper.Map<GetAllUsers>(NewUser);
                     return new ResultView<GetAllUsers> { Entity = UserDto, IsSuccess = true, Message = "Add Success" };
