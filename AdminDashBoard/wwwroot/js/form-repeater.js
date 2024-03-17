@@ -3,7 +3,7 @@
   $(function() {
     $('.repeater').repeater({
       // (Optional)
-      // "defaultValues" sets the values of added items.  The keys of
+      // "defaultValues" s the values of added items.  The keys of
       // defaultValues refer to the value of the input's name attribute.
       // If a default value is not specified for an input, then it will
       // have its value cleared.

@@ -208,7 +208,7 @@
             }
           }
         }
-        &.nav-settings {
+        &.nav-tings {
           @extend .align-self-stretch;
           @extend .align-items-center;
           margin: 0;
@@ -471,7 +471,7 @@
         .nav-item {
           @extend .d-flex;
           @extend .align-items-center;
-          &.nav-settings {
+          &.nav-tings {
             @extend .d-none;
             @extend .d-lg-flex;
           }

@@ -1,0 +1,26 @@
+﻿@model CreateOrUpdateOrderDto
+@{
+    Layout = "_Layout";
+    //SelectList list = new SelectList(ViewBag.orderStatus);
+}
+<div class="col-md-8 grid-margin grid-margin-md-0 stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">List with icon</h4>
+            <p class="card-description">Add class <code>.list-star</code> to <code>&lt;ul&gt;</code></p>
+            <ul class="list-star">
+                <li>@Model.Customer</li>
+                <li>@Model.Status</li>
+                <li>@Model.TotalAmount</li>
+                <li>@Model.CreatedDate</li>
+                <form method="post">
+                @Html.DropDownListFor(model => model.Status, (IEnumerable<SelectListItem>)ViewBag.OrderStatusOptions, new { @class = "form-control" })
+              <br />
+                    <div class="col-12">
+                 <button type="submit" class="btn btn-info">Update</button>
+               </div>
+                </form>
+            </ul>
+        </div>
+    </div>
+</div>

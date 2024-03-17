@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Jumia.Application.Contract;
-using Jumia.Application.Services.IServices;
+using Jumia.Application.IServices;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jumia.Application.Services.Services
+namespace Jumia.Application.Services
 {
     public class Services<TEntity,Tid,T> : IServices<TEntity,Tid,T> where TEntity : class where T : BaseEntity
     {

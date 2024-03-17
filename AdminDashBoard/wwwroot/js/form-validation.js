@@ -1,6 +1,6 @@
 (function($) {
   'use strict';
-  $.validator.setDefaults({
+  $.validator.Defaults({
     submitHandler: function() {
       alert("submitted!");
     }

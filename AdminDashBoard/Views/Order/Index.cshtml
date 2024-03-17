@@ -1,0 +1,61 @@
+﻿@model List<GetAllOrdersDTO>
+@{
+    Layout = "_Layout";
+}
+<h1>Orders</h1>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Hoverable Table</h4>
+                        <p class="card-description">
+                            Add class <code>.table-hover</code>
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Customer</th>
+                                        <th>Status</th>
+                                        <th>OrderDate</th>
+                                        <th>TotalPrice</th>
+                                        <th>Discount</th>
+                                        <th>View</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(Model!=null)
+                                        @foreach (var item in Model)
+                                        {
+
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.Customer</td>
+                                                <td><label class="badge badge-danger">@item.Status</label></td>
+                                                <td>@item.OrderDate</td>
+                                                <td><label class="badge badge-danger">@item.TotalPrice</label></td>
+                                                <td class="text-danger"> @item.Discount <i class="ti-arrow-down"></i></td>
+                                                <td><a asp-action="Details" asp-controller="Order" asp-route-Id="@item.Id">View</a> </td>
+                                                <td><a asp-action="Edit" asp-controller="Order" asp-route-Id="@item.Id">Edit Status</a> </td>
+
+
+                                            </tr>
+                                        }}
+                                    
+                                   
+                                   
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

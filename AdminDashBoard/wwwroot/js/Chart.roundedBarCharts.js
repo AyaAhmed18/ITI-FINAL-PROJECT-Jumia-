@@ -10,7 +10,7 @@ Chart.elements.Rectangle.prototype.draw = function() {
     var borderWidth = vm.borderWidth;
 
     // If radius is less than 0 or is large enough to cause drawing errors a max
-    //      radius is imposed. If cornerRadius is not defined set it to 0.
+    //      radius is imposed. If cornerRadius is not defined  it to 0.
     var cornerRadius = this._chart.config.options.cornerRadius;
     if(cornerRadius < 0){ cornerRadius = 0; }
     if(typeof cornerRadius == 'undefined'){ cornerRadius = 0; }
@@ -36,7 +36,7 @@ Chart.elements.Rectangle.prototype.draw = function() {
     }
 
     // Canvas doesn't allow us to stroke inside the width so we can
-    // adjust the sizes to fit if we're setting a stroke on the line
+    // adjust the sizes to fit if we're ting a stroke on the line
     if (borderWidth) {
         // borderWidth shold be less than bar width and bar height.
         var barSize = Math.min(Math.abs(left - right), Math.abs(top - bottom));

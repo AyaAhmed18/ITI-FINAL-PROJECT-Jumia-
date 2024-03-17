@@ -17,12 +17,12 @@
   @include animation-duration($action-transition-duration);
   @include animation-fill-mode(both);
 }
-@mixin transition($settings) {
-  -webkit-transition: $settings;
-  -moz-transition: $settings;
-  -ms-transition: $settings;
-  -o-transition: $settings;
-  transition: $settings;
+@mixin transition($tings) {
+  -webkit-transition: $tings;
+  -moz-transition: $tings;
+  -ms-transition: $tings;
+  -o-transition: $tings;
+  transition: $tings;
 }
 @keyframes fadeOut {
   from {
