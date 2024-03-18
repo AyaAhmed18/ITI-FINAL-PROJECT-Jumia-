@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         private readonly IRoleService _roleService;
         private readonly UserManager<UserIdentity> _userManager;
@@ -59,12 +59,26 @@ namespace AdminDashBoard.Controllers
 
                 if (res.Succeeded)
                 {
-                    if (!string.IsNullOrEmpty(getAllUsers.RoleName) && await _roleManager.RoleExistsAsync(getAllUsers.RoleName))
+                    //if (!string.IsNullOrEmpty(getAllUsers.RoleName) && await _roleManager.RoleExistsAsync(getAllUsers.RoleName))
 
-                        await _userManager.AddToRoleAsync(user, getAllUsers.RoleName);
+                    //    await _userManager.AddToRoleAsync(user, getAllUsers.RoleName);
 
 
-                    return RedirectToAction("Index"); 
+                    //return RedirectToAction("Index"); 
+
+                    if (getAllUsers.SelectedRoles != null)
+                    {
+                        foreach (var roleName in getAllUsers.SelectedRoles)
+                        {
+                            if (!string.IsNullOrEmpty(roleName) && await _roleManager.RoleExistsAsync(roleName))
+                            {
+                                await _userManager.AddToRoleAsync(user, roleName);
+                            }
+                        }
+                    }
+
+                    return RedirectToAction("Index");
+
                 }
                 else
                 {
