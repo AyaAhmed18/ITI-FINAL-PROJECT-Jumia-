@@ -426,7 +426,7 @@
   }
 
   .product-chart-wrapper,
-  .settings-panel .tab-content .tab-pane .scroll-wrapper,
+  .tings-panel .tab-content .tab-pane .scroll-wrapper,
   .sidebar-fixed .nav,
   .table-responsive,
   ul.chats {
@@ -435,8 +435,8 @@
     }
 
     &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-              box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      -webkit-box-shadow: in 0 0 6px rgba(0,0,0,0.3);
+              box-shadow: in 0 0 6px rgba(0,0,0,0.3);
     }
 
     &::-webkit-scrollbar-thumb {

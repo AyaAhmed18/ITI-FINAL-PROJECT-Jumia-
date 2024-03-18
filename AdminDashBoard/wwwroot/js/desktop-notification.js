@@ -2,7 +2,7 @@
   'use strict';
   $.fn.easyNotify = function(options) {
 
-    var settings = $.extend({
+    var tings = $.extend({
       title: "Notification",
       options: {
         body: "",
@@ -20,23 +20,23 @@
         alert("This browser does not support desktop notification");
       } else if (Notification.permission === "granted") {
 
-        var notification = new Notification(settings.title, settings.options);
+        var notification = new Notification(tings.title, tings.options);
 
         notification.onclose = function() {
-          if (typeof settings.options.onClose === 'function') {
-            settings.options.onClose();
+          if (typeof tings.options.onClose === 'function') {
+            tings.options.onClose();
           }
         };
 
         notification.onclick = function() {
-          if (typeof settings.options.onClick === 'function') {
-            settings.options.onClick();
+          if (typeof tings.options.onClick === 'function') {
+            tings.options.onClick();
           }
         };
 
         notification.onerror = function() {
-          if (typeof settings.options.onError === 'function') {
-            settings.options.onError();
+          if (typeof tings.options.onError === 'function') {
+            tings.options.onError();
           }
         };
 

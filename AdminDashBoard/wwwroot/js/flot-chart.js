@@ -457,7 +457,7 @@
       return res;
     }
 
-    // Set up the control widget
+    //  up the control widget
 
     var updateInterval = 30;
     if ($("#realtime-chart").length) {
@@ -484,12 +484,12 @@
 
       function update() {
 
-        plot.setData([getRandomData()]);
+        plot.Data([getRandomData()]);
 
-        // Since the axes don't change, we don't need to call plot.setupGrid()
+        // Since the axes don't change, we don't need to call plot.upGrid()
 
         plot.draw();
-        setTimeout(update, updateInterval);
+        Timeout(update, updateInterval);
       }
 
       update();

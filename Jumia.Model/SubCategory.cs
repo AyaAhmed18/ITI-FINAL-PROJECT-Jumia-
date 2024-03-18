@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jumia.Model.Commons;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace Jumia.Model
 {
-    public class SubCategory:BaseEntity
+    public class SubCategory: LocalizableEntity
     {
         public string Name { get; set; }
+        public string NameAr { get; set; }
         public string? Description { get; set; }
         public byte[]? Image { get; set; }
 

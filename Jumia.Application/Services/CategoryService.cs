@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using Jumia.Application.Services.IServices;
+using Jumia.Dtos.Shippment;
 
 namespace Jumia.Application.Services
 {
@@ -152,8 +153,9 @@ namespace Jumia.Application.Services
         public async Task<ResultDataForPagination<GetAllCategoryDto>> GetAll(int item , int pagnumber)
         {
             var AllData =( await _repository.GetAllAsync());
-            var Categorys = AllData.Skip(item * (pagnumber - 1)).Take(item)
-             .Select(c => new GetAllCategoryDto
+            var Category = AllData.Skip(item * (pagnumber - 1)).Take(item).ToList();
+            var Categorys = _mapper.Map<List<GetAllCategoryDto>>(Category);
+            /* .Select(c => new GetAllCategoryDto
              {
                  Id = c.Id,
                  Name = c.Name,
@@ -161,7 +163,7 @@ namespace Jumia.Application.Services
                  Image = c.Image,
                  
 
-             }).ToList();
+             }).ToList();*/
 
             ResultDataForPagination<GetAllCategoryDto> resultDataFor = new ResultDataForPagination<GetAllCategoryDto>();
 

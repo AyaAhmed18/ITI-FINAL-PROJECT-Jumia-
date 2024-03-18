@@ -22,7 +22,7 @@
     + Tooltips
     + popovers
   * Core Styles
-    + Reset Styles
+    + Re Styles
     + Fonts
     + Functions
     + Backgrounds
@@ -61,7 +61,7 @@
     + Tooltips
     + User Profile
     + Pricing table
-    + Settings Panel
+    + tings Panel
   * Email
     + Mail Sidebar
     + Mail List Container
@@ -8992,14 +8992,14 @@ select:disabled {
 
 button,
 [type="button"],
-[type="reset"],
+[type="re"],
 [type="submit"] {
   -webkit-appearance: button;
 }
 
 button:not(:disabled),
 [type="button"]:not(:disabled),
-[type="reset"]:not(:disabled),
+[type="re"]:not(:disabled),
 [type="submit"]:not(:disabled) {
   cursor: pointer;
 }
@@ -9013,7 +9013,7 @@ textarea {
   resize: vertical;
 }
 
-fieldset {
+field {
   min-width: 0;
   padding: 0;
   margin: 0;
@@ -9054,7 +9054,7 @@ legend + * {
 }
 
 [type="search"] {
-  outline-offset: -2px;
+  outline-off: -2px;
   -webkit-appearance: textfield;
 }
 
@@ -9419,47 +9419,47 @@ progress {
   width: 100%;
 }
 
-.offset-1 {
+.off-1 {
   margin-left: 8.33333%;
 }
 
-.offset-2 {
+.off-2 {
   margin-left: 16.66667%;
 }
 
-.offset-3 {
+.off-3 {
   margin-left: 25%;
 }
 
-.offset-4 {
+.off-4 {
   margin-left: 33.33333%;
 }
 
-.offset-5 {
+.off-5 {
   margin-left: 41.66667%;
 }
 
-.offset-6 {
+.off-6 {
   margin-left: 50%;
 }
 
-.offset-7 {
+.off-7 {
   margin-left: 58.33333%;
 }
 
-.offset-8 {
+.off-8 {
   margin-left: 66.66667%;
 }
 
-.offset-9 {
+.off-9 {
   margin-left: 75%;
 }
 
-.offset-10 {
+.off-10 {
   margin-left: 83.33333%;
 }
 
-.offset-11 {
+.off-11 {
   margin-left: 91.66667%;
 }
 
@@ -9607,40 +9607,40 @@ progress {
     flex: 0 0 auto;
     width: 100%;
   }
-  .offset-sm-0 {
+  .off-sm-0 {
     margin-left: 0;
   }
-  .offset-sm-1 {
+  .off-sm-1 {
     margin-left: 8.33333%;
   }
-  .offset-sm-2 {
+  .off-sm-2 {
     margin-left: 16.66667%;
   }
-  .offset-sm-3 {
+  .off-sm-3 {
     margin-left: 25%;
   }
-  .offset-sm-4 {
+  .off-sm-4 {
     margin-left: 33.33333%;
   }
-  .offset-sm-5 {
+  .off-sm-5 {
     margin-left: 41.66667%;
   }
-  .offset-sm-6 {
+  .off-sm-6 {
     margin-left: 50%;
   }
-  .offset-sm-7 {
+  .off-sm-7 {
     margin-left: 58.33333%;
   }
-  .offset-sm-8 {
+  .off-sm-8 {
     margin-left: 66.66667%;
   }
-  .offset-sm-9 {
+  .off-sm-9 {
     margin-left: 75%;
   }
-  .offset-sm-10 {
+  .off-sm-10 {
     margin-left: 83.33333%;
   }
-  .offset-sm-11 {
+  .off-sm-11 {
     margin-left: 91.66667%;
   }
   .g-sm-0,
@@ -9777,40 +9777,40 @@ progress {
     flex: 0 0 auto;
     width: 100%;
   }
-  .offset-md-0 {
+  .off-md-0 {
     margin-left: 0;
   }
-  .offset-md-1 {
+  .off-md-1 {
     margin-left: 8.33333%;
   }
-  .offset-md-2 {
+  .off-md-2 {
     margin-left: 16.66667%;
   }
-  .offset-md-3 {
+  .off-md-3 {
     margin-left: 25%;
   }
-  .offset-md-4 {
+  .off-md-4 {
     margin-left: 33.33333%;
   }
-  .offset-md-5 {
+  .off-md-5 {
     margin-left: 41.66667%;
   }
-  .offset-md-6 {
+  .off-md-6 {
     margin-left: 50%;
   }
-  .offset-md-7 {
+  .off-md-7 {
     margin-left: 58.33333%;
   }
-  .offset-md-8 {
+  .off-md-8 {
     margin-left: 66.66667%;
   }
-  .offset-md-9 {
+  .off-md-9 {
     margin-left: 75%;
   }
-  .offset-md-10 {
+  .off-md-10 {
     margin-left: 83.33333%;
   }
-  .offset-md-11 {
+  .off-md-11 {
     margin-left: 91.66667%;
   }
   .g-md-0,
@@ -9947,40 +9947,40 @@ progress {
     flex: 0 0 auto;
     width: 100%;
   }
-  .offset-lg-0 {
+  .off-lg-0 {
     margin-left: 0;
   }
-  .offset-lg-1 {
+  .off-lg-1 {
     margin-left: 8.33333%;
   }
-  .offset-lg-2 {
+  .off-lg-2 {
     margin-left: 16.66667%;
   }
-  .offset-lg-3 {
+  .off-lg-3 {
     margin-left: 25%;
   }
-  .offset-lg-4 {
+  .off-lg-4 {
     margin-left: 33.33333%;
   }
-  .offset-lg-5 {
+  .off-lg-5 {
     margin-left: 41.66667%;
   }
-  .offset-lg-6 {
+  .off-lg-6 {
     margin-left: 50%;
   }
-  .offset-lg-7 {
+  .off-lg-7 {
     margin-left: 58.33333%;
   }
-  .offset-lg-8 {
+  .off-lg-8 {
     margin-left: 66.66667%;
   }
-  .offset-lg-9 {
+  .off-lg-9 {
     margin-left: 75%;
   }
-  .offset-lg-10 {
+  .off-lg-10 {
     margin-left: 83.33333%;
   }
-  .offset-lg-11 {
+  .off-lg-11 {
     margin-left: 91.66667%;
   }
   .g-lg-0,
@@ -10117,40 +10117,40 @@ progress {
     flex: 0 0 auto;
     width: 100%;
   }
-  .offset-xl-0 {
+  .off-xl-0 {
     margin-left: 0;
   }
-  .offset-xl-1 {
+  .off-xl-1 {
     margin-left: 8.33333%;
   }
-  .offset-xl-2 {
+  .off-xl-2 {
     margin-left: 16.66667%;
   }
-  .offset-xl-3 {
+  .off-xl-3 {
     margin-left: 25%;
   }
-  .offset-xl-4 {
+  .off-xl-4 {
     margin-left: 33.33333%;
   }
-  .offset-xl-5 {
+  .off-xl-5 {
     margin-left: 41.66667%;
   }
-  .offset-xl-6 {
+  .off-xl-6 {
     margin-left: 50%;
   }
-  .offset-xl-7 {
+  .off-xl-7 {
     margin-left: 58.33333%;
   }
-  .offset-xl-8 {
+  .off-xl-8 {
     margin-left: 66.66667%;
   }
-  .offset-xl-9 {
+  .off-xl-9 {
     margin-left: 75%;
   }
-  .offset-xl-10 {
+  .off-xl-10 {
     margin-left: 83.33333%;
   }
-  .offset-xl-11 {
+  .off-xl-11 {
     margin-left: 91.66667%;
   }
   .g-xl-0,
@@ -10287,40 +10287,40 @@ progress {
     flex: 0 0 auto;
     width: 100%;
   }
-  .offset-xxl-0 {
+  .off-xxl-0 {
     margin-left: 0;
   }
-  .offset-xxl-1 {
+  .off-xxl-1 {
     margin-left: 8.33333%;
   }
-  .offset-xxl-2 {
+  .off-xxl-2 {
     margin-left: 16.66667%;
   }
-  .offset-xxl-3 {
+  .off-xxl-3 {
     margin-left: 25%;
   }
-  .offset-xxl-4 {
+  .off-xxl-4 {
     margin-left: 33.33333%;
   }
-  .offset-xxl-5 {
+  .off-xxl-5 {
     margin-left: 41.66667%;
   }
-  .offset-xxl-6 {
+  .off-xxl-6 {
     margin-left: 50%;
   }
-  .offset-xxl-7 {
+  .off-xxl-7 {
     margin-left: 58.33333%;
   }
-  .offset-xxl-8 {
+  .off-xxl-8 {
     margin-left: 66.66667%;
   }
-  .offset-xxl-9 {
+  .off-xxl-9 {
     margin-left: 75%;
   }
-  .offset-xxl-10 {
+  .off-xxl-10 {
     margin-left: 83.33333%;
   }
-  .offset-xxl-11 {
+  .off-xxl-11 {
     margin-left: 91.66667%;
   }
   .g-xxl-0,
@@ -10392,7 +10392,7 @@ progress {
   padding: 0.5rem 0.5rem;
   background-color: var(--bs-table-bg);
   border-bottom-width: 1px;
-  box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+  box-shadow: in 0 0 0 9999px var(--bs-table-accent-bg);
 }
 
 .table > tbody {
@@ -11532,11 +11532,11 @@ textarea.is-invalid.tt-hint {
 }
 
 .btn:disabled, .ajax-upload-dragdrop .ajax-file-upload:disabled, .swal2-modal .swal2-buttonswrapper .swal2-styled:disabled, .btn.disabled, .ajax-upload-dragdrop .disabled.ajax-file-upload, .swal2-modal .swal2-buttonswrapper .disabled.swal2-styled,
-fieldset:disabled .btn,
-fieldset:disabled .ajax-upload-dragdrop .ajax-file-upload,
-.ajax-upload-dragdrop fieldset:disabled .ajax-file-upload,
-fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
-.swal2-modal .swal2-buttonswrapper fieldset:disabled .swal2-styled {
+field:disabled .btn,
+field:disabled .ajax-upload-dragdrop .ajax-file-upload,
+.ajax-upload-dragdrop field:disabled .ajax-file-upload,
+field:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
+.swal2-modal .swal2-buttonswrapper field:disabled .swal2-styled {
   pointer-events: none;
   opacity: 0.65;
 }
@@ -13296,7 +13296,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 .accordion-button:not(.collapsed) {
   color: #0c63e4;
   background-color: #e7f1ff;
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+  box-shadow: in 0 -1px 0 rgba(0, 0, 0, 0.125);
 }
 
 .accordion-button:not(.collapsed)::after {
@@ -13709,7 +13709,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 
 .list-group-numbered {
   list-style-type: none;
-  counter-reset: section;
+  counter-re: section;
 }
 
 .list-group-numbered > li::before {
@@ -15358,7 +15358,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   display: inline-flex !important;
 }
 
-.d-none, .navbar .navbar-menu-wrapper .navbar-nav.navbar-nav-right .nav-item.nav-settings {
+.d-none, .navbar .navbar-menu-wrapper .navbar-nav.navbar-nav-right .nav-item.nav-tings {
   display: none !important;
 }
 
@@ -15722,7 +15722,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   align-items: flex-end !important;
 }
 
-.align-items-center, .loader-demo-box, .list-wrapper ul li, .email-wrapper .message-body .attachments-sections ul li .thumb, .email-wrapper .message-body .attachments-sections ul li .details .buttons, .navbar .navbar-menu-wrapper .navbar-nav, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-settings, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown .dropdown-item, .navbar .navbar-menu-wrapper .navbar-nav.navbar-nav-right .nav-item {
+.align-items-center, .loader-demo-box, .list-wrapper ul li, .email-wrapper .message-body .attachments-sections ul li .thumb, .email-wrapper .message-body .attachments-sections ul li .details .buttons, .navbar .navbar-menu-wrapper .navbar-nav, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-tings, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown .dropdown-item, .navbar .navbar-menu-wrapper .navbar-nav.navbar-nav-right .nav-item {
   align-items: center !important;
 }
 
@@ -15778,7 +15778,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   align-self: baseline !important;
 }
 
-.align-self-stretch, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-settings, .navbar .navbar-menu-wrapper .navbar-nav.navbar-nav-right {
+.align-self-stretch, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-tings, .navbar .navbar-menu-wrapper .navbar-nav.navbar-nav-right {
   align-self: stretch !important;
 }
 
@@ -15941,7 +15941,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   margin-top: auto !important;
 }
 
-.me-0, .rtl .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown .dropdown-item i, .rtl .settings-panel .sidebar-bg-options .rounded-circle, .rtl .settings-panel .sidebar-bg-options .color-tiles .tiles, .rtl .settings-panel .color-tiles .sidebar-bg-options .tiles, .rtl .settings-panel .events i {
+.me-0, .rtl .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown .dropdown-item i, .rtl .tings-panel .sidebar-bg-options .rounded-circle, .rtl .tings-panel .sidebar-bg-options .color-tiles .tiles, .rtl .tings-panel .color-tiles .sidebar-bg-options .tiles, .rtl .tings-panel .events i {
   margin-right: 0 !important;
 }
 
@@ -16006,11 +16006,11 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   margin-left: 0.25rem !important;
 }
 
-.ms-2, .btn-toolbar .btn-group + .btn-group, .rtl .settings-panel .events i {
+.ms-2, .btn-toolbar .btn-group + .btn-group, .rtl .tings-panel .events i {
   margin-left: 0.5rem !important;
 }
 
-.ms-3, .rtl .settings-panel .sidebar-bg-options .rounded-circle, .rtl .settings-panel .sidebar-bg-options .color-tiles .tiles, .rtl .settings-panel .color-tiles .sidebar-bg-options .tiles {
+.ms-3, .rtl .tings-panel .sidebar-bg-options .rounded-circle, .rtl .tings-panel .sidebar-bg-options .color-tiles .tiles, .rtl .tings-panel .color-tiles .sidebar-bg-options .tiles {
   margin-left: 1rem !important;
 }
 
@@ -16381,11 +16381,11 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   color: rgba(255, 255, 255, 0.5) !important;
 }
 
-.text-reset {
+.text-re {
   color: inherit !important;
 }
 
-.bg-primary, .settings-panel .color-tiles .tiles.primary {
+.bg-primary, .tings-panel .color-tiles .tiles.primary {
   background-color: #1F3BB3 !important;
 }
 
@@ -16393,27 +16393,27 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   background-color: #F1F1F1 !important;
 }
 
-.bg-success, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm, .settings-panel .color-tiles .tiles.success {
+.bg-success, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm, .tings-panel .color-tiles .tiles.success {
   background-color: #34B1AA !important;
 }
 
-.bg-info, .settings-panel .color-tiles .tiles.info {
+.bg-info, .tings-panel .color-tiles .tiles.info {
   background-color: #52CDFF !important;
 }
 
-.bg-warning, .settings-panel .color-tiles .tiles.warning {
+.bg-warning, .tings-panel .color-tiles .tiles.warning {
   background-color: #ffaf00 !important;
 }
 
-.bg-danger, .settings-panel .color-tiles .tiles.danger {
+.bg-danger, .tings-panel .color-tiles .tiles.danger {
   background-color: #F95F53 !important;
 }
 
-.bg-light, .settings-panel .color-tiles .tiles.light, .settings-panel .color-tiles .tiles.default {
+.bg-light, .tings-panel .color-tiles .tiles.light, .tings-panel .color-tiles .tiles.default {
   background-color: #fbfbfb !important;
 }
 
-.bg-dark, .settings-panel .color-tiles .tiles.dark {
+.bg-dark, .tings-panel .color-tiles .tiles.dark {
   background-color: #1E283D !important;
 }
 
@@ -16473,7 +16473,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   border-radius: 0.3rem !important;
 }
 
-.rounded-circle, .settings-panel .color-tiles .tiles {
+.rounded-circle, .tings-panel .color-tiles .tiles {
   border-radius: 50% !important;
 }
 
@@ -17534,7 +17534,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   .d-lg-table-cell {
     display: table-cell !important;
   }
-  .d-lg-flex, .navbar .navbar-menu-wrapper .navbar-nav.navbar-nav-right .nav-item.nav-settings {
+  .d-lg-flex, .navbar .navbar-menu-wrapper .navbar-nav.navbar-nav-right .nav-item.nav-tings {
     display: flex !important;
   }
   .d-lg-inline-flex {
@@ -19045,14 +19045,14 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 /*-------------------------------------------------------------------*/
 /* === Template mixins === */
 /* Miscellaneous Mixins */
-.list-wrapper ul li .form-check, .list-wrapper ul li .form-check .form-check-label, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-name, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-designation, .email-wrapper .mail-list-container .mail-list .content .sender-name, .email-wrapper .message-body .attachments-sections ul li .details p.file-name, .settings-panel .chat-list .list .info p {
+.list-wrapper ul li .form-check, .list-wrapper ul li .form-check .form-check-label, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-name, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-designation, .email-wrapper .mail-list-container .mail-list .content .sender-name, .email-wrapper .message-body .attachments-sections ul li .details p.file-name, .tings-panel .chat-list .list .info p {
   text-overflow: ellipsis;
   overflow: hidden;
   max-width: 100%;
   white-space: nowrap;
 }
 
-.list-wrapper ul li .form-check, .list-wrapper ul li .form-check .form-check-label, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-name, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-designation, .email-wrapper .mail-list-container .mail-list .content .sender-name, .email-wrapper .message-body .attachments-sections ul li .details p.file-name, .settings-panel .chat-list .list .info p {
+.list-wrapper ul li .form-check, .list-wrapper ul li .form-check .form-check-label, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-name, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-designation, .email-wrapper .mail-list-container .mail-list .content .sender-name, .email-wrapper .message-body .attachments-sections ul li .details p.file-name, .tings-panel .chat-list .list .info p {
   text-overflow: ellipsis;
   overflow: hidden;
   max-width: 100%;
@@ -19099,7 +19099,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   animation-name: fadeOut;
 }
 
-.infinite-spin, #settings-trigger i {
+.infinite-spin, #tings-trigger i {
   animation-name: spin;
   animation-duration: 3s;
   animation-iteration-count: infinite;
@@ -19126,13 +19126,13 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   }
 }
 
-.fadeInUp, #settings-trigger {
+.fadeInUp, #tings-trigger {
   animation-name: fadeInUp;
 }
 
 /*-------------------------------------------------------------------*/
 /* === Core Styles === */
-/* Reset Styles */
+/* Re Styles */
 body {
   padding: 0;
   margin: 0;
@@ -19162,7 +19162,7 @@ a:active,
 a:focus,
 a:visited,
 button::-moz-focus-inner,
-input[type=reset]::-moz-focus-inner,
+input[type=re]::-moz-focus-inner,
 input[type=button]::-moz-focus-inner,
 input[type=submit]::-moz-focus-inner,
 input[type=file] > input[type=button]::-moz-focus-inner,
@@ -19248,12 +19248,12 @@ button:focus,
 button:hover,
 button:visited {
   outline: 0;
-  outline-offset: 0;
+  outline-off: 0;
 }
 
 .bootstrap-select .dropdown-toggle:focus {
   outline: 0;
-  outline-offset: 0;
+  outline-off: 0;
 }
 
 .dropdown-menu > li > a:active,
@@ -19698,7 +19698,7 @@ code {
   height: 32px;
 }
 
-.img-ss, .settings-panel .color-tiles .tiles {
+.img-ss, .tings-panel .color-tiles .tiles {
   width: 26px;
   height: 26px;
 }
@@ -21890,19 +21890,19 @@ code {
   padding-right: 0;
 }
 
-.breadcrumb.bg-success, .swal2-modal .swal2-buttonswrapper .breadcrumb.swal2-styled.swal2-confirm, .settings-panel .color-tiles .breadcrumb.tiles.success, .breadcrumb.bg-dark, .settings-panel .color-tiles .breadcrumb.tiles.dark, .breadcrumb.bg-danger, .settings-panel .color-tiles .breadcrumb.tiles.danger, .breadcrumb.bg-warning, .settings-panel .color-tiles .breadcrumb.tiles.warning, .breadcrumb.bg-primary, .settings-panel .color-tiles .breadcrumb.tiles.primary, .breadcrumb.bg-info, .settings-panel .color-tiles .breadcrumb.tiles.info {
+.breadcrumb.bg-success, .swal2-modal .swal2-buttonswrapper .breadcrumb.swal2-styled.swal2-confirm, .tings-panel .color-tiles .breadcrumb.tiles.success, .breadcrumb.bg-dark, .tings-panel .color-tiles .breadcrumb.tiles.dark, .breadcrumb.bg-danger, .tings-panel .color-tiles .breadcrumb.tiles.danger, .breadcrumb.bg-warning, .tings-panel .color-tiles .breadcrumb.tiles.warning, .breadcrumb.bg-primary, .tings-panel .color-tiles .breadcrumb.tiles.primary, .breadcrumb.bg-info, .tings-panel .color-tiles .breadcrumb.tiles.info {
   border: none;
 }
 
-.breadcrumb.bg-success .breadcrumb-item, .swal2-modal .swal2-buttonswrapper .breadcrumb.swal2-styled.swal2-confirm .breadcrumb-item, .settings-panel .color-tiles .breadcrumb.tiles.success .breadcrumb-item, .breadcrumb.bg-dark .breadcrumb-item, .settings-panel .color-tiles .breadcrumb.tiles.dark .breadcrumb-item, .breadcrumb.bg-danger .breadcrumb-item, .settings-panel .color-tiles .breadcrumb.tiles.danger .breadcrumb-item, .breadcrumb.bg-warning .breadcrumb-item, .settings-panel .color-tiles .breadcrumb.tiles.warning .breadcrumb-item, .breadcrumb.bg-primary .breadcrumb-item, .settings-panel .color-tiles .breadcrumb.tiles.primary .breadcrumb-item, .breadcrumb.bg-info .breadcrumb-item, .settings-panel .color-tiles .breadcrumb.tiles.info .breadcrumb-item {
+.breadcrumb.bg-success .breadcrumb-item, .swal2-modal .swal2-buttonswrapper .breadcrumb.swal2-styled.swal2-confirm .breadcrumb-item, .tings-panel .color-tiles .breadcrumb.tiles.success .breadcrumb-item, .breadcrumb.bg-dark .breadcrumb-item, .tings-panel .color-tiles .breadcrumb.tiles.dark .breadcrumb-item, .breadcrumb.bg-danger .breadcrumb-item, .tings-panel .color-tiles .breadcrumb.tiles.danger .breadcrumb-item, .breadcrumb.bg-warning .breadcrumb-item, .tings-panel .color-tiles .breadcrumb.tiles.warning .breadcrumb-item, .breadcrumb.bg-primary .breadcrumb-item, .tings-panel .color-tiles .breadcrumb.tiles.primary .breadcrumb-item, .breadcrumb.bg-info .breadcrumb-item, .tings-panel .color-tiles .breadcrumb.tiles.info .breadcrumb-item {
   color: #ffffff;
 }
 
-.breadcrumb.bg-success .breadcrumb-item:before, .swal2-modal .swal2-buttonswrapper .breadcrumb.swal2-styled.swal2-confirm .breadcrumb-item:before, .settings-panel .color-tiles .breadcrumb.tiles.success .breadcrumb-item:before, .breadcrumb.bg-dark .breadcrumb-item:before, .settings-panel .color-tiles .breadcrumb.tiles.dark .breadcrumb-item:before, .breadcrumb.bg-danger .breadcrumb-item:before, .settings-panel .color-tiles .breadcrumb.tiles.danger .breadcrumb-item:before, .breadcrumb.bg-warning .breadcrumb-item:before, .settings-panel .color-tiles .breadcrumb.tiles.warning .breadcrumb-item:before, .breadcrumb.bg-primary .breadcrumb-item:before, .settings-panel .color-tiles .breadcrumb.tiles.primary .breadcrumb-item:before, .breadcrumb.bg-info .breadcrumb-item:before, .settings-panel .color-tiles .breadcrumb.tiles.info .breadcrumb-item:before {
+.breadcrumb.bg-success .breadcrumb-item:before, .swal2-modal .swal2-buttonswrapper .breadcrumb.swal2-styled.swal2-confirm .breadcrumb-item:before, .tings-panel .color-tiles .breadcrumb.tiles.success .breadcrumb-item:before, .breadcrumb.bg-dark .breadcrumb-item:before, .tings-panel .color-tiles .breadcrumb.tiles.dark .breadcrumb-item:before, .breadcrumb.bg-danger .breadcrumb-item:before, .tings-panel .color-tiles .breadcrumb.tiles.danger .breadcrumb-item:before, .breadcrumb.bg-warning .breadcrumb-item:before, .tings-panel .color-tiles .breadcrumb.tiles.warning .breadcrumb-item:before, .breadcrumb.bg-primary .breadcrumb-item:before, .tings-panel .color-tiles .breadcrumb.tiles.primary .breadcrumb-item:before, .breadcrumb.bg-info .breadcrumb-item:before, .tings-panel .color-tiles .breadcrumb.tiles.info .breadcrumb-item:before {
   color: inherit;
 }
 
-.breadcrumb.bg-success .breadcrumb-item a, .swal2-modal .swal2-buttonswrapper .breadcrumb.swal2-styled.swal2-confirm .breadcrumb-item a, .settings-panel .color-tiles .breadcrumb.tiles.success .breadcrumb-item a, .breadcrumb.bg-success .breadcrumb-item span, .swal2-modal .swal2-buttonswrapper .breadcrumb.swal2-styled.swal2-confirm .breadcrumb-item span, .settings-panel .color-tiles .breadcrumb.tiles.success .breadcrumb-item span, .breadcrumb.bg-dark .breadcrumb-item a, .settings-panel .color-tiles .breadcrumb.tiles.dark .breadcrumb-item a, .breadcrumb.bg-dark .breadcrumb-item span, .settings-panel .color-tiles .breadcrumb.tiles.dark .breadcrumb-item span, .breadcrumb.bg-danger .breadcrumb-item a, .settings-panel .color-tiles .breadcrumb.tiles.danger .breadcrumb-item a, .breadcrumb.bg-danger .breadcrumb-item span, .settings-panel .color-tiles .breadcrumb.tiles.danger .breadcrumb-item span, .breadcrumb.bg-warning .breadcrumb-item a, .settings-panel .color-tiles .breadcrumb.tiles.warning .breadcrumb-item a, .breadcrumb.bg-warning .breadcrumb-item span, .settings-panel .color-tiles .breadcrumb.tiles.warning .breadcrumb-item span, .breadcrumb.bg-primary .breadcrumb-item a, .settings-panel .color-tiles .breadcrumb.tiles.primary .breadcrumb-item a, .breadcrumb.bg-primary .breadcrumb-item span, .settings-panel .color-tiles .breadcrumb.tiles.primary .breadcrumb-item span, .breadcrumb.bg-info .breadcrumb-item a, .settings-panel .color-tiles .breadcrumb.tiles.info .breadcrumb-item a, .breadcrumb.bg-info .breadcrumb-item span, .settings-panel .color-tiles .breadcrumb.tiles.info .breadcrumb-item span {
+.breadcrumb.bg-success .breadcrumb-item a, .swal2-modal .swal2-buttonswrapper .breadcrumb.swal2-styled.swal2-confirm .breadcrumb-item a, .tings-panel .color-tiles .breadcrumb.tiles.success .breadcrumb-item a, .breadcrumb.bg-success .breadcrumb-item span, .swal2-modal .swal2-buttonswrapper .breadcrumb.swal2-styled.swal2-confirm .breadcrumb-item span, .tings-panel .color-tiles .breadcrumb.tiles.success .breadcrumb-item span, .breadcrumb.bg-dark .breadcrumb-item a, .tings-panel .color-tiles .breadcrumb.tiles.dark .breadcrumb-item a, .breadcrumb.bg-dark .breadcrumb-item span, .tings-panel .color-tiles .breadcrumb.tiles.dark .breadcrumb-item span, .breadcrumb.bg-danger .breadcrumb-item a, .tings-panel .color-tiles .breadcrumb.tiles.danger .breadcrumb-item a, .breadcrumb.bg-danger .breadcrumb-item span, .tings-panel .color-tiles .breadcrumb.tiles.danger .breadcrumb-item span, .breadcrumb.bg-warning .breadcrumb-item a, .tings-panel .color-tiles .breadcrumb.tiles.warning .breadcrumb-item a, .breadcrumb.bg-warning .breadcrumb-item span, .tings-panel .color-tiles .breadcrumb.tiles.warning .breadcrumb-item span, .breadcrumb.bg-primary .breadcrumb-item a, .tings-panel .color-tiles .breadcrumb.tiles.primary .breadcrumb-item a, .breadcrumb.bg-primary .breadcrumb-item span, .tings-panel .color-tiles .breadcrumb.tiles.primary .breadcrumb-item span, .breadcrumb.bg-info .breadcrumb-item a, .tings-panel .color-tiles .breadcrumb.tiles.info .breadcrumb-item a, .breadcrumb.bg-info .breadcrumb-item span, .tings-panel .color-tiles .breadcrumb.tiles.info .breadcrumb-item span {
   color: inherit;
 }
 
@@ -24193,7 +24193,7 @@ dl li {
 }
 
 .rtl .bullet-line-list {
-  padding-left: unset;
+  padding-left: un;
   padding-right: 30px;
 }
 
@@ -24218,7 +24218,7 @@ dl li {
 }
 
 .rtl .bullet-line-list li:before {
-  left: unset;
+  left: un;
   right: -45px;
 }
 
@@ -24238,7 +24238,7 @@ dl li {
 }
 
 .rtl .bullet-line-list:after {
-  left: unset;
+  left: un;
   right: 7px;
 }
 
@@ -26686,7 +26686,7 @@ body.avgrund-active {
 
 .dataTables_wrapper select {
   padding: .4rem;
-  outline-offset: -2px;
+  outline-off: -2px;
 }
 
 .dataTables_wrapper .dataTables_length select {
@@ -27990,9 +27990,9 @@ div.tagsinput span.tag a {
 }
 
 .tt-query {
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-box-shadow: in 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: in 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: in 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 .tt-hint {
@@ -29055,17 +29055,17 @@ div.tagsinput span.tag a {
   color: #6c7383;
 }
 
-.navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-settings {
+.navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-tings {
   margin: 0;
 }
 
-.navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-settings .nav-link {
+.navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-tings .nav-link {
   padding: 0;
   text-align: center;
   height: 34px;
 }
 
-.navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-settings i {
+.navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-tings i {
   font-size: 1.25rem;
   vertical-align: middle;
 }
@@ -30371,7 +30371,7 @@ div.tagsinput span.tag a {
 }
 
 .rtl .product-chart-wrapper::-webkit-scrollbar,
-.rtl .settings-panel .tab-content .tab-pane .scroll-wrapper::-webkit-scrollbar,
+.rtl .tings-panel .tab-content .tab-pane .scroll-wrapper::-webkit-scrollbar,
 .rtl .sidebar-fixed .nav::-webkit-scrollbar,
 .rtl .table-responsive::-webkit-scrollbar,
 .rtl ul.chats::-webkit-scrollbar {
@@ -30379,16 +30379,16 @@ div.tagsinput span.tag a {
 }
 
 .rtl .product-chart-wrapper::-webkit-scrollbar-track,
-.rtl .settings-panel .tab-content .tab-pane .scroll-wrapper::-webkit-scrollbar-track,
+.rtl .tings-panel .tab-content .tab-pane .scroll-wrapper::-webkit-scrollbar-track,
 .rtl .sidebar-fixed .nav::-webkit-scrollbar-track,
 .rtl .table-responsive::-webkit-scrollbar-track,
 .rtl ul.chats::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: in 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: in 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 .rtl .product-chart-wrapper::-webkit-scrollbar-thumb,
-.rtl .settings-panel .tab-content .tab-pane .scroll-wrapper::-webkit-scrollbar-thumb,
+.rtl .tings-panel .tab-content .tab-pane .scroll-wrapper::-webkit-scrollbar-thumb,
 .rtl .sidebar-fixed .nav::-webkit-scrollbar-thumb,
 .rtl .table-responsive::-webkit-scrollbar-thumb,
 .rtl ul.chats::-webkit-scrollbar-thumb {
@@ -30396,8 +30396,8 @@ div.tagsinput span.tag a {
   outline: 1px solid slategrey;
 }
 
-/* Settings Panel */
-.settings-panel {
+/* tings Panel */
+.tings-panel {
   border-left: 1px solid #dee2e6;
   display: block;
   position: fixed;
@@ -30423,7 +30423,7 @@ div.tagsinput span.tag a {
   z-index: 9999;
 }
 
-.settings-panel .nav-tabs {
+.tings-panel .nav-tabs {
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: center;
@@ -30434,11 +30434,11 @@ div.tagsinput span.tag a {
   background: #ffffff;
 }
 
-.settings-panel .nav-tabs .nav-item {
+.tings-panel .nav-tabs .nav-item {
   border: none;
 }
 
-.settings-panel .nav-tabs .nav-item .nav-link {
+.tings-panel .nav-tabs .nav-item .nav-link {
   background: transparent;
   text-align: center;
   border: none;
@@ -30457,24 +30457,24 @@ div.tagsinput span.tag a {
   justify-content: center;
 }
 
-.settings-panel .nav-tabs .nav-item .nav-link.active {
+.tings-panel .nav-tabs .nav-item .nav-link.active {
   background: transparent;
   color: #1F3BB3;
 }
 
-.settings-panel .tab-content {
+.tings-panel .tab-content {
   border: none;
   padding: 20px 0 0px 0;
 }
 
-.settings-panel .tab-content .tab-pane.scroll-wrapper {
+.tings-panel .tab-content .tab-pane.scroll-wrapper {
   position: relative;
   max-height: 100vh;
   height: 100%;
   padding-bottom: 180px;
 }
 
-.settings-panel .settings-heading {
+.tings-panel .tings-heading {
   padding: 16px 0 13px 35px;
   font-size: 0.812rem;
   font-family: "Manrope", sans-serif;
@@ -30487,16 +30487,16 @@ div.tagsinput span.tag a {
   border-bottom: 1px solid #dee2e6;
 }
 
-.rtl .settings-panel .settings-heading {
+.rtl .tings-panel .tings-heading {
   padding: 16px 35px 13px 0;
   text-align: right;
 }
 
-.rtl .settings-panel small.settings-heading, .rtl .settings-panel .settings-heading.small {
+.rtl .tings-panel small.tings-heading, .rtl .tings-panel .tings-heading.small {
   padding: 16px 0 13px 12px;
 }
 
-.settings-panel .sidebar-bg-options {
+.tings-panel .sidebar-bg-options {
   padding: 13px 35px;
   display: -webkit-flex;
   display: flex;
@@ -30516,11 +30516,11 @@ div.tagsinput span.tag a {
   transition-property: background;
 }
 
-.settings-panel .sidebar-bg-options.selected {
+.tings-panel .sidebar-bg-options.selected {
   background: color(gray-lightest);
 }
 
-.settings-panel .color-tiles {
+.tings-panel .color-tiles {
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: space-around;
@@ -30531,7 +30531,7 @@ div.tagsinput span.tag a {
   padding-top: 15px;
 }
 
-.settings-panel .color-tiles .tiles {
+.tings-panel .color-tiles .tiles {
   margin: 10px 18px;
   display: -webkit-flex;
   display: flex;
@@ -30541,7 +30541,7 @@ div.tagsinput span.tag a {
   justify-content: center;
 }
 
-.settings-panel .color-tiles .tiles:before {
+.tings-panel .color-tiles .tiles:before {
   content: "";
   width: 0px;
   height: 0px;
@@ -30559,26 +30559,26 @@ div.tagsinput span.tag a {
   transition-timing-function: ease;
 }
 
-.settings-panel .color-tiles .tiles.selected:before {
+.tings-panel .color-tiles .tiles.selected:before {
   width: 10px;
   height: 10px;
   opacity: 1;
   border-width: 1px;
 }
 
-.settings-panel .color-tiles .tiles.light {
+.tings-panel .color-tiles .tiles.light {
   border: 1px solid #e2e4e7;
 }
 
-.settings-panel .color-tiles .tiles.default {
+.tings-panel .color-tiles .tiles.default {
   border: 1px solid #e2e4e7;
 }
 
-.settings-panel .chat-list {
+.tings-panel .chat-list {
   padding-left: 0;
 }
 
-.settings-panel .chat-list .list {
+.tings-panel .chat-list .list {
   padding: 0.4rem 0.8rem;
   display: -webkit-flex;
   display: flex;
@@ -30587,22 +30587,22 @@ div.tagsinput span.tag a {
   border-bottom: 1px solid #dee2e6;
 }
 
-.settings-panel .chat-list .list:last-child {
+.tings-panel .chat-list .list:last-child {
   border-bottom: none;
 }
 
-.settings-panel .chat-list .list .profile {
+.tings-panel .chat-list .list .profile {
   position: relative;
   margin-right: 1rem;
 }
 
-.settings-panel .chat-list .list .profile img {
+.tings-panel .chat-list .list .profile img {
   width: 2.50rem;
   height: 2.50rem;
   border-radius: 100%;
 }
 
-.settings-panel .chat-list .list .profile span {
+.tings-panel .chat-list .list .profile span {
   height: 0.75rem;
   width: 0.75rem;
   position: absolute;
@@ -30612,41 +30612,41 @@ div.tagsinput span.tag a {
   border-radius: 100%;
 }
 
-.settings-panel .chat-list .list .profile span.online {
+.tings-panel .chat-list .list .profile span.online {
   background: #34B1AA;
 }
 
-.settings-panel .chat-list .list .profile span.offline {
+.tings-panel .chat-list .list .profile span.offline {
   background: #ffaf00;
 }
 
-.settings-panel .chat-list .list .info {
+.tings-panel .chat-list .list .info {
   margin-right: auto;
 }
 
-.settings-panel .chat-list .list .info p {
+.tings-panel .chat-list .list .info p {
   display: block;
   margin-bottom: 0;
 }
 
-.settings-panel .chat-list .list .info p:last-child {
+.tings-panel .chat-list .list .info p:last-child {
   opacity: 0.5;
   font-size: 0.8rem;
 }
 
-.rtl .settings-panel .chat-list .list .info p:last-child {
+.rtl .tings-panel .chat-list .list .info p:last-child {
   text-align: right;
 }
 
-.settings-panel .chat-list .list.active {
+.tings-panel .chat-list .list.active {
   background: #fbfbfb;
 }
 
-.settings-panel.open {
+.tings-panel.open {
   right: 0;
 }
 
-.settings-panel .settings-close {
+.tings-panel .tings-close {
   position: absolute;
   top: 16px;
   right: 10px;
@@ -30662,26 +30662,26 @@ div.tagsinput span.tag a {
   z-index: 999;
 }
 
-.settings-panel .settings-close:hover {
+.tings-panel .tings-close:hover {
   background: rgba(255, 255, 255, 0.3);
 }
 
-.rtl .settings-panel .settings-close {
-  right: unset;
+.rtl .tings-panel .tings-close {
+  right: un;
   left: 10px;
 }
 
-.settings-panel .events p {
+.tings-panel .events p {
   font-family: "Manrope", sans-serif;
   font-weight: 400;
 }
 
-.rtl .settings-panel .events p {
+.rtl .tings-panel .events p {
   text-align: right;
 }
 
-.rtl .settings-panel {
-  right: unset;
+.rtl .tings-panel {
+  right: un;
   left: -300px;
   -webkit-transition-property: left;
   -moz-transition-property: left;
@@ -30689,35 +30689,35 @@ div.tagsinput span.tag a {
   transition-property: left;
 }
 
-.rtl .settings-panel .chat-list {
+.rtl .tings-panel .chat-list {
   padding-right: 0;
 }
 
-.rtl .settings-panel .chat-list .list .profile {
+.rtl .tings-panel .chat-list .list .profile {
   margin-right: 0;
   margin-left: 1rem;
 }
 
-.rtl .settings-panel .chat-list .list .info {
+.rtl .tings-panel .chat-list .list .info {
   margin-right: 0;
   margin-left: auto;
 }
 
-.rtl .settings-panel .chat-list .list .info .badge {
+.rtl .tings-panel .chat-list .list .info .badge {
   margin-right: 10px;
 }
 
-.rtl .settings-panel.open {
+.rtl .tings-panel.open {
   left: 0;
-  right: unset;
+  right: un;
 }
 
-#theme-settings .settings-close {
+#theme-tings .tings-close {
   top: 12px;
   background: transparent;
 }
 
-#settings-trigger {
+#tings-trigger {
   position: fixed;
   bottom: 40px;
   right: 30px;
@@ -30749,19 +30749,19 @@ div.tagsinput span.tag a {
   animation-fill-mode: both;
 }
 
-#settings-trigger i {
+#tings-trigger i {
   color: #ffffff;
   font-size: 1rem;
   line-height: 1rem;
 }
 
-.rtl #settings-trigger {
+.rtl #tings-trigger {
   right: auto;
   left: 30px;
 }
 
 @media (max-width: 991px) {
-  #settings-trigger {
+  #tings-trigger {
     display: none;
   }
 }

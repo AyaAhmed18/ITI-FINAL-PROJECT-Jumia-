@@ -157,7 +157,7 @@
   //Line chart
 
   if ($("#rickshaw-line").length) {
-    // set up our data series with 50 random data points
+    //  up our data series with 50 random data points
 
     var seriesData = [
       [],
@@ -205,7 +205,7 @@
   //scatter plot
 
   if ($("#rickshaw-scatter").length) {
-    // set up our data series with 50 random data points
+    //  up our data series with 50 random data points
 
     var seriesData = [
       [],

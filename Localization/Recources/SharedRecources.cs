@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jumia.Application.Services.Services
+namespace Localization.Shared_Recources
 {
-    public class ProductService
+    public class SharedRecources
     {
-
     }
 }

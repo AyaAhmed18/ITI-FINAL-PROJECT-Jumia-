@@ -1,7 +1,7 @@
 (function($) {
   showSuccessToast = function() {
     'use strict';
-    resetToastPosition();
+    reToastPosition();
     $.toast({
       heading: 'Success',
       text: 'And these were just the basic demos! Scroll down to check further details on how to customize the output.',
@@ -13,7 +13,7 @@
   };
   showInfoToast = function() {
     'use strict';
-    resetToastPosition();
+    reToastPosition();
     $.toast({
       heading: 'Info',
       text: 'And these were just the basic demos! Scroll down to check further details on how to customize the output.',
@@ -25,7 +25,7 @@
   };
   showWarningToast = function() {
     'use strict';
-    resetToastPosition();
+    reToastPosition();
     $.toast({
       heading: 'Warning',
       text: 'And these were just the basic demos! Scroll down to check further details on how to customize the output.',
@@ -37,7 +37,7 @@
   };
   showDangerToast = function() {
     'use strict';
-    resetToastPosition();
+    reToastPosition();
     $.toast({
       heading: 'Danger',
       text: 'And these were just the basic demos! Scroll down to check further details on how to customize the output.',
@@ -49,7 +49,7 @@
   };
   showToastPosition = function(position) {
     'use strict';
-    resetToastPosition();
+    reToastPosition();
     $.toast({
       heading: 'Positioning',
       text: 'Specify the custom position object or use one of the predefined ones',
@@ -61,7 +61,7 @@
   }
   showToastInCustomPosition = function() {
     'use strict';
-    resetToastPosition();
+    reToastPosition();
     $.toast({
       heading: 'Custom positioning',
       text: 'Specify the custom position object or use one of the predefined ones',
@@ -74,7 +74,7 @@
       loaderBg: '#f96868'
     })
   }
-  resetToastPosition = function() {
+  reToastPosition = function() {
     $('.jq-toast-wrap').removeClass('bottom-left bottom-right top-left top-right mid-center'); // to remove previous position class
     $(".jq-toast-wrap").css({
       "top": "",

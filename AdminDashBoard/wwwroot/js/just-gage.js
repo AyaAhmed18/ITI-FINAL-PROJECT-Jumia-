@@ -11,7 +11,7 @@ window.onload = function() {
   });
 
 
-  setInterval(function() {
+  Interval(function() {
     g1.refresh(getRandomInt(50, 100));
   }, 2500);
 };
