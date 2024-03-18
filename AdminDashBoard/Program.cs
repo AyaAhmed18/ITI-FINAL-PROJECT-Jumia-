@@ -7,7 +7,6 @@ using Jumia.Infrastructure;
 using Jumia.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace AdminDashBoard
 {
@@ -17,13 +16,28 @@ namespace AdminDashBoard
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+             builder.Services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
+             builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+             builder.Services.AddScoped<IOrderItemsRepository, OrderItemRepository>();
+             builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+             builder.Services.AddScoped<IShippmentRepository, ShippmentRepository>();
+            //builder.Services.AddScoped<IProductServices, ProductService>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IRoleService, RoleService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<ISubCategoryService, SubCategoryService>();
 
-
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-
             builder.Services.AddIdentity<UserIdentity, UserRole>()
             .AddEntityFrameworkStores<JumiaContext>()
             .AddDefaultTokenProviders();
@@ -33,27 +47,12 @@ namespace AdminDashBoard
                 op.UseSqlServer(builder.Configuration.GetConnectionString("Db"));
             });
 
-
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
-            //builder.Services.AddScoped<IProductRepository, ProductRepository>();
-            /* builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-             builder.Services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
-             builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
-             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-             builder.Services.AddScoped<IOrderItemsRepository, OrderItemRepository>();
-             builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
-             builder.Services.AddScoped<IShippmentRepository, ShippmentRepository>();*/
-            //builder.Services.AddScoped<IProductServices, ProductService>();
-            builder.Services.AddScoped<IUserRepository, UserRepository>();
-            builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
-            builder.Services.AddScoped<IUserService, UserService>();
-            builder.Services.AddScoped<IRoleService, RoleService>();
-
-            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-
-           
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); 
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
 
             var app = builder.Build();
@@ -66,6 +65,7 @@ namespace AdminDashBoard
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 

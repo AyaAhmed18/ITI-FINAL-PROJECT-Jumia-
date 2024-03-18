@@ -1,4 +1,4 @@
-﻿using Jumia.Context.Migrations;
+﻿
 using Jumia.Dtos.AccountDtos;
 using Jumia.Model;
 using Microsoft.AspNetCore.Authorization;
@@ -8,7 +8,7 @@ using Microsoft.Win32;
 
 namespace AdminDashBoard.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
             private UserManager<UserIdentity> _userManager;
             private SignInManager<UserIdentity> _signinManager;
@@ -39,9 +39,6 @@ namespace AdminDashBoard.Controllers
                     var user = new UserIdentity() { UserName = registerDtos.Username, Email = registerDtos.Email, PhoneNumber = registerDtos.Phone };
                     IdentityResult res = await _userManager.CreateAsync(user, registerDtos.Password);
 
-                    
-
-                    
                         if (res.Succeeded && registerDtos.Password == registerDtos.Confirmpass)
                         {
 

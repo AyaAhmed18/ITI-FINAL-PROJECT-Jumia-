@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         private readonly IRoleService _roleService;
         private readonly UserManager<UserIdentity> _userManager;

@@ -15,9 +15,6 @@ namespace Jumia.Model
         public int StockQuantity { get; set; }
         public decimal RealPrice { get; set; }
         public decimal? Discount { get; set; }
-        public float? Weight { get; set; }
-        public string? Size { get; set; }
-        public string Color { get; set; }
         public HashSet<byte[]>? Images { get; set; }
         //[ForeignKey("Category")]
        // public int CategoryId {  get; set; }
@@ -27,9 +24,7 @@ namespace Jumia.Model
         public virtual SubCategory SubCategory { get; set; }
         public virtual ICollection<Review>? Reviews { get; set; }
         public virtual ICollection<OrderItems>? OrderItems { get; set; }
-        public int BrandID { get; set; }
-
-        public Brand Brand { get; set; }
+        public ICollection<ProductItems>? Items { get; set; }
         public Product() 
         {
            // Images= new List<string>();

@@ -14,19 +14,19 @@
 
         <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
             <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-                <h1>Login</h1>
+                <h1>@AdminDashBoard.Languages.Resource.Login</h1>
             </div>
             <div class="formbg-outer">
                 <div class="formbg">
                     <div class="formbg-inner padding-horizontal--48">
-                        <span class="padding-bottom--15">Sign in to your account</span>
+                        <span class="padding-bottom--15">@AdminDashBoard.Languages.Resource.Signintoyouraccount</span>
 
 
                         <form id="stripe-login" method="post">
 
 
                             <div class="field padding-bottom--24">
-                                <label for="email">Email</label>
+                                <label for="email">@AdminDashBoard.Languages.Resource.Email</label>
                                 <input type="text" placeholder="&#xf2b9;  Enter User Name" class="fa form-control _ge_de_ol" style="font-family: 'FontAwesome';" asp-for="Username" />
                                 <span class="text-danger"><span asp-validation-for="Username" style="color: red"></span></span>
                             </div>
@@ -34,9 +34,9 @@
 
                             <div class="field padding-bottom--24">
                                 <div class="grid--50-50">
-                                    <label for="password">Password</label>
+                                    <label for="password">@AdminDashBoard.Languages.Resource.Password</label>
                                     <div class="reset-pass">
-                                        <a href="#">Forgot your password?</a>
+                                        <a href="#">@AdminDashBoard.Languages.Resource.Forgetyourpassword?</a>
                                     </div>
                                 </div>
                                 <input type="password" placeholder="&#xf070;  Enter Password" class="fa font-family: 'FontAwesome' form-control _ge_de_ol" asp-for="Password" />
@@ -46,18 +46,18 @@
 
                             <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
                                 <label for="checkbox">
-                                    <input type="checkbox" name="checkbox"> Stay signed in for a week
+                                    <input type="checkbox" name="checkbox">@AdminDashBoard.Languages.Resource.Staysignedinforaweek
                                 </label>
                             </div>
 
 
                             <div class="field padding-bottom--24">
-                                <input type="submit" name="submit" value="Continue">
+                                <input type="submit" name="submit" value="@AdminDashBoard.Languages.Resource.Continue">
                             </div>
 
 
                             <div class="field">
-                                <a class="ssolink" href="#">Don't have an account? Sign up</a>
+                                <a class="ssolink" href="#">@AdminDashBoard.Languages.Resource.DonthaveanaccountSignup</a>
                             </div>
 
 
