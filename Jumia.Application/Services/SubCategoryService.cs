@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
+using Microsoft.EntityFrameworkCore;
 
 namespace Jumia.Application.Services.Services
 {
@@ -127,14 +128,13 @@ namespace Jumia.Application.Services.Services
         // GetAll
         public async Task<ResultDataForPagination<GetAllSubDto>> GetAll(int item, int pagnumber)
         {
-            var AllData = await _subCategoryRepository.GetAllAsync();
+            var AllData = (await _subCategoryRepository.GetAllAsync()).Include(p=>p.Category);
             var SubCategory = AllData.Skip(item * (pagnumber - 1)).Take(item).ToList();
             var SubCategorys = _mapper.Map<List<GetAllSubDto>>(SubCategory);
            /* var SubCategorys = AllData.Skip(item * (pagnumber - 1)).Take(item)
              .Select(c => new GetAllSubDto
              {
                  Id = c.Id,
-                 Name = c.Name,
                  Description = c.Description,
                  Image = c.Image,
                  CategoryName = c.Category.Name,
