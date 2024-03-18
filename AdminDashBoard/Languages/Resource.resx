@@ -123,14 +123,56 @@
   <data name="AddCategory" xml:space="preserve">
     <value>Add Category</value>
   </data>
+  <data name="AddProduct" xml:space="preserve">
+    <value>Add Product</value>
+  </data>
+  <data name="AddSubCategory" xml:space="preserve">
+    <value>Add SubCategory</value>
+  </data>
+  <data name="AddUser" xml:space="preserve">
+    <value>Add User</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
   <data name="AllCategory" xml:space="preserve">
     <value>All Category</value>
+  </data>
+  <data name="AllSubCategory" xml:space="preserve">
+    <value>All SubCategory</value>
   </data>
   <data name="Arabic" xml:space="preserve">
     <value>Arabic</value>
   </data>
+  <data name="Audiences" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Categoryies" xml:space="preserve">
+    <value>Categoryies</value>
+  </data>
+  <data name="CategoryName" xml:space="preserve">
+    <value>Category Name</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright © 2024. All rights reserved.</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Create</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteOrder" xml:space="preserve">
+    <value>Delete Order</value>
+  </data>
+  <data name="Demographics" xml:space="preserve">
+    <value />
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
@@ -141,8 +183,17 @@
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="GoodMorning" xml:space="preserve">
+    <value>Good Morning</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="icons" xml:space="preserve">
+    <value>icons</value>
   </data>
   <data name="Image" xml:space="preserve">
     <value>Image</value>
@@ -150,19 +201,70 @@
   <data name="JUMIA" xml:space="preserve">
     <value>JUMIA</value>
   </data>
+  <data name="JumiaAdmin" xml:space="preserve">
+    <value>Jumia Admin</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>Orders</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="pages" xml:space="preserve">
+    <value>pages</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="Registeration" xml:space="preserve">
+    <value>Registeration</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="SearchHere" xml:space="preserve">
+    <value>Search Here</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="sidebar" xml:space="preserve">
+    <value>sidebar</value>
+  </data>
+  <data name="SubCategory" xml:space="preserve">
+    <value>SubCategory</value>
+  </data>
+  <data name="UpdataOrder" xml:space="preserve">
+    <value>Updata Order</value>
+  </data>
+  <data name="UpdataProduct" xml:space="preserve">
+    <value>Updata Product</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>
   </data>
   <data name="UpdateCategory" xml:space="preserve">
     <value>Update Category</value>
+  </data>
+  <data name="UpdateSubCategory" xml:space="preserve">
+    <value>Update SubCategory</value>
+  </data>
+  <data name="UserPages" xml:space="preserve">
+    <value>User Pages</value>
   </data>
 </root>

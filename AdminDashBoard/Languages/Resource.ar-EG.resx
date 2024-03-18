@@ -123,14 +123,56 @@
   <data name="AddCategory" xml:space="preserve">
     <value>اضافة فئه</value>
   </data>
+  <data name="AddProduct" xml:space="preserve">
+    <value>اضافة منتج</value>
+  </data>
+  <data name="AddSubCategory" xml:space="preserve">
+    <value>اضافة فئه فرعيه</value>
+  </data>
+  <data name="AddUser" xml:space="preserve">
+    <value>اضافة مستخدم</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>ادمن</value>
+  </data>
   <data name="AllCategory" xml:space="preserve">
     <value>كل الفئات</value>
+  </data>
+  <data name="AllSubCategory" xml:space="preserve">
+    <value>كل الفئات الفرعيه</value>
   </data>
   <data name="Arabic" xml:space="preserve">
     <value>عربى</value>
   </data>
+  <data name="Audiences" xml:space="preserve">
+    <value>الجماهير</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>فئة</value>
+  </data>
+  <data name="Categoryies" xml:space="preserve">
+    <value>الفئات</value>
+  </data>
+  <data name="CategoryName" xml:space="preserve">
+    <value>اسم الفئه</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>حقوق الطبع والنشر© 2024.جميع الحقوق محفوظه</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>انشاء</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>لوحة التحكم</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="DeleteOrder" xml:space="preserve">
+    <value>حذف طلب</value>
+  </data>
+  <data name="Demographics" xml:space="preserve">
+    <value />
   </data>
   <data name="Description" xml:space="preserve">
     <value>وصف</value>
@@ -141,8 +183,17 @@
   <data name="English" xml:space="preserve">
     <value>انجليزى</value>
   </data>
+  <data name="Export" xml:space="preserve">
+    <value>تصدير</value>
+  </data>
+  <data name="GoodMorning" xml:space="preserve">
+    <value>صباح الخير</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>الصفحه الرئيسية</value>
+  </data>
+  <data name="icons" xml:space="preserve">
+    <value>ايقونات</value>
   </data>
   <data name="Image" xml:space="preserve">
     <value>صوره</value>
@@ -150,19 +201,70 @@
   <data name="JUMIA" xml:space="preserve">
     <value>جوميا</value>
   </data>
+  <data name="JumiaAdmin" xml:space="preserve">
+    <value>جوميا ادمن</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>اللغه</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>تسجيل الدخول</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>الاسم</value>
   </data>
+  <data name="Order" xml:space="preserve">
+    <value>طلب</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>طلبات</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>ملخص</value>
+  </data>
+  <data name="pages" xml:space="preserve">
+    <value>صفحات</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>طباعه</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>منتج</value>
+  </data>
+  <data name="Registeration" xml:space="preserve">
+    <value>التسجيل</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>بحث</value>
+  </data>
+  <data name="SearchHere" xml:space="preserve">
+    <value>ابحث هنا</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>مشاركه</value>
+  </data>
+  <data name="sidebar" xml:space="preserve">
+    <value>الشريط الجانبى</value>
+  </data>
+  <data name="SubCategory" xml:space="preserve">
+    <value>فئة فرعية</value>
+  </data>
+  <data name="UpdataOrder" xml:space="preserve">
+    <value>تعديل طلب</value>
+  </data>
+  <data name="UpdataProduct" xml:space="preserve">
+    <value>تعديل منتج</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>تعديل</value>
   </data>
   <data name="UpdateCategory" xml:space="preserve">
     <value>تعديل الفئه</value>
+  </data>
+  <data name="UpdateSubCategory" xml:space="preserve">
+    <value>تعديل الفئه الفرعيه</value>
+  </data>
+  <data name="UserPages" xml:space="preserve">
+    <value>صفحات المستخدم</value>
   </data>
 </root>

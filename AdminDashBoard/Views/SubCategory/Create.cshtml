@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = "_Layout";
 }
 
 
@@ -12,7 +13,7 @@
 }
 
 
-<h1>Add SubCategory</h1>
+<h1>@AdminDashBoard.Languages.Resource.AddSubCategory</h1>
 
 
 <html>
@@ -29,19 +30,19 @@
 
     <form asp-action="Create" asp-controller="SubCategory" method="post" enctype="multipart/form-data">
         <div class="mb-3">
-            <label asp-for="Name" class="form-label"></label>
+            <label asp-for="Name" class="form-label"> @AdminDashBoard.Languages.Resource.Name</label>
             <input asp-for="Name" class="form-control">
             <span asp-validation-for="Name" style="color:red"></span>
 
         </div>
         <div class="mb-3">
-            <label asp-for="Description" class="form-label"></label>
+            <label asp-for="Description" class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
             <input asp-for="Description" class="form-control">
             <span asp-validation-for="Description" style="color:red"></span>
         </div>
 
         <div class="mb-3">
-            <label asp-for="Image" class="form-label"></label>
+            <label asp-for="Image" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
             <input asp-for="Image" type="file" class="form-control">
             <span asp-validation-for="Image" style="color:red"></span>
         </div>
@@ -50,7 +51,7 @@
 
 
         <div>
-            <label asp-for="CategoryId" class="form-label"> Categoryies</label>
+            <label asp-for="CategoryId" class="form-label">@AdminDashBoard.Languages.Resource.Categoryies</label>
             <select asp-for="CategoryId" asp-items="list" class="form-select"></select>
 
 
@@ -61,7 +62,7 @@
 
 
 
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">@AdminDashBoard.Languages.Resource.Create</button>
     </form>
 
 

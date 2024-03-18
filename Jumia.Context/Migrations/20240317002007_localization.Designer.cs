@@ -12,8 +12,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jumia.Context.Migrations
 {
     [DbContext(typeof(JumiaContext))]
+<<<<<<<< HEAD:Jumia.Context/Migrations/20240317002007_localization.Designer.cs
     [Migration("20240317002007_localization")]
     partial class localization
+========
+    [Migration("20240315210434_start")]
+    partial class start
+>>>>>>>> origin/Category&SubCategory:Jumia.Context/Migrations/20240315210434_start.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -250,9 +255,12 @@ namespace Jumia.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+<<<<<<<< HEAD:Jumia.Context/Migrations/20240317002007_localization.Designer.cs
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
+========
+>>>>>>>> origin/Category&SubCategory:Jumia.Context/Migrations/20240315210434_start.Designer.cs
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -295,8 +303,11 @@ namespace Jumia.Context.Migrations
 
                     b.HasKey("Id");
 
+<<<<<<<< HEAD:Jumia.Context/Migrations/20240317002007_localization.Designer.cs
                     b.HasIndex("BrandId");
 
+========
+>>>>>>>> origin/Category&SubCategory:Jumia.Context/Migrations/20240315210434_start.Designer.cs
                     b.HasIndex("SubCategoryID");
 
                     b.ToTable("Products");
@@ -780,20 +791,26 @@ namespace Jumia.Context.Migrations
 
             modelBuilder.Entity("Jumia.Model.Product", b =>
                 {
+<<<<<<<< HEAD:Jumia.Context/Migrations/20240317002007_localization.Designer.cs
                     b.HasOne("Jumia.Model.Brand", "Brand")
                         .WithMany("Products")
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+========
+>>>>>>>> origin/Category&SubCategory:Jumia.Context/Migrations/20240315210434_start.Designer.cs
                     b.HasOne("Jumia.Model.SubCategory", "SubCategory")
                         .WithMany("Products")
                         .HasForeignKey("SubCategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+<<<<<<<< HEAD:Jumia.Context/Migrations/20240317002007_localization.Designer.cs
                     b.Navigation("Brand");
 
+========
+>>>>>>>> origin/Category&SubCategory:Jumia.Context/Migrations/20240315210434_start.Designer.cs
                     b.Navigation("SubCategory");
                 });
 
@@ -904,11 +921,14 @@ namespace Jumia.Context.Migrations
 
             modelBuilder.Entity("Jumia.Model.Brand", b =>
                 {
+<<<<<<<< HEAD:Jumia.Context/Migrations/20240317002007_localization.Designer.cs
                     b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Jumia.Model.Category", b =>
                 {
+========
+>>>>>>>> origin/Category&SubCategory:Jumia.Context/Migrations/20240315210434_start.Designer.cs
                     b.Navigation("SubCategory");
                 });
 

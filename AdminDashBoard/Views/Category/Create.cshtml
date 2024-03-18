@@ -1,8 +1,8 @@
 ﻿@model CreateOrUpdateCategoryDto
 @{
-  
+    Layout = "_Layout";
 }
-
+ 
 
 <h1>@AdminDashBoard.Languages.Resource.AddCategory</h1>
 
@@ -21,20 +21,20 @@
 
     <form asp-action="Create" asp-controller="Category" method="post" enctype="multipart/form-data">
         <div class="mb-3">
-            <label class="form-label">@AdminDashBoard.Languages.Resource.Name</label>
-            <input asp-for="@AdminDashBoard.Languages.Resource.Name" class="form-control">
+            <label asp-for="Name" class="form-label">@AdminDashBoard.Languages.Resource.Name</label>
+            <input asp-for="Name" class="form-control">
             <span asp-validation-for="Name" style="color:red"></span>
 
         </div>
         <div class="mb-3">
-            <label  class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
-            <input asp-for="@AdminDashBoard.Languages.Resource.Description" class="form-control">
+            <label asp-for="Description" class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
+            <input asp-for="Description" class="form-control">
             <span asp-validation-for="Description" style="color:red"></span>
         </div>
 
         <div class="mb-3">
-            <label  class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
-            <input asp-for="@AdminDashBoard.Languages.Resource.Image" type="file" class="form-control">
+            <label asp-for="Image" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
+            <input asp-for="Image" type="file" class="form-control">
             <span asp-validation-for="Image" style="color:red"></span>
         </div>
 

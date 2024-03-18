@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Jumia.Application.Contract;
-using Jumia.Application.IServices;
+using Jumia.Application.Services.IServices;
 using Jumia.Dtos.Product;
 using Jumia.DTOS.ViewResultDtos;
 using System;
