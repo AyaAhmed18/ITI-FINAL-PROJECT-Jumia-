@@ -1,4 +1,6 @@
-﻿@model GetShippmentDto
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@model GetShippmentDto
 @{
     Layout = "_Layout";
 }
@@ -13,58 +15,95 @@
         padding:10px;
         border-radius: 5px;
     }
+
+    .code {
+        color:red
+    }
 </style>
 
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" asp-action="Index"> <h4>@AdminDashBoard.Languages.Resource.Home</h4></a>
+    </li>
+    <li class="nav-item">
 
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            @AdminDashBoard.Languages.Resource.Language
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" asp-action="SetLanguage" asp-controller="Language" asp-route-lang="ar-EG">@AdminDashBoard.Languages.Resource.Arabic</a></li>
+            <li><a class="dropdown-item" asp-action="SetLanguage" asp-controller="Language" asp-route-lang="en-US">@AdminDashBoard.Languages.Resource.English</a></li>
+        </ul>
+
+    </li>
+    <li class="nav-item">
+
+    </li>
+</ul>
 <div class="col-md-8 grid-margin stretch-card ">
     <div class="card">
         <div class="card-body">
-            <h3>Order Delivary Details</h3>
+            <h3> @Localizer["OrderDeliveryDetails"]</h3>
             <br />
             <p class="card-description">
-                <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@ViewBag.orderId ">Shipping Info</a>
-                <a asp-action="Details" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">Products</a>
-                <a asp-action="Edit" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">Change Status</a>
-                <a class="back" style="background-color:#fff;color:darksalmon;padding:0;float:right" asp-action="Index" asp-controller="Order"> Back <i class="mdi mdi-arrow-right"></i></a>
+                <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@ViewBag.orderId ">@Localizer["ShippingInfo"]</a>
+                <a asp-action="Details" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">@Localizer["Products"]</a>
+                <a asp-action="Edit" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">@Localizer["ChangeOrder"]</a>
+                <a class="back" style="background-color:#fff;color:darksalmon;padding:0;float:@Localizer["floatdir"]" asp-action="Index" asp-controller="Order"> @Localizer["Back"] <i class="mdi mdi-arrow-right"></i></a>
+            
+        </div>
+        @if(Model!=null){
+        <div class="card-body">
+            <h4 class="card-title text-info">@Localizer["CustomerInformation"] </h4>
+            <p class="card-description">
+                @Localizer["UserData"].. <span class="code">@Localizer["Call"] </span>
+            </p>
+            <p class="">
+
+                <span>@Localizer["FirstName"] :</span> @Model.FirstName
+            </p>
+            <p class="">
+                <span>@Localizer["LastName"] :</span>  @Model.LastName
+            </p>
+            <p class="">
+                <span>@Localizer["PhoneNumber"] :</span> @Model.PhoneNumber
+            </p>
             
         </div>
         <div class="card-body">
-            <h4 class="card-title text-info">Customer Information</h4>
+            <h4 class="card-title text-warning">@Localizer["Address"] </h4>
             <p class="card-description">
-                User Data.. <code>Call</code>
-            </p>
-            <p class="">
-               <span>First Name :</span> @Model.FirstName
-            </p>
-            <p class="">
-               <span>Last Name :</span>  @Model.LastName
-            </p>
-            <p class="">
-                <span>Phone Number :</span> @Model.PhoneNumber
-            </p>
-            
-        </div>
-        <div class="card-body">
-            <h4 class="card-title text-warning">Address</h4>
-            <p class="card-description">
-               City__ <code>Region</code>
+                @Localizer["City"] __ <span class="code"> @Localizer["Region"]</span>
             </p>
            
             <p class="">
-                <span>Address :</span>  @Model.Address
+                <span>@Localizer["Address"] :</span>  @Model.Address
+            </p> 
+            <p class="">
+                <span>@Localizer["AdressInformation"]  :</span> @Model.AdressInformation
             </p>
             <p class="">
-                <span>AdressInformation :</span> @Model.AdressInformation
+                <span>@Localizer["City"] :</span>    @Model.City
             </p>
             <p class="">
-                <span>City :</span>    @Model.City
+                <span>@Localizer["Region"] :</span>  @Model.Region
             </p>
             <p class="">
-                <span>Region :</span>  @Model.Region
+                <span> @Localizer["DelivaryCost"]   :</span>$ @Model.Cost
             </p>
-            <p class="">
-                <span>Delivary Cost :</span> @Model.Cost
-            </p>
-        </div>
+            </div>
+        }
+        else{
+            <div class="card-body">
+                <h4 class="card-title text-info">@Localizer["CustomerInformation"] </h4>
+                <p class="card-description">
+                    @Localizer["UserData"].. <span class="code">@Localizer["Call"] </span>
+                </p>
+                <p>@ViewBag.msg</p>
+
+            </div>
+        }
     </div>
 </div>

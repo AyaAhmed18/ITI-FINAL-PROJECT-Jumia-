@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jumia.Model.Commons;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Jumia.Model
 {
-    public class Order:BaseEntity
+    public class Order: LocalizableEntity
     {
         public int TotalAmount { get; set; }
         public decimal TotalPrice { get; set; }

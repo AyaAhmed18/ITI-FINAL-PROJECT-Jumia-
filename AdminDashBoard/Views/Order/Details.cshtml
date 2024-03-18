@@ -18,12 +18,12 @@
     <br />
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Products Details</h4>
+            <h4 class="card-title">@Localizer["ProductsDetails"]</h4>
             <p class="card-description">
-                <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@ViewBag.orderId">Shipping Info</a>
-                <a asp-action="Details" asp-controller="Order" asp-route-Id="@ViewBag.orderId">Products</a>
-                <a asp-action="Edit" asp-controller="Order" asp-route-Id="@ViewBag.orderId">Change Status</a>
-                <a class="back" style="background-color:#fff;color:darksalmon;padding:0;float:right" asp-action="Index" asp-controller="Order"> Back <i class="mdi mdi-arrow-right"></i></a>
+                <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@ViewBag.orderId ">@Localizer["ShippingInfo"]</a>
+                <a asp-action="Details" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">@Localizer["Products"]</a>
+                <a asp-action="Edit" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">@Localizer["ChangeOrder"]</a>
+                <a class="back" style="background-color:#fff;color:darksalmon;padding:0;float:@Localizer["floatdir"]" asp-action="Index" asp-controller="Order"> @Localizer["Back"] <i class="mdi mdi-arrow-right"></i></a>
 
 
             </p>
@@ -32,19 +32,19 @@
                       <thead>
                         <tr>
                           <th>
-                            Image
+                                @Localizer["Image"] 
                           </th>
                           <th>
-                            Product Name
+                                @Localizer["ProductName"] Product Name
                           </th>
                           <th>
-                            Quantity
+                                @Localizer["Quantity"] 
                           </th>
                           <th>
-                                TotalPrice
+                                @Localizer["TotalPrice"]   TotalPrice
                           </th>
                             <th>
-                                Discount
+                                @Localizer["Discount"]  Discount
                             </th>
                         </tr>
                       </thead>

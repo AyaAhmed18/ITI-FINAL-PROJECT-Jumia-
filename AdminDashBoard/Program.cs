@@ -7,7 +7,10 @@ using Jumia.Context;
 using Jumia.Infrastructure;
 using Jumia.Model;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using System.Globalization;
 
 namespace AdminDashBoard
 {
@@ -41,6 +44,7 @@ namespace AdminDashBoard
 
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             builder.Services.AddIdentity<UserIdentity, UserRole>()
             .AddEntityFrameworkStores<JumiaContext>()
             .AddDefaultTokenProviders();
@@ -50,12 +54,36 @@ namespace AdminDashBoard
                 op.UseSqlServer(builder.Configuration.GetConnectionString("Db"));
             });
 
+            #region Localization
             builder.Services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(30); 
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+            builder.Services.AddLocalization(opt =>
+             {
+                 opt.ResourcesPath = "";
+             });
+
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                List<CultureInfo> supportedCultures = new List<CultureInfo>
+                {
+                        new CultureInfo("en-US"),
+                         new CultureInfo("de-DE"),
+                        new CultureInfo("ar-EG")
+               };
+
+                options.DefaultRequestCulture = new RequestCulture("en-US");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+            });
+
+            
+            #endregion
+
+
 
 
             var app = builder.Build();
@@ -65,13 +93,13 @@ namespace AdminDashBoard
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+           
             app.UseStaticFiles();
-
             app.UseRouting();
             app.UseSession();
-
             app.UseAuthorization();
-
+            var options = app.Services.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(options.Value);
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -29,24 +29,25 @@
 <div class="col-md-12 grid-margin grid-margin-md-0 stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Order Info</h4>
+            <h4 class="card-title">@Localizer["OrderInfo"]</h4>
             <br />
         <p class="card-description">
-            <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@Model.Id">Shipping Info</a>
-            <a asp-action="Details" asp-controller="Order" asp-route-Id="@Model.Id">Products</a>
-            <a asp-action="Edit" asp-controller="Order" asp-route-Id="@Model.Id">Change Status</a>
-                <a class="back" style="background-color:#fff;color:darksalmon;padding:0;float:right" asp-action="Index" asp-controller="Order"> Back <i class="mdi mdi-arrow-right"></i></a>
-        </p>
+                <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@Model.Id ">@Localizer["ShippingInfo"]</a>
+                <a asp-action="Details" asp-controller="Order" asp-route-Id="@Model.Id  ">@Localizer["Products"]</a>
+                <a asp-action="Edit" asp-controller="Order" asp-route-Id="@Model.Id  ">@Localizer["ChangeOrder"]</a>
+                <a class="back" style="background-color:#fff;color:darksalmon;padding:0;float:@Localizer["floatdir"]" asp-action="Index" asp-controller="Order"> @Localizer["Back"] <i class="mdi mdi-arrow-right"></i></a>
+
+            </p>
             <ul class="list-star">
                 <form method="post">
-                <li> <span>Order        <i class="mdi mdi-help-circle"></i> </span>  @Model.Id</li>
-                <li> <span>Customer     <i class="mdi mdi-help-circle"></i></span>   @ViewBag.User</li>
-                <li> <span>Order Status <i class="mdi mdi-help-circle"></i></span>   <select asp-for="Status" asp-items="ViewBag.OrderStatusOptions" class="form-control"></select></li>
-                <li> <span>Order Price  <i class="mdi mdi-help-circle"></i></span>  $ @Model.TotalPrice </li>
-                <li> <span>Order Date   <i class="mdi mdi-help-circle"></i></span>   @Model.CreatedDate</li>
+                <li> <span>@Localizer["Order"]   <i class="mdi mdi-help-circle"></i> </span>  @Model.Id</li>
+                <li> <span>@Localizer["Customer"]    <i class="mdi mdi-help-circle"></i></span>   @ViewBag.User</li>
+                <li> <span>@Localizer["OrderStatus"] <i class="mdi mdi-help-circle"></i></span>   <select asp-for="Status" asp-items="ViewBag.OrderStatusOptions" class="form-control"></select></li>
+                <li> <span>@Localizer["TotalPrice"] Price  <i class="mdi mdi-help-circle"></i></span>  $ @Model.TotalPrice </li>
+                <li> <span>@Localizer["CreatedDate"]CreatedDate   <i class="mdi mdi-help-circle"></i></span>   @Model.CreatedDate</li>
                             <br />
                     <div class="col-12">
-                 <button type="submit" class="btn btn-secondary">Update</button>
+                    <button type="submit" class="btn btn-secondary">@Localizer["Update"]</button>
                </div>
                 </form>
             </ul>

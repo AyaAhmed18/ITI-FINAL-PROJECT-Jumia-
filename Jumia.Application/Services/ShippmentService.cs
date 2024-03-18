@@ -6,6 +6,8 @@ using Jumia.Dtos.Order;
 using Jumia.Dtos.Shippment;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
+using Localization.Shared_Recources;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +20,12 @@ namespace Jumia.Application.Services
     {
         private readonly IShippmentRepository _shippmentRepository;
         private readonly IMapper _mapper;
+       // private readonly IStringLocalizer<SharedRecources> _stringLocalizer;
         public ShippmentService(IShippmentRepository shippmentRepository, IMapper mapper)
         {
             _shippmentRepository = shippmentRepository;
             _mapper = mapper;
+          //  _stringLocalizer = stringLocalizer;
         }
         public async Task<ResultView<CreateOrUpdateShipmentDto>> Create(CreateOrUpdateShipmentDto shipmentDto)
         {
@@ -47,21 +51,8 @@ namespace Jumia.Application.Services
             {
                 if (_shippmentRepository != null)
                 {
-                    var allShippingData = (await _shippmentRepository.GetAllAsync());
-                    List<GetShippmentDto> allData = allShippingData.Select(p => new GetShippmentDto()
-                    {
-                        Id= p.Id,
-                        FirstName=p.FirstName,
-                        LastName=p.LastName,
-                        PhoneNumber=p.PhoneNumber,
-                        Address=p.Address,
-                        AdressInformation=p.AdressInformation,
-                        City=p.City,
-                        Region=p.Region,
-                        Cost=p.Cost,
-                        OrderId=p.OrderId
-                    }).ToList();
-
+                    var allShippingData = (await _shippmentRepository.GetAllAsync()).ToList();
+                    List<GetShippmentDto> allData = _mapper.Map<List<GetShippmentDto>>(allShippingData);
                     return allData;
                 }
                 else
@@ -91,7 +82,7 @@ namespace Jumia.Application.Services
                 {
                     var shippingDto = _mapper.Map<CreateOrUpdateShipmentDto>(shipping);
 
-                    return new ResultView<CreateOrUpdateShipmentDto> { Entity = shippingDto, IsSuccess = true, Message = "Succses" };
+                    return new ResultView<CreateOrUpdateShipmentDto> { Entity = shippingDto, IsSuccess = true, Message = "Success" };
                 }
             
 

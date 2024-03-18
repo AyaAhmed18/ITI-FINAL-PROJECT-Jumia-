@@ -1,10 +1,12 @@
 ﻿using Jumia.Application.IServices;
+using Localization.Shared_Recources;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace AdminDashBoard.Controllers
 {
-    public class ShippmentController : Controller
+    public class ShippmentController : BaseController
     {
         private readonly IShippmentService _shippmentService;
         private readonly IOrderService _orderService;
@@ -12,6 +14,7 @@ namespace AdminDashBoard.Controllers
         {
             _shippmentService = shippmentService;
             _orderService = orderService;
+            
         }
         // GET: ShippmentController
         public  ActionResult Index()
@@ -23,10 +26,29 @@ namespace AdminDashBoard.Controllers
         // GET: ShippmentController/Details/5
         public async Task<ActionResult> Details(int id)
         {
-            var AllData = await _shippmentService.GetAll();
-            var details = AllData.Where(o => o.OrderId == id).FirstOrDefault();
-            ViewBag.orderId = details.OrderId;
-            return View(details);
+            try 
+            {
+                
+                var AllData = await _shippmentService.GetAll();
+                if (AllData != null)
+                {
+                    var details = AllData.Where(o => o.OrderId == id).FirstOrDefault();
+                    ViewBag.orderId = details.OrderId;
+                    return View(details);
+                }
+                else
+                {
+                    ViewBag.msg = "The customer has not confirmed the Order yet";
+                    return View();
+                }
+                
+                
+            } catch 
+            {
+                ViewBag.msg = "something went wrong ;Please try Again";
+                return View();
+            }
+            
         }
 
         // GET: ShippmentController/Create

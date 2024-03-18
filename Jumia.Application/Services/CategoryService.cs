@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using Jumia.Application.Contract;
-using Jumia.Application.IServices;
-using Jumia.Application.Services.IServices;
 using Jumia.Dtos.Category;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
@@ -12,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Jumia.Application.IServices;
 
 namespace Jumia.Application.Services
 {
@@ -66,19 +65,11 @@ namespace Jumia.Application.Services
 
 
         //Update
-<<<<<<< HEAD
-        public async Task<ResultView<CreateOrUpdateCategoryDto>> Update(CreateOrUpdateCategoryDto categoryDto)
+        public async Task<ResultView<CreateOrUpdateCategoryDto>> Update(CreateOrUpdateCategoryDto categoryDto, IFormFile image)
         {
-            var Data = await _repository.GetAllAsync();
-            var OldCategory = Data.FirstOrDefault(c => c.Name == categoryDto.Name && c.Id == categoryDto.Id);
-            if (OldCategory == null)
-=======
-       public async Task<ResultView<CreateOrUpdateCategoryDto>> Update(CreateOrUpdateCategoryDto categoryDto, IFormFile image)
-        {
-            
+
             var OldCategory = await _repository.GetOneAsync(categoryDto.Id);
-            if (OldCategory == null) 
->>>>>>> refs/rewritten/mergeCategory-SubCategory
+            if (OldCategory == null)
             {
                 return new ResultView<CreateOrUpdateCategoryDto> { Entity = null, IsSuccess = false, Message = "Category Not Found!" };
 
@@ -98,7 +89,7 @@ namespace Jumia.Application.Services
                 }
 
 
-                
+
                 var UPCategory = await _repository.UpdateAsync(OldCategory);
                 await _repository.SaveChangesAsync();
                 var CategoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(UPCategory);
@@ -140,7 +131,7 @@ namespace Jumia.Application.Services
         // GetAll
         public async Task<ResultDataForPagination<GetAllCategoryDto>> GetAll(int item, int pagnumber)
         {
-            var AllData = await _repository.GetAllAsync();
+            var AllData = (await _repository.GetAllAsync());
             var Categorys = AllData.Skip(item * (pagnumber - 1)).Take(item)
              .Select(c => new GetAllCategoryDto
              {
@@ -180,55 +171,6 @@ namespace Jumia.Application.Services
                 return new ResultView<GetAllCategoryDto> { Entity = CategoryDto, IsSuccess = true, Message = "Succses" };
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
