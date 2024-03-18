@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Jumia.Application.Contract;
 using Jumia.Application.IServices;
+using Jumia.Dtos.Category;
 using Jumia.Dtos.Order;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
@@ -34,7 +35,7 @@ namespace Jumia.Application.Services
         {
             try
             {
-                if (_unitOfWork.OrderRepository != null)
+                if (_OrderRepository != null)
                 {
                     var allOrders = (await _OrderRepository.GetAllAsync());
                     List<GetAllOrdersDTO> orders = allOrders.Select(p => new GetAllOrdersDTO()
@@ -68,11 +69,15 @@ namespace Jumia.Application.Services
         {
             try
             {
-                var AlldAta = (await _unitOfWork.OrderRepository.GetAllAsync());
+                var AlldAta = (await _OrderRepository.GetAllAsync());
                 var Orders = AlldAta.Skip(items * (pagenumber - 1)).Take(items)
                                                   .Select(p => new GetAllOrdersDTO()
                                                   {
                                                       Id = p.Id,
+                                                      Customer=p.Customer.UserName,
+                                                      Status=p.Status.ToString(),
+                                                      TotalPrice=p.TotalPrice,
+                                                      Discount=p.Discount
                                                      
                                                   }).ToList();
                 ResultDataForPagination<GetAllOrdersDTO> resultDataList = new ResultDataForPagination<GetAllOrdersDTO>();
@@ -91,8 +96,9 @@ namespace Jumia.Application.Services
         {
             try
             {
-                var b = await _unitOfWork.OrderRepository.GetOneAsync(id);
-                var REturnb = _mapper.Map<CreateOrUpdateOrderDto>(b);
+                var b = await _OrderRepository.GetOneAsync(id);
+                CreateOrUpdateOrderDto REturnb = _mapper.Map<CreateOrUpdateOrderDto>(b);
+                
                 return REturnb;
             }
             catch (Exception ex)
@@ -107,13 +113,13 @@ namespace Jumia.Application.Services
             try
             {
                 // var book = _mapper.Map<Book>(bookDTO);
-                var existingBook = await _unitOfWork.OrderRepository.GetOneAsync(id);
+                var existingBook = await _OrderRepository.GetOneAsync(id);
                 if (existingBook == null)
                 {
                     return new ResultView<CreateOrUpdateOrderDto> { Entity = null, IsSuccess = false, Message = "Book not found" };
                 }
-                var Oldbook = _unitOfWork.OrderRepository.DeleteAsync(existingBook);
-                await _unitOfWork.SaveChangesAsync();
+                var Oldbook = _OrderRepository.DeleteAsync(existingBook);
+                await _OrderRepository.SaveChangesAsync();
 
                 var bDto = _mapper.Map<CreateOrUpdateOrderDto>(Oldbook);
                 return new ResultView<CreateOrUpdateOrderDto> { Entity = bDto, IsSuccess = true, Message = "Deleted Successfully" };
@@ -127,21 +133,36 @@ namespace Jumia.Application.Services
 
         
 
-        public async Task<ResultView<CreateOrUpdateOrderDto>> Update(CreateOrUpdateOrderDto bookDTO)
+        public async Task<ResultView<CreateOrUpdateOrderDto>> Update(CreateOrUpdateOrderDto orderDto)
         {
             try
             {
-                var order = _mapper.Map<Order>(bookDTO);
-                var updateOrder = await _unitOfWork.OrderRepository.UpdateAsync(order);
-                await _unitOfWork.SaveChangesAsync();
-                var ODto = _mapper.Map<CreateOrUpdateOrderDto>(updateOrder);
-                return new ResultView<CreateOrUpdateOrderDto> { Entity = ODto, IsSuccess = true, Message = "Updated Successfully" };
+                var Data = await _OrderRepository.GetOneAsync(orderDto.Id);
 
+                if (Data == null)
+                {
+                    return new ResultView<CreateOrUpdateOrderDto> { Entity = null, IsSuccess = false, Message = "Order Not Found!" };
+
+                }
+                else
+                {
+                    var order = _mapper.Map<Order>(orderDto);
+                    var ordEdit = await _OrderRepository.UpdateAsync(order);
+                    await _OrderRepository.SaveChangesAsync();
+                    var ordDto = _mapper.Map<CreateOrUpdateOrderDto>(ordEdit);
+
+                    return new ResultView<CreateOrUpdateOrderDto> { Entity = ordDto, IsSuccess = true, Message = "Status Updated Successfully" };
+                }
+                
             }
             catch (Exception ex)
             {
-                return new ResultView<CreateOrUpdateOrderDto> { Entity = null, IsSuccess = false, Message = "Something went wrong" };
-
+                return new ResultView<CreateOrUpdateOrderDto>
+                {
+                    Entity = null,
+                    IsSuccess = false,
+                    Message = $"Something went wrong: {ex.Message}"
+                };
                 // Console.WriteLine($"An error occurred: {ex.Message}");
                 //throw;
             }

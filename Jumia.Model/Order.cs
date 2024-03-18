@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jumia.Model.Commons;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Jumia.Model
 {
-    public class Order:BaseEntity
+    public class Order: LocalizableEntity
     {
         public int TotalAmount { get; set; }
         public decimal TotalPrice { get; set; }
         public int? Discount { get; set; }
-        public string Status { get; set; }
+        public string Status { get; set; } //= "Processing";
         public bool? Shipped { get; set; }
         public DateTime? ShippedDate { get; set;}
         public bool? Delivered { get; set;}
@@ -30,16 +31,16 @@ namespace Jumia.Model
         public Order()
         {
             OrderItems = new List<OrderItems>();
-            Status= "Processing";
+            Status = "Processing";
         }
 
-       /* public enum OrderStatus
-        {
-            Processing ,
-            Shipped ,
-            Delivered ,
-            Canceled
-        }*/
-       
+        /* public enum OrderStatus
+         {
+             Processing ,
+             Shipped ,
+             Delivered ,
+             Canceled
+         }*/
+
     }
 }

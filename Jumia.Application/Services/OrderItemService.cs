@@ -5,6 +5,7 @@ using Jumia.Dtos.Order;
 using Jumia.Dtos.OrderItems;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,10 +33,10 @@ namespace Jumia.Application.Services
                 if (_orderItemsRepository != null)
                 {
                     var items = (await _orderItemsRepository.GetAllAsync());
-                    List<GetAllOrderItemsDto> item = items.Select(p => new GetAllOrderItemsDto()
+                    List<GetAllOrderItemsDto> item = items.Include(p=>p.Product).Select(p => new GetAllOrderItemsDto()
                     {
                         OrderId = p.OrderId,
-                        ProductImage = p.Product.Images.ToString(), /////
+                        Image = p.Product.Images.FirstOrDefault(),
                         ProductName = p.Product.Name,
                         ProductQuantity=p.ProductQuantity,
                         TotalPrice = p.TotalPrice,

@@ -3,35 +3,48 @@
 @{
     Layout = "_Layout";
 }
+<style>
+    .card-description a {
+        text-decoration: none;
+        color: #fff;
+        background-color: darksalmon;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>
 
 <div class="col-lg-12 grid-margin stretch-card">
+    <br />
+    <br />
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Bordered table</h4>
-                  <p class="card-description">
-                    Add class <code>.table-bordered</code>
-                  </p>
+            <h4 class="card-title">@Localizer["ProductsDetails"]</h4>
+            <p class="card-description">
+                <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@ViewBag.orderId ">@Localizer["ShippingInfo"]</a>
+                <a asp-action="Details" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">@Localizer["Products"]</a>
+                <a asp-action="Edit" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">@Localizer["ChangeOrder"]</a>
+                <a class="back" style="background-color:#fff;color:darksalmon;padding:0;float:@Localizer["floatdir"]" asp-action="Index" asp-controller="Order"> @Localizer["Back"] <i class="mdi mdi-arrow-right"></i></a>
+
+
+            </p>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                       <thead>
                         <tr>
                           <th>
-                            Image
+                                @Localizer["Image"] 
                           </th>
                           <th>
-                            Product Name
+                                @Localizer["ProductName"] Product Name
                           </th>
                           <th>
-                            Price
+                                @Localizer["Quantity"] 
                           </th>
                           <th>
-                            Quantity
-                          </th>
-                          <th>
-                                TotalPrice
+                                @Localizer["TotalPrice"]   TotalPrice
                           </th>
                             <th>
-                                Discount
+                                @Localizer["Discount"]  Discount
                             </th>
                         </tr>
                       </thead>
@@ -42,9 +55,7 @@
                             {
                                      
                         <tr>
-                          <td>
-                            @item.ProductImage
-                          </td>
+                          <td><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="100px" , height="100px" alt="Product Image" /></td>
                           <td>
                             @item.ProductName
                           </td>

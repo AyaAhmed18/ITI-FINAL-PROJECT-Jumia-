@@ -46,6 +46,7 @@ namespace Jumia.Infrastructure
 
         public Task<TEntity> UpdateAsync(TEntity entity)
         {
+            _eCommerceContext.ChangeTracker.Clear();
             return Task.FromResult(_DbsetEntity.Update(entity).Entity);
         }
     }

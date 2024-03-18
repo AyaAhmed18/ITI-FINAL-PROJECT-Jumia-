@@ -9,7 +9,7 @@ namespace Jumia.Dtos.OrderItems
     public class GetAllOrderItemsDto
     {
         public int OrderId { get; set; }
-        public string ProductImage { get; set; }
+        public byte[] Image { get; set; }
         public string ProductName { get; set; }
         public string? ProductSize { get; set; }
         public float? Pro_Weight { get; set; }

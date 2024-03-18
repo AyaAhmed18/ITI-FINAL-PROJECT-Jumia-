@@ -13,19 +13,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{750589CB-1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1C3ADF4E-606C-4E96-A62A-D3BED64D6AFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumia.Context", "Jumia.Context\Jumia.Context.csproj", "{5F1AF62C-E401-4607-97FE-1D08FFF10BB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jumia.Context", "Jumia.Context\Jumia.Context.csproj", "{5F1AF62C-E401-4607-97FE-1D08FFF10BB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumia.Infrastructure", "Jumia.Infrastructure\Jumia.Infrastructure.csproj", "{2DED505A-849A-4B6D-B788-9A905422DB89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jumia.Infrastructure", "Jumia.Infrastructure\Jumia.Infrastructure.csproj", "{2DED505A-849A-4B6D-B788-9A905422DB89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumia.Application", "Jumia.Application\Jumia.Application.csproj", "{F1BB9D9A-9C6E-4256-A56C-0CFD8ED36C19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jumia.Application", "Jumia.Application\Jumia.Application.csproj", "{F1BB9D9A-9C6E-4256-A56C-0CFD8ED36C19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumia.Dtos", "Jumia.Dtos\Jumia.Dtos.csproj", "{7C5D9EE8-32A8-47B5-B133-B144D122EAA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jumia.Dtos", "Jumia.Dtos\Jumia.Dtos.csproj", "{7C5D9EE8-32A8-47B5-B133-B144D122EAA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumia.Model", "Jumia.Model\Jumia.Model.csproj", "{0B98F436-0FFF-4DC3-93B0-42CAA935BBEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jumia.Model", "Jumia.Model\Jumia.Model.csproj", "{0B98F436-0FFF-4DC3-93B0-42CAA935BBEB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{8EADD643-147C-4F7D-AC25-F1E52BE5EDE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminDashBoard", "AdminDashBoard\AdminDashBoard.csproj", "{D4291CF8-B048-4BA1-BA57-67E132EDC52A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminDashBoard", "AdminDashBoard\AdminDashBoard.csproj", "{D4291CF8-B048-4BA1-BA57-67E132EDC52A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localization", "Localization\Localization.csproj", "{BE1EC060-F66C-41E4-82F0-6D308CCD20A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{D4291CF8-B048-4BA1-BA57-67E132EDC52A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4291CF8-B048-4BA1-BA57-67E132EDC52A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4291CF8-B048-4BA1-BA57-67E132EDC52A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE1EC060-F66C-41E4-82F0-6D308CCD20A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE1EC060-F66C-41E4-82F0-6D308CCD20A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE1EC060-F66C-41E4-82F0-6D308CCD20A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE1EC060-F66C-41E4-82F0-6D308CCD20A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{0B98F436-0FFF-4DC3-93B0-42CAA935BBEB} = {21B6C427-A88E-43C3-A5DF-E99D4A35529B}
 		{8EADD643-147C-4F7D-AC25-F1E52BE5EDE3} = {65765401-5800-42CB-85CD-A4329FBFC84E}
 		{D4291CF8-B048-4BA1-BA57-67E132EDC52A} = {8EADD643-147C-4F7D-AC25-F1E52BE5EDE3}
+		{BE1EC060-F66C-41E4-82F0-6D308CCD20A6} = {21B6C427-A88E-43C3-A5DF-E99D4A35529B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B9ED9C8-9C60-4E44-B29A-B4A9E7C66DA5}

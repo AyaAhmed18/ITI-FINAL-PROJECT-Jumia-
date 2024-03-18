@@ -12,13 +12,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jumia.Context.Migrations
 {
     [DbContext(typeof(JumiaContext))]
-<<<<<<<< HEAD:Jumia.Context/Migrations/20240315210434_start.Designer.cs
+<<<<<<<< HEAD:Jumia.Context/Migrations/20240317002007_localization.Designer.cs
+    [Migration("20240317002007_localization")]
+    partial class localization
+========
     [Migration("20240315210434_start")]
     partial class start
-========
-    [Migration("20240312120558_init")]
-    partial class init
->>>>>>>> e65497fce8f616a39a71f225ef347d4be592ac4e:Jumia.Context/Migrations/20240312120558_init.Designer.cs
+>>>>>>>> origin/Category&SubCategory:Jumia.Context/Migrations/20240315210434_start.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -255,12 +255,12 @@ namespace Jumia.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-<<<<<<<< HEAD:Jumia.Context/Migrations/20240315210434_start.Designer.cs
-========
+<<<<<<<< HEAD:Jumia.Context/Migrations/20240317002007_localization.Designer.cs
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
->>>>>>>> e65497fce8f616a39a71f225ef347d4be592ac4e:Jumia.Context/Migrations/20240312120558_init.Designer.cs
+========
+>>>>>>>> origin/Category&SubCategory:Jumia.Context/Migrations/20240315210434_start.Designer.cs
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -303,11 +303,11 @@ namespace Jumia.Context.Migrations
 
                     b.HasKey("Id");
 
-<<<<<<<< HEAD:Jumia.Context/Migrations/20240315210434_start.Designer.cs
-========
+<<<<<<<< HEAD:Jumia.Context/Migrations/20240317002007_localization.Designer.cs
                     b.HasIndex("BrandId");
 
->>>>>>>> e65497fce8f616a39a71f225ef347d4be592ac4e:Jumia.Context/Migrations/20240312120558_init.Designer.cs
+========
+>>>>>>>> origin/Category&SubCategory:Jumia.Context/Migrations/20240315210434_start.Designer.cs
                     b.HasIndex("SubCategoryID");
 
                     b.ToTable("Products");
@@ -425,11 +425,23 @@ namespace Jumia.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AddressAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("AdressInformation")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AdressInformationAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CityAr")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -446,10 +458,18 @@ namespace Jumia.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FirstNameAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastNameAr")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -460,7 +480,11 @@ namespace Jumia.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Regin")
+                    b.Property<string>("Region")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RegionAr")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -767,26 +791,26 @@ namespace Jumia.Context.Migrations
 
             modelBuilder.Entity("Jumia.Model.Product", b =>
                 {
-<<<<<<<< HEAD:Jumia.Context/Migrations/20240315210434_start.Designer.cs
-========
+<<<<<<<< HEAD:Jumia.Context/Migrations/20240317002007_localization.Designer.cs
                     b.HasOne("Jumia.Model.Brand", "Brand")
                         .WithMany("Products")
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
->>>>>>>> e65497fce8f616a39a71f225ef347d4be592ac4e:Jumia.Context/Migrations/20240312120558_init.Designer.cs
+========
+>>>>>>>> origin/Category&SubCategory:Jumia.Context/Migrations/20240315210434_start.Designer.cs
                     b.HasOne("Jumia.Model.SubCategory", "SubCategory")
                         .WithMany("Products")
                         .HasForeignKey("SubCategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-<<<<<<<< HEAD:Jumia.Context/Migrations/20240315210434_start.Designer.cs
-========
+<<<<<<<< HEAD:Jumia.Context/Migrations/20240317002007_localization.Designer.cs
                     b.Navigation("Brand");
 
->>>>>>>> e65497fce8f616a39a71f225ef347d4be592ac4e:Jumia.Context/Migrations/20240312120558_init.Designer.cs
+========
+>>>>>>>> origin/Category&SubCategory:Jumia.Context/Migrations/20240315210434_start.Designer.cs
                     b.Navigation("SubCategory");
                 });
 
@@ -897,14 +921,14 @@ namespace Jumia.Context.Migrations
 
             modelBuilder.Entity("Jumia.Model.Brand", b =>
                 {
-<<<<<<<< HEAD:Jumia.Context/Migrations/20240315210434_start.Designer.cs
-========
+<<<<<<<< HEAD:Jumia.Context/Migrations/20240317002007_localization.Designer.cs
                     b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Jumia.Model.Category", b =>
                 {
->>>>>>>> e65497fce8f616a39a71f225ef347d4be592ac4e:Jumia.Context/Migrations/20240312120558_init.Designer.cs
+========
+>>>>>>>> origin/Category&SubCategory:Jumia.Context/Migrations/20240315210434_start.Designer.cs
                     b.Navigation("SubCategory");
                 });
 

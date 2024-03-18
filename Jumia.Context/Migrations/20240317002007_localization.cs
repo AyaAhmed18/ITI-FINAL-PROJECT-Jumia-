@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Jumia.Context.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class localization : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -331,8 +331,14 @@ namespace Jumia.Context.Migrations
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AdressInformation = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Regin = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Region = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstNameAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastNameAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AddressAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AdressInformationAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RegionAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CityAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     OrderId = table.Column<int>(type: "int", nullable: false),
                     UserIdentityId = table.Column<int>(type: "int", nullable: true),
