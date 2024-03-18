@@ -7,7 +7,7 @@ using Microsoft.Win32;
 
 namespace AdminDashBoard.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
             private UserManager<UserIdentity> _userManager;
             private SignInManager<UserIdentity> _signinManager;

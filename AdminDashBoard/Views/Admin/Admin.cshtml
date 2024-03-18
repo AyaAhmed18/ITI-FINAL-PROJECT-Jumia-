@@ -9,24 +9,19 @@
 
 
 
-
-
-
-
-
 @foreach (var role in ViewBag.Roles)
 {
-    <div class="contTable">
+    <div class="contTable m-5">
         <h1>@role.Name</h1>
         <table class="rwd-table">
             <tbody>
                 <tr>
-                <th>UserId</th>
-                <th>User Name</th>
-                <th>Role</th>
-                <th>Email</th>
-                <th>Email</th>
-                <th> phone number</th>
+                    <th>@AdminDashBoard.Languages.Resource.UserId</th>
+                    <th>@AdminDashBoard.Languages.Resource.Name</th>
+                    <th>@AdminDashBoard.Languages.Resource.Role</th>
+                    <th>@AdminDashBoard.Languages.Resource.Email</th>
+             
+                    <th>@AdminDashBoard.Languages.Resource.Phone Number</th>
                    
                 </tr>
                 @foreach (var item in Model.Where(u => u.RoleName == role.Name))
@@ -45,9 +40,7 @@
                 <td data-th=" Email">
                             @item.Email
                     </td>
-                        <td data-th=" Email">
-                            @item.Email
-                        </td>
+                       
                 <td data-th=" phone number">
                             @item.PhoneNumber
                     </td>
@@ -60,6 +53,7 @@
         </table>
 
     </div>
+    
     }
 
 

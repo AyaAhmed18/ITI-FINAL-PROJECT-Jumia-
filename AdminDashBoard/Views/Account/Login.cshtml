@@ -8,42 +8,66 @@
     Layout = "_AccountLayout";
 }
 
+<div class="login-root">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
 
 
+        <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+            <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+                <h1>@AdminDashBoard.Languages.Resource.Login</h1>
+            </div>
+            <div class="formbg-outer">
+                <div class="formbg">
+                    <div class="formbg-inner padding-horizontal--48">
+                        <span class="padding-bottom--15">@AdminDashBoard.Languages.Resource.Signintoyouraccount</span>
 
 
+                        <form id="stripe-login" method="post">
 
-<div class="center">
-    <div class="contn">
-    <form asp-action="Login" method="post" class="form">
-        <h1>Login</h1>
-        <div class="form-field">
-            <input type="text" placeholder="Enter Username" asp-for="Username" />
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-times-circle"></i>
-            <small> <span asp-validation-for="Username" style="color: red"></span></small>
+
+                            <div class="field padding-bottom--24">
+                                <label for="email">@AdminDashBoard.Languages.Resource.Email</label>
+                                <input type="text" placeholder="&#xf2b9;  Enter User Name" class="fa form-control _ge_de_ol" style="font-family: 'FontAwesome';" asp-for="Username" />
+                                <span class="text-danger"><span asp-validation-for="Username" style="color: red"></span></span>
+                            </div>
+
+
+                            <div class="field padding-bottom--24">
+                                <div class="grid--50-50">
+                                    <label for="password">@AdminDashBoard.Languages.Resource.Password</label>
+                                    <div class="reset-pass">
+                                        <a href="#">@AdminDashBoard.Languages.Resource.Forgetyourpassword?</a>
+                                    </div>
+                                </div>
+                                <input type="password" placeholder="&#xf070;  Enter Password" class="fa font-family: 'FontAwesome' form-control _ge_de_ol" asp-for="Password" />
+                                <span class="text-danger"><span asp-validation-for="Password" style="color: red"></span></span>
+                            </div>
+
+
+                            <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
+                                <label for="checkbox">
+                                    <input type="checkbox" name="checkbox">@AdminDashBoard.Languages.Resource.Staysignedinforaweek
+                                </label>
+                            </div>
+
+
+                            <div class="field padding-bottom--24">
+                                <input type="submit" name="submit" value="@AdminDashBoard.Languages.Resource.Continue">
+                            </div>
+
+
+                            <div class="field">
+                                <a class="ssolink" href="#">@AdminDashBoard.Languages.Resource.DonthaveanaccountSignup</a>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
-
-        <div class="form-field">
-            <input type="password" placeholder="Password" name="password" id="password" />
-            <small> <span asp-validation-for="Password" style="color: red"></span></small>
-
-                @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
-                {
-                    <small> <span style="color: red">  @ViewData["ErrorMessage"]</span></small>
-                    
-                }
-
-               
-        </div>
-        <div class="form-field">
-            <button type="submit"  class="btne">Login</button>
-        </div>
-    </form>
+    </div>
 </div>
-
-</div>
-
-
 
 

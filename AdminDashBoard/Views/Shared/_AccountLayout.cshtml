@@ -12,18 +12,22 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-    
-    
-    <link href="~/css/Account.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@* validation custom *@
 
-</head>
+<link href="~/css/Log_Reg.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AdminDashBoard.styles.css" asp-append-version="true" />
 
-<body>
+</head >
+
+<body dir="@AdminDashBoard.Languages.Resource.dir">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0 py-3">
         <div class="container-xl">
             <!-- Logo -->
             <a class="navbar-brand" href="#">
-               @*  <img src="" class="h-8" alt="..."> *@ Jumia
+                @*  <img src="" class="h-8" alt="..."> *@ @AdminDashBoard.Languages.Resource.JUMIA
             </a>
             <!-- Navbar toggle -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,21 +37,32 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <!-- Nav -->
                 <div class="navbar-nav mx-lg-auto">
-                    <a class="nav-item nav-link active" href="#" aria-current="page">Home</a>
-                    <a class="nav-item nav-link" href="#">Product</a>
-                    <a class="nav-item nav-link" href="#">Features</a>
-                    <a class="nav-item nav-link" href="#">Pricing</a>
+                    <a class="nav-item nav-link active" href="#" aria-current="page">@AdminDashBoard.Languages.Resource.Home</a>
+                    <a class="nav-item nav-link" href="#">@AdminDashBoard.Languages.Resource.Product</a>
+                    <a class="nav-item nav-link" href="#">@AdminDashBoard.Languages.Resource.Features</a>
+                    <a class="nav-item nav-link" href="#">@AdminDashBoard.Languages.Resource.Pricing</a>
                 </div>
                 <!-- Right navigation -->
                 <div class="navbar-nav ms-lg-4">
-                    <a class="nav-item nav-link" href="#">Sign in</a>
+                    <a class="nav-item nav-link" href="#">@AdminDashBoard.Languages.Resource.Signin</a>
                 </div>
                 <!-- Action -->
                 <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
                     <a href="#" class="btn btn-sm btn-primary w-full w-lg-auto">
-                        Register
+                        @AdminDashBoard.Languages.Resource.Register
                     </a>
                 </div>
+                @* language *@
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @AdminDashBoard.Languages.Resource.Language
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" asp-controller="Language" asp-action="Arabic">@AdminDashBoard.Languages.Resource.Arabic</a></li>
+                        <li><a class="dropdown-item" asp-controller="Language" asp-action="English">@AdminDashBoard.Languages.Resource.English</a></li>
+
+                    </ul>
+                </li>
             </div>
         </div>
     </nav>

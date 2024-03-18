@@ -17,7 +17,7 @@ namespace Jumia.Dtos.User
 
         public int RoleId { get; set; }
 
-        public string RoleName { get; set; }
-
+        //public string RoleName { get; set; }
+        public List<string> SelectedRoles { get; set; }
     }
 }

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="account" xml:space="preserve">
+    <value>account</value>
+  </data>
   <data name="Action" xml:space="preserve">
     <value>Action</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="AddUser" xml:space="preserve">
     <value>Add User</value>
   </data>
+  <data name="AddUserForm" xml:space="preserve">
+    <value>Add User Form</value>
+  </data>
   <data name="Admin" xml:space="preserve">
     <value>Admin</value>
   </data>
@@ -140,6 +146,12 @@
   </data>
   <data name="AllSubCategory" xml:space="preserve">
     <value>All SubCategory</value>
+  </data>
+  <data name="Already" xml:space="preserve">
+    <value>Already</value>
+  </data>
+  <data name="AlreadyhaveanaccountLogin" xml:space="preserve">
+    <value>Already have an account? Login</value>
   </data>
   <data name="Arabic" xml:space="preserve">
     <value>Arabic</value>
@@ -155,6 +167,15 @@
   </data>
   <data name="CategoryName" xml:space="preserve">
     <value>Category Name</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continue</value>
   </data>
   <data name="Copyright" xml:space="preserve">
     <value>Copyright © 2024. All rights reserved.</value>
@@ -180,11 +201,26 @@
   <data name="dir" xml:space="preserve">
     <value>ltr</value>
   </data>
+  <data name="DonthaveanaccountSignup" xml:space="preserve">
+    <value>Don't have an account? Sign up</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="EnterPhone" xml:space="preserve">
+    <value>Enter Phone</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Export</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+    <value>Features</value>
+  </data>
+  <data name="Forgetyourpassword" xml:space="preserve">
+    <value>Forget your password</value>
   </data>
   <data name="GoodMorning" xml:space="preserve">
     <value>Good Morning</value>
@@ -213,6 +249,9 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
   <data name="Order" xml:space="preserve">
     <value>Order</value>
   </data>
@@ -225,14 +264,35 @@
   <data name="pages" xml:space="preserve">
     <value>pages</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Pricing" xml:space="preserve">
+    <value>Pricing</value>
+  </data>
   <data name="Print" xml:space="preserve">
     <value>Print</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>Product</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
   <data name="Registeration" xml:space="preserve">
     <value>Registeration</value>
+  </data>
+  <data name="Registeryouraccount" xml:space="preserve">
+    <value>Register your account</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
@@ -246,8 +306,20 @@
   <data name="sidebar" xml:space="preserve">
     <value>sidebar</value>
   </data>
+  <data name="Signin" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="Signintoyouraccount" xml:space="preserve">
+    <value>Sign in to your account</value>
+  </data>
+  <data name="Staysignedinforaweek" xml:space="preserve">
+    <value>Stay signed in for a week</value>
+  </data>
   <data name="SubCategory" xml:space="preserve">
     <value>SubCategory</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
   </data>
   <data name="UpdataOrder" xml:space="preserve">
     <value>Updata Order</value>
@@ -263,6 +335,12 @@
   </data>
   <data name="UpdateSubCategory" xml:space="preserve">
     <value>Update SubCategory</value>
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>UserId</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
   </data>
   <data name="UserPages" xml:space="preserve">
     <value>User Pages</value>
