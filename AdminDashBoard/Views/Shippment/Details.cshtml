@@ -21,27 +21,6 @@
     }
 </style>
 
-<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    <li class="nav-item">
-        <a class="nav-link active" aria-current="page" asp-action="Index"> <h4>@AdminDashBoard.Languages.Resource.Home</h4></a>
-    </li>
-    <li class="nav-item">
-
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            @AdminDashBoard.Languages.Resource.Language
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" asp-action="SetLanguage" asp-controller="Language" asp-route-lang="ar-EG">@AdminDashBoard.Languages.Resource.Arabic</a></li>
-            <li><a class="dropdown-item" asp-action="SetLanguage" asp-controller="Language" asp-route-lang="en-US">@AdminDashBoard.Languages.Resource.English</a></li>
-        </ul>
-
-    </li>
-    <li class="nav-item">
-
-    </li>
-</ul>
 <div class="col-md-8 grid-margin stretch-card ">
     <div class="card">
         <div class="card-body">

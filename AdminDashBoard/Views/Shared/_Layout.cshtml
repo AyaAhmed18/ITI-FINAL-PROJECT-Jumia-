@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,9 +26,9 @@
 </head>
 <body dir="@AdminDashBoard.Languages.Resource.dir">
     <div class="container-scroller">
-        
 
-        
+
+
         <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
                 <div class="me-3">
@@ -53,7 +53,7 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                   
+
                     <li class="nav-item d-none d-lg-block">
                         <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
                             <span class="input-group-addon input-group-prepend border-right">
@@ -146,41 +146,41 @@
                             </a>
 
 
-                            
+
                         </div>
                     </li>
 
 
-                      @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated)
                     {
-                    <li class="nav-item">
-                        <a asp-action="Register" asp-controller="Account" class="nav-link count-indicator" aria-expanded="false">
-                            <i class="mdi mdi-logout"></i>
+                        <li class="nav-item">
+                            <a asp-action="Register" asp-controller="Account" class="nav-link count-indicator" aria-expanded="false">
+                                <i class="mdi mdi-logout"></i>
 
-                        </a>
+                            </a>
 
-                    </li>
+                        </li>
                     }
                     else
                     {
-                    <li class="nav-item">
-                       
-                        <a asp-action="Login" asp-controller="Account" class="nav-link count-indicator" aria-expanded="false">
-                            <i class="mdi mdi-login"></i>
-                           
-                        </a>
-                       
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="Register" asp-controller="Account" class="nav-link count-indicator" aria-expanded="false">
-                            <i class="mdi mdi-account-plus"></i>
+                        <li class="nav-item">
 
-                        </a>
+                            <a asp-action="Login" asp-controller="Account" class="nav-link count-indicator" aria-expanded="false">
+                                <i class="mdi mdi-login"></i>
 
-                    </li>
+                            </a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a asp-action="Register" asp-controller="Account" class="nav-link count-indicator" aria-expanded="false">
+                                <i class="mdi mdi-account-plus"></i>
+
+                            </a>
+
+                        </li>
                     }
 
-                    
+
 
 
 
@@ -206,9 +206,8 @@
                             @AdminDashBoard.Languages.Resource.Language
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-controller="Language" asp-action="Arabic">@AdminDashBoard.Languages.Resource.Arabic</a></li>
-                            <li><a class="dropdown-item" asp-controller="Language" asp-action="English">@AdminDashBoard.Languages.Resource.English</a></li>
-                            
+                            <li><a class="dropdown-item" asp-action="SetLanguage" asp-controller="Language" asp-route-lang="ar-EG">@AdminDashBoard.Languages.Resource.Arabic</a></li>
+                            <li><a class="dropdown-item" asp-action="SetLanguage" asp-controller="Language" asp-route-lang="en-US">@AdminDashBoard.Languages.Resource.English</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -391,6 +390,7 @@
             </div>
             <!-- partial -->
             <!-- partial:partials/_sidebar.html -->
+            @* Admin *@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
@@ -408,44 +408,40 @@
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">@AdminDashBoard.Languages.Resource.Registeration</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">@AdminDashBoard.Languages.Resource.Login</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">@AdminDashBoard.Languages.Resource.AddUser</a></li>
-                            </ul>
+                                <li class="nav-item"><a class="nav-link" asp-action="Register" asp-controller="Account">@AdminDashBoard.Languages.Resource.Registeration</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-action="Login" asp-controller="Account" asp-route-lang="en-US">@AdminDashBoard.Languages.Resource.Login</a></li>
+                                <li class ="nav-item"><a class="nav-link" asp-action="AddUser" asp-controller="Admin" asp-route-lang="en-US">@AdminDashBoard.Languages.Resource.AddUser</a></li>
+                                </ul>
                         </div>
                     </li>
                     <li class="nav-item nav-category">@AdminDashBoard.Languages.Resource.sidebar </li>
 
-
+                    @* Product *@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                             <i class="menu-icon mdi mdi-shopping              -text-outline"></i>
                             <span class="menu-title">@AdminDashBoard.Languages.Resource.Product</span>
                             <i class="menu-arrow"></i>
                         </a>
-                         <div class="collapse" id="form-elements">
+                        <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="#"> @AdminDashBoard.Languages.Resource.Product</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-action="Index" asp-controller="Product"> @AdminDashBoard.Languages.Resource.Product</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="#">@AdminDashBoard.Languages.Resource.AddProduct</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-action="create" asp-controller="Product">@AdminDashBoard.Languages.Resource.AddProduct</a></li>
                             </ul>
                         </div>
-                        <div class="collapse" id="form-elements">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="#">@AdminDashBoard.Languages.Resource.UpdataProduct</a></li>
-                            </ul>
-                        </div>
+                        
                         @* <div class="collapse" id="form-elements">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="#">Delete Product</a></li>
-                            </ul>
+                        <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="#">Delete Product</a></li>
+                        </ul>
                         </div> *@
                     </li>
 
-
+                    @* Order *@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
                             <i class="menu-icon mdi mdi-cart-plus"></i>
@@ -454,7 +450,7 @@
                         </a>
                         <div class="collapse" id="charts">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#"> @AdminDashBoard.Languages.Resource.Orders</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="Index" asp-controller="Order"> @AdminDashBoard.Languages.Resource.Orders</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="charts">
@@ -468,7 +464,8 @@
                             </ul>
                         </div>
                     </li>
-
+                    
+                    @* Category *@
 
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
@@ -478,22 +475,22 @@
                         </a>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html"> @AdminDashBoard.Languages.Resource.Category</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="Index" asp-controller="Category"> @AdminDashBoard.Languages.Resource.Category</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">@AdminDashBoard.Languages.Resource.AddCategory</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="Create" asp-controller="Category">@AdminDashBoard.Languages.Resource.AddCategory</a></li>
                             </ul>
                         </div>
-                        <div class="collapse" id="tables">
+                        @* <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">@AdminDashBoard.Languages.Resource.UpdateCategory</a></li>
                             </ul>
-                        </div>
+                        </div> *@
                     </li>
 
-
+                    @* sub Category *@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#suptables" aria-expanded="false" aria-controls="tables">
                             <i class="menu-icon mdi mdi-package-variant-closed"></i>
@@ -502,19 +499,19 @@
                         </a>
                         <div class="collapse" id="suptables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html"> @AdminDashBoard.Languages.Resource.SubCategory</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="Index" asp-controller="SubCategory"> @AdminDashBoard.Languages.Resource.SubCategory</a></li>
                             </ul>
                         </div>
-                         <div class="collapse" id="suptables">
+                        <div class="collapse" id="suptables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">@AdminDashBoard.Languages.Resource.AddSubCategory</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="create" asp-controller="SubCategory">@AdminDashBoard.Languages.Resource.AddSubCategory</a></li>
                             </ul>
                         </div>
-                         <div class="collapse" id="suptables">
+                       @*  <div class="collapse" id="suptables">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">@AdminDashBoard.Languages.Resource.UpdateSubCategory</a></li>
                             </ul>
-                        </div>
+                        </div> *@
                     </li>
 
 
@@ -544,7 +541,7 @@
                             </ul>
                         </div>
                     </li>
-                   
+
                 </ul>
             </nav>
             <!-- partial -->
@@ -554,19 +551,19 @@
                         <div class="col-sm-12">
                             <div class="home-tab">
                                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
-                                   @*  <ul class="nav nav-tabs" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab" aria-selected="false">Audiences</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab" aria-selected="false">Demographics</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab" aria-selected="false">More</a>
-                                        </li>
+                                    @*  <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item">
+                                    <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab" aria-selected="false">Audiences</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab" aria-selected="false">Demographics</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab" aria-selected="false">More</a>
+                                    </li>
                                     </ul> *@
                                     <div>
                                         <div class="btn-wrapper">
@@ -581,47 +578,47 @@
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="statistics-details d-flex align-items-center justify-content-between">
-                                                   @*  <div>
-                                                        <p class="statistics-title">Bounce Rate</p>
-                                                        <h3 class="rate-percentage">32.53%</h3>
-                                                        <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
+                                                    @*  <div>
+                                                    <p class="statistics-title">Bounce Rate</p>
+                                                    <h3 class="rate-percentage">32.53%</h3>
+                                                    <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
                                                     </div> *@
                                                     @* <div>
-                                                        <p class="statistics-title">Page Views</p>
-                                                        <h3 class="rate-percentage">7,682</h3>
-                                                        <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p>
+                                                    <p class="statistics-title">Page Views</p>
+                                                    <h3 class="rate-percentage">7,682</h3>
+                                                    <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p>
                                                     </div> *@
-                                                   @*  <div>
-                                                        <p class="statistics-title">New Sessions</p>
-                                                        <h3 class="rate-percentage">68.8</h3>
-                                                        <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
+                                                    @*  <div>
+                                                    <p class="statistics-title">New Sessions</p>
+                                                    <h3 class="rate-percentage">68.8</h3>
+                                                    <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
                                                     </div> *@
-                                                   @*  <div class="d-none d-md-block">
-                                                        <p class="statistics-title">Avg. Time on Site</p>
-                                                        <h3 class="rate-percentage">2m:35s</h3>
-                                                        <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
+                                                    @*  <div class="d-none d-md-block">
+                                                    <p class="statistics-title">Avg. Time on Site</p>
+                                                    <h3 class="rate-percentage">2m:35s</h3>
+                                                    <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
                                                     </div> *@
                                                     @* <div class="d-none d-md-block">
-                                                        <p class="statistics-title">New Sessions</p>
-                                                        <h3 class="rate-percentage">68.8</h3>
-                                                        <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
+                                                    <p class="statistics-title">New Sessions</p>
+                                                    <h3 class="rate-percentage">68.8</h3>
+                                                    <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
                                                     </div> *@
-                                                   @*  <div class="d-none d-md-block">
-                                                        <p class="statistics-title">Avg. Time on Site</p>
-                                                        <h3 class="rate-percentage">2m:35s</h3>
-                                                        <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
+                                                    @*  <div class="d-none d-md-block">
+                                                    <p class="statistics-title">Avg. Time on Site</p>
+                                                    <h3 class="rate-percentage">2m:35s</h3>
+                                                    <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
                                                     </div> *@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                            
-                                                    
+
+
+
                                     </div>
                                 </div>
                                 @RenderBody()
-                        </div>
-                                        
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -629,20 +626,20 @@
         </div>
 
 
-              
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
-                <footer class="footer">
-                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                       @*  <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span> *@
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">@AdminDashBoard.Languages.Resource.Copyright</span>
-                    </div>
-                </footer>
-                <!-- partial -->
+
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                @*  <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span> *@
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">@AdminDashBoard.Languages.Resource.Copyright</span>
             </div>
-            <!-- main-panel ends -->
-        </div>
-        <!-- page-body-wrapper ends -->
+        </footer>
+        <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
@@ -671,4 +668,3 @@
 </body>
 
 </html>
-

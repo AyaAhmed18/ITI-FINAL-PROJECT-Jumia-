@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Http;
-using Jumia.Application.Services.IServices;
+using Jumia.Application.IServices;
 
 namespace Jumia.Application.Services
 {
@@ -192,56 +192,6 @@ namespace Jumia.Application.Services
             }
         }
 
-
-
-
-
-
-
-
-
-
-
        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

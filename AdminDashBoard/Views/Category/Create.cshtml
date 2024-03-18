@@ -27,6 +27,12 @@
 
         </div>
         <div class="mb-3">
+            <label asp-for="NameAr" class="form-label">@AdminDashBoard.Languages.Resource.Name  @AdminDashBoard.Languages.Resource.Arabic</label>
+            <input asp-for="NameAr" class="form-control">
+            <span asp-validation-for="Name" style="color:red"></span>
+
+        </div>
+        <div class="mb-3">
             <label asp-for="Description" class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
             <input asp-for="Description" class="form-control">
             <span asp-validation-for="Description" style="color:red"></span>
