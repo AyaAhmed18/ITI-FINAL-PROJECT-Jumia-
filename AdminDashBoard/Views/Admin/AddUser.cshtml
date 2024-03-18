@@ -9,45 +9,45 @@
 
 
         <div class="container">
-            <header>Add User Form</header>
+    <header>@AdminDashBoard.Languages.Resource.AddUserForm</header>
             <div class="progress--bar">
                 <div class="step">
-                    <p>Name</p>
+            <p>@AdminDashBoard.Languages.Resource.Name</p>
                     <div class="bullet">
                         <span>1</span>
                     </div>
                     <div class="check fas fa-check"></div>
                 </div>
                 <div class="step">
-                <p>Email</p>
+            <p>@AdminDashBoard.Languages.Resource.Email</p>
                     <div class="bullet">
                         <span>2</span>
                     </div>
                     <div class="check fas fa-check"></div>
                 </div>
                 <div class="step">
-                <p>Phone</p>
+            <p>@AdminDashBoard.Languages.Resource.Phone</p>
                     <div class="bullet">
                         <span>3</span>
                     </div>
                     <div class="check fas fa-check"></div>
                 </div>
                 <div class="step">
-                <p>Password</p>
+            <p>@AdminDashBoard.Languages.Resource.Password</p>
                     <div class="bullet">
                         <span>4</span>
                     </div>
                     <div class="check fas fa-check"></div>
                 </div>
                 <div class="step">
-                <p>Role</p>
+            <p>@AdminDashBoard.Languages.Resource.Role</p>
                     <div class="bullet">
                         <span>5</span>
                     </div>
                     <div class="check fas fa-check"></div>
                 </div>
                 <div class="step">
-                    <p>Submit</p>
+            <p>@AdminDashBoard.Languages.Resource.Submit</p>
                     <div class="bullet">
                         <span>6</span>
                     </div>
@@ -61,11 +61,11 @@
             <form asp-action="Adduser" method="post">
                
                     <div class="page slide-page">
-                        <div class="title">1-Name:</div>
+                <div class="title">1-@AdminDashBoard.Languages.Resource.Name:</div>
                     <span asp-validation-for="UserName" class="text-danger"></span>
                      <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="field">
-                        <label class="label" asp-for="UserName">User Name:</label>
+                    <label class="label" asp-for="UserName">@AdminDashBoard.Languages.Resource.UserName:</label>
                         <input asp-for="UserName" class="form-control" required />
                        
                            
@@ -77,50 +77,50 @@
                     </div>
 
                     <div class="page">
-                        <div class="title">2-Email:</div>
+                <div class="title">2-@AdminDashBoard.Languages.Resource.Email:</div>
                     <span asp-validation-for="Email" class="text-danger"></span>
                         <div class="field">
-                        <label class="label" asp-for="Email">Email:</label>
+                    <label class="label" asp-for="Email">@AdminDashBoard.Languages.Resource.Email:</label>
                         <input asp-for="Email" class="form-control" required />
                        
                         </div>
                         
                         <div class="field btns">
-                            <button class="prev-1 prev">Previous</button>
-                            <button class="next-1 next">Next</button>
+                    <button class="prev-1 prev">@AdminDashBoard.Languages.Resource.Previous</button>
+                    <button class="next-1 next">@AdminDashBoard.Languages.Resource.Next</button>
                         </div>
                     </div>
                     <div class="page">
-                        <div class="title">3-Phone:</div>
+                <div class="title">3-@AdminDashBoard.Languages.Resource.Phone:</div>
                     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         <div class="field">
-                        <label class="label" asp-for="PhoneNumber">Phone Number:</label>
+                    <label class="label" asp-for="PhoneNumber">@AdminDashBoard.Languages.Resource.Phone Number:</label>
                         <input asp-for="PhoneNumber" class="form-control" required />
                        
                         </div>
                         
                         <div class="field btns">
-                            <button class="prev-2 prev">Previous</button>
-                            <button class="next-2 next">Next</button>
+                    <button class="prev-2 prev">@AdminDashBoard.Languages.Resource.Previous</button>
+                    <button class="next-2 next">@AdminDashBoard.Languages.Resource.Next</button>
                         </div>
                     </div>
                     <div class="page">
-                        <div class="title">4-Password:</div>
+                <div class="title">4-@AdminDashBoard.Languages.Resource.Password:</div>
                     <span asp-validation-for="Password" class="text-danger"></span>
                         <div class="field">
-                        <label class="label" asp-for="Password">Password:</label>
+                    <label class="label" asp-for="Password">@AdminDashBoard.Languages.Resource.Password:</label>
                         <input asp-for="Password" type="password" class="form-control" required />
                       
                         </div>
                         
                         <div class="field btns">
-                            <button class="prev-3 prev">Previous</button>
-                            <button class="next-3 next">Next</button>
+                    <button class="prev-3 prev">@AdminDashBoard.Languages.Resource.Previous</button>
+                    <button class="next-3 next">@AdminDashBoard.Languages.Resource.Next</button>
                         </div>
                     </div>
 
                     <div class="page">
-                        <div class="title">5-Role:</div>
+                <div class="title">5-@AdminDashBoard.Languages.Resource.Role:</div>
                     <span asp-validation-for="SelectedRoles" class="text-danger"></span>
                        @*  <div class="field">
                         <label class="label" asp-for="SelectedRoles">Role:</label>
@@ -145,17 +145,17 @@
             
         </ul>
                         <div class="field btns">
-                            <button class="prev-4 prev">Previous</button>
-                            <button class="next-4 next">Next</button>
+                    <button class="prev-4 prev">@AdminDashBoard.Languages.Resource.Previous</button>
+                    <button class="next-4 next">@AdminDashBoard.Languages.Resource.Next</button>
                         </div>
                     </div>
 
                     <div class="page">
-                        <div class="title">6-Submit:</div>
+                <div class="title">6-@AdminDashBoard.Languages.Resource.Submit:</div>
                     <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="field btns">
-                            <button class="prev-5 prev">Previous</button>
-                            <button class="submit">Submit</button>
+                    <button class="prev-5 prev">@AdminDashBoard.Languages.Resource.Previous</button>
+                    <button class="submit">@AdminDashBoard.Languages.Resource.Submit</button>
                         </div>
                     </div>
                 </form>

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="account" xml:space="preserve">
+    <value>حساب</value>
+  </data>
   <data name="Action" xml:space="preserve">
     <value>العمليه</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="AddUser" xml:space="preserve">
     <value>اضافة مستخدم</value>
   </data>
+  <data name="AddUserForm" xml:space="preserve">
+    <value>نموذج أضافة مستخدم</value>
+  </data>
   <data name="Admin" xml:space="preserve">
     <value>ادمن</value>
   </data>
@@ -140,6 +146,12 @@
   </data>
   <data name="AllSubCategory" xml:space="preserve">
     <value>كل الفئات الفرعيه</value>
+  </data>
+  <data name="Already" xml:space="preserve">
+    <value>بالتاكيد </value>
+  </data>
+  <data name="AlreadyhaveanaccountLogin" xml:space="preserve">
+    <value>هل لديك حساب؟ تسجيل الدخول</value>
   </data>
   <data name="Arabic" xml:space="preserve">
     <value>عربى</value>
@@ -155,6 +167,15 @@
   </data>
   <data name="CategoryName" xml:space="preserve">
     <value>اسم الفئه</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>تاكيد</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>تأكيد كلمة المرور</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>استمر</value>
   </data>
   <data name="Copyright" xml:space="preserve">
     <value>حقوق الطبع والنشر© 2024.جميع الحقوق محفوظه</value>
@@ -180,11 +201,26 @@
   <data name="dir" xml:space="preserve">
     <value>rtl</value>
   </data>
+  <data name="DonthaveanaccountSignup" xml:space="preserve">
+    <value>لا تملك حسابا ؟اشترك</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الالكتروني</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>انجليزى</value>
   </data>
+  <data name="EnterPhone" xml:space="preserve">
+    <value>ادخل الهاتف</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>تصدير</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+    <value>سمات</value>
+  </data>
+  <data name="Forgetyourpassword" xml:space="preserve">
+    <value>نسيت كلمة المرور</value>
   </data>
   <data name="GoodMorning" xml:space="preserve">
     <value>صباح الخير</value>
@@ -213,6 +249,9 @@
   <data name="Name" xml:space="preserve">
     <value>الاسم</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
   <data name="Order" xml:space="preserve">
     <value>طلب</value>
   </data>
@@ -225,14 +264,35 @@
   <data name="pages" xml:space="preserve">
     <value>صفحات</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>الهاتف</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>سابق</value>
+  </data>
+  <data name="Pricing" xml:space="preserve">
+    <value>التسعير</value>
+  </data>
   <data name="Print" xml:space="preserve">
     <value>طباعه</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>منتج</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>تسجيل</value>
+  </data>
   <data name="Registeration" xml:space="preserve">
     <value>التسجيل</value>
+  </data>
+  <data name="Registeryouraccount" xml:space="preserve">
+    <value>سجل حسابك</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>الدور</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>بحث</value>
@@ -246,8 +306,20 @@
   <data name="sidebar" xml:space="preserve">
     <value>الشريط الجانبى</value>
   </data>
+  <data name="Signin" xml:space="preserve">
+    <value>اشتراك</value>
+  </data>
+  <data name="Signintoyouraccount" xml:space="preserve">
+    <value>تسجيل الدخول إلى حسابك</value>
+  </data>
+  <data name="Staysignedinforaweek" xml:space="preserve">
+    <value>استمر بالتسجيل لمدة اسبوع</value>
+  </data>
   <data name="SubCategory" xml:space="preserve">
     <value>فئة فرعية</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>تقديم</value>
   </data>
   <data name="UpdataOrder" xml:space="preserve">
     <value>تعديل طلب</value>
@@ -263,6 +335,12 @@
   </data>
   <data name="UpdateSubCategory" xml:space="preserve">
     <value>تعديل الفئه الفرعيه</value>
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>بطاقة تعريف المستخدم</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value> اسم المستخدم</value>
   </data>
   <data name="UserPages" xml:space="preserve">
     <value>صفحات المستخدم</value>
