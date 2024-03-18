@@ -75,6 +75,10 @@ namespace Jumia.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("NameAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -390,6 +394,10 @@ namespace Jumia.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("reviewAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
@@ -520,6 +528,10 @@ namespace Jumia.Context.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameAr")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

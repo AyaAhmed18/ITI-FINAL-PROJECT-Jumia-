@@ -128,7 +128,9 @@ namespace Jumia.Application.Services.Services
         public async Task<ResultDataForPagination<GetAllSubDto>> GetAll(int item, int pagnumber)
         {
             var AllData = await _subCategoryRepository.GetAllAsync();
-            var SubCategorys = AllData.Skip(item * (pagnumber - 1)).Take(item)
+            var SubCategory = AllData.Skip(item * (pagnumber - 1)).Take(item).ToList();
+            var SubCategorys = _mapper.Map<List<GetAllSubDto>>(SubCategory);
+           /* var SubCategorys = AllData.Skip(item * (pagnumber - 1)).Take(item)
              .Select(c => new GetAllSubDto
              {
                  Id = c.Id,
@@ -139,7 +141,7 @@ namespace Jumia.Application.Services.Services
 
 
 
-             }).ToList();
+             }).ToList();*/
 
             ResultDataForPagination<GetAllSubDto> resultDataFor = new ResultDataForPagination<GetAllSubDto>();
 

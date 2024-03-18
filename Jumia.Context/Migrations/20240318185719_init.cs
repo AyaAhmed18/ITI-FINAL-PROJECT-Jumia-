@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Jumia.Context.Migrations
 {
     /// <inheritdoc />
-    public partial class start : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,12 +53,29 @@ namespace Jumia.Context.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Brands",
+                columns: table => new
+                {
+                    BrandID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LogoURL = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    Website = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Brands", x => x.BrandID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Category",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -206,6 +223,7 @@ namespace Jumia.Context.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
@@ -235,7 +253,7 @@ namespace Jumia.Context.Migrations
                     TotalAmount = table.Column<int>(type: "int", nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Discount = table.Column<int>(type: "int", nullable: true),
-                    Status = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Shipped = table.Column<bool>(type: "bit", nullable: true),
                     ShippedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Delivered = table.Column<bool>(type: "bit", nullable: true),
@@ -280,6 +298,7 @@ namespace Jumia.Context.Migrations
                     Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Images = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SubCategoryID = table.Column<int>(type: "int", nullable: false),
+                    BrandId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -289,6 +308,12 @@ namespace Jumia.Context.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_Brands_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "Brands",
+                        principalColumn: "BrandID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_SubCategory_SubCategoryID",
                         column: x => x.SubCategoryID,
@@ -303,14 +328,20 @@ namespace Jumia.Context.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstNameEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AdressInformation = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Regin = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Region = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FirstNameAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastNameAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AddressAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AdressInformationAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RegionAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CityAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OrderId = table.Column<int>(type: "int", nullable: false),
                     UserIdentityId = table.Column<int>(type: "int", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -407,6 +438,7 @@ namespace Jumia.Context.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     review = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    reviewAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rate = table.Column<int>(type: "int", nullable: true),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
@@ -498,6 +530,11 @@ namespace Jumia.Context.Migrations
                 column: "Pro_Id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Products_BrandId",
+                table: "Products",
+                column: "BrandId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_SubCategoryID",
                 table: "Products",
                 column: "SubCategoryID");
@@ -567,6 +604,9 @@ namespace Jumia.Context.Migrations
 
             migrationBuilder.DropTable(
                 name: "Order");
+
+            migrationBuilder.DropTable(
+                name: "Brands");
 
             migrationBuilder.DropTable(
                 name: "SubCategory");
