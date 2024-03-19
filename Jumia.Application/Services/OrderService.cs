@@ -26,9 +26,38 @@ namespace Jumia.Application.Services
             _mapper = mapper;
         }
 
-        public Task<ResultView<CreateOrUpdateOrderDto>> Create(CreateOrUpdateOrderDto bookDTO)
+        public async Task<ResultView<CreateOrUpdateOrderDto>> Create(CreateOrUpdateOrderDto orderDto)
         {
-            throw new NotImplementedException();
+            try 
+            {
+                var Data = await _OrderRepository.GetAllAsync();
+                var OldOrder = Data.Where(c => c.Id == orderDto.Id).FirstOrDefault();
+
+                if (OldOrder != null)
+                {
+                    return new ResultView<CreateOrUpdateOrderDto> { Entity = null, IsSuccess = false, Message = "Order Already Exist" };
+                }
+                else
+                {
+                    var order = _mapper.Map<Order>(orderDto);
+                    var NewOrder = await _OrderRepository.CreateAsync(order);
+                    await _OrderRepository.SaveChangesAsync();
+                    var ODto = _mapper.Map<CreateOrUpdateOrderDto>(NewOrder);
+
+
+                    return new ResultView<CreateOrUpdateOrderDto> { Entity = ODto, IsSuccess = true, Message = "Order Created Successfully" };
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new ResultView<CreateOrUpdateOrderDto>
+                {
+                    Entity = null,
+                    IsSuccess = false,
+                    Message = $"Something went wrong: {ex.Message}"
+                };
+            }
         }
 
         public async Task<List<GetAllOrdersDTO>> GetAllOrders()

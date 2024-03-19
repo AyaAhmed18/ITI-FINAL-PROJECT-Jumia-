@@ -23,10 +23,10 @@ namespace Jumia.Model
         [ForeignKey("Customer")] ////////
         public int CustomerId { get; set; }
         public UserIdentity Customer { get; set; }
-        [ForeignKey("payment")] ////////
-        public int PaymentId { get; set; }
-        public Payment payment { get; set; }
-        public ICollection<OrderItems> OrderItems { get; set; }
+       /* [ForeignKey("payment")] ////////
+        public int PaymentId { get; set; }*/
+        public virtual Payment payment { get; set; }
+        public virtual ICollection<OrderItems> OrderItems { get; set; }
         public virtual Shippment Shipping { get; set; }
         public Order()
         {

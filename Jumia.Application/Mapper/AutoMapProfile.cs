@@ -59,6 +59,7 @@ namespace Jumia.Application.Mapper
             //Order&OrderItmes
             CreateMap<GetAllOrdersDTO, Order>().ReverseMap();
              CreateMap<CreateOrUpdateOrderDto, Order>()
+                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
                 .ReverseMap();
             CreateMap<GetAllOrderItemsDto, OrderItems>()
                 

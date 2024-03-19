@@ -25,7 +25,7 @@ namespace Jumia.Model
         public virtual Brand Brand { get; set; }
         public virtual ICollection<Review>? Reviews { get; set; }
         public virtual ICollection<OrderItems>? OrderItems { get; set; }
-        public ICollection<ProductItems>? Items { get; set; }
+        public virtual ICollection<ProductItems>? Items { get; set; }
         public Product() 
         {
            // Images= new List<string>();
