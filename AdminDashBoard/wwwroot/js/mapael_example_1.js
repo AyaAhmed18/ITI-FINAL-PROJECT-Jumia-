@@ -6175,7 +6175,7 @@ $(function() {
           longitude: 3.4563888888889,
           href: "#",
           tooltip: {
-            content: "<span style=\"font-weight:bold;\">Cusset (03095)</span><br />Population : 13873"
+            content: "<span style=\"font-weight:bold;\">Cus (03095)</span><br />Population : 13873"
           }
         },
         "town-29075": {
@@ -7021,7 +7021,7 @@ $(function() {
           longitude: 5.6991666666667,
           href: "#",
           tooltip: {
-            content: "<span style=\"font-weight:bold;\">Seyssinet-Pariset (38485)</span><br />Population : 12293"
+            content: "<span style=\"font-weight:bold;\">Seyssinet-Pari (38485)</span><br />Population : 12293"
           }
         },
         "town-91432": {

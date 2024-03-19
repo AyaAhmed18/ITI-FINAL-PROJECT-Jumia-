@@ -179,7 +179,7 @@ $(function() {
   if ($('#morris-dashboard-taget').length) {
     Morris.Area({
       element: 'morris-dashboard-taget',
-      parseTime: false,
+      parime: false,
       lineColors: ['#76C1FA', '#F36368', '#63CF72', '#FABA66'],
       data: [{
           y: 'Jan',

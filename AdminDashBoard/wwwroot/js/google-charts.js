@@ -3,10 +3,10 @@
 google.charts.load('current', {
   'packages': ['geochart'],
   // Note: you will need to get a mapsApiKey for your project.
-  // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+  // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-tings
   'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
 });
-google.charts.setOnLoadCallback(drawRegionsMap);
+google.charts.OnLoadCallback(drawRegionsMap);
 
 function drawRegionsMap() {
   var data = google.visualization.arrayToDataTable([
@@ -37,7 +37,7 @@ function drawRegionsMap() {
 google.charts.load('current', {
   'packages': ['bar']
 });
-google.charts.setOnLoadCallback(drawStuff);
+google.charts.OnLoadCallback(drawStuff);
 
 function drawStuff() {
   var data = new google.visualization.arrayToDataTable([
@@ -88,7 +88,7 @@ function drawStuff() {
   google.charts.load("current", {
     packages: ["corechart"]
   });
-  google.charts.setOnLoadCallback(drawChart);
+  google.charts.OnLoadCallback(drawChart);
 
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
@@ -130,7 +130,7 @@ function drawStuff() {
   google.charts.load('current', {
     'packages': ['corechart']
   });
-  google.charts.setOnLoadCallback(drawChart);
+  google.charts.OnLoadCallback(drawChart);
 
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
@@ -172,7 +172,7 @@ function drawStuff() {
 google.charts.load("current", {
   packages: ["corechart"]
 });
-google.charts.setOnLoadCallback(drawChart);
+google.charts.OnLoadCallback(drawChart);
 
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
@@ -207,7 +207,7 @@ function drawChart() {
   google.charts.load('current', {
     'packages': ['corechart']
   });
-  google.charts.setOnLoadCallback(drawChart);
+  google.charts.OnLoadCallback(drawChart);
 
   function drawChart() {
     var data = google.visualization.arrayToDataTable([

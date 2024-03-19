@@ -6,7 +6,7 @@ $(function() {
   'use strict';
   var data = {
     labels: ["2013", "2014", "2014", "2015", "2016", "2017"],
-    datasets: [{
+    datas: [{
       label: '# of Votes',
       data: [10, 19, 3, 5, 2, 3],
       backgroundColor: [
@@ -31,8 +31,8 @@ $(function() {
   };
   var multiLineData = {
     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [{
-        label: 'Dataset 1',
+    datas: [{
+        label: 'Data 1',
         data: [12, 19, 3, 5, 2, 3],
         borderColor: [
           '#587ce4'
@@ -41,7 +41,7 @@ $(function() {
         fill: false
       },
       {
-        label: 'Dataset 2',
+        label: 'Data 2',
         data: [5, 23, 7, 12, 42, 23],
         borderColor: [
           '#ede190'
@@ -50,7 +50,7 @@ $(function() {
         fill: false
       },
       {
-        label: 'Dataset 3',
+        label: 'Data 3',
         data: [15, 10, 21, 32, 12, 33],
         borderColor: [
           '#f44252'
@@ -79,7 +79,7 @@ $(function() {
 
   };
   var doughnutPieData = {
-    datasets: [{
+    datas: [{
       data: [30, 40, 30],
       backgroundColor: [
         'rgba(255, 99, 132, 0.5)',
@@ -115,7 +115,7 @@ $(function() {
   };
   var areaData = {
     labels: ["2013", "2014", "2015", "2016", "2017"],
-    datasets: [{
+    datas: [{
       label: '# of Votes',
       data: [12, 19, 3, 5, 2, 3],
       backgroundColor: [
@@ -149,7 +149,7 @@ $(function() {
 
   var multiAreaData = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: [{
+    datas: [{
         label: 'Facebook',
         data: [8, 11, 13, 15, 12, 13, 16, 15, 13, 19, 11, 14],
         borderColor: ['rgba(255, 99, 132, 0.5)'],
@@ -202,8 +202,8 @@ $(function() {
   }
 
   var scatterChartData = {
-    datasets: [{
-        label: 'First Dataset',
+    datas: [{
+        label: 'First Data',
         data: [{
             x: -10,
             y: 0
@@ -230,7 +230,7 @@ $(function() {
         borderWidth: 1
       },
       {
-        label: 'Second Dataset',
+        label: 'Second Data',
         data: [{
             x: 10,
             y: 5

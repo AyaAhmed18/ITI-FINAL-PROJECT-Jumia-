@@ -59,8 +59,8 @@
     function applyStyles() {
       //Applying perfect scrollbar
       if (!body.hasClass("rtl")) {
-        if ($('.settings-panel .tab-content .tab-pane.scroll-wrapper').length) {
-          const settingsPanelScroll = new PerfectScrollbar('.settings-panel .tab-content .tab-pane.scroll-wrapper');
+        if ($('.tings-panel .tab-content .tab-pane.scroll-wrapper').length) {
+          const tingsPanelScroll = new PerfectScrollbar('.tings-panel .tab-content .tab-pane.scroll-wrapper');
         }
         if ($('.chats').length) {
           const chatsScroll = new PerfectScrollbar('.chats');

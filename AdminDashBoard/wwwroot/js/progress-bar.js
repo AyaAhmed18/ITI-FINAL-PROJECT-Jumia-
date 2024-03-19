@@ -22,16 +22,16 @@
         color: '#677ae4',
         width: 4
       },
-      // Set default step function for all animate calls
+      //  default step function for all animate calls
       step: function(state, circle) {
-        circle.path.setAttribute('stroke', state.color);
-        circle.path.setAttribute('stroke-width', state.width);
+        circle.path.Attribute('stroke', state.color);
+        circle.path.Attribute('stroke-width', state.width);
 
         var value = Math.round(circle.value() * 100);
         if (value === 0) {
-          circle.setText('');
+          circle.Text('');
         } else {
-          circle.setText(value);
+          circle.Text(value);
         }
 
       }
@@ -61,16 +61,16 @@
         color: '#46c35f',
         width: 4
       },
-      // Set default step function for all animate calls
+      //  default step function for all animate calls
       step: function(state, circle) {
-        circle.path.setAttribute('stroke', state.color);
-        circle.path.setAttribute('stroke-width', state.width);
+        circle.path.Attribute('stroke', state.color);
+        circle.path.Attribute('stroke-width', state.width);
 
         var value = Math.round(circle.value() * 100);
         if (value === 0) {
-          circle.setText('');
+          circle.Text('');
         } else {
-          circle.setText(value);
+          circle.Text(value);
         }
 
       }
@@ -100,16 +100,16 @@
         color: '#f96868',
         width: 4
       },
-      // Set default step function for all animate calls
+      //  default step function for all animate calls
       step: function(state, circle) {
-        circle.path.setAttribute('stroke', state.color);
-        circle.path.setAttribute('stroke-width', state.width);
+        circle.path.Attribute('stroke', state.color);
+        circle.path.Attribute('stroke-width', state.width);
 
         var value = Math.round(circle.value() * 100);
         if (value === 0) {
-          circle.setText('');
+          circle.Text('');
         } else {
-          circle.setText(value);
+          circle.Text(value);
         }
 
       }
@@ -139,16 +139,16 @@
         color: '#f2a654',
         width: 4
       },
-      // Set default step function for all animate calls
+      //  default step function for all animate calls
       step: function(state, circle) {
-        circle.path.setAttribute('stroke', state.color);
-        circle.path.setAttribute('stroke-width', state.width);
+        circle.path.Attribute('stroke', state.color);
+        circle.path.Attribute('stroke-width', state.width);
 
         var value = Math.round(circle.value() * 100);
         if (value === 0) {
-          circle.setText('');
+          circle.Text('');
         } else {
-          circle.setText(value);
+          circle.Text(value);
         }
 
       }
@@ -178,16 +178,16 @@
         color: '#57c7d4',
         width: 4
       },
-      // Set default step function for all animate calls
+      //  default step function for all animate calls
       step: function(state, circle) {
-        circle.path.setAttribute('stroke', state.color);
-        circle.path.setAttribute('stroke-width', state.width);
+        circle.path.Attribute('stroke', state.color);
+        circle.path.Attribute('stroke-width', state.width);
 
         var value = Math.round(circle.value() * 100);
         if (value === 0) {
-          circle.setText('');
+          circle.Text('');
         } else {
-          circle.setText(value);
+          circle.Text(value);
         }
 
       }
@@ -217,16 +217,16 @@
         color: '#2a2e3b',
         width: 4
       },
-      // Set default step function for all animate calls
+      //  default step function for all animate calls
       step: function(state, circle) {
-        circle.path.setAttribute('stroke', state.color);
-        circle.path.setAttribute('stroke-width', state.width);
+        circle.path.Attribute('stroke', state.color);
+        circle.path.Attribute('stroke-width', state.width);
 
         var value = Math.round(circle.value() * 100);
         if (value === 0) {
-          circle.setText('');
+          circle.Text('');
         } else {
-          circle.setText(value);
+          circle.Text(value);
         }
 
       }
