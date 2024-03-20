@@ -38,7 +38,6 @@ namespace Jumia.Infrastructure
         public ICategoryRepository CategoryRepository => GetRepository<ICategoryRepository, CategoryRepository>();
         public IOrderItemsRepository OrderItemsRepository => GetRepository<IOrderItemsRepository, OrderItemRepository>();
         public IOrderRepository OrderRepository => GetRepository<IOrderRepository, OrderRepository>();
-        public IPaymentRepository PaymentRepository => GetRepository<IPaymentRepository, PaymentRepository>();
         public IProductRepository ProductRepository => GetRepository<IProductRepository, ProductRepository>();
         public IReviewRepository ReviewRepository => GetRepository<IReviewRepository, ReviewRepository>();
         public IShippmentRepository ShippmentRepository => GetRepository<IShippmentRepository, ShippmentRepository>();

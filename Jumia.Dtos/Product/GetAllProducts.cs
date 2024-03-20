@@ -26,27 +26,27 @@ namespace Jumia.Dtos.Product
 
         public GetAllProducts(Jumia.Model.Product product)
         {
-           /* Id = product.Id;
-            Name = product.Name;
-            ShortDescription = product.ShortDescription;
-            RealPrice = product.RealPrice;
-            Discount = product.Discount;
-            Weight = product.Weight;
-            Size = product.Size;
-            Color = product.Color;
-            SubCategoryID = product.SubCategoryID;
-            BrandID = product.BrandID;*/
+            //Id = product.Id;
+            //Name = product.Name;
+            //ShortDescription = product.ShortDescription;
+            //RealPrice = product.RealPrice;
+            //Discount = product.Discount;
+            //Weight = product.Weight;
+            //Size = product.Size;
+            //Color = product.Color;
+            //SubCategoryID = product.SubCategoryID;
+            //BrandID = product.BrandID;
 
-            // Include logic to populate SubCategoryName and BrandName based on your data access approach
-            // (e.g., eager loading, separate queries)
-            if (product.SubCategory != null)
-            {
-                SubCategoryName = product.SubCategory.Name;
-            }
-            if (product.Brand != null)
-            {
-                BrandName = product.Brand.Name;
-            }
+            //// Include logic to populate SubCategoryName and BrandName based on your data access approach
+            //// (e.g., eager loading, separate queries)
+            //if (product.SubCategory != null)
+            //{
+            //    SubCategoryName = product.SubCategory.Name;
+            //}
+            //if (product.Brand != null)
+            //{
+            //    BrandName = product.Brand.Name;
+            //}
 
             // Consider using a dedicated Image class or a simpler representation (e.g., string URLs)
             //Images = product.Images // Assuming byte arrays represent images

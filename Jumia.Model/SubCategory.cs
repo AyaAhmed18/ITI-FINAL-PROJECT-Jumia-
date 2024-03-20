@@ -19,11 +19,17 @@ namespace Jumia.Model
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public virtual ICollection<Product> Products { get; set; }
+        //public virtual ICollection<Specification> Specifications { get; set; }
+        //[ForeignKey(nameof(SpecificationSubCategory))]
+        //public int SpecificationSubCategoryId { get; set; }
+        //public virtual ICollection<Specification> Specification { get; set; }
+
+        public virtual ICollection<Specification> Specifications { get; set; }
 
         public SubCategory()
         {
           
-            Products = new List<Product>();
+            //Products = new List<Product>();
 
         }
     }

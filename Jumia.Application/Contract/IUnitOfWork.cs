@@ -11,7 +11,6 @@ namespace Jumia.Application.Contract
         ICategoryRepository? CategoryRepository { get;  }
         IOrderItemsRepository? OrderItemsRepository { get;  }
         IOrderRepository? OrderRepository { get; }
-        IPaymentRepository? PaymentRepository { get; }
         IProductRepository? ProductRepository { get; }
         IReviewRepository? ReviewRepository { get;  }
         IShippmentRepository? ShippmentRepository { get;  }
