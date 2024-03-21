@@ -243,9 +243,6 @@ namespace Jumia.Context.Migrations
                     b.Property<int>("StockQuantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("SubCategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -255,8 +252,6 @@ namespace Jumia.Context.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BrandId");
-
-                    b.HasIndex("SubCategoryId");
 
                     b.ToTable("Products");
                 });
@@ -777,15 +772,7 @@ namespace Jumia.Context.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Jumia.Model.SubCategory", "SubCategory")
-                        .WithMany("Products")
-                        .HasForeignKey("SubCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Brand");
-
-                    b.Navigation("SubCategory");
                 });
 
             modelBuilder.Entity("Jumia.Model.ProductSpecificationSubCategory", b =>
@@ -954,8 +941,6 @@ namespace Jumia.Context.Migrations
 
             modelBuilder.Entity("Jumia.Model.SubCategory", b =>
                 {
-                    b.Navigation("Products");
-
                     b.Navigation("Specifications");
                 });
 

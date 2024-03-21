@@ -34,10 +34,10 @@ namespace Jumia.Dtos.Product
 
             // Include logic to populate SubCategoryName and BrandName based on your data access approach
             // (e.g., eager loading, separate queries)
-            if (product.SubCategory != null)
+           /* if (product.SubCategory != null)
             {
                 SubCategoryName = product.SubCategory.Name;
-            }
+            }*/
             if (product.Brand != null)
             {
                 BrandName = product.Brand.Name;
