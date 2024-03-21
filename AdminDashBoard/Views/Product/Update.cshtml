@@ -1,0 +1,85 @@
+﻿@model Jumia.Dtos.Product.CreateOrUpdateProductDto
+
+@{
+    ViewData["Title"] = "Update";
+    SelectList list = new SelectList(ViewBag.SubCategory, "Id", "Name");
+}
+
+<h1>Update</h1>
+
+<h4>CreateOrUpdateProductDto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update" method="post" asp-controller="Product" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LongDescription" class="control-label"></label>
+                <input asp-for="LongDescription" class="form-control" />
+                <span asp-validation-for="LongDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription" class="control-label"></label>
+                <input asp-for="ShortDescription" class="form-control" />
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RealPrice" class="control-label"></label>
+                <input asp-for="RealPrice" class="form-control" />
+                <span asp-validation-for="RealPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Discount" class="control-label"></label>
+                <input asp-for="Discount" class="form-control" />
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+           @*  <label asp-for="SubCategoryID" class="form-label">SubCategory</label>
+            <select asp-for="SubCategoryID" asp-items="list" class="form-select"></select>
+ *@
+             <div class="form-group">
+                <label asp-for="SubCategoryID" class="control-label"></label>
+                <input asp-for="SubCategoryID" class="form-control" />
+                <span asp-validation-for="SubCategoryID" class="text-danger"></span>
+             </div> 
+           @*  <div class="form-group">
+                <label asp-for="SubCategoryName" class="control-label"></label>
+                <input asp-for="SubCategoryName" class="form-control" />
+                <span asp-validation-for="SubCategoryName" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="BrandID" class="control-label"></label>
+                <input asp-for="BrandID" class="form-control" />
+                <span asp-validation-for="BrandID" class="text-danger"></span>
+            </div>
+           @*  <div class="form-group">
+                <label asp-for="BrandName" class="control-label"></label>
+                <input asp-for="BrandName" class="form-control" />
+                <span asp-validation-for="BrandName" class="text-danger"></span>
+            </div> *@
+            @*<div class="mb-3">
+                @if (Model.Image != null && Model.Image.Length > 0)
+                {
+                    <label>Current Image:</label>
+                    <div> <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Image)" width="200px" height="200px" alt="Current Image" class="img-fluid"> </div>
+                }
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -29,7 +29,7 @@ namespace AdminDashBoard
              builder.Services.AddScoped<IOrderRepository, OrderRepository>();
              builder.Services.AddScoped<IOrderItemsRepository, OrderItemRepository>();
              builder.Services.AddScoped<IShippmentRepository, ShippmentRepository>();
-            //builder.Services.AddScoped<IProductServices, ProductService>();
+            builder.Services.AddScoped<IProductServices, ProductService>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
             builder.Services.AddScoped<IUserService, UserService>();

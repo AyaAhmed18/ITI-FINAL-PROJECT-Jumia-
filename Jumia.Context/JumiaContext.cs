@@ -25,6 +25,7 @@ namespace Jumia.Context
         public virtual DbSet<Brand> Brands { get; set; }
         //public virtual DbSet<SpecificationSubCategory> SpecificationSubCategories { get; set; }
         public virtual DbSet<ProductSpecificationSubCategory> ProductSpecificationSubCategory { get; set; }
+        public virtual DbSet<SubCategorySpecification> SubCategorySpecifications { get; set; }
 
         public JumiaContext(DbContextOptions<JumiaContext> dbContextOptions) : base(dbContextOptions) { }
 
