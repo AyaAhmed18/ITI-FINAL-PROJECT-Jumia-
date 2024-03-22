@@ -2,6 +2,7 @@
 using Jumia.Dtos.Category;
 using Jumia.Dtos.Order;
 using Jumia.Dtos.OrderItems;
+using Jumia.Dtos.Product;
 using Jumia.Dtos.Shippment;
 using Jumia.Dtos.SubCategory;
 using Jumia.Dtos.User;
@@ -29,10 +30,12 @@ namespace Jumia.Application.Mapper
         {
             //Category
             CreateMap<Category , CreateOrUpdateCategoryDto>()
-               // .ForMember(dest=>dest.Name,opt=>opt.MapFrom(src=>src.GetLocalized(src.NameAr,src.Name) ))
+              //  .ForMember(dest=>dest.Name,opt=>opt.MapFrom(src=>src.GetLocalized(src.NameAr,src.Name) ))
                 .ReverseMap();
             CreateMap< Category , GetAllCategoryDto>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
+               
+
                 .ReverseMap();
             CreateMap<GetAllCategoryDto, CreateOrUpdateCategoryDto>()
                 .ReverseMap();
@@ -44,7 +47,7 @@ namespace Jumia.Application.Mapper
                 .ReverseMap();
             CreateMap< SubCategory, GetAllSubDto>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
-
+                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
                 .ReverseMap();
             CreateMap<GetAllSubDto , CreateOrUpdateSubDto>().ReverseMap() ;
 
@@ -57,6 +60,7 @@ namespace Jumia.Application.Mapper
             //Order&OrderItmes
             CreateMap<GetAllOrdersDTO, Order>().ReverseMap();
              CreateMap<CreateOrUpdateOrderDto, Order>()
+                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
                 .ReverseMap();
             CreateMap<GetAllOrderItemsDto, OrderItems>()
                 
@@ -74,6 +78,9 @@ namespace Jumia.Application.Mapper
                 .ReverseMap();
             CreateMap<Shippment, CreateOrUpdateShipmentDto >().ReverseMap();
 
+            //Product
+            CreateMap<Product, GetAllProducts>().ReverseMap();
+            CreateMap<Product,CreateOrUpdateProductDto>().ReverseMap();
 
         }
        

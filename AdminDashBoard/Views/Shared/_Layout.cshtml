@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="~/vendors/typicons/typicons.css">
     <link rel="stylesheet" href="~/vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="~/vendors/css/vendor.bundle.base.css">
+  
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="~/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
@@ -21,12 +22,9 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="~/css/vertical-layout-light/style.css">
-    <link rel="stylesheet" href="~/css/AddUser.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="~/images/favicon.png" />
-     <script src= "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"> </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body dir="@AdminDashBoard.Languages.Resource.dir">
     <div class="container-scroller">
@@ -210,8 +208,9 @@
                             @AdminDashBoard.Languages.Resource.Language
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-action="SetLanguage" asp-controller="Language" asp-route-lang="ar-EG">@AdminDashBoard.Languages.Resource.Arabic</a></li>
-                            <li><a class="dropdown-item" asp-action="SetLanguage" asp-controller="Language" asp-route-lang="en-US">@AdminDashBoard.Languages.Resource.English</a></li>
+                            <li><a class="dropdown-item" asp-controller="Language" asp-action="Arabic">@AdminDashBoard.Languages.Resource.Arabic</a></li>
+                            <li><a class="dropdown-item" asp-controller="Language" asp-action="English">@AdminDashBoard.Languages.Resource.English</a></li>
+
                         </ul>
                     </li>
                 </ul>
@@ -394,7 +393,6 @@
             </div>
             <!-- partial -->
             <!-- partial:partials/_sidebar.html -->
-            @* Admin *@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
@@ -412,15 +410,15 @@
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" asp-action="Register" asp-controller="Account">@AdminDashBoard.Languages.Resource.Registeration</a></li>
-                                <li class="nav-item"><a class="nav-link" asp-action="Login" asp-controller="Account" asp-route-lang="en-US">@AdminDashBoard.Languages.Resource.Login</a></li>
-                                <li class ="nav-item"><a class="nav-link" asp-action="AddUser" asp-controller="Admin" asp-route-lang="en-US">@AdminDashBoard.Languages.Resource.AddUser</a></li>
-                                </ul>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="Account" asp-action="Register">@AdminDashBoard.Languages.Resource.Registeration</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="Account" asp-action="Login">@AdminDashBoard.Languages.Resource.Login</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="Admin" asp-action="AddUser">@AdminDashBoard.Languages.Resource.AddUser</a></li>
+                            </ul>
                         </div>
                     </li>
                     <li class="nav-item nav-category">@AdminDashBoard.Languages.Resource.sidebar </li>
 
-                    @* Product *@
+
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                             <i class="menu-icon mdi mdi-shopping              -text-outline"></i>
@@ -437,7 +435,11 @@
                                 <li class="nav-item"><a class="nav-link" asp-action="create" asp-controller="Product">@AdminDashBoard.Languages.Resource.AddProduct</a></li>
                             </ul>
                         </div>
-                        
+                        @* <div class="collapse" id="form-elements">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="#">@AdminDashBoard.Languages.Resource.UpdataProduct</a></li>
+                            </ul>
+                        </div> *@
                         @* <div class="collapse" id="form-elements">
                         <ul class="nav flex-column sub-menu">
                         <li class="nav-item"><a class="nav-link" href="#">Delete Product</a></li>
@@ -445,7 +447,7 @@
                         </div> *@
                     </li>
 
-                    @* Order *@
+
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
                             <i class="menu-icon mdi mdi-cart-plus"></i>
@@ -457,7 +459,7 @@
                                 <li class="nav-item"> <a class="nav-link" asp-action="Index" asp-controller="Order"> @AdminDashBoard.Languages.Resource.Orders</a></li>
                             </ul>
                         </div>
-                        <div class="collapse" id="charts">
+                       @*  <div class="collapse" id="charts">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="#">@AdminDashBoard.Languages.Resource.UpdataOrder</a></li>
                             </ul>
@@ -466,10 +468,9 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="#">@AdminDashBoard.Languages.Resource.DeleteOrder</a></li>
                             </ul>
-                        </div>
+                        </div> *@
                     </li>
-                    
-                    @* Category *@
+
 
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
@@ -484,17 +485,17 @@
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" asp-action="Create" asp-controller="Category">@AdminDashBoard.Languages.Resource.AddCategory</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="create" asp-controller="Category">@AdminDashBoard.Languages.Resource.AddCategory</a></li>
                             </ul>
                         </div>
-                        @* <div class="collapse" id="tables">
+                       @*  <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">@AdminDashBoard.Languages.Resource.UpdateCategory</a></li>
                             </ul>
                         </div> *@
                     </li>
 
-                    @* sub Category *@
+
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#suptables" aria-expanded="false" aria-controls="tables">
                             <i class="menu-icon mdi mdi-package-variant-closed"></i>
@@ -511,11 +512,11 @@
                                 <li class="nav-item"> <a class="nav-link" asp-action="create" asp-controller="SubCategory">@AdminDashBoard.Languages.Resource.AddSubCategory</a></li>
                             </ul>
                         </div>
-                       @*  <div class="collapse" id="suptables">
+                        <div class="collapse" id="suptables">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">@AdminDashBoard.Languages.Resource.UpdateSubCategory</a></li>
                             </ul>
-                        </div> *@
+                        </div>
                     </li>
 
 
@@ -656,12 +657,12 @@
 
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="~/js/AddUser.js"></script>
     <script src="~/js/off-canvas.js"></script>
     <script src="~/js/hoverable-collapse.js"></script>
     <script src="~/js/template.js"></script>
     <script src="~/js/tings.js"></script>
     <script src="~/js/todolist.js"></script>
+
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="~/js/dashboard.js"></script>
@@ -669,7 +670,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    
     <!-- End custom js for this page-->
 </body>
 

@@ -1,5 +1,4 @@
-﻿using Jumia.Application.Contract;
-using Jumia.Dtos.Category;
+﻿using Jumia.Dtos.Category;
 using Jumia.DTOS.ViewResultDtos;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -8,12 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jumia.Application.IServices
+namespace Jumia.Application.Services.IServices
 {
     public interface ICategoryService
     {
-
-
         //Create
         Task<ResultView<CreateOrUpdateCategoryDto>> Create(CreateOrUpdateCategoryDto categoryDto, IFormFile image);
 
@@ -28,15 +25,6 @@ namespace Jumia.Application.IServices
 
         //GetOne
         Task<ResultView<GetAllCategoryDto>> GetOne(int id);
-
-
-
-
-
-
-
-
-
 
 
     }

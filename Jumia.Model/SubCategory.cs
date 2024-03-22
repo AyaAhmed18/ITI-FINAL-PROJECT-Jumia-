@@ -14,16 +14,18 @@ namespace Jumia.Model
         public string NameAr { get; set; }
         public string? Description { get; set; }
         public byte[]? Image { get; set; }
-
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+
+     //   public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<SubCategorySpecification> Specifications { get; set; }
 
         public SubCategory()
         {
           
-            Products = new List<Product>();
+          //  Products = new List<Product>();
+            Specifications = new List<SubCategorySpecification>();
 
         }
     }

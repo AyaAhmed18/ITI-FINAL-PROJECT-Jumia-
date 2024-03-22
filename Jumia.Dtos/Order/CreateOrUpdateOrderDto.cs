@@ -24,8 +24,6 @@ namespace Jumia.Dtos.Order
         public bool? CancelOrder { get; set; }
         public int CustomerId { get; set; }
        // public string Customer { get; set; }
-        public int PaymentId { get; set; }
-        public int shippment { get; set; }
 
         private readonly IStringLocalizer<SharedRecources> _localizer;
         public enum OrderStatus
@@ -36,7 +34,7 @@ namespace Jumia.Dtos.Order
             Canceled,
             Returned
         }
-        public string GetLocalizedStatus()
+       /* public string GetLocalizedStatus()
         {
             switch (Status)
             {
@@ -53,6 +51,6 @@ namespace Jumia.Dtos.Order
                 default:
                     return "";
             }
-        }
+        }*/
     }
 }

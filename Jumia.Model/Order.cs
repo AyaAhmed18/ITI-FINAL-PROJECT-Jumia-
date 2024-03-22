@@ -20,27 +20,25 @@ namespace Jumia.Model
         public DateTime? DeliveredDate { get; set; }
         public bool? CancelOrder { get; set; }
 
-        [ForeignKey("Customer")] ////////
+        [ForeignKey("Customer")] 
         public int CustomerId { get; set; }
         public UserIdentity Customer { get; set; }
-        [ForeignKey("payment")] ////////
-        public int PaymentId { get; set; }
-        public Payment payment { get; set; }
-        public ICollection<OrderItems> OrderItems { get; set; }
+       
+        public virtual ICollection<OrderItems> OrderItems { get; set; }
         public virtual Shippment Shipping { get; set; }
         public Order()
         {
             OrderItems = new List<OrderItems>();
             Status = "Processing";
         }
-
-        /* public enum OrderStatus
-         {
-             Processing ,
-             Shipped ,
-             Delivered ,
-             Canceled
-         }*/
+        public enum PaymentStatus
+        {
+            PayPall,
+            MobileMoney,
+            Cash
+        }
+        public PaymentStatus paymentStatus { get; set; }
+      
 
     }
 }

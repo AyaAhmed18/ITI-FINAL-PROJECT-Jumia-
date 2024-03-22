@@ -9,6 +9,6 @@
         public string? Website { get; set; }
 
         // Navigation property to represent the one-to-many relationship with products
-        public ICollection<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

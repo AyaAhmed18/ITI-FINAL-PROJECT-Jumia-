@@ -4,6 +4,8 @@ using Jumia.Application.IServices;
 using Jumia.Application.Services.IServices;
 using Jumia.Dtos.Product;
 using Jumia.DTOS.ViewResultDtos;
+using Jumia.Model;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Jumia.Application.Services
 {
-    public class ProductService:IProductServices
+    public class ProductService : IProductServices
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -22,28 +24,201 @@ namespace Jumia.Application.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        //public async Task<ResultDataForPagination<GetAllProducts>> GetAllPagination(int items, int pagenumber) //10 , 3 -- 20 30
+        //private readonly IProductRepository _productRepository;
+        //private readonly IMapper _mapper;
+
+        //public ProductService(IProductRepository productRepository, IMapper mapper)
         //{
-        //    //var AlldAta = (await _unitOfWork.ProductRepository.GetAllAsync());
-        //    //var Prds = AlldAta.Skip(items * (pagenumber - 1)).Take(items)
-        //    //                                  .Select(p => new GetAllProducts()
-        //    //                                  {
-        //    //                                      Id = p.Id,
-        //    //                                      Name = p.Name,
-        //    //                                      RealPrice = p.RealPrice,
-        //    //                                      SubCategoryName = p.SubCategory.Name
-        //    //                                  }).ToList();
-        //    //ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
-        //    //resultDataList.Entities = Prds;
-        //    ////resultDataList.Count = AlldAta.Count();
-        //    //return resultDataList;
-        //    throw NotImplementedException;
+        //    _productRepository = productRepository;
+        //    _mapper = mapper;
         //}
-        //public async Task<CreateOrUpdateProductDTO> GetOne(int ID)
+        public async Task<ResultDataForPagination<GetAllProducts>> GetAllPagination(int items, int pagenumber) //10 , 3 -- 20 30
+        {
+            var AlldAta = (await _unitOfWork.ProductRepository.GetAllAsync());
+            var Prds = AlldAta
+                .Skip(items * (pagenumber - 1))
+                .Take(items)
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            //resultDataList.Count = AlldAta.Count();
+            return resultDataList;
+        }
+
+
+        //Create
+        public async Task<ResultView<CreateOrUpdateProductDto>> Create(CreateOrUpdateProductDto ProductDto, List<IFormFile> images)
+        {
+            var Data = await _unitOfWork.ProductRepository.GetAllAsync();
+            var OldProduct = Data.Where(c => c.Name == ProductDto.Name).FirstOrDefault();
+
+            if (OldProduct != null)
+            {
+                return new ResultView<CreateOrUpdateProductDto> { Entity = null, IsSuccess = false, Message = "Product Already Exist" };
+
+            }
+            else
+            {
+
+                if (images != null)
+                {
+                    foreach (var image in images)
+                    {
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            await image.CopyToAsync(memoryStream);
+
+                            ProductDto.Images.Add(memoryStream.ToArray());
+                        }
+                    }
+                }
+
+
+                var ProductEnt = _mapper.Map<Product>(ProductDto);
+                var NewProduct = await _unitOfWork.ProductRepository.CreateAsync(ProductEnt);
+                await _unitOfWork.ProductRepository.SaveChangesAsync();
+                var productDto = _mapper.Map<CreateOrUpdateProductDto>(NewProduct);
+
+
+                return new ResultView<CreateOrUpdateProductDto> { Entity = productDto, IsSuccess = true, Message = "Product Created Successfully" };
+            }
+
+
+        }
+
+        public async Task<ResultView<CreateOrUpdateProductDto>> Update(CreateOrUpdateProductDto productDto, List<IFormFile> images)
+        {
+
+            var Oldproduct = await _unitOfWork.ProductRepository.GetOneAsync(productDto.Id);
+            if (Oldproduct == null)
+            {
+                return new ResultView<CreateOrUpdateProductDto> { Entity = null, IsSuccess = false, Message = "product Not Found!" };
+
+            }
+            else
+            {
+                //_mapper.Map<product>(productDto);
+                _mapper.Map(productDto, Oldproduct);
+                if (images != null)
+                {
+                    foreach (var image in images)
+                    {
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            await image.CopyToAsync(memoryStream);
+
+                            productDto.Images.Add(memoryStream.ToArray());
+                        }
+                    }
+                }
+
+                var UPproduct = await _unitOfWork.ProductRepository.UpdateAsync(Oldproduct);
+                await _unitOfWork.ProductRepository.SaveChangesAsync();
+                var ProductDto = _mapper.Map<CreateOrUpdateProductDto>(UPproduct);
+
+                return new ResultView<CreateOrUpdateProductDto> { Entity = ProductDto, IsSuccess = true, Message = "product Updated Successfully" };
+            }
+        }
+
+
+
+       
+
+
+
+        // delete
+        public async Task<ResultView<CreateOrUpdateProductDto>> Delete(CreateOrUpdateProductDto productDto)
+        {
+            try
+            {
+                var product = await _unitOfWork.ProductRepository.GetOneAsync(productDto.Id);
+                if (product == null)
+                {
+                    return new ResultView<CreateOrUpdateProductDto> { Entity = null, IsSuccess = false, Message = "product Not Found!" };
+                }
+
+                await _unitOfWork.ProductRepository.DeleteAsync(product);
+                await _unitOfWork.ProductRepository.SaveChangesAsync();
+
+                var ProductDto = _mapper.Map<CreateOrUpdateProductDto>(product);
+                return new ResultView<CreateOrUpdateProductDto> { Entity = ProductDto, IsSuccess = true, Message = "Deleted Successfully" };
+            }
+            catch (Exception ex)
+            {
+                return new ResultView<CreateOrUpdateProductDto> { Entity = null, IsSuccess = false, Message = ex.Message };
+            }
+        }
+
+
+
+
+
+
+
+        //GetOne
+        public async Task<ResultView<GetAllProducts>> GetOne(int id)
+        {
+            var product = await _unitOfWork.ProductRepository.GetOneAsync(id);
+            if (product == null)
+            {
+                return new ResultView<GetAllProducts> { Entity = null, IsSuccess = false, Message = "Not Found!" };
+            }
+            else
+            {
+                var productDto = _mapper.Map<GetAllProducts>(product);
+
+                return new ResultView<GetAllProducts> { Entity = productDto, IsSuccess = true, Message = "Succses" };
+            }
+        }
+
+
+
+
+
+
+
+        //public async Task<ResultView<CreateOrUpdateProductDto>> HardDelete(CreateOrUpdateProductDto product)
+        //{
+        //    try
+        //    {
+        //        var PRd = _mapper.Map<Product>(product);
+        //        var Oldprd = _productRepository.DeleteAsync(PRd);
+        //        await _productRepository.SaveChangesAsync();
+        //        var PrdDto = _mapper.Map<CreateOrUpdateProductDto>(Oldprd);
+        //        return new ResultView<CreateOrUpdateProductDto> { Entity = PrdDto, IsSuccess = true, Message = "Deleted Successfully" };
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return new ResultView<CreateOrUpdateProductDto> { Entity = null, IsSuccess = false, Message = ex.Message };
+
+        //    }
+        //}
+        //public async Task<ResultView<CreateOrUpdateProductDto>> SoftDelete(CreateOrUpdateProductDto product)
+        //{
+        //    try
+        //    {
+        //        var PRd = _mapper.Map<Product>(product);
+        //        var Oldprd = (await _productRepository.GetAllAsync()).FirstOrDefault(p => p.Id == product.Id);
+        //        Oldprd.IsDeleted = true;
+        //        await _productRepository.SaveChangesAsync();
+        //        var PrdDto = _mapper.Map<CreateOrUpdateProductDto>(Oldprd);
+        //        return new ResultView<CreateOrUpdateProductDto> { Entity = PrdDto, IsSuccess = true, Message = "Deleted Successfully" };
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return new ResultView<CreateOrUpdateProductDto> { Entity = null, IsSuccess = false, Message = ex.Message };
+
+        //    }
+        //}
+
+
+        //public async Task<CreateOrUpdateProductDto> GetOne(int ID)
         //{
         //    var prd = await _productRepository.GetByIdAsync(ID);
-        //    var REturnPrd = _mapper.Map<CreateOrUpdateProductDTO>(prd);
+        //    var REturnPrd = _mapper.Map<CreateOrUpdateProductDto>(prd);
         //    return REturnPrd;
         //}
     }
+
 }
