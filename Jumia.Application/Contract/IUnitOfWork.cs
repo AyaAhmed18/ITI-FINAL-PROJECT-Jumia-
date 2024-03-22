@@ -8,13 +8,12 @@ namespace Jumia.Application.Contract
 {
     public interface IUnitOfWork 
     {
-        ICategoryRepository? CategoryRepository { get;  }
-        IOrderItemsRepository? OrderItemsRepository { get;  }
+        ICategoryRepository? CategoryRepository { get; }
+        IOrderItemsRepository? OrderItemsRepository { get; }
         IOrderRepository? OrderRepository { get; }
-        IPaymentRepository? PaymentRepository { get; }
         IProductRepository? ProductRepository { get; }
-        IReviewRepository? ReviewRepository { get;  }
-        IShippmentRepository? ShippmentRepository { get;  }
+        IReviewRepository? ReviewRepository { get; }
+        IShippmentRepository? ShippmentRepository { get; }
         ISubCategoryRepository? SubCategoryRepository { get; }
         //IRepository<TEntity,Tid> Repository<TEntity,Tid>() where TEntity : class;
         Task SaveChangesAsync();

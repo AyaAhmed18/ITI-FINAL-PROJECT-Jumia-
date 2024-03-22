@@ -2,6 +2,7 @@
 using Jumia.Dtos.Category;
 using Jumia.Dtos.Order;
 using Jumia.Dtos.OrderItems;
+using Jumia.Dtos.Product;
 using Jumia.Dtos.Shippment;
 using Jumia.Dtos.SubCategory;
 using Jumia.Dtos.User;
@@ -77,6 +78,9 @@ namespace Jumia.Application.Mapper
                 .ReverseMap();
             CreateMap<Shippment, CreateOrUpdateShipmentDto >().ReverseMap();
 
+            //Product
+            CreateMap<Product, GetAllProducts>().ReverseMap();
+            CreateMap<Product,CreateOrUpdateProductDto>().ReverseMap();
 
         }
        

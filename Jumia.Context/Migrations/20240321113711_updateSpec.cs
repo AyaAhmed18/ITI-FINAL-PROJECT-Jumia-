@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Jumia.Context.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class updateSpec : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -90,15 +90,12 @@ namespace Jumia.Context.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Payment",
+                name: "Specifications",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<int>(type: "int", nullable: false),
-                    CreditAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Balance = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -107,7 +104,7 @@ namespace Jumia.Context.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Payment", x => x.Id);
+                    table.PrimaryKey("PK_Specifications", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -217,6 +214,71 @@ namespace Jumia.Context.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Order",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TotalAmount = table.Column<int>(type: "int", nullable: false),
+                    TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Discount = table.Column<int>(type: "int", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Shipped = table.Column<bool>(type: "bit", nullable: true),
+                    ShippedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Delivered = table.Column<bool>(type: "bit", nullable: true),
+                    DeliveredDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CancelOrder = table.Column<bool>(type: "bit", nullable: true),
+                    CustomerId = table.Column<int>(type: "int", nullable: false),
+                    paymentStatus = table.Column<int>(type: "int", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Order", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Order_AspNetUsers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LongDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ShortDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StockQuantity = table.Column<int>(type: "int", nullable: false),
+                    RealPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Images = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BrandId = table.Column<int>(type: "int", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_Brands_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "Brands",
+                        principalColumn: "BrandID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SubCategory",
                 columns: table => new
                 {
@@ -240,84 +302,6 @@ namespace Jumia.Context.Migrations
                         name: "FK_SubCategory_Category_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Category",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Order",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TotalAmount = table.Column<int>(type: "int", nullable: false),
-                    TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Discount = table.Column<int>(type: "int", nullable: true),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Shipped = table.Column<bool>(type: "bit", nullable: true),
-                    ShippedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Delivered = table.Column<bool>(type: "bit", nullable: true),
-                    DeliveredDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CancelOrder = table.Column<bool>(type: "bit", nullable: true),
-                    CustomerId = table.Column<int>(type: "int", nullable: false),
-                    PaymentId = table.Column<int>(type: "int", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Order", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Order_AspNetUsers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Order_Payment_PaymentId",
-                        column: x => x.PaymentId,
-                        principalTable: "Payment",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Products",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LongDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ShortDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StockQuantity = table.Column<int>(type: "int", nullable: false),
-                    RealPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Images = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SubCategoryID = table.Column<int>(type: "int", nullable: false),
-                    BrandId = table.Column<int>(type: "int", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Products", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Products_Brands_BrandId",
-                        column: x => x.BrandId,
-                        principalTable: "Brands",
-                        principalColumn: "BrandID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Products_SubCategory_SubCategoryID",
-                        column: x => x.SubCategoryID,
-                        principalTable: "SubCategory",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -401,36 +385,6 @@ namespace Jumia.Context.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductItems",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ItemQuantity = table.Column<int>(type: "int", nullable: false),
-                    Pro_Weight = table.Column<float>(type: "real", nullable: true),
-                    Pro_Size = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Color = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Storge = table.Column<int>(type: "int", nullable: true),
-                    Images = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Pro_Id = table.Column<int>(type: "int", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductItems", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProductItems_Products_Pro_Id",
-                        column: x => x.Pro_Id,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Review",
                 columns: table => new
                 {
@@ -461,6 +415,59 @@ namespace Jumia.Context.Migrations
                         name: "FK_Review_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubCategorySpecifications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SubCategoryId = table.Column<int>(type: "int", nullable: false),
+                    specificationId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubCategorySpecifications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SubCategorySpecifications_Specifications_specificationId",
+                        column: x => x.specificationId,
+                        principalTable: "Specifications",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SubCategorySpecifications_SubCategory_SubCategoryId",
+                        column: x => x.SubCategoryId,
+                        principalTable: "SubCategory",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductSpecificationSubCategory",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    SubSpecId = table.Column<int>(type: "int", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductSpecificationSubCategory", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductSpecificationSubCategory_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductSpecificationSubCategory_SubCategorySpecifications_SubSpecId",
+                        column: x => x.SubSpecId,
+                        principalTable: "SubCategorySpecifications",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -510,11 +517,6 @@ namespace Jumia.Context.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_PaymentId",
-                table: "Order",
-                column: "PaymentId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_OrderId",
                 table: "OrderItems",
                 column: "OrderId");
@@ -525,19 +527,19 @@ namespace Jumia.Context.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductItems_Pro_Id",
-                table: "ProductItems",
-                column: "Pro_Id");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Products_BrandId",
                 table: "Products",
                 column: "BrandId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_SubCategoryID",
-                table: "Products",
-                column: "SubCategoryID");
+                name: "IX_ProductSpecificationSubCategory_ProductId",
+                table: "ProductSpecificationSubCategory",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductSpecificationSubCategory_SubSpecId",
+                table: "ProductSpecificationSubCategory",
+                column: "SubSpecId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Review_CustomerId",
@@ -564,6 +566,16 @@ namespace Jumia.Context.Migrations
                 name: "IX_SubCategory_CategoryId",
                 table: "SubCategory",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SubCategorySpecifications_specificationId",
+                table: "SubCategorySpecifications",
+                column: "specificationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SubCategorySpecifications_SubCategoryId",
+                table: "SubCategorySpecifications",
+                column: "SubCategoryId");
         }
 
         /// <inheritdoc />
@@ -588,7 +600,7 @@ namespace Jumia.Context.Migrations
                 name: "OrderItems");
 
             migrationBuilder.DropTable(
-                name: "ProductItems");
+                name: "ProductSpecificationSubCategory");
 
             migrationBuilder.DropTable(
                 name: "Review");
@@ -600,22 +612,25 @@ namespace Jumia.Context.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "SubCategorySpecifications");
+
+            migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Order");
 
             migrationBuilder.DropTable(
-                name: "Brands");
+                name: "Specifications");
 
             migrationBuilder.DropTable(
                 name: "SubCategory");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Brands");
 
             migrationBuilder.DropTable(
-                name: "Payment");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Category");

@@ -13,17 +13,6 @@ namespace Jumia.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        //private readonly JumiaContext _jumiaContext;
-        //private readonly ILogger _logger;
-        //private Hashtable _repositories;
-        //public ICategoryRepository CategoryRepository { get; private set; }
-        //public IOrderItemsRepository OrderItemsRepository { get; private set; }
-        //public IOrderRepository OrderRepository { get; private set; }
-        //public IPaymentRepository PaymentRepository { get; private set; }
-        //public IProductRepository ProductRepository { get; private set; }
-        //public IReviewRepository ReviewRepository { get; private set; }
-        //public IShippmentRepository ShippmentRepository { get; private set; }
-        //public ISubCategoryRepository SubCategoryRepository { get; private set; }
         private readonly JumiaContext _jumiaContext;
         private readonly ILogger _logger; // Assuming you have a logging mechanism
         private Hashtable _repositories;
@@ -38,7 +27,6 @@ namespace Jumia.Infrastructure
         public ICategoryRepository CategoryRepository => GetRepository<ICategoryRepository, CategoryRepository>();
         public IOrderItemsRepository OrderItemsRepository => GetRepository<IOrderItemsRepository, OrderItemRepository>();
         public IOrderRepository OrderRepository => GetRepository<IOrderRepository, OrderRepository>();
-        public IPaymentRepository PaymentRepository => GetRepository<IPaymentRepository, PaymentRepository>();
         public IProductRepository ProductRepository => GetRepository<IProductRepository, ProductRepository>();
         public IReviewRepository ReviewRepository => GetRepository<IReviewRepository, ReviewRepository>();
         public IShippmentRepository ShippmentRepository => GetRepository<IShippmentRepository, ShippmentRepository>();
@@ -104,18 +92,18 @@ namespace Jumia.Infrastructure
         //{
         //    if (_repositories == null) _repositories = new Hashtable();
 
-           /* var type = typeof(TEntity).Name;
+        /* var type = typeof(TEntity).Name;
 
-            if (!_repositories.ContainsKey(type))
-            {
-                var repositoryType = typeof(Repository<TEntity,Tid>);
-                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _jumiaContext);
+         if (!_repositories.ContainsKey(type))
+         {
+             var repositoryType = typeof(Repository<TEntity,Tid>);
+             var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _jumiaContext);
 
-                _repositories.Add(type, repositoryInstance);
-            }
+             _repositories.Add(type, repositoryInstance);
+         }
 
-            return (IRepository<TEntity,Tid>)_repositories[type];*/
+         return (IRepository<TEntity,Tid>)_repositories[type];*/
 
-        }
     }
+}
 
