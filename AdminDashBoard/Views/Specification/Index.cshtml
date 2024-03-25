@@ -2,22 +2,28 @@
 @using Jumia.Dtos.SubCategorySpecifications
 @* @model ResultDataForPagination<GetAllSpecificationDto> *@
 @model ResultView<CreateOrUpdateSubCategorySpecificationDto>
+@{
+    Layout = "_Layout";
+    int Index = 0;
 
-
-<form>
-    <input type="type" name="name" value="" asp-for="Entity.SubCategoryId" />
+}
+<form asp-action="create" method="post">
+    @* <input type="type" name="name" value="" asp-for="Entity.SubCategoryId" /> *@
+    <div class="title">Specification:</div>
+    @* <span asp-validation-for="Entity.SelectedSpecification" class="text-danger"></span> *@
 <ul class="ks-cboxtags">
         @foreach (var spec in ViewBag.spec)
-    {
-        <li>
-                <input type="checkbox" name="SelectedSpec" value="@spec" id="spec_@spec.Name" asp-for="Entity.SelectedSpecification">
+        {
+            <li>
+                <input type="checkbox" name="Entity.SelectedSpecification[@Index]" value="@spec.Name" id="spec_@spec.Name">
                 <label for="spec_@spec.Name">@spec.Name</label>
-        </li>
-
-    }
+            </li>
+           @*  <li>
+                <input type="checkbox" name="Entity.SelectedSpecification" value="@spec.Name" id="spec_@spec.Name">
+                <label for="spec_@spec.Name">@spec.Name</label>
+            </li> *@
+        }
 </ul>
-
-    <div class="title">6-@AdminDashBoard.Languages.Resource.Submit:</div>
     <button class="submit">@AdminDashBoard.Languages.Resource.Submit</button>
 
 </form>
