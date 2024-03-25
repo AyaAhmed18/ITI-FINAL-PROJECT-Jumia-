@@ -27,15 +27,15 @@ namespace Jumia.Application.Services
 
         
 
-        public async Task<ResultDataForPagination<GetAllSpecificationDto>> GetAll() //10 , 3 -- 20 30
+        public async Task<List<GetAllSpecificationDto>> GetAll() //10 , 3 -- 20 30
         {
             var AlldAta = (await _specificationRepository.GetAllAsync());
             var specifications = AlldAta.ToList();
-            var Specifications = _mapper.Map<List<GetAllSpecificationDto>>(specifications);
-            ResultDataForPagination<GetAllSpecificationDto> resultDataList = new ResultDataForPagination<GetAllSpecificationDto>();
-            resultDataList.Entities = Specifications;
+            List<GetAllSpecificationDto> Specifications = _mapper.Map<List<GetAllSpecificationDto>>(specifications);
+           // ResultDataForPagination<GetAllSpecificationDto> resultDataList = new ResultDataForPagination<GetAllSpecificationDto>();
+        //    resultDataList.Entities = Specifications;
             //resultDataList.Count = AlldAta.Count();
-            return resultDataList;
+            return Specifications;
         }
 
         public Task<ResultView<GetAllSpecificationDto>> GetOne(int ID)

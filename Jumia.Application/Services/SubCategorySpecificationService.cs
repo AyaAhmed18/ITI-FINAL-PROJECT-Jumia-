@@ -60,9 +60,39 @@ namespace Jumia.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<ResultView<CreateOrUpdateSubCategorySpecificationDto>> Update(CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto)
+        public async Task<ResultView<CreateOrUpdateSubCategorySpecificationDto>> Update(CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var Data = await _subCategorySpecificationRepository.GetOneAsync(subCategorySpecificationDto.Id);
+
+                if (Data == null)
+                {
+                    return new ResultView<CreateOrUpdateSubCategorySpecificationDto> { Entity = null, IsSuccess = false, Message = "Spec Not Found!" };
+
+                }
+                else
+                {
+                    var spec = _mapper.Map<SubCategorySpecification>(subCategorySpecificationDto);
+                    var ospecEdit = await _subCategorySpecificationRepository.UpdateAsync(spec);
+                    await _subCategorySpecificationRepository.SaveChangesAsync();
+                    var specDto = _mapper.Map<CreateOrUpdateSubCategorySpecificationDto>(ospecEdit);
+
+                    return new ResultView<CreateOrUpdateSubCategorySpecificationDto> { Entity = specDto, IsSuccess = true, Message = "Spec Updated Successfully" };
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new ResultView<CreateOrUpdateSubCategorySpecificationDto>
+                {
+                    Entity = null,
+                    IsSuccess = false,
+                    Message = $"Something went wrong: {ex.Message}"
+                };
+                // Console.WriteLine($"An error occurred: {ex.Message}");
+                //throw;
+            }
         }
     }
 }

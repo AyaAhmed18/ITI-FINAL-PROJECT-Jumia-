@@ -156,6 +156,9 @@
   <data name="Arabic" xml:space="preserve">
     <value>عربى</value>
   </data>
+  <data name="Arabic Name" xml:space="preserve">
+    <value>الاسم بالعربية</value>
+  </data>
   <data name="Audiences" xml:space="preserve">
     <value>الجماهير</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="English" xml:space="preserve">
     <value>انجليزى</value>
+  </data>
+  <data name="English Name" xml:space="preserve">
+    <value>الاسم بالانجليزية</value>
   </data>
   <data name="EnterPhone" xml:space="preserve">
     <value>ادخل الهاتف</value>
