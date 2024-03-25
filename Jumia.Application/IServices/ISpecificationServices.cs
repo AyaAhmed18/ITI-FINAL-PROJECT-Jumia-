@@ -11,7 +11,7 @@ namespace Jumia.Application.IServices
 {
     public interface ISpecificationServices
     {
-        Task<ResultDataForPagination<GetAllSpecificationDto>> GetAll();
+        Task<List<GetAllSpecificationDto>> GetAll();
         Task<ResultView<GetAllSpecificationDto>> GetOne(int ID);
     }
 }
