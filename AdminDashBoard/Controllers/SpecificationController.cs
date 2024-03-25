@@ -35,29 +35,39 @@ namespace AdminDashBoard.Controllers
         public async Task<ActionResult> Create()
         {
            // var specifications = await _subCategorySpecificationsService.GetAll();
-            var spec = await _specificationServices.GetAll();
-            ViewBag.spec = spec.Entities.ToList();
+            var spec = (await _specificationServices.GetAll()).ToList();
+            ViewBag.spec = spec;
             return View("Index");
         }
 
         // POST: SpecificationController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto,int subCategoryId)
+       // [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto,int subCategoryId=1)
         {
             try
             {
-                if (ModelState.IsValid)
+                
+                /*if (ModelState.IsValid)
                 {
                     if (subCategorySpecificationDto.SelectedSpecification != null)
                     {
-                        foreach (var spec in subCategorySpecificationDto.SelectedSpecification)
+                        foreach (var specItems in subCategorySpecificationDto.SelectedSpecification)
                         {
-                           // subCategorySpecificationDto.SubCategoryId = subCategoryId;
-                           var res = await _subCategorySpecificationsService.Create(subCategorySpecificationDto);
+                            var selectedSpec = (await _specificationServices.GetAll()).Where(s => s.Name == specItems).FirstOrDefault().Id;
+                            subCategorySpecificationDto.SubCategoryId = 1;
+                            subCategorySpecificationDto.specificationId = selectedSpec;
+                            var subCategorySpecification = new CreateOrUpdateSubCategorySpecificationDto
+                            {
+                                //SubCategoryId = subCategoryId,
+                                SubCategoryId = 1,
+                                specificationId = selectedSpec
+                            };
+                            var res = await _subCategorySpecificationsService.Create(subCategorySpecificationDto);
                             if (res.IsSuccess)
                             {
-
+                                var spec1 = (await _specificationServices.GetAll()).ToList();
+                                ViewBag.spec = spec1;
                                 return RedirectToAction("Index");
                             }
 
@@ -67,12 +77,16 @@ namespace AdminDashBoard.Controllers
 
                    
 
-                }
-               // return View(CategoryDto);
+                }*/
+                // return View(CategoryDto);
+                var spec = (await _specificationServices.GetAll()).ToList();
+                ViewBag.spec = spec;
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                var spec = (await _specificationServices.GetAll()).ToList();
+                ViewBag.spec = spec;
                 return View("Index");
             }
         }

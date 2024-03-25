@@ -4,6 +4,7 @@ using Jumia.Application.Services;
 using Jumia.Application.Services.IServices;
 using Jumia.Dtos.Category;
 using Jumia.Dtos.SubCategory;
+using Jumia.Dtos.SubCategorySpecifications;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
@@ -12,16 +13,20 @@ namespace AdminDashBoard.Controllers
     {
         private readonly ISubCategoryService _subCategoryService;
         private readonly ICategoryService _categoryService;
+        private readonly ISpecificationServices _specificationServices;
+        private readonly ISubCategorySpecificationsService _subCategorySpecificationsService;
         private readonly IMapper _mapper;
 
 
 
 
 
-        public SubCategoryController(ISubCategoryService subCategoryService , ICategoryService categoryService ,IMapper mapper )
+        public SubCategoryController(ISubCategoryService subCategoryService , ICategoryService categoryService ,IMapper mapper, ISpecificationServices specificationServices, ISubCategorySpecificationsService subCategorySpecificationsService)
         {
             _subCategoryService = subCategoryService;
             _categoryService = categoryService;
+            _specificationServices = specificationServices;
+            _subCategorySpecificationsService = subCategorySpecificationsService;
             _mapper = mapper;
 
 
@@ -45,6 +50,8 @@ namespace AdminDashBoard.Controllers
             var Categories = await _categoryService.GetAll(5, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
+            var spec = (await _specificationServices.GetAll()).ToList();
+            ViewBag.spec = spec;
             return View();
         }
 
@@ -56,9 +63,8 @@ namespace AdminDashBoard.Controllers
             if (ModelState.IsValid)
             {
 
-                if (Image != null && Image.Length > 0)
+                if (Image != null && Image.Length > 0 && SubDto.SelectedSpecification != null)
                 {
-
                     var imageBytes = new byte[Image.Length];
                     using (var stream = Image.OpenReadStream())
                     {
@@ -66,21 +72,25 @@ namespace AdminDashBoard.Controllers
                     }
                     SubDto.Image = imageBytes;
                 }
-
-
                 var res = await _subCategoryService.Create(SubDto, Image);
-
+                
                 if (res.IsSuccess)
                 {
-
+                    foreach (var specItems in SubDto.SelectedSpecification)
+                    {
+                        var specName = (await _specificationServices.GetAll()).Where(s => s.Name == specItems).FirstOrDefault();
+                        var subCategorySpecification = new CreateOrUpdateSubCategorySpecificationDto
+                        {
+                            SubCategoryId = res.Entity.Id,
+                            specificationId = specName.Id
+                        };
+                         await _subCategorySpecificationsService.Create(subCategorySpecification);
+                    }
+                 
                     return RedirectToAction("Index");
                 }
-
             }
             return View(SubDto);
-
-
-
         }
 
 
@@ -93,7 +103,8 @@ namespace AdminDashBoard.Controllers
             var Categories = await _categoryService.GetAll(5, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
-
+            var spec = (await _specificationServices.GetAll()).ToList();
+            ViewBag.spec = spec;
             var res = await _subCategoryService.GetOne(id);
 
             if (res == null)
@@ -101,9 +112,6 @@ namespace AdminDashBoard.Controllers
                 return NotFound();
 
             }
-
-      
-
             var SubCategoryDto = _mapper.Map<CreateOrUpdateSubDto>(res.Entity);
 
 
@@ -115,22 +123,17 @@ namespace AdminDashBoard.Controllers
      
 
         [HttpPost]
-        public async Task<ActionResult> Update(CreateOrUpdateSubDto SubDto, IFormFile Image)
+        public async Task<ActionResult> Update(CreateOrUpdateSubDto SubDto, IFormFile Image,CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto)
         {
             if (ModelState.IsValid)
             {
-               
-
                 var SubCategory = await _subCategoryService.GetOne(SubDto.Id);
                 if (SubCategory == null)
                 {
                     return NotFound(nameof(SubDto));
                 }
-
-
                 if (Image != null && Image.Length > 0)
                 {
-
                     var imageBytes = new byte[Image.Length];
                     using (var stream = Image.OpenReadStream())
                     {
@@ -138,11 +141,20 @@ namespace AdminDashBoard.Controllers
                     }
                     SubDto.Image = imageBytes;
                 }
+                var res = await _subCategoryService.Update(SubDto, Image);
+                if (res.IsSuccess)
+                {
+                  //  var selectedSpec= _subCategorySpecificationsService
+                    foreach (var specItems in SubDto.SelectedSpecification)
+                    {
+                        var specName = (await _specificationServices.GetAll()).Where(s => s.Name == specItems).FirstOrDefault();
+                        subCategorySpecificationDto.specificationId = specName.Id;
+                        subCategorySpecificationDto.SubCategoryId = SubDto.Id;
+                        await _subCategorySpecificationsService.Update(subCategorySpecificationDto);
+                    }
 
-
-
-
-                await _subCategoryService.Update(SubDto, Image);
+                    return RedirectToAction("Index");
+                }
 
                 return RedirectToAction(nameof(Index));
 
