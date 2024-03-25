@@ -11,16 +11,16 @@ namespace Jumia.Application.IServices
 {
     public interface IProductSpecificationSubCategoryServices
     {
-        Task<ResultView<GetAllProductSpecificationSubCategory>> Create(GetAllProductSpecificationSubCategory productSubCategorySpecificationDto);
+        //Task<ResultView<CreateOrUpdateProductSpecificationSubCategory>> Create(CreateOrUpdateProductSpecificationSubCategory productSubCategorySpecificationDto);
 
         //Update
-        Task<ResultView<CreateOrUpdateProductSpecificationSubCategory>> Update(CreateOrUpdateProductSpecificationSubCategory subCategorySpecificationDto);
+        //Task<ResultView<CreateOrUpdateProductSpecificationSubCategory>> Update(CreateOrUpdateProductSpecificationSubCategory subCategorySpecificationDto);
 
         // Delete
-        Task<ResultView<CreateOrUpdateProductSpecificationSubCategory>> Delete(CreateOrUpdateProductSpecificationSubCategory subCategorySpecificationDto);
+        //Task<ResultView<CreateOrUpdateProductSpecificationSubCategory>> Delete(CreateOrUpdateProductSpecificationSubCategory subCategorySpecificationDto);
 
         // GetAll
-        //  Task<ResultDataForPagination<GetAllCategoryDto>> GetAll(int item, int pagnumber);
+        Task<ResultDataForPagination<GetAllProductSpecificationSubCategory>> GetAll(int item, int pagnumber);
 
         //GetOne
         //  Task<ResultView<GetAllCategoryDto>> GetOne(int id);
