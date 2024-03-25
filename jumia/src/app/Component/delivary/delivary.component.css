@@ -1,0 +1,14 @@
+.checkedSigh{
+    color: #a3a3a6;
+    background-color: #fff;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 5px;
+    box-shadow: 0 0 0 0#a3a3a6;}
+
+    .section1{
+    border: 1px solid #eee;
+    }
+    .smallText{
+        font-size: 12px;
+    }
