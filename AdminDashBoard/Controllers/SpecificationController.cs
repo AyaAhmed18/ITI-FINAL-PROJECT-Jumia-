@@ -43,12 +43,11 @@ namespace AdminDashBoard.Controllers
         // POST: SpecificationController/Create
         [HttpPost]
        // [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto,int subCategoryId)
+        public async Task<ActionResult> Create(CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto,int subCategoryId=1)
         {
             try
             {
-                var spec1 = (await _specificationServices.GetAll()).ToList();
-                ViewBag.spec = spec1;
+                
                 if (ModelState.IsValid)
                 {
                     if (subCategorySpecificationDto.SelectedSpecification != null)
@@ -67,8 +66,8 @@ namespace AdminDashBoard.Controllers
                             var res = await _subCategorySpecificationsService.Create(subCategorySpecificationDto);
                             if (res.IsSuccess)
                             {
-                                /*var spec1 = (await _specificationServices.GetAll()).ToList();
-                                ViewBag.spec = spec1;*/
+                                var spec1 = (await _specificationServices.GetAll()).ToList();
+                                ViewBag.spec = spec1;
                                 return RedirectToAction("Index");
                             }
 
