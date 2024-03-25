@@ -6,6 +6,7 @@ using Jumia.Dtos.Product;
 using Jumia.Dtos.Shippment;
 using Jumia.Dtos.Specification;
 using Jumia.Dtos.SubCategory;
+using Jumia.Dtos.SubCategorySpecifications;
 using Jumia.Dtos.User;
 using Jumia.Model;
 using Microsoft.AspNetCore.Identity;
@@ -84,6 +85,10 @@ namespace Jumia.Application.Mapper
             //Product
             CreateMap<Product, GetAllProducts>().ReverseMap();
             CreateMap<Product,CreateOrUpdateProductDto>().ReverseMap();
+
+            //Specification
+            CreateMap<Specification, GetAllSpecificationDto>().ReverseMap();
+            CreateMap<SubCategorySpecification, CreateOrUpdateSubCategorySpecificationDto>().ReverseMap();
 
         }
        

@@ -31,6 +31,9 @@ namespace Jumia.Infrastructure
         public IReviewRepository ReviewRepository => GetRepository<IReviewRepository, ReviewRepository>();
         public IShippmentRepository ShippmentRepository => GetRepository<IShippmentRepository, ShippmentRepository>();
         public ISubCategoryRepository SubCategoryRepository => GetRepository<ISubCategoryRepository, SubCategoryRepository>();
+        public ISpecificationRepository specificationRepository => GetRepository<ISpecificationRepository, SpecificationRepository>();
+
+        public ISpecificationRepository? SpecificationRepository => throw new NotImplementedException();
 
         public async Task SaveChangesAsync()
         {
