@@ -1,0 +1,59 @@
+﻿@using Jumia.DTOS.ViewResultDtos
+@model ResultDataForPagination<Jumia.Dtos.Product.GetAllProducts>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "GetPagination";
+}
+
+<h1>GetPagination</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+
+    <tbody>
+@foreach (var item in Model.Entities) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Lon)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RealPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubCategoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubCategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrandID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrandName)
+            </td>
+            <td>
+                <a asp-action="Update" asp-route-id ="@item.Id">Edit</a>
+                <a asp-action="Delete" asp-route-id ="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
