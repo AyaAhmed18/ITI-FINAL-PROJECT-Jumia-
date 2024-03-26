@@ -60,31 +60,31 @@ namespace Jumia.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<ResultView<CreateOrUpdateSubCategorySpecificationDto>> Update(CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto)
+        public async Task<ResultView<CreateOrUpdateSubCategorySpecificationDto>> Update(CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto)
         {
-            /*try
+            try
             {
-                var Data = await _OrderRepository.GetOneAsync(orderDto.Id);
+                var Data = await _subCategorySpecificationRepository.GetOneAsync(subCategorySpecificationDto.Id);
 
                 if (Data == null)
                 {
-                    return new ResultView<CreateOrUpdateOrderDto> { Entity = null, IsSuccess = false, Message = "Order Not Found!" };
+                    return new ResultView<CreateOrUpdateSubCategorySpecificationDto> { Entity = null, IsSuccess = false, Message = "Spec Not Found!" };
 
                 }
                 else
                 {
-                    var order = _mapper.Map<Order>(orderDto);
-                    var ordEdit = await _OrderRepository.UpdateAsync(order);
-                    await _OrderRepository.SaveChangesAsync();
-                    var ordDto = _mapper.Map<CreateOrUpdateOrderDto>(ordEdit);
+                    var spec = _mapper.Map<SubCategorySpecification>(subCategorySpecificationDto);
+                    var ospecEdit = await _subCategorySpecificationRepository.UpdateAsync(spec);
+                    await _subCategorySpecificationRepository.SaveChangesAsync();
+                    var specDto = _mapper.Map<CreateOrUpdateSubCategorySpecificationDto>(ospecEdit);
 
-                    return new ResultView<CreateOrUpdateOrderDto> { Entity = ordDto, IsSuccess = true, Message = "Status Updated Successfully" };
+                    return new ResultView<CreateOrUpdateSubCategorySpecificationDto> { Entity = specDto, IsSuccess = true, Message = "Spec Updated Successfully" };
                 }
 
             }
             catch (Exception ex)
             {
-                return new ResultView<CreateOrUpdateOrderDto>
+                return new ResultView<CreateOrUpdateSubCategorySpecificationDto>
                 {
                     Entity = null,
                     IsSuccess = false,
@@ -92,8 +92,7 @@ namespace Jumia.Application.Services
                 };
                 // Console.WriteLine($"An error occurred: {ex.Message}");
                 //throw;
-            }*/
-            throw new NotImplementedException();
+            }
         }
     }
 }
