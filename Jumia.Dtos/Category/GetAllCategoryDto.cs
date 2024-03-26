@@ -16,6 +16,12 @@ namespace Jumia.Dtos.Category
 
         public byte[]? Image { get; set; }
 
+
+
+
+
+
+
        
 
     }
