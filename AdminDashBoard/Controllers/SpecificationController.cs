@@ -48,7 +48,7 @@ namespace AdminDashBoard.Controllers
             try
             {
                 
-                if (ModelState.IsValid)
+                /*if (ModelState.IsValid)
                 {
                     if (subCategorySpecificationDto.SelectedSpecification != null)
                     {
@@ -77,7 +77,7 @@ namespace AdminDashBoard.Controllers
 
                    
 
-                }
+                }*/
                 // return View(CategoryDto);
                 var spec = (await _specificationServices.GetAll()).ToList();
                 ViewBag.spec = spec;

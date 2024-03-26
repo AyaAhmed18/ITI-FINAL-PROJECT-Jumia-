@@ -62,6 +62,37 @@ namespace Jumia.Application.Services
 
         public Task<ResultView<CreateOrUpdateSubCategorySpecificationDto>> Update(CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto)
         {
+            /*try
+            {
+                var Data = await _OrderRepository.GetOneAsync(orderDto.Id);
+
+                if (Data == null)
+                {
+                    return new ResultView<CreateOrUpdateOrderDto> { Entity = null, IsSuccess = false, Message = "Order Not Found!" };
+
+                }
+                else
+                {
+                    var order = _mapper.Map<Order>(orderDto);
+                    var ordEdit = await _OrderRepository.UpdateAsync(order);
+                    await _OrderRepository.SaveChangesAsync();
+                    var ordDto = _mapper.Map<CreateOrUpdateOrderDto>(ordEdit);
+
+                    return new ResultView<CreateOrUpdateOrderDto> { Entity = ordDto, IsSuccess = true, Message = "Status Updated Successfully" };
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new ResultView<CreateOrUpdateOrderDto>
+                {
+                    Entity = null,
+                    IsSuccess = false,
+                    Message = $"Something went wrong: {ex.Message}"
+                };
+                // Console.WriteLine($"An error occurred: {ex.Message}");
+                //throw;
+            }*/
             throw new NotImplementedException();
         }
     }

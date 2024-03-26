@@ -13,9 +13,9 @@ namespace Jumia.Dtos.SubCategorySpecifications
         public int Id { get; set; }
         public int SubCategoryId { get; set; }
         public int specificationId { get; set; }
-        public int SpecName { get; set; }
+        //public int SpecName { get; set; }
         // [Bind(Prefix = "Entity.SelectedSpecification")]
-        public List<string>? SelectedSpecification { get; set; }
+        //public List<string>? SelectedSpecification { get; set; }
         // public string SubCategory { get; set; }
         //public string Specification { get; set; }
     }

@@ -73,12 +73,19 @@
         <div>
             <label asp-for="CategoryId" class="form-label"> @AdminDashBoard.Languages.Resource.Categoryies</label>
             <select asp-for="CategoryId" asp-items="list" class="form-select"></select>
-
-
-
-
         </div>
 
+        <br />
+
+        <div>
+            @foreach (var spec in ViewBag.spec)
+            {
+                <li>
+                    <input type="checkbox" name="SelectedSpecification" value="@spec.Name" id="spec_@spec.Name">
+                    <label for="spec_@spec.Name">@spec.Name</label>
+                </li>
+            }
+        </div>
 
         <br />
 

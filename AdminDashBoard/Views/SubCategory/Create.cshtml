@@ -66,6 +66,15 @@
         </div>
         <br />
 
+        <div>
+            @foreach (var spec in ViewBag.spec)
+            {
+                <li>
+                    <input type="checkbox" name="SelectedSpecification" value="@spec.Name" id="spec_@spec.Name">
+                    <label for="spec_@spec.Name">@spec.Name</label>
+                </li>
+            }
+        </div>
 
 
         <button type="submit" class="btn btn-primary">@AdminDashBoard.Languages.Resource.Create</button>
