@@ -3,9 +3,12 @@ using Jumia.Application.Contract;
 using Jumia.Application.IServices;
 using Jumia.Application.Services.IServices;
 using Jumia.Dtos.Product;
+using Jumia.Dtos.ProductSpecificationSubCategory;
+using Jumia.Dtos.Specification;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -171,9 +174,63 @@ namespace Jumia.Application.Services
                 return new ResultView<GetAllProducts> { Entity = productDto, IsSuccess = true, Message = "Succses" };
             }
         }
+        //public async Task<ResultView<GetAllSpecificationDto>> GetSpecificationsOfProduct(int SubCategoryId)
+        //{
+        //    try
+        //    {
+        //        var Specs = await (_unitOfWork.SubCategoryRepository.GetAllAsync());
+        //        var specs = Specs.Where(x => x.Id == SubCategoryId).Contains(x =)//.Select(x => new GetAllSpecificationDto()
+        //        {
+        //            Id = x.Specifications.First().Id,
+        //            Name =
+        //        })
+        //        var Specs = await (_unitOfWork.SubCategorySpecificationRepository.GetAllAsync());
 
 
+        //        var Specs = await (_unitOfWork.SubCategorySpecificationRepository.GetAllAsync());
+        //        var SpecsUnderCondition = Specs.Where(x => x.SubCategoryId == SubCategoryId);
+        //        var FinalSpecs = await (_unitOfWork.SpecificationRepository.GetAllAsync());
+        //        var ff = FinalSpecs.Where(x => x.)
 
+        //    }
+        //    catch
+        //    {
+
+        //    }
+        //}
+
+        //Create With Specification And SubCategory
+        public async Task<ResultView<CreateOrUpdateProductSpecificationSubCategory>> CreateWithSpecificationValue(CreateOrUpdateProductSpecificationSubCategory productSpecificationSubCategory)
+        {
+            try
+            {
+                var Data = await _unitOfWork.productSpecificationSubCategoryRepository.GetAllAsync();
+                var OldPrdSpecSubCat = Data.Where(c => c.Id == productSpecificationSubCategory.Id).FirstOrDefault();
+
+                if (OldPrdSpecSubCat != null)
+                {
+                    return new ResultView<CreateOrUpdateProductSpecificationSubCategory> { Entity = null, IsSuccess = false, Message = "This Specification Already Exist in this SubCategory" };
+                }
+                else
+                {
+                    var PrdSpecSubCat = _mapper.Map<ProductSpecificationSubCategory>(productSpecificationSubCategory);
+                    var NewPrdSpecSubCat = await _unitOfWork.productSpecificationSubCategoryRepository.CreateAsync(PrdSpecSubCat);
+                    await _unitOfWork.SaveChangesAsync();
+                    var prdSpecSubCatDto = _mapper.Map<CreateOrUpdateProductSpecificationSubCategory>(NewPrdSpecSubCat);
+                    return new ResultView<CreateOrUpdateProductSpecificationSubCategory> { Entity = prdSpecSubCatDto, IsSuccess = true, Message = "Order Created Successfully" };
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new ResultView<CreateOrUpdateProductSpecificationSubCategory>
+                {
+                    Entity = null,
+                    IsSuccess = false,
+                    Message = $"Something went wrong: {ex.Message}"
+                };
+            }
+        }
 
 
 
