@@ -17,9 +17,9 @@ namespace Jumia.Model
         public decimal? Discount { get; set; }
         public List<byte[]>? Images { get; set; }
 
-       // [ForeignKey(nameof(SubCategory))]
-        //public int SubCategoryId { get; set; }
-        //public virtual SubCategory SubCategory { get; set; }
+        [ForeignKey(nameof(SubCategory))]
+        public int SubCategoryId { get; set; }
+        public virtual SubCategory SubCategory { get; set; }
         //[ForeignKey(nameof(ProductSpecificationSubCategory))]
         //public int ProductSpecificationSubCategoryId { get; set; }
         public virtual ICollection<ProductSpecificationSubCategory> ProductSpecificationSubCategory { get; set; }

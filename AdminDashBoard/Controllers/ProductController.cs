@@ -4,6 +4,7 @@ using Jumia.Application.Services;
 using Jumia.Application.Services.IServices;
 using Jumia.Dtos.Category;
 using Jumia.Dtos.Product;
+using Jumia.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
@@ -13,13 +14,15 @@ namespace AdminDashBoard.Controllers
         private readonly IProductServices _productService;
         private readonly ISubCategoryService _subCategoryService;
         private readonly IMapper _mapper;
+        private readonly ISpecificationServices _specificationServices;
 
 
-        public ProductController(IProductServices productService,IMapper mapper, ISubCategoryService subCategoryService)
+        public ProductController(IProductServices productService,IMapper mapper, ISubCategoryService subCategoryService,ISpecificationServices specificationServices)
         {
             _productService = productService;
             _mapper = mapper;
             _subCategoryService = subCategoryService;
+            _specificationServices = specificationServices;
 
         }
         // GET: ProductController
@@ -68,15 +71,22 @@ namespace AdminDashBoard.Controllers
 
 
             }
-            var subCategory = await _subCategoryService.GetAll(5, 1);
-            var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
-            ViewBag.SubCategory = subCatName;
+            //var subcategory = await _subcategoryservice.getall(5, 1);
+            //var subcatname = subcategory.entities.select(a => new { a.id, a.name }).tolist();
+            //viewbag.subcategory = subcatname;
             return View(ProductDto);
 
 
 
         }
+        //public async Task<ActionResult> CreateWithSpecifications()
+        //{
+        //    var spec = _specificationServices.GetAll();
+        //    var specName = spec.Entities.Select(a => new { a.Id, a.Name }).ToList();
+        //    ViewBag.Specifications = specName;
+        //    return View();
 
+        //}
 
 
         public async Task<ActionResult> Update([FromRoute]int id)
