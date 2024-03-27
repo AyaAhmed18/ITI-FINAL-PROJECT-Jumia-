@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigiationBarComponent } from './Component/navigiation-bar/navigiation-bar.component';
 import { FooterComponent } from './Component/footer/footer.component';
@@ -7,6 +7,7 @@ import { HomeComponent } from './Component/home/home.component';
 import { FilterComponent } from './Component/filter/filter.component';
 import { OrdersComponent } from './Component/orders/orders.component';
 import { MyAccountComponent } from './Component/my-account/my-account.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +17,23 @@ import { MyAccountComponent } from './Component/my-account/my-account.component'
      ProductComponent ,
       HomeComponent , FilterComponent ,
        OrdersComponent ,
-        MyAccountComponent],
+        MyAccountComponent,HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
  
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  products:any=[]
+  
+  fetchProducts(){
+    this.httpClient.get('http://localhost:64866/api/Order').subscribe((data:any)=>{
+      this.products=data;
+    console.log(data);
+    }) 
+  }
+  ngOnInit(): void {
+    this.fetchProducts();
+  }
   title = 'jumia';
+  httpClient=inject(HttpClient)
 }
