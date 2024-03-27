@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jumia.Model.Commons;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace Jumia.Model
 {
-    public class Product:BaseEntity
+    public class Product: LocalizableEntity
     {
         public string Name { get; set; }
+        public string NameAr { get; set; }
         public string? LongDescription { get; set; }
         public string? ShortDescription { get; set; }
         public int StockQuantity { get; set; }
@@ -17,9 +19,9 @@ namespace Jumia.Model
         public decimal? Discount { get; set; }
         public List<byte[]>? Images { get; set; }
 
-       // [ForeignKey(nameof(SubCategory))]
-        //public int SubCategoryId { get; set; }
-        //public virtual SubCategory SubCategory { get; set; }
+        [ForeignKey(nameof(SubCategory))]
+        public int SubCategoryId { get; set; }
+        public virtual SubCategory SubCategory { get; set; }
         //[ForeignKey(nameof(ProductSpecificationSubCategory))]
         //public int ProductSpecificationSubCategoryId { get; set; }
         public virtual ICollection<ProductSpecificationSubCategory> ProductSpecificationSubCategory { get; set; }

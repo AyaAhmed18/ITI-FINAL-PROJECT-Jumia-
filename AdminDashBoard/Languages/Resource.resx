@@ -156,6 +156,9 @@
   <data name="Arabic" xml:space="preserve">
     <value>Arabic</value>
   </data>
+  <data name="Arabic Name" xml:space="preserve">
+    <value>Arabic Name</value>
+  </data>
   <data name="Audiences" xml:space="preserve">
     <value />
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
+  </data>
+  <data name="English Name" xml:space="preserve">
+    <value>English Name</value>
   </data>
   <data name="EnterPhone" xml:space="preserve">
     <value>Enter Phone</value>

@@ -7,9 +7,11 @@ using static System.Net.Mime.MediaTypeNames;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Jumia.Application.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdminDashBoard.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoryController : BaseController
     {
         private readonly ICategoryService _categoryService;
