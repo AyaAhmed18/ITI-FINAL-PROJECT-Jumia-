@@ -2,9 +2,11 @@
 using Jumia.Application.Contract;
 using Jumia.Application.IServices;
 using Jumia.Dtos.Order;
+using Jumia.Dtos.Specification;
 using Jumia.Dtos.SubCategorySpecifications;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,6 +95,21 @@ namespace Jumia.Application.Services
                 // Console.WriteLine($"An error occurred: {ex.Message}");
                 //throw;
             }
+        }
+
+        public async Task<List<GetAllSubCategorySpecificationDto>> GetAll() //10 , 3 -- 20 30
+        {
+            var AlldAta = (await _subCategorySpecificationRepository.GetAllAsync()).Include(s=> s.Specification);
+            List<GetAllSubCategorySpecificationDto> Specifications = AlldAta.Select(p => new GetAllSubCategorySpecificationDto()
+            {
+                Id = p.Id,
+                SubCategoryId = p.SubCategoryId,
+                specificationId = p.specificationId,
+                SpecificationName=p.Specification.Name,
+                SubCategoryName=p.SubCategory.Name
+                
+            }).ToList();
+            return Specifications;
         }
     }
 }

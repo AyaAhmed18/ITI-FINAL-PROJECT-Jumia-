@@ -21,10 +21,9 @@ namespace Jumia.Application.IServices
         Task<ResultView<CreateOrUpdateSubCategorySpecificationDto>> Delete(CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto);
 
         // GetAll
-      //  Task<ResultDataForPagination<GetAllCategoryDto>> GetAll(int item, int pagnumber);
-
+        Task<List<GetAllSubCategorySpecificationDto>> GetAll();
         //GetOne
-      //  Task<ResultView<GetAllCategoryDto>> GetOne(int id);
+        //  Task<ResultView<GetAllCategoryDto>> GetOne(int id);
 
     }
 }

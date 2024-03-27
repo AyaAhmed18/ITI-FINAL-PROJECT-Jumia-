@@ -11,7 +11,7 @@ namespace Jumia.Application.IServices
 {
     public interface IProductSpecificationSubCategoryServices
     {
-        //Task<ResultView<CreateOrUpdateProductSpecificationSubCategory>> Create(CreateOrUpdateProductSpecificationSubCategory productSubCategorySpecificationDto);
+        Task<ResultView<CreateOrUpdateProductSpecificationSubCategory>> Create(CreateOrUpdateProductSpecificationSubCategory productSubCategorySpecificationDto);
 
         //Update
         //Task<ResultView<CreateOrUpdateProductSpecificationSubCategory>> Update(CreateOrUpdateProductSpecificationSubCategory subCategorySpecificationDto);

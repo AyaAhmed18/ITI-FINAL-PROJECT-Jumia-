@@ -81,14 +81,18 @@ namespace Jumia.Application.Mapper
             CreateMap<Shippment, CreateOrUpdateShipmentDto >().ReverseMap();
 
             //Product
-            CreateMap<Product, GetAllProducts>().ReverseMap();
+            CreateMap<Product, GetAllProducts>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
+                .ReverseMap();
             CreateMap<Product,CreateOrUpdateProductDto>().ReverseMap();
 
             //Specification
             CreateMap<Specification, GetAllSpecificationDto>().ReverseMap();
             CreateMap<SubCategorySpecification, CreateOrUpdateSubCategorySpecificationDto>().ReverseMap();
+            CreateMap<SubCategorySpecification, GetAllSubCategorySpecificationDto>().ReverseMap();
+
 
         }
-       
+
     }
 }

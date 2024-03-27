@@ -5,10 +5,12 @@ using Jumia.Application.Services.IServices;
 using Jumia.Dtos.Category;
 using Jumia.Dtos.SubCategory;
 using Jumia.Dtos.SubCategorySpecifications;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SubCategoryController : BaseController
     {
         private readonly ISubCategoryService _subCategoryService;

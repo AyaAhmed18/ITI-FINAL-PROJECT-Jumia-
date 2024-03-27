@@ -44,11 +44,11 @@
                 </div>
                 <!-- Right navigation -->
                 <div class="navbar-nav ms-lg-4">
-                    <a class="nav-item nav-link" href="#">@AdminDashBoard.Languages.Resource.Signin</a>
+                    <a class="nav-item nav-link" asp-action="login" asp-controller="Account">@AdminDashBoard.Languages.Resource.Signin</a>
                 </div>
                 <!-- Action -->
                 <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
-                    <a href="#" class="btn btn-sm btn-primary w-full w-lg-auto">
+                    <a asp-action="Register" asp-controller="Account" class="btn btn-sm btn-primary w-full w-lg-auto">
                         @AdminDashBoard.Languages.Resource.Register
                     </a>
                 </div>

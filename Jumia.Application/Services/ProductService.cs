@@ -276,6 +276,21 @@ namespace Jumia.Application.Services
         //    var REturnPrd = _mapper.Map<CreateOrUpdateProductDto>(prd);
         //    return REturnPrd;
         //}
+        public async Task<ResultView<GetAllProducts>> Getbyname(string name)
+        {
+         //   var product = await _unitOfWork..Getbyname(name);
+            var product = (await _unitOfWork.ProductRepository.GetAllAsync()).Where(p=>p.Name==name).FirstOrDefault();
+            if (product == null)
+            {
+                return new ResultView<GetAllProducts> { Entity = null, IsSuccess = false, Message = "Not Found!" };
+            }
+            else
+            {
+                var productDto = _mapper.Map<GetAllProducts>(product);
+
+                return new ResultView<GetAllProducts> { Entity = productDto, IsSuccess = true, Message = "Succses" };
+            }
+        }
     }
 
 }

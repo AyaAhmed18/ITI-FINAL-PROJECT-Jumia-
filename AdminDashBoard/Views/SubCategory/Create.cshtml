@@ -25,9 +25,6 @@
 
 </head>
 <body>
-
-
-
     <form asp-action="Create" asp-controller="SubCategory" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label asp-for="Name" class="form-label"> @AdminDashBoard.Languages.Resource.English_Name</label>
@@ -67,12 +64,13 @@
         <br />
 
         <div>
+            <p>Specifications</p>
             @foreach (var spec in ViewBag.spec)
             {
-                <li>
+                
                     <input type="checkbox" name="SelectedSpecification" value="@spec.Name" id="spec_@spec.Name">
                     <label for="spec_@spec.Name">@spec.Name</label>
-                </li>
+              
             }
         </div>
 

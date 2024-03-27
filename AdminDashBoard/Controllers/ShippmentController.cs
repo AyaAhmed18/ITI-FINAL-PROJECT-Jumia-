@@ -1,11 +1,13 @@
 ﻿using Jumia.Application.IServices;
 using Localization.Shared_Recources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
 namespace AdminDashBoard.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ShippmentController : BaseController
     {
         private readonly IShippmentService _shippmentService;
