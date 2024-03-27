@@ -178,6 +178,15 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arabic Name.
+        /// </summary>
+        public static string Arabic_Name {
+            get {
+                return ResourceManager.GetString("Arabic Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string Audiences {
@@ -336,6 +345,15 @@ namespace AdminDashBoard.Languages {
         public static string English {
             get {
                 return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English Name.
+        /// </summary>
+        public static string English_Name {
+            get {
+                return ResourceManager.GetString("English Name", resourceCulture);
             }
         }
         

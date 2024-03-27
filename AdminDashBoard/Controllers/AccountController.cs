@@ -40,8 +40,8 @@ namespace AdminDashBoard.Controllers
 
                         if (res.Succeeded && registerDtos.Password == registerDtos.Confirmpass)
                         {
-
-                            await _signinManager.SignInAsync(user, isPersistent: false);
+                         await _userManager.AddToRoleAsync(user, "Admin");
+                           await _signinManager.SignInAsync(user, isPersistent: false);
                             return RedirectToAction("Login");
 
                         }
@@ -81,6 +81,7 @@ namespace AdminDashBoard.Controllers
 
                 if (result.Succeeded)
                 {
+
                     return RedirectToAction("Index", "Home");
                 }
                 else

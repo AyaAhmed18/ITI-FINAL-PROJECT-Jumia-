@@ -4,7 +4,9 @@ using Jumia.Dtos.Order;
 using Jumia.Dtos.OrderItems;
 using Jumia.Dtos.Product;
 using Jumia.Dtos.Shippment;
+using Jumia.Dtos.Specification;
 using Jumia.Dtos.SubCategory;
+using Jumia.Dtos.SubCategorySpecifications;
 using Jumia.Dtos.User;
 using Jumia.Model;
 using Microsoft.AspNetCore.Identity;
@@ -41,15 +43,15 @@ namespace Jumia.Application.Mapper
                 .ReverseMap();
 
             //SubCategory
-            CreateMap<SubCategory, CreateOrUpdateSubDto >()
-              //  .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
-
-                .ReverseMap();
+            CreateMap<SubCategory, CreateOrUpdateSubDto>().ReverseMap();
+            CreateMap<SubCategorySpecification, CreateOrUpdateSubDto>().ReverseMap();
             CreateMap< SubCategory, GetAllSubDto>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
                  .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
                 .ReverseMap();
             CreateMap<GetAllSubDto , CreateOrUpdateSubDto>().ReverseMap() ;
+            CreateMap<Specification, GetAllSpecificationDto > ().ReverseMap();
+
 
             //User&Role
             CreateMap<GetAllUsers, UserIdentity>().ReverseMap();
@@ -79,10 +81,18 @@ namespace Jumia.Application.Mapper
             CreateMap<Shippment, CreateOrUpdateShipmentDto >().ReverseMap();
 
             //Product
-            CreateMap<Product, GetAllProducts>().ReverseMap();
+            CreateMap<Product, GetAllProducts>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
+                .ReverseMap();
             CreateMap<Product,CreateOrUpdateProductDto>().ReverseMap();
 
+            //Specification
+            CreateMap<Specification, GetAllSpecificationDto>().ReverseMap();
+            CreateMap<SubCategorySpecification, CreateOrUpdateSubCategorySpecificationDto>().ReverseMap();
+            CreateMap<SubCategorySpecification, GetAllSubCategorySpecificationDto>().ReverseMap();
+
+
         }
-       
+
     }
 }

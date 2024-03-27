@@ -1,5 +1,4 @@
 ﻿using Jumia.Application.Services.IServices;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,14 +8,13 @@ namespace JumiaStore.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-
         private readonly ICategoryService _categoryService;
 
 
-        public CategoryController(ICategoryService categoryService) 
+        public CategoryController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
-        
+
         }
 
 
@@ -42,17 +40,6 @@ namespace JumiaStore.Controllers
             return Ok(Category);
 
         }
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

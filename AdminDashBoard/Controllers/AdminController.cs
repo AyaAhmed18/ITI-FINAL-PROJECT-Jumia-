@@ -5,11 +5,13 @@ using Jumia.Context;
 using Jumia.Dtos.User;
 using Jumia.Infrastructure;
 using Jumia.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : BaseController
     {
         private readonly IRoleService _roleService;
@@ -35,7 +37,7 @@ namespace AdminDashBoard.Controllers
             return View(rolesResult.ToList());
         }
 
-
+       
         public IActionResult Adduser()
         {
             var roles = _roleManager.Roles.ToList();

@@ -23,7 +23,9 @@ namespace AdminDashBoard
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             //builder.Services.AddScoped<IProductRepository, ProductRepository>();
-             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+             builder.Services.AddScoped<ISpecificationRepository, SpecificationRepository>();
+             builder.Services.AddScoped<ISubCategorySpecificationRepository, SubCategorySpecificationRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
              builder.Services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
              builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
              builder.Services.AddScoped<IOrderRepository, OrderRepository>();
@@ -32,6 +34,7 @@ namespace AdminDashBoard
             builder.Services.AddScoped<IProductServices, ProductService>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+            builder.Services.AddScoped<ISpecificationServices, SpecificationServices>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IRoleService, RoleService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
@@ -39,7 +42,10 @@ namespace AdminDashBoard
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IOrderItemService, OrderItemService>();
             builder.Services.AddScoped<IShippmentService, ShippmentService>();
+            builder.Services.AddScoped<ISubCategorySpecificationsService, SubCategorySpecificationService>();
+            builder.Services.AddScoped<IProductSpecificationSubCategoryServices,ProductSpecificationSubCategoryServices>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -96,6 +102,7 @@ namespace AdminDashBoard
             app.UseStaticFiles();
             app.UseRouting();
             app.UseSession();
+            app.UseAuthorization();
             app.UseAuthorization();
             var options = app.Services.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);

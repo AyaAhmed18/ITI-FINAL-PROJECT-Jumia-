@@ -1,0 +1,76 @@
+body{
+    background-color: rgb(237, 234, 234);
+}
+:root{
+  --main-color:#10cab7;
+  --sec-color:#2c4755;
+}
+.AddressForm{
+    border: 1px solid #fff;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 1%;;
+}
+.form-control{
+  box-sizing:border-box;
+  
+
+}
+fieldset.form-control:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5); /* Add shadow */
+  border: 2px solid #007bff; /* Add border for outline effect */
+  
+}
+.form-select:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5); /* Add shadow */
+  border: 2px solid #007bff; /* Add border for outline effect */
+  
+}
+.fa-circle-check{
+    color: #a3a3a6;
+}
+.checkedSigh{
+    color: #a3a3a6;
+    background-color: #fff;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 5px;
+    box-shadow: 0 0 0 0#a3a3a6;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 2vmin;
+}
+.save{
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5); 
+}
+
+fieldset, legend {
+   all: revert;
+   padding: 0 !important;
+
+}
+legend{
+  font-size: 2vmin  ;
+}
+input{
+  outline: none !important;
+  border: none !important;
+}
+.input-group-text{
+  background-color: #fff !important;
+  border: none !important;
+  
+}
+input::placeholder {
+  font-size: 2vmin;
+}
+.back{
+  font-size: 2vmin;
+  color: rgb(66, 66, 182);
+}
+.form-select{
+  outline: none !important;
+  border: none !important;
+}
