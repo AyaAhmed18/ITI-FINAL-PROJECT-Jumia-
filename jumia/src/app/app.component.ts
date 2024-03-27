@@ -35,7 +35,7 @@ export class AppComponent implements OnInit{
   //   }) 
   // }
   ngOnInit(): void {
-    this.apiCategory.fetchCategories;
+    this.apiCategory.fetchCategories()
   }
   title = 'jumia';
   //httpClient=inject(HttpClient)
