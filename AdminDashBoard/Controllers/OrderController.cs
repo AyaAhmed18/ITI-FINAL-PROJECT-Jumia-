@@ -1,6 +1,7 @@
 ﻿using Jumia.Application.IServices;
 using Jumia.Dtos.Order;
 using Jumia.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,7 @@ using System.Security.Cryptography;
 
 namespace AdminDashBoard.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class OrderController : BaseController
     {
         private readonly IOrderService _orderService;

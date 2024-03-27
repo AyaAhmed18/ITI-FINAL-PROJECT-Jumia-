@@ -25,7 +25,7 @@ namespace Jumia.Dtos.Order
         public int CustomerId { get; set; }
        // public string Customer { get; set; }
 
-        private readonly IStringLocalizer<SharedRecources> _localizer;
+        //private readonly IStringLocalizer<SharedRecources> _localizer;
         public enum OrderStatus
         {
             Processing ,

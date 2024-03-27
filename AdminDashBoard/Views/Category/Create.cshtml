@@ -21,13 +21,13 @@
 
     <form asp-action="Create" asp-controller="Category" method="post" enctype="multipart/form-data">
         <div class="mb-3">
-            <label asp-for="Name" class="form-label">@AdminDashBoard.Languages.Resource.Name</label>
+            <label asp-for="Name" class="form-label">@AdminDashBoard.Languages.Resource.English_Name</label>
             <input asp-for="Name" class="form-control">
             <span asp-validation-for="Name" style="color:red"></span>
 
         </div>
         <div class="mb-3">
-            <label asp-for="NameAr" class="form-label">@AdminDashBoard.Languages.Resource.Name</label>
+            <label asp-for="NameAr" class="form-label">@AdminDashBoard.Languages.Resource.Arabic_Name</label>
             <input asp-for="NameAr" class="form-control">
             <span asp-validation-for="NameAr" style="color:red"></span>
 

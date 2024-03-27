@@ -19,5 +19,6 @@ namespace Jumia.Application.IServices
         Task<ResultView<GetAllProducts>> GetOne(int ID);
         Task<ResultView<CreateOrUpdateProductDto>> Update(CreateOrUpdateProductDto productDto, List<IFormFile> images);
         Task<ResultView<CreateOrUpdateProductDto>> Delete(CreateOrUpdateProductDto productDto);
+        Task<ResultView<GetAllProducts>> Getbyname(string name);
     }
 }
