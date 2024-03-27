@@ -8,6 +8,7 @@ import { FilterComponent } from './Component/filter/filter.component';
 import { OrdersComponent } from './Component/orders/orders.component';
 import { MyAccountComponent } from './Component/my-account/my-account.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { APICategoryService } from './Services/apicategory.service';
 
 @Component({
   selector: 'app-root',
@@ -24,16 +25,18 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent implements OnInit{
   products:any=[]
-  
-  fetchProducts(){
-    this.httpClient.get('http://localhost:64866/api/Order').subscribe((data:any)=>{
-      this.products=data;
-    console.log(data);
-    }) 
+  constructor(private apiCategory:APICategoryService){
+
   }
+  // fetchProducts(){
+  //   this.httpClient.get('http://localhost:64866/api/Category/4').subscribe((data:any)=>{
+  //     this.products=data;
+  //   console.log(data);
+  //   }) 
+  // }
   ngOnInit(): void {
-    this.fetchProducts();
+    this.apiCategory.fetchCategories;
   }
   title = 'jumia';
-  httpClient=inject(HttpClient)
+  //httpClient=inject(HttpClient)
 }
