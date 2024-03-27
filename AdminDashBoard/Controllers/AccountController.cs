@@ -1,5 +1,4 @@
-﻿
-using Jumia.Dtos.AccountDtos;
+﻿using Jumia.Dtos.AccountDtos;
 using Jumia.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
