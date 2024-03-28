@@ -6,6 +6,7 @@ import { OrdersComponent } from './Component/orders/orders.component';
 import { DelivaryComponent } from './Component/delivary/delivary.component';
 import { MyAccountComponent } from './Component/my-account/my-account.component';
 import { CartComponent } from './Component/cart/cart.component';
+import { TestComponent } from './Component/test/test.component';
 
 export const routes: Routes = [
     {path:'',redirectTo:'/Home',pathMatch:'full'},
@@ -16,5 +17,6 @@ export const routes: Routes = [
     {path:'Delivary',component:DelivaryComponent},
     {path:'MyAccount',component:MyAccountComponent},
     {path:'Cart',component:CartComponent},
+    {path:'test',component:TestComponent},
 
 ];

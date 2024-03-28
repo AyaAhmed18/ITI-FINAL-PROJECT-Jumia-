@@ -26,7 +26,7 @@ namespace JumiaStore.Controllers
         {
             var categories = await _categoryService.GetAll(50, 1);
 
-            return Ok(categories);
+            return Ok(categories.Entities);
         }
 
         [HttpGet("{id}")]
