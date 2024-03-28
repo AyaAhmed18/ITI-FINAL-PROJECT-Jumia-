@@ -7,6 +7,7 @@ import { DelivaryComponent } from './Component/delivary/delivary.component';
 import { MyAccountComponent } from './Component/my-account/my-account.component';
 import { CartComponent } from './Component/cart/cart.component';
 import { authGuard } from './guards/auth.guard';
+import { CartwithProductComponent } from './Component/cartwith-product/cartwith-product.component';
 
 export const routes: Routes = [
     {path:'',redirectTo:'/Home',pathMatch:'full'},
@@ -17,5 +18,6 @@ export const routes: Routes = [
     {path:'Delivary',component:DelivaryComponent},
     {path:'MyAccount',component:MyAccountComponent , canActivate:[authGuard]},  //
     {path:'Cart',component:CartComponent},
+    {path:'CartProduct',component:CartwithProductComponent},
 
 ];
