@@ -44,13 +44,17 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-regular fa-user" id="acc">   </i><span for="acc"> Account</span>
+                        <i class="fa-regular fa-user" id="acc">   </i><span for="acc">{{loggedInUsername}} </span>
                     </a>
-                    <ul class="dropdown-menu">         
-                        <li style="text-align: center;"><button routerLink="/SignIn" class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">   Sign in </button></li>
-                        <li><a class="dropdown-item" routerLink="/MyAccount"> My account</a></li>
+                    <ul class="dropdown-menu">       
+                       
+                        <li><a class="dropdown-item" routerLink="/MyAccount">My Account </a></li>
                         <li><a class="dropdown-item" href="#"><i class="fa-solid fa-bag-shopping" id="order"> </i><span for="order" > Order</span></a></li>
                       <li> <a class="dropdown-item" href="#"><i class="fa-regular fa-heart">  </i><span for="acc">  Saved items</span></a></li>
+                      <li style="text-align: center;"><button routerLink="/SignIn" [hidden]="IsUserLogged" (click)="SignInNav()" class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">  SignIn </button></li>
+                      <li style="text-align: center;"><button routerLink="/Home"  [hidden]="!IsUserLogged" (click)="SignOutNav()" class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">   SignOut </button></li>
+                      <!-- <li> <a class="dropdown-item"routerLink="/SignIn"><span for="acc">  Login</span></a></li> -->
+                    
                     </ul>
                   </li>
                 <li class="nav-item dropdown">
