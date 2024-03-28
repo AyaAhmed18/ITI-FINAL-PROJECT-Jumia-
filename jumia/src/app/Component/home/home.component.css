@@ -31,4 +31,51 @@
      font-size: 15px;
    
    }
+
    
+    /* change color or hover link side bar */
+  .Link_hover:hover {
+
+    color: #ff9901ea;
+  }
+
+  a:link,
+  a:visited {
+
+    color: rgb(0, 0, 0);
+    padding: 14px 25px;
+
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .line {
+    color: rgb(201, 201, 197);
+    /* Change background color on hover */
+  }
+
+
+
+
+
+  .show-div-Linkes {
+    height: 560px;
+  }
+
+  .show-linkes {
+    display: none;
+  }
+
+  .show-div-Linkes:hover+.show-linkes,
+  .show-linkes:hover {
+    display: block;
+  }
+
+  .show-div-Linkes:hover~.hide-slider {
+  display: none;
+  
+}
+.show-linkes:hover~.hide-slider {
+  display: none;
+  
+}

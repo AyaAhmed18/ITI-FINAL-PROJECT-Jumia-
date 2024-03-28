@@ -70,3 +70,4 @@ namespace JumiaStore.Controllers
         }
     }
 }
+////Bahaa http://localhost:5094/api/Product
