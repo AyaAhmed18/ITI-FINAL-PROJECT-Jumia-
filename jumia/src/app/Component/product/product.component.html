@@ -6,15 +6,15 @@
         <div class="row bg-body rounded  row-cols-1 row-cols-md-4 g-4">
 
 
-            @for(pro of AllProducts;track pro.id;let i=$index){
+            @for(pro of AllProducts;track pro.id;){
                 
             <div class="clo-2 ">
                 <div class="show-cards-btn card cards-hover" style="width:210px; height: 440px; border: none;">
                     <!-- <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image"
                         style="width:100%"> -->
-                        <img  [src]="pro.Images"  class="card-img-top"alt="Card image"style="width:100%">
+                        <img  [src]="pro.images"  class="card-img-top"alt="Card image"style="width:100%">
                     <div class="label-Cards-top px-2">
-                        <span class="text-white ">Buy 400 get {{pro.Discount}} off</span>
+                        <span class="text-white ">Buy 400 get {{pro.discount}} off</span>
                     </div>
                     <span class=" cards-question"><a href=""><i class="fa fa-question-circle"
                                 style="cursor: pointer"></i></a></span>
@@ -23,12 +23,12 @@
                     </span>
                     <div class="card-body">
 
-                        <p class="blockquote-footer"><small>{{pro.ShortDescription}}</small></p>
-                        <b><strong>EGP {{pro.RealPrice-(pro.RealPrice*pro.Discount/100)}}</strong></b>
+                        <p class="blockquote-footer"><small>{{pro.shortDescription}}</small></p>
+                        <b><strong>EGP {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
 
                         <ul class="list-inline">
-                            <li class="list-inline-item"><small><del>EGP {{pro.RealPrice}}</del> </small></li>
-                            <li class="list-inline-item offer-cards px-1"><small>-{{pro.Discount}}%</small></li>
+                            <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>
+                            <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>
 
                         </ul>
                         <div class="stars">

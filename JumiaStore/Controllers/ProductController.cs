@@ -27,7 +27,7 @@ namespace JumiaStore.Controllers
             {
                 var products = await _productServices.GetAllPagination(10, 1);
 
-                return Ok(products);
+                return Ok(products.Entities);
             }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
 

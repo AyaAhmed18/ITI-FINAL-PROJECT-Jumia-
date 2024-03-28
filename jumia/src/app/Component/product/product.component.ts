@@ -2,6 +2,7 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { FilterComponent } from "../filter/filter.component";
 import { ApiProductsService } from '../../Services/api-products.service';
 import { ProductDto } from '../../ViewModels/product-dto';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class ProductComponent implements OnInit{
     products: any;
     
    
-    constructor(private _ApiProductsService :ApiProductsService) { }
+    constructor(private _ApiProductsService :ApiProductsService , private _sanitizer:DomSanitizer) { }
 
 
     ngOnInit(): void {
@@ -24,7 +25,13 @@ export class ProductComponent implements OnInit{
             next:(data)=>{
           this.AllProducts=data
           
-          console.log(data)
+          this.AllProducts.forEach(Product => {
+            
+            Product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + Product.images);
+          });
+        
+
+
           },
           error:(err)=>{
           
@@ -32,14 +39,6 @@ export class ProductComponent implements OnInit{
           }
           
           })
-    }
-    
-    
-
-
-
-   
-
-
+    } 
   
 }

@@ -1,14 +1,16 @@
+import { SafeUrl } from "@angular/platform-browser";
+
 export interface ProductDto {
-    id:string,
-    Name:string,
-    NameAr:string,
-    LongDescription:string,
-    ShortDescription:string,
-    StockQuantity:number,
-    RealPrice:number,
-    Discount:number,
-    Images:string,
-    SubCategoryId:number,
-    BrandId:number,
+    id:number,
+    name:string,
+    nameAr:string,
+    nongDescription:string,
+    shortDescription:string,
+    stockQuantity:number,
+    realPrice:number,
+    discount:number,
+    images:SafeUrl,
+    subCategoryId:number,
+    brandId:number,
     
 }

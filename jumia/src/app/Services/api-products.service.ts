@@ -12,8 +12,8 @@ export class ApiProductsService {
   private apiUrl = 'http://localhost:5094/api/Product';
   constructor(private _httpClient:HttpClient) { }
 
-  getAllProducts(): Observable<ProductDto[]> {
-    let allpro= this._httpClient.get<ProductDto[]>(this.apiUrl);
+  getAllProducts(): Observable<any> {
+    let allpro= this._httpClient.get<any>(this.apiUrl);
     return allpro;
   }
 
