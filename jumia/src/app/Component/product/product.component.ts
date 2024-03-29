@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../Services/cart.service';
+import { WishlistService } from '../../Services/wishlist.service';
 
 
 @Component({
@@ -18,11 +19,17 @@ import { CartService } from '../../Services/cart.service';
 export class ProductComponent implements  OnInit{
     @Input() AllProducts:ProductDto[]=[];
     products: any;
+    cartItems: ProductDto[] = [];
   //  @Input() product?: ProductDto;
     cartTotalPrice:number=0
+    @Output() addToCartClicked = new EventEmitter<ProductDto>();
+    @Output() addTowashlistClicked = new EventEmitter<ProductDto>();
+    addedToCart = false;
+    addedTowashlist= false;
     constructor(private _ApiProductsService :ApiProductsService ,
          private _sanitizer:DomSanitizer,
-        private _cartService:CartService)
+        private _cartService:CartService,
+        private _wishlist :WishlistService)
      { 
         
      }
@@ -30,8 +37,11 @@ export class ProductComponent implements  OnInit{
     //start Add to Cart 
     AddToCart(prod:ProductDto){
         if(prod.stockQuantity>0){
+          prod.cartQuantity = 1;
            this.cartTotalPrice+=prod.realPrice
            this._cartService.addToCart(prod);
+           this.addToCartClicked.emit(prod);
+           prod.addedToCart = true;
         }
     }
 
@@ -54,5 +64,15 @@ export class ProductComponent implements  OnInit{
           
           })
     } 
-  
+
+    //Addtowashlist
+    // addToWishlist(ProductToAdd : any) {
+    //   this._wishlist.addToWishlist(ProductToAdd);
+    //   this.addTowashlistClicked.emit(ProductToAdd);
+    //   ProductToAdd.addedTowashlist = true;
+    // }
+
+    addToWishlist(productToAdd: any) {
+      this._wishlist.addProductToWishlist(productToAdd);
+    }
 }
