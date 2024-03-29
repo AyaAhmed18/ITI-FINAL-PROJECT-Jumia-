@@ -86,6 +86,8 @@ namespace Jumia.Application.Mapper
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
                 .ReverseMap();
             CreateMap<Product,CreateOrUpdateProductDto>().ReverseMap();
+            CreateMap<GetAllProducts, CreateOrUpdateProductDto>()
+              .ReverseMap();
 
             //Specification
             CreateMap<Specification, GetAllSpecificationDto>().ReverseMap();
