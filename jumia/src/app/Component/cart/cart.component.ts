@@ -15,38 +15,37 @@ export class CartComponent implements OnInit{
   cartItems: ProductDto[] = [];
   cartNumber:number=0
   TotalCartPrice=0
+  PriceAfterDiscount:number=0
   constructor(private _cartService: CartService, private router: Router) { }
+  //priceAftrDiscount
+  priceAftrDiscount(pro:ProductDto){
+   this.PriceAfterDiscount = pro.realPrice-(pro.realPrice*pro.discount/100)
+  }
   ngOnInit(): void {
     this._cartService.getCart().subscribe(cartItems => {
       this.cartItems = cartItems;
-      this.calculateTotalCartPrice();
+     this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
+      this.cartNumber=this._cartService.calculateTotalCartNumber();
     });
   }
   startShopping(){
     this.router.navigate(['/Home']);
   }
   removeProduct(productToRemove: any) {
-    const index = this.cartItems.indexOf(productToRemove); 
-    if (index !== -1) {
-      this.cartItems.splice(index, 1); 
-      this.calculateTotalCartPrice();
-      this.cartNumbers()
-    }
+    this._cartService.removeProduct(productToRemove)
   }
-  calculateTotalCartPrice() {
-    this.TotalCartPrice = this.cartItems.reduce((total, item) => total + (item.realPrice* item.cartQuantity), 0);
-  }
+ 
   decreaseQuantity(item:ProductDto){
     if (item.cartQuantity > 1) {
       item.cartQuantity--;
-      this.calculateTotalCartPrice();
-      this.cartNumbers()
+    this.TotalCartPrice= this._cartService.calculateTotalCartPrice()
+    this.cartNumber= this._cartService.calculateTotalCartNumber()
     }
   }
   increaseQuantity(item:ProductDto){
     item.cartQuantity++;
-    this.calculateTotalCartPrice();
-    this.cartNumbers()
+    this.TotalCartPrice= this._cartService.calculateTotalCartPrice()
+    this.cartNumber= this._cartService.calculateTotalCartNumber()
   }
   cartNumbers(){
     this.cartNumber = this.cartItems.reduce((total, item) => total + (item.cartQuantity), 0);

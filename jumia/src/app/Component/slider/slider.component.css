@@ -1,0 +1,14 @@
+a{text-decoration: none;
+    color: black;}
+    .card {
+  
+ transition: transform 0.5s;
+ margin-top: 1rem;
+}
+
+    .card:hover{
+       
+transform: scale(1.1);
+
+
+    }

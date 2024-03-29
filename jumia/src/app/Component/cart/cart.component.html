@@ -1,5 +1,5 @@
 <!-- Empty Cart -->
-<nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb" *ngIf="cartNumber === 0">
     <ol class="breadcrumb">
       <div><img src="https://www.jumia.com.eg/assets_he/images/cart.668e6453.svg" alt=""></div>
       <div>
@@ -12,7 +12,7 @@
   </nav>
 
   <!-- Cart with Items -->
-  <div class="row ">
+  <div class="row " *ngIf="cartNumber > 0">
     <div class="card-header bg-white"> <h5>Cart ({{cartNumber}} )</h5></div>
     <div class="card  mb-3 my-4 col-8" style="max-width: 40rem;" *ngFor="let item of cartItems">
      
