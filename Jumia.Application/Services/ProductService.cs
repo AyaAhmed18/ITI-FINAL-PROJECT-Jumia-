@@ -303,7 +303,7 @@ namespace Jumia.Application.Services
         }
         public async Task<ResultDataForPagination<GetAllProducts>> Search(string PartialName)
         {
-            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.Name.Contains(PartialName), null, null))
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.Name.Contains(PartialName)|| Prd.ShortDescription.Contains(PartialName), null, null))
                .Select(p => new GetAllProducts(p))
                .ToList();
             ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
