@@ -294,10 +294,18 @@ namespace Jumia.Application.Services
         }
         public async Task<ResultDataForPagination<GetAllProducts>> GetOrderedAsc()
         {
-            var Prds = (_unitOfWork.ProductRepository.FindAll(null, 0, 0, Prd => Prd.RealPrice, OrderBy.Ascending))
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.RealPrice, OrderBy.Ascending))
                 .Select(p => new GetAllProducts(p))
                 .ToList();
-;
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> Search(string PartialName)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.Name.Contains(PartialName), null, null))
+               .Select(p => new GetAllProducts(p))
+               .ToList();
             ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
             resultDataList.Entities = Prds;
             return resultDataList;

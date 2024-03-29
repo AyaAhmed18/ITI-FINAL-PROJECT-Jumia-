@@ -19,11 +19,14 @@ namespace Jumia.Infrastructure
         {
             _jumiaContext = jumiaContext;
         }
-        public IQueryable<Product> FindAll(Expression<Func<Product, bool>> criteria, int? skip, int? take,
+        public IQueryable<Product> FindAll(Expression<Func<Product, bool>>? criteria, int? skip, int? take,
           Expression<Func<Product, object>> orderBy = null, string orderByDirection = OrderBy.Ascending)
         {
-            IQueryable<Product> query = _jumiaContext.Set<Product>().Where(criteria);
-
+            IQueryable<Product> query = _jumiaContext.Set<Product>();
+            if (criteria != null)
+            {
+                 query = _jumiaContext.Set<Product>().Where(criteria);
+            }
             if (skip.HasValue)
                 query = query.Skip(skip.Value);
 
