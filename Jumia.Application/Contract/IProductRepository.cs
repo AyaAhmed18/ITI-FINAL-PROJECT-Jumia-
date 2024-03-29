@@ -11,7 +11,7 @@ namespace Jumia.Application.Contract
 {
     public interface IProductRepository:IRepository<Product,int>
     {
-        IQueryable<Product> FindAll(Expression<Func<Product, bool>> criteria, int? skip, int? take,
+        IQueryable<Product> FindAll(Expression<Func<Product, bool>>? criteria, int? skip, int? take,
           Expression<Func<Product, object>> orderBy = null, string orderByDirection = OrderBy.Ascending);
     }
 }
