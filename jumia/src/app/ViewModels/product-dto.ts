@@ -12,5 +12,7 @@ export interface ProductDto {
     images:SafeUrl,
     subCategoryId:number,
     brandId:number,
+    addedToCart?: boolean,
+    cartQuantity:number
     
 }

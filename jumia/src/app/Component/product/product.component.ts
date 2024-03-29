@@ -20,6 +20,8 @@ export class ProductComponent implements  OnInit{
     products: any;
   //  @Input() product?: ProductDto;
     cartTotalPrice:number=0
+    @Output() addToCartClicked = new EventEmitter<ProductDto>();
+    addedToCart = false;
     constructor(private _ApiProductsService :ApiProductsService ,
          private _sanitizer:DomSanitizer,
         private _cartService:CartService)
@@ -30,8 +32,11 @@ export class ProductComponent implements  OnInit{
     //start Add to Cart 
     AddToCart(prod:ProductDto){
         if(prod.stockQuantity>0){
+          prod.cartQuantity = 1;
            this.cartTotalPrice+=prod.realPrice
            this._cartService.addToCart(prod);
+           this.addToCartClicked.emit(prod);
+           prod.addedToCart = true;
         }
     }
 

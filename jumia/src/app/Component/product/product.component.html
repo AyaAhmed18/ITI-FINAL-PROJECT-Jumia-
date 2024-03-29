@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="hide-btn-cards ">
-                            <a class="btn w-100 text-white" (click)="AddToCart(pro)" >Add To Cart</a>
+                            <button class="btn w-100 text-white" (click)="AddToCart(pro)"[disabled]="pro.addedToCart" >Add To Cart</button>
                         </div>
                     </div>
                 </div>

@@ -13,8 +13,9 @@
 
   <!-- Cart with Items -->
   <div class="row ">
+    <div class="card-header bg-white"> <h5>Cart ({{cartNumber}} )</h5></div>
     <div class="card  mb-3 my-4 col-8" style="max-width: 40rem;" *ngFor="let item of cartItems">
-      <div class="card-header bg-white"> <h5>Cart (number )</h5></div>
+     
       <div class="card-body  row">
         <div class="col-3">
           <img src="https://eg.jumia.is/unsafe/fit-in/150x150/filters:fill(white)/product/04/545973/1.jpg?8016">
@@ -36,10 +37,10 @@
     <div class="col-6 ">
     <div class="row">
       <div class="col-6 d-flex">
-        <button class="btn btn-warning " type="button"><i class="fa-solid fa-minus text-light"></i></button><p>num</p>
+        <button class="btn btn-warning"(click)="decreaseQuantity(item)" type="button"><i class="fa-solid fa-minus text-light"></i></button><p>{{item.cartQuantity}}</p>
       </div>
       <div class="col-6 d-flex">
-        <button class="btn btn-warning"><i class="fa-solid fa-plus text-light"></i></button><p>num</p>
+        <button class="btn btn-warning" (click)="increaseQuantity(item)"><i class="fa-solid fa-plus text-light"></i></button>
     </div>
     </div>
       </div>
@@ -53,7 +54,7 @@
           <li class="list-group-item">
             <ul class="d-flex">
               <li class="me-5">Subtotal</li>
-              <li>EGP 49.00</li>
+              <li>EGP {{TotalCartPrice}}</li>
             </ul>
           </li>
           <ul>
@@ -62,7 +63,7 @@
           </ul>
         </ul>
         <div class="card-footer bg-light">
-          <button class="btn btn-warning text-light" style="width: 90%;">Checkout (EGP 49.00)</button>
+          <button class="btn btn-warning text-light" style="width: 90%;">Checkout (EGP {{TotalCartPrice}} )</button>
         </div>
       </div>
     </div>
