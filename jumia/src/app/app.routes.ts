@@ -19,5 +19,7 @@ export const routes: Routes = [
     {path:'MyAccount',component:MyAccountComponent , canActivate:[authGuard]},  //
     {path:'Cart',component:CartComponent},
     {path:'CartProduct',component:CartwithProductComponent},
+   // {path:'test',component:TestComponent},
+
 
 ];

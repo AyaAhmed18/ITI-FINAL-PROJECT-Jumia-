@@ -14,6 +14,7 @@ namespace Jumia.Dtos.Product
         public string LongDescription { get; set; }
         public string ShortDescription { get; set; }
         public decimal RealPrice { get; set; }
+        public int StockQuantity { get; set; }
         public decimal Discount { get; set; } = 0;
         public int SubCategoryID { get; set; }
         //public string? SubCategoryName { get; set; } // Include for easier presentation

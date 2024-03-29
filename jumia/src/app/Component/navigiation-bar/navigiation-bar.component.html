@@ -1,84 +1,83 @@
 <div class="container-fluid bg-light">
-    <div class="row">
-      <div class="col-sm ">
-        <div class="row">
-        <div class="col-2"><img src="./../../assets/FooterImg/JumiaLogostar.png" style="width: auto; height: 15px;"></div>
-        <div class="col-10"><a href="https://sell.jumia.com/en/start-now/" target="_blank" class="text-warning">Sell on Jumia</a></div>
+  <div class="row">
+    <div class="col-sm ">
+      <div class="row">
+      <div class="col-2"><img src="./../../assets/FooterImg/JumiaLogostar.png" style="width: auto; height: 15px;"></div>
+      <div class="col-10"><a href="https://sell.jumia.com/en/start-now/" target="_blank" class="text-warning">Sell on Jumia</a></div>
+  </div>
     </div>
-      </div>
-    
-    
-      <div class="col-sm my-1">
-         <img src="../../../assets/FooterImg/JumiaLogo.png" style="width: auto;height: 10px;">
-      </div>
-      <div class="col-sm" style="text-align: right;">
-       
-        <a href="" ><span>English</span></a>
-        <a href="" ><span>عربي</span></a>
-      </div>
+  
+  
+    <div class="col-sm my-1">
+       <img src="../../../assets/FooterImg/JumiaLogo.png" style="width: auto;height: 10px;">
+    </div>
+    <div class="col-sm" style="text-align: right;">
+     
+      <a href="" ><span>English</span></a>
+      <a href="" ><span>عربي</span></a>
     </div>
   </div>
-  <hr>
-  <!-- navigationbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <img class="navbar-brand" src="../../../assets/FooterImg/JumiaLogo.png" style="width: auto;height: 30px;">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+</div>
+<hr>
+<!-- navigationbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <img class="navbar-brand" src="../../../assets/FooterImg/JumiaLogo.png" style="width: auto;height: 30px;">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 <div class="max-w-2xl mx-auto">
 
-  <form class="flex items-center">   
-        <div class="relative w-full">
-            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-            </div>
-            <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search products, prand and categories" required>
-        </div>
-        <button type="submit" class="btn btn mx-3" style="background-color: orange;">Search</button>
-    </form>
+<form class="flex items-center">   
+      <div class="relative w-full">
+          <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+              <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+          </div>
+          <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search products, prand and categories" required>
+      </div>
+      <button type="submit" class="btn btn mx-3" style="background-color: orange;">Search</button>
+  </form>
 </div>
 
 <div>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-regular fa-user" id="acc">   </i><span for="acc">{{loggedInUsername}} </span>
-                    </a>
-                    <ul class="dropdown-menu">       
-                       
-                        <li><a class="dropdown-item" routerLink="/MyAccount">My Account </a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-bag-shopping" id="order"> </i><span for="order" > Order</span></a></li>
-                      <li> <a class="dropdown-item" href="#"><i class="fa-regular fa-heart">  </i><span for="acc">  Saved items</span></a></li>
-                      <li style="text-align: center;"><button routerLink="/SignIn" [hidden]="IsUserLogged" (click)="SignInNav()" class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">  SignIn </button></li>
-                      <li style="text-align: center;"><button routerLink="/Home"  [hidden]="!IsUserLogged" (click)="SignOutNav()" class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">   SignOut </button></li>
-                      <!-- <li> <a class="dropdown-item"routerLink="/SignIn"><span for="acc">  Login</span></a></li> -->
-                    
-                    </ul>
-                  </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fa-regular fa-circle-question" id="help">  </i><span for="help"> Help</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Help Center</a></li>
-                      <li><a class="dropdown-item" href="#">Place an Order </a></li>
-                      <li><a class="dropdown-item" href="#">Pay For Your Order </a></li>
-                      <li><a class="dropdown-item" href="#">Track Your Order </a></li>
-                      <li><a class="dropdown-item" href="#">Cancel an Order </a></li>
-                      <li><a class="dropdown-item" href="#">Create a return  </a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li style="text-align: center;"><button class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">Live  Chat </button></li>
-                    </ul>
-                  </li>
-            
-            <a class="nav-link "routerLink="/Cart">
-              <i class="fa-solid fa-cart-shopping" id="card"> </i><span for="card">Cart</span>
-          </a>
-            </ul> 
-          </div>
-</div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-regular fa-user" id="acc">   </i><span for="acc">{{loggedInUsername}} </span>
+              </a>
+              <ul class="dropdown-menu">       
+                
+                  <li><a class="dropdown-item" routerLink="/MyAccount">My Account </a></li>
+                  <li><a class="dropdown-item" href="#"><i class="fa-solid fa-bag-shopping" id="order"> </i><span for="order" > Order</span></a></li>
+                <li> <a class="dropdown-item" href="#"><i class="fa-regular fa-heart">  </i><span for="acc">  Saved items</span></a></li>
+                <li style="text-align: center;"><button routerLink="/SignIn" [hidden]="IsUserLogged" (click)="SignInNav()" class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">  SignIn </button></li>
+                <li style="text-align: center;"><button routerLink="/Home"  [hidden]="!IsUserLogged" (click)="SignOutNav()" class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">   SignOut </button></li>
+                <!-- <li> <a class="dropdown-item"routerLink="/SignIn"><span for="acc">  Login</span></a></li> -->
+              
+              </ul>
+            </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-regular fa-circle-question" id="help">  </i><span for="help"> Help</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Help Center</a></li>
+                    <li><a class="dropdown-item" href="#">Place an Order </a></li>
+                    <li><a class="dropdown-item" href="#">Pay For Your Order </a></li>
+                    <li><a class="dropdown-item" href="#">Track Your Order </a></li>
+                    <li><a class="dropdown-item" href="#">Cancel an Order </a></li>
+                    <li><a class="dropdown-item" href="#">Create a return  </a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li style="text-align: center;"><button class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">Live  Chat </button></li>
+                  </ul>
+                </li>
+          
+          <a class="nav-link "routerLink="/Cart">
+            <i class="fa-solid fa-cart-shopping" id="card"> </i><span for="card">Cart</span>
+        </a>
+          </ul> 
         </div>
-    </nav>
-           
+</div>
+      </div>
+  </nav>

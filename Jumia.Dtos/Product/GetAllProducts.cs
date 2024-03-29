@@ -13,7 +13,7 @@ namespace Jumia.Dtos.Product
         public int Id { get; set; }
         public string Name { get; set; }
         public string? ShortDescription { get; set; }
-        public int? StockQuantity { get; set; }
+        public int StockQuantity { get; set; }
         public decimal RealPrice { get; set; }
         public decimal? Discount { get; set; }
         public int? SubCategoryID { get; set; }
@@ -26,6 +26,7 @@ namespace Jumia.Dtos.Product
         {
             Id = product.Id;
             Name = product.Name;
+            StockQuantity = product.StockQuantity;
             ShortDescription = product.ShortDescription;
             RealPrice = product.RealPrice;
             Discount = product.Discount;
