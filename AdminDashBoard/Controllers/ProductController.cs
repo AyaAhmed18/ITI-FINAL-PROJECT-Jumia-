@@ -56,7 +56,7 @@ namespace AdminDashBoard.Controllers
             var subCategorySpec = (await _subCategorySpecificationsService.GetAll()).ToList();
             ViewBag.subCategorySpecs = subCategorySpec;
 
-            var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.Id, a.Name }).ToList();
+            var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
             return View();
         }
@@ -69,7 +69,7 @@ namespace AdminDashBoard.Controllers
             if (ModelState.IsValid)
             {
 
-                if (Images != null)
+                /*if (Images != null)
                 {
                     foreach (var img in Images)
                     {
@@ -80,7 +80,7 @@ namespace AdminDashBoard.Controllers
                         }
                         ProductDto.Images.Add(imageBytes);
                     }
-                }
+                }*/
 
 
                 var res = await _productService.Create(ProductDto, Images);
@@ -106,7 +106,7 @@ namespace AdminDashBoard.Controllers
             var subcategory = await _subCategoryService.GetAll(5, 1);
             var subcatname = subcategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.subcategory = subcatname;
-            var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.Id, a.Name }).ToList();
+            var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
             return View(ProductDto);
 
@@ -128,7 +128,7 @@ namespace AdminDashBoard.Controllers
             var subCategory = await _subCategoryService.GetAll(5, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
-            var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.Id, a.Name }).ToList();
+            var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
             var productDto = _mapper.Map<CreateOrUpdateProductDto>(res.Entity);
             return View(productDto);
@@ -150,7 +150,7 @@ namespace AdminDashBoard.Controllers
             var subCategory = await _subCategoryService.GetAll(5, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
-            var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.Id, a.Name }).ToList();
+            var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
             return View(productDto);
 

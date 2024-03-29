@@ -24,8 +24,6 @@ export class NavigiationBarComponent implements OnInit {
     this.loggedInUsername=stat
    })
    }
-
-
   constructor(private _apiLoginService : ApiLoginService , private router: Router){
     this.loggedInUsername = this._apiLoginService.getLoggedInUsername();
     if(this._apiLoginService.IsLoggedIn()){
@@ -36,7 +34,6 @@ export class NavigiationBarComponent implements OnInit {
     }
     
   }
- 
   SignInNav(){
 
     this.IsUserLogged= this._apiLoginService.IsLoggedIn();

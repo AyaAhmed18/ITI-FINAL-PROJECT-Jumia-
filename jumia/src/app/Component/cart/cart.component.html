@@ -1,3 +1,4 @@
+<!-- Empty Cart -->
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <div><img src="https://www.jumia.com.eg/assets_he/images/cart.668e6453.svg" alt=""></div>
@@ -9,11 +10,67 @@
   
     </ol>
   </nav>
+
+  <!-- Cart with Items -->
+  <div class="row ">
+    <div class="card  mb-3 my-4 col-8" style="max-width: 40rem;" *ngFor="let item of cartItems">
+      <div class="card-header bg-white"> <h5>Cart (number )</h5></div>
+      <div class="card-body  row">
+        <div class="col-3">
+          <img src="https://eg.jumia.is/unsafe/fit-in/150x150/filters:fill(white)/product/04/545973/1.jpg?8016">
+        </div>
+        <div class="col-5 text-warning"><p class="mb-1">{{ item.name }}  {{item.shortDescription}}NIVEA MEN MEN Face, Body & Hands Cream Moisturising, Tin 75ml</p>
+        <h6 class="text-secondary mb-1"> {{item.stockQuantity}}In Stock</h6>
+        <a href="https://www.jumia.com.eg/nivea-men-men-face-body-hands-cream-moisturising-tin-75ml-37954540.html">  <img src="../../../assets/ProductImg/express.png" style="width: 50%;"></a>
+    </div>
+        <div class="col-4">
+          <h1 class="h5">EGP {{item.realPrice}}</h1>  <!--price After Discount-->
+          <div class="row">
+            <div class="col-8 "> <p class="text-decoration-line-through">EGP {{item.realPrice}}</p></div>
+            <div class="col-4 "><p class="bg-warning">{{item.discount}}%</p></div>
+        </div>
+        </div>
+      </div>
+      <div class="card-footer bg-transparent row">
+    <div class="col-6"><p class="text-warning"><i class="fa-solid fa-trash"></i> <span class="text-uppercase"> Remove</span></p></div>
+    <div class="col-6 ">
+    <div class="row">
+      <div class="col-6 d-flex">
+        <button class="btn btn-warning " type="button"><i class="fa-solid fa-minus text-light"></i></button><p>num</p>
+      </div>
+      <div class="col-6 d-flex">
+        <button class="btn btn-warning"><i class="fa-solid fa-plus text-light"></i></button><p>num</p>
+    </div>
+    </div>
+      </div>
+    </div>
+    </div>
+    <!-- cart Sammary  -->
+    <div class="col-4 float-end ">
+      <div class="card mb-3 my-4" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">CART SUMMARY</li>
+          <li class="list-group-item">
+            <ul class="d-flex">
+              <li class="me-5">Subtotal</li>
+              <li>EGP 49.00</li>
+            </ul>
+          </li>
+          <ul>
+          <li ><p>Missing EGP 151.00 to reach free delivery</p> </li>
+          <li> <img src="../../../assets/cart.jpg" style="width: 40%;"></li>
+          </ul>
+        </ul>
+        <div class="card-footer bg-light">
+          <button class="btn btn-warning text-light" style="width: 90%;">Checkout (EGP 49.00)</button>
+        </div>
+      </div>
+    </div>
+    </div>
   
   
-  
-  
-  <div class="">
+  <!-- Recently Viewed -->
+  <!-- <div class="">
     <div class="reco" data-list="lastViewed" pagetype="cart">
       <div class="reco-w card -mtm">
         <header class="-df -fw -pas -i-ctr -mh-48px">
@@ -202,5 +259,5 @@
       </div>
   </div>
   
-  </div>
-  
+  </div> -->
+   <!-- Recently Viewed -->

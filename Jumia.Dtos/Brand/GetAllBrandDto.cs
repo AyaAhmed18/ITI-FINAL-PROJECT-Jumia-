@@ -8,7 +8,7 @@ namespace Jumia.Dtos.Brand
 {
     public class GetAllBrandDto
     {
-        public int Id { get; set; }
+        public int BrandID { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
         public byte[]? LogoURL { get; set; }
