@@ -68,5 +68,10 @@ namespace JumiaStore.Controllers
                 return Ok(productname);
             }
         }
+        public async Task<IActionResult> GetOrderedAsc()
+        {
+            var Prds = await _productServices.GetOrderedAsc();
+            return Ok(Prds);
+        }
     }
 }

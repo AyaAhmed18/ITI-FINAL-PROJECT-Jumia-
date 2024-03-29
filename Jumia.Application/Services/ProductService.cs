@@ -7,6 +7,7 @@ using Jumia.Dtos.ProductSpecificationSubCategory;
 using Jumia.Dtos.Specification;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
+using Jumia.Model.Commons;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -290,6 +291,16 @@ namespace Jumia.Application.Services
 
                 return new ResultView<GetAllProducts> { Entity = productDto, IsSuccess = true, Message = "Succses" };
             }
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> GetOrderedAsc()
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, 0, 0, Prd => Prd.RealPrice, OrderBy.Ascending))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+;
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
         }
     }
 
