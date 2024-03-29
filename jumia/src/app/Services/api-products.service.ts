@@ -10,7 +10,7 @@ import { ProductDto } from '../ViewModels/product-dto';
 export class ApiProductsService {
  
   private apiUrl = 'http://localhost:64866/api/Product';
-//http://localhost:5094/api/Product
+//http://localhost:5094/api/Product bahaa
   //localhost:64866/api/Product
   constructor(private _httpClient:HttpClient) { }
 

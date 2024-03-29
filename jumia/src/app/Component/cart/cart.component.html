@@ -6,7 +6,7 @@
         <h6 class="">Your cart is empty!</h6>
       </div>
       <p>Browse our categories and discover our best deals!</p>
-      <div> <button class="btn text-white">Start Shopping</button></div>
+      <div> <button class="btn text-white" (click)="startShopping()">Start Shopping</button></div>
   
     </ol>
   </nav>
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="card-footer bg-transparent row">
-    <div class="col-6"><p class="text-warning"><i class="fa-solid fa-trash"></i> <span class="text-uppercase"> Remove</span></p></div>
+    <div class="col-6" (click)="removeProduct(item)"><p class="text-warning" ><i class="fa-solid fa-trash"></i> <span class="text-uppercase"> Remove</span></p></div>
     <div class="col-6 ">
     <div class="row">
       <div class="col-6 d-flex">

@@ -40,6 +40,7 @@ export class ProductComponent implements  OnInit{
         this._ApiProductsService.getAllProducts().subscribe({
             next:(data)=>{
           this.AllProducts=data
+          console.log(data);
           
           this.AllProducts.forEach(Product => {
             
