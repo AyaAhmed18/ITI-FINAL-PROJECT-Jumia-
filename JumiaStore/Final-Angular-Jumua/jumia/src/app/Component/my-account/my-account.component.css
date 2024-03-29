@@ -1,0 +1,6 @@
+.card-hover {
+  
+    transition: transform 0.5s;
+    margin-top: 1rem;
+   }
+       .card-hover:hover{ transform: scale(1.1);}
