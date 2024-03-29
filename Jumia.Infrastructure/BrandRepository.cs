@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Jumia.Application.Contract.IBrandRepository;
 
 namespace Jumia.Infrastructure
 {

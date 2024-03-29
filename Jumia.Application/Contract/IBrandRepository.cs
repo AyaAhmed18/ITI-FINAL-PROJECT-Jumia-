@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace Jumia.Application.Contract
 {
-    public interface IBrandRepository
+    public interface IBrandRepository : IRepository<Brand, int>
     {
-        public interface IPrandRepository : IRepository<Brand, int>
-        {
-
-        }
+        
     }
 }

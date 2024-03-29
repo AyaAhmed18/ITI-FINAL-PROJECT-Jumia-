@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Jumia.Application.Contract;
 using Jumia.Application.IServices;
 using Jumia.Dtos.Brand;
 using Jumia.DTOS.ViewResultDtos;
@@ -7,16 +8,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Jumia.Application.Contract.IBrandRepository;
 
 namespace Jumia.Application.Services
 {
     public class BrandService:IBrandService
     {
         private readonly IMapper _mapper;
-        private readonly IPrandRepository _prandrepository;
+        private readonly IBrandRepository _prandrepository;
 
-        public BrandService(IPrandRepository prandrepository, IMapper mapper)
+        public BrandService(IBrandRepository prandrepository, IMapper mapper)
         {
             _mapper = mapper;
 
