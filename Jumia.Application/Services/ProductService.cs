@@ -39,6 +39,7 @@ namespace Jumia.Application.Services
         public async Task<ResultDataForPagination<GetAllProducts>> GetAllPagination(int items, int pagenumber) //10 , 3 -- 20 30
         {
             var AlldAta = (await _unitOfWork.ProductRepository.GetAllAsync());
+            var totalItems = AlldAta.Count();
             var Prds = AlldAta
                 .Skip(items * (pagenumber - 1))
                 .Take(items)
@@ -46,7 +47,8 @@ namespace Jumia.Application.Services
                 .ToList();
             ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
             resultDataList.Entities = Prds;
-            //resultDataList.Count = AlldAta.Count();
+
+            resultDataList.count = AlldAta.Count();
             return resultDataList;
         }
 
@@ -301,6 +303,30 @@ namespace Jumia.Application.Services
             resultDataList.Entities = Prds;
             return resultDataList;
         }
+
+        public async Task<ResultDataForPagination<GetAllProducts>> GetOrderedDsc()
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.RealPrice, OrderBy.Descending))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
+        }
+
+        public async Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivals()
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.CreatedDate, OrderBy.Descending))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
+        }
+
+
+
+
         public async Task<ResultDataForPagination<GetAllProducts>> Search(string PartialName)
         {
             var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.Name.Contains(PartialName)|| Prd.ShortDescription.Contains(PartialName), null, null))

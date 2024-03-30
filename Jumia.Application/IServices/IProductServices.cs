@@ -21,6 +21,8 @@ namespace Jumia.Application.IServices
         Task<ResultView<CreateOrUpdateProductDto>> Delete(CreateOrUpdateProductDto productDto);
         Task<ResultView<GetAllProducts>> Getbyname(string name);
         Task<ResultDataForPagination<GetAllProducts>> GetOrderedAsc();
+        Task<ResultDataForPagination<GetAllProducts>> GetOrderedDsc();
+        Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivals();
         Task<ResultDataForPagination<GetAllProducts>> Search(string PartialName);
     }
 }
