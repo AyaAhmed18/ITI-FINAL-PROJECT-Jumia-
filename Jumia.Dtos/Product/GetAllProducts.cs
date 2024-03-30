@@ -56,5 +56,6 @@ namespace Jumia.Dtos.Product
             // Consider using a dedicated Image class or a simpler representation (e.g., string URLs)
             //Images = product.Images // Assuming byte arrays represent images
         }
+        public GetAllProducts() { }
     }
 }
