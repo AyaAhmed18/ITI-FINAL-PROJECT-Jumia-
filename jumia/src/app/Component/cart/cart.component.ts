@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ProductDto } from '../../ViewModels/product-dto';
 import { CartService } from '../../Services/cart.service';
@@ -17,42 +17,46 @@ export class CartComponent implements OnInit{
   wishlistItems: ProductDto[] = [];
   cartNumber:number=0
   TotalCartPrice=0
+  PriceAfterDiscount:number=0
   constructor(private _cartService: CartService, private router: Router,private _wishlist : WishlistService) { }
+  //priceAftrDiscount
+ 
+  priceAftrDiscount(pro:ProductDto){
+   this.PriceAfterDiscount = pro.realPrice-(pro.realPrice*pro.discount/100)
+  }
+  
   ngOnInit(): void {
+    this._wishlist.getWishlist().subscribe(Items=>{
+      this.wishlistItems =Items
+      console.log(Items);});
+    console.log(this.wishlistItems);
+    
     this._cartService.getCart().subscribe(cartItems => {
       this.cartItems = cartItems;
-      this.calculateTotalCartPrice();
+     this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
+      this.cartNumber=this._cartService.calculateTotalCartNumber();
     });
     //
-    this._wishlist.getWishlist().subscribe(Items=>{
-      this.wishlistItems =Items;
-    });
+   
   }
   startShopping(){
     this.router.navigate(['/Home']);
   }
   removeProduct(productToRemove: any) {
-    const index = this.cartItems.indexOf(productToRemove); 
-    if (index !== -1) {
-      this.cartItems.splice(index, 1); 
-      this.calculateTotalCartPrice();
-      this.cartNumbers()
-    }
+    this._cartService.removeProduct(productToRemove)
   }
-  calculateTotalCartPrice() {
-    this.TotalCartPrice = this.cartItems.reduce((total, item) => total + (item.realPrice* item.cartQuantity), 0);
-  }
+ 
   decreaseQuantity(item:ProductDto){
     if (item.cartQuantity > 1) {
       item.cartQuantity--;
-      this.calculateTotalCartPrice();
-      this.cartNumbers()
+    this.TotalCartPrice= this._cartService.calculateTotalCartPrice()
+    this.cartNumber= this._cartService.calculateTotalCartNumber()
     }
   }
   increaseQuantity(item:ProductDto){
     item.cartQuantity++;
-    this.calculateTotalCartPrice();
-    this.cartNumbers()
+    this.TotalCartPrice= this._cartService.calculateTotalCartPrice()
+    this.cartNumber= this._cartService.calculateTotalCartNumber()
   }
   cartNumbers(){
     this.cartNumber = this.cartItems.reduce((total, item) => total + (item.cartQuantity), 0);
@@ -63,11 +67,25 @@ export class CartComponent implements OnInit{
   }
   
     //start Add to Cart 
-    AddToCart(prod:ProductDto){
+     AddToCart(prod:ProductDto){
       if(prod.stockQuantity>0){
         prod.cartQuantity = 1;
-         this._cartService.addToCart(prod);
-         prod.addedToCart = true;
-      }
+         this._wishlist.removeProductFromWishlist(prod);
+         prod.addedTowashlist = true;}
 }
+   //Addtowashlist
+   addToWishlist(product: ProductDto) {
+    if (this.isInWishlist(product)) {
+        this._wishlist.removeProductFromWishlist(product);
+    } else {
+        this._wishlist.addProductToWishlist(product);
+    }
+    product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
+}
+
+
+  isInWishlist(product: ProductDto): boolean {
+    return !!product.addedTowashlist; 
+}
+
 }

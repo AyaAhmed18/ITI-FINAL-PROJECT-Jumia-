@@ -67,3 +67,40 @@ a {
     position: absolute;
  top:158px;
 }
+
+   /* Redio in modell
+
+
+   .center-align {
+    width: auto;
+    height: 40px;
+
+
+}
+
+input[type="radio"] {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
+.radio-popup-size {
+
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    border-style: solid;
+    border-color: #d8d8d8;
+    border-width: 1px;
+    border-radius: 4px;
+
+
+    padding: 5px 10px;
+
+
+}
+
+input[type="radio"]:checked+label {
+    color: #ffae00;
+    border-color: #ffae00;
+} */

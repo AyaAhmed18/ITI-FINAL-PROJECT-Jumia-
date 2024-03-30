@@ -25,7 +25,7 @@ export class ProductComponent implements  OnInit{
     @Output() addToCartClicked = new EventEmitter<ProductDto>();
     @Output() addTowashlistClicked = new EventEmitter<ProductDto>();
     addedToCart = false;
-    addedTowashlist= false;
+    addedTowashlist: boolean = false;
     constructor(private _ApiProductsService :ApiProductsService ,
          private _sanitizer:DomSanitizer,
         private _cartService:CartService,
@@ -46,6 +46,22 @@ export class ProductComponent implements  OnInit{
     }
 
     // end Add to Cart
+
+      //Addtowashlist
+      addToWishlist(product: ProductDto) {
+        if (this.isInWishlist(product)) {
+            this._wishlist.removeProductFromWishlist(product);
+        } else {
+            this._wishlist.addProductToWishlist(product);
+        }
+        product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
+    }
+    
+    
+      isInWishlist(product: ProductDto): boolean {
+        return !!product.addedTowashlist; 
+    }
+    
     ngOnInit(): void {
         this._ApiProductsService.getAllProducts().subscribe({
             next:(data)=>{
@@ -65,14 +81,8 @@ export class ProductComponent implements  OnInit{
           })
     } 
 
-    //Addtowashlist
-    // addToWishlist(ProductToAdd : any) {
-    //   this._wishlist.addToWishlist(ProductToAdd);
-    //   this.addTowashlistClicked.emit(ProductToAdd);
-    //   ProductToAdd.addedTowashlist = true;
-    // }
+  
+    
 
-    addToWishlist(productToAdd: any) {
-      this._wishlist.addProductToWishlist(productToAdd);
-    }
+   
 }

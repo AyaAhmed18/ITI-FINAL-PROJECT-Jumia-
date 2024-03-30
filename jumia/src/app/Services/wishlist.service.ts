@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ProductDto } from '../ViewModels/product-dto';
 import { BehaviorSubject } from 'rxjs';
+import { CartService } from './cart.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,46 +9,46 @@ export class WishlistService {
   private wishlistItems: ProductDto[] = [];
   private wishlistSubject = new BehaviorSubject<ProductDto[]>([]);
 
-  constructor() {
-    // Retrieve wishlist from session storage if available
-    const storedWishlist = sessionStorage.getItem('wishlist');
-    if (storedWishlist) {
-      this.wishlistItems = JSON.parse(storedWishlist);
+  constructor(private _cartService: CartService) {
+    this.initializeCartFromSession();}
+
+  initializeCartFromSession() {
+    const wishlistItemsFromSession = sessionStorage.getItem('wishlistItems');
+    if (wishlistItemsFromSession) {
+      this.wishlistItems = JSON.parse(wishlistItemsFromSession);
       this.wishlistSubject.next([...this.wishlistItems]);
     }
   }
 
-  getWishlist() {
-    return this.wishlistSubject.asObservable();
-  }
-  addProductToWishlist(productToAdd: ProductDto) {
-    let wishlistItems = this.getWishlistItemsFromSession();
-    wishlistItems.push(productToAdd);
-    this.saveWishlistItemsToSession(wishlistItems);
+  updateSessionStorage() {
+    sessionStorage.setItem('wishlistItems', JSON.stringify(this.wishlistItems));
   }
 
-  // Method to remove a product from the wishlist
-  removeProductFromWishlist(productToRemove: any) {
-    let wishlistItems = this.getWishlistItemsFromSession();
-    const index = wishlistItems.indexOf(productToRemove);
+  addProductToWishlist(product: ProductDto) {
+    this.wishlistItems.push(product);
+    this.wishlistSubject.next([...this.wishlistItems]);
+    this.updateSessionStorage();
+  }
+  
+
+  removeProductFromWishlist(productToRemove: ProductDto) {
+    const index = this.wishlistItems.findIndex(item => item.id === productToRemove.id);
     if (index !== -1) {
-      wishlistItems.splice(index, 1);
-      this.saveWishlistItemsToSession(wishlistItems);
-    }
-  }
+      // Remove product from wishlist
+      this.wishlistItems.splice(index, 1);
+      this.wishlistSubject.next([...this.wishlistItems]);
+      this.updateSessionStorage();
 
-  // Method to get wishlist items from session storage
+      // Add removed product to cart
+      this._cartService.addToCart(productToRemove); }}
+  getWishlist() {
+    return this.wishlistSubject.asObservable();}
   getWishlistItemsFromSession(): any[] {
     const wishlistItemsString = sessionStorage.getItem('wishlistItems');
     return wishlistItemsString ? JSON.parse(wishlistItemsString) : [];
   }
 
-  // Method to save wishlist items to session storage
   saveWishlistItemsToSession(wishlistItems: any[]) {
     sessionStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
   }
 }
-  
-
-
-

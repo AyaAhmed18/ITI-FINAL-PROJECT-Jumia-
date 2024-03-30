@@ -1,5 +1,5 @@
 <!-- Empty Cart -->
-<nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb" *ngIf="cartNumber === 0">
     <ol class="breadcrumb">
       <div><img src="https://www.jumia.com.eg/assets_he/images/cart.668e6453.svg" alt=""></div>
       <div>
@@ -12,7 +12,7 @@
   </nav>
 
   <!-- Cart with Items -->
-  <div class="row ">
+  <div class="row " *ngIf="cartNumber > 0">
     <div class="card-header bg-white"> <h5>Cart ({{cartNumber}} )</h5></div>
     <div class="card  mb-3 my-4 col-8" style="max-width: 40rem;" *ngFor="let item of cartItems">
      
@@ -86,70 +86,60 @@
         <div class=" card-hover card d-block w-100" >
         </div>
       </div>
-      <div class="col-3">
-        @for(pro of wishlistItems;track pro.id;){
-        <div class="show-cards-btn card cards-hover" style="width:210px; height: 440px; border: none;">
-              <img  [src]="pro.images"  class="card-img-top"alt="Card image"style="width:100%">
-          <div class="label-Cards-top px-2">
+      @for(pro of wishlistItems;track pro.id;){
+        <div class="col-3">
+          <div class="show-cards-btn card cards-hover" style="width:210px; height: 440px; border: none;">
+            <img [src]="pro.images" class="card-img-top" alt="Card image" style="width:100%">
+            <div class="label-Cards-top px-2">
               <span class="text-white ">Buy 400 get {{pro.discount}} off</span>
-          </div>
-          <span class=" cards-question"><a href=""><i class="fa fa-question-circle"
-                      style="cursor: pointer"></i></a></span>
-          <span class=" cards-heart"><a href="#exampleModalToggle" role="button" data-bs-toggle="modal"><i
-                      class="fa fa-heart-o" style="cursor: pointer"></i></a>
-          </span>
-          <div class="card-body">
-
+            </div>
+            <span class="cards-question"><a href=""><i class="fa fa-question-circle" style="cursor: pointer"></i></a></span>
+            <div class="card-body">
               <p class="blockquote-footer"><small>{{pro.shortDescription}}</small></p>
               <b><strong>EGP {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
-
               <ul class="list-inline">
-                  <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>
-                  <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>
-
+                <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>
+                <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>
               </ul>
-          
-
-              <div class="hide-btn-cards ">
-                  <button class="btn w-100 text-white" (click)="AddToCart(pro)" >Add To Cart</button>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal"  [attr.data-bs-target]="'#staticBackdrop-' + pro.id">>Add To Cart</button>
+            </div>
+            <!-- Model -->
+            <div class="modal fade" [id]="'staticBackdrop-' + pro.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog bg-white">
+                <div class="modal-content ">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Please select a variation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="center-align">
+                      <p>Only size fit all</p>
+                      <h2><strong>EGP  {{pro.realPrice}} <del> EGP</del></strong></h2>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="hide-btn-cards">
+                      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="AddToCart(pro)" aria-label="Close">Add To Cart</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-          </div>
-      </div>
-    }
-          </div>
-    <div class="col-3">
-        
-                 </div>
-        <div class="col-3">
-              </div>
-    </div>
-  </div>
-  <div class="carousel-item">
-    <div class="row">
-      <div class="col-3">
-      </div>
-      <div class="col-3">
-
-      </div>
-      <div class="col-3">
-      
-      </div>
-      <div class="col-3">
-      
-      </div>
-    </div>
-   
-  </div>
-  <!-- Add more carousel items as needed -->
-  <button class="carousel-control-prev col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+            </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            </div>
+        </div>
+        <button class="carousel-control-prev col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      }
 </div>
 </div>
 

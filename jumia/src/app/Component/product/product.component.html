@@ -99,8 +99,13 @@
                         </ul>
                     </div>
                     <div class="modal-footer ">
-                        <button class="btn w-100 text-white " (click)="addToWishlist(pro)"><i class="fa fa-heart-o p-1 float-start"></i>ADD
-                            TO WISHLIST</button>
+                        <button class="btn w-100 text-white" (click)="addToWishlist(pro)">
+                            <i class="fa" [ngClass]="{'fa-heart-o': !isInWishlist(pro), 'fa-heart': isInWishlist(pro)}"></i>
+                            <span *ngIf="!isInWishlist(pro)">ADD TO WISHLIST</span>
+                            <span *ngIf="isInWishlist(pro)">REMOVE FROM WISHLIST</span>
+                        </button>
+                        
+                
                     </div>
                 </div>
             </div>
