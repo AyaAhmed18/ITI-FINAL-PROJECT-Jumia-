@@ -68,7 +68,92 @@
       </div>
     </div>
     </div>
-  
+
+
+  <!-- washlistproduct -->
+  <div  class="container-fluid mt-5 shadow-sm p-3 mb-5 bg-body rounded " style="background-color: white;">
+    <div class="row mb-3  ">
+<div class="col"><h1 >Saved Item</h1></div>
+
+<div class="col text-warning" style="text-align: right;">    <a href=""><h4>See All > </h4></a>    </div>       </div>
+
+
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-inner">
+  <div class="carousel-item active">
+    <div class="row">
+      <div class="col-3" >
+        <div class=" card-hover card d-block w-100" >
+        </div>
+      </div>
+      <div class="col-3">
+        @for(pro of wishlistItems;track pro.id;){
+        <div class="show-cards-btn card cards-hover" style="width:210px; height: 440px; border: none;">
+              <img  [src]="pro.images"  class="card-img-top"alt="Card image"style="width:100%">
+          <div class="label-Cards-top px-2">
+              <span class="text-white ">Buy 400 get {{pro.discount}} off</span>
+          </div>
+          <span class=" cards-question"><a href=""><i class="fa fa-question-circle"
+                      style="cursor: pointer"></i></a></span>
+          <span class=" cards-heart"><a href="#exampleModalToggle" role="button" data-bs-toggle="modal"><i
+                      class="fa fa-heart-o" style="cursor: pointer"></i></a>
+          </span>
+          <div class="card-body">
+
+              <p class="blockquote-footer"><small>{{pro.shortDescription}}</small></p>
+              <b><strong>EGP {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
+
+              <ul class="list-inline">
+                  <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>
+                  <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>
+
+              </ul>
+          
+
+              <div class="hide-btn-cards ">
+                  <button class="btn w-100 text-white" (click)="AddToCart(pro)" >Add To Cart</button>
+              </div>
+          </div>
+      </div>
+    }
+          </div>
+    <div class="col-3">
+        
+                 </div>
+        <div class="col-3">
+              </div>
+    </div>
+  </div>
+  <div class="carousel-item">
+    <div class="row">
+      <div class="col-3">
+      </div>
+      <div class="col-3">
+
+      </div>
+      <div class="col-3">
+      
+      </div>
+      <div class="col-3">
+      
+      </div>
+    </div>
+   
+  </div>
+  <!-- Add more carousel items as needed -->
+  <button class="carousel-control-prev col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+</div>
+
+
   
   <!-- Recently Viewed -->
   <!-- <div class="">
