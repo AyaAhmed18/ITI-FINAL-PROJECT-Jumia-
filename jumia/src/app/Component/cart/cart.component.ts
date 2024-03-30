@@ -26,15 +26,19 @@ export class CartComponent implements OnInit{
   }
   
   ngOnInit(): void {
+    this._wishlist.getWishlist().subscribe(Items=>{
+      this.wishlistItems =Items
+      console.log(Items);
+    });
+    console.log(this.wishlistItems);
+    
     this._cartService.getCart().subscribe(cartItems => {
       this.cartItems = cartItems;
      this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
       this.cartNumber=this._cartService.calculateTotalCartNumber();
     });
     //
-    this._wishlist.getWishlist().subscribe(Items=>{
-      this.wishlistItems =Items;
-    });
+   
   }
   startShopping(){
     this.router.navigate(['/Home']);

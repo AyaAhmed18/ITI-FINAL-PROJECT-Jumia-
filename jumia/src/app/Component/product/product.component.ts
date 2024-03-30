@@ -46,6 +46,11 @@ export class ProductComponent implements  OnInit{
     }
 
     // end Add to Cart
+
+      //Addtowashlist
+    addToWishlist(productToAdd: ProductDto) {
+      this._wishlist.addProductToWishlist(productToAdd);
+    }
     ngOnInit(): void {
         this._ApiProductsService.getAllProducts().subscribe({
             next:(data)=>{
@@ -65,14 +70,8 @@ export class ProductComponent implements  OnInit{
           })
     } 
 
-    //Addtowashlist
-    // addToWishlist(ProductToAdd : any) {
-    //   this._wishlist.addToWishlist(ProductToAdd);
-    //   this.addTowashlistClicked.emit(ProductToAdd);
-    //   ProductToAdd.addedTowashlist = true;
-    // }
+  
+    
 
-    addToWishlist(productToAdd: any) {
-      this._wishlist.addProductToWishlist(productToAdd);
-    }
+   
 }

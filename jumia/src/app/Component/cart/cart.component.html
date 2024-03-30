@@ -86,8 +86,8 @@
         <div class=" card-hover card d-block w-100" >
         </div>
       </div>
+      @for(pro of wishlistItems;track pro.id;){
       <div class="col-3">
-        @for(pro of wishlistItems;track pro.id;){
         <div class="show-cards-btn card cards-hover" style="width:210px; height: 440px; border: none;">
               <img  [src]="pro.images"  class="card-img-top"alt="Card image"style="width:100%">
           <div class="label-Cards-top px-2">
@@ -115,8 +115,8 @@
               </div>
           </div>
       </div>
-    }
-          </div>
+    
+          </div>}
     <div class="col-3">
         
                  </div>
