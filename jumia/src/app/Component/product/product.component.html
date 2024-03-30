@@ -18,9 +18,15 @@
                     </div>
                     <span class=" cards-question"><a href=""><i class="fa fa-question-circle"
                                 style="cursor: pointer"></i></a></span>
-                    <span class=" cards-heart"><a href="#exampleModalToggle" role="button" data-bs-toggle="modal"><i
-                                class="fa fa-heart-o" style="cursor: pointer"></i></a>
-                    </span>
+                                <span class="cards-heart">
+                                    <a href="#exampleModalToggle" role="button" data-bs-toggle="modal">
+                                        <i class="fa"
+                                           [ngClass]="{'fa-heart-o': !isInWishlist(pro), 'fa-heart': isInWishlist(pro), 'text-warning': isInWishlist(pro), 'shadow': isInWishlist(pro)}"
+                                           style="cursor: pointer">
+                                        </i>
+                                    </a>
+                                </span>
+                                
                     <div class="card-body">
 
                         <p class="blockquote-footer"><small>{{pro.shortDescription}}</small></p>
@@ -104,11 +110,8 @@
                             <span *ngIf="!isInWishlist(pro)">ADD TO WISHLIST</span>
                             <span *ngIf="isInWishlist(pro)">REMOVE FROM WISHLIST</span>
                         </button>
-                        
-                
                     </div>
                 </div>
             </div>
-            
         </div>}
     </div>
