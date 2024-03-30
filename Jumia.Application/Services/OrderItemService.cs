@@ -26,6 +26,40 @@ namespace Jumia.Application.Services
             _mapper = mapper;
         }
 
+        public async Task<ResultView<CreatOrUpdateOrderItemsDto>> Create(CreatOrUpdateOrderItemsDto orderItemsDto)
+        {
+            try
+            {
+                var Data = await _orderItemsRepository.GetAllAsync();
+                var OldOrderItem = Data.Where(c => c.Id == orderItemsDto.Id).FirstOrDefault();
+
+                if (OldOrderItem != null)
+                {
+                    return new ResultView<CreatOrUpdateOrderItemsDto> { Entity = null, IsSuccess = false, Message = "this Items Already Exist" };
+                }
+                else
+                {
+                    var orderItem = _mapper.Map<OrderItems>(orderItemsDto);
+                    var NewOrderItems = await _orderItemsRepository.CreateAsync(orderItem);
+                    await _orderItemsRepository.SaveChangesAsync();
+                    var ODto = _mapper.Map<CreatOrUpdateOrderItemsDto>(NewOrderItems);
+
+
+                    return new ResultView<CreatOrUpdateOrderItemsDto> { Entity = ODto, IsSuccess = true, Message = "Order Created Successfully" };
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new ResultView<CreatOrUpdateOrderItemsDto>
+                {
+                    Entity = null,
+                    IsSuccess = false,
+                    Message = $"Something went wrong: {ex.Message}"
+                };
+            }
+        }
+
         public async Task<List<GetAllOrderItemsDto>> GetAllOrderItems()
         {
             try
@@ -95,5 +129,7 @@ namespace Jumia.Application.Services
 
             }
         }
+
+       
     }
 }

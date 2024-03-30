@@ -25,6 +25,8 @@ namespace Jumia.Model
         public UserIdentity Customer { get; set; }
        
         public virtual ICollection<OrderItems> OrderItems { get; set; }
+        [ForeignKey("Shipping")] ////////
+        public int shippmentId { get; set; }
         public virtual Shippment Shipping { get; set; }
         public Order()
         {
