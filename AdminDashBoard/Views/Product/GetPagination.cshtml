@@ -12,7 +12,22 @@
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
-
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">@AdminDashBoard.Languages.Resource.Name</th>
+            <th scope="col">@AdminDashBoard.Languages.Resource.Description</th>
+            
+            <th scope="col">Stock Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Discount</th>
+            <th scope="col">Sub Category</th>
+            <th scope="col">Brand</th>
+            <th scope="col">@AdminDashBoard.Languages.Resource.Image</th>
+            <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+            <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+        </tr>
+    </thead>
     <tbody>
 @foreach (var item in Model.Entities) {
         <tr>
@@ -37,19 +52,27 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Discount)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubCategoryID)
-            </td>
-            <td>
+           @*  <td>
                 @Html.DisplayFor(modelItem => item.SubCategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BrandID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BrandName)
             </td>
-            <td>
+                <td>
+                
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td> *@
+                <td >@item.SubCategoryName</td>
+                <td>@item.BrandName</td>
+                <td>
+                    @if(item.Image!=null){
+                @foreach (var img in item.Image)
+                {
+                    <td><img src="data:image;base64,@Convert.ToBase64String(img)" width="100px" , height="100px" alt="SubCategory Image" /></td>
+
+                        }   }
+                    </td>
+               <td>
                 <a asp-action="Update" asp-route-id ="@item.Id">Edit</a>
                 <a asp-action="Delete" asp-route-id ="@item.Id">Delete</a>
             </td>

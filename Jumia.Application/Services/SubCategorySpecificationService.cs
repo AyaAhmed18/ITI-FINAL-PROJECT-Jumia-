@@ -57,9 +57,27 @@ namespace Jumia.Application.Services
             }
         }
 
-        public Task<ResultView<CreateOrUpdateSubCategorySpecificationDto>> Delete(CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto)
+        public async Task<ResultView<GetAllSubCategorySpecificationDto>> Delete(int id )
         {
-            throw new NotImplementedException();
+            try
+            {
+                // var book = _mapper.Map<Book>(bookDTO);
+                var existingSubCat = await _subCategorySpecificationRepository.GetOneAsync(id);
+                if (existingSubCat == null)
+                {
+                    return new ResultView<GetAllSubCategorySpecificationDto> { Entity = null, IsSuccess = false, Message = "spec not found" };
+                }
+                var OldSubSpec = _subCategorySpecificationRepository.DeleteAsync(existingSubCat);
+                await _subCategorySpecificationRepository.SaveChangesAsync();
+
+                var bDto = _mapper.Map<GetAllSubCategorySpecificationDto>(OldSubSpec);
+                return new ResultView<GetAllSubCategorySpecificationDto> { Entity = bDto, IsSuccess = true, Message = "Deleted Successfully" };
+            }
+            catch (Exception ex)
+            {
+                return new ResultView<GetAllSubCategorySpecificationDto> { Entity = null, IsSuccess = false, Message = ex.Message };
+
+            }
         }
 
         public async Task<ResultView<CreateOrUpdateSubCategorySpecificationDto>> Update(CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto)

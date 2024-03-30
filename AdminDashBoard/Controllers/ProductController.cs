@@ -53,6 +53,7 @@ namespace AdminDashBoard.Controllers
             var subCategory = await _subCategoryService.GetAll(5, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
+
             var subCategorySpec = (await _subCategorySpecificationsService.GetAll()).ToList();
             ViewBag.subCategorySpecs = subCategorySpec;
 
@@ -69,7 +70,7 @@ namespace AdminDashBoard.Controllers
             if (ModelState.IsValid)
             {
 
-                /*if (Images != null)
+                if (Images != null)
                 {
                     foreach (var img in Images)
                     {
@@ -80,13 +81,14 @@ namespace AdminDashBoard.Controllers
                         }
                         ProductDto.Images.Add(imageBytes);
                     }
-                }*/
+                }
 
 
                 var res = await _productService.Create(ProductDto, Images);
 
                 if (res.IsSuccess)
                 {
+                    if(prdSubCategorySpecDto != null) { 
                     foreach (var specItems in ProductDto.subCategorySpecification)
                     {
                         var specName = (await _specificationServices.GetAll()).Where(s => s.Name == specItems).FirstOrDefault();
@@ -97,6 +99,7 @@ namespace AdminDashBoard.Controllers
                             Value=prdSubCategorySpecDto.Value
                         };
                         await _productSpecificationSubCategoryServices.Create(subCategorySpecification);
+                    }
                     }
                     return RedirectToAction("GetPagination");
                 }

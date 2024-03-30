@@ -15,7 +15,9 @@ namespace Jumia.Dtos.SubCategory
         public string Description { get; set; }
 
         public byte[]? Image { get; set; }
-
+        public int CategoryId { get; set; }
+        public int specificationId { get; set; }
+        public List<string>? SelectedSpecification { get; set; }
         public string? CategoryName { get; set; }
 
     }
