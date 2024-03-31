@@ -40,7 +40,8 @@ export class WishlistService {
       this.updateSessionStorage();
 
       // Add removed product to cart
-      this._cartService.addToCart(productToRemove); }}
+     // this._cartService.addToCart(productToRemove);
+     }}
   getWishlist() {
     return this.wishlistSubject.asObservable();}
   getWishlistItemsFromSession(): any[] {

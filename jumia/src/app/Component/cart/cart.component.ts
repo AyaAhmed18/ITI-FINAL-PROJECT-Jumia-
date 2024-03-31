@@ -71,7 +71,9 @@ export class CartComponent implements OnInit{
       if(prod.stockQuantity>0){
         prod.cartQuantity = 1;
          this._wishlist.removeProductFromWishlist(prod);
-         prod.addedTowashlist = true;}
+         this._cartService.addToCart(prod);
+         prod.addedTowashlist = true;
+        }
 }
    //Addtowashlist
    addToWishlist(product: ProductDto) {

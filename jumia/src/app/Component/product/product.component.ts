@@ -24,7 +24,7 @@ export class ProductComponent implements  OnInit{
     cartTotalPrice:number=0
     @Output() addToCartClicked = new EventEmitter<ProductDto>();
     @Output() addTowashlistClicked = new EventEmitter<ProductDto>();
-    addedToCart = false;
+    addedToCart:boolean= false;
     addedTowashlist: boolean = false;
     constructor(private _ApiProductsService :ApiProductsService ,
          private _sanitizer:DomSanitizer,
@@ -42,6 +42,7 @@ export class ProductComponent implements  OnInit{
            this._cartService.addToCart(prod);
            this.addToCartClicked.emit(prod);
            prod.addedToCart = true;
+           this._wishlist.removeProductFromWishlist(prod);
         }
     }
 
@@ -80,9 +81,4 @@ export class ProductComponent implements  OnInit{
           
           })
     } 
-
-  
-    
-
-   
 }

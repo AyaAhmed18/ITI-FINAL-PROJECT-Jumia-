@@ -1,0 +1,64 @@
+<div class=" container-fluid formm">
+    <div class="text-warning mt-4 " style="text-align: center;">
+        <h4 class="h1">W E L C O M E T O J U M I A</h4>
+        <h1 class="h4">Create an account now !</h1>
+    </div>
+<form class="row g-3 inner " (submit)="register(user.userName,user.email,user.password,user.confirmpass)" #registerForm="ngForm">
+    <div class="form-floating mb-3 col-6">
+      <input type="text" class="form-control input" id="floatingInput" placeholder="name@example.com" required pattern="^[a-zA-Z]{3,50}$" #UserName="ngModel" name="userName" [(ngModel)]="user.userName" >
+      <label for="floatingInput">Username</label>
+      <div id="emailHelp" class="form-text text-danger" [hidden]="UserName.valid || UserName.untouched">
+        @if(UserName.errors?.['required']){
+          <p>Required</p>
+        }
+        @if(UserName.errors?.['pattern']){
+        <p>Your name should be between 3 and 50 characters long and contain only letters.</p>
+        }
+      </div>
+    </div>
+    <div class="form-floating mb-3 col-6">
+      <input type="email" class="form-control input" id="floatingInput" placeholder="name@example.com" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" #email="ngModel" [(ngModel)]="user.email" >
+      <label for="floatingInput">ُEmail</label>
+      <div id="emailHelp" class="form-text text-danger" [hidden]="email.valid || email.untouched">
+        @if(email.errors?.['required']){
+          <p>Required</p>
+        }
+        @if(email.errors?.['pattern']){
+        <p>Invalid email</p>
+        }
+      </div>
+    </div>
+  
+    <div class="form-floating col-6">
+      <input type="password" class="form-control input " id="floatingPassword" placeholder="Password" required #pass="ngModel" name="password" [(ngModel)]="user.password">
+      <label for="floatingPassword">Password</label>
+      <div id="emailHelp" class="form-text text-danger" [hidden]="pass.valid || pass.untouched">
+        @if(pass.errors?.['required']){
+          <p>Required</p>
+        }
+        @if(pass.errors?.['pattern']){
+        <p>Enter Valid Password.</p>
+        }
+      </div>
+    </div>
+    <div class="form-floating col-6">
+      <input type="password" class="form-control input" id="floatingPassword" placeholder="Password" required #confirmpass="ngModel" name="confirmpass" [(ngModel)]="user.confirmpass" >
+      <label for="floatingPassword">Confirm password</label>
+      
+      <div id="emailHelp" class="form-text text-danger" [hidden]="confirmpass.valid || confirmpass.untouched">
+        @if(confirmpass.errors?.['required']){
+          <p>Required</p>
+        }
+        @if(confirmpass.errors?.['pattern']){
+        <p>InValid .</p>
+        }
+      </div>
+
+    </div>
+    <div class="register-btn col-12">
+      <button class="btn btn-warning mb-3 text-light " style="width: 80%;" [disabled]="registerForm.invalid">REGISTER</button>
+    </div>
+</form>
+</div>
+
+

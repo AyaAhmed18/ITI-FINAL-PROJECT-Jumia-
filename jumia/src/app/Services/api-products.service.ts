@@ -11,7 +11,7 @@ export class ApiProductsService {
  
   private apiUrl = 'http://localhost:5094/api/Product';
 //http://localhost:5094/api/Product bahaa
-  //localhost:64866/api/Product
+  //localhost:64866/api/Product  aya
   constructor(private _httpClient:HttpClient) { }
 
   getAllProducts(): Observable<any> {
