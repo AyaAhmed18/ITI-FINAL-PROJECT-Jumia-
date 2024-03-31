@@ -5,7 +5,7 @@
     </div>
 <form class="row g-3 inner " (submit)="register(user.userName,user.email,user.password,user.confirmpass)" #registerForm="ngForm">
     <div class="form-floating mb-3 col-6">
-      <input type="text" class="form-control input" id="floatingInput" placeholder="name@example.com" required pattern="^[a-zA-Z]{3,50}$" #UserName="ngModel" name="userName" [(ngModel)]="user.userName" >
+      <input type="text" class="form-control input" id="floatingInput" placeholder="" required pattern="^[a-zA-Z]{3,50}$" #UserName="ngModel" name="userName" [(ngModel)]="user.userName" >
       <label for="floatingInput">Username</label>
       <div id="emailHelp" class="form-text text-danger" [hidden]="UserName.valid || UserName.untouched">
         @if(UserName.errors?.['required']){

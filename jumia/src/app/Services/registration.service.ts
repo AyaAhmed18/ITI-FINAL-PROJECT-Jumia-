@@ -12,6 +12,6 @@ export class RegistrationService {
 
   register(username: string, email: string, password: string, confirmpass: string) {
     const userDetails = { username, email, password, confirmpass };
-    return this.httpClient.post<any>(`${this.apiUrl}Account/Register`, userDetails)   
+    return this.httpClient.post<any>(`${this.apiUrl}/Account/Register`, userDetails)   
   }
 }
