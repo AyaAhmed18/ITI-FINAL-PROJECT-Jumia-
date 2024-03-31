@@ -5,12 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-orders',
+  selector: 'app-shippment',
   standalone: true,
   imports: [RouterLink,RouterOutlet,HttpClientModule,FormsModule,CommonModule],
-  templateUrl: './orders.component.html',
-  styleUrl: './orders.component.css'
+  templateUrl: './shippment.component.html',
+  styleUrl: './shippment.component.css'
 })
-export class OrdersComponent {
+export class ShippmentComponent {
 
 }
