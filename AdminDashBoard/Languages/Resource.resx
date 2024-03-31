@@ -351,4 +351,7 @@
   <data name="UserPages" xml:space="preserve">
     <value>User Pages</value>
   </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
 </root>
