@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AdminDashBoard.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         private readonly IProductServices _productService;
         private readonly ISubCategoryService _subCategoryService;
