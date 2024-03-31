@@ -84,7 +84,7 @@ namespace JumiaStore.Controllers
         public async Task<IActionResult> GetOrderedAsc()
         {
             var Prds = await _productServices.GetOrderedAsc();
-            return Ok(Prds.Entities);
+            return Ok(Prds.Entities );
         }
 
 
@@ -100,7 +100,7 @@ namespace JumiaStore.Controllers
         public async Task<IActionResult> GetNewestArrivals()
         {
             var Prds = await _productServices.GetNewestArrivals();
-            return Ok(Prds.count);
+            return Ok(Prds.Entities);
         }
 
 
