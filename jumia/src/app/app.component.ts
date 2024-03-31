@@ -8,7 +8,6 @@ import { FilterComponent } from './Component/filter/filter.component';
 import { OrdersComponent } from './Component/orders/orders.component';
 import { MyAccountComponent } from './Component/my-account/my-account.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { APICategoryService } from './Services/apicategory.service';
 
 @Component({
   selector: 'app-root',
@@ -23,9 +22,9 @@ import { APICategoryService } from './Services/apicategory.service';
   styleUrl: './app.component.css',
  
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   products:any=[]
-  constructor(private apiCategory:APICategoryService){
+  constructor(){
 
   }
   // fetchProducts(){
@@ -34,9 +33,7 @@ export class AppComponent implements OnInit{
   //   console.log(data);
   //   }) 
   // }
-  ngOnInit(): void {
-    this.apiCategory.fetchCategories()
-  }
+ 
   title = 'jumia';
   //httpClient=inject(HttpClient)
 }
