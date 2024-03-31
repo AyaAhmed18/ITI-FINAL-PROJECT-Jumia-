@@ -103,7 +103,7 @@ namespace AdminDashBoard.Controllers
 
 
             }
-            var subcategory = await _subCategoryService.GetAll(5, 1);
+            var subcategory = await _subCategoryService.GetAll(55, 1);
             var subcatname = subcategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.subcategory = subcatname;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
