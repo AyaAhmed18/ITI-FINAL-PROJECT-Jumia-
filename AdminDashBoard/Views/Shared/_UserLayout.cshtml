@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Day4.styles.css" asp-append-version="true" />
+</head>
+<body dir="@AdminDashBoard.Languages.Resource.dir">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container-fluid">
+            <a class="navbar-brand" href="#"> <h3>@AdminDashBoard.Languages.Resource.JUMIA</h3> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" asp-action="Index"> <h4>@AdminDashBoard.Languages.Resource.Home</h4></a>
+        </li>
+        <li class="nav-item">
+                   
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @AdminDashBoard.Languages.Resource.Language
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" asp-action="Arabic" asp-controller="Language">@AdminDashBoard.Languages.Resource.Arabic</a></li>
+                            <li><a class="dropdown-item" asp-action="English" asp-controller="Language">@AdminDashBoard.Languages.Resource.English</a></li>
+               
+            @* <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li> *@
+          </ul>
+        </li>
+        <li class="nav-item">
+                 
+        </li>
+      </ul>
+      <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="@AdminDashBoard.Languages.Resource.Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">@AdminDashBoard.Languages.Resource.Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+   
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    
+    <div class="container-fluid - bg-danger">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+            <div class="col mb-3">
+                <a href="/" class="d-flex align-items-center mb-3 link-light text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                </a>
+                <p class="text-muted">© 2022</p>
+            </div>
+
+            <div class="col mb-3">
+            </div>
+
+          
+
+          
+
+           
+        </footer>
+    </div>
+
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

@@ -7,7 +7,7 @@ using Microsoft.Win32;
 
 namespace AdminDashBoard.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
             private UserManager<UserIdentity> _userManager;
             private SignInManager<UserIdentity> _signinManager;
@@ -38,13 +38,10 @@ namespace AdminDashBoard.Controllers
                     var user = new UserIdentity() { UserName = registerDtos.Username, Email = registerDtos.Email, PhoneNumber = registerDtos.Phone };
                     IdentityResult res = await _userManager.CreateAsync(user, registerDtos.Password);
 
-                    
-
-                    
                         if (res.Succeeded && registerDtos.Password == registerDtos.Confirmpass)
                         {
-
-                            await _signinManager.SignInAsync(user, isPersistent: false);
+                         await _userManager.AddToRoleAsync(user, "Admin");
+                           await _signinManager.SignInAsync(user, isPersistent: false);
                             return RedirectToAction("Login");
 
                         }
@@ -63,6 +60,50 @@ namespace AdminDashBoard.Controllers
                     return View(registerDtos);
                 }
             }
+
+
+
+
+
+        public IActionResult Login()
+        {
+            return View("Login");
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginDtos loginDtos)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var result = await _signinManager.PasswordSignInAsync(loginDtos.Username, loginDtos.Password, false, false);
+
+                if (result.Succeeded)
+                {
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewData["ErrorMessage"] = "Invalid username or password.";
+                    return View("Login", loginDtos);
+                }
+            }
+
+            return View("Login", loginDtos);
+        }
+
+
+
+
+        public async Task<IActionResult> logout()
+        {
+            await _signinManager.SignOutAsync();
+            return RedirectToAction("Login", "Account");
+        }
+
+
+    }
 
     }

@@ -1,0 +1,77 @@
+﻿@model ResultDataForPagination<GetAllCategoryDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+@* <h1>@Model.count</h1> *@
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+
+        <h1>@AdminDashBoard.Languages.Resource.AllCategory</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Name</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Description</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Image</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Entities)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="200px" , height="200px"  alt="Category Image" /></td>
+                    <td>
+                            <a asp-action="Update" asp-controller="Category" asp-route-id="@item.Id" class="btn btn-primary">@AdminDashBoard.Languages.Resource.Update</a>
+                    </td>
+                    <td>
+                            <a asp-action="Delete" asp-controller="Category" asp-route-id="@item.Id" class="btn btn-danger">@AdminDashBoard.Languages.Resource.Delete</a>
+                    </td>
+                </tr>
+
+                
+
+            }
+        </tbody>
+    </table>
+    <br />
+        <a asp-action="Create" asp-controller="Category" class="btn btn-success">@AdminDashBoard.Languages.Resource.AddCategory</a>
+    </div>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+

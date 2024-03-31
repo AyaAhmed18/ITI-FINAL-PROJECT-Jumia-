@@ -1,0 +1,68 @@
+﻿@model List<GetAllOrdersDTO>
+@{
+    Layout = "_Layout";
+}
+<style>
+    a{
+        text-decoration:none;
+        color:teal
+    }
+</style>
+
+<div class="main-panel ">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title">@Localizer["Orders"]</h1>
+                        <p class="card-description">
+                            @Localizer["orderview"]  <code>@Localizer["Info"]  </code>
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>@Localizer["Id"]</th>
+                                        <th>@Localizer["Customer"]</th>
+                                        <th>@Localizer["Status"]</th>
+                                        <th>@Localizer["CreatedDate"]</th>
+                                        <th>@Localizer["TotalPrice"]</th>
+                                        <th>@Localizer["Discount"]</th>
+                                        <th> <i class="mdi mdi-eye"></i>@Localizer["View"] </th>
+                                         
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(Model!=null){
+                                        @foreach (var item in Model)
+                                        {
+
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.Customer</td>
+                                                <td><label class="badge badge-danger">@item.Status</label></td>
+                                                <td>@item.OrderDate</td>
+                                                <td><label class="badge badge-danger">@item.TotalPrice</label></td>
+                                                <td class="text-danger"> @item.Discount % <i class="ti-arrow-down"></i></td>
+                                                <td><a asp-action="Edit" asp-controller="Order" asp-route-Id="@item.Id"> <i class="mdi mdi-eye"></i>  View </a> </td>
+
+                                            </tr>
+                                        }
+                                     }
+                                    
+                                   
+                                   
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

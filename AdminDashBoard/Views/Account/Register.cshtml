@@ -3,95 +3,96 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    // Layout = "_Layout";
+    Layout = "_AccountLayout";
 }
 @model RegisterDtos
-<html>
-    <head>
-        <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            margin: 20px;
-        }
 
-        .forms-sample {
-            max-width: 400px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
 
-        .form-label {
-            font-weight: bold;
-        }
 
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-        }
+<div class="login-root">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
 
-        .btn-primary {
-            background-color: #007bff;
-            color: #fff;
-        }
 
-        .btn-light {
-            background-color: #f8f9fa;
-            color: #212529;
-        }
+        <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+            <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+                <h1>@AdminDashBoard.Languages.Resource.Register</h1>
+            </div>
+            <div class="formbg-outer">
+                <div class="formbg">
+                    <div class="formbg-inner padding-horizontal--48">
+                        <span class="padding-bottom--15">@AdminDashBoard.Languages.Resource.Registeryouraccount</span>
 
-        button {
-            margin-right: 10px;
-        }
 
-        </style>
-    </head>
-    <body>
+                        <form id="stripe-login" method="post">
 
-<form class="forms-sample" method="post">
-    <div class="mb-3">
-        <label class="form-label">UserName</label>
-        <input type="text" class="form-control" asp-for="Username">
-            <span asp-validation-for="Username" style="color: red"></span>
 
+                            <div class="field padding-bottom--24">
+                                <label for="email">@AdminDashBoard.Languages.Resource.UserName </label>
+                                <input type="text" placeholder="&#xf2b9;  Enter User Name" class="fa form-control _ge_de_ol" style="font-family: 'FontAwesome';" asp-for="Username" />
+                                <span class="text-danger"><span asp-validation-for="Username" style="color: red"></span></span>
+                            </div>
+
+                            <div class="field padding-bottom--24">
+                                <label for="email">@AdminDashBoard.Languages.Resource.Email</label>
+                                <input type="text" placeholder="&#xf0e0;  Enter Email" class="fa form-control _ge_de_ol" style="font-family: 'FontAwesome';" asp-for="Email" />
+                                <span class="text-danger"><span asp-validation-for="Email" style="color: red"></span></span>
+                            </div>
+
+                             <div class="field padding-bottom--24">
+                                <label for="email">@AdminDashBoard.Languages.Resource.EnterPhone</label>
+                                <input type="text" placeholder="&#xf2a0;  Enter Phone" class="fa form-control _ge_de_ol" style="font-family: 'FontAwesome';" asp-for="Phone" />
+                                <span class="text-danger"><span asp-validation-for="Phone" style="color: red"></span></span>
+                            </div>
+
+
+                            <div class="field padding-bottom--24">
+                                <label for="password">@AdminDashBoard.Languages.Resource.Password</label>
+                                <input type="password" placeholder="&#xf070;  Enter Password" class="fa font-family: 'FontAwesome' form-control _ge_de_ol" asp-for="Password" />
+                                <span class="text-danger"><span asp-validation-for="Password" style="color: red"></span></span>
+                            </div>
+
+                            <div class="field padding-bottom--24">
+                                <label for="password">@AdminDashBoard.Languages.Resource.ConfirmPassword</label>
+                                <input type="password" placeholder="&#xf070;  Enter Confirm Password" class="fa font-family: 'FontAwesome' form-control _ge_de_ol" asp-for="Confirmpass" />
+                                <span class="text-danger"><span asp-validation-for="Confirmpass" style="color: red"></span></span>
+                            </div>
+
+
+                            
+                            <div class="field padding-bottom--24">
+                                <input type="submit" name="submit" value="@AdminDashBoard.Languages.Resource.Continue">
+                            </div>
+                            <div class="field">
+                                <a class="ssolink" href="#">@AdminDashBoard.Languages.Resource.AlreadyhaveanaccountLogin</a>
+                            </div>
+                        </form>
+
+
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label class="form-label">Email Adress</label>
-        <input type="text" class="form-control" asp-for="Email">
-        <span asp-validation-for="Email" style="color: red" ></span>
+</div>
 
-    </div>
-    <div class="mb-3">
-        <label class="form-label">phone</label>
-        <input type="text" class="form-control" asp-for="Phone">
-            <span asp-validation-for="Phone" style="color: red"></span>
 
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input type="text" class="form-control" asp-for="Password">
-            <span asp-validation-for="Password" style="color: red"></span>
 
-    </div>
+}
 
-    <div class="mb-3">
-        <label class="form-label">Confirm Password</label>
-        <input type="text" class="form-control" asp-for="Confirmpass">
-            <span asp-validation-for="Confirmpass" style="color: red"></span>
 
-    </div>
 
-    <button type="submit" class="btn btn-primary me-2">Submit</button>
-    <button class="btn btn-light">Cancel</button>
-</form>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+

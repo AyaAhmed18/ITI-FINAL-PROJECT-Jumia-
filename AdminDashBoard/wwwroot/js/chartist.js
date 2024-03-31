@@ -100,10 +100,10 @@
       reverseData: true,
       horizontalBars: true,
       axisY: {
-        offset: 20
+        off: 20
       },
       axisX: {
-        labelOffset: {
+        labelOff: {
           x: 0,
           y: 6
         },

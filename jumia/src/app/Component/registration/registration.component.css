@@ -1,0 +1,40 @@
+.form-floating {
+    margin-bottom: 1rem;
+    margin-top: 4rem;
+  }
+
+  /* Center align the gender labels */
+  .gender-label {
+  
+    margin-top: 1rem;
+    border-radius: 2%;
+  }
+
+  /* Center align the Register button */
+  .register-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+
+  }
+  .input{
+
+  }
+  .formm{
+    width: 80%;
+   align-items: center;
+  border: solid orange 2px;
+  border-radius: 2%;
+justify-content: center;
+  }
+
+  .inner{
+    width: 90%;
+  }
+  #welcome{
+    margin-top: 4rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+  }

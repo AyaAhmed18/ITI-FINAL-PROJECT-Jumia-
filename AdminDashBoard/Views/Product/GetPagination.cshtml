@@ -1,0 +1,144 @@
+﻿@using Jumia.DTOS.ViewResultDtos
+@model ResultDataForPagination<Jumia.Dtos.Product.GetAllProducts>
+
+@{
+    Layout = "_Layout";
+}
+
+@{
+    ViewData["Title"] = "GetPagination";
+}
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<style>
+    a:hover{color:#fff}
+    .fifty-chars
+    {
+        width: 6ch;
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+
+    }
+</style>
+<body>
+
+    <div class="">
+
+        <h1>@AdminDashBoard.Languages.Resource.AllProducts</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Name</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Description</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Image</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.StockQuantity</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.RealPrice</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Discount</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.SubCategoryName</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Brand</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+
+                    
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Entities)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                        @* <td class="fifty-chars" width="15px">@item.ShortDescription </td> *@
+                        <td class="fifty-chars" width="6ch">@if (item.Images.Count > 0) { Convert.ToBase64String(item.Images[item.Images.Count() - 1]); }</td>
+                        @{
+                            string res = item.Images.Count > 0 ? Convert.ToBase64String(item.Images[item.Images.Count() - 1]) : "";
+                        }
+                        <td><img src="data:image;base64,@res" width="100px" height="100px" alt="Product Image" /></td>
+
+                     <td>@item.StockQuantity</td>
+                    <td>@item.RealPrice</td>
+                    <td>@item.Discount</td>
+                    <td>@item.SubCategoryName</td>
+                    <td>@item.BrandName</td>
+                    <td>
+                            <a asp-action="Update" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-info">@AdminDashBoard.Languages.Resource.Update</a>
+                    </td>
+                    <td>
+                            <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-danger">@AdminDashBoard.Languages.Resource.Delete</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <br />
+        <a asp-action="Create" asp-controller="Product" class="btn btn-success p-3">@AdminDashBoard.Languages.Resource.AddProduct</a>
+    </div>
+</body>
+</html>
+@* @{
+    Layout = "_Layout";
+    ViewData["Title"] = "GetPagination";
+}
+
+<h1>GetPagination</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+
+    <tbody>
+@foreach (var item in Model.Entities) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lon)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RealPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td> 
+             <td>
+                @Html.DisplayFor(modelItem => item.SubCategoryID)
+            </td> 
+            <td>
+                @Html.DisplayFor(modelItem => item.SubCategoryName)
+            </td>
+             <td>
+                @html.displayfor(modelitem => item.brandid)
+            </td> 
+             <td>
+                @Html.DisplayFor(modelItem => item.BrandName)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Images)
+                </td>
+            <td>
+                <a asp-action="Update" asp-route-id ="@item.Id">Edit</a>
+                <a asp-action="Delete" asp-route-id ="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+       
+    </tbody>
+</table> 
+*@

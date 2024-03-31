@@ -1,0 +1,86 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+}
+
+
+@model CreateOrUpdateSubDto
+@{
+    ViewData["Title"] = "Create";
+    SelectList list = new SelectList(ViewBag.Category, "Id", "Name");
+}
+
+
+<h1>@AdminDashBoard.Languages.Resource.AddSubCategory</h1>
+
+
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+
+
+</head>
+<body>
+    <form asp-action="Create" asp-controller="SubCategory" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"> @AdminDashBoard.Languages.Resource.English_Name</label>
+            <input asp-for="Name" class="form-control">
+            <span asp-validation-for="Name" style="color:red"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="NameAr" class="form-label">@AdminDashBoard.Languages.Resource.Arabic_Name</label>
+            <input asp-for="NameAr" class="form-control">
+            <span asp-validation-for="NameAr" style="color:red"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
+            <input asp-for="Description" class="form-control">
+            <span asp-validation-for="Description" style="color:red"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Image" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
+            <input asp-for="Image" type="file" class="form-control">
+            <span asp-validation-for="Image" style="color:red"></span>
+        </div>
+
+
+
+
+        <div>
+            <label asp-for="CategoryId" class="form-label">@AdminDashBoard.Languages.Resource.Categoryies</label>
+            <select asp-for="CategoryId" asp-items="list" class="form-select"></select>
+
+
+
+
+        </div>
+        <br />
+
+        <div>
+            <p>Specifications</p>
+            @foreach (var spec in ViewBag.spec)
+            {
+                
+                    <input type="checkbox" name="SelectedSpecification" value="@spec.Name" id="spec_@spec.Name">
+                    <label for="spec_@spec.Name">@spec.Name</label>
+              
+            }
+        </div>
+
+
+        <button type="submit" class="btn btn-info text-white">@AdminDashBoard.Languages.Resource.Create</button>
+    </form>
+
+
+
+</body>
+
+
+</html>

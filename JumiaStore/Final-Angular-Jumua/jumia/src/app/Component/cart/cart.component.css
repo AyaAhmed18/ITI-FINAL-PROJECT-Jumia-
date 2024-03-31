@@ -1,0 +1,69 @@
+.breadcrumb {
+    display: block;
+    background-color: white;
+    text-align: center;
+    width: 98.5%;
+    margin-left: 15px;
+}
+
+.btn {
+    background-color: rgb(243, 132, 22);
+    height: 45px;
+}
+
+.-df {
+    font-size: 1rem;
+    text-decoration: none;
+    color: rgb(243, 132, 22);
+}
+
+
+.-phs {
+    font-size: .8rem;
+    margin-right: 900px;
+
+}
+
+header {
+    color: #313133;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif;
+    font-size: .875rem;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 48px;
+    padding: 8px;
+
+
+}
+
+.card {
+    margin-left: 16px;
+    text-decoration: none;
+
+}
+
+
+
+a {
+    text-decoration: none;
+    color: #444141;
+}
+
+
+.bdg {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    color: rgb(243, 132, 22);
+    background-color: rgb(245, 220, 195);
+}
+
+
+.card-text {
+    position: absolute;
+ top:158px;
+}
