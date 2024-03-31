@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace JumiaStore.Controllers
@@ -49,7 +50,7 @@ namespace JumiaStore.Controllers
                         {
                             ModelState.AddModelError("Error", error.Description);
                         }
-                        return BadRequest("Invalid registration request.");
+                        return BadRequest($"Invalid registration request.{res.Errors.ToString()}");
                     }
                 }
                 else
