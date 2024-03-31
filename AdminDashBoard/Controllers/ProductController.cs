@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AdminDashBoard.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         private readonly IProductServices _productService;
         private readonly ISubCategoryService _subCategoryService;
@@ -65,7 +65,7 @@ namespace AdminDashBoard.Controllers
         // POST: ProductController/Create
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Create(CreateOrUpdateProductDto ProductDto,List<IFormFile> Images, CreateOrUpdateProductSpecificationSubCategory prdSubCategorySpecDto)
+        public async Task<ActionResult> Create(CreateOrUpdateProductDto ProductDto,List<IFormFile> Images, CreateOrUpdateProductSpecificationSubCategory prdSubCategorySpecDto, int selectedSubCategoryId)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace AdminDashBoard.Controllers
                 if (res.IsSuccess)
                 {
                     if(prdSubCategorySpecDto != null) {
-                        var subCategorySpec = (await _subCategorySpecificationsService.GetAll()).Where(i => i.SubCategoryId == 3).ToList();
+                        var subCategorySpec = (await _subCategorySpecificationsService.GetAll()).Where(i => i.SubCategoryId == selectedSubCategoryId).ToList();
                     foreach (var specItems in subCategorySpec)
                     {
                        // var specName = (await _specificationServices.GetAll()).Where(s => s.Name == specItems).FirstOrDefault();
