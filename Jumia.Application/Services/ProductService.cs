@@ -51,7 +51,19 @@ namespace Jumia.Application.Services
             resultDataList.count = AlldAta.Count();
             return resultDataList;
         }
+        public async Task<ResultDataForPagination<GetAllProducts>> countProducts() 
+        {
+            var AlldAta = (await _unitOfWork.ProductRepository.GetAllAsync());
+            var totalItems = AlldAta.Count();
+            var Prds = AlldAta
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
 
+            resultDataList.count = AlldAta.Count();
+            return resultDataList;
+        }
 
         //Create
         public async Task<ResultView<CreateOrUpdateProductDto>> Create(CreateOrUpdateProductDto ProductDto, List<IFormFile> images)

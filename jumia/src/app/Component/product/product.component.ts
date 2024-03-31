@@ -17,6 +17,7 @@ import { SearchResultsService } from '../../Services/search-results.service';
 export class ProductComponent implements OnInit{
   productList: ProductDto[] = [];
    AllProducts:ProductDto[]=[];
+   CountProducts:number=0;
     products: any;
     searchResults: any[] = [];
     pageSize:number = 15; 
@@ -33,6 +34,8 @@ export class ProductComponent implements OnInit{
     
    
     ngOnInit(): void {
+      
+      
       this.Sershresult();
       this.getAllProducts();
       }
@@ -51,17 +54,14 @@ export class ProductComponent implements OnInit{
             }
         });
     }
+ 
       getAllProducts() {
         this._ApiProductsService.getAllProducts(this.pageSize, this.pageNumber).subscribe({
             next: (data) => {
-                this.AllProducts = data;
-           
-                
-                
-                this.totalPages=Math.ceil( this.AllProd / this.pageSize)
+                this.AllProducts = data.entities;
+                this.totalPages=Math.ceil( data.count/ this.pageSize)
                 this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
-                console.log("all");
-                console.log( this.AllProducts);
+                
                 
                 this.sanitizeImages();
             },
@@ -178,6 +178,7 @@ console.log();
         this._ApiProductsService.SearchByNameOrDesc(searchTerm).subscribe(
           (data: any) => {
             this.searchResults = data;
+            console.log(data)
           },
           (error: any) => {
             console.error('Error fetching search results:', error);

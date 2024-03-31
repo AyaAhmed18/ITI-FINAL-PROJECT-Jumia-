@@ -24,5 +24,6 @@ namespace Jumia.Application.IServices
         Task<ResultDataForPagination<GetAllProducts>> GetOrderedDsc();
         Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivals();
         Task<ResultDataForPagination<GetAllProducts>> Search(string PartialName);
+        Task<ResultDataForPagination<GetAllProducts>> countProducts();
     }
 }

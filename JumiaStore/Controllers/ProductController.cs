@@ -39,7 +39,21 @@ namespace JumiaStore.Controllers
             try
             {
                 var products = await _productServices.GetAllPagination(pageSize, pageNumber);
-                return Ok(products.Entities);
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("countProducts")]
+        public async Task<IActionResult> countProducts()
+        {
+            try
+            {
+                var products = await _productServices.countProducts();
+                return Ok(products.count);
             }
             catch (Exception ex)
             {
