@@ -57,15 +57,27 @@ pageNumbers: number[]=[];
            this._cartService.addToCart(prod);
            this.addToCartClicked.emit(prod);
            prod.addedToCart = true;
+           this._wishlist.removeProductFromWishlist(prod)
         }
     }
 
     // end Add to Cart
 
       //Addtowashlist
-    addToWishlist(productToAdd: ProductDto) {
-      this._wishlist.addProductToWishlist(productToAdd);
-    }
+   
+    addToWishlist(product: ProductDto) {
+      if (this.isInWishlist(product)) {
+          this._wishlist.removeProductFromWishlist(product);
+      } else {
+          this._wishlist.addProductToWishlist(product);
+      }
+      product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
+  }
+  
+  
+    isInWishlist(product: ProductDto): boolean {
+      return !!product.addedTowashlist; 
+  }
     // ngOnInit(): void {
     //     this._ApiProductsService.getAllProducts().subscribe({
     //         next:(data)=>{
