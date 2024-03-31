@@ -106,14 +106,13 @@
 
         <div>
             <button (click)="prevPage()">Previous</button>
+            
+                <button *ngFor="let page of pageNumbers" (click)="goToPage(page)">{{ page }}</button>
+             
             <button (click)="nextPage()">Next</button>
           </div>
           
-          <div *ngFor="let product of products">
-            <!-- Display product details here -->
-          </div>
           
-          <div>
-            <button *ngFor="let page of pageNumbers" (click)="goToPage(page)">{{ page }}</button>
-          </div>
+          
+          
           

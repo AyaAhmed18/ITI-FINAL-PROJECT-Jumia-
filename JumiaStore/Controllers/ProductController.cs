@@ -108,7 +108,7 @@ namespace JumiaStore.Controllers
         public async Task<IActionResult> SearchByNameOrDesc(string PartialName)
         {
             var Prds = await _productServices.Search(PartialName);
-            return Ok(Prds);
+            return Ok(Prds.Entities);
         }
     }
 }

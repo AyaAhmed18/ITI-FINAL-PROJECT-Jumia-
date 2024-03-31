@@ -49,7 +49,7 @@ export class ApiProductsService {
   }
   
   SearchByNameOrDesc(nameOrdesc:string): Observable<ProductDto>{
-    return this._httpClient.get<ProductDto>(`${this.apiUrl}/${nameOrdesc}`);
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/SearchByName?PartialName=${nameOrdesc}`);
   }
 
 }

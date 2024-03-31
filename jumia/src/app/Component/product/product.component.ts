@@ -4,6 +4,7 @@ import { ApiProductsService } from '../../Services/api-products.service';
 import { ProductDto } from '../../ViewModels/product-dto';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { SearchResultsService } from '../../Services/search-results.service';
 
 
 @Component({
@@ -14,10 +15,12 @@ import { CommonModule } from '@angular/common';
     imports: [FilterComponent,CommonModule]
 })
 export class ProductComponent implements OnInit{
+  productList: ProductDto[] = [];
    AllProducts:ProductDto[]=[];
     products: any;
     searchResults: any[] = [];
     pageSize:number = 15; 
+    AllProd:number=0;
   totalPages: number = 0; 
   pageNumber: number = 1; 
   pageNumbers: number[]=[];
@@ -25,23 +28,38 @@ export class ProductComponent implements OnInit{
 
 
 
-    constructor(private _ApiProductsService :ApiProductsService , private _sanitizer:DomSanitizer) { }
+    constructor(private _ApiProductsService :ApiProductsService ,private _searchResultsService: SearchResultsService, private _sanitizer:DomSanitizer) { }
     
     
    
     ngOnInit(): void {
-        this.getAllProducts();
+      this.Sershresult();
+         this.getAllProducts();
       }
 
+
+      Sershresult() {
+        this._searchResultsService.getSearchResults().subscribe({
+            next: (data) => {
+                this.AllProducts = data;
+                console.log(this.AllProducts );
+                this.sanitizeImages();
+            
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        });
+    }
       getAllProducts() {
         this._ApiProductsService.getAllProducts(this.pageSize, this.pageNumber).subscribe({
             next: (data) => {
                 this.AllProducts = data;
                 console.log( );
                 
-                this.totalPages=Math.ceil(data.length / this.pageSize)
+                this.totalPages=Math.ceil( this.AllProd / this.pageSize)
                 this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
-                console.log(this.totalPages);
+                console.log(this.pageNumbers);
                 
                 this.sanitizeImages();
             },
@@ -52,7 +70,13 @@ export class ProductComponent implements OnInit{
     }
     nextPage(): void {
       if (this.pageNumber < this.totalPages) {
+        console.log( this.pageNumber);
+        
         this.pageNumber++;
+        console.log( this.pageNumber);
+        
+
+console.log();
         this.getAllProducts();
       }
     }
@@ -87,6 +111,7 @@ export class ProductComponent implements OnInit{
         this._ApiProductsService.getAllProductsWithOrderAasc().subscribe({
           next: (data) => {
             this.AllProducts = data;
+            this.AllProd=data.length;
             this.sanitizeImages();
           },
           error: (err) => {
