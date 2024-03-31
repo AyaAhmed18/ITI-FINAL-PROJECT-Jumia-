@@ -79,7 +79,7 @@ namespace AdminDashBoard.Controllers
                         }
                     }
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Admin");
 
                 }
                 else
