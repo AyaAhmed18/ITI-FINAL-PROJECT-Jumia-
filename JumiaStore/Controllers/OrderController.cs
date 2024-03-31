@@ -1,10 +1,13 @@
 ﻿using Jumia.Application.IServices;
 using Jumia.Application.Services;
 using Jumia.Dtos.Order;
+using Jumia.Dtos.Shippment;
 using Jumia.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
+using System.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,16 +27,34 @@ namespace JumiaStore.Controllers
 
         // GET: api/<OrderController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+          var order=  (await _orderService.GetAllOrders()).ToList();
+            return Ok(order);
         }
 
         // GET api/<OrderController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            try
+            {
+                var ord = (await _orderService.GetOrder(id));
+                if (ord != null)
+                {
+                    return (Ok(ord));
+                }
+                else
+                {
+                    return NotFound("this Order Not Found");
+                }
+            }
+            catch
+            {
+                return BadRequest();
+            }
+            
+            
         }
 
         // POST api/<OrderController>
@@ -41,19 +62,61 @@ namespace JumiaStore.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateOrUpdateOrderDto createOrderDto)
         {
-            if (ModelState.IsValid)
+            try
             {
-                await _orderService.Create(createOrderDto);
+                if (ModelState.IsValid)
+                {
+                    var order = await _orderService.Create(createOrderDto);
+                    if (order.IsSuccess)
+                    {
+                        return Created("http://localhost:5164/api/Order/" + createOrderDto.Id, "Order Saved Successfully");
+
+                    }
+                    else
+                    {
+                        return Ok("Enter valid Data");
+                    }
+
+                }
+                return StatusCode(500,"Erroras");
                 //url.link()
-                return Created("http://localhost:5164/api/Order/" + createOrderDto.Id, "Order Saved Successfully");
             }
-            return BadRequest(ModelState);
+            catch { return Unauthorized(); }
+            //  return BadRequest(ModelState);
         }
 
         // PUT api/<OrderController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(CreateOrUpdateOrderDto orderDto)
         {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    var ord = await _orderService.GetOrder(orderDto.Id);
+                    if (ord !=null)
+                    {
+                       var order = await _orderService.Update(orderDto);
+                        if (order.IsSuccess)
+                        {
+                            return Created("http://localhost:5164/api/Order/" + orderDto.Id, "Your Address Information Updated Successfully");
+
+                        }
+                        else
+                        {
+                            return Ok("Enter valid Data");
+                        }
+
+                    }
+                }
+                return BadRequest(ModelState);
+
+            }
+            catch
+            {
+                return BadRequest(ModelState);
+            }
         }
 
         // DELETE api/<OrderController>/5

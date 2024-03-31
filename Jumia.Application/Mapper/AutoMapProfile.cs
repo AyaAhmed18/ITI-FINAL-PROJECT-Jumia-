@@ -73,8 +73,8 @@ namespace Jumia.Application.Mapper
             //Shippment
            // CreateMap<Shippment, GetShippmentDto>().ReverseMap();
             CreateMap<Shippment, GetShippmentDto>()
-                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.GetLocalized(src.FirstNameAr, src.FirstNameEn)))
-                .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.GetLocalized(src.LastNameAr, src.LastName)))
+             //   .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.GetLocalized(src.FirstNameAr, src.FirstNameEn)))
+              //  .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.GetLocalized(src.LastNameAr, src.LastName)))
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.GetLocalized(src.CityAr, src.City)))
                 .ForMember(dest => dest.Region, opt => opt.MapFrom(src => src.GetLocalized(src.RegionAr, src.Region)))
 
@@ -84,13 +84,17 @@ namespace Jumia.Application.Mapper
             //Product
             CreateMap<Product, GetAllProducts>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
+                 .ForMember(dest => dest.ShortDescription, opt => opt.MapFrom(src => src.GetLocalized(src.LongDescription, src.ShortDescription)))
+
                 .ReverseMap();
             CreateMap<Product,CreateOrUpdateProductDto>().ReverseMap();
             CreateMap<GetAllProducts, CreateOrUpdateProductDto>()
               .ReverseMap();
 
             //Specification
-            CreateMap<Specification, GetAllSpecificationDto>().ReverseMap();
+            CreateMap<Specification, GetAllSpecificationDto>()
+                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
+                .ReverseMap();
             CreateMap<SubCategorySpecification, CreateOrUpdateSubCategorySpecificationDto>().ReverseMap();
             CreateMap<SubCategorySpecification, GetAllSubCategorySpecificationDto>().ReverseMap();
 

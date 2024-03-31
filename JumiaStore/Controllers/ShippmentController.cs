@@ -1,4 +1,5 @@
-﻿using Jumia.Application.Services;
+﻿using Jumia.Application.IServices;
+using Jumia.Application.Services;
 using Jumia.Dtos.Order;
 using Jumia.Dtos.Shippment;
 using Microsoft.AspNetCore.Mvc;
@@ -11,8 +12,8 @@ namespace JumiaStore.Controllers
     [ApiController]
     public class ShippmentController : ControllerBase
     {
-        private readonly ShippmentService _shippmentService;
-       public ShippmentController(ShippmentService shippmentService)
+        private readonly IShippmentService _shippmentService;
+       public ShippmentController(IShippmentService shippmentService)
         {
             _shippmentService = shippmentService;
         }
@@ -24,10 +25,15 @@ namespace JumiaStore.Controllers
         }
 
         // GET api/<ShippmentController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{ordId}")]
+        public async Task<IActionResult> Get(int ordId)
         {
-            return "value";
+            var shipping = (await _shippmentService.GetAll()).Where(i => i.OrderId == ordId).FirstOrDefault();
+            if (shipping == null)
+            {
+                return NotFound("Not Found");
+            }
+            return Ok(shipping);
         }
 
         // POST api/<ShippmentController>
@@ -38,14 +44,29 @@ namespace JumiaStore.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (createOrUpdateShipmentDto == null && createOrUpdateShipmentDto.CustomerId != null)
+                    if (createOrUpdateShipmentDto != null)
                     {
-                        await _shippmentService.Create(createOrUpdateShipmentDto);
-                        return Created("http://localhost:5164/api/Shippment/" + createOrUpdateShipmentDto.Id, "Your Address Information Saved Successfully");
+                        var ship=await _shippmentService.Create(createOrUpdateShipmentDto);
+                        if (ship.IsSuccess)
+                        {
+                            return Created("http://localhost:5164/api/Shippment/" + createOrUpdateShipmentDto.Id, "Your Address Information Saved Successfully");
+
+                        }
+                        else
+                        {
+                            return Ok("something went wrong Please Try again");
+                        }
+
 
                     }
+                    return BadRequest("Form Should not be null");
+
                 }
-                return BadRequest(ModelState);
+                else
+                {
+                    return BadRequest(ModelState.Values);
+                }
+               
 
             }
             catch
@@ -57,13 +78,14 @@ namespace JumiaStore.Controllers
 
         // PUT api/<ShippmentController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, CreateOrUpdateShipmentDto createOrUpdateShipmentDto)
+        public async Task<IActionResult> Put(CreateOrUpdateShipmentDto createOrUpdateShipmentDto)
         {
             try
             {
+                var ship = await _shippmentService.GetOne(createOrUpdateShipmentDto.Id);
                 if (ModelState.IsValid)
                 {
-                    if (createOrUpdateShipmentDto == null && createOrUpdateShipmentDto.CustomerId != null)
+                    if (ship != null && createOrUpdateShipmentDto.OrderId != null)
                     {
                         await _shippmentService.Update(createOrUpdateShipmentDto);
                         return Created("http://localhost:5164/api/Shippment/" + createOrUpdateShipmentDto.Id, "Your Address Information Updated Successfully");
@@ -81,8 +103,15 @@ namespace JumiaStore.Controllers
 
         // DELETE api/<ShippmentController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(CreateOrUpdateShipmentDto shipmentDto)
         {
+            var shipping = (await _shippmentService.GetOne(shipmentDto.Id));
+            if (shipping != null)
+            {
+               await _shippmentService.Delete(shipmentDto);
+                return Ok("Deleted");
+            }
+            return BadRequest("Enter Valid Id");
         }
     }
 }

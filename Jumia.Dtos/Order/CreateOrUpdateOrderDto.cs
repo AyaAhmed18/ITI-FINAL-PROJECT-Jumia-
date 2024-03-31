@@ -23,11 +23,19 @@ namespace Jumia.Dtos.Order
         public DateTime? DeliveredDate { get; set; } 
         public bool? CancelOrder { get; set; }
         public int CustomerId { get; set; }
-       // public string Customer { get; set; }
+        public PaymentStatus paymentStatus { get; set; }
+        // public string Customer { get; set; }
 
         //private readonly IStringLocalizer<SharedRecources> _localizer;
+        public enum PaymentStatus
+        {
+            PayPall,
+            MobileMoney,
+            Cash
+        }
         public enum OrderStatus
         {
+            Pending,
             Processing ,
             Shipped ,
             Delivered ,
