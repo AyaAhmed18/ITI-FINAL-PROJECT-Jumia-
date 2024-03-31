@@ -88,14 +88,15 @@ namespace AdminDashBoard.Controllers
 
                 if (res.IsSuccess)
                 {
-                    if(prdSubCategorySpecDto != null) { 
-                    foreach (var specItems in ProductDto.subCategorySpecification)
+                    if(prdSubCategorySpecDto != null) {
+                        var subCategorySpec = (await _subCategorySpecificationsService.GetAll()).Where(i => i.SubCategoryId == 3).ToList();
+                    foreach (var specItems in subCategorySpec)
                     {
-                        var specName = (await _specificationServices.GetAll()).Where(s => s.Name == specItems).FirstOrDefault();
+                       // var specName = (await _specificationServices.GetAll()).Where(s => s.Name == specItems).FirstOrDefault();
                         var subCategorySpecification = new CreateOrUpdateProductSpecificationSubCategory
                         {
-                            ProductId = ProductDto.Id,
-                            SubSpecId=prdSubCategorySpecDto.Id,
+                            ProductId = res.Entity.Id,
+                            SubSpecId= specItems.Id,
                             Value=prdSubCategorySpecDto.Value
                         };
                         await _productSpecificationSubCategoryServices.Create(subCategorySpecification);
@@ -106,7 +107,7 @@ namespace AdminDashBoard.Controllers
 
 
             }
-            var subcategory = await _subCategoryService.GetAll(5, 1);
+            var subcategory = await _subCategoryService.GetAll(55, 1);
             var subcatname = subcategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.subcategory = subcatname;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();

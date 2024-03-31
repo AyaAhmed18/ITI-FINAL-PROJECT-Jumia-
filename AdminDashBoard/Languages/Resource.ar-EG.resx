@@ -144,6 +144,9 @@
   <data name="AllCategory" xml:space="preserve">
     <value>كل الفئات</value>
   </data>
+  <data name="AllProducts" xml:space="preserve">
+    <value>كل المنتجات</value>
+  </data>
   <data name="AllSubCategory" xml:space="preserve">
     <value>كل الفئات الفرعيه</value>
   </data>
@@ -161,6 +164,12 @@
   </data>
   <data name="Audiences" xml:space="preserve">
     <value>الجماهير</value>
+  </data>
+  <data name="Brand" xml:space="preserve">
+    <value>الماركة</value>
+  </data>
+  <data name="BrandName" xml:space="preserve">
+    <value>براند</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>فئة</value>
@@ -203,6 +212,9 @@
   </data>
   <data name="dir" xml:space="preserve">
     <value>rtl</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>التخفيض</value>
   </data>
   <data name="DonthaveanaccountSignup" xml:space="preserve">
     <value>لا تملك حسابا ؟اشترك</value>
@@ -288,6 +300,9 @@
   <data name="Product" xml:space="preserve">
     <value>منتج</value>
   </data>
+  <data name="RealPrice" xml:space="preserve">
+    <value>السعر</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>تسجيل</value>
   </data>
@@ -321,8 +336,14 @@
   <data name="Staysignedinforaweek" xml:space="preserve">
     <value>استمر بالتسجيل لمدة اسبوع</value>
   </data>
+  <data name="StockQuantity" xml:space="preserve">
+    <value>الكمية المتاحة</value>
+  </data>
   <data name="SubCategory" xml:space="preserve">
     <value>فئة فرعية</value>
+  </data>
+  <data name="SubCategoryName" xml:space="preserve">
+    <value>اسم فئة فرعية</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>تقديم</value>
