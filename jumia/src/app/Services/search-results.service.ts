@@ -12,9 +12,13 @@ export class SearchResultsService {
 
   setSearchResults(results: ProductDto[]): void {
     this.searchResultsSubject.next(results);
+    console.log("set");
   }
 
   getSearchResults(): Observable<ProductDto[]> {
+    console.log("get");
     return this.searchResultsSubject.asObservable();
+    
+
   }
 }

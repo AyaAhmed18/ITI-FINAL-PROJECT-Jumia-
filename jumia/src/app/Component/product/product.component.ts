@@ -34,7 +34,7 @@ export class ProductComponent implements OnInit{
    
     ngOnInit(): void {
       this.Sershresult();
-         this.getAllProducts();
+      this.getAllProducts();
       }
 
 
@@ -55,11 +55,13 @@ export class ProductComponent implements OnInit{
         this._ApiProductsService.getAllProducts(this.pageSize, this.pageNumber).subscribe({
             next: (data) => {
                 this.AllProducts = data;
-                console.log( );
+           
+                
                 
                 this.totalPages=Math.ceil( this.AllProd / this.pageSize)
                 this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
-                console.log(this.pageNumbers);
+                console.log("all");
+                console.log( this.AllProducts);
                 
                 this.sanitizeImages();
             },

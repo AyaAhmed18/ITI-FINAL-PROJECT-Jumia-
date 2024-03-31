@@ -100,7 +100,7 @@ namespace JumiaStore.Controllers
         public async Task<IActionResult> GetNewestArrivals()
         {
             var Prds = await _productServices.GetNewestArrivals();
-            return Ok(Prds.Entities);
+            return Ok(Prds.count);
         }
 
 
