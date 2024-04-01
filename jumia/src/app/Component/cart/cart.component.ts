@@ -28,8 +28,7 @@ export class CartComponent implements OnInit{
   ngOnInit(): void {
     this._wishlist.getWishlist().subscribe(Items=>{
       this.wishlistItems =Items
-      console.log(Items);
-    });
+      console.log(Items);});
     console.log(this.wishlistItems);
     
     this._cartService.getCart().subscribe(cartItems => {
@@ -67,12 +66,28 @@ export class CartComponent implements OnInit{
     this._wishlist.removeProductFromWishlist(productToRemove);
   }
   
-    //start Add to Cart 
-    AddToCart(prod:ProductDto){
-      if(prod.stockQuantity>0){
-        prod.cartQuantity = 1;
-         this._cartService.addToCart(prod);
-         prod.addedToCart = true;
+   
+   //start Add to Cart 
+   AddToCart(prod:ProductDto){
+    if(prod.stockQuantity>0){
+      prod.cartQuantity = 1;
+       this._wishlist.removeProductFromWishlist(prod);
+       this._cartService.addToCart(prod);
+       prod.addedTowashlist = true;
       }
+}
+  //Addtowashlist
+  addToWishlist(product: ProductDto) {
+    if (this.isInWishlist(product)) {
+        this._wishlist.removeProductFromWishlist(product);
+    } else {
+        this._wishlist.addProductToWishlist(product);
+    }
+    product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
+}
+
+
+  isInWishlist(product: ProductDto): boolean {
+    return !!product.addedTowashlist; 
 }
 }

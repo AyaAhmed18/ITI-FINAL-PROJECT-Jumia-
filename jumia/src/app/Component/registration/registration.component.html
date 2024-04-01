@@ -1,9 +1,9 @@
 <div class=" container-fluid formm">
-    <div class="text-warning mt-4 " style="text-align: center;">
+    <div class=" mt-4 " style="text-align: center;   color: rgba(255, 115, 0, 0.842)">
         <h4 class="h1">W E L C O M E T O J U M I A</h4>
         <h1 class="h4">Create an account now !</h1>
     </div>
-<form class="row g-3 inner " (submit)="register(user.userName,user.email,user.password,user.confirmpass)" #registerForm="ngForm">
+<form class="row g-3 inner " (submit)="register(user.userName,user.email,user.password,user.confirmpass,user.phonenumber)" #registerForm="ngForm">
     <div class="form-floating mb-3 col-6">
       <input type="text" class="form-control input" id="floatingInput" placeholder="" required pattern="^[a-zA-Z]{3,50}$" #UserName="ngModel" name="userName" [(ngModel)]="user.userName" >
       <label for="floatingInput">Username</label>
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="form-floating mb-3 col-6">
-      <input type="email" class="form-control input" id="floatingInput" placeholder="name@example.com" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" #email="ngModel" [(ngModel)]="user.email" >
+      <input type="email" class="form-control input" id="floatingInput" placeholder="name@example.com" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" #email="ngModel" [(ngModel)]="user.email" name="email" >
       <label for="floatingInput">ُEmail</label>
       <div id="emailHelp" class="form-text text-danger" [hidden]="email.valid || email.untouched">
         @if(email.errors?.['required']){
@@ -55,8 +55,21 @@
       </div>
 
     </div>
+    <div class="form-floating col-6">
+      <input type="text" class="form-control input" id="floatingInput" placeholder="phonenumber" required #phonenumber="ngModel" name="phonenumber" [(ngModel)]="user.phonenumber" pattern="^^01[0-9]{9}$">
+      <label for="floatingInput">Phone Number</label>
+      
+      <div id="emailHelp" class="form-text text-danger" [hidden]="phonenumber.valid || phonenumber.untouched">
+        @if(phonenumber.errors?.['required']){
+          <p>Required</p>
+        }
+        @if(phonenumber.errors?.['pattern']){
+        <p>InValid .</p>
+        }
+      </div>
+    </div>
     <div class="register-btn col-12">
-      <button class="btn btn-warning mb-3 text-light " style="width: 80%;" [disabled]="registerForm.invalid">REGISTER</button>
+      <button class="btn btn-warning mb-3 text-light " style="width: 80%;background-color:  rgba(255, 115, 0, 0.842);" [disabled]="registerForm.invalid">REGISTER</button>
     </div>
 </form>
 </div>

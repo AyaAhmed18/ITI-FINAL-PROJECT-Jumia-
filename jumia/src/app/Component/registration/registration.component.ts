@@ -17,26 +17,23 @@ export class RegistrationComponent {
   {
 
   }
-  register(username: string, email: string, password: string, confirmpass: string) {
-    this._registrationService.register(username, email, password, confirmpass).subscribe({
+  register(username: string, email: string, password: string, confirmpass: string ,phonenumber :string) {
+    if (password !== confirmpass) {
+   
+      alert("Password and Confirm Password do not match.");
+      return; 
+    }
+    this._registrationService.register(username, email, password, confirmpass,phonenumber).subscribe({
       next: (res) => {
-        this.user.userName = username;
-        localStorage.setItem("username", username);
-
-        this.user.email = email;
-        localStorage.setItem("email", email);
-
-        this.user.password = password; 
-        localStorage.setItem("password", password);
-
-        this.user.confirmpass = confirmpass;
-        localStorage.setItem("confirmpass", confirmpass);
-
-        console.log(res);
+        console.log(res)
+        alert("Successfully registered!");
       },
       error: (err) => {
         console.error(err);
-      }
-    });
+        alert("Error occurred while registering. Please try again.");
+      }
+    });
+
+
 
 }}

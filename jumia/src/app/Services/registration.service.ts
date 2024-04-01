@@ -10,8 +10,8 @@ export class RegistrationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  register(username: string, email: string, password: string, confirmpass: string) {
-    const userDetails = { username, email, password, confirmpass };
+  register(username: string, email: string, password: string, confirmpass: string,phone:string) {
+    const userDetails = { username, email, password, confirmpass ,phone };
     return this.httpClient.post<any>(`${this.apiUrl}/Account/Register`, userDetails)   
   }
 }
