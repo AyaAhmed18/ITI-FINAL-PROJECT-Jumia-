@@ -79,11 +79,11 @@
 
         <div>
             <p>Specifications</p>
-            @foreach (var spec in ViewBag.spec)
+            @foreach (var spec in ViewBag.subSpec)
             {
-                    <input type="checkbox" name="SelectedSpecification" value="@spec.Name" id="spec_@spec.Name">
+                <input type="checkbox" name="SpecificationName" checked disabled value="@spec.SpecificationName" id="spec_@spec.SpecificationName">
                     <br />
-                    <label for="spec_@spec.Name">@spec.Name</label>
+                <label for="spec_@spec.SpecificationName">@spec.SpecificationName</label>
                     <br />
             }
         </div>

@@ -17,5 +17,6 @@ namespace Jumia.Dtos.Shippment
         public string Regin { get; set; }
         public string City { get; set; }
         public decimal Cost { get; set; }
+        public string CustomerId { get; set; }
     }
 }

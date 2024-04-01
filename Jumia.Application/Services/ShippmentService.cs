@@ -31,13 +31,35 @@ namespace Jumia.Application.Services
         {
             try
             {
-                
-            }
-            catch
-            {
+                var Data = await _shippmentRepository.GetAllAsync();
+                var OldShip = Data.Where(c => c.Id == shipmentDto.Id).FirstOrDefault();
+
+                if (OldShip != null)
+                {
+                    return new ResultView<CreateOrUpdateShipmentDto> { Entity = null, IsSuccess = false, Message = "this Address Already Exist" };
+                }
+                else
+                {
+                    var ship = _mapper.Map<Shippment>(shipmentDto);
+                    var NewShip = await _shippmentRepository.CreateAsync(ship);
+                    await _shippmentRepository.SaveChangesAsync();
+                    var ShDto = _mapper.Map<CreateOrUpdateShipmentDto>(NewShip);
+
+
+                    return new ResultView<CreateOrUpdateShipmentDto> { Entity = ShDto, IsSuccess = true, Message = "User Address Added Successfully" };
+                }
 
             }
-            throw new NotImplementedException();
+            catch (Exception ex)
+            {
+                return new ResultView<CreateOrUpdateShipmentDto>
+                {
+                    Entity = null,
+                    IsSuccess = false,
+                    Message = $"Something went wrong: {ex.Message}"
+                };
+            }
+        
         }
 
         public Task<ResultView<CreateOrUpdateShipmentDto>> Delete(CreateOrUpdateShipmentDto shipmentDto)
@@ -94,9 +116,39 @@ namespace Jumia.Application.Services
             }
         }
 
-        public Task<ResultView<CreateOrUpdateShipmentDto>> Update(CreateOrUpdateShipmentDto shipmentDto)
+        public async Task<ResultView<CreateOrUpdateShipmentDto>> Update(CreateOrUpdateShipmentDto shipmentDto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var Data = await _shippmentRepository.GetOneAsync(shipmentDto.Id);
+
+                if (Data == null)
+                {
+                    return new ResultView<CreateOrUpdateShipmentDto> { Entity = null, IsSuccess = false, Message = "This User Address Data Not Found!" };
+
+                }
+                else
+                {
+                    var shipp = _mapper.Map<Shippment>(shipmentDto);
+                    var shipEdit = await _shippmentRepository.UpdateAsync(shipp);
+                    await _shippmentRepository.SaveChangesAsync();
+                    var shipDto = _mapper.Map<CreateOrUpdateShipmentDto>(shipEdit);
+
+                    return new ResultView<CreateOrUpdateShipmentDto> { Entity = shipDto, IsSuccess = true, Message = "User Address Date Updated Successfully" };
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new ResultView<CreateOrUpdateShipmentDto>
+                {
+                    Entity = null,
+                    IsSuccess = false,
+                    Message = $"Something went wrong: {ex.Message}"
+                };
+                // Console.WriteLine($"An error occurred: {ex.Message}");
+                //throw;
+            }
         }
     }
 }

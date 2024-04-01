@@ -10,8 +10,8 @@ namespace Jumia.Application.IServices
 {
     public interface IOrderService
     {
-       Task<ResultView<CreateOrUpdateOrderDto>> Create(CreateOrUpdateOrderDto bookDTO);
-        Task<ResultView<CreateOrUpdateOrderDto>> Update(CreateOrUpdateOrderDto bookDTO);
+       Task<ResultView<CreateOrUpdateOrderDto>> Create(CreateOrUpdateOrderDto ordDTO);
+        Task<ResultView<CreateOrUpdateOrderDto>> Update(CreateOrUpdateOrderDto ordDTO);
         Task<ResultView<CreateOrUpdateOrderDto>> HardDelete(int id);
         Task<ResultDataForPagination<GetAllOrdersDTO>> GetAllPagination(int items, int pagenumber);
 

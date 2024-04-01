@@ -19,21 +19,33 @@ namespace JumiaStore.Controllers
 
 
         }
-        [HttpGet]
-        public async Task<IActionResult> Getall()
-        {
+        //[HttpGet]
+        //public async Task<IActionResult> Getall()
+        //{
 
+        //    try
+        //    {
+        //        var products = await _productServices.GetAllPagination(10, 1);
+
+        //        return Ok(products.Entities);
+        //    }
+        //    catch (Exception ex) { return StatusCode(500, ex.Message); }
+
+        //}
+
+        [HttpGet]
+        public async Task<IActionResult> GetProducts(int pageSize, int pageNumber)
+        {
             try
             {
-                var products = await _productServices.GetAllPagination(10, 1);
-
-                return Ok(products);
+                var products = await _productServices.GetAllPagination(pageSize, pageNumber);
+                return Ok(products.Entities);
             }
-            catch (Exception ex) { return StatusCode(500, ex.Message); }
-
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
-
-
 
         [HttpGet]
         [Route("{id:int}")]
@@ -68,5 +80,36 @@ namespace JumiaStore.Controllers
                 return Ok(productname);
             }
         }
+        [HttpGet("GetOrderedAsc")]
+        public async Task<IActionResult> GetOrderedAsc()
+        {
+            var Prds = await _productServices.GetOrderedAsc();
+            return Ok(Prds.Entities );
+        }
+
+
+
+        [HttpGet("GetOrderedDsc")]
+        public async Task<IActionResult> GetOrderedDsc()
+        {
+            var Prds = await _productServices.GetOrderedDsc();
+            return Ok(Prds.Entities);
+        }
+
+        [HttpGet("GetNewestArrivals")]
+        public async Task<IActionResult> GetNewestArrivals()
+        {
+            var Prds = await _productServices.GetNewestArrivals();
+            return Ok(Prds.Entities);
+        }
+
+
+        [HttpGet("SearchByName")]
+        public async Task<IActionResult> SearchByNameOrDesc(string PartialName)
+        {
+            var Prds = await _productServices.Search(PartialName);
+            return Ok(Prds.Entities);
+        }
     }
 }
+////Bahaa http://localhost:5094/api/Product
