@@ -14,4 +14,10 @@ import { IShippment } from '../../Models/ishippment';
 })
 export class ShippmentComponent {
   shippment!:IShippment
+  constructor(){
+    
+  }
+  AddAddress(clientAddress:IShippment){
+    
+  }
 }
