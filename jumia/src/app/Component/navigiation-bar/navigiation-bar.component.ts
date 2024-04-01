@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ApiProductsService } from '../../Services/api-products.service';
 import { FormsModule } from '@angular/forms';
 import { SearchResultsService } from '../../Services/search-results.service';
+import { ApiLoginService } from '../../Services/api-login.service';
 
 
 @Component({
@@ -14,11 +15,47 @@ import { SearchResultsService } from '../../Services/search-results.service';
 })
 export class NavigiationBarComponent implements OnInit {
   searchTerm: string = '';
+  loggedInUsername: string="";
 
-  constructor(private _ApiProductsService :ApiProductsService, private _searchResultsService: SearchResultsService) {}
-  ngOnInit(): void {
+  //load page and check if logged or not
+  IsUserLogged:boolean=false
+  ngOnInit() {
+   // this.IsUserLogged= this._apiLoginService.IsLoggedIn();
+  // this.loggedInUsername = this._apiLoginService.getLoggedInUsername();
+    this._apiLoginService.getLoggedStatus().subscribe((stat)=>{
+    this.IsUserLogged=stat
+   })
+   this._apiLoginService.gettName2().subscribe((stat)=>{
+    this.loggedInUsername=stat
+   })
+   }
+  constructor(private _ApiProductsService :ApiProductsService, private _searchResultsService: SearchResultsService ,private _apiLoginService : ApiLoginService , private router: Router) {
+
+
+
+    this.loggedInUsername = this._apiLoginService.getLoggedInUsername();
+    if(this._apiLoginService.IsLoggedIn()){
+      
+    }
+    else{
+      this._apiLoginService.logout();
+    }
+    
+  }
+ 
+  SignInNav(){
+
+    this.IsUserLogged= this._apiLoginService.IsLoggedIn();
+  }
+  SignOutNav(){
+    this._apiLoginService.logout();
+    this.IsUserLogged= this._apiLoginService.IsLoggedIn();
   }
 
+
+
+
+  
  
   searchProducts() {
     if (this.searchTerm.trim() !== '') {
@@ -34,5 +71,5 @@ export class NavigiationBarComponent implements OnInit {
     }
 
   }
-  
+
 }
