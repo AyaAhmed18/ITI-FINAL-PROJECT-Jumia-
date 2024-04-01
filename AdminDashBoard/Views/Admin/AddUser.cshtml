@@ -225,18 +225,17 @@
         <span asp-validation-for="SelectedRoles" class="text-danger"></span>
     </div> *@
 
-                           
+                            <div class="form-check form-check-flat form-check-primary">
                                 @foreach (var role in ViewBag.Roles)
                                 {
-                                    <div class="form-check form-check-flat form-check-primary">
+                                    <div class="form-check form-check-flat form-check-promary">
                                     <label class="form-check-label" for="role_@role.Name">
-                                        <input type="checkbox" class="form-check-input" name="SelectedRoles" value="@role.Name" id="role_@role.Name">x
+                                        <input type="checkbox" class="form-check-input" name="SelectedRoles" value="@role.Name" id="role_@role.Name">
                                         @role.Name
                                     </label>
-                                   
                                     </div>
                                 }
-                             
+                             </div>
 
 
 

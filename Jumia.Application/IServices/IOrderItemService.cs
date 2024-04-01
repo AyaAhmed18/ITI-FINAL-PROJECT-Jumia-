@@ -11,6 +11,7 @@ namespace Jumia.Application.IServices
 {
     public interface IOrderItemService
     {
+        Task<ResultView<CreatOrUpdateOrderItemsDto>> Create(CreatOrUpdateOrderItemsDto orderItemsDto);
         Task<CreatOrUpdateOrderItemsDto> GetOrderItems(int id);
         Task<List<GetAllOrderItemsDto>> GetAllOrderItems();
         Task<ResultView<CreatOrUpdateOrderItemsDto>> HardDelete(int id);

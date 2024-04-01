@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { APICategoryService } from './apicategory.service';
+import { WishlistService } from './wishlist.service';
 
-describe('APICategoryService', () => {
-  let service: APICategoryService;
+describe('WishlistService', () => {
+  let service: WishlistService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(APICategoryService);
+    service = TestBed.inject(WishlistService);
   });
 
   it('should be created', () => {

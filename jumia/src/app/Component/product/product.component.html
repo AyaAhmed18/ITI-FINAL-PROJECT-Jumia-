@@ -34,9 +34,14 @@
                     </div>
                     <span class=" cards-question"><a href=""><i class="fa fa-question-circle"
                                 style="cursor: pointer"></i></a></span>
-                    <span class=" cards-heart"><a [href]="'#Model'+pro.id" role="button" data-bs-toggle="modal"><i
-                                class="fa fa-heart-o" style="cursor: pointer"></i></a>
-                    </span>
+                                <span class="cards-heart">
+                                    <a href="#exampleModalToggle" role="button" data-bs-toggle="modal">
+                                        <i class="fa"
+                                           [ngClass]="{'fa-heart-o': !isInWishlist(pro), 'fa-heart': isInWishlist(pro), 'text-warning': isInWishlist(pro), 'shadow': isInWishlist(pro)}"
+                                           style="cursor: pointer">
+                                        </i>
+                                    </a>
+                                </span>
                     
                     <div class="card-body">
                         <p class=""><small>{{pro.shortDescription}}</small></p>
@@ -54,11 +59,17 @@
                             <i class="fa text-secondary">(44)</i>
                         </div>
                         <div class="hide-btn-cards ">
-                            <a class="btn w-100 text-white" href="#">Add To Cart</a>
+                            <button class="btn w-100 text-white" (click)="AddToCart(pro)"[disabled]="pro.addedToCart" >Add To Cart</button>
                         </div>
                     </div>
                 </div>
-            </div>
+
+           
+        </div>
+
+
+
+ 
 
 
             <!-- Modal -->
@@ -78,6 +89,7 @@
                                 <input type="radio" name="size" id="size_2" value="small" />
                                 <label class="radio-popup-size" for="size_2">L</label>
 
+
                                 <input type="radio" name="size" id="size_3" value="small" />
                                 <label class="radio-popup-size" for="size_3">XL</label>
 
@@ -94,8 +106,11 @@
                             </ul>
                         </div>
                         <div class="modal-footer ">
-                            <button class="btn w-100 text-white "><i class="fa fa-heart-o p-1 float-start"></i>ADD TO
-                                WISHLIST</button>
+                            <button class="btn w-100 text-white" (click)="addToWishlist(pro)">
+                                <i class="fa" [ngClass]="{'fa-heart-o': !isInWishlist(pro), 'fa-heart': isInWishlist(pro)}"></i>
+                                <span *ngIf="!isInWishlist(pro)">ADD TO WISHLIST</span>
+                                <span *ngIf="isInWishlist(pro)">REMOVE FROM WISHLIST</span>
+                            </button>
                         </div>
                     </div>
                 </div>

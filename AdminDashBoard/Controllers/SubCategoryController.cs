@@ -105,8 +105,14 @@ namespace AdminDashBoard.Controllers
             var Categories = await _categoryService.GetAll(5, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
-            var spec = (await _specificationServices.GetAll()).ToList();
-            ViewBag.spec = spec;
+           
+            var subSpec = (await _subCategorySpecificationsService.GetAll()).Where(i=>i.SubCategoryId==id).ToList();
+           // var specName = subSpec.Select(s => s.SpecificationName);
+            ViewBag.subSpec= subSpec;
+
+           // var spec = (await _specificationServices.GetAll())
+             //   .Where(s => !specName.Contains(s.Name)).ToList();
+            //ViewBag.spec = spec;
             var res = await _subCategoryService.GetOne(id);
 
             if (res == null)
@@ -125,7 +131,7 @@ namespace AdminDashBoard.Controllers
      
 
         [HttpPost]
-        public async Task<ActionResult> Update(CreateOrUpdateSubDto SubDto, IFormFile Image,CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto)
+        public async Task<ActionResult> Update(CreateOrUpdateSubDto SubDto, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
@@ -147,13 +153,13 @@ namespace AdminDashBoard.Controllers
                 if (res.IsSuccess)
                 {
                   //  var selectedSpec= _subCategorySpecificationsService
-                    foreach (var specItems in SubDto.SelectedSpecification)
+                   /* foreach (var specItems in SubDto.SelectedSpecification)
                     {
                         var specName = (await _specificationServices.GetAll()).Where(s => s.Name == specItems).FirstOrDefault();
                         subCategorySpecificationDto.specificationId = specName.Id;
                         subCategorySpecificationDto.SubCategoryId = SubDto.Id;
-                        await _subCategorySpecificationsService.Update(subCategorySpecificationDto);
-                    }
+                        await _subCategorySpecificationsService.Create(subCategorySpecificationDto);
+                    }*/
 
                     return RedirectToAction("Index");
                 }
@@ -185,6 +191,11 @@ namespace AdminDashBoard.Controllers
             }
 
             var SubCategoryToD = _mapper.Map<CreateOrUpdateSubDto>(res.Entity);
+            var specs =( await _subCategorySpecificationsService.GetAll()).Where(s=>s.SubCategoryId == id).ToList();
+            foreach (var spec in specs)
+            {
+                await _subCategorySpecificationsService.Delete(spec.Id);
+            }
             await _subCategoryService.Delete(SubCategoryToD);
 
 

@@ -145,7 +145,7 @@ namespace Jumia.Application.Services
                 var existingBook = await _OrderRepository.GetOneAsync(id);
                 if (existingBook == null)
                 {
-                    return new ResultView<CreateOrUpdateOrderDto> { Entity = null, IsSuccess = false, Message = "Book not found" };
+                    return new ResultView<CreateOrUpdateOrderDto> { Entity = null, IsSuccess = false, Message = "Order not found" };
                 }
                 var Oldbook = _OrderRepository.DeleteAsync(existingBook);
                 await _OrderRepository.SaveChangesAsync();

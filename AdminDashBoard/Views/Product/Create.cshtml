@@ -5,7 +5,7 @@
     ViewData["Title"] = "Create";
     // Layout = "_Layout";
     SelectList list = new SelectList(ViewBag.SubCategory, "Id", "Name");
-   // SelectList list2 = new SelectList(ViewBag.brand, "Id", "Name");
+    SelectList list2 = new SelectList(ViewBag.brand, "BrandID", "Name");
 }
 
 
@@ -23,8 +23,8 @@
 
             </div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <label asp-for="NameAr" class="control-label"></label>
+                <input asp-for="NameAr" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -38,6 +38,11 @@
                 <span asp-validation-for="ShortDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="StockQuantity" class="control-label"></label>
+                <input asp-for="StockQuantity" class="form-control" />
+                <span asp-validation-for="StockQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="RealPrice" class="control-label"></label>
                 <input asp-for="RealPrice" class="form-control" />
                 <span asp-validation-for="RealPrice" class="text-danger"></span>
@@ -48,25 +53,27 @@
                 <span asp-validation-for="Discount" class="text-danger"></span>
             </div>
             <div class="form-group">
-            <label asp-for="SubCategoryID" class="form-label">SubCategory</label>
-            <select asp-for="SubCategoryID" asp-items="list" class="form-select"></select>
+                <label asp-for="SubCategoryID" class="form-label">SubCategory</label>
+                <select asp-for="SubCategoryID" asp-items="list" class="form-select" id="subCategorySelect"></select>
+                <input asp-for="SubCategoryID" class="form-control" hidden/>
             </div>
-            <p>Specifications</p>
-            <div>
+
+            <h3>Specifications</h3>
+
+            <div id="subCategorySpecsContainer" style="display: none;">
                 @foreach (var spec in ViewBag.subCategorySpecs)
                 {
-                      <label asp-for="SubSpecId">@spec.SpecificationName</label>
-                      <br />
-                      <input type="text" name="Value" value="" id="spec_Value">
-                      <br />
-                        
+                    <label asp-for="SubSpecId">@spec.SpecificationName</label>
+                    <br />
+                    <input type="text" name="Value" value="" id="spec_Value">
+                    <br />
                 }
+                </div>
+            <div class="form-group">
+                <label asp-for="BrandID" class="form-label">Brands</label>
+                <select asp-for="BrandID" asp-items="list2" class="form-select"></select>
             </div>
-             <div class="form-group">
-                <label asp-for="BrandID" class="control-label"></label>
-                <input asp-for="BrandID" class="form-control" />
-                <span asp-validation-for="BrandID" class="text-danger"></span>
-            </div>
+            
 
             @*  <div class="form-group">
                 <label asp-for="SubCategoryID" class="control-label"></label>
@@ -102,9 +109,30 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="GetPagination">Back to List</a>
 </div>
 
 @* @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 } *@
+<script>
+    const subCategorySelect = document.getElementById('subCategorySelect');
+    const subCategorySpecsContainer = document.getElementById('subCategorySpecsContainer');
+
+    subCategorySelect.addEventListener('change', function () {
+        const selectedSubCategoryId = subCategorySelect.value; // Get the selected subcategory ID
+        if (selectedSubCategoryId !== '') {
+            // Make an AJAX call to the controller
+            fetch(`/Product/Create?subCategoryId=${selectedSubCategoryId}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response data (if needed)
+                    console.log(data);
+                })
+                .catch(error => console.error('Error:', error));
+            subCategorySpecsContainer.style.display = 'block';
+        } else {
+            subCategorySpecsContainer.style.display = 'none';
+        }
+    });
+</script>
