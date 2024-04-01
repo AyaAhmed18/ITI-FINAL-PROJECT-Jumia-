@@ -35,7 +35,6 @@ import {
   provideProtractorTestingSupport,
   withHttpTransferCacheOptions,
   withNoHttpTransferCache
-<<<<<<< HEAD
 } from "./chunk-MEM2BOO6.js";
 import "./chunk-3FUO2N4L.js";
 import {
@@ -43,14 +42,6 @@ import {
 } from "./chunk-WDF32WIX.js";
 import "./chunk-K733Z6CI.js";
 import "./chunk-SXIXOCJ4.js";
-=======
-} from "./chunk-RSQBXYQW.js";
-import "./chunk-7C7WOJHD.js";
-import {
-  getDOM
-} from "./chunk-WVSHAO2H.js";
-import "./chunk-22R4ASQ4.js";
->>>>>>> origin/Magdy
 export {
   BrowserModule,
   By,
