@@ -337,6 +337,49 @@ namespace Jumia.Application.Services
             resultDataList.Entities = Prds;
             return resultDataList;
         }
+        //FilterByPriceRange
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByPriceRange(int MinPrice,int MaxPrice)
+        {
+
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.RealPrice >= MinPrice && Prd.RealPrice <= MaxPrice,null,null))
+                .Select(p=>new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByDiscountRange(int MinDisc)
+        {
+
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.Discount >= MinDisc, null, null))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByBrandName(int BrandId)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.BrandId == BrandId,null,null))
+                .Select(p=>new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByBrandList(List<int> BrandIdList)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => BrandIdList.Any(brandId => brandId == Prd.BrandId), null, null))
+              .Select(p => new GetAllProducts(p))
+              .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
     }
 
 }
