@@ -19,17 +19,20 @@ import { SearchResultsService } from '../../Services/search-results.service';
 })
 export class ProductComponent implements  OnInit{
     @Input() AllProducts:ProductDto[]=[];
-    products: any;
+    @Input() products: ProductDto[] = [];
     cartItems: ProductDto[] = [];
     productList: ProductDto[] = [];
   // AllProducts:ProductDto[]=[];
   //  products: any;
+  selectedFilter: string='';
+
   searchResults: any[] = [];
-  pageSize:number = 15; 
+  pageSize:number = 15;
   AllProd:number=0;
-totalPages: number = 0; 
-pageNumber: number = 1; 
+totalPages: number = 0;
+pageNumber: number = 1;
 pageNumbers: number[]=[];
+
   //  @Input() product?: ProductDto;
     cartTotalPrice:number=0
     @Output() addToCartClicked = new EventEmitter<ProductDto>();
@@ -41,15 +44,15 @@ pageNumbers: number[]=[];
         private _cartService:CartService,
         private _wishlist :WishlistService,
         private _searchResultsService: SearchResultsService)
-     { 
-        
+     {
+
      }
      ngOnInit(): void {
       this.Sershresult();
       this.getAllProducts();
       }
 
-    //start Add to Cart 
+    //start Add to Cart
     AddToCart(prod:ProductDto){
         if(prod.stockQuantity>0){
           prod.cartQuantity = 1;
@@ -64,7 +67,7 @@ pageNumbers: number[]=[];
     // end Add to Cart
 
       //Addtowashlist
-   
+
     addToWishlist(product: ProductDto) {
       if (this.isInWishlist(product)) {
           this._wishlist.removeProductFromWishlist(product);
@@ -73,36 +76,36 @@ pageNumbers: number[]=[];
       }
       product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
   }
-  
-  
+
+
     isInWishlist(product: ProductDto): boolean {
-      return !!product.addedTowashlist; 
+      return !!product.addedTowashlist;
   }
     // ngOnInit(): void {
     //     this._ApiProductsService.getAllProducts().subscribe({
     //         next:(data)=>{
     //       this.AllProducts=data
     //       console.log(data);
-          
+
     //       this.AllProducts.forEach(Product => {
-            
+
     //         Product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + Product.images);
     //       });
     //       },
     //       error:(err)=>{
-          
+
     //       console.log(err)
     //       }
-          
+
     //       })
-    // } 
+    // }
     Sershresult() {
       this._searchResultsService.getSearchResults().subscribe({
           next: (data) => {
               this.AllProducts = data;
               console.log(this.AllProducts );
               this.sanitizeImages();
-          
+
           },
           error: (err) => {
               console.log(err);
@@ -113,14 +116,14 @@ pageNumbers: number[]=[];
     this._ApiProductsService.getAllProducts(this.pageSize, this.pageNumber).subscribe({
         next: (data) => {
             this.AllProducts = data;
-       
-            
-            
+
+
+
             this.totalPages=Math.ceil( this.AllProd / this.pageSize)
             this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
             console.log("all");
             console.log( this.AllProducts);
-            
+
             this.sanitizeImages();
         },
         error: (err) => {
@@ -131,16 +134,19 @@ pageNumbers: number[]=[];
 nextPage(): void {
   if (this.pageNumber < this.totalPages) {
     console.log( this.pageNumber);
-    
+
     this.pageNumber++;
     console.log( this.pageNumber);
-    
+
 
 console.log();
     this.getAllProducts();
   }
 }
-
+onFilterSelected(filter: string) {
+  this.selectedFilter = filter;
+  // Do something with the selected filter
+}
 prevPage(): void {
   if (this.pageNumber > 1) {
     this.pageNumber--;
@@ -165,7 +171,7 @@ goToPage(page: number): void {
         }
       });
     }
-  
+
     loadAllProductsOrderedDsc() {
       this._ApiProductsService.getAllProductsWithOrderDasc().subscribe({
         next: (data) => {
@@ -188,13 +194,13 @@ goToPage(page: number): void {
         }
       });
     }
-  
+
     sanitizeImages() {
       this.AllProducts.forEach(product => {
         product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images);
       });
     }
-    
+
     onSortChange(event: any) {
       const selectedSortOption = event.target.value;
       switch (selectedSortOption) {
@@ -232,19 +238,19 @@ goToPage(page: number): void {
   //     this._ApiProductsService.getAllProductsWithOrderAasc().subscribe({
   //         next:(data)=>{
   //       this.AllProducts=data
-        
+
   //       this.AllProducts.forEach(Product => {
-          
+
   //         Product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + Product.images);
   //      });
 
   //       },
   //       error:(err)=>{
-        
+
   //       console.log(err)
   //       }
-        
+
   //       })
-  // } 
-   
+  // }
+
 }
