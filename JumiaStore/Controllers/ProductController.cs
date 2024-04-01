@@ -1,5 +1,6 @@
 ﻿using Jumia.Application.IServices;
 using Jumia.Application.Services.IServices;
+using Jumia.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -86,7 +87,7 @@ namespace JumiaStore.Controllers
         public async Task<IActionResult> GetOrderedAsc()
         {
             var Prds = await _productServices.GetOrderedAsc();
-            return Ok(Prds.Entities );
+            return Ok(Prds.Entities);
         }
 
 
@@ -111,6 +112,34 @@ namespace JumiaStore.Controllers
         {
             var Prds = await _productServices.Search(PartialName);
             return Ok(Prds.Entities);
+        }
+        [HttpGet("FilterByPriceRange")]
+        public async Task<IActionResult> FilterByPriceRange(int MinPrice, int MaxPrice)
+        {
+            var Prds = await _productServices.FilterByPriceRange(MinPrice, MaxPrice);
+            return Ok(Prds);
+        }
+        [HttpGet("FilterByBrandName")]
+        public async Task<IActionResult> FilterByBrandName(int BrandId)
+        {
+            var Prds = await _productServices.FilterByBrandName(BrandId);
+            return Ok(Prds);
+        }
+        [HttpGet("FilterByBrandList")]
+        public async Task<IActionResult> FilterByBrandList([FromQuery] string BrandList)
+        {
+            if (BrandList[BrandList.Length - 1] == ',') { BrandList = BrandList.Substring(0, BrandList.Length - 1); }
+
+            List<int> brandIds = BrandList.Split(',').Select(int.Parse).ToList();
+
+            var Prds = await _productServices.FilterByBrandList(brandIds);
+            return Ok(Prds);
+        }
+        [HttpGet("FilterByDiscountRange")]
+        public async Task<IActionResult> FilterByDiscountRange(int MinDisc)
+        {
+            var Prds = await _productServices.FilterByDiscountRange(MinDisc);
+            return Ok(Prds);
         }
     }
 }
