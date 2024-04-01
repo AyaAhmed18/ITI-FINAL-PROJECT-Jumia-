@@ -1,13 +1,41 @@
 import { Component } from '@angular/core';
+import { ProductComponent } from "../product/product.component";
+import { FilterServiceService } from '../../Services/filter-service.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-filter',
-  standalone: true,
-  imports: [],
-  templateUrl: './filter.component.html',
-  styleUrl: './filter.component.css'
+    selector: 'app-filter',
+    standalone: true,
+    templateUrl: './filter.component.html',
+    styleUrl: './filter.component.css',
+    imports: [ProductComponent,FormsModule]
 })
 export class FilterComponent {
+    minDiscount: number=0;
+    products: any[]=[];
+
+
+    constructor(private _filterService: FilterServiceService) { }
+
+    ngOnInit(): void {
+        console.log(this.minDiscount)
+      this.filterProducts();
+    }
+  
+    filterProducts(): void {
+      this._filterService.filterByDiscountRange(this.minDiscount)
+        .subscribe(data => {
+          this.products = data.entities;
+          console.log("filter")
+          console.log( this.products)
+        });
+    }
+  
+
+
+
+
+
 
 }
 

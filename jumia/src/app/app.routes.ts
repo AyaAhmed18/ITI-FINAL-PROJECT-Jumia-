@@ -8,10 +8,11 @@ import { MyAccountComponent } from './Component/my-account/my-account.component'
 import { CartComponent } from './Component/cart/cart.component';
 import { authGuard } from './guards/auth.guard';
 import { ShippmentComponent } from './Component/shippment/shippment.component';
+import { FilterComponent } from './Component/filter/filter.component';
 export const routes: Routes = [
     {path:'',redirectTo:'/Home',pathMatch:'full'},
     {path:'Home',component:HomeComponent},
-    {path:'Product',component:ProductComponent},
+    {path:'Product',component:FilterComponent},
     {path:'SignIn',component:SignInComponent},
     {path:'Order',component:OrdersComponent , canActivate:[authGuard]},  //
     {path:'Delivary',component:DelivaryComponent},

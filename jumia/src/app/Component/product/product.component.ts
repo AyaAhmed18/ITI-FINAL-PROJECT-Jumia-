@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ProductComponent implements  OnInit{
   @Input() AllProducts:ProductDto[]=[];
-  products: any;
+  @Input() products: any[]=[];
   cartItems: ProductDto[] = [];
   productList: ProductDto[] = [];
 // AllProducts:ProductDto[]=[];
