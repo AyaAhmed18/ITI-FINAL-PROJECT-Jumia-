@@ -110,6 +110,24 @@ namespace JumiaStore.Controllers
             var Prds = await _productServices.Search(PartialName);
             return Ok(Prds.Entities);
         }
+
+        //Brand
+        [HttpGet]
+        [Route("{Name:Alpha}")]
+        public async Task<IActionResult> GetbyBrandname(string brandname)
+
+        {
+            var productprandname = await _productServices.GetByBrandName(brandname);
+            if (productprandname == null)
+            {
+                return Ok("NotFound");
+            }
+            else
+            {
+                return Ok(productprandname);
+            }
+        }
+
     }
 }
 ////Bahaa http://localhost:5094/api/Product

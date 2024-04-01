@@ -188,7 +188,6 @@ goToPage(page: number): void {
         }
       });
     }
-  
     sanitizeImages() {
       this.AllProducts.forEach(product => {
         product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images);

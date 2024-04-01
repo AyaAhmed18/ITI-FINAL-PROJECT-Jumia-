@@ -22,7 +22,6 @@
                     </div>
                 </div>
             </div>
-
             @for(pro of AllProducts;track pro.id;){
             <div class="clo-2 ">
                 <div class="show-cards-btn card cards-hover" style="width:210px; height: 440px; border: none;">
@@ -73,7 +72,7 @@
 
 
             <!-- Modal -->
-            <div class="modal fade" [id]="'Model'+pro.id" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+            <div class="modal fade" [id]="'Model'+pro.id " aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
                 tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">

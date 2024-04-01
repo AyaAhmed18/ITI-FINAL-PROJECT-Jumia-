@@ -19,24 +19,18 @@ export class RegistrationComponent {
   }
   register(username: string, email: string, password: string, confirmpass: string) {
     this._registrationService.register(username, email, password, confirmpass).subscribe({
-      next: (res) => {
-        this.user.userName = username;
-        localStorage.setItem("username", username);
-
-        this.user.email = email;
-        localStorage.setItem("email", email);
-
-        this.user.password = password; 
-        localStorage.setItem("password", password);
-
-        this.user.confirmpass = confirmpass;
-        localStorage.setItem("confirmpass", confirmpass);
-
-        console.log(res);
-      },
-      error: (err) => {
-        console.error(err);
-      }
+        next: (res) => {
+          // this.user.userName = username;
+          // this.user.email = email;
+          // this.user.password = password; 
+          // this.user.confirmpass = confirmpass;
+          console.log(res);
+          alert("Successfully registered!");
+        },
+        error: (err) => {
+          console.error(err);
+          alert("Error occurred while registering. Please try again.");
+        }
     });
 
 }}

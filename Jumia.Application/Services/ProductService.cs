@@ -337,6 +337,23 @@ namespace Jumia.Application.Services
             resultDataList.Entities = Prds;
             return resultDataList;
         }
+        //Brand name
+        public async Task<ResultView<GetAllProducts>> GetByBrandName(string brandName)
+        {
+            var products = await _unitOfWork.ProductRepository.GetAllAsync();
+            var product = products.FirstOrDefault(p => p.Brand.Name == brandName);
+
+            if (product == null)
+            {
+                return new ResultView<GetAllProducts> { Entity = null, IsSuccess = false, Message = "Not Found!" };
+            }
+            else
+            {
+                var productDto = _mapper.Map<GetAllProducts>(product);
+                return new ResultView<GetAllProducts> { Entity = productDto, IsSuccess = true, Message = "Success" };
+            }
+        }
+
     }
 
 }
