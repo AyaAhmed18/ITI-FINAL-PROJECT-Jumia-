@@ -400,3 +400,12 @@ body {
 #border-pagination li a:hover:not(.active) {
   background: #ddd;
 }
+/* wishlist */
+
+.text-warning {
+    color: #ffc107 !important; /* Change the color to yellow */
+}
+
+.shadow {
+    box-shadow: 0 4px 6px rgba(241, 240, 235, 0.1), 0 1px 3px rgba(209, 136, 10, 0.55) !important; /* Add shadow effect */
+}

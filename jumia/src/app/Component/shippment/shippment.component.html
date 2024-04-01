@@ -6,14 +6,15 @@
                 <h6 class="border-top ">EDIT ADDRESS</h6>
                 <form class="row g-4" #loginForm="ngForm" >
 
+
                     <div class="col-md-6">
                         <fieldset class="border px-3 form-control">
                             <legend class="float-none w-auto px-3">First Name</legend>
-                            <input type="text"  id="firstName" value="" placeholder="Enter your first name" required #firstName="ngModel" name="firstName"  [(ngModel)]="newUser.Password">
+                            <input type="text"  id="firstName" value="" placeholder="Enter your first name" required #firstName="ngModel" name="firstName"  [(ngModel)]="shippment.FirstName">
                         </fieldset>
                         <div id="emailHelp" class="form-text text-danger" [hidden]="firstName.valid || firstName.untouched">
                             @if(firstName.errors?.['required']){
-                              <p>Required</p>
+                              <p>Required field</p>
                             }
                            
                           </div>
@@ -21,8 +22,14 @@
                     <div class="col-md-6">
                         <fieldset class="border px-3 form-control">
                             <legend class="float-none w-auto px-3">Last Name</legend>
-                            <input type="text" id="lastName" value="" placeholder="Enter your last name" required>
+                            <input type="text" id="lastName" value="" placeholder="Enter your last name" required #lastName="ngModel" name="lastName"  [(ngModel)]="shippment.LastName">
                         </fieldset>
+                        <div id="emailHelp" class="form-text text-danger" [hidden]="lastName.valid || lastName.untouched">
+                            @if(lastName.errors?.['required']){
+                              <p>Required field</p>
+                            }
+                           
+                          </div>
                     </div>
                     <div class="col-md-6">
                         <div class="input-group">
@@ -95,7 +102,7 @@
                             </div>
                             <div class="col-12 d-flex justify-content-end  my-4">
                                 <button type="button" class="btn  me-2 mt-4 text-warning">CANCEL</button>
-                                <button type="submit" routerLink="/Delivary" class="btn btn-warning text-white mt-4" save>SAVE</button>
+                                <button type="submit" routerLink="/Delivary" class="btn btn-warning text-white mt-4 save"[disabled]="loginForm.invalid" save>SAVE</button>
                             </div>
                 </form>
             </div>

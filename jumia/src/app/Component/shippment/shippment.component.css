@@ -51,12 +51,21 @@ fieldset, legend {
    padding: 0 !important;
 
 }
+fieldset,legend:focus {
+  border: 1px solid rgba(255, 115, 0, 0.842) !important;
+}
 legend{
   font-size: 2vmin  ;
 }
 input{
   outline: none !important;
-  border: none !important;
+  border:none !important;
+}
+input:focus{
+  outline: none !important;
+  /* border: 1px solid  rgba(255, 115, 0, 0.842) !important; */
+  box-shadow: none ;
+  
 }
 .input-group-text{
   background-color: #fff !important;
@@ -73,4 +82,10 @@ input::placeholder {
 .form-select{
   outline: none !important;
   border: none !important;
+}
+.text-warning {
+  color:  rgba(255, 115, 0, 0.842) !important; 
+}
+.save{
+  background-color: rgba(255, 115, 0, 0.842)  !important ;
 }

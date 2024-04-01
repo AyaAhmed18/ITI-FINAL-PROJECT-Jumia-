@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { IShippment } from '../../Models/ishippment';
 
 @Component({
   selector: 'app-shippment',
@@ -12,5 +13,5 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './shippment.component.css'
 })
 export class ShippmentComponent {
-
+  shippment!:IShippment
 }
