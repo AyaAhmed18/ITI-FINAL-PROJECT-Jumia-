@@ -19,6 +19,7 @@ namespace Jumia.Application.Contract
         //IRepository<TEntity,Tid> Repository<TEntity,Tid>() where TEntity : class;
         public ISubCategorySpecificationRepository SubCategorySpecificationRepository { get; }
         public IProductSpecificationSubCategoryRepository productSpecificationSubCategoryRepository { get; }
+        public IBrandRepository BrandRepository { get; }
 
         Task SaveChangesAsync();
     }
