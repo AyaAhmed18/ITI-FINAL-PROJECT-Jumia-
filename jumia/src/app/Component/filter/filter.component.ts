@@ -14,16 +14,18 @@ import { IBrandDto } from '../../ViewModels/ibrand-dto';
 })
 export class FilterComponent {
     minDiscount: number=0;
+    ListPrand:string='';
     products: any[]=[];
     minPrice: number = 0;
     maxPrice: number = 1000000;
-    AllBrands: IBrandDto[] = [];
-
+    AllBrands: any = [];
+    selectedBrands: number[] = [];
     constructor(private _filterService: FilterServiceService,private _brandService : BrandServiceService) { }
 
     ngOnInit(): void {
         console.log(this.minDiscount)
       this.filterProducts();
+      this.GetBrands();
     }
     GetBrands()
     {
@@ -31,17 +33,17 @@ export class FilterComponent {
       .subscribe({ next: (data) => {
         this.AllBrands = data;
         console.log("allBrands")
-        console.log( this.AllBrands)
+        console.log( data)
       }
       });
     }
 
     filterProducts(): void {
 
-      this._filterService.filterByAll(this.minDiscount, this.minPrice, this.maxPrice)
+      this._filterService.filterByAll(this.minDiscount, this.minPrice, this.maxPrice  , this.selectedBrands.join(','))
       .subscribe(data => {
         this.products = data.entities;
-        console.log("filter")
+        console.log("filter--")
         console.log( this.products)
       });
 
