@@ -1,41 +1,39 @@
-import { Component } from '@angular/core';
-import { ProductComponent } from "../product/product.component";
-import { FilterServiceService } from '../../Services/filter-service.service';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormsModule } from '@angular/forms';
+import { FilterProductService } from '../../Services/filter-product.service';
+import { ProductDto } from '../../ViewModels/product-dto';
+import { ProductComponent } from '../product/product.component';
 
 @Component({
-    selector: 'app-filter',
-    standalone: true,
-    templateUrl: './filter.component.html',
-    styleUrl: './filter.component.css',
-    imports: [ProductComponent,FormsModule]
+  selector: 'app-filter',
+  standalone: true,
+  imports: [FormsModule,CommonModule,ProductComponent],
+  templateUrl: './filter.component.html',
+  styleUrl: './filter.component.css'
 })
-export class FilterComponent {
-    minDiscount: number=0;
-    products: any[]=[];
+export class FilterComponent implements  OnInit {
+  @Output() filterSelected  = new EventEmitter<string>();
 
+  // onFilterChange(value: string) {
+  //   this.filterSelected.emit(value);
+  // }
+  minDiscount : number = 0;
+  products : ProductDto[] = [];
+  constructor(private _filterService:FilterProductService){}
+  ngOnInit():void
+  {
+    this.filterProducts();
 
-    constructor(private _filterService: FilterServiceService) { }
-
-    ngOnInit(): void {
-        console.log(this.minDiscount)
-      this.filterProducts();
-    }
-  
-    filterProducts(): void {
-      this._filterService.filterByDiscountRange(this.minDiscount)
-        .subscribe(data => {
-          this.products = data.entities;
-          console.log("filter")
-          console.log( this.products)
-        });
-    }
-  
-
-
-
-
-
+  }
+  filterProducts():void
+  {
+    this._filterService.filterByDiscountRange(this.minDiscount).subscribe(
+      (data)=>
+    {
+      this.products = data as ProductDto[]; 
+    });
+  }
 
 }
 
