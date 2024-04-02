@@ -52,7 +52,7 @@ namespace Jumia.Application.Services
             //resultDataList.Count = AlldAta.Count();
             return resultDataList;
         }
-
+      
 
         //Create
         public async Task<ResultView<CreateOrUpdateProductDto>> Create(CreateOrUpdateProductDto ProductDto, List<IFormFile> images)
@@ -335,6 +335,64 @@ namespace Jumia.Application.Services
                .ToList();
             ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
             resultDataList.Entities = Prds;
+            return resultDataList;
+        }
+        //FilterByPriceRange
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByPriceRange(int MinPrice,int MaxPrice)
+        {
+
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.RealPrice >= MinPrice && Prd.RealPrice <= MaxPrice,null,null))
+                .Select(p=>new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByDiscountRange(int MinDisc)
+        {
+
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.Discount >= MinDisc, null, null))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByBrandName(int BrandId)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.BrandId == BrandId,null,null))
+                .Select(p=>new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByAll(List<int>? BrandIdList, int? MinPrice, int? MaxPrice, int? MinDisc)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => 
+            (BrandIdList == null || BrandIdList.Any(brandId => brandId == Prd.BrandId))
+            && (MinDisc == null || Prd.Discount >= MinDisc) 
+            && (MinPrice == null || Prd.RealPrice >= MinPrice) 
+            && (MaxPrice == null || Prd.RealPrice <= MaxPrice)
+            , null, null))
+              .Select(p => new GetAllProducts(p))
+              .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByBrandList(List<int> BrandIdList)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => BrandIdList.Any(brandId => brandId == Prd.BrandId), null, null))
+              .Select(p => new GetAllProducts(p))
+              .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
             return resultDataList;
         }
     }

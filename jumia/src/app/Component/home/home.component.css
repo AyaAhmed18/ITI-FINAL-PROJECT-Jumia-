@@ -79,3 +79,10 @@
   display: none;
   
 }
+
+.fifty-chars {
+  width: 30ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}

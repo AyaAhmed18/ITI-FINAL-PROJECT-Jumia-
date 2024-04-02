@@ -1,8 +1,5 @@
-<div class="row ">
-    <div class="col-3 col-md  shadow-sm rounded  " style="width: 23%;">
-        <app-filter></app-filter>
-    </div>
-    <div class="col-9 col-md shadow-sm rounded m-2">
+
+
         <div class="row bg-body rounded  row-cols-1 row-cols-md-4 g-4">
             <div class="col-12">
                 <div class="row">
@@ -22,10 +19,8 @@
                     </div>
                 </div>
             </div>
-            <!-- pro of AllProducts;track pro.id; -->
-            <!-- <h1>{{AllProducts[0].name}}</h1> -->
-            @for(pro of AllProducts;track pro.id;){
-               
+
+            @for(pro of products;track pro.id;){
             <div class="clo-2 ">
                 <div class="show-cards-btn card cards-hover" style="width:210px; height: 440px; border: none;">
                     <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image"
@@ -44,7 +39,7 @@
                                         </i>
                                     </a>
                                 </span>
-                    
+
                     <div class="card-body">
                         <p class=""><small>{{pro.shortDescription}}</small></p>
                         <b><strong>EGP {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
@@ -66,12 +61,12 @@
                     </div>
                 </div>
 
-           
+
         </div>
 
    
 
- 
+
 
 
             <!-- Modal -->
@@ -118,27 +113,27 @@
                 </div>
             </div>
             }
-            
-        </div>
+
+
 
         <div class="b-pagination-outer">
- 
+
             <ul id="border-pagination">
               <li><a (click)="prevPage()">«</a></li>
               <li><a *ngFor="let page of pageNumbers" (click)="goToPage(page)">{{ page }}</a></li>
-              
+
               <li><a (click)="nextPage()">»</a></li>
-            </ul> 
+            </ul>
           </div>
-            
-          </div><!--wrapper-->
 
 
 
 
-        
-          
-          
-          
-          
-          
+
+
+
+
+
+
+
+

@@ -35,7 +35,7 @@ namespace Jumia.Infrastructure
 
         public ISubCategorySpecificationRepository SubCategorySpecificationRepository => GetRepository<ISubCategorySpecificationRepository, SubCategorySpecificationRepository>();
         public IProductSpecificationSubCategoryRepository productSpecificationSubCategoryRepository => GetRepository<IProductSpecificationSubCategoryRepository, ProductSpecificationSubCategoryRepository>();
-
+        public IBrandRepository BrandRepository => GetRepository<IBrandRepository, BrandRepository>();
 
         public async Task SaveChangesAsync()
         {

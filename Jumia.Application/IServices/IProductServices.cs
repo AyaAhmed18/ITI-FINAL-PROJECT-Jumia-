@@ -24,5 +24,10 @@ namespace Jumia.Application.IServices
         Task<ResultDataForPagination<GetAllProducts>> GetOrderedDsc();
         Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivals();
         Task<ResultDataForPagination<GetAllProducts>> Search(string PartialName);
+        Task<ResultDataForPagination<GetAllProducts>> FilterByPriceRange(int MinPrice, int MaxPrice);
+        Task<ResultDataForPagination<GetAllProducts>> FilterByBrandName(int BrandId);
+        Task<ResultDataForPagination<GetAllProducts>> FilterByBrandList(List<int> BrandIdList);
+        Task<ResultDataForPagination<GetAllProducts>> FilterByDiscountRange(int MinDisc);
+        Task<ResultDataForPagination<GetAllProducts>> FilterByAll(List<int>? BrandIdList, int? MinPrice, int? MaxPrice, int? MinDisc);
     }
 }
