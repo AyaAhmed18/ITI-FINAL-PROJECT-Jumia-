@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ProductComponent } from "../product/product.component";
 import { FilterServiceService } from '../../Services/filter-service.service';
 import { FormsModule } from '@angular/forms';
+import { BrandServiceService } from '../../Services/brand-service.service';
+import { IBrandDto } from '../../ViewModels/ibrand-dto';
 
 @Component({
     selector: 'app-filter',
@@ -12,26 +14,57 @@ import { FormsModule } from '@angular/forms';
 })
 export class FilterComponent {
     minDiscount: number=0;
+    ListPrand:string='';
     products: any[]=[];
-
-
-    constructor(private _filterService: FilterServiceService) { }
+    minPrice: number = 0;
+    maxPrice: number = 1000000;
+    AllBrands: any = [];
+    selectedBrands: number[] = [];
+    constructor(private _filterService: FilterServiceService,private _brandService : BrandServiceService) { }
 
     ngOnInit(): void {
         console.log(this.minDiscount)
       this.filterProducts();
+      this.GetBrands();
     }
-  
-    filterProducts(): void {
-      this._filterService.filterByDiscountRange(this.minDiscount)
-        .subscribe(data => {
-          this.products = data.entities;
-          console.log("filter")
-          console.log( this.products)
-        });
+    GetBrands()
+    {
+      this._brandService.getAllBrands()
+      .subscribe({ next: (data) => {
+        this.AllBrands = data;
+        console.log("allBrands")
+        console.log( data)
+      }
+      });
     }
-  
 
+    filterProducts(): void {
+
+      this._filterService.filterByAll(this.minDiscount, this.minPrice, this.maxPrice  , this.selectedBrands.join(','))
+      .subscribe(data => {
+        this.products = data.entities;
+        console.log("filter--")
+        console.log( this.products)
+      });
+
+
+
+
+    }
+
+
+ // this._filterService.filterByDiscountRange(this.minDiscount)
+      //   .subscribe(data => {
+      //     this.products = data.entities;
+      //     console.log("filter")
+      //     console.log( this.products)
+      //   });
+      // this._filterService.filterByPriceRange(this.minPrice, this.maxPrice)
+      //   .subscribe(data => {
+      //     this.products = data.entities;
+      //     console.log("filter")
+      //     console.log( this.products)
+      //   });
 
 
 

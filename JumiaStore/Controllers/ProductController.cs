@@ -1,5 +1,7 @@
 ﻿using Jumia.Application.IServices;
 using Jumia.Application.Services.IServices;
+using Jumia.Dtos.Product;
+using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -139,6 +141,26 @@ namespace JumiaStore.Controllers
         public async Task<IActionResult> FilterByDiscountRange(int MinDisc)
         {
             var Prds = await _productServices.FilterByDiscountRange(MinDisc);
+            return Ok(Prds);
+        }
+        [HttpGet("FilterByAll")]
+        public async Task<IActionResult> FilterByAll([FromQuery] string? BrandList,int? MinPrice, int? MaxPrice, int? MinDisc)
+        {
+            List<int> brandIds = new List<int>();
+            if (BrandList != null&& BrandList != "")
+            {
+                if (BrandList[BrandList.Length - 1] == ',') { BrandList = BrandList.Substring(0, BrandList.Length - 1); }
+                brandIds = BrandList.Split(',').Select(int.Parse).ToList();
+
+            }
+            else
+            {
+                brandIds = null;
+            }
+
+
+            var Prds = await _productServices.FilterByAll(brandIds,MinPrice,MaxPrice,MinDisc);
+
             return Ok(Prds);
         }
     }

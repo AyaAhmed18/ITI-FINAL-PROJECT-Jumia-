@@ -41,7 +41,7 @@ pageNumbers: number[]=[];
       private _wishlist :WishlistService,
       private _searchResultsService: SearchResultsService)
    {
-     
+
    }
    ngOnInit(): void {
     this.Sershresult();
@@ -63,7 +63,7 @@ pageNumbers: number[]=[];
   // end Add to Cart
 
     //Addtowashlist
- 
+
   addToWishlist(product: ProductDto) {
     if (this.isInWishlist(product)) {
         this._wishlist.removeProductFromWishlist(product);
@@ -82,17 +82,17 @@ pageNumbers: number[]=[];
   //         next:(data)=>{
   //       this.AllProducts=data
   //       console.log(data);
-       
+
   //       this.AllProducts.forEach(Product => {
-         
+
   //         Product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + Product.images);
   //       });
   //       },
   //       error:(err)=>{
-       
+
   //       console.log(err)
   //       }
-       
+
   //       })
   // }
   Sershresult() {
@@ -101,7 +101,7 @@ pageNumbers: number[]=[];
             this.AllProducts = data;
             console.log(this.AllProducts );
             this.sanitizeImages();
-       
+
         },
         error: (err) => {
             console.log(err);
@@ -112,14 +112,14 @@ getAllProducts() {
   this._ApiProductsService.getAllProducts(this.pageSize, this.pageNumber).subscribe({
       next: (data) => {
           this.AllProducts = data;
-     
-         
-         
+
+
+
           this.totalPages=Math.ceil( this.AllProd / this.pageSize)
           this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
           console.log("all");
           console.log( this.AllProducts);
-         
+
           this.sanitizeImages();
       },
       error: (err) => {
@@ -130,10 +130,10 @@ getAllProducts() {
 nextPage(): void {
 if (this.pageNumber < this.totalPages) {
   console.log( this.pageNumber);
- 
+
   this.pageNumber++;
   console.log( this.pageNumber);
- 
+
 
 console.log();
   this.getAllProducts();
@@ -155,7 +155,7 @@ if (page >= 1 && page <= this.totalPages) {
   loadAllProductsOrderedAsc() {
     this._ApiProductsService.getAllProductsWithOrderAasc().subscribe({
       next: (data) => {
-        this.AllProducts = data;
+        this.products = data;
         this.AllProd=data.length;
         this.sanitizeImages();
       },
@@ -168,7 +168,7 @@ if (page >= 1 && page <= this.totalPages) {
   loadAllProductsOrderedDsc() {
     this._ApiProductsService.getAllProductsWithOrderDasc().subscribe({
       next: (data) => {
-        this.AllProducts = data;
+        this.products = data;
         this.sanitizeImages();
       },
       error: (err) => {
@@ -179,7 +179,7 @@ if (page >= 1 && page <= this.totalPages) {
   loadAllProductsNewestArrivals() {
     this._ApiProductsService.getAllProductsWithNewestArrivals().subscribe({
       next: (data) => {
-        this.AllProducts = data;
+        this.products = data;
         this.sanitizeImages();
       },
       error: (err) => {
@@ -193,7 +193,7 @@ if (page >= 1 && page <= this.totalPages) {
       product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images);
     });
   }
- 
+
   onSortChange(event: any) {
     const selectedSortOption = event.target.value;
     switch (selectedSortOption) {
@@ -231,19 +231,19 @@ if (page >= 1 && page <= this.totalPages) {
 //     this._ApiProductsService.getAllProductsWithOrderAasc().subscribe({
 //         next:(data)=>{
 //       this.AllProducts=data
-     
+
 //       this.AllProducts.forEach(Product => {
-       
+
 //         Product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + Product.images);
 //      });
 
 //       },
 //       error:(err)=>{
-     
+
 //       console.log(err)
 //       }
-     
+
 //       })
 // }
- 
+
 }

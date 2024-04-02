@@ -101,6 +101,7 @@ namespace JumiaStore
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IOrderItemService, OrderItemService>();
             builder.Services.AddScoped<IShippmentService, ShippmentService>();
+            builder.Services.AddScoped<IBrandService,BrandService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
