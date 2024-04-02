@@ -1,39 +1,72 @@
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormsModule } from '@angular/forms';
-import { FilterProductService } from '../../Services/filter-product.service';
-import { ProductDto } from '../../ViewModels/product-dto';
-import { ProductComponent } from '../product/product.component';
+import { Component } from '@angular/core';
+import { ProductComponent } from "../product/product.component";
+import { FilterServiceService } from '../../Services/filter-service.service';
+import { FormsModule } from '@angular/forms';
+import { BrandServiceService } from '../../Services/brand-service.service';
+import { IBrandDto } from '../../ViewModels/ibrand-dto';
 
 @Component({
-  selector: 'app-filter',
-  standalone: true,
-  imports: [FormsModule,CommonModule,ProductComponent],
-  templateUrl: './filter.component.html',
-  styleUrl: './filter.component.css'
+    selector: 'app-filter',
+    standalone: true,
+    templateUrl: './filter.component.html',
+    styleUrl: './filter.component.css',
+    imports: [ProductComponent,FormsModule]
 })
-export class FilterComponent implements  OnInit {
-  @Output() filterSelected  = new EventEmitter<string>();
+export class FilterComponent {
+    minDiscount: number=0;
+    products: any[]=[];
+    minPrice: number = 0;
+    maxPrice: number = 1000000;
+    AllBrands: IBrandDto[] = [];
 
-  // onFilterChange(value: string) {
-  //   this.filterSelected.emit(value);
-  // }
-  minDiscount : number = 0;
-  products : ProductDto[] = [];
-  constructor(private _filterService:FilterProductService){}
-  ngOnInit():void
-  {
-    this.filterProducts();
+    constructor(private _filterService: FilterServiceService,private _brandService : BrandServiceService) { }
 
-  }
-  filterProducts():void
-  {
-    this._filterService.filterByDiscountRange(this.minDiscount).subscribe(
-      (data)=>
+    ngOnInit(): void {
+        console.log(this.minDiscount)
+      this.filterProducts();
+    }
+    GetBrands()
     {
-      this.products = data as ProductDto[]; 
-    });
-  }
+      this._brandService.getAllBrands()
+      .subscribe({ next: (data) => {
+        this.AllBrands = data;
+        console.log("allBrands")
+        console.log( this.AllBrands)
+      }
+      });
+    }
+
+    filterProducts(): void {
+
+      this._filterService.filterByAll(this.minDiscount, this.minPrice, this.maxPrice)
+      .subscribe(data => {
+        this.products = data.entities;
+        console.log("filter")
+        console.log( this.products)
+      });
+
+
+
+
+    }
+
+
+ // this._filterService.filterByDiscountRange(this.minDiscount)
+      //   .subscribe(data => {
+      //     this.products = data.entities;
+      //     console.log("filter")
+      //     console.log( this.products)
+      //   });
+      // this._filterService.filterByPriceRange(this.minPrice, this.maxPrice)
+      //   .subscribe(data => {
+      //     this.products = data.entities;
+      //     console.log("filter")
+      //     console.log( this.products)
+      //   });
+
+
+
+
 
 }
 

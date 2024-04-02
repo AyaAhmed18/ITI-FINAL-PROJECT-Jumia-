@@ -370,6 +370,21 @@ namespace Jumia.Application.Services
             resultDataList.count = Prds.Count;
             return resultDataList;
         }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByAll(List<int>? BrandIdList, int? MinPrice, int? MaxPrice, int? MinDisc)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => 
+            (BrandIdList == null || BrandIdList.Any(brandId => brandId == Prd.BrandId))
+            && (MinDisc == null || Prd.Discount >= MinDisc) 
+            && (MinPrice == null || Prd.RealPrice >= MinPrice) 
+            && (MaxPrice == null || Prd.RealPrice <= MaxPrice)
+            , null, null))
+              .Select(p => new GetAllProducts(p))
+              .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
         public async Task<ResultDataForPagination<GetAllProducts>> FilterByBrandList(List<int> BrandIdList)
         {
             var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => BrandIdList.Any(brandId => brandId == Prd.BrandId), null, null))

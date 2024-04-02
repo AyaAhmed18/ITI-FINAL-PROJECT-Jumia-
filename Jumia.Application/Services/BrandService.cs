@@ -14,17 +14,19 @@ namespace Jumia.Application.Services
     public class BrandService:IBrandService
     {
         private readonly IMapper _mapper;
-        private readonly IBrandRepository _prandrepository;
+       // private readonly IBrandRepository _prandrepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public BrandService(IBrandRepository prandrepository, IMapper mapper)
+        public BrandService(IMapper mapper, IUnitOfWork unitOfWork)
         {
             _mapper = mapper;
 
-            _prandrepository = prandrepository;
+           // _prandrepository = prandrepository;
+            _unitOfWork = unitOfWork;
         }
         public async Task<ResultDataForPagination<GetAllBrandDto>> GetAll()
         {
-            var AllData = (await _prandrepository.GetAllAsync());
+            var AllData = (await _unitOfWork.BrandRepository.GetAllAsync());
             var Brand = AllData.ToList();
             var Brands = _mapper.Map<List<GetAllBrandDto>>(Brand);
 

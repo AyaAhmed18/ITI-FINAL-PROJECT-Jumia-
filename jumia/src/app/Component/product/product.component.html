@@ -39,7 +39,7 @@
                                         </i>
                                     </a>
                                 </span>
-                    
+
                     <div class="card-body">
                         <p class=""><small>{{pro.shortDescription}}</small></p>
                         <b><strong>EGP {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
@@ -61,12 +61,12 @@
                     </div>
                 </div>
 
-           
+
         </div>
 
 
 
- 
+
 
 
             <!-- Modal -->
@@ -113,27 +113,27 @@
                 </div>
             </div>
             }
-            
-   
+
+
 
         <div class="b-pagination-outer">
- 
+
             <ul id="border-pagination">
               <li><a (click)="prevPage()">«</a></li>
               <li><a *ngFor="let page of pageNumbers" (click)="goToPage(page)">{{ page }}</a></li>
-              
+
               <li><a (click)="nextPage()">»</a></li>
-            </ul> 
+            </ul>
           </div>
-            
-          
 
 
 
 
-        
-          
-          
-          
-          
-          
+
+
+
+
+
+
+
+
