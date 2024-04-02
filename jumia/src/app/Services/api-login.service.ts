@@ -26,6 +26,7 @@ export class ApiLoginService {
   logout(){
     localStorage.removeItem('token'); 
     localStorage.removeItem('userName'); 
+    localStorage.removeItem('userId');
     this.loggedInUsername2.next("Account")
     this.IsLoggedStatus.next(false)
   }

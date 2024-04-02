@@ -1,5 +1,5 @@
 export interface IUserLogin {
-    Id:number,
+    id:number,
     userName:string,
     Password:string
 }

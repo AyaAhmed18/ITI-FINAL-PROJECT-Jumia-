@@ -55,6 +55,7 @@
             <div class="form-group">
                 <label asp-for="SubCategoryID" class="form-label">SubCategory</label>
                 <select asp-for="SubCategoryID" asp-items="list" class="form-select" id="subCategorySelect"></select>
+                <input asp-for="SubCategoryID" class="form-control" hidden/>
             </div>
 
             <h3>Specifications</h3>
@@ -115,11 +116,20 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 } *@
 <script>
-   
     const subCategorySelect = document.getElementById('subCategorySelect');
     const subCategorySpecsContainer = document.getElementById('subCategorySpecsContainer');
+
     subCategorySelect.addEventListener('change', function () {
-        if (subCategorySelect.value !== '') {
+        const selectedSubCategoryId = subCategorySelect.value; // Get the selected subcategory ID
+        if (selectedSubCategoryId !== '') {
+            // Make an AJAX call to the controller
+            fetch(`/Product/Create?subCategoryId=${selectedSubCategoryId}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response data (if needed)
+                    console.log(data);
+                })
+                .catch(error => console.error('Error:', error));
             subCategorySpecsContainer.style.display = 'block';
         } else {
             subCategorySpecsContainer.style.display = 'none';

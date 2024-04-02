@@ -4,13 +4,14 @@
             <div class="col-9 AddressForm">
                 <h6 class=" my-2"><i class="fa-solid fa-circle-check"></i> 1.CUSTOMER ADDRESS</h6>
                 <h6 class="border-top ">EDIT ADDRESS</h6>
-                <form class="row g-4">
+                <form class="row g-4" #loginForm="ngForm" >
 
                     <div class="col-md-6">
                         <fieldset class="border px-3 form-control">
                             <legend class="float-none w-auto px-3">First Name</legend>
-                            <input type="text" id="firstName" value="" placeholder="Enter your first name" required>
+                            <input type="text"  id="firstName" value="" placeholder="Enter your first name"  name="firstName" >
                         </fieldset>
+                     
                     </div>
                     <div class="col-md-6">
                         <fieldset class="border px-3 form-control">

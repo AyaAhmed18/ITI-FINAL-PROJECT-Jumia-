@@ -7,6 +7,7 @@ using Jumia.Dtos.ProductSpecificationSubCategory;
 using Jumia.Dtos.Specification;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
+using Jumia.Model.Commons;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -37,7 +38,10 @@ namespace Jumia.Application.Services
         //}
         public async Task<ResultDataForPagination<GetAllProducts>> GetAllPagination(int items, int pagenumber) //10 , 3 -- 20 30
         {
-            var AlldAta = (await _unitOfWork.ProductRepository.GetAllAsync());
+            var AlldAta = (await _unitOfWork.ProductRepository.GetAllAsync())
+                .Include(Prd => Prd.SubCategory)
+                .Include(Prd => Prd.Brand);
+
             var Prds = AlldAta
                 .Skip(items * (pagenumber - 1))
                 .Take(items)
@@ -45,7 +49,7 @@ namespace Jumia.Application.Services
                 .ToList();
             ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
             resultDataList.Entities = Prds;
-            resultDataList.count = AlldAta.Count();
+            //resultDataList.Count = AlldAta.Count();
             return resultDataList;
         }
 
@@ -290,6 +294,48 @@ namespace Jumia.Application.Services
 
                 return new ResultView<GetAllProducts> { Entity = productDto, IsSuccess = true, Message = "Succses" };
             }
+        }
+
+        public async Task<ResultDataForPagination<GetAllProducts>> GetOrderedAsc()
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.RealPrice, OrderBy.Ascending))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
+        }
+
+        public async Task<ResultDataForPagination<GetAllProducts>> GetOrderedDsc()
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.RealPrice, OrderBy.Descending))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivals()
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.CreatedDate, OrderBy.Descending))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
+        }
+
+
+
+
+        public async Task<ResultDataForPagination<GetAllProducts>> Search(string PartialName)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.Name.Contains(PartialName) || Prd.ShortDescription.Contains(PartialName), null, null))
+               .Select(p => new GetAllProducts(p))
+               .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
         }
     }
 

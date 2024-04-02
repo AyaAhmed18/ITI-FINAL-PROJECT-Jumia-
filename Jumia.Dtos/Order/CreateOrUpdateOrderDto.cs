@@ -14,13 +14,13 @@ namespace Jumia.Dtos.Order
         public int Id { get; set; }
         public int TotalAmount { get; set; }
         public decimal TotalPrice { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public int? Discount { get; set; }
+       // public DateTime CreatedDate { get; set; }
+       // public int? Discount { get; set; }
         public OrderStatus Status { get; set; }  //for admin only
-        public bool? Shipped { get; set; } //for admin only
-        public DateTime? ShippedDate { get; set; } 
-        public bool? Delivered { get; set; } //for admin only
-        public DateTime? DeliveredDate { get; set; } 
+       // public bool? Shipped { get; set; } //for admin only
+       // public DateTime? ShippedDate { get; set; } 
+       // public bool? Delivered { get; set; } //for admin only
+       // public DateTime? DeliveredDate { get; set; } 
         public bool? CancelOrder { get; set; }
         public int CustomerId { get; set; }
         public PaymentStatus paymentStatus { get; set; }
@@ -29,9 +29,10 @@ namespace Jumia.Dtos.Order
         //private readonly IStringLocalizer<SharedRecources> _localizer;
         public enum PaymentStatus
         {
-            PayPall,
-            MobileMoney,
-            Cash
+            Pending=0,
+            PayPall=1,
+            MobileMoney=2,
+            Cash=3
         }
         public enum OrderStatus
         {

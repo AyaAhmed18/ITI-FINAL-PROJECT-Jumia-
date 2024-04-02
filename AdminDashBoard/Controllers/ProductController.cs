@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AdminDashBoard.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         private readonly IProductServices _productService;
         private readonly ISubCategoryService _subCategoryService;
@@ -65,7 +65,7 @@ namespace AdminDashBoard.Controllers
         // POST: ProductController/Create
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Create(CreateOrUpdateProductDto ProductDto,List<IFormFile> Images, CreateOrUpdateProductSpecificationSubCategory prdSubCategorySpecDto)
+        public async Task<ActionResult> Create(CreateOrUpdateProductDto ProductDto,List<IFormFile> Images, CreateOrUpdateProductSpecificationSubCategory prdSubCategorySpecDto, int selectedSubCategoryId)
         {
             if (ModelState.IsValid)
             {
@@ -88,14 +88,15 @@ namespace AdminDashBoard.Controllers
 
                 if (res.IsSuccess)
                 {
-                    if(prdSubCategorySpecDto != null) { 
-                    foreach (var specItems in ProductDto.subCategorySpecification)
+                    if(prdSubCategorySpecDto != null) {
+                        var subCategorySpec = (await _subCategorySpecificationsService.GetAll()).Where(i => i.SubCategoryId == selectedSubCategoryId).ToList();
+                    foreach (var specItems in subCategorySpec)
                     {
-                        var specName = (await _specificationServices.GetAll()).Where(s => s.Name == specItems).FirstOrDefault();
+                       // var specName = (await _specificationServices.GetAll()).Where(s => s.Name == specItems).FirstOrDefault();
                         var subCategorySpecification = new CreateOrUpdateProductSpecificationSubCategory
                         {
-                            ProductId = ProductDto.Id,
-                            SubSpecId=prdSubCategorySpecDto.Id,
+                            ProductId = res.Entity.Id,
+                            SubSpecId= specItems.Id,
                             Value=prdSubCategorySpecDto.Value
                         };
                         await _productSpecificationSubCategoryServices.Create(subCategorySpecification);
@@ -106,7 +107,7 @@ namespace AdminDashBoard.Controllers
 
 
             }
-            var subcategory = await _subCategoryService.GetAll(5, 1);
+            var subcategory = await _subCategoryService.GetAll(55, 1);
             var subcatname = subcategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.subcategory = subcatname;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();

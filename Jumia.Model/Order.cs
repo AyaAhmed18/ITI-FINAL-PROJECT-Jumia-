@@ -23,21 +23,23 @@ namespace Jumia.Model
         [ForeignKey("Customer")]
         public int CustomerId { get; set; }
         public UserIdentity Customer { get; set; }
-
+        public PaymentStatus paymentStatus { get; set; }
         public virtual ICollection<OrderItems> OrderItems { get; set; }
         public virtual Shippment Shipping { get; set; }
         public Order()
         {
             OrderItems = new List<OrderItems>();
-            Status = "Processing";
+            Status = "Pending";
+            paymentStatus = 0;
         }
         public enum PaymentStatus
         {
+            Pending,
             PayPall,
             MobileMoney,
             Cash
         }
-        public PaymentStatus paymentStatus { get; set; }
+        
 
 
     

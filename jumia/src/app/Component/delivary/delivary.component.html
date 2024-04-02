@@ -1,4 +1,40 @@
 <div class="container">
+  <div class="col-3 float-end ">
+    <div class="card mb-3 my-4" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Order summary</li>
+        <li class="list-group-item">
+          <ul class="d-flex">
+            <li class="me-5">Item's total {{cartNumber}}</li>
+            <li class="">EGP {{TotalCartPrice}} </li>
+          </ul>
+          <ul class="d-flex">
+            <li class="me-5">Delivery fees</li>
+            <li>EGP 300.00 </li>
+          </ul>
+          <ul class="d-flex">
+            <li class="me-5">Prepaid discount</li>
+            <li class="text-success">-EGP 10 </li>
+          </ul>
+        </li>
+        <li class="list-group-item">
+            <ul class="d-flex">
+              <li class="me-5">Total</li>
+              <li>EGP {{TotalCartPrice +300 -10}}</li>
+            </ul>
+           
+          </li>
+
+        <ul>
+        <li ><p>You will be able to add a voucher when selecting your payment method.</p> </li>
+        <li> <img src="../../../assets/cart.jpg" style="width: 40%;" title="img"></li>
+        </ul>
+      </ul>
+      <div class="card-footer bg-light">
+        <button class="btn btn-warning text-light" style="width: 90%;" disabled routerLink="/shippment">Confirm Order </button>
+      </div>
+    </div>
+  </div>
     <div class="row  ">
         <div class=" my-2  col-md-8 row section1">
            <div class="col-md-6"> <h6 class=" my-2"><i class="fa-solid fa-circle-check text-success"></i>  1.CUSTOMER ADDRESS</h6></div>
@@ -22,27 +58,29 @@
                <i class="fa-solid fa-truck text-warning"></i>
              </div>
              <div class="col-md-6">
-               <p class="smallText">Shipment 1/1</p>
+               <p class="smallText">Shipment 1/{{cartNumber}}</p>
              </div>
              <div class="col-md-6 text-end smallText">
                Fulfilled by Al huda Store
              </div>
              <div class="container">
-               <div class=" pt-1 py-0 row section1 ">
+              @for(pro of cartItems;track pro.id;){
+               <div class=" pt-1 py-0 row section1 col-6" hieght="200px">
                    <h6 class="smallText">Door Delivery</h6>
-                   <p class="border-bottom smallText ">Delivery between 27 March and 28 March</p>
+                   <p class=" smallText ">Delivery between 27 March and 28 March</p>
+                  
                    <div class="col-md-2 ">
-                       <img src="2.png"  width="30%" alt="">
+                       <img [src]="pro.images"  width="30%" alt="">
                    </div>
                    <div class="col-md-10">
-                       <p class="smallText my-0 mx-0 text-start">Black & Decker Digital Electric Air Fryer -12 Liter - Silver - AOF100</p>
-                       <p class="smallText">OTY: 1</p>
+                       <p class="smallText my-0 mx-0 text-start">{{pro.name}}</p>
+                       <p class="smallText">OTY: {{pro.cartQuantity}}</p>
                    </div>
                   
-               </div>
+               </div>}
            </div>
            <div class="col-12 d-flex justify-content-end mb-4 ">
-               <button type="submit" class="btn btn-warning text-white mt-4 shadow rounded" save>Confirm Delivery Order</button>
+               <button type="submit" class="btn btn-warning text-white mt-4 shadow rounded save" (click)="ConfirmDelivary()" >Confirm Delivery Order</button>
              </div>
             
        </div>  

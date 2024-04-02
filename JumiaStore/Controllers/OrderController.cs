@@ -29,7 +29,17 @@ namespace JumiaStore.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-          var order=  (await _orderService.GetAllOrders()).ToList();
+            var order = (await _orderService.GetAllOrders())
+       .Select(i => new
+       {
+           i.Customer,
+           i.Status,
+           PaymentStatus = i.GetPaymentStatusWord(),
+           i.OrderDate,
+           i.Discount,
+           i.TotalPrice
+       })
+       .ToList();
             return Ok(order);
         }
 
@@ -58,9 +68,9 @@ namespace JumiaStore.Controllers
         }
 
         // POST api/<OrderController>
-        [Authorize (Roles ="user")]
+      //  [Authorize (Roles ="user")]
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateOrUpdateOrderDto createOrderDto)
+        public async Task<IActionResult> Post( CreateOrUpdateOrderDto createOrderDto)
         {
             try
             {
@@ -74,14 +84,15 @@ namespace JumiaStore.Controllers
                     }
                     else
                     {
-                        return Ok("Enter valid Data");
+                        return Ok("Invaliiiid");
+                        
                     }
 
                 }
                 return StatusCode(500,"Erroras");
                 //url.link()
             }
-            catch { return Unauthorized(); }
+            catch (Exception ex) { return Ok("this Is a problem here"); }
             //  return BadRequest(ModelState);
         }
 

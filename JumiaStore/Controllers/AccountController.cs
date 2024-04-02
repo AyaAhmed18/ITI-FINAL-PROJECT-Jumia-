@@ -102,7 +102,8 @@ namespace JumiaStore.Controllers
                         return Ok(new
                         {
                             stringtaken,
-                            Expire = token.ValidTo
+                            Expire = token.ValidTo,
+                            userId= user.Id
 
                         });
                     }

@@ -27,6 +27,7 @@ export class SignInComponent {
     this._apiLoginService.login(username,password).subscribe({next:(res)=>{
       if (res && res.stringtaken) {
         localStorage.setItem('token', res.stringtaken);
+        localStorage.setItem('userId', res.userId);
         this.loggedInUsername =username ; 
         this.router.navigate(['/Home']);
       } else {
