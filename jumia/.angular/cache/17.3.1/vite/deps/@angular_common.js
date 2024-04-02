@@ -98,18 +98,11 @@ import {
   provideNetlifyLoader,
   registerLocaleData,
   setRootDomAdapter
-<<<<<<< HEAD
 } from "./chunk-WDF32WIX.js";
 import {
   IMAGE_CONFIG
 } from "./chunk-K733Z6CI.js";
 import "./chunk-SXIXOCJ4.js";
-=======
-} from "./chunk-WVSHAO2H.js";
-import {
-  IMAGE_CONFIG
-} from "./chunk-22R4ASQ4.js";
->>>>>>> origin/Magdy
 export {
   APP_BASE_HREF,
   AsyncPipe,

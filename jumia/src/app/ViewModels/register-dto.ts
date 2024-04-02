@@ -3,4 +3,5 @@ export interface RegisterDto {
     password:string,
     email:string,
     confirmpass:string
+    phonenumber : string
 }

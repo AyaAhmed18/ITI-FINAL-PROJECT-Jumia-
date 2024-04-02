@@ -15,15 +15,15 @@
     display: flex;
     justify-content: center;
     margin-top: 2rem;
-
+    
   }
   .input{
-
+    border: 1px solid rgba(255, 115, 0, 0.842) !important;
   }
   .formm{
     width: 80%;
    align-items: center;
-  border: solid orange 2px;
+   border: 1px solid rgba(255, 115, 0, 0.842) !important;
   border-radius: 2%;
 justify-content: center;
   }
