@@ -13,7 +13,8 @@ import { FormsModule } from '@angular/forms';
 export class FilterComponent {
     minDiscount: number=0;
     products: any[]=[];
-
+    minPrice: number = 0;
+    maxPrice: number = 1000000;
 
     constructor(private _filterService: FilterServiceService) { }
 
@@ -21,16 +22,32 @@ export class FilterComponent {
         console.log(this.minDiscount)
       this.filterProducts();
     }
-  
+
     filterProducts(): void {
-      this._filterService.filterByDiscountRange(this.minDiscount)
-        .subscribe(data => {
-          this.products = data.entities;
-          console.log("filter")
-          console.log( this.products)
-        });
+      this._filterService.filterByAll(this.minDiscount, this.minPrice, this.maxPrice)
+      .subscribe(data => {
+        this.products = data.entities;
+        console.log("filter")
+        console.log( this.products)
+      });
+
+      // this._filterService.filterByDiscountRange(this.minDiscount)
+      //   .subscribe(data => {
+      //     this.products = data.entities;
+      //     console.log("filter")
+      //     console.log( this.products)
+      //   });
+      // this._filterService.filterByPriceRange(this.minPrice, this.maxPrice)
+      //   .subscribe(data => {
+      //     this.products = data.entities;
+      //     console.log("filter")
+      //     console.log( this.products)
+      //   });
+
+
     }
-  
+
+
 
 
 

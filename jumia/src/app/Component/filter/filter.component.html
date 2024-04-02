@@ -185,6 +185,20 @@
                     </div>
                 </div>
 
+                <div class="price-input">
+                  <div class="field">
+
+                      <input type="number" class="input-min"  [(ngModel)]="minPrice" value="2500" >
+                  </div>
+                  <div class="separator">-</div>
+                  <div class="field">
+
+                      <input type="number" class="input-max"  [(ngModel)]="maxPrice" value="7500">
+                  </div>
+                  <div>
+                    <button class="btn btn-primary" (click)="filterProducts()">Range Price</button>
+                  </div>
+              </div>
 
 
             </div>
