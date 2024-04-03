@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductComponent } from "../product/product.component";
 import { FilterServiceService } from '../../Services/filter-service.service';
+import { CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BrandServiceService } from '../../Services/brand-service.service';
 import { IBrandDto } from '../../ViewModels/ibrand-dto';
@@ -10,7 +11,7 @@ import { IBrandDto } from '../../ViewModels/ibrand-dto';
     standalone: true,
     templateUrl: './filter.component.html',
     styleUrl: './filter.component.css',
-    imports: [ProductComponent,FormsModule]
+    imports: [ProductComponent,FormsModule,CommonModule]
 })
 export class FilterComponent {
     minDiscount: number=0;
@@ -20,6 +21,7 @@ export class FilterComponent {
     maxPrice: number = 1000000;
     AllBrands: any = [];
     selectedBrands: number[] = [];
+    selectedBrandsStr : string ='';
     constructor(private _filterService: FilterServiceService,private _brandService : BrandServiceService) { }
 
     ngOnInit(): void {
@@ -39,9 +41,15 @@ export class FilterComponent {
     }
 
     filterProducts(): void {
+      this.selectedBrandsStr = this.selectedBrands.join(',');
 
-      this._filterService.filterByAll(this.minDiscount, this.minPrice, this.maxPrice  , this.selectedBrands.join(','))
+      this._filterService.filterByAll(this.minDiscount, this.minPrice, this.maxPrice  , this.selectedBrandsStr)
       .subscribe(data => {
+        console.log("selected Brands");
+        console.log(this.selectedBrands)
+        console.log(this.selectedBrandsStr)
+
+
         this.products = data.entities;
         console.log("filter--")
         console.log( this.products)

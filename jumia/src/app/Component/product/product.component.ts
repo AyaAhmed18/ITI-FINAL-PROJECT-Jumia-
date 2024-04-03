@@ -24,11 +24,12 @@ export class ProductComponent implements  OnInit{
 // AllProducts:ProductDto[]=[];
 //  products: any;
 searchResults: any[] = [];
-pageSize:number = 15;
+pageSize:number = 10;
 AllProd:number=0;
 totalPages: number = 0;
 pageNumber: number = 1;
 pageNumbers: number[]=[];
+AllProductsProducts : any[]=[];
 //  @Input() product?: ProductDto;
   cartTotalPrice:number=0
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
@@ -44,7 +45,7 @@ pageNumbers: number[]=[];
 
    }
    ngOnInit(): void {
-    this.Sershresult();
+    //this.Sershresult();
     this.getAllProducts();
     }
 
@@ -111,14 +112,15 @@ pageNumbers: number[]=[];
 getAllProducts() {
   this._ApiProductsService.getAllProducts(this.pageSize, this.pageNumber).subscribe({
       next: (data) => {
-          this.AllProducts = data;
+          this.products = data;
+          this.AllProd = data.count;
 
 
 
           this.totalPages=Math.ceil( this.AllProd / this.pageSize)
           this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
           console.log("all");
-          console.log( this.AllProducts);
+          console.log( this.products);
 
           this.sanitizeImages();
       },

@@ -49,7 +49,7 @@ namespace Jumia.Application.Services
                 .ToList();
             ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
             resultDataList.Entities = Prds;
-            //resultDataList.Count = AlldAta.Count();
+            resultDataList.count = AlldAta.Count();
             return resultDataList;
         }
       
