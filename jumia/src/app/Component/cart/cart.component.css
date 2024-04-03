@@ -1,6 +1,63 @@
-.offer-cards {
-    background-color: rgba(245, 164, 97, 0.356);
-    border-radius: 3px;
-    color: #ff9901;
 
+
+    /*style cards by Bahaa */
+
+    .label-Cards-top {
+        position: absolute;
+        background-color: rgba(255, 115, 0, 0.842);
+        color: #fff;
+        top: 8px;
+        left: 8px;
+
+        font-size: .7rem;
+        font-weight: 600;
+        border-radius: 3px;
+        text-transform: uppercase;
+    }
+
+    .offer-cards {
+        background-color: rgba(243, 152, 77, 0.397);
+        border-radius: 3px;
+        color: #ff9901;
+
+    }
+
+    .cards-heart>a {
+        position: absolute;
+        color: #ffae0069;
+        bottom: 220px;
+        right: 8px;
+
+    }
+.cards-question{
+    position: absolute;
+        color: #c9c9c9d5;
+        bottom: 80px;
+        right: 8px;
 }
+    .cards-heart:hover>a {
+        color: #ffae00;
+    }
+
+    .cards-question:hover>a{
+        color: #ffae00;
+}
+    .cards-hover:hover {
+        box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+    }
+
+    .hide-btn-cards {
+        display: none;
+    }
+
+    .show-cards-btn:hover .hide-btn-cards {
+        display: block;
+    }
+
+    .stars i {
+        color: gold;
+        font-size: .9rem;
+
+    }
+
+    /* -------------------------------------------------- */

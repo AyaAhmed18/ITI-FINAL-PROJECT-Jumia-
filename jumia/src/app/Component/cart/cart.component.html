@@ -123,13 +123,14 @@
           </div>
           @for(pro of wishlistItems;track pro.id;){
           <div class="col-3">
-            <div class="show-cards-btn card cards-hover" style="width:210px; height: 440px; border: none;">
-              <img [src]="pro.images" class="card-img-top" alt="Card image" style="width:100%">
+            <div class="show-cards-btn card cards-hover" style="width:210px; height: 300px; border: none;">
+              <img class="card-img-top" src="assets/ProductImg/1.jpg" alt="Card image"
+              style="height:auto; width: 150px;">
+              <!-- <img [src]="pro.images" class="card-img-top" alt="Card image" style="width:100%"> -->
               <div class="label-Cards-top px-2">
                 <span class="text-white ">Buy 400 get {{pro.discount}} off</span>
               </div>
-              <span class="cards-question"><a href=""><i class="fa fa-question-circle"
-                    style="cursor: pointer"></i></a></span>
+              
               <div class="card-body">
                 <p class="blockquote-footer"><small>{{pro.shortDescription}}</small></p>
                 <b><strong>EGP {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
@@ -137,8 +138,10 @@
                   <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>
                   <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>
                 </ul>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                <div class="hide-btn-cards">
+                <button class="btn btn-warning w-100 text-white" data-bs-toggle="modal"
                   [attr.data-bs-target]="'#staticBackdrop-' + pro.id">Add To Cart</button>
+                </div>
               </div>
               <!-- Model -->
               <div class="modal fade" [id]="'staticBackdrop-' + pro.id" data-bs-backdrop="static"
