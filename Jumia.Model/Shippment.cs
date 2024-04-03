@@ -27,12 +27,12 @@ namespace Jumia.Model
         //public string AdressInformationAr { get; set; }
         public string RegionAr { get; set; }
         public string CityAr { get; set; }
-        [ForeignKey("Order")] ////////
-        public int OrderId { get; set; }
+      //  [ForeignKey("Order")] ////////
+      //  public int OrderId { get; set; }
         [ForeignKey("Customer")] ////////
         public int UserIdentityId { get; set; }
         public UserIdentity Customer { get; set; }
-        public Order Order { get; set; }
+        //public Order Order { get; set; }
 
     }
     }

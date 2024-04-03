@@ -234,6 +234,9 @@
   <data name="Export" xml:space="preserve">
     <value>تصدير</value>
   </data>
+  <data name="FailedTODelete" xml:space="preserve">
+    <value>فشل </value>
+  </data>
   <data name="Features" xml:space="preserve">
     <value>سمات</value>
   </data>
@@ -347,6 +350,9 @@
   </data>
   <data name="Submit" xml:space="preserve">
     <value>تقديم</value>
+  </data>
+  <data name="SuccessMessage" xml:space="preserve">
+    <value>تم بنجاح</value>
   </data>
   <data name="UpdataOrder" xml:space="preserve">
     <value>تعديل طلب</value>

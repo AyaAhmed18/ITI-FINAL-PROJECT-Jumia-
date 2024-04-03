@@ -40,14 +40,14 @@
             <div class="col-9 AddressForm">
                 <h6 class=" my-2"><i class="fa-solid fa-circle-check"></i> 1.CUSTOMER ADDRESS</h6>
                 <h6 class="border-top ">EDIT ADDRESS</h6>
-                <form class="row g-4" #addForm="ngForm" (submit)="AddAddress(shippment,order)">
+                <form class="row g-4" #addForm="ngForm" (submit)="AddAddress(shippment)">
 
                     <div class="col-md-6">
                         <fieldset class="border px-3 form-control " [ngClass]="{'border-danger': firstName.invalid && firstName.touched}">
                             <legend class="float-none w-auto px-3">First Name</legend>
                             <input type="text"  id="firstName" value=""
                              required  placeholder="Enter your first name" 
-                             #firstName="ngModel" name="firstName"  [(ngModel)]="shippment.firstNameEn">
+                             #firstName="ngModel" name="firstNameEn"  [(ngModel)]="shippment.firstNameEn">
                         </fieldset>
                         <div for="firstName" class="form-text text-danger" [hidden]="firstName.valid  || firstName.untouched">
                             <p>Required field</p>
@@ -127,7 +127,7 @@
                                 <fieldset class="border px-3 form-control">
                                     <legend class="float-none w-auto px-3" for="validationServer04">City</legend>
                                     <select class="form-select " id="validationServer04" title="city"
-                                        aria-describedby="validationServer04Feedback" id="citySelect" [(ngModel)]="shippment.city" required>
+                                        aria-describedby="validationServer04Feedback" id="citySelect" [(ngModel)]="shippment.city" name="city"  required>
                                         <option selected disabled value="">Choose</option>
                                         <option *ngFor="let city of selectedRegionCities" [value]="city">{{ city }}</option>
                                     </select>
@@ -136,8 +136,8 @@
                                     </div>
                                 </fieldset>
                             </div>
-                            <input type="text" hidden name="regionAr" Value="سوهاج"  [(ngModel)]="shippment.regionAr">
-                            <input type="text" hidden name="cityAr" Value="سوهاج" [(ngModel)]="shippment.cityAr">
+                            <input type="text" hidden name="RegionAr" Value="سوهاج"  [(ngModel)]="shippment.RegionAr">
+                            <input type="text" hidden name="CityAr" Value="سوهاج" [(ngModel)]="shippment.CityAr">
                             <div class="col-12 d-flex justify-content-end  my-4">
                                 <button type="button" class="btn  me-2 mt-4 text-warning">CANCEL</button>
                                 <button type="submit"  class="btn btn-warning text-white mt-4 save"[disabled]="addForm.invalid" save>SAVE</button>
@@ -156,7 +156,7 @@
     </div>
     <div>
         <input type="text" value="order.id" hidden name="id">
-        <input type="text" value="shippment.orderId"hidden name="orderId">
+        <input type="text" name="UserIdentityId" Value="clientId"  [(ngModel)]="shippment.UserIdentityId">
         <input type="text" value="order.customerId" hidden name="customerId">
         <input type="text" value="order.status" hidden name="status">
         <input type="text" value="order.cancelOrder" hidden name="cancelOrder">
@@ -173,7 +173,7 @@
     <h3>{{order.customerId}}</h3>
     <h3>{{TotalCartPrice}}</h3>
     <h3>{{shippment.firstNameEn}}</h3>
-    <h3>{{order.createdDate}}</h3>
+    <h3>{{shippment.city}}</h3>
     <h3>{{order.cancelOrder}}</h3>
     <!-- <div class="col-3">
     <div class="card">

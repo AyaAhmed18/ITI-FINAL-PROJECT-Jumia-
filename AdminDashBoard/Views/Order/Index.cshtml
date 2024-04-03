@@ -27,6 +27,7 @@
                                         <th>@Localizer["Id"]</th>
                                         <th>@Localizer["Customer"]</th>
                                         <th>@Localizer["Status"]</th>
+                                        <th>@Localizer["Payment"]</th>
                                         <th>@Localizer["CreatedDate"]</th>
                                         <th>@Localizer["TotalPrice"]</th>
                                         <th>@Localizer["Discount"]</th>
@@ -44,8 +45,9 @@
                                                 <td>@item.Id</td>
                                                 <td>@item.Customer</td>
                                                 <td><label class="badge badge-danger">@item.Status</label></td>
+                                                <td><label class="badge badge-danger">@item.GetPaymentStatusWord()</label></td>
                                                 <td>@item.OrderDate</td>
-                                                <td><label class="badge badge-danger">@item.TotalPrice</label></td>
+                                                <td><label class="badge badge-danger">@item.TotalOrderPrice</label></td>
                                                 <td class="text-danger"> @item.Discount % <i class="ti-arrow-down"></i></td>
                                                 <td><a asp-action="Edit" asp-controller="Order" asp-route-Id="@item.Id"> <i class="mdi mdi-eye"></i>  View </a> </td>
 
@@ -66,3 +68,13 @@
     </div>
 
 </div>
+@if (TempData["SuccessMessage1"] != null)
+{
+    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @AdminDashBoard.Languages.Resource.SuccessMessage
+        </div>
+    </div>
+}

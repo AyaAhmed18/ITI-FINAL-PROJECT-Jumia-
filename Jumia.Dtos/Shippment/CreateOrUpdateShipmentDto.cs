@@ -19,7 +19,7 @@ namespace Jumia.Dtos.Shippment
         public decimal ?Cost { get; set; }
         public string RegionAr { get; set; }
         public string CityAr { get; set; }
-        public int OrderId { get; set; }
+      //  public int OrderId { get; set; }
         public int UserIdentityId { get; set; }
     }
 }

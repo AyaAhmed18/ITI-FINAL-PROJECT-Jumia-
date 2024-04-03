@@ -37,19 +37,19 @@ namespace JumiaStore.Controllers
            PaymentStatus = i.GetPaymentStatusWord(),
            i.OrderDate,
            i.Discount,
-           i.TotalPrice
+           i.TotalOrderPrice
        })
        .ToList();
             return Ok(order);
         }
 
         // GET api/<OrderController>/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [HttpGet("{UserId}")]
+        public async Task<IActionResult> GetUserOrders(int UserId)
         {
             try
             {
-                var ord = (await _orderService.GetOrder(id));
+                var ord = (await _orderService.GetAllOrders()).Where(i=>i.CustomerId==UserId).ToList();
                 if (ord != null)
                 {
                     return (Ok(ord));
@@ -67,8 +67,32 @@ namespace JumiaStore.Controllers
             
         }
 
+
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetOrder(int Id)
+        {
+            try
+            {
+                var ord = (await _orderService.GetOrder(Id));
+                if (ord != null)
+                {
+                    return (Ok(ord));
+                }
+                else
+                {
+                    return NotFound("this Order Not Found");
+                }
+            }
+            catch
+            {
+                return BadRequest();
+            }
+
+
+        }
+
         // POST api/<OrderController>
-      //  [Authorize (Roles ="user")]
+        //  [Authorize (Roles ="user")]
         [HttpPost]
         public async Task<IActionResult> Post( CreateOrUpdateOrderDto createOrderDto)
         {

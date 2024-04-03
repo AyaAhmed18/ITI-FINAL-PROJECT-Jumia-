@@ -21,7 +21,6 @@ export class SignInComponent {
   newUser:IUserLogin={} as IUserLogin
   constructor(private _apiLoginService : ApiLoginService , private router: Router){  }
 
- 
 //signIn Function Button
   signIn(username:string,password:string){
     this._apiLoginService.login(username,password).subscribe({next:(res)=>{

@@ -70,7 +70,7 @@ namespace Jumia.Application.Services
                     List<GetAllOrderItemsDto> item = items.Include(p=>p.Product).Select(p => new GetAllOrderItemsDto()
                     {
                         OrderId = p.OrderId,
-                        Image = p.Product.Images.FirstOrDefault(),
+                        Images = p.Product.Images,
                         ProductName = p.Product.Name,
                         ProductQuantity=p.ProductQuantity,
                         TotalPrice = p.TotalPrice,

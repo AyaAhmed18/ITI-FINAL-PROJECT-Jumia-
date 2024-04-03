@@ -9,9 +9,9 @@ export interface IShippment {
     adressInformation :string;
     region :string;
     city:string;
-    cost :DecimalPipe
+    cost :number
     regionAr :string
     cityAr :string;
     userIdentityId :number;
-    orderId:number
+    
 }

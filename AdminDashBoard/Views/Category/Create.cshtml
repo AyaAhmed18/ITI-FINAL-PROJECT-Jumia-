@@ -2,59 +2,62 @@
 @{
     Layout = "_Layout";
 }
- 
 
 <h1>@AdminDashBoard.Languages.Resource.AddCategory</h1>
 
-
 <html>
-
 <head>
-
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
-   
-
+    <style>
+        .alertt {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-danger fixed-top align-items-center" role="alert" id="customAlert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+            <div>
+                @AdminDashBoard.Languages.Resource.FailedTODelete
+            </div>
+        </div>
+    }
 
-
-
-    <form asp-action="Create" asp-controller="Category" method="post" enctype="multipart/form-data">
+    <form asp-action="Create" asp-controller="Category" method="post" enctype="multipart/form-data" id="createForm">
         <div class="mb-3">
             <label asp-for="Name" class="form-label">@AdminDashBoard.Languages.Resource.English_Name</label>
             <input asp-for="Name" class="form-control">
             <span asp-validation-for="Name" style="color:red"></span>
-
         </div>
         <div class="mb-3">
             <label asp-for="NameAr" class="form-label">@AdminDashBoard.Languages.Resource.Arabic_Name</label>
             <input asp-for="NameAr" class="form-control">
             <span asp-validation-for="NameAr" style="color:red"></span>
-
         </div>
         <div class="mb-3">
             <label asp-for="Description" class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
             <input asp-for="Description" class="form-control">
             <span asp-validation-for="Description" style="color:red"></span>
         </div>
-
         <div class="mb-3">
             <label asp-for="Image" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
             <input asp-for="Image" type="file" class="form-control">
             <span asp-validation-for="Image" style="color:red"></span>
         </div>
-
-
-
-
-
         <button type="submit" class="btn btn-primary">@AdminDashBoard.Languages.Resource.Create</button>
     </form>
 
- 
-
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-red alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <svg class="bi flex-shrink-0 " width="24" height="15px" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+            <div>
+                @AdminDashBoard.Languages.Resource.FailedTODelete
+            </div>
+        </div>
+    }
 </body>
-
-
 </html>
-

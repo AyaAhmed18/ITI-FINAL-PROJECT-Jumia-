@@ -32,11 +32,14 @@ namespace Jumia.Application.Services
             try
             {
                 var Data = await _shippmentRepository.GetAllAsync();
-                var OldShip = Data.Where(c => c.Id == shipmentDto.Id).FirstOrDefault();
+                var OldShip = Data.Where(c => c.UserIdentityId == shipmentDto.UserIdentityId).FirstOrDefault();
 
                 if (OldShip != null)
                 {
-                    return new ResultView<CreateOrUpdateShipmentDto> { Entity = null, IsSuccess = false, Message = "this Address Already Exist" };
+                    var ship = _mapper.Map<Shippment>(OldShip);
+                    var NewShip =( await _shippmentRepository.GetOneAsync(ship.Id));
+                    var ShDto = _mapper.Map<CreateOrUpdateShipmentDto>(NewShip);
+                    return new ResultView<CreateOrUpdateShipmentDto> { Entity = ShDto, IsSuccess = false, Message = "User Address Is found Before" };
                 }
                 else
                 {
