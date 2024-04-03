@@ -221,7 +221,7 @@ if (page >= 1 && page <= this.totalPages) {
   searchProducts(searchTerm: string): void {
     this._ApiProductsService.SearchByNameOrDesc(searchTerm).subscribe(
       (data: any) => {
-        this.searchResults = data;
+        this.products = data;
       },
       (error: any) => {
         console.error('Error fetching search results:', error);
