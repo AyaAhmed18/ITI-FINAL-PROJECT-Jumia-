@@ -16,7 +16,7 @@ export class OrderDetailsComponent implements OnInit{
   constructor(private _OrderService:APIOrderServiceService){}
  ngOnInit(): void {
   this._OrderService.GetUserOrders(this.clientId).subscribe(Orders => {
-    if(Orders==null){
+    if(Orders.length=0){
       this.OrdersNumbers=0
     }
     else{
