@@ -2,18 +2,18 @@
     <div class="row justify-content-md-center">
         <div class="col-5 align-items-center text-center">
           <form (submit)="signIn(newUser.userName,newUser.Password)" #loginForm="ngForm" >
-            <div class="logo mb-3 align-items-center ">
-                <img src="img/star.png" alt="" style="width: 12%;" >
+            <div class="logo mb-3 d-flex justify-content-center ">
+                <img src="assets/FooterImg/star.png" alt="" style="width: 12%;" >
             </div>
             <div class=" mt-2 mb-3 ">
-               <h1>Welcome to Jumia</h1>
+               <h1><strong>Welcome to Jumia</strong> </h1>
                <p>Type your e-mail or phone number to log in or create a Jumia account.</p>
             </div>
             
            <div class="field">
                 <label>
                  <input type="text" placeholder= ""required pattern="^[a-zA-Z]{3,50}$" #UserName="ngModel" name="userName"  [(ngModel)]="newUser.userName" >
-                 <p>Enter Your Name</p>
+                 <p>Enter Your Name *</p>
                </label>
                <div id="emailHelp" class="form-text text-danger" [hidden]="UserName.valid || UserName.untouched">
                 @if(UserName.errors?.['required']){
@@ -29,7 +29,7 @@
                 <label>
        
                  <input type="password" placeholder=" " required #pass="ngModel" name="Password"  [(ngModel)]="newUser.Password">
-                 <p>Password</p>
+                 <p>Password *</p>
                </label>
              </div>
              <div id="emailHelp" class="form-text text-danger" [hidden]="pass.valid || pass.untouched">
@@ -64,8 +64,8 @@
             <div class="mb-3">
                 <p>For further support, you may visit the Help Center or contact our customer service team.</p>
             </div>
-            <div class="mb-3 ">
-                <img src="img/JumiaLogo.png" style="width: auto; height: 15px;" title="a" >
+            <div class="mb-3 d-flex justify-content-center  ">
+                <img src="assets/FooterImg/JumiaLogo.png" style="width: auto; height: 15px;">
             </div>
 
           </form>

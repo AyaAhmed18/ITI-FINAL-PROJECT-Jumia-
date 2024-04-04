@@ -1,40 +1,80 @@
-.form-floating {
-    margin-bottom: 1rem;
-    margin-top: 4rem;
-  }
 
-  /* Center align the gender labels */
-  .gender-label {
-  
-    margin-top: 1rem;
-    border-radius: 2%;
-  }
+.field {
+  margin-bottom: 15px;
+}
 
-  /* Center align the Register button */
-  .register-btn {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    
-  }
-  .input{
-    border: 1px solid rgba(255, 115, 0, 0.842) !important;
-  }
-  .formm{
-    width: 80%;
-   align-items: center;
-   border: 1px solid rgba(255, 115, 0, 0.842) !important;
-  border-radius: 2%;
-justify-content: center;
-  }
+.field label {
+position: relative;
+}
 
-  .inner{
-    width: 90%;
-  }
-  #welcome{
-    margin-top: 4rem;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-left: 2rem;
-  }
+.field label input {
+  border: none;
+outline: none;
+box-sizing: border-box;
+font-size: 1rem;
+color: #565656;
+background: white;
+padding: 1rem 1.2rem;
+min-width: 30rem;
+border-radius: 0.2rem; 
+border: 2px solid #565656;
+transition: border-color 0.2s;
+}
+.btn-Cont  { 
+
+  border: none;
+outline: none;
+background-color:  #ffaf47;
+color: white;
+padding: 1rem 1.2rem;
+min-width: 30rem;
+border-radius: 0.2rem; 
+
+
+}
+.btn-Login{
+
+  outline: none;
+background-color:  #ffffff;
+color: rgb(250, 130, 18);
+padding: 1rem 1.2rem;
+min-width: 30rem;
+border-radius: 0.2rem; 
+border-color: #fa9c22;
+}
+.btn-Cont:hover{
+  background-color:  #fa9c22;
+color: white;
+}
+.btn-Login:hover{
+  background-color:  #fce1bf;
+
+}
+.field label input:focus {
+border-color: #ffaf47;
+}
+.field label p {
+color: #ffaf47;
+font-size: 1rem;
+user-select: none;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+margin-left: 0.8rem;
+padding: 0 0.4rem;
+background: #f1f1f1;
+transition: top 0.2s, font-size 0.2s, color 0.2s;
+pointer-events: none;
+}
+
+.field label input:focus + p,
+.field label input:not(:placeholder-shown) + p {
+top: -5px;
+font-size: 0.9rem;
+color: #ffaf47;
+background-color: #ffffff;
+}
+.field label input:not(:focus) + p {
+color: #565656;
+background-color: #ffffff;
+}
