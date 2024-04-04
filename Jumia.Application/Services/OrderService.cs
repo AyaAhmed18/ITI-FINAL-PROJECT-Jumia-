@@ -74,7 +74,9 @@ namespace Jumia.Application.Services
                         Status = p.Status.ToString(),
                         OrderDate = p.CreatedDate,
                         TotalOrderPrice = p.TotalOrderPrice,
-                        Discount=p.Discount
+                        Discount=p.Discount,
+                        CustomerId=p.CustomerId,
+                        TotalAmount=p.TotalAmount
                     }).ToList();
 
                     return orders;

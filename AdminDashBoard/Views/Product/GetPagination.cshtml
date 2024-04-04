@@ -93,9 +93,9 @@
 }
 @if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-red alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+    <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <svg class="bi flex-shrink-0 " width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
         <div>
             @AdminDashBoard.Languages.Resource.FailedTODelete
         </div>

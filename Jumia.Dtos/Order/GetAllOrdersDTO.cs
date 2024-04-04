@@ -16,6 +16,7 @@ namespace Jumia.Dtos.Order
         public DateTime? OrderDate { get; set; }
         public decimal TotalOrderPrice { get; set; }
         public int? Discount { get; set; }
+        public int? TotalAmount { get; set; }
         public int CustomerId { get; set; }
         public enum PaymentStatus
         {

@@ -49,10 +49,11 @@ namespace JumiaStore.Controllers
         {
             try
             {
-                var ord = (await _orderService.GetAllOrders()).Where(i=>i.CustomerId==UserId).ToList();
-                if (ord != null)
+                var ord = (await _orderService.GetAllOrders());
+                var cOrd = ord.Where(i => i.CustomerId == UserId);
+                if (cOrd != null)
                 {
-                    return (Ok(ord));
+                    return (Ok(cOrd));
                 }
                 else
                 {
@@ -61,14 +62,14 @@ namespace JumiaStore.Controllers
             }
             catch
             {
-                return BadRequest();
+                return BadRequest("SomeThing went wrong");
             }
             
             
         }
 
 
-        [HttpGet("{Id}")]
+        [HttpGet("user/{Id}")]
         public async Task<IActionResult> GetOrder(int Id)
         {
             try
