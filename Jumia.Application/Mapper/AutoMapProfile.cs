@@ -23,13 +23,7 @@ namespace Jumia.Application.Mapper
 {
     public class AutoMapProfile : Profile
     {
-        /*private string GetLocalized(string textAr, string textEn)
-        {
-            CultureInfo culture = Thread.CurrentThread.CurrentCulture;
-            if (culture.TwoLetterISOLanguageName.ToLower().Equals("ar"))
-                return textAr;
-            return textEn;
-        }*/
+      
         public AutoMapProfile()
         {
             //Category
@@ -49,7 +43,7 @@ namespace Jumia.Application.Mapper
             CreateMap<SubCategorySpecification, CreateOrUpdateSubDto>().ReverseMap();
             CreateMap< SubCategory, GetAllSubDto>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
-                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
+                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
                 .ReverseMap();
             CreateMap<GetAllSubDto , CreateOrUpdateSubDto>().ReverseMap() ;
             CreateMap<Specification, GetAllSpecificationDto > ().ReverseMap();
@@ -85,7 +79,7 @@ namespace Jumia.Application.Mapper
             //Product
             CreateMap<Product, GetAllProducts>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
-                 .ForMember(dest => dest.ShortDescription, opt => opt.MapFrom(src => src.GetLocalized(src.LongDescription, src.ShortDescription)))
+               //  .ForMember(dest => dest.ShortDescription, opt => opt.MapFrom(src => src.GetLocalized(src.LongDescription, src.ShortDescription)))
 
                 .ReverseMap();
             CreateMap<Product,CreateOrUpdateProductDto>().ReverseMap();
@@ -99,6 +93,7 @@ namespace Jumia.Application.Mapper
             CreateMap<SubCategorySpecification, CreateOrUpdateSubCategorySpecificationDto>().ReverseMap();
             CreateMap<SubCategorySpecification, GetAllSubCategorySpecificationDto>().ReverseMap();
             CreateMap<ProductSpecificationSubCategory, CreateOrUpdateProductSpecificationSubCategory>().ReverseMap();
+            CreateMap<ProductSpecificationSubCategory, GetAllProductSpecificationSubCategory>().ReverseMap();
 
             //Brand
             CreateMap<Brand,GetAllBrandDto>().ReverseMap();

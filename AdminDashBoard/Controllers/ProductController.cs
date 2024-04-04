@@ -103,10 +103,10 @@ namespace AdminDashBoard.Controllers
                         };
                         await _productSpecificationSubCategoryServices.Create(subCategorySpecification);
                     }
-                        TempData["SuccessMessage1"] = "Category Created successfully.";
-                        return RedirectToAction("GetPagination", TempData["SuccessMessage1"]);
-
+                      
                     }
+                    TempData["SuccessMessage1"] = "Category Created successfully.";
+                    return RedirectToAction("GetPagination", TempData["SuccessMessage1"]);
 
                 }
 
@@ -147,6 +147,9 @@ namespace AdminDashBoard.Controllers
             ViewBag.SubCategory = subCatName;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
+            var prdSpecs = (await _productSpecificationSubCategoryServices.GetAll())
+                .Entities.Where(p=>p.ProductId==id).Select(i=> new {i.SpecificationName,i.Value});
+            ViewBag.prdSpecs = prdSpecs;
             var productDto = _mapper.Map<CreateOrUpdateProductDto>(res.Entity);
             return View(productDto);
         }
@@ -172,7 +175,10 @@ namespace AdminDashBoard.Controllers
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
             TempData["SuccessMessage"] = "Failed.";
-             return View(productDto);
+            var prdSpecs = (await _productSpecificationSubCategoryServices.GetAll())
+                .Entities.Where(p => p.ProductId == productDto.Id).Select(i => new { i.SpecificationName, i.Value });
+            ViewBag.prdSpecs = prdSpecs;
+            return View(productDto);
 
         }
 
@@ -190,6 +196,7 @@ namespace AdminDashBoard.Controllers
 
             var ProductToDelete = _mapper.Map<CreateOrUpdateProductDto>(res.Entity);
            var del= await _productService.Delete(ProductToDelete);
+         //   var dels= await _productSpecificationSubCategoryServices.d
             if (del.IsSuccess)
             {
                 TempData["SuccessMessage1"] = "Successed";

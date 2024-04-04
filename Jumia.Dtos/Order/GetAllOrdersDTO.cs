@@ -38,7 +38,7 @@ namespace Jumia.Dtos.Order
                 case PaymentStatus.Cash:
                     return "Cash";
                 default:
-                    throw new NotImplementedException();
+                    return "UNConfirmed";
             }
         }
     }

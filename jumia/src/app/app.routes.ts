@@ -12,6 +12,7 @@ import { PaymentComponent } from './Component/payment/payment.component';
 import { RegistrationComponent } from './Component/registration/registration.component';
 import { FilterComponent } from './Component/filter/filter.component';
 import { OrderDetailsComponent } from './Component/order-details/order-details.component';
+import { OrderItemsComponent } from './Component/order-items/order-items.component';
 export const routes: Routes = [
     {path:'',redirectTo:'/Home',pathMatch:'full'},
     {path:'Home',component:HomeComponent},
@@ -25,6 +26,7 @@ export const routes: Routes = [
     {path:'shippment',component:ShippmentComponent,canActivate:[authGuard]},
     {path:'Payment',component:PaymentComponent,canActivate:[authGuard]},
     {path:'OrderDetails',component:OrderDetailsComponent,canActivate:[authGuard]},
+    {path:'OrderItems/:ordId',component:OrderItemsComponent,canActivate:[authGuard]},
    // {path:'CartProduct',component:CartwithProductComponent},
    // {path:'test',component:TestComponent},
 

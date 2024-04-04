@@ -97,11 +97,13 @@ export class ShippmentComponent implements OnInit{
       clientAddress.regionAr="سوهاج"
       clientAddress.cost=100
     }
+   
     this._ShippmentService.AddClientAddress(clientAddress).subscribe({next:(res)=>{
-      console.log(res.Entity);
+      console.log(res);
       
       if (res.IsSuccess && res.Entity!=null) {
        alert("Added Successfully")
+       this.router.navigate(['/Delivary']);
       } else if(!res.IsSuccess && res.Entity!=null) {
         //this.router.navigate(['/shippment']);
         this.shippment=res.Entity

@@ -76,13 +76,23 @@
                 <select asp-for="BrandID" asp-items="list2" class="form-select"></select>
             </div>
 
-            @*<div class="mb-3">
-                @if (Model.Image != null && Model.Image.Length > 0)
+            <br />
+
+        <div>
+                @if (ViewBag.prdSpecs!=null)
                 {
-                    <label>Current Image:</label>
-                    <div> <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Image)" width="200px" height="200px" alt="Current Image" class="img-fluid"> </div>
-                }
-            </div>*@
+           
+                @foreach (var spec in ViewBag.prdSpecs)
+            {
+                        <p>Specifications</p>
+                <input type="radio" name="SpecificationName" checked disabled value="@spec.SpecificationName" id="spec_@spec.SpecificationName">
+                <label for="spec_@spec.SpecificationName">@spec.SpecificationName</label>
+                        <label for="spec_@spec.Value">@spec.Value</label>
+                        <br />
+
+             }}
+        </div>
+                
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

@@ -24,6 +24,7 @@ namespace Jumia.Dtos.Product
        // public string Value { get; set; }
         public int SubSpecId { get; set; }
         public List<string>? subCategorySpecification { get; set; }
+        public List<string>? productSubCategorySpecification { get; set; }
 
     }
 }
