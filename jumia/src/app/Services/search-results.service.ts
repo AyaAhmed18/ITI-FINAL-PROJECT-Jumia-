@@ -11,14 +11,15 @@ export class SearchResultsService {
   constructor() { }
 
   setSearchResults(results: ProductDto[]): void {
+    console.log(results)
     this.searchResultsSubject.next(results);
     console.log("set");
   }
 
-  getSearchResults(): Observable<ProductDto[]> {
+  getSearchResults(): Observable<any[]> {
     console.log("get");
     return this.searchResultsSubject.asObservable();
-    
+
 
   }
 }

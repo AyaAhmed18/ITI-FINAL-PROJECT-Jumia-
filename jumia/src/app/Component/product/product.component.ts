@@ -45,7 +45,7 @@ AllProductsProducts : any[]=[];
 
    }
    ngOnInit(): void {
-    //this.Sershresult();
+    this.Sershresult();
     this.getAllProducts();
     }
 
@@ -99,8 +99,13 @@ AllProductsProducts : any[]=[];
   Sershresult() {
     this._searchResultsService.getSearchResults().subscribe({
         next: (data) => {
-            this.AllProducts = data;
-            console.log(this.AllProducts );
+          console.log(data[0].name)
+          console.log(data[0][0].name)
+          console.log(data[0].name)
+          console.log(data)
+          console.log("in product ts")
+            this.products = data[0];
+            console.log(this.products );
             this.sanitizeImages();
 
         },
@@ -192,7 +197,11 @@ if (page >= 1 && page <= this.totalPages) {
 
   sanitizeImages() {
     this.AllProducts.forEach(product => {
-      product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images);
+      console.log(product.images);
+      product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
+      console.log(product.images);
+      console.log(product.images);
+
     });
   }
 

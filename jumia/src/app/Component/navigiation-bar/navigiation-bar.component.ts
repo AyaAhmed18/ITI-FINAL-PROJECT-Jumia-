@@ -37,12 +37,12 @@ export class NavigiationBarComponent implements OnInit {
       private _searchResultsService: SearchResultsService){
     this.loggedInUsername = this._apiLoginService.getLoggedInUsername();
     if(this._apiLoginService.IsLoggedIn()){
-      
+
     }
     else{
       this._apiLoginService.logout();
     }
-    
+
   }
   SignInNav(){
 
@@ -55,12 +55,13 @@ export class NavigiationBarComponent implements OnInit {
 
   searchTerm: string = '';
 
- 
+
   searchProducts() {
     if (this.searchTerm.trim() !== '') {
       this._ApiProductsService.SearchByNameOrDesc(this.searchTerm).subscribe(
         (searchResults) => {
           this._searchResultsService.setSearchResults([searchResults]);
+          console.log("searchResults");
           console.log(searchResults);
         },
         (error) => {
@@ -70,5 +71,5 @@ export class NavigiationBarComponent implements OnInit {
     }
 
   }
-  
+
 }

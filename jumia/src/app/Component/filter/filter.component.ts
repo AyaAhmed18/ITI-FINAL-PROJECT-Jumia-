@@ -5,6 +5,7 @@ import { CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BrandServiceService } from '../../Services/brand-service.service';
 import { IBrandDto } from '../../ViewModels/ibrand-dto';
+import { ProductDto } from '../../ViewModels/product-dto';
 
 @Component({
     selector: 'app-filter',
@@ -42,6 +43,9 @@ export class FilterComponent {
 
     filterProducts(): void {
       this.selectedBrandsStr = this.selectedBrands.join(',');
+      console.log("selected Brands");
+      console.log(this.selectedBrands)
+      console.log(this.selectedBrandsStr)
 
       this._filterService.filterByAll(this.minDiscount, this.minPrice, this.maxPrice  , this.selectedBrandsStr)
       .subscribe(data => {
@@ -51,6 +55,8 @@ export class FilterComponent {
 
 
         this.products = data.entities;
+        console.log(this.products[1].images[0])
+
         console.log("filter--")
         console.log( this.products)
       });
@@ -61,6 +67,20 @@ export class FilterComponent {
     }
 
 
+    AddtoSelected($event: any,arg1: any) {
+      console.log($event.target.checked)
+      console.log(this.selectedBrands);
+      console.log(arg1);
+
+      if($event.target.checked)
+      {
+        let brId = arg1.brandID;
+        console.log(brId);
+        //this.selectedBrandsStr + `${{arg1.brandID}},`;
+        console.log(this.selectedBrands);
+      }
+      
+      }
  // this._filterService.filterByDiscountRange(this.minDiscount)
       //   .subscribe(data => {
       //     this.products = data.entities;

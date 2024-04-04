@@ -9,7 +9,7 @@ export interface ProductDto {
     stockQuantity:number,
     realPrice:number,
     discount:number,
-    images:SafeUrl,
+    images:SafeUrl[],
     subCategoryId:number,
     brandId:number,
     addedToCart?: boolean,
