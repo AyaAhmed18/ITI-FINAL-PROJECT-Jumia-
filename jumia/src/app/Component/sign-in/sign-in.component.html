@@ -10,9 +10,9 @@
                <p>Type your e-mail or phone number to log in or create a Jumia account.</p>
             </div>
             
-           <div class="field">
-                <label>
-                 <input type="text" placeholder= ""required pattern="^[a-zA-Z]{3,50}$" #UserName="ngModel" name="userName"  [(ngModel)]="newUser.userName" >
+           <div class="field ">
+                <label class="">
+                 <input type="text" class="" placeholder= ""required pattern="^[a-zA-Z]{3,50}$" #UserName="ngModel" name="userName"  [(ngModel)]="newUser.userName" >
                  <p>Enter Your Name *</p>
                </label>
                <div id="emailHelp" class="form-text text-danger" [hidden]="UserName.valid || UserName.untouched">

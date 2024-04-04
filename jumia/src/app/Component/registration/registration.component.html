@@ -17,7 +17,7 @@
           <label>
             <input type="text" class="form-control input" id="floatingInput" placeholder="" required
               pattern="^[a-zA-Z]{3,50}$" #UserName="ngModel" name="userName" [(ngModel)]="user.userName">
-            <p>Enter Your Name *</p>
+            <p>Enter Your Name <strong class="text-danger"> *</strong> </p>
           </label>
           <div id="emailHelp" class="form-text text-danger" [hidden]="UserName.valid || UserName.untouched">
             @if(UserName.errors?.['required']){
@@ -32,10 +32,10 @@
         <div class="field">
           <label>
 
-            <input type="email" class="form-control input" id="floatingInput" placeholder="name@example.com" required
+            <input type="email" class="form-control input" placeholder="" id="floatingInput" required
               pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" #email="ngModel" [(ngModel)]="user.email"
               name="email">
-            <p>email *</p>
+            <p>email <strong class="text-danger"> *</strong> </p>
           </label>
           <div id="emailHelp" class="form-text text-danger" [hidden]="email.valid || email.untouched">
             @if(email.errors?.['required']){
@@ -51,8 +51,9 @@
         <div class="field">
           <label>
 
-            <input type="password" class="form-control input " id="floatingPassword" placeholder="Password" required #pass="ngModel" name="password" [(ngModel)]="user.password">
-            <p>password *</p>
+            <input type="password" class="form-control input " id="floatingPassword" placeholder="" required
+              #pass="ngModel" name="password" [(ngModel)]="user.password">
+            <p>password <strong class="text-danger"> *</strong></p>
           </label>
           <div id="emailHelp" class="form-text text-danger" [hidden]="pass.valid || pass.untouched">
             @if(pass.errors?.['required']){
@@ -68,9 +69,9 @@
         <div class="field">
           <label>
 
-            <input type="password" class="form-control input" id="floatingPassword" placeholder="Password" required
+            <input type="password" class="form-control input" id="floatingPassword" placeholder="" required
               #confirmpass="ngModel" name="confirmpass" [(ngModel)]="user.confirmpass">
-            <p>Confirm password *</p>
+            <p>Confirm password <strong class="text-danger"> *</strong></p>
           </label>
           <div id="emailHelp" class="form-text text-danger" [hidden]="confirmpass.valid || confirmpass.untouched">
             @if(confirmpass.errors?.['required']){
@@ -86,9 +87,9 @@
         <div class="field">
           <label>
 
-            <input type="text" class="form-control input" id="floatingInput" placeholder="phonenumber" required
+            <input type="text" class="form-control input" id="floatingInput" placeholder="" required
               #phonenumber="ngModel" name="phonenumber" [(ngModel)]="user.phonenumber" pattern="^^01[0-9]{9}$">
-            <p>Phone Number *</p>
+            <p>Phone Number  <strong class="text-danger"> *</strong></p>
           </label>
           <div id="emailHelp" class="form-text text-danger" [hidden]="phonenumber.valid || phonenumber.untouched">
             @if(phonenumber.errors?.['required']){
@@ -120,7 +121,3 @@
     </div>
   </div>
 </div>
-
-
-
-
