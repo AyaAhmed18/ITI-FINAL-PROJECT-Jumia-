@@ -120,7 +120,7 @@ export class ShippmentComponent implements OnInit{
     
     if(this.cartNumber!=null && this.TotalCartPrice!=null &&this.clientId!=null ){
       this.order.totalAmount= this.cartNumber
-      this.order.totalPrice=this.TotalCartPrice
+     // this.order.TotalOrderPrice=this.TotalCartPrice
       this.order.customerId=parseInt(this.clientId);
     }
    // this.order.createdDate= new Date().toDateString();

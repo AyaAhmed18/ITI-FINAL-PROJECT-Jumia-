@@ -17,10 +17,7 @@ export class ApiShippmentService {
     return this._httpClient.post<any>(`${this.apiUrl}/Shippment`, { shippment });
 }
 
-AddOrder(order:IOrder): Observable<any> {
- return this._httpClient.post<any>(`${this.apiUrl}/Order`, { order });
 
-}
 
 UpdateClientAddress(shippment:IShippment): Observable<any> {
   return this._httpClient.post<any>(`${this.apiUrl}/Shippment`, { shippment });
