@@ -136,8 +136,8 @@
                                     </div>
                                 </fieldset>
                             </div>
-                            <input type="text" hidden name="RegionAr" Value="سوهاج"  [(ngModel)]="shippment.RegionAr">
-                            <input type="text" hidden name="CityAr" Value="سوهاج" [(ngModel)]="shippment.CityAr">
+                            <input type="text" hidden name="RegionAr" Value="سوهاج"  [(ngModel)]="shippment.regionAr">
+                            <input type="text" hidden name="CityAr" Value="سوهاج" [(ngModel)]="shippment.cityAr">
                             <div class="col-12 d-flex justify-content-end  my-4">
                                 <button type="button" class="btn  me-2 mt-4 text-warning">CANCEL</button>
                                 <button type="submit"  class="btn btn-warning text-white mt-4 save"[disabled]="addForm.invalid" save>SAVE</button>
@@ -156,7 +156,7 @@
     </div>
     <div>
         <input type="text" value="order.id" hidden name="id">
-        <input type="text" name="UserIdentityId" Value="clientId"  [(ngModel)]="shippment.UserIdentityId">
+        <input type="text" name="UserIdentityId" Value="clientId"  [(ngModel)]="shippment.userIdentityId">
         <input type="text" value="order.customerId" hidden name="customerId">
         <input type="text" value="order.status" hidden name="status">
         <input type="text" value="order.cancelOrder" hidden name="cancelOrder">

@@ -1,0 +1,94 @@
+{
+
+    "navigation":{
+        
+     "Search":"Search",
+      "SellonJumia":"Sell on Jumia",
+      "MyAccount": "My Account",
+      "Order": "Order",
+      "Saved items":"Saved items",
+      "SignIn":"SignIn ",
+      "SignOut":"SignOut",
+      "Help": "Help",
+      "Help Center": "Help Center",
+      "Place an Order":"Place an Order",
+      "Pay For Your Order": "Pay For Your Order",
+      "Track Your Order": "Track Your Order",
+      "Cancel an Order": "Cancel an Order",
+      "Create a return": "Create a return",
+      "Live Chat": "Live Chat",
+      "Cart": "Cart",
+      "loggedInUsername":"Account",
+      "Search products":"Search products",
+      "brand and categories":"brand and categories"
+      
+
+
+    
+
+
+
+
+    },
+
+
+  "footer":{
+
+    "Join us on":"Join us on",
+    "Payment method":"Payment method",
+    "Jumia International":"Jumia International",
+    "Algira":"Algira",
+    "Ivory Coast":"Ivory Coast",
+    "Ghana":"Ghana",
+    "Kenya":"Kenya",
+    "Morocco":"Morocco",
+    "Nigeria":"Nigeria",
+    "Senegal":"Senegal",
+    "Tunisia":"Tunisia",
+    "Oganda":"Oganda",
+    "Make money with jumia":"Make money with jumia",
+    "Sell on jumia":"Sell on jumia",
+    "Vendor Hub":"Vendor Hub",
+    "Become a Logistics service partner":"Become a Logistics service partner",
+    "Become a Sale Consultant(J-Force)":"Become a Sale Consultant(J-Force)",
+    "About jumia Egypt":"About jumia Egypt",
+    "Jumia Logistics Services":"Jumia Logistics Services",
+    "Jumia Careers":"Jumia Careers",
+    "Terms and Conditions":"Terms and Conditions",
+    "Stores Credit Terms & Conditions":"Stores Credit Terms & Conditions",
+    "Privacy Policy":"Privacy Policy",
+    "Free Shipping":"Free Shipping",
+    "Flash Sales":"Flash Sales",
+    "Join the Jumia DA Academy":"Join the Jumia DA Academy",
+    "Need help?":"Need help?",
+    "chat with us":"chat with us",
+    "Help Center":"Help Center",
+    "Contact us":"Contact us",
+    "Useful Linkes":"Useful Linkes",
+    "How to shop in jumia?":"How to shop in jumia?",
+    "How to pay on jumia?":"How to pay on jumia?",
+    "Delivery timelines":"Delivery timelines",
+    "Return & Refund policy":"Return & Refund policy",
+    "Payment Information Guidlines":"Payment Information Guidlines",
+    "Get access to exclusive offers!":"Get access to exclusive offers!",
+    "DOWNLOAD JUMIA FREE APP":"DOWNLOAD JUMIA FREE APP",
+    "I accept the legal terms":"I accept the legal terms",
+    "I agree to Jumia's Privacy and Cookie Policy. You can unsubscribe from newsletters at any time.":"I agree to Jumia's Privacy and Cookie Policy. You can unsubscribe from newsletters at any time.",
+    "Female":"Female",
+    "Male":"Male",
+    "subscribe to our newsletter to get update on our lastes offers!":"subscribe to our newsletter to get update on our lastes offers!",
+    "New to Jumia?":"New to Jumia?",
+    "Enter Email Adress":"Enter Email Adress"
+
+
+  }
+
+
+
+
+
+
+
+
+
+}
