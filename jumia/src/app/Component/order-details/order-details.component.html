@@ -1,0 +1,120 @@
+<!-- Order  when no item (heba)-->
+<div class="container-fluid" >
+    <div class="row flex-nowrap ">
+        <div class="col-auto  col-md-3 col-xl-2 px-sm-2 px-0 mx-4 shadow-sm p-3 mb-5 bg-body rounded" style="background-color: white;">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2  min-vh-100 ">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto  text-decoration-none">
+                    <i class="fa-regular fa-user" id="acc">   </i> <span for="acc"> <h1> &nbsp; My Jumia Account </h1></span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark" >
+                            <i class="fa-solid fa-bag-shopping" id="order"></i> <span for="order" > &nbsp; Order</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa-regular fa-message"></i><span for="order" > &nbsp; Inbox</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa-regular fa-note-sticky"></i><span for="order" >&nbsp; Review</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa-solid fa-ticket"></i><span for="order" >&nbsp; Voucher</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa-regular fa-heart">  </i><span for="order" >&nbsp; Saved Item</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa-solid fa-shop"></i><span for="order" >&nbsp; Follower Seller</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa-regular fa-clock"></i><span for="order" >&nbsp; Recent View</span>
+                        </a>
+                    </li>
+                   <hr>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                         <span class="ms-1 d-none d-sm-inline"> Account Management</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                         <span class="ms-1 d-none d-sm-inline">Adress Book</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                         <span class="ms-1 d-none d-sm-inline">Newsletter Prefrences</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                         <span class="ms-1 d-none d-sm-inline">Close Account</span> </a>
+                    </li>
+                </ul>
+                <hr>
+                <br>
+                <div class="">
+                 
+                <button class="btn btn-outline-warning">LOGOUT</button>
+                </div>
+            </div>
+        </div>
+        <!-- body -->
+        <div class="col py-3 shadow-sm p-3 mb-5 bg-body rounded " *ngIf="OrdersNumbers === 0" style="background-color: white;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item fs-3">Orders</li>
+                <li class="list-group-item">
+                    <ul  style="color: orange;" >
+                        <li class="d-inline"><a>ONGOING/DELIVERD (0)</a></li>
+                        <li class="d-inline"><a>CNACELD/RETURNED (0)</a></li>
+                    </ul>
+                </li>
+                <li class="list-group-item  mt-5" style="text-align: center;"><img src="https://www.jumia.com.eg/assets_he/images/orders.669c73dc.svg" class="mb-2" style="display: block;margin: 0 auto;">
+                <p class="fw-bold mb-2" >You have place no order yet!</p>
+            <p class="mb-2">All your orders will be saved here </p>
+        <button  class="btn  text-light" routerLink="/Home"  style="background-color: orange;">Go shopping</button></li>
+              </ul>
+        </div>
+        <!-- if there is order item -->
+        <div class="col py-3 shadow-sm p-3 mb-5 bg-body rounded" *ngIf="OrdersNumbers > 0" style="background-color: white;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item fs-3">Orders</li>
+                <li class="list-group-item mb-3">
+                    <ul  style="color: orange;" >
+                        <li class="d-inline"><a>ONGOING/DELIVERD ({{openOrders}})  </a></li>
+                        <li class="d-inline"><a> CNACELD/RETURNED ({{closedOrders}})</a></li>
+                    </ul>
+                </li>
+                @for(ord of Orders;track ord.id;){
+                <li class="mt-2"  >
+                  <div class="card-body  row ">
+                      <div class="col-3">
+                        <img src="https://www.jumia.com.eg/assets_he/images/orders.669c73dc.svg">
+                      </div>
+                      <div class="col-6 text-"><p class="mb-1"> </p>
+                        <h6 class="text-dark mb-1">Created Date {{ord.orderDate}}</h6>
+                      <h6 class="text-secondary mb-1">Order {{ord.id}}</h6>
+                      <p [ngStyle]="{'color': getStatusColor(ord.status.toLocaleString())}">{{ ord.status }}</p>
+                      <p class="">Quantity {{ord.totalAmount}}</p>
+                      <h1 class="h6 text-success">Total Price :  EGP {{ord.totalOrderPrice}}</h1></div>
+                      
+                      <div class="col-3"><a class=" text-decoration-none"  [routerLink]="['/OrderItems', ord.id]"  style="color: orange;" href="">SEE DETALIS</a></div>
+                      </div>
+                </li>
+            }
+            </ul>
+                    </div>
+        <!-- end -->
+    </div>
+</div>
+

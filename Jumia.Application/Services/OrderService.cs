@@ -73,8 +73,10 @@ namespace Jumia.Application.Services
                         Customer = p.Customer.UserName,
                         Status = p.Status.ToString(),
                         OrderDate = p.CreatedDate,
-                        TotalPrice = p.TotalOrderPrice,
-                        Discount=p.Discount
+                        TotalOrderPrice = p.TotalOrderPrice,
+                        Discount=p.Discount,
+                        CustomerId=p.CustomerId,
+                        TotalAmount=p.TotalAmount
                     }).ToList();
 
                     return orders;
@@ -105,7 +107,7 @@ namespace Jumia.Application.Services
                                                       Id = p.Id,
                                                       Customer=p.Customer.UserName,
                                                       Status=p.Status.ToString(),
-                                                      TotalPrice=p.TotalOrderPrice,
+                                                      TotalOrderPrice=p.TotalOrderPrice,
                                                       Discount=p.Discount
                                                      
                                                   }).ToList();

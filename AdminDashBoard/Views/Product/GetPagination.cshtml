@@ -69,7 +69,7 @@
                             <a asp-action="Update" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-info">@AdminDashBoard.Languages.Resource.Update</a>
                     </td>
                     <td>
-                            <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" onclick="confirmDelete()" class="btn btn-danger">@AdminDashBoard.Languages.Resource.Delete</a>
+                            <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" style="pointer-events: auto;" onclick="confirmDelete()" class="btn btn-danger disabled">@AdminDashBoard.Languages.Resource.Delete</a>
                     </td>
                 </tr>
             }
@@ -81,70 +81,29 @@
     </div>
 </body>
 </html>
-@* @{
-    Layout = "_Layout";
-    ViewData["Title"] = "GetPagination";
+@if (TempData["SuccessMessage1"] != null)
+{
+    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me-2" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @AdminDashBoard.Languages.Resource.SuccessMessage
+        </div>
+    </div>
 }
-
-<h1>GetPagination</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-
-    <tbody>
-@foreach (var item in Model.Entities) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lon)
-            </td>
-             <td>
-                @Html.DisplayFor(modelItem => item.ShortDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StockQuantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RealPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discount)
-            </td> 
-             <td>
-                @Html.DisplayFor(modelItem => item.SubCategoryID)
-            </td> 
-            <td>
-                @Html.DisplayFor(modelItem => item.SubCategoryName)
-            </td>
-             <td>
-                @html.displayfor(modelitem => item.brandid)
-            </td> 
-             <td>
-                @Html.DisplayFor(modelItem => item.BrandName)
-            </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Images)
-                </td>
-            <td>
-                <a asp-action="Update" asp-route-id ="@item.Id">Edit</a>
-                <a asp-action="Delete" asp-route-id ="@item.Id">Delete</a>
-            </td>
-        </tr>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @AdminDashBoard.Languages.Resource.FailedTODelete
+        </div>
+    </div>
 }
-       
-    </tbody>
-</table> 
-*@
   <script>
         function confirmDelete(){
-            var acc = confirm("Are you sure you want to delete this product ?");
+            var acc = confirm("Some Customers may Ordered This Product,Are you sure you want to delete this product ?");
             if(acc == false){
                 event.preventDefault();  
             }

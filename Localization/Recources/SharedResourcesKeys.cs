@@ -54,6 +54,7 @@ namespace Localization.Shared_Recources
         public const string Delivered = "Delivered";
         public const string Canceled = "Canceled";
         public const string Returned = "Returned";
-        
+        public const string Payment = "Payment";
+
     }
 }

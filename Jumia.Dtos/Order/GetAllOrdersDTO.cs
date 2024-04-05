@@ -14,8 +14,10 @@ namespace Jumia.Dtos.Order
         public PaymentStatus paymentStatus { get; set; }
        // public string PaymentTStatus { get; set; }
         public DateTime? OrderDate { get; set; }
-        public decimal TotalPrice { get; set; }
+        public decimal TotalOrderPrice { get; set; }
         public int? Discount { get; set; }
+        public int? TotalAmount { get; set; }
+        public int CustomerId { get; set; }
         public enum PaymentStatus
         {
             Pending = 0,
@@ -36,7 +38,7 @@ namespace Jumia.Dtos.Order
                 case PaymentStatus.Cash:
                     return "Cash";
                 default:
-                    throw new NotImplementedException();
+                    return "UNConfirmed";
             }
         }
     }

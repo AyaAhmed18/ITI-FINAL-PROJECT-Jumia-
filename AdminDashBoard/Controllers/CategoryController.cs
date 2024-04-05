@@ -59,15 +59,16 @@ namespace AdminDashBoard.Controllers
 
 
                 var res = await _categoryService.Create(CategoryDto, Image);
-
+               
                 if (res.IsSuccess)
                 {
-
-                    return RedirectToAction("Index");
+                    TempData["SuccessMessage1"] = "Category Created successfully.";
+                    return RedirectToAction("Index", TempData["SuccessMessage1"]);
                 }
                
 
             }
+            TempData["SuccessMessage"] = "Failed";
             return View(CategoryDto);
 
 
@@ -120,11 +121,11 @@ namespace AdminDashBoard.Controllers
                 }
               
                 await _categoryService.Update(categoryDto, Image);
-
-                return RedirectToAction(nameof(Index));
+                TempData["SuccessMessage1"] = "Category updated successfully.";
+                return RedirectToAction(nameof(Index), TempData["SuccessMessage1"]);
 
             }
-
+            TempData["SuccessMessage"] = "Failed";
             return View(categoryDto);
 
         }
@@ -142,10 +143,18 @@ namespace AdminDashBoard.Controllers
             }
 
             var CategoryToD = _mapper.Map<CreateOrUpdateCategoryDto>(res.Entity);
-            await _categoryService.Delete(CategoryToD);
+           var del= await _categoryService.Delete(CategoryToD);
+            if(del.IsSuccess){
+                TempData["SuccessMessage1"] = "Successed";
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["SuccessMessage"] = "Failed";
+                return RedirectToAction(nameof(Index));
+            }
 
-
-            return RedirectToAction(nameof(Index));
+            
         }
 
 

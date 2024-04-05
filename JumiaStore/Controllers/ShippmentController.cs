@@ -19,23 +19,23 @@ namespace JumiaStore.Controllers
         }
         // GET: api/<ShippmentController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            var shipping = (await _shippmentService.GetAll());
+            return Ok(shipping);
         }
 
         // GET api/<ShippmentController>/5
         [HttpGet("{ordId}")]
-        public async Task<IActionResult> Get(int ordId)
+        public async Task<IActionResult> Get(int userId)
         {
-            var shipping = (await _shippmentService.GetAll()).Where(i => i.OrderId == ordId).FirstOrDefault();
+            var shipping = (await _shippmentService.GetAll()).Where(i => i.UserIdentityId == userId).FirstOrDefault();
             if (shipping == null)
             {
                 return NotFound("Not Found");
             }
             return Ok(shipping);
         }
-
         // POST api/<ShippmentController>
         [HttpPost]
         public async Task<IActionResult> Post( CreateOrUpdateShipmentDto createOrUpdateShipmentDto)
@@ -47,19 +47,24 @@ namespace JumiaStore.Controllers
                     if (createOrUpdateShipmentDto != null)
                     {
                         var ship=await _shippmentService.Create(createOrUpdateShipmentDto);
-                        if (ship.IsSuccess)
+                        if (ship.IsSuccess && ship.Entity==null)
                         {
-                            return Created("http://localhost:5164/api/Shippment/" + createOrUpdateShipmentDto.Id, "Your Address Information Saved Successfully");
+                            return Ok(ship);
 
                         }
-                        else
+                        else if (!ship.IsSuccess && ship.Entity != null)
+                        {
+                            RedirectToAction("Put",ship.Entity);
+                            return Ok(ship);
+                        }
+                        else 
                         {
                             return Ok("something went wrong Please Try again");
                         }
 
 
                     }
-                    return BadRequest("Form Should not be null");
+                    return BadRequest(ModelState.Values);
 
                 }
                 else
@@ -85,7 +90,7 @@ namespace JumiaStore.Controllers
                 var ship = await _shippmentService.GetOne(createOrUpdateShipmentDto.Id);
                 if (ModelState.IsValid)
                 {
-                    if (ship != null && createOrUpdateShipmentDto.OrderId != null)
+                    if (ship != null && createOrUpdateShipmentDto != null)
                     {
                         await _shippmentService.Update(createOrUpdateShipmentDto);
                         return Created("http://localhost:5164/api/Shippment/" + createOrUpdateShipmentDto.Id, "Your Address Information Updated Successfully");

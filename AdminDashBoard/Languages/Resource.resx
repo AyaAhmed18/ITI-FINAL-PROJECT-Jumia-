@@ -175,7 +175,7 @@
     <value>Category</value>
   </data>
   <data name="Categoryies" xml:space="preserve">
-    <value>Categoryies</value>
+    <value>Categories</value>
   </data>
   <data name="CategoryName" xml:space="preserve">
     <value>Category Name</value>
@@ -233,6 +233,9 @@
   </data>
   <data name="Export" xml:space="preserve">
     <value>Export</value>
+  </data>
+  <data name="FailedTODelete" xml:space="preserve">
+    <value>Failed</value>
   </data>
   <data name="Features" xml:space="preserve">
     <value>Features</value>
@@ -347,6 +350,9 @@
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
+  </data>
+  <data name="SuccessMessage" xml:space="preserve">
+    <value>Successeded</value>
   </data>
   <data name="UpdataOrder" xml:space="preserve">
     <value>Updata Order</value>

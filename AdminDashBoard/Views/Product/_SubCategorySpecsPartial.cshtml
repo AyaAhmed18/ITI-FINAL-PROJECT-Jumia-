@@ -1,0 +1,10 @@
+﻿
+@model Jumia.Dtos.Product.CreateOrUpdateProductDto
+
+@foreach (var spec in ViewBag.subCategorySpecs)
+{
+    <label asp-for="SubSpecId">@spec.SpecificationName</label>
+    <br />
+    <input type="text" name="Value" value="" id="spec_Value">
+    <br />
+}

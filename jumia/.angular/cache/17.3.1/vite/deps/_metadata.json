@@ -1,49 +1,84 @@
 {
+<<<<<<< HEAD
   "hash": "2a2ca33f",
   "configHash": "512bcdf2",
   "lockfileHash": "d3a352ed",
   "browserHash": "b48e0c40",
+=======
+  "hash": "c85789ca",
+  "configHash": "c59d266e",
+  "lockfileHash": "d3a352ed",
+  "browserHash": "3107d977",
+>>>>>>> ee924789cab88607519748b62e8566f1f914a3be
   "optimized": {
     "@angular/common": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
+<<<<<<< HEAD
       "fileHash": "5c908b35",
+=======
+      "fileHash": "eab4b9c7",
+>>>>>>> ee924789cab88607519748b62e8566f1f914a3be
       "needsInterop": false
     },
     "@angular/common/http": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
       "file": "@angular_common_http.js",
+<<<<<<< HEAD
       "fileHash": "21607d73",
+=======
+      "fileHash": "96562fb6",
+>>>>>>> ee924789cab88607519748b62e8566f1f914a3be
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
+<<<<<<< HEAD
       "fileHash": "537bcf79",
+=======
+      "fileHash": "c3b37a31",
+>>>>>>> ee924789cab88607519748b62e8566f1f914a3be
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
+<<<<<<< HEAD
       "fileHash": "0f4ad0e0",
+=======
+      "fileHash": "f830c60c",
+>>>>>>> ee924789cab88607519748b62e8566f1f914a3be
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
+<<<<<<< HEAD
       "fileHash": "afeef1a4",
+=======
+      "fileHash": "bda07032",
+>>>>>>> ee924789cab88607519748b62e8566f1f914a3be
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
+<<<<<<< HEAD
       "fileHash": "7a0b53c3",
+=======
+      "fileHash": "bcac1c08",
+>>>>>>> ee924789cab88607519748b62e8566f1f914a3be
       "needsInterop": false
     },
     "rxjs": {
       "src": "../../../../../node_modules/rxjs/dist/esm5/index.js",
       "file": "rxjs.js",
+<<<<<<< HEAD
       "fileHash": "df57496f",
+=======
+      "fileHash": "3ffaee5a",
+>>>>>>> ee924789cab88607519748b62e8566f1f914a3be
       "needsInterop": false
     }
   },

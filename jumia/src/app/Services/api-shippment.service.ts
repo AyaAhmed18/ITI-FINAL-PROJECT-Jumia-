@@ -10,21 +10,32 @@ import { IOrder } from '../Models/i-order';
 })
 export class ApiShippmentService {
   private apiUrl = environment.apiUrl;
-  private url="http://localhost:64866/api/Order"
+  //private url="http://localhost:64866/api/Order"
   constructor(private _httpClient:HttpClient) { }
-
+ 
   AddClientAddress(shippment:IShippment): Observable<any> {
+    console.log(shippment)
     return this._httpClient.post<any>(`${this.apiUrl}/Shippment`, { shippment });
 }
 
-AddOrder(order:IOrder): Observable<any> {
- return this._httpClient.post<any>(this.url, { order });
 
-}
 
 UpdateClientAddress(shippment:IShippment): Observable<any> {
   return this._httpClient.post<any>(`${this.apiUrl}/Shippment`, { shippment });
 }
+ //   const userDetails = {
+  //     FirstNameEn: shippment.FirstNameEn,
+  //     LastName: shippment.LastName,
+  //     PhoneNumber: shippment.PhoneNumber,
+  //     Address: shippment.Address,
+  //     AdressInformation: shippment.AdressInformation,
+  //     City: shippment.City,
+  //     CityAr: shippment.CityAr,
+  //     Region: shippment.Region,
+  //     RegionAr: shippment.RegionAr,
+  //     UserIdentityId: shippment.UserIdentityId,
+  //     Cost: shippment.Cost,
 
+  // };
 
 }

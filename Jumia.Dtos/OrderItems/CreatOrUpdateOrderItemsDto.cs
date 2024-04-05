@@ -10,11 +10,10 @@ namespace Jumia.Dtos.OrderItems
     public class CreatOrUpdateOrderItemsDto
     {
         public int Id { get; set; }
-       // public string? CreatedBy { get; set; }
         public int ProductQuantity { get; set; }
         public decimal TotalPrice { get; set; }
         public int? Discount { get; set; }
-        [ForeignKey("Product")] ////////
         public int ProductId { get; set; }
+        public int OrderId { get; set; }
     }
 }

@@ -232,7 +232,7 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Categoryies.
+        ///   Looks up a localized string similar to Categories.
         /// </summary>
         public static string Categoryies {
             get {
@@ -408,6 +408,15 @@ namespace AdminDashBoard.Languages {
         public static string Export {
             get {
                 return ResourceManager.GetString("Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed.
+        /// </summary>
+        public static string FailedTODelete {
+            get {
+                return ResourceManager.GetString("FailedTODelete", resourceCulture);
             }
         }
         
@@ -750,6 +759,15 @@ namespace AdminDashBoard.Languages {
         public static string Submit {
             get {
                 return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successeded.
+        /// </summary>
+        public static string SuccessMessage {
+            get {
+                return ResourceManager.GetString("SuccessMessage", resourceCulture);
             }
         }
         

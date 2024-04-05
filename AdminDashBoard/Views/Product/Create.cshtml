@@ -11,10 +11,10 @@
 
 <h1>Create</h1>
 <hr />
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" asp-controller="Product" method="post" enctype="multipart/form-data">
+        <form  asp-action="Create" asp-controller="Product" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="mb-3">
                 <label asp-for="Name" class="form-label"> @AdminDashBoard.Languages.Resource.English_Name</label>
@@ -55,19 +55,14 @@
             <div class="form-group">
                 <label asp-for="SubCategoryID" class="form-label">SubCategory</label>
                 <select asp-for="SubCategoryID" asp-items="list" class="form-select" id="subCategorySelect"></select>
-                <input asp-for="SubCategoryID" class="form-control" hidden/>
+                <input name="selectedSubCategoryId"  class="form-control" hidden />
             </div>
 
-            <h3>Specifications</h3>
-
+           
+           
             <div id="subCategorySpecsContainer" style="display: none;">
-                @foreach (var spec in ViewBag.subCategorySpecs)
-                {
-                    <label asp-for="SubSpecId">@spec.SpecificationName</label>
-                    <br />
-                    <input type="text" name="Value" value="" id="spec_Value">
-                    <br />
-                }
+                <h3>Specifications</h3>
+                @Html.Partial("_SubCategorySpecsPartial")
                 </div>
             <div class="form-group">
                 <label asp-for="BrandID" class="form-label">Brands</label>
@@ -75,26 +70,7 @@
             </div>
             
 
-            @*  <div class="form-group">
-                <label asp-for="SubCategoryID" class="control-label"></label>
-                <input asp-for="SubCategoryID" class="form-control" />
-                <span asp-validation-for="SubCategoryID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SubCategoryName" class="control-label"></label>
-                <input asp-for="SubCategoryName" class="form-control" />
-                <span asp-validation-for="SubCategoryName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BrandID" class="control-label"></label>
-                <input asp-for="BrandID" class="form-control" />
-                <span asp-validation-for="BrandID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BrandName" class="control-label"></label>
-                <input asp-for="BrandName" class="form-control" />
-                <span asp-validation-for="BrandName" class="text-danger"></span>
-            </div> *@
+         
             <div class="mb-3">
                 <label class="form-label">Image</label>
                 <input asp-for="Images" type="file" class="form-control" multiple>
@@ -112,27 +88,46 @@
     <a asp-action="GetPagination">Back to List</a>
 </div>
 
-@* @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-} *@
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @AdminDashBoard.Languages.Resource.FailedTODelete
+        </div>
+    </div>
+}
 <script>
-    const subCategorySelect = document.getElementById('subCategorySelect');
-    const subCategorySpecsContainer = document.getElementById('subCategorySpecsContainer');
+    $(document).ready(function () {
+        $('#subCategorySelect').change(function () {
+           
+            var selectedSubCategoryId = $(this).val();
+            $('input[name="selectedSubCategoryId"]').val(selectedSubCategoryId);
+            $.ajax({
+                url: '/Product/Action', // Replace with your controller and action method
+                type: 'GET',
+                data: { selectedSubCategoryId: selectedSubCategoryId },
+                success: function (data) {
+                    $('#subCategorySpecsContainer').html(data);
+                    $('#subCategorySpecsContainer').show();
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                }
+            });
 
-    subCategorySelect.addEventListener('change', function () {
-        const selectedSubCategoryId = subCategorySelect.value; // Get the selected subcategory ID
-        if (selectedSubCategoryId !== '') {
-            // Make an AJAX call to the controller
-            fetch(`/Product/Create?subCategoryId=${selectedSubCategoryId}`)
-                .then(response => response.json())
-                .then(data => {
-                    // Handle the response data (if needed)
-                    console.log(data);
-                })
-                .catch(error => console.error('Error:', error));
-            subCategorySpecsContainer.style.display = 'block';
-        } else {
-            subCategorySpecsContainer.style.display = 'none';
-        }
+            // $.ajax({
+            //     url: '/Product/Create',
+            //     type: 'POST',
+            //     data: { selectedSubCategoryId: selectedSubCategoryId },
+            //     success: function (data) {
+            //         // Handle success for Action2 if needed
+            //     },
+            //     error: function (xhr, status, error) {
+            //         console.log(error);
+            //     }
+            // });
+        });
     });
 </script>
