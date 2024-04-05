@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  Router } from '@angular/router';
+import {  Router, RouterLink } from '@angular/router';
 import { ProductDto } from '../../ViewModels/product-dto';
 import { CartService } from '../../Services/cart.service';
 import { ApiShippmentService } from '../../Services/api-shippment.service';
@@ -8,7 +8,7 @@ import { IShippment } from '../../Models/ishippment';
 @Component({
   selector: 'app-delivary',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './delivary.component.html',
   styleUrl: './delivary.component.css'
 })

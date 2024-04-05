@@ -53,7 +53,6 @@
             {
                 <tr>
                     <td>@item.Name</td>
-                        @* <td class="fifty-chars" width="15px">@item.ShortDescription </td> *@
                         <td class="fifty-chars" width="6ch">@if (item.Images.Count > 0) { Convert.ToBase64String(item.Images[item.Images.Count() - 1]); }</td>
                         @{
                             string res = item.Images.Count > 0 ? Convert.ToBase64String(item.Images[item.Images.Count() - 1]) : "";

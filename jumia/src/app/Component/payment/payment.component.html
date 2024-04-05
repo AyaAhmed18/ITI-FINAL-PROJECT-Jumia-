@@ -31,61 +31,63 @@
         </ul>
       </ul>
       <div class="card-footer bg-light">
-        <button class="btn btn-warning text-light save" style="width: 90%;" [disabled]="!payment"   routerLink="/shippment">Confirm Order </button>
+        <button class="btn btn-warning text-light save" style="width: 90%;" [disabled]="!payment"   (click)="confirmOrder()">Confirm Order </button>
       </div>
     </div>
   </div>
     <div class="row  ">
         <div class=" my-2  col-md-8 row section1">
            <div class="col-md-6"> <h6 class=" my-2"><i class="fa-solid fa-circle-check text-success"></i>  1.CUSTOMER ADDRESS</h6></div>
-           <div class="col-md-6 text-end"><a href="" class="text-decoration-none" >Change <i class="fa-solid fa-arrow-right"></i> </a></div>
+           <div class="col-md-6 text-end"><a href="" class="text-decoration-none"  [routerLink]="['/shippment']" >Change <i class="fa-solid fa-arrow-right"></i> </a></div>
            <div class="border-top ">
-               <p class="my-0  pt-4">Aya Ahmed</p>
-               <p class="mt-0 tb-5 text-secondary">Sohag, sohag | Sohag - Sohag | +20 1024940918</p>
-           </div>
+            <p class="my-0  pt-4">{{shippment.firstNameEn}}  {{shippment.lastName}}</p>
+            <p class="mt-0 tb-5 text-secondary">{{shippment.region}}, {{shippment.city}} | {{shippment.address}} - {{shippment.adressInformation}} | +2 {{shippment.phoneNumber}}</p>
+        </div>
        </div> 
 
        <br>
        <div class=" my-2  col-md-8 row section1">
         <div class="col-md-6"> <h6 class=" my-2"><i class="fa-solid fa-circle-check text-success"></i>  2.DELIVERY DETAILS</h6></div>
-        <div class="col-md-6 text-end"><a href="" class="text-decoration-none" >Change <i class="fa-solid fa-arrow-right"></i> </a></div>
+        <div class="col-md-6 text-end"><a href="" class="text-decoration-none"  [routerLink]="['/Cart']" >Change <i class="fa-solid fa-arrow-right"></i> </a></div>
         <div class="border-top ">
             <p class="my-0  pt-4">Door Delivery</p>
             <p class="mt-0 tb-5 text-secondary">Delivery between 20 April and 25 April</p>
         </div>
     </div> 
     <br>
-    <div class=" my-2  col-md-8 row section1">
-        <div class="col-md-6"> <h6 class=" my-2"><i class="fa-solid fa-circle-check text-success"></i>  3.PAYMENT METHOD</h6></div>
-        <form action="">
-        <div class="border-top ">
-            <div class="check">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="payment" id="payment" checked>
-                <label class="form-check-label" for="payment">
-                  Paypal
-                </label>
-              </div>  
-              <div class="form-check">
-                <input class="form-check-input " type="radio" name="payment" id="payment">
-                <label class="form-check-label" for="payment">
-                  Cash
-                </label>
-              </div>  
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="payment" id="payment">
-                <label class="form-check-label" for="payment">
-                  Mobile Money
-                </label>
-              </div> 
-            </div>
-              <div class="col-12 d-flex justify-content-end mb-4 ">
-                <button type="submit" class="btn btn-warning text-white mt-4 shadow rounded save" (click)="ConfirmPayment()" >Confirm Payment Method</button>
-              </div> 
-        </div>
+    <div class="my-2 col-md-8 row section1">
+      <div class="col-md-6">
+          <h6 class="my-2"><i class="fa-solid fa-circle-check text-success"></i> 3.PAYMENT METHOD</h6>
+      </div>
+      <form (ngSubmit)="ConfirmPayment()" #paymentForm="ngForm">
+          <div class="border-top">
+              <div class="check">
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="payment" id="paypal" value="Paypal" [(ngModel)]="selectedPayment">
+                      <label class="form-check-label" for="paypal">
+                          Paypal
+                      </label>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="payment" id="cash" value="Cash" [(ngModel)]="selectedPayment">
+                      <label class="form-check-label" for="cash">
+                          Cash
+                      </label>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="payment" id="mobileMoney" value="Mobile Money" [(ngModel)]="selectedPayment">
+                      <label class="form-check-label" for="mobileMoney">
+                          Mobile Money
+                      </label>
+                  </div>
+              </div>
+              <div class="col-12 d-flex justify-content-end mb-4">
+                  <button type="submit" class="btn btn-warning text-white mt-4 shadow rounded save">Confirm Payment Method</button>
+              </div>
+          </div>
       </form>
-    </div> 
+  </div>
     </div>
  </div>
- <div #paymentRef></div>
+ 
 

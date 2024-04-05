@@ -21,7 +21,7 @@ import { CartService } from '../../Services/cart.service';
 export class ShippmentComponent implements OnInit{
   shippment:IShippment={} as IShippment
   order:IOrder={} as IOrder
-  Client=localStorage.getItem('userName')
+  //Client=localStorage.getItem('userName')
   clientId=localStorage.getItem('userId')
   selectedRegionCities: string[] = [];
   regions: string[] = []

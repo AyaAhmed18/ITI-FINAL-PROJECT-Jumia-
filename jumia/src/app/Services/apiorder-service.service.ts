@@ -25,6 +25,11 @@ export class APIOrderServiceService {
     return this._httpClient.put<IOrder>(`${this.apiUrl}/Order/${id}`,  order );////
    
    }
+
+   AddOrderItems(orderItem:IOrderItems): Observable<any> {
+    return this._httpClient.post<any>(`${this.apiUrl}/OrderItems`,  orderItem );////
+   
+   }
 //Get
    GetUserOrders(UserId:number):Observable<IOrder[]>{
     return this._httpClient.get<IOrder[]>(`${this.apiUrl}/Order/${UserId}`)

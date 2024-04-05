@@ -104,8 +104,7 @@ namespace JumiaStore.Controllers
                     var order = await _orderService.Create(createOrderDto);
                     if (order.IsSuccess)
                     {
-                        return Created("http://localhost:5164/api/Order/" + createOrderDto.Id, "Order Saved Successfully");
-
+                        return (Ok(order));
                     }
                     else
                     {

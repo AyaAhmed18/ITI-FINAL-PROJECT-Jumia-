@@ -32,7 +32,10 @@
       </div>
       <div class="col-5 ">
         <p class="mb-1"><small>{{ item.name }} {{item.shortDescription}}</small> </p>
-        <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">  <small> {{item.stockQuantity}} In Stock</small>  </i> </h6>
+        <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">
+          <small [ngClass]="{'text-success': item.stockQuantity < 5, 'text-danger': item.stockQuantity >= 5}">
+            {{ item.stockQuantity < 5 ? item.stockQuantity + ' Unifs Left' : 'Available' }}
+        </small> </i> </h6>
         <a href="https://www.jumia.com.eg/nivea-men-men-face-body-hands-cream-moisturising-tin-75ml-37954540.html"> <img
             src="assets/ProductImg/express.jpg" style="width: 40%;"></a>
       </div>
