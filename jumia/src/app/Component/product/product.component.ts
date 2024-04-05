@@ -8,6 +8,7 @@ import { SearchResultsService } from '../../Services/search-results.service';
 import { CartService } from '../../Services/cart.service';
 import { WishlistService } from '../../Services/wishlist.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -39,7 +40,8 @@ pageNumbers: number[]=[];
        private _sanitizer:DomSanitizer,
       private _cartService:CartService,
       private _wishlist :WishlistService,
-      private _searchResultsService: SearchResultsService)
+      private _searchResultsService: SearchResultsService,
+      private router: Router)
    {
 
    }
@@ -47,7 +49,9 @@ pageNumbers: number[]=[];
     this.Sershresult();
     this.getAllProducts();
     }
-
+    navigateToDetails(productId: number): void {
+      this.router.navigateByUrl(`/Detalse/${productId}`);
+    }
   //start Add to Cart
   AddToCart(prod:ProductDto){
       if(prod.stockQuantity>0){
