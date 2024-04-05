@@ -198,6 +198,9 @@
   <data name="orderview" xml:space="preserve">
     <value>order view</value>
   </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Payment</value>
+  </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Phone Number</value>
   </data>

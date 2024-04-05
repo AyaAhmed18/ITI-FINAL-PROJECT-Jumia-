@@ -87,39 +87,34 @@ export class ShippmentComponent implements OnInit{
       this.cartNumber=this._cartService.calculateTotalCartNumber();
      // this.clientId=
     });
-    this.shippment.orderId=3
     this.SetOrderData()
   }
   debugger: any
-  AddAddress(clientAddress:IShippment,neworder:IOrder){
-   // clientAddress.orderId=3
-    this._ShippmentService.AddClientAddress(clientAddress).subscribe({
-      next:(res)=>{
-        if(res){
-          console.log(res);
-          
-         // this.router.navigate(['/Delivary']);
-          alert("Your Address Information Saved Successfully")
-        }
-        alert("Please Enter Valid Data")
-      },
-    })
-  this._ShippmentService.AddOrder(neworder).subscribe({
-    next:(res)=>{
+  AddAddress(clientAddress:IShippment){
+    if(this.clientId!=null){
+      clientAddress.userIdentityId=parseInt(this.clientId)
+      clientAddress.cityAr="سوهاج"
+      clientAddress.regionAr="سوهاج"
+      clientAddress.cost=100
+    }
+   
+    this._ShippmentService.AddClientAddress(clientAddress).subscribe({next:(res)=>{
+      console.log(res);
       
-      if(res){
-        if(clientAddress.orderId!=null  || clientAddress.orderId!=0 ){
-         
-        }
-        else{
-          alert("Please Enter Valid Data")
-        }
+      if (res.IsSuccess && res.Entity!=null) {
+       alert("Added Successfully")
+       this.router.navigate(['/Delivary']);
+      } else if(!res.IsSuccess && res.Entity!=null) {
+        //this.router.navigate(['/shippment']);
+        this.shippment=res.Entity
+        alert("update Address")
       }
-      alert("Please Enter Valid Data")
+     
     },
-  })
-    //clientAddress.orderId=  3
-    
+    error:(err)=>{
+      console.log(err);
+      
+    }});
    
   } 
 
@@ -127,7 +122,7 @@ export class ShippmentComponent implements OnInit{
     
     if(this.cartNumber!=null && this.TotalCartPrice!=null &&this.clientId!=null ){
       this.order.totalAmount= this.cartNumber
-      this.order.totalPrice=this.TotalCartPrice
+     // this.order.TotalOrderPrice=this.TotalCartPrice
       this.order.customerId=parseInt(this.clientId);
     }
    // this.order.createdDate= new Date().toDateString();

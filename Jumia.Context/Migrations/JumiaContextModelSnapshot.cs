@@ -17,7 +17,7 @@ namespace Jumia.Context.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.3")
+                .HasAnnotation("ProductVersion", "8.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -389,9 +389,6 @@ namespace Jumia.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -410,13 +407,10 @@ namespace Jumia.Context.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserIdentityId")
+                    b.Property<int>("UserIdentityId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrderId")
-                        .IsUnique();
 
                     b.HasIndex("UserIdentityId");
 
@@ -820,15 +814,13 @@ namespace Jumia.Context.Migrations
 
             modelBuilder.Entity("Jumia.Model.Shippment", b =>
                 {
-                    b.HasOne("Jumia.Model.Order", null)
-                        .WithOne("Shipping")
-                        .HasForeignKey("Jumia.Model.Shippment", "OrderId")
+                    b.HasOne("Jumia.Model.UserIdentity", "Customer")
+                        .WithMany("Shippments")
+                        .HasForeignKey("UserIdentityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Jumia.Model.UserIdentity", null)
-                        .WithMany("Shippments")
-                        .HasForeignKey("UserIdentityId");
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("Jumia.Model.SubCategory", b =>
@@ -925,9 +917,6 @@ namespace Jumia.Context.Migrations
             modelBuilder.Entity("Jumia.Model.Order", b =>
                 {
                     b.Navigation("OrderItems");
-
-                    b.Navigation("Shipping")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Jumia.Model.Product", b =>

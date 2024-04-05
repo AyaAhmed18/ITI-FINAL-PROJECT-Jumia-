@@ -26,7 +26,7 @@ namespace Jumia.Application.Services
             //  _stringLocalizer = stringLocalizer;
         }
 
-        public async Task<ResultDataForPagination<GetAllProductSpecificationSubCategory>> GetAll(int item, int pagnumber)
+        public async Task<ResultDataForPagination<GetAllProductSpecificationSubCategory>> GetAll()
         {
             var AlldAta = (await _unitOfWork.productSpecificationSubCategoryRepository.GetAllAsync());
             var productSpecificationSubCategory = AlldAta.ToList();

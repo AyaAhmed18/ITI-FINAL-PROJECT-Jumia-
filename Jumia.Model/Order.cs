@@ -25,7 +25,7 @@ namespace Jumia.Model
         public UserIdentity Customer { get; set; }
         public PaymentStatus paymentStatus { get; set; }
         public virtual ICollection<OrderItems> OrderItems { get; set; }
-        public virtual Shippment Shipping { get; set; }
+       // public virtual Shippment Shipping { get; set; }
         public Order()
         {
             OrderItems = new List<OrderItems>();

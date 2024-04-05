@@ -42,7 +42,7 @@ namespace JumiaStore.Controllers
             try
             {
                 var products = await _productServices.GetAllPagination(pageSize, pageNumber);
-                return Ok(products);
+                return Ok(products.Entities);
             }
             catch (Exception ex)
             {
