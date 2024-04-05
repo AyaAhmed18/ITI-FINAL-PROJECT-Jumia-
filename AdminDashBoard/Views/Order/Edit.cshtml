@@ -44,7 +44,7 @@
                 <li> <span>@Localizer["Customer"]    <i class="mdi mdi-help-circle"></i></span>   @ViewBag.User</li>
                 <li> <span>@Localizer["OrderStatus"] <i class="mdi mdi-help-circle"></i></span>   <select asp-for="Status" asp-items="ViewBag.OrderStatusOptions" class="form-control"></select></li>
                 <li> <span>@Localizer["TotalPrice"]   <i class="mdi mdi-help-circle"></i></span>  $ @Model.TotalPrice </li>
-                <li> <span>@Localizer["CreatedDate"]   <i class="mdi mdi-help-circle"></i></span>   @Model.CreatedDate</li>
+          @*       <li> <span>@Localizer["CreatedDate"]   <i class="mdi mdi-help-circle"></i></span>   @Model.CreatedDate</li> *@
                             <br />
                     <div class="col-12">
                     <button type="submit" class="btn btn-secondary">@Localizer["Update"]</button>

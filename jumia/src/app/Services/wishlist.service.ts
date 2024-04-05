@@ -28,7 +28,6 @@ export class WishlistService {
     this.wishlistItems.push(product);
     this.wishlistSubject.next([...this.wishlistItems]);
     this.updateSessionStorage();
-    // this.initializeCartFromSession();
   }
   
 
