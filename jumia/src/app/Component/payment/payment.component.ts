@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ProductDto } from '../../ViewModels/product-dto';
 import { CartService } from '../../Services/cart.service';
 import { Router } from '@angular/router';
@@ -15,6 +15,11 @@ export class PaymentComponent implements OnInit {
   cartNumber:number=0
   TotalCartPrice=0
   payment:boolean=false
+
+  totalamount:number = 50
+
+  @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
+
   constructor(private _cartService:CartService,private router:Router){
     
   }
@@ -24,6 +29,47 @@ export class PaymentComponent implements OnInit {
      this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
       this.cartNumber=this._cartService.calculateTotalCartNumber();
     });
+
+    window.paypal.Buttons({
+
+    
+
+      createOrder: (data: any, actions: any) => {
+
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: this.totalamount.toString(),
+                currency: 'USD'
+              }
+
+            }
+
+
+          ]
+
+        })
+      },
+      onApprove:(data:any, actions:any)=>{
+        return actions.order.capture().then((details:any)=>{
+          console.log(details);
+          if(details.status === 'COMPLETED'){
+            alert("Transaction Successfll ")
+          }
+          
+        })
+      },
+
+      onError:(error:any)=>{
+        console.log(error);
+        alert(error)
+        
+      }
+
+
+    }).render(this.paymentRef.nativeElement)
+    
   }
 
 

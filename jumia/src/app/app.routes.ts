@@ -20,9 +20,9 @@ export const routes: Routes = [
     {path:'Product',component:FilterComponent},
     {path:'SignIn',component:SignInComponent},
     {path:'Registeration',component:RegistrationComponent},
-    {path:'Order',component:OrdersComponent , canActivate:[authGuard]},  //
+    {path:'Order',component:OrdersComponent },  //
     {path:'Delivary',component:DelivaryComponent},
-    {path:'MyAccount',component:MyAccountComponent , canActivate:[authGuard]},  //
+    {path:'MyAccount',component:MyAccountComponent },  //
     {path:'Cart',component:CartComponent},
     {path:'shippment',component:ShippmentComponent,canActivate:[authGuard]},
     {path:'shippment:id',component:ShippmentComponent,canActivate:[authGuard]},
@@ -37,5 +37,5 @@ export const routes: Routes = [
    // {path:'CartProduct',component:CartwithProductComponent},
    // {path:'test',component:TestComponent},
 
-
+  // canActivate:[authGuard]
 ];

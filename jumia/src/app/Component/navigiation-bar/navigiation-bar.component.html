@@ -1,11 +1,13 @@
+
+<img data-src="https://eg.jumia.is/cms/EID-24/Initiatives/FlashSale/FLASHSALE1170x60AR.png " width="100%" src="https://eg.jumia.is/cms/EID-24/Initiatives/FlashSale/FLASHSALE1170x60AR.png" class="_ni" alt="Desk-EID-FS">
 <div class="container-fluid bg-light">
-  <div class="row">
+  <div class="row" [class.rtl]="isArabic">
     <div class="col-sm ">
       <div class="row ">
 
         <div class="col-12 fa my-1"><a href="https://sell.jumia.com/en/start-now/" target="_blank" class="text-warning">
             <img class="fa mx-2 " src="assets/FooterImg/JumiaLogostar.png" style="width: auto; height: 15px;">
-            <small>Sell on Jumia</small>
+            <small>{{'navigation.SellonJumia'|translate}}</small>
           </a>
         </div>
       </div>
@@ -19,15 +21,15 @@
 
     <div class="col-sm" style="text-align: right;">
 
-      <a href="" class="px-2"><small>English</small><img src="assets/icons/english.png" alt="" class="fa"
+      <a href="" class="px-2"><small (click)="changeLanguage('en')" >English</small><img src="assets/icons/english.png" alt="" class="fa"
           style="width: auto;height: 15px;"></a> |
-      <a href="" class="px-2"><small>عربي</small><img src="assets/icons/egypt.png" alt="" class="fa"
+      <a href="" class="px-2"><small (click)="changeLanguage('ar')" >عربي</small><img src="assets/icons/egypt.png" alt="" class="fa"
           style="width: auto;height: 15px;"></a>
     </div>
   </div>
   <hr>
   <!-- navigationbar -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" [class.rtl]="isArabic">
     <div class="container-fluid">
       <img class="navbar-brand px-3" src="assets/FooterImg/JumiaLogo.png" alter="JumiaLogo"
         style="width: auto;height: 30px;">
@@ -49,9 +51,9 @@
             </div>
             <input type="text" id="simple-search" [(ngModel)]="searchTerm" name="searchTerm"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search products, brand and categories" required>
+              placeholder="{{'navigation.Search products'|translate}}, {{'navigation.brand and categories'|translate}}" required>
           </div>
-          <button type="submit" class="btn btn mx-3" style="background-color: orange;">Search</button>
+          <button type="submit" class="btn btn mx-3" style="background-color: orange;">{{'navigation.Search'|translate}}</button>
         </form>
       </div>
 
@@ -69,26 +71,26 @@
 
                 <li>
                   <a class="dropdown-item  " routerLink="/MyAccount">
-                    <i class="fa fa-user-o" id="acc"><small class="px-2">My Account</small> </i>
+                    <i class="fa fa-user-o" id="acc"><small class="px-2">{{'navigation.MyAccount'|translate}}</small> </i>
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="#">
-                    <i for="order" class="fa fa-regular fa-clipboard"><small class="px-2">Order</small></i>
+                    <i for="order" class="fa fa-regular fa-clipboard"><small class="px-2">{{'navigation.Order'|translate}}</small></i>
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="#">
-                    <i class="fa fa-heart-o" for="acc"> <small class="px-2">Saved items</small></i>
+                    <i class="fa fa-heart-o" for="acc"> <small class="px-2">{{'navigation.Saved items'|translate}}</small></i>
                   </a>
                 </li>
 
                 <li style="text-align: center;"><button routerLink="/SignIn" [hidden]="IsUserLogged"
                     (click)="SignInNav()" class=" btn btn "
-                    style="background-color: orange; text-align: center;width: 120px;"> SignIn </button></li>
+                    style="background-color: orange; text-align: center;width: 120px;"> {{ 'navigation.SignIn' | translate }}</button></li>
                 <li style="text-align: center;"><button routerLink="/Home" [hidden]="!IsUserLogged"
                     (click)="SignOutNav()" class=" btn btn "
-                    style="background-color: orange; text-align: center;width: 120px;"> SignOut </button></li>
+                    style="background-color: orange; text-align: center;width: 120px;">  {{ 'navigation.SignOut' | translate }} </button></li>
                 <!-- <li> <a class="dropdown-item"routerLink="/SignIn"><span for="acc">  Login</span></a></li> -->
 
               </ul>
@@ -99,27 +101,27 @@
             <li class="nav-item dropdown px-1">
 
               <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-question-circle-o" id="help"><strong class="px-2">Help</strong> </i>
+                <i class="fa fa-question-circle-o" id="help"><strong class="px-2">{{'navigation.Help'|translate}}</strong> </i>
               </a>
 
 
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#"><small>Help Center</small> </a></li>
-                <li><a class="dropdown-item" href="#"><small>Place an Order</small> </a></li>
-                <li><a class="dropdown-item" href="#"><small>Pay For Your Order</small> </a></li>
-                <li><a class="dropdown-item" href="#"><small>Track Your Order</small> </a></li>
-                <li><a class="dropdown-item" href="#"><small>Cancel an Order</small> </a></li>
-                <li><a class="dropdown-item" href="#"><small>Create a return</small> </a></li>
+                <li><a class="dropdown-item" href="#"><small>{{'navigation.Help Center'|translate}}</small> </a></li>
+                <li><a class="dropdown-item" href="#"><small>{{'navigation.Place an Order'|translate}}</small> </a></li>
+                <li><a class="dropdown-item" href="#"><small>{{'navigation.Pay For Your Order'|translate}}</small> </a></li>
+                <li><a class="dropdown-item" href="#"><small>{{'navigation.Track Your Order'|translate}}</small> </a></li>
+                <li><a class="dropdown-item" href="#"><small>{{'navigation.Cancel an Order'|translate}}</small> </a></li>
+                <li><a class="dropdown-item" href="#"><small>{{'navigation.Create a return'|translate}}</small> </a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
                 <li style="text-align: center;"><button class=" btn btn "
-                    style="background-color: orange; text-align: center;width: 120px;">Live Chat </button></li>
+                    style="background-color: orange; text-align: center;width: 120px;">{{'navigation.Live Chat'|translate}} </button></li>
               </ul>
             </li>
             <li>
               <a class="nav-link " routerLink="/Cart">
-                <i class="fa fa-solid fa-shopping-cart"><strong class="px-2">Cart</strong></i>
+                <i class="fa fa-solid fa-shopping-cart"><strong class="px-2">{{'navigation.Cart'|translate}}</strong></i>
               </a>
             </li>
           </ul>
