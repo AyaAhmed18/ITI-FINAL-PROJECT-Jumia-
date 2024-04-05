@@ -15,27 +15,18 @@ export class ApiShippmentService {
  
   AddClientAddress(shippment:IShippment): Observable<any> {
     console.log(shippment)
-    return this._httpClient.post<any>(`${this.apiUrl}/Shippment`, { shippment });
+    return this._httpClient.post<any>(`${this.apiUrl}/Shippment`,  shippment );
 }
 
 
 
 UpdateClientAddress(shippment:IShippment): Observable<any> {
-  return this._httpClient.post<any>(`${this.apiUrl}/Shippment`, { shippment });
+  console.log(shippment)
+  let id=shippment.id
+  return this._httpClient.put<any>(`${this.apiUrl}/Shippment/${id}`,  shippment );
 }
- //   const userDetails = {
-  //     FirstNameEn: shippment.FirstNameEn,
-  //     LastName: shippment.LastName,
-  //     PhoneNumber: shippment.PhoneNumber,
-  //     Address: shippment.Address,
-  //     AdressInformation: shippment.AdressInformation,
-  //     City: shippment.City,
-  //     CityAr: shippment.CityAr,
-  //     Region: shippment.Region,
-  //     RegionAr: shippment.RegionAr,
-  //     UserIdentityId: shippment.UserIdentityId,
-  //     Cost: shippment.Cost,
-
-  // };
-
+ 
+Getshippment(UserId:number):Observable<any>{
+  return this._httpClient.get<any>(`${this.apiUrl}/Shippment/${UserId}`)
+}
 }

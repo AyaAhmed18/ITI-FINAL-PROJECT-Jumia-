@@ -53,7 +53,7 @@ export class OrderDetailsComponent implements OnInit{
       case 'Returned':
       return 'red'; 
     default:
-      return 'black'; 
+      return ' rgba(253, 130, 29, 0.842)'; 
   }}
 
 }

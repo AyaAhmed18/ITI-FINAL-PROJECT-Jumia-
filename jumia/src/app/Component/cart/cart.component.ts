@@ -17,10 +17,10 @@ export class CartComponent implements OnInit{
   wishlistItems: ProductDto[] = [];
   cartNumber:number=0
   TotalCartPrice=0
-
+  showAlert1: boolean = false;
+  showAlert2: boolean = false;
   PriceAfterDiscount:number=0
   constructor(private _cartService: CartService, private router: Router,private _wishlist : WishlistService) { }
-  //priceAftrDiscount
   priceAftrDiscount(pro:ProductDto){
    this.PriceAfterDiscount = pro.realPrice-(pro.realPrice*pro.discount/100)
   }
@@ -47,16 +47,24 @@ export class CartComponent implements OnInit{
   }
  
   decreaseQuantity(item:ProductDto){
+    this.showAlert2 = false;
     if (item.cartQuantity > 1) {
       item.cartQuantity--;
+      item.stockQuantity++;
     this.TotalCartPrice= this._cartService.calculateTotalCartPrice()
     this.cartNumber= this._cartService.calculateTotalCartNumber()
+    this.showAlert2 = true;
+    
     }
   }
   increaseQuantity(item:ProductDto){
+    if (item.stockQuantity > 1) {
     item.cartQuantity++;
+    item.stockQuantity--;
     this.TotalCartPrice= this._cartService.calculateTotalCartPrice()
     this.cartNumber= this._cartService.calculateTotalCartNumber()
+    this.showAlert1 = true;
+    }
   }
   cartNumbers(){
     this.cartNumber = this.cartItems.reduce((total, item) => total + (item.cartQuantity), 0);
@@ -69,25 +77,21 @@ export class CartComponent implements OnInit{
    
    //start Add to Cart 
    AddToCart(prod:ProductDto){
+    this.showAlert1 = false;
+    console.log(this.showAlert1);
+    
     if(prod.stockQuantity>0){
       prod.cartQuantity = 1;
+      prod.stockQuantity--;
        this._wishlist.removeProductFromWishlist(prod);
        this._cartService.addToCart(prod);
-       prod.addedTowashlist = true;
+       this.showAlert1 = true;
+       console.log(this.showAlert1);
       }
 }
-  //Addtowashlist
-  addToWishlist(product: ProductDto) {
-    if (this.isInWishlist(product)) {
-        this._wishlist.removeProductFromWishlist(product);
-    } else {
-        this._wishlist.addProductToWishlist(product);
-    }
-    product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
-}
 
-
-  isInWishlist(product: ProductDto): boolean {
-    return !!product.addedTowashlist; 
+closeAlert(){
+  this.showAlert1 = false;
+  this.showAlert2 = false;
 }
 }

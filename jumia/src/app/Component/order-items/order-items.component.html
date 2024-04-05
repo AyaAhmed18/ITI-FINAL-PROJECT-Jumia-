@@ -92,17 +92,34 @@
                       <p class="text-secondary">QTY {{ord.productQuantity}}</p>
                       <h1 class="h6 ">Total Price :  EGP {{ord.totalPrice}}</h1></div>
                       <div class="col-3">
-                        <button class="btn me-2" (onclick)="cancelItem()" >Return Item</button>
-
-                        <button class="btn pe-4 text-center" (onclick)="ReturnItem()" >Cancel</button>
-                    </div>
+                                           </div>
 
                     </div>
                 </li>
             }
+            <button class="btn me-2" (click)="cancelOrder()" >Cancel Order</button>
+
+           
             </ul>
                     </div>
         <!-- end -->
     </div>
 </div>
 
+
+<!-- <div class=" alert-success alert-dismissible fixed-top custom-alert text-center"  id="customAlert" [hidden]="!showAlert">
+    <div class="text">Your order is shipped you can't Cancel it</div>
+    <button type="button" class="btn-close" (click)="closeAlert()" aria-label="Close"></button>
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+    
+  </div> -->
+
+  <div class="alert alert-danger alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1">
+    <strong>Sorry</strong> you Can't Cancel This order
+    <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close"></button>
+  </div>
+
+  <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2">
+    <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong> Your Order Is Cancelled
+    <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close"></button>
+  </div>
