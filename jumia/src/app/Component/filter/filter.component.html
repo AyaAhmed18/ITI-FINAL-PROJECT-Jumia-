@@ -32,7 +32,7 @@
                   <!--@for (brand of AllBrands; track brand.id)-->
                   <!--{-->
                     <div *ngFor="let brand of AllBrands ; let i = index " class="form-check m-2">
-                        <input class="form-check-input" type="checkbox" (change)="AddtoSelected($event,brand)" [(ngModel)]="selectedBrands[i]" value="{{brand.id}}" id="{{brand.name}}">
+                        <input class="form-check-input" type="checkbox" (change)="AddtoSelected($event,brand)" value="{{brand.id}}" id="{{brand.name}}">
                         <label class="form-check-label" for="{{brand.name}}">
                             <small>{{brand.name}}</small>
                         </label>

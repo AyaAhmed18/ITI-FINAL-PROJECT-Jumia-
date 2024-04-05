@@ -76,10 +76,11 @@ export class FilterComponent {
       {
         let brId = arg1.brandID;
         console.log(brId);
-        //this.selectedBrandsStr + `${{arg1.brandID}},`;
-        console.log(this.selectedBrands);
+        this.selectedBrands.push(arg1.brandID);
+
+        console.log(this.selectedBrandsStr);
       }
-      
+
       }
  // this._filterService.filterByDiscountRange(this.minDiscount)
       //   .subscribe(data => {
