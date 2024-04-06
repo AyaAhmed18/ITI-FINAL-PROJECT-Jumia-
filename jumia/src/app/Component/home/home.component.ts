@@ -1,6 +1,7 @@
 import { CommonModule, IMAGE_CONFIG } from '@angular/common';
 import { Component,OnInit  } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { ApiProductsService } from '../../Services/api-products.service';
 import { CategoryserviceService } from '../../Services/categoryservice.service';
 import { SubcategoryserviceService } from '../../Services/subcategoryservice.service';
 import { SliderComponent } from '../slider/slider.component';
@@ -25,8 +26,12 @@ import { SliderComponent } from '../slider/slider.component';
 export class HomeComponent {
   allCategories : any[]=[];
   SubCategories : any[]=[];
+  allProducts : any[]=[];
   SelectedCategoryId : number=0;
-constructor(private _categoryService :CategoryserviceService,private _subCategoryService :SubcategoryserviceService)
+constructor(private _categoryService :CategoryserviceService
+  ,private _subCategoryService :SubcategoryserviceService
+  ,private _apiProductsService: ApiProductsService
+  ,private _router : Router)
 {
 
 }
@@ -52,6 +57,10 @@ GetSubCategories(categoryId: number)
     console.log(data)
   }
   });
+}
+GetProductsByCatId(categoryId: number):void
+{
+  this._router.navigateByUrl(`/GetCategory/${categoryId}`);
 }
 
 }

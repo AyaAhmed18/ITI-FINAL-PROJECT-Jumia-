@@ -8,7 +8,7 @@ import { ProductDto } from '../ViewModels/product-dto';
   providedIn: 'root'
 })
 export class ApiProductsService {
- 
+
   private apiUrl = 'http://localhost:5094/api/Product';
 //http://localhost:5094/api/Product bahaa
   //localhost:64866/api/Product
@@ -27,20 +27,20 @@ export class ApiProductsService {
 
 
   getAllProductsWithOrderAasc(): Observable<any> {
-    
+
 
     let allpro= this._httpClient.get<any>(`${this.apiUrl}/GetOrderedAsc`);
     return allpro;
   }
 
   getAllProductsWithOrderDasc(): Observable<any> {
-   
+
 
     let allpro= this._httpClient.get<any>(`${this.apiUrl}/GetOrderedDsc`);
     return allpro;
   }
   getAllProductsWithNewestArrivals(): Observable<any> {
-   
+
 
     let allpro= this._httpClient.get<any>(`${this.apiUrl}/GetNewestArrivals`);
     return allpro;
@@ -49,9 +49,12 @@ export class ApiProductsService {
   getProductById(id: number): Observable<ProductDto> {
     return this._httpClient.get<ProductDto>(`${this.apiUrl}/${id}`);
   }
-  
+
   SearchByNameOrDesc(nameOrdesc:string): Observable<ProductDto>{
     return this._httpClient.get<ProductDto>(`${this.apiUrl}/SearchByName?PartialName=${nameOrdesc}`);
+  }
+  getProductByCatId(id: number): Observable<ProductDto> {
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=10&pageNumber=1`);
   }
 
 }

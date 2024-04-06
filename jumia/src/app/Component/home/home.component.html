@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-2 col-md mb-5 shadow-lg p-3 mb-5 rounded my-3 show-div-Linkes">
       <div class="row float-start">
-        <a class="col-12 Link_hover color-black p-2" routerLink="/Product" *ngFor="let cat of allCategories" (mouseover)="GetSubCategories(cat.id)">
+        <a class="col-12 Link_hover color-black p-2"   *ngFor="let cat of allCategories" (mouseover)="GetSubCategories(cat.id)" (click) = "GetProductsByCatId(cat.id)">
           <i class="fa fa-hand-o-right px-3" aria-hidden="true"><small>  {{ cat.name }}</small></i>
         </a>
       </div>

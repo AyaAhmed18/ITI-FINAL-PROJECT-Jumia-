@@ -8,6 +8,7 @@ import { SearchResultsService } from '../../Services/search-results.service';
 import { CartService } from '../../Services/cart.service';
 import { WishlistService } from '../../Services/wishlist.service';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -19,8 +20,9 @@ import { FormsModule } from '@angular/forms';
 export class ProductComponent implements  OnInit{
   @Input() AllProducts:ProductDto[]=[];
   @Input() products: any[]=[];
+  AllProductsProducts: any[]=[];
   cartItems: ProductDto[] = [];
-  productList: ProductDto[] = [];
+  productList: ProductDto[]|null = null;
 // AllProducts:ProductDto[]=[];
 //  products: any;
 searchResults: any[] = [];
@@ -29,7 +31,7 @@ AllProd:number=0;
 totalPages: number = 0;
 pageNumber: number = 1;
 pageNumbers: number[]=[];
-AllProductsProducts : any[]=[];
+currentCategoryId :number = 0;
 //  @Input() product?: ProductDto;
   cartTotalPrice:number=0
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
@@ -40,15 +42,33 @@ AllProductsProducts : any[]=[];
        private _sanitizer:DomSanitizer,
       private _cartService:CartService,
       private _wishlist :WishlistService,
-      private _searchResultsService: SearchResultsService)
+      private _searchResultsService: SearchResultsService,
+      private _activeRouter: ActivatedRoute,
+      private _route: Router)
    {
 
    }
    ngOnInit(): void {
     this.Sershresult();
-    this.getAllProducts();
+    // this.getAllProducts();
+    this._activeRouter.paramMap.subscribe(parammap=>
+    {
+      this.currentCategoryId =Number(parammap.get('id'));
+      this.getProductByCategoryId(this.currentCategoryId);
+    })
     }
-
+    getProductByCategoryId(id:number)
+    {
+      this._ApiProductsService.getProductByCatId(id).subscribe(
+      {
+        next:(data: any)=>{
+          this.productList=data
+          console.log(data);
+          console.log("ProductList")
+          console.log(this.productList);
+        }
+      })
+    }
   //start Add to Cart
   AddToCart(prod:ProductDto){
       if(prod.stockQuantity>0){
@@ -117,7 +137,7 @@ AllProductsProducts : any[]=[];
 getAllProducts() {
   this._ApiProductsService.getAllProducts(this.pageSize, this.pageNumber).subscribe({
       next: (data) => {
-          this.products = data;
+          this.products = data.entities;
           this.AllProd = data.count;
 
           this.totalPages=Math.ceil( this.AllProd / this.pageSize)
@@ -194,14 +214,18 @@ if (page >= 1 && page <= this.totalPages) {
   }
 
   sanitizeImages() {
-    this.AllProducts.forEach(product => {
+    this.products.forEach(product => {
       console.log(product.images);
-      product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
+      product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images);
       console.log(product.images);
       console.log(product.images);
 
     });
   }
+//   sanitizeImages() {
+//     this.products.images[0]
+//     = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + this.product.images);
+//  }
 
   onSortChange(event: any) {
     const selectedSortOption = event.target.value;
