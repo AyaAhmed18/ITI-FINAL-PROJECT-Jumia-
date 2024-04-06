@@ -24,7 +24,7 @@ namespace Jumia.Application.Services.IServices
         Task<ResultDataForPagination<GetAllCategoryDto>> GetAll(int item, int pagnumber);
 
         //GetOne
-        Task<ResultView<GetAllCategoryDto>> GetOne(int id);
+        Task<ResultView<CreateOrUpdateCategoryDto>> GetOne(int id);
 
 
     }

@@ -16,7 +16,7 @@ namespace Jumia.Application.IServices
         //    Task<ResultView<CreateOrUpdateProductDTO>> HardDelete(CreateOrUpdateProductDTO product);
         //    Task<ResultView<CreateOrUpdateProductDTO>> SoftDelete(CreateOrUpdateProductDTO product);
         Task<ResultDataForPagination<GetAllProducts>> GetAllPagination(int items, int pagenumber);
-        Task<ResultView<GetAllProducts>> GetOne(int ID);
+        Task<ResultView<CreateOrUpdateProductDto>> GetOne(int ID);
         Task<ResultView<CreateOrUpdateProductDto>> Update(CreateOrUpdateProductDto productDto, List<IFormFile> images);
         Task<ResultView<CreateOrUpdateProductDto>> Delete(CreateOrUpdateProductDto productDto);
         Task<ResultView<GetAllProducts>> Getbyname(string name);

@@ -143,20 +143,19 @@
                     <div class="col-md-6">
                         <div class="form-group ">
                             <label class=" col-form-label">Specifications</label>
-
-                           
+                            <br />
                                 @if (ViewBag.prdSpecs != null)
                                 {
-
                                     @foreach (var spec in ViewBag.prdSpecs)
                                     {
-                                        <p>Specifications</p>
-                                        <input type="radio" name="SpecificationName" checked disabled value="@spec.SpecificationName" id="spec_@spec.SpecificationName">
+                                        
+                                        <input type="checkbox" name="SpecificationName" checked disabled value="@spec.SpecificationName" id="spec_@spec.SpecificationName">
                                         <label for="spec_@spec.SpecificationName">@spec.SpecificationName</label>
                                         <label for="spec_@spec.Value">@spec.Value</label>
                                         <br />
 
-                                    }}
+                                    }
+                                }
                           
 
                         </div>
@@ -176,7 +175,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <input type="submit" value="Create" class="btn btn-primary" />
+                            <input type="submit" value="Update" class="btn btn-primary" />
 
                         </div>
                     </div>

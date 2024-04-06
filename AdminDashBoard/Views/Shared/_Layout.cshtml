@@ -158,7 +158,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item">
-                            <a asp-action="Register" asp-controller="Account" class="nav-link count-indicator" aria-expanded="false">
+                            <a asp-action="Login" asp-controller="Account" class="nav-link count-indicator" aria-expanded="false">
                                 <i class="mdi mdi-logout"></i>
 
                             </a>
@@ -406,7 +406,7 @@
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" asp-controller="Account" asp-action="Login">@AdminDashBoard.Languages.Resource.Login</a></li>
+                                @* <li class="nav-item"> <a class="nav-link" asp-controller="Account" asp-action="Login">@AdminDashBoard.Languages.Resource.Login</a></li> *@
                                 <li class="nav-item"> <a class="nav-link" asp-controller="Admin" asp-action="AddUser">@AdminDashBoard.Languages.Resource.AddUser</a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-controller="Admin" asp-action="Admin">@AdminDashBoard.Languages.Resource.Users</a></li>
 
@@ -509,16 +509,12 @@
                                 <li class="nav-item"> <a class="nav-link" asp-action="create" asp-controller="SubCategory">@AdminDashBoard.Languages.Resource.AddSubCategory</a></li>
                             </ul>
                         </div>
-                        <div class="collapse" id="suptables">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">@AdminDashBoard.Languages.Resource.UpdateSubCategory</a></li>
-                            </ul>
-                        </div>
+                       
                     </li>
 
 
 
-                    <li class="nav-item">
+                    @* <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
                             <i class="menu-icon mdi mdi-layers-outline"></i>
                             <span class="menu-title">Add Role</span>
@@ -542,7 +538,7 @@
                                 <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html">@AdminDashBoard.Languages.Resource.Login </a></li>
                             </ul>
                         </div>
-                    </li>
+                    </li> *@
 
                 </ul>
             </nav>

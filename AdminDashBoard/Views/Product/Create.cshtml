@@ -91,7 +91,7 @@
 
 
                 <div class="row">
-                    <div class="col-md-6">
+                   @*  <div class="col-md-6">
                         <div class="form-group ">
                             <label asp-for="StockQuantity" class=" col-form-label"></label>
                            
@@ -99,7 +99,7 @@
                                 <span asp-validation-for="StockQuantity" style="color:red"></span>
                            
                         </div>
-                    </div>
+                    </div> *@
                     <div class="col-md-6">
                         <div class="form-group ">
                             <label asp-for="ShortDescription" class=" col-form-label"></label>
@@ -116,7 +116,8 @@
                     <div class="col-md-6">
                         <div class="form-group ">
                             <label asp-for="SubCategoryID" class=" col-form-label"></label>
-                           
+                            @* <input asp-for="SubCategoryID" class="form-control" hidden /> *@
+                            <input name="selectedSubCategoryId" class="form-control" hidden />
                                 <select asp-for="SubCategoryID" asp-items="list" class="form-select" id="subCategorySelect"></select>
                                 <span asp-validation-for="SubCategoryID" style="color:red"></span>
                          
@@ -219,7 +220,7 @@
             var selectedSubCategoryId = $(this).val();
             $('input[name="selectedSubCategoryId"]').val(selectedSubCategoryId);
             $.ajax({
-                url: '/Product/Action', // Replace with your controller and action method
+                url: '/Product/Action', 
                 type: 'GET',
                 data: { selectedSubCategoryId: selectedSubCategoryId },
                 success: function (data) {
