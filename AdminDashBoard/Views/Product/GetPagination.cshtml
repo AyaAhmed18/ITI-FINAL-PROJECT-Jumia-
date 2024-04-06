@@ -50,11 +50,15 @@
                             <tr>
                                 <td class="p-1"><p class="fifty-chars">@item.Name</p></td>
                                 <td class="p-1"><p class="fifty-chars">@item.ShortDescription</p> </td>
-                                <td class="p-1">
+                               @*  <td class="p-1">
                                     <div class="progress">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                </td>
+                                </td> *@
+                                @{
+                                    string res = item.Images.Count > 0 ? Convert.ToBase64String(item.Images[item.Images.Count() - 1]) : "";
+                                }
+                                <td><img src="data:image;base64,@res" width="100px" height="100px" alt="Product Image" /></td>
                                 <td class="p-1">@item.StockQuantity</td>
                                 <td class="p-1">@item.RealPrice</td>
                                 <td class="p-1">@item.Discount</td>

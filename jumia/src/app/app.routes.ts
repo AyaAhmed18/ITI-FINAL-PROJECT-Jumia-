@@ -14,6 +14,7 @@ import { FilterComponent } from './Component/filter/filter.component';
 import { OrderDetailsComponent } from './Component/order-details/order-details.component';
 import { OrderItemsComponent } from './Component/order-items/order-items.component';
 import { ConfirmOrderComponent } from './Component/confirm-order/confirm-order.component';
+import { DetailsComponent } from './Component/details/details.component';
 export const routes: Routes = [
     {path:'',redirectTo:'/Home',pathMatch:'full'},
     {path:'Home',component:HomeComponent},

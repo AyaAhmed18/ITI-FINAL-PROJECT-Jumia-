@@ -99,6 +99,7 @@ namespace JumiaStore
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<ISubCategoryService, SubCategoryService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
+            builder.Services.AddScoped<IProductSpecificationSubCategoryServices, ProductSpecificationSubCategoryServices>();
             builder.Services.AddScoped<IOrderItemService, OrderItemService>();
             builder.Services.AddScoped<IShippmentService, ShippmentService>();
             builder.Services.AddScoped<IBrandService,BrandService>();

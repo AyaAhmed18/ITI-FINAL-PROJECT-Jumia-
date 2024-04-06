@@ -6,6 +6,7 @@ using Jumia.Dtos.Specification;
 using Jumia.Dtos.SubCategorySpecifications;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,8 +29,18 @@ namespace Jumia.Application.Services
 
         public async Task<ResultDataForPagination<GetAllProductSpecificationSubCategory>> GetAll()
         {
-            var AlldAta = (await _unitOfWork.productSpecificationSubCategoryRepository.GetAllAsync());
-            var productSpecificationSubCategory = AlldAta.ToList();
+            var AlldAta = (await _unitOfWork.productSpecificationSubCategoryRepository.GetAllAsync()).Include(i=>i.subCategorySpecification);
+            var productSpecificationSubCategory = AlldAta.Select(i=> 
+            new GetAllProductSpecificationSubCategory
+            {
+                SubCategoryId=i.subCategorySpecification.SubCategoryId,
+                SpecificationId=i.subCategorySpecification.specificationId,
+                SpecificationName=i.subCategorySpecification.Specification.Name,
+                ProductId=i.ProductId,  
+                Value=i.Value
+            
+            })
+                .ToList();
             var productSpecificationSubCategories = _mapper.Map<List<GetAllProductSpecificationSubCategory>>(productSpecificationSubCategory);
             ResultDataForPagination<GetAllProductSpecificationSubCategory> resultDataList = new ResultDataForPagination<GetAllProductSpecificationSubCategory>();
             resultDataList.Entities = productSpecificationSubCategories;

@@ -193,7 +193,7 @@ if (page >= 1 && page <= this.totalPages) {
 
   sanitizeImages() {
     this.AllProducts.forEach(product => {
-      product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images);
+      product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images);
     });
   }
 

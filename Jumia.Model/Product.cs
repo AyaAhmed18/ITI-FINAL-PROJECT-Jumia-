@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Jumia.Model
 {
+
     public class Product: LocalizableEntity
     {
         public string Name { get; set; }
@@ -18,7 +19,6 @@ namespace Jumia.Model
         public decimal RealPrice { get; set; }
         public decimal? Discount { get; set; }
         public List<byte[]>? Images { get; set; }
-
         [ForeignKey(nameof(SubCategory))]
         public int SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }

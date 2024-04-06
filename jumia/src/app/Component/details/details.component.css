@@ -65,3 +65,29 @@
         background-color: #ff9901ea;
       
     }
+    .specs{
+        border: 1px solid gray;
+        color: #000;
+       padding: 1%;
+        margin: 0.5vw;
+    }
+
+    .details{
+        padding-bottom: 4vh;
+        margin-bottom: 4vh;
+    }
+    .details h1{
+        font-size: 1.2rem;
+        font-weight: 700;
+        padding: 2vh;
+    }
+    .details h3{
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 2vh;
+    }
+    .specName{
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 2vh; 
+    }

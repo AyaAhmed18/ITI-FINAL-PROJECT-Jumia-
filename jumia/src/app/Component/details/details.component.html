@@ -10,7 +10,14 @@
       <div class="row card-body"  >
   
         <div class="col-3">
-          <img src="assets/ProductImg/1.jpg" style="height: 250px; width: auto;">
+          <img [src]="( product.images[0])" alt="Product Image">
+          <!-- <img src="assets/ProductImg/1.jpg" style="height: 250px; width: auto;"> -->
+          <div>
+
+            <!-- <div *ngFor="let image of product?.images">
+              <img [src]="(image)" alt="Product Image" style="height: 35px; width: auto;">
+            </div> -->
+          </div>
         </div>
         <div class="col-9 ">
 <div class="row">
@@ -39,6 +46,15 @@
         <i class="fa fa-star-o"></i>
         <i class="fa text-secondary">(44)</i>
     </div>
+    <img [src]="( product.images[0])" style="height: 100px; width: auto;">
+    <div >
+      <h3>VARIATION AVAILABLE</h3>
+      <br>
+      <span class="specs" *ngFor="let s of sizeSpecs">{{ s }}</span>
+     
+     
+    </div>
+    <br>
     <div class="col-12">
         <button class="btn w-100 text-white" >
           <i class="fa fa-solid fa-shopping-cart " ></i><strong class="px-2">Add To Cart</strong>
@@ -55,27 +71,24 @@
            
             
         </div>
-       
       </div>
-     
       
     </div>
-   
-    
-  
-  
-  
-  
-  
     <!-- cart Sammary  -->
     <div class="col-3 float-end ">
       <div class="card mb-3 my-4" style="width: 18rem;">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>CART SUMMARY</strong> </li>
+          <li class="list-group-item"><strong>DELIVERY & RETURNS</strong> </li>
           <li class="list-group-item">
-            <ul class="d-flex justify-content-start">
-              <li class="me-5 ">Subtotal</li>
-              <li style="text-align:end;"><strong>EGP </strong></li>
+            <ul class=" ">
+              <li class="me-5 ">Door Delivery</li>
+              <li  class=" "><small>Ready for delivery between 21 April & 22 April when you order within next 6hrs 19mins</small> </li>
+            </ul>
+          </li>
+          <li class="list-group-item">
+            <ul class=" ">
+              <li class="me-5 ">Return Policy</li>
+              <li  class=" "><small>Free return within the legal return period from 14 to 30 days, and if they meet the terms & conditions, with the need to report any apparent defect within 48 hours. For more details about return policy.</small> </li>
             </ul>
           </li>
           <ul>
@@ -86,11 +99,27 @@
           </ul>
         </ul>
         <div class="card-footer  ">
-          <button class="btn btn-warning text-light" style="width: 90%;" routerLink="/shippment">Checkout (EGP
-            )</button>
+         
         </div>
       </div>
     </div>
+  </div>
+
+
+
+
+  <div class="col-8 card  details "> 
+    <h1 class="border-bottom">Product Details</h1>
+    <div>
+      <h3>Specfications</h3>
+      <ul>
+        
+        <li class="" *ngFor="let spec of AllSpecs">
+            <span class="specName" >{{ spec.specificationName }}:</span> <span> {{ spec.value }}</span>
+        </li>
+    </ul>
+    </div>
+
   </div>
   
 
