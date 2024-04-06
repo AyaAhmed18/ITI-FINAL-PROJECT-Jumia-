@@ -4,13 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ICategory } from '../Models/icategory';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryserviceService {
 
-  private apiUrl = environment.apiUrl
+  private apiUrl = 'http://localhost:5094/api'
 
   constructor(private  _HttpClient:HttpClient) { }
 

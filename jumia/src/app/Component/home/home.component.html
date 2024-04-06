@@ -1,52 +1,55 @@
 <main class="container">
   <div class="row">
-
-    <div class="col-2 col-md mb-5 shadow-lg p-3 mb-5  rounded my-3  show-div-Linkes">
-
-      
-      <div class="row float-start  ">
-
-        <a class="col-12 Link_hover color-black p-2"routerLink="/Product" ><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Clothing</a>
-        <a class="col-12 Link_hover color-black p-2" href="#"><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Cardigans & Pullovers</a>
-        <a class="col-12 Link_hover color-black p-2" href="#"><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Cardigans</a>
-        <a class="col-12 Link_hover color-black p-2" href="#"><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Pullovers</a>
-        <a class="col-12 Link_hover color-black p-2" href="#"><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Shrugs</a>
-        <a class="col-12 Link_hover color-black p-2" href="#"><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Vests</a>
-        <a class="col-12 Link_hover color-black p-2" href="#"><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Vests</a>
+    <div class="col-2 col-md mb-5 shadow-lg p-3 mb-5 rounded my-3 show-div-Linkes">
+      <div class="row float-start">
+        <a class="col-12 Link_hover color-black p-2" routerLink="/Product" *ngFor="let cat of allCategories" (mouseover)="GetSubCategories(cat.id)">
+          <i class="fa fa-hand-o-right px-3" aria-hidden="true"><small>  {{ cat.name }}</small></i>
+        </a>
       </div>
-      
     </div>
-    <div class="show-linkes col-7 col-md mb-5 shadow-lg p-3 mb-5 bg-body rounded my-3">
+    <!-- <div class="col-2 col-md mb-5 shadow-lg p-3 mb-5  rounded my-3  show-div-Linkes">
 
-      <div id="" class=" ">
+
+      <div class="row float-start  ">
+        @for(cat of allCategories;track cat.id)
+        {
+          <a class="col-12 Link_hover color-black p-2"routerLink="/Product" ><i class="fa fa-hand-o-right px-3"
+              aria-hidden="true" (mouseover)="getSubCategories(cat.id)" ></i>{{cat.name}} </a>
+        }
+      </div>
+
+    </div> -->
+    <div class="show-linkes col-7 col-md mb-5 shadow-lg p-3 mb-5 bg-body rounded my-3">
+      <!-- <div *ngFor="let cat of allCategories">
+        <div id="{{cat.id}}"> -->
+          <div class="row" *ngFor="let subCat of SubCategories">
+            <div class="col-4 border-right">
+              <!-- <h5 class="border-bottom">HOUSEHOLD SUPPLIES</h5> -->
+              <a href="">{{ subCat.name }}</a>
+            </div>
+          </div>
+        <!-- </div>
+      </div> -->
+    </div>
+    <!-- <div class="show-linkes col-7 col-md mb-5 shadow-lg p-3 mb-5 bg-body rounded my-3">
+    @for(cat of allCategories;track cat.id)
+    {
+
+      <div id="{{cat.id}}" class=" ">
+        for(subCat of cat.id;track subCat.id)
         <div class="row">
           <div class="col-4 " class="border-right">
             <h5 class="border-bottom">HOUSEHOLD SUPPLIES</h5>
 
             <a href="">ddd</a>
           </div>
-          <div class="col-4" class="border-right">
-            <h5 class="border-bottom">HOUSEHOLD SUPPLIES</h5>
-            <a href="">ddd</a>
-          </div>
-          <div class="col-4" class="border-right">
-            <h5 class="border-bottom">HOUSEHOLD SUPPLIES</h5>
-            <a href="">ddd</a>
-          </div>
-
 
         </div>
 
 
       </div>
-    </div>
+    }
+    </div> -->
     <div class="hide-slider col-7 col-md mb-5 shadow-lg p-3  rounded my-3">
 
       <div id="carouselExampleIndicators" class="carousel slide  " data-bs-ride="carousel">

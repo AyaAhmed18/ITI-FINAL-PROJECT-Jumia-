@@ -25,11 +25,12 @@ export class ProductComponent implements  OnInit{
 // AllProducts:ProductDto[]=[];
 //  products: any;
 searchResults: any[] = [];
-pageSize:number = 15;
+pageSize:number = 10;
 AllProd:number=0;
 totalPages: number = 0;
 pageNumber: number = 1;
 pageNumbers: number[]=[];
+AllProductsProducts : any[]=[];
 //  @Input() product?: ProductDto;
   cartTotalPrice:number=0
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
@@ -101,8 +102,13 @@ pageNumbers: number[]=[];
   Sershresult() {
     this._searchResultsService.getSearchResults().subscribe({
         next: (data) => {
-            this.AllProducts = data;
-            console.log(this.AllProducts );
+          console.log(data[0].name)
+          console.log(data[0][0].name)
+          console.log(data[0].name)
+          console.log(data)
+          console.log("in product ts")
+            this.products = data[0];
+            console.log(this.products );
             this.sanitizeImages();
 
         },
@@ -114,14 +120,13 @@ pageNumbers: number[]=[];
 getAllProducts() {
   this._ApiProductsService.getAllProducts(this.pageSize, this.pageNumber).subscribe({
       next: (data) => {
-          this.AllProducts = data.entities;
-
-
+          this.products = data;
+          this.AllProd = data.count;
 
           this.totalPages=Math.ceil( this.AllProd / this.pageSize)
           this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
           console.log("all");
-          console.log( this.AllProducts);
+          console.log( this.products);
 
           this.sanitizeImages();
       },
@@ -193,7 +198,11 @@ if (page >= 1 && page <= this.totalPages) {
 
   sanitizeImages() {
     this.AllProducts.forEach(product => {
-      product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images);
+      console.log(product.images);
+      product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
+      console.log(product.images);
+      console.log(product.images);
+
     });
   }
 
@@ -222,7 +231,7 @@ if (page >= 1 && page <= this.totalPages) {
   searchProducts(searchTerm: string): void {
     this._ApiProductsService.SearchByNameOrDesc(searchTerm).subscribe(
       (data: any) => {
-        this.searchResults = data;
+        this.products = data;
       },
       (error: any) => {
         console.error('Error fetching search results:', error);

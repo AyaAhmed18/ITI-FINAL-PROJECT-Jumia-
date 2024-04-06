@@ -31,6 +31,11 @@ export class FilterServiceService {
       if(this.apiUrl[this.apiUrl.length-1]=='?') this.apiUrl+=`MinDisc=${minDisc}`;
       else this.apiUrl+=`&MinDisc=${minDisc}`
     }
+    if(BrandList!=undefined)
+    {
+      if(this.apiUrl[this.apiUrl.length-1]=='?') this.apiUrl+=`BrandList=${BrandList}`;
+      else this.apiUrl+=`&BrandList=${BrandList}`
+    }
     console.log(this.apiUrl);
     let allpro= this._httpClient.get<any>(`${this.apiUrl}`);
     console.log("minDisc")
@@ -39,7 +44,7 @@ export class FilterServiceService {
     console.log(minPrice)
     console.log("maxPrice")
     console.log(maxPrice)
-    console.log("BrandList")
+    console.log("BrandList ")
     console.log(BrandList)
     console.log("allpro")
     console.log(allpro);

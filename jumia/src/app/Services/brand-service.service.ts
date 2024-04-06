@@ -8,15 +8,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BrandServiceService {
-
-  private apiUrl = environment.apiUrl
+  private apiUrl = 'http://localhost:5094/api/Brand';
+ 
 
   constructor(private  _HttpClient:HttpClient) { }
 
 
-  getAllBrands():Observable<IBrandDto[]>{
+  getAllBrands():Observable<any>{
 
-    return this._HttpClient.get<IBrandDto[]>(`${this.apiUrl}/Brand`)
+    return this._HttpClient.get<any>(`${this.apiUrl}`)
 
   }
+ 
 }

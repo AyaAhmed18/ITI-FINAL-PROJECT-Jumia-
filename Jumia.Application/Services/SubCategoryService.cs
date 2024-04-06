@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 using Microsoft.EntityFrameworkCore;
+using Jumia.Dtos.Product;
 
 namespace Jumia.Application.Services.Services
 {
@@ -177,7 +178,16 @@ namespace Jumia.Application.Services.Services
 
 
 
+        public async Task<ResultDataForPagination<GetAllSubDto>> GetByCategoryId(int catId)
+        {
+            var AllData = (await _subCategoryRepository.GetAllAsync()).Where(p => p.CategoryId == catId);
+            var SubCategorys = _mapper.Map<List<GetAllSubDto>>(AllData);
 
+            ResultDataForPagination<GetAllSubDto> resultDataFor = new ResultDataForPagination<GetAllSubDto>();
+            resultDataFor.Entities = SubCategorys;
+            resultDataFor.count = AllData.Count();
+            return resultDataFor;
+        }
 
 
 

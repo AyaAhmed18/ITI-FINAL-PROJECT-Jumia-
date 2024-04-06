@@ -33,7 +33,7 @@ export class NavigiationBarComponent implements OnInit {
     private _ApiProductsService: ApiProductsService,
     private _searchResultsService: SearchResultsService, private translate: TranslateService) {
     this.loggedInUsername = this._apiLoginService.getLoggedInUsername();
-    if (this._apiLoginService.IsLoggedIn()) {
+    if(this._apiLoginService.IsLoggedIn()){
 
     }
     else {
@@ -75,7 +75,8 @@ export class NavigiationBarComponent implements OnInit {
       this._ApiProductsService.SearchByNameOrDesc(this.searchTerm).subscribe(
         (searchResults) => {
           this._searchResultsService.setSearchResults([searchResults]);
-          // console.log(searchResults);
+          console.log("searchResults");
+          console.log(searchResults);
         },
         (error) => {
           console.error('Error occurred while searching:', error);
@@ -84,29 +85,5 @@ export class NavigiationBarComponent implements OnInit {
     }
 
   }
-
-
-
-  changeLanguage(lang: string) {
-    if (lang == 'en') {
-      localStorage.setItem('lang', 'en')
-    }
-    else {
-      localStorage.setItem('lang', 'ar')
-    }
-
-    window.location.reload();
-
-  }
-
-
-
-
-
-
-
-
-
-
 
 }

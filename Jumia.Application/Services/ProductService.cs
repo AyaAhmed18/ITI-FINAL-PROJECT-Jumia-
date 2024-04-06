@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,7 +50,7 @@ namespace Jumia.Application.Services
                 .ToList();
             ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
             resultDataList.Entities = Prds;
-            //resultDataList.Count = AlldAta.Count();
+            resultDataList.count = AlldAta.Count();
             return resultDataList;
         }
       
@@ -378,6 +379,25 @@ namespace Jumia.Application.Services
             && (MinPrice == null || Prd.RealPrice >= MinPrice) 
             && (MaxPrice == null || Prd.RealPrice <= MaxPrice)
             , null, null))
+              .Include(Prd => Prd.SubCategory)
+              .Include(Prd => Prd.Brand)
+              .Select(p => new GetAllProducts(p))
+              .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByAll(List<int>? BrandIdList, int? MinPrice, int? MaxPrice, int? MinDisc,int? items,int? pagenumber)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd =>
+            (BrandIdList == null || BrandIdList.Any(brandId => brandId == Prd.BrandId))
+            && (MinDisc == null || Prd.Discount >= MinDisc)
+            && (MinPrice == null || Prd.RealPrice >= MinPrice)
+            && (MaxPrice == null || Prd.RealPrice <= MaxPrice)
+            , items * (pagenumber - 1), items))
+              .Include(Prd => Prd.SubCategory)
+              .Include(Prd => Prd.Brand)
               .Select(p => new GetAllProducts(p))
               .ToList();
             ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
@@ -395,6 +415,45 @@ namespace Jumia.Application.Services
             resultDataList.count = Prds.Count;
             return resultDataList;
         }
+        public async Task<ResultDataForPagination<GetAllProducts>> MakeFinalResult(List<GetAllProducts> FinalResult)
+        {
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = FinalResult;
+            resultDataList.count = FinalResult.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> GetProductsByCategoryId(int CategoryId,int? items, int? pagenumber)
+        {
+           
+            var productsInCategory = _unitOfWork.ProductRepository.FindAll(
+                criteria: product => product.SubCategory.CategoryId == CategoryId
+                , skip: items * (pagenumber - 1)
+                , take: items)
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            var ProductsInCategory =  MakeFinalResult(productsInCategory);
+            return await ProductsInCategory;
+
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> GetProductsBySubCategoryId(int SubCategoryId, int? items, int? pagenumber)
+        {
+
+
+            var productsInCategory = _unitOfWork.ProductRepository.FindAll(
+                criteria: product => product.SubCategoryId == SubCategoryId
+                , skip: items * (pagenumber - 1)
+                , take: items)
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            var ProductsInCategory = MakeFinalResult(productsInCategory);
+            return await ProductsInCategory;
+
+        }
+
+        //public async List<GetAllProducts> MakeIncludable(IQueryable<GetAllProducts> Prds, int? items, int? pagenumber)
+        //{
+        //    Prds.Take(items);
+        //}
     }
 
 }

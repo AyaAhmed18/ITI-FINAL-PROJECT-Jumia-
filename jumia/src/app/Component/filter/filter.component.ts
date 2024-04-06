@@ -1,29 +1,34 @@
 import { Component } from '@angular/core';
 import { ProductComponent } from "../product/product.component";
 import { FilterServiceService } from '../../Services/filter-service.service';
+import { CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BrandServiceService } from '../../Services/brand-service.service';
 import { IBrandDto } from '../../ViewModels/ibrand-dto';
+import { ProductDto } from '../../ViewModels/product-dto';
 
 @Component({
     selector: 'app-filter',
     standalone: true,
     templateUrl: './filter.component.html',
     styleUrl: './filter.component.css',
-    imports: [ProductComponent,FormsModule]
+    imports: [ProductComponent,FormsModule,CommonModule]
 })
 export class FilterComponent {
     minDiscount: number=0;
+    ListPrand:string='';
     products: any[]=[];
     minPrice: number = 0;
     maxPrice: number = 1000000;
-    AllBrands: IBrandDto[] = [];
-
+    AllBrands: any = [];
+    selectedBrands: number[] = [];
+    selectedBrandsStr : string ='';
     constructor(private _filterService: FilterServiceService,private _brandService : BrandServiceService) { }
 
     ngOnInit(): void {
         console.log(this.minDiscount)
       this.filterProducts();
+      this.GetBrands();
     }
     GetBrands()
     {
@@ -31,17 +36,28 @@ export class FilterComponent {
       .subscribe({ next: (data) => {
         this.AllBrands = data;
         console.log("allBrands")
-        console.log( this.AllBrands)
+        console.log( data)
       }
       });
     }
 
     filterProducts(): void {
+      this.selectedBrandsStr = this.selectedBrands.join(',');
+      console.log("selected Brands");
+      console.log(this.selectedBrands)
+      console.log(this.selectedBrandsStr)
 
-      this._filterService.filterByAll(this.minDiscount, this.minPrice, this.maxPrice)
+      this._filterService.filterByAll(this.minDiscount, this.minPrice, this.maxPrice  , this.selectedBrandsStr)
       .subscribe(data => {
+        console.log("selected Brands");
+        console.log(this.selectedBrands)
+        console.log(this.selectedBrandsStr)
+
+
         this.products = data.entities;
-        console.log("filter")
+        console.log(this.products[1].images[0])
+
+        console.log("filter--")
         console.log( this.products)
       });
 
@@ -51,6 +67,21 @@ export class FilterComponent {
     }
 
 
+    AddtoSelected($event: any,arg1: any) {
+      console.log($event.target.checked)
+      console.log(this.selectedBrands);
+      console.log(arg1);
+
+      if($event.target.checked)
+      {
+        let brId = arg1.brandID;
+        console.log(brId);
+        this.selectedBrands.push(arg1.brandID);
+
+        console.log(this.selectedBrandsStr);
+      }
+
+      }
  // this._filterService.filterByDiscountRange(this.minDiscount)
       //   .subscribe(data => {
       //     this.products = data.entities;
