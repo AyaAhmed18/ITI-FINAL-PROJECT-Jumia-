@@ -1,105 +1,67 @@
-.text-bold {
-    font-weight: 800;
+
+
+    /*style cards by Bahaa */
+
+    .label-Cards-top {
+        position: absolute;
+        background-color: rgba(255, 115, 0, 0.842);
+        color: #fff;
+        top: 8px;
+        left: 8px;
+
+        font-size: .7rem;
+        font-weight: 600;
+        border-radius: 3px;
+        text-transform: uppercase;
+    }
+
+    .offer-cards {
+        background-color: rgba(243, 152, 77, 0.397);
+        border-radius: 3px;
+        color: #ff9901;
+
+    }
+
+    .cards-heart>a {
+        position: absolute;
+        color: #ffae0069;
+        bottom: 220px;
+        right: 8px;
+
+    }
+.cards-question{
+    position: absolute;
+        color: #c9c9c9d5;
+        bottom: 80px;
+        right: 8px;
 }
+    .cards-heart:hover>a {
+        color: #ffae00;
+    }
 
-text-color {
-    color: #c47600;
+    .cards-question:hover>a{
+        color: #ffae00;
 }
+    .cards-hover:hover {
+        box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+    }
 
-/* Main image - left */
-.main-img img {
-    width: 100%;
-}
+    .hide-btn-cards {
+        display: none;
+    }
 
-/* Preview images */
-.previews img {
-    width: 100%;
-    height: 140px;
-}
+    .show-cards-btn:hover .hide-btn-cards {
+        display: block;
+    }
 
-.main-description .category {
-    text-transform: uppercase;
-    color: #c47600;
-}
+    .stars i {
+        color: gold;
+        font-size: .9rem;
 
-.main-description .product-title {
-    font-size: 2.5rem;
-}
+    }
 
-.old-price-discount {
-    font-weight: 600;
-}
-
-.new-price {
-    font-size: 2rem;
-}
-
-.details-title {
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 1.2rem;
-    color: #757575;
-}
-
-.buttons .block {
-    margin-right: 5px;
-}
-
-.quantity input {
-    border-radius: 0;
-    height: 40px;
-
-}
-
-
-.custom-btn {
-    text-transform: capitalize;
-    background-color: #c47600;
-    color: white;
-    width: 150px;
-    height: 40px;
-    border-radius: 0;
-}
-
-.custom-btn:hover {
-    background-color: #c47600 !important;
-    font-size: 18px;
-    color: white !important;
-}
-
-.similar-product img {
-    height: 400px;
-}
-
-.similar-product {
-    text-align: left;
-}
-
-.similar-product .title {
-    margin: 17px 0px 4px 0px;
-}
-
-.similar-product .price {
-    font-weight: bold;
-}
-
-.questions .icon i {
-    font-size: 2rem;
-}
-
-.questions-icon {
-    font-size: 2rem;
-    color: #c47f00;
-}
-
-
-/* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) {
-
-    /* Make preview images responsive  */
-    /* .previews img {
-        width: 100%;
-        height: auto;
-    } */
-
-}
+    /* -------------------------------------------------- */
+    .btn{
+        background-color: #ff9901ea;
+      
+    }

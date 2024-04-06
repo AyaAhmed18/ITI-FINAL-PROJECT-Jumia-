@@ -10,37 +10,37 @@ import { ProductDto } from '../../ViewModels/product-dto';
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
-export class DetailsComponent implements OnInit{
-  currenntProdId:number=0;
-  product:ProductDto|null=null;
+export class DetailsComponent implements OnInit {
+  currentProdId: number = 0;
+  product: ProductDto | null = null;
 
- 
-    constructor(
-      private _Activatedroute:ActivatedRoute , 
-      private _ApiProductsService:ApiProductsService,
-     
-      private  router:Router
-      ){}
-      ngOnInit(): void {
-        this._Activatedroute.paramMap.subscribe(paramMap => {
-          this.currenntProdId = Number(paramMap.get('id'));
-          this.getProductById(this.currenntProdId);
-        });
-      }
-  
-      getProductById(id: number): void {
-        this._ApiProductsService.getProductById(id).subscribe({
-          next: (res) => {
-            this.product = res;
-            console.log(this.product);
-          },
-          error: (err) => {
-            console.log(err);
-          }
-        });
-      }
-      navigateToDetails(productId: number): void {
-        this.router.navigateByUrl(`/details/${productId}`);
-      }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private apiProductsService: ApiProductsService,
+    private router: Router
+  ) { }
+
+  ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(paramMap => {
+      this.currentProdId = Number(paramMap.get('id'));
+      this.getProductById(this.currentProdId);
+    });
   }
-  
+
+  getProductById(id: number): void {
+    this.apiProductsService.getProductById(id).subscribe({
+      next: (res: ProductDto) => {
+        this.product = res;
+        console.log("detalse")
+        console.log(this.product);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  navigateToDetails(productId: number): void {
+    this.router.navigateByUrl(`/Detalse/${productId}`);
+  }
+}

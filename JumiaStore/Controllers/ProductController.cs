@@ -66,7 +66,7 @@ namespace JumiaStore.Controllers
             }
             else
             {
-                return Ok(productid);
+                return Ok(productid.Entity);
             }
 
         }

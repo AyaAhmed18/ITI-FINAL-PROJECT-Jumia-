@@ -13,10 +13,12 @@ import { RegistrationComponent } from './Component/registration/registration.com
 import { FilterComponent } from './Component/filter/filter.component';
 import { OrderDetailsComponent } from './Component/order-details/order-details.component';
 import { OrderItemsComponent } from './Component/order-items/order-items.component';
+import { DetailsComponent } from './Component/details/details.component';
 export const routes: Routes = [
     {path:'',redirectTo:'/Home',pathMatch:'full'},
     {path:'Home',component:HomeComponent},
     {path:'Product',component:FilterComponent},
+    {path:'Detalse/:id',component:DetailsComponent},
     {path:'SignIn',component:SignInComponent},
     {path:'Registeration',component:RegistrationComponent},
     {path:'Order',component:OrdersComponent , canActivate:[authGuard]},  //
