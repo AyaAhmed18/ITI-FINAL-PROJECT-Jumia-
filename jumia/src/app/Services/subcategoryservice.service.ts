@@ -9,14 +9,14 @@ import { Observable } from 'rxjs';
 })
 export class SubcategoryserviceService {
 
-  private apiUrl = `http://localhost:5094/api/SubCategory`
+  private apiUrl = `http://localhost:64866/api/SubCategory`
 
   constructor(private  _HttpClient:HttpClient) { }
 
 
   getAllSubCategory():Observable<ISubCategory[]>{
 
-    return this._HttpClient.get<ISubCategory[]>(`http://localhost:5094/api/SubCategory`)
+    return this._HttpClient.get<ISubCategory[]>(`http://localhost:64866/api/SubCategory`)
 
   }
 

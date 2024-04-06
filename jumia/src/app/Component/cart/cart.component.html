@@ -193,11 +193,16 @@
 
 <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1">
   <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong> Product Added To Cart Successfully
-  <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close"></button>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="closeAlert()" aria-label="Close">
+    <i class="fa fa-times"></i>
+  </button>
 </div>
 <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2">
   <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>Product Removed from Cart Successfully
-  <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close"></button>
+  <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+    <i class="fa fa-times"></i>
+  </button>
+  
 </div>
 
 <!-- Recently Viewed -->

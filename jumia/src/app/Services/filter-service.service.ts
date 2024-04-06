@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FilterServiceService {
-  private apiUrl = 'http://localhost:5094/api/Product/FilterByAll?';
+  private apiUrl = 'http://localhost:64866/api/Product/FilterByAll?';
   constructor(private _httpClient: HttpClient) { }
 
   filterByAll(minDisc?: number,minPrice?: number, maxPrice?: number,BrandList? : string): Observable<any> {
 
-    this.apiUrl = 'http://localhost:5094/api/Product/FilterByAll?';
+    this.apiUrl = 'http://localhost:64866/api/Product/FilterByAll?';
     if(BrandList!=undefined)
     {
       this.apiUrl+=`BrandList=${BrandList}`;
