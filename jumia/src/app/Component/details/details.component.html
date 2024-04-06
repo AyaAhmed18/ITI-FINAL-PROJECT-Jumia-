@@ -1,0 +1,119 @@
+
+<!-- Cart with Items -->
+<div class="row ">
+
+
+ 
+    <div class="card col-8   my-4 "  >
+      
+   
+      <div class="row card-body"  >
+  
+        <div class="col-3">
+          <img src="assets/ProductImg/1.jpg" style="height: 250px; width: auto;">
+        </div>
+        <div class="col-9 ">
+<div class="row">
+    <div class="col-12">
+        <p class="mb-1 h4"><small>{{ product?.name }}{{ product?.shortDescription }}</small> </p>
+
+        <hr>
+
+    </div>
+    <div class="col-12 ">
+        <p > <strong class="h3 px-2">EGP {{ product?.realPrice }}</strong>
+            <del class=" px-2">EGP {{product?.realPrice}}</del>
+             <strong class="offer-cards p-1">   -{{product?.discount}}%</strong>
+        </p> 
+    </div>
+    <div class="col-12 ">
+        <p > 
+            <small class=" p-1">  Shipping fees from EGP 20.00 to 6th of October (free delivery if order above EGP 200.00). Save 10 EGP on shipping with prepaid payment</small>
+       </p> 
+            
+       <div class="stars">
+        <i class="fa fa-star "></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-o"></i>
+        <i class="fa fa-star-o"></i>
+        <i class="fa text-secondary">(44)</i>
+    </div>
+    <div class="col-12">
+        <button class="btn w-100 text-white" >
+          <i class="fa fa-solid fa-shopping-cart " ></i><strong class="px-2">Add To Cart</strong>
+        </button>
+    </div>
+    </div>
+</div>
+
+          
+
+          
+        
+        
+           
+            
+        </div>
+       
+      </div>
+     
+      
+    </div>
+   
+    
+  
+  
+  
+  
+  
+    <!-- cart Sammary  -->
+    <div class="col-3 float-end ">
+      <div class="card mb-3 my-4" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>CART SUMMARY</strong> </li>
+          <li class="list-group-item">
+            <ul class="d-flex justify-content-start">
+              <li class="me-5 ">Subtotal</li>
+              <li style="text-align:end;"><strong>EGP </strong></li>
+            </ul>
+          </li>
+          <ul>
+            <li class="m-2">
+              <p><small>Missing EGP 151.00 to reach free delivery</small> </p>
+            </li>
+            <li class="m-2"> <img src="assets/cart.jpg" style="width: 40%;"></li>
+          </ul>
+        </ul>
+        <div class="card-footer  ">
+          <button class="btn btn-warning text-light" style="width: 90%;" routerLink="/shippment">Checkout (EGP
+            )</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

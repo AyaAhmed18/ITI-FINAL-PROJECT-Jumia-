@@ -19,6 +19,8 @@
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="~/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="~/js/select.dataTables.min.css">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="~/css/vertical-layout-light/style.css">
@@ -519,12 +521,12 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
                             <i class="menu-icon mdi mdi-layers-outline"></i>
-                            <span class="menu-title">@AdminDashBoard.Languages.Resource.icons</span>
+                            <span class="menu-title">Add Role</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="icons">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/icons/mdi.html">Mdi icons</a></li>
+                                <li class="nav-item"> <a asp-action="CreateRole" asp-controller="Role" class="nav-link" >Add Role</a></li>
                             </ul>
                         </div>
                     </li>
