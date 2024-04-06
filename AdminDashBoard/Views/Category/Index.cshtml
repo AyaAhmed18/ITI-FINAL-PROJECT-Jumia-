@@ -7,105 +7,65 @@
 
 @* <h1>@Model.count</h1> *@
 
-<html>
-<head>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container">
 
-        <h1>@AdminDashBoard.Languages.Resource.AllCategory</h1>
+<style>
+    .fifty-chars {
+        width: 20ch;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+</style>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.Name</th>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.Description</th>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.Image</th>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Entities)
-            {
-                <tr>
-                    <td>@item.Name</td>
-                    <td>@item.Description</td>
-                    <td><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="200px" , height="200px"  alt="Category Image" /></td>
-                    <td>
-                            <a asp-action="Update" asp-controller="Category" asp-route-id="@item.Id" class="btn btn-primary">@AdminDashBoard.Languages.Resource.Update</a>
-                    </td>
-                    <td>
-                            <a asp-action="Delete" asp-controller="Category"  onclick="confirmDelete()"  style="pointer-events: auto;" class="btn btn-danger disabled">@AdminDashBoard.Languages.Resource.Delete</a>
-                    </td>
-                </tr>
 
-                
 
-            }
-        </tbody>
-    </table>
-    <br />
-        <a class="btn btn-success" asp-action="create">@AdminDashBoard.Languages.Resource.AddCategory</a>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">@AdminDashBoard.Languages.Resource.AllCategory</h4>
+            <p class="card-description">
+                length: <code>length</code>
+            </p>
+            <div class="table-responsive pt-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+
+                            <th scope="col"><p class="fifty-chars">@AdminDashBoard.Languages.Resource.Name</p></th>
+
+                            <th scope="col"><p class="fifty-chars">@AdminDashBoard.Languages.Resource.Description</p></th>
+                            <th scope="col">@AdminDashBoard.Languages.Resource.Image</th>
+                            <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+                            <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Entities)
+                        {
+                            <tr>
+                                <td class="p-1">@item.Name</td>
+                                <td class="p-1">@item.Description</td>
+                                <td class="p-1"><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="200px" , height="200px" alt="Category Image" /></td>
+                               
+                                <td class="p-1">
+                                    <a asp-action="Update" asp-controller="Category" asp-route-id="@item.Id" class="btn btn-info  btn-sm m-0">@AdminDashBoard.Languages.Resource.Update</a>
+                                </td>
+                                <td class="p-1">
+                                    <a asp-action="Delete" asp-controller="Category" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger disabled btn-sm m-0">@AdminDashBoard.Languages.Resource.Delete</a>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <a asp-action="Create" asp-controller="Category" class="btn btn-success p-3">@AdminDashBoard.Languages.Resource.AddCategory</a>
     </div>
-
-
-    <!-- Modal -->
- @*    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmation</h5>
-                    <button type="button" class="close" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    You Can't Delete this Category Because Some SubCategories and Products depend on it.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success">Close</button>
-                </div>
-            </div>
-        </div>
-    </div> *@
-
-     @if (TempData["SuccessMessage"] != null)
-    {
-        <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            <svg class="bi flex-shrink-0 me0" width="24" height="15px" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
-            <div>
-                @AdminDashBoard.Languages.Resource.FailedTODelete
-            </div>
-        </div>
-    }
-    @if (TempData["SuccessMessage1"] != null)
-    {
-        <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            <svg class="bi flex-shrink-0 me0" width="24" height="15px" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
-            <div>
-                @AdminDashBoard.Languages.Resource.SuccessMessage
-            </div>
-        </div>
-    }
-    <script>
-        // function confirmDelete() {
-        //     $('#confirmDeleteModal').modal('show');
-        // }
-
-        function confirmDelete() {
-            var acc = confirm("Other SubCategories and Products may depend on this Category, Are You Sure you want to delete this Category?");
-            if (acc == false) {
-                event.preventDefault();
-            }
-        }
-      
-    </script>
-
-  
+</div>
 
 
 
@@ -119,10 +79,5 @@
 
 
 
-
-
-
-</body>
-</html>
 
 
