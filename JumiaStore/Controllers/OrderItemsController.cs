@@ -57,7 +57,7 @@ namespace JumiaStore.Controllers
                     var order = await _orderItemService.Create(creatOrUpdateOrderItems);
                     if (order.IsSuccess)
                     {
-                        return Ok(order);
+                        return Ok(order.Entity);
                     }
                     else
                     {
