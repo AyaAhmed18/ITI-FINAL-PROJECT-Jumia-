@@ -120,8 +120,6 @@ getAllProducts() {
           this.products = data;
           this.AllProd = data.count;
 
-
-
           this.totalPages=Math.ceil( this.AllProd / this.pageSize)
           this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
           console.log("all");
