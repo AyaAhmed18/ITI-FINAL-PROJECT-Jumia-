@@ -19,6 +19,7 @@ export const routes: Routes = [
     {path:'MyAccount',component:MyAccountComponent , canActivate:[authGuard]},  //
     {path:'Cart',component:CartComponent},
     {path:'shippment',component:ShippmentComponent},
+    {path:'GetSubCategory/:id',component:FilterComponent},
     {path:'GetCategory/:id',component:FilterComponent},
    // {path:'CartProduct',component:CartwithProductComponent},
    // {path:'test',component:TestComponent},

@@ -62,5 +62,9 @@ GetProductsByCatId(categoryId: number):void
 {
   this._router.navigateByUrl(`/GetCategory/${categoryId}`);
 }
+GetProductsBySubCatId(subcategoryId: number):void
+{
+  this._router.navigateByUrl(`/GetSubCategory/${subcategoryId}`);
+}
 
 }

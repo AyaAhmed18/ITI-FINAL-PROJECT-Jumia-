@@ -9,6 +9,7 @@ import { CartService } from '../../Services/cart.service';
 import { WishlistService } from '../../Services/wishlist.service';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FilterServiceService } from '../../Services/filter-service.service';
 
 @Component({
   selector: 'app-product',
@@ -44,7 +45,8 @@ currentCategoryId :number = 0;
       private _wishlist :WishlistService,
       private _searchResultsService: SearchResultsService,
       private _activeRouter: ActivatedRoute,
-      private _route: Router)
+      private _route: Router,
+      private _filterServices : FilterServiceService)
    {
 
    }
@@ -56,13 +58,17 @@ currentCategoryId :number = 0;
       this.currentCategoryId =Number(parammap.get('id'));
       this.getProductByCategoryId(this.currentCategoryId);
     })
+    console.log("onInit");
+    console.log(this.products);
+    //this.pageNumbers = this.products[1]
     }
+
     getProductByCategoryId(id:number)
     {
       this._ApiProductsService.getProductByCatId(id).subscribe(
       {
         next:(data: any)=>{
-          this.productList=data
+          this.productList=data.entities
           console.log(data);
           console.log("ProductList")
           console.log(this.productList);
@@ -168,12 +174,14 @@ console.log();
 prevPage(): void {
 if (this.pageNumber > 1) {
   this.pageNumber--;
+  this._filterServices.setValue(this.pageNumber);
   this.getAllProducts();
 }
 }
 goToPage(page: number): void {
 if (page >= 1 && page <= this.totalPages) {
   this.pageNumber = page;
+  this._filterServices.setValue(this.pageNumber);
   this.getAllProducts();
 }
 }

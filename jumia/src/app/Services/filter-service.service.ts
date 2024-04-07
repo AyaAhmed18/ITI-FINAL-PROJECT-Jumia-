@@ -1,17 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterServiceService {
-  private apiUrl = 'http://localhost:5094/api/Product/FilterByAll?';
+  private apiUrl = 'http://localhost:5094/api/Product/FilterByAllWithPagination?';
   constructor(private _httpClient: HttpClient) { }
+  private ChangingPages = new BehaviorSubject<any>(null);
+  setValue(value: any) {
+    this.ChangingPages.next(value);
+  }
 
-  filterByAll(minDisc?: number,minPrice?: number, maxPrice?: number,BrandList? : string): Observable<any> {
+  getValue() {
+    return this.ChangingPages.asObservable();
+  }
+  filterByAll(minDisc?: number,minPrice?: number, maxPrice?: number,BrandList? : string,pageNumber?: number ,pageSize? : number): Observable<any> {
 
-    this.apiUrl = 'http://localhost:5094/api/Product/FilterByAll?';
+    this.apiUrl = 'http://localhost:5094/api/Product/FilterByAllWithPagination?';
     if(BrandList!=undefined)
     {
       this.apiUrl+=`BrandList=${BrandList}`;
@@ -35,6 +42,26 @@ export class FilterServiceService {
     {
       if(this.apiUrl[this.apiUrl.length-1]=='?') this.apiUrl+=`BrandList=${BrandList}`;
       else this.apiUrl+=`&BrandList=${BrandList}`
+    }
+    if(pageNumber!=undefined)
+    {
+      if(this.apiUrl[this.apiUrl.length-1]=='?') this.apiUrl+=`pageNumber=${pageNumber}`;
+      else this.apiUrl+=`&pageNumber=${pageNumber}`
+    }
+    else
+    {
+      if(this.apiUrl[this.apiUrl.length-1]=='?') this.apiUrl+=`pageNumber=1`;
+      else this.apiUrl+=`&pageNumber=1`
+    }
+    if(pageSize!=undefined)
+    {
+      if(this.apiUrl[this.apiUrl.length-1]=='?') this.apiUrl+=`pageSize=${pageSize}`;
+      else this.apiUrl+=`&pageSize=${pageSize}`
+    }
+    else
+    {
+      if(this.apiUrl[this.apiUrl.length-1]=='?') this.apiUrl+=`pageSize=15`;
+      else this.apiUrl+=`&pageSize=15`
     }
     console.log(this.apiUrl);
     let allpro= this._httpClient.get<any>(`${this.apiUrl}`);

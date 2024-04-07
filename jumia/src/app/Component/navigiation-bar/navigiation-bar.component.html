@@ -6,13 +6,13 @@
       <div class="col-10"><a href="https://sell.jumia.com/en/start-now/" target="_blank" class="text-warning">Sell on Jumia</a></div>
   </div>
     </div>
-  
-  
+
+
     <div class="col-sm my-1">
        <img src="../../../assets/FooterImg/JumiaLogo.png" style="width: auto;height: 10px;">
     </div>
     <div class="col-sm" style="text-align: right;">
-     
+
       <a href="" ><span>English</span></a>
       <a href="" ><span>عربي</span></a>
     </div>
@@ -36,7 +36,7 @@
       </div>
       <input type="text" id="simple-search" [(ngModel)]="searchTerm" name="searchTerm" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search products, brand and categories" required>
     </div>
-    <button type="submit" class="btn btn mx-3" style="background-color: orange;">Search</button>
+    <button type="submit" class="btn btn mx-3" routerLink = "/Product" style="background-color: orange;">Search</button>
 </form>
 </div>
 
@@ -47,15 +47,15 @@
               <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fa-regular fa-user" id="acc">   </i><span for="acc">{{loggedInUsername}} </span>
               </a>
-              <ul class="dropdown-menu">       
-                
+              <ul class="dropdown-menu">
+
                   <li><a class="dropdown-item" routerLink="/MyAccount">My Account </a></li>
                   <li><a class="dropdown-item" href="#"><i class="fa-solid fa-bag-shopping" id="order"> </i><span for="order" > Order</span></a></li>
                 <li> <a class="dropdown-item" href="#"><i class="fa-regular fa-heart">  </i><span for="acc">  Saved items</span></a></li>
                 <li style="text-align: center;"><button routerLink="/SignIn" [hidden]="IsUserLogged" (click)="SignInNav()" class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">  SignIn </button></li>
                 <li style="text-align: center;"><button routerLink="/Home"  [hidden]="!IsUserLogged" (click)="SignOutNav()" class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">   SignOut </button></li>
                 <!-- <li> <a class="dropdown-item"routerLink="/SignIn"><span for="acc">  Login</span></a></li> -->
-              
+
               </ul>
             </li>
               <li class="nav-item dropdown">
@@ -73,11 +73,11 @@
                     <li style="text-align: center;"><button class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">Live  Chat </button></li>
                   </ul>
                 </li>
-          
+
           <a class="nav-link "routerLink="/Cart">
             <i class="fa-solid fa-cart-shopping" id="card"> </i><span for="card">Cart</span>
         </a>
-          </ul> 
+          </ul>
         </div>
 </div>
       </div>
