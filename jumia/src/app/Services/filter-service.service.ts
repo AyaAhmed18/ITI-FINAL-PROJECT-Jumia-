@@ -7,7 +7,7 @@ import { ProductDto } from '../ViewModels/product-dto';
   providedIn: 'root'
 })
 export class FilterServiceService {
-  private apiUrl = 'http://localhost:5094/api/Product';
+  private apiUrl = 'http://localhost:64866/api/Product';
   constructor(private _httpClient: HttpClient) { }
   private ChangingPages = new BehaviorSubject<any>(null);
   setValue(value: any) {

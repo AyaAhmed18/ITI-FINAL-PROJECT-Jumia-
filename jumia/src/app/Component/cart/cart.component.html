@@ -15,8 +15,9 @@
   </ol>
 </nav>
 
+<div [class.rtl]="isArabic">
 <!-- Cart with Items -->
-<div class="row " *ngIf="cartNumber > 0" [class.rtl]="isArabic">
+<div class="row " *ngIf="cartNumber > 0" >
 
 
  
@@ -33,7 +34,7 @@
       <div class="col-5 ">
         <p class="mb-1"><small>{{ item.name }} {{item.shortDescription}}</small> </p>
         <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">
-          <small [ngClass]="{'text-success': item.stockQuantity < 5, 'text-danger': item.stockQuantity >= 5}">
+          <small [ngClass]="{'text-danger': item.stockQuantity < 5, 'text-success': item.stockQuantity >= 5}">
             {{ item.stockQuantity < 5 ? item.stockQuantity + ' Unifs Left' : 'Available' }}
         </small> </i> </h6>
         <a href="https://www.jumia.com.eg/nivea-men-men-face-body-hands-cream-moisturising-tin-75ml-37954540.html"> <img
@@ -41,6 +42,7 @@
       </div>
       <div class="col-4 ">
         <div class="row" style="text-align: end;">
+          {{item.stockQuantity}}
           <h1 class="h4 col-12">{{'cart.EGP' | translate}} {{item.realPrice}}</h1> <!--price After Discount-->
            <div class="col-12 ">
             <p class="fa"><del>{{'cart.EGP' |translate}} {{item.realPrice}}     </del>     
@@ -193,13 +195,17 @@
 
 <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1" [class.rtl]="isArabic" >
   <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Added To Cart Successfully' |translate}}
-  <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close"></button>
+  <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+    <i class="fa fa-times-circle text-danger" id="close"></i>
+  </button>
 </div>
 <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2" [class.rtl]="isArabic">
   <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Removed from Cart Successfully' |translate}}
-  <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close"></button>
+  <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+    <i class="fa fa-times-circle text-danger" id="close"></i>
+  </button>
 </div>
-
+</div>
 <!-- Recently Viewed -->
 <!-- <div class="">
     <div class="reco" data-list="lastViewed" pagetype="cart">

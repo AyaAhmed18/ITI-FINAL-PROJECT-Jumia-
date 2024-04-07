@@ -11,7 +11,7 @@ import { environment } from '../../environment/environment';
 export class ApiProductsService {
   httpHeader={}
   private apiUrl = environment.apiUrl;
- // private apiUrl = 'http://localhost:64866/api/Product';
+  //private apiUrl = 'http://localhost:64866/api/Product';
 //http://localhost:5094/api/Product bahaa
   //localhost:64866/api/Product
   constructor(private _httpClient:HttpClient) { 
@@ -62,12 +62,13 @@ export class ApiProductsService {
   SearchByNameOrDesc(nameOrdesc:string): Observable<ProductDto>{
     return this._httpClient.get<ProductDto>(`${this.apiUrl}/Product/SearchByName?PartialName=${nameOrdesc}`);
   }
-  // getProductByCatId(id: number): Observable<ProductDto> {
-  //   return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=10&pageNumber=1`);
-  // }
-  // getProductBySubCatId(id: number): Observable<ProductDto> {
-  //   return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbySubCategoryId?SubCatId=${id}&pageSize=10&pageNumber=1`);
-  // }
+
+  getProductByCatId(id: number): Observable<ProductDto> {
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/Product/GetbyCategoryId?CatId=${id}&pageSize=10&pageNumber=1`);
+  }
+  getProductBySubCatId(id: number): Observable<ProductDto> {
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/Product/GetbySubCategoryId?SubCatId=${id}&pageSize=10&pageNumber=1`);
+  }
 
 
 }

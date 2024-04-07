@@ -37,8 +37,10 @@ export class FilterComponent {
     currentCategoryId: number = 0;
   currentSubCategoryId: number = 0;
 
-    constructor(private _filterService: FilterServiceService,private _brandService : BrandServiceService
-      ,private _router : Router, private _activeRouter: ActivatedRoute,private _sanitizer:DomSanitizer
+    constructor(private _filterService: FilterServiceService,
+      private _brandService : BrandServiceService
+      ,private _router : Router, private _activeRouter: ActivatedRoute,
+      private _sanitizer:DomSanitizer
       ) { }
 
     ngOnInit(): void {
@@ -220,10 +222,8 @@ export class FilterComponent {
         });
       }
 
-
-
+    
 }
-
 
 
 // const rangeInput = document.querySelectorAll<HTMLInputElement>(".range-input input"),

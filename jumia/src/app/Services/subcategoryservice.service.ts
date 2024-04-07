@@ -17,7 +17,7 @@ export class SubcategoryserviceService {
 
   getAllSubCategory():Observable<ISubCategory[]>{
 
-    return this._HttpClient.get<ISubCategory[]>(`http://localhost:64866/api/SubCategory`)
+    return this._HttpClient.get<ISubCategory[]>(`${this.apiUrl}/SubCategory`)
 
   }
 

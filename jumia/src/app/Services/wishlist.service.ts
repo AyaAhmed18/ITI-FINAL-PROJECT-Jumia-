@@ -15,6 +15,7 @@ export class WishlistService {
 
   initializeCartFromSession() {
     const wishlistItemsFromSession = sessionStorage.getItem('wishlistItems');
+    //const existingProduct = sessionStorage.getItem('cartItems');
     if (wishlistItemsFromSession) {
       this.wishlistItems = JSON.parse(wishlistItemsFromSession);
       this.wishlistSubject.next([...this.wishlistItems]);

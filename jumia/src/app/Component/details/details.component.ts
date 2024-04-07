@@ -34,7 +34,7 @@ export class DetailsComponent implements OnInit {
       this.currentProdId = Number(paramMap.get('id'));
       this.getProductById(this.currentProdId);
     });
-     
+    
     this._specsServive.GetProductSpecs(this.currentProdId).subscribe(specs => {
       if (specs != null) {
         console.log(specs); 

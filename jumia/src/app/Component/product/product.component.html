@@ -57,6 +57,7 @@
                 </div>
                 <div class="hide-btn-cards ">
                     <button class="btn w-100 text-white" (click)="AddToCart(pro)"[disabled]="pro.addedToCart" >Add To Cart</button>
+                    <button class="btn w-100 text-white" (click)="navigateToDetails(pro.id)" >Details</button>
                 </div>
             </div>
         </div>
@@ -71,7 +72,7 @@
 
     <!-- Modal -->
     <div class="modal fade" [id]="'Model'+pro.id" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-        tabindex="-1">
+        tabindex="-1" (click)="GetSpecs(pro)">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -79,7 +80,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                 </div>
                 <div class="modal-body">
-                    <div class="center-align">
+                    <div >
+                        <h3>VARIATION AVAILABLE</h3>
+                        <br>
+                        <span class="specs" *ngFor="let s of sizeSpecs"> {{ s }}</span>
+                      </div>
+                    <!-- <div class="center-align">
                         <input type="radio" name="size" id="size_1" value="small" />
                         <label class=" radio-popup-size" for="size_1">M</label>
 
@@ -95,7 +101,7 @@
 
                         <input type="radio" name="size" id="size_5" value="small" />
                         <label class="radio-popup-size" for="size_5">XxxL</label>
-                    </div>
+                    </div> -->
                     <h2><strong>EGP {{pro.realPrice}}</strong></h2>
                     <ul class="list-inline">
                         <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>

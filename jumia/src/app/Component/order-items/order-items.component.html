@@ -1,5 +1,6 @@
 <!-- Order  when no item (heba)-->
-<div class="container-fluid"  [class.rtl]="isArabic">
+<div  [class.rtl]="isArabic">
+<div class="container-fluid" >
     <div class="row flex-nowrap ">
         <div class="col-auto  col-md-3 col-xl-2 px-sm-2 px-0 mx-4 shadow-sm p-3 mb-5 bg-body rounded" style="background-color: white;">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2  min-vh-100 ">
@@ -107,6 +108,7 @@
 </div>
 
 
+
 <!-- <div class=" alert-success alert-dismissible fixed-top custom-alert text-center"  id="customAlert" [hidden]="!showAlert">
     <div class="text">Your order is shipped you can't Cancel it</div>
     <button type="button" class="btn-close" (click)="closeAlert()" aria-label="Close"></button>
@@ -123,3 +125,5 @@
     <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong> {{'orderitem.Your Order Is Cancelled' | translate}}
     <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close"></button>
   </div>
+
+</div>
