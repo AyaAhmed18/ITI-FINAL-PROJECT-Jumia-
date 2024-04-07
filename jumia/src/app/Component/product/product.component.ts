@@ -8,7 +8,7 @@ import { SearchResultsService } from '../../Services/search-results.service';
 import { CartService } from '../../Services/cart.service';
 import { WishlistService } from '../../Services/wishlist.service';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -20,8 +20,9 @@ import { Router } from '@angular/router';
 export class ProductComponent implements  OnInit{
   @Input() AllProducts:ProductDto[]=[];
   @Input() products: any[]=[];
+  AllProductsProducts: any[]=[];
   cartItems: ProductDto[] = [];
-  //productList: ProductDto[] = [];
+  productList: ProductDto[] = [];
 // AllProducts:ProductDto[]=[];
 //  products: any;
 //searchResults: any[] = [];
@@ -42,7 +43,8 @@ pageNumbers: number[]=[];
       private _cartService:CartService,
       private _wishlist :WishlistService,
       private _searchResultsService: SearchResultsService,
-      private router: Router)
+      private _activeRouter: ActivatedRoute,
+      private router: Router,)
    {
 
    }
@@ -54,8 +56,17 @@ pageNumbers: number[]=[];
     this.getAllProducts();
    
     }
-    navigateToDetails(productId: number): void {
-      this.router.navigateByUrl(`/Detalse/${productId}`);
+    getProductByCategoryId(id:number)
+    {
+      this._ApiProductsService.getProductByCatId(id).subscribe(
+      {
+        next:(data: any)=>{
+          this.productList=data
+          console.log(data);
+          console.log("ProductList")
+          console.log(this.productList);
+        }
+      })
     }
   //start Add to Cart
   AddToCart(prod:ProductDto){
@@ -205,12 +216,16 @@ if (page >= 1 && page <= this.totalPages) {
   sanitizeImages() {
     this.products.forEach(product => {
       console.log(product.images);
-      product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
+      product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images);
       console.log(product.images);
       console.log(product.images);
 
     });
   }
+//   sanitizeImages() {
+//     this.products.images[0]
+//     = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + this.product.images);
+//  }
 
   onSortChange(event: any) {
     const selectedSortOption = event.target.value;
@@ -263,5 +278,8 @@ if (page >= 1 && page <= this.totalPages) {
 
 //       })
 // }
+navigateToDetails(productId: number): void {
+  this.router.navigateByUrl(`/Detalse/${productId}`);
+}
 
 }

@@ -29,20 +29,20 @@ export class ApiProductsService {
 
 
   getAllProductsWithOrderAasc(): Observable<any> {
-    
+
 
     let allpro= this._httpClient.get<any>(`${this.apiUrl}/GetOrderedAsc`);
     return allpro;
   }
 
   getAllProductsWithOrderDasc(): Observable<any> {
-   
+
 
     let allpro= this._httpClient.get<any>(`${this.apiUrl}/GetOrderedDsc`);
     return allpro;
   }
   getAllProductsWithNewestArrivals(): Observable<any> {
-   
+
 
     let allpro= this._httpClient.get<any>(`${this.apiUrl}/GetNewestArrivals`);
     return allpro;
@@ -51,9 +51,12 @@ export class ApiProductsService {
   getProductById(id: number): Observable<ProductDto> {
     return this._httpClient.get<ProductDto>(`${this.apiUrl}/${id}`);
   }
-  
+
   SearchByNameOrDesc(nameOrdesc:string): Observable<ProductDto>{
     return this._httpClient.get<ProductDto>(`${this.apiUrl}/SearchByName?PartialName=${nameOrdesc}`);
+  }
+  getProductByCatId(id: number): Observable<ProductDto> {
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=10&pageNumber=1`);
   }
 
   updateProducts(products: any[]) {
