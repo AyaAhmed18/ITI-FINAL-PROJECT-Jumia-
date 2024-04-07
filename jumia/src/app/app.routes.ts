@@ -21,6 +21,8 @@ export const routes: Routes = [
     {path:'shippment',component:ShippmentComponent},
    // {path:'CartProduct',component:CartwithProductComponent},
    // {path:'test',component:TestComponent},
-
+   {path:'GetSubCategory/:id',component:FilterComponent},
+   {path:'GetCategory/:id',component:FilterComponent},
+   {path:'**',component:CartComponent}
 
 ];
