@@ -115,7 +115,7 @@ namespace JumiaStore
                 op.UseSqlServer(builder.Configuration.GetConnectionString("Db"));
             });
             #region Localization
-            /*builder.Services.AddSession(options =>
+         /*   builder.Services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
@@ -150,6 +150,8 @@ namespace JumiaStore
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+           // app.UseRouting();
+            app.UseRequestLocalization();
             app.UseCors("Default");
             app.UseAuthentication();
             app.UseAuthorization();

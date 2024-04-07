@@ -9,13 +9,14 @@ import { CartService } from '../../Services/cart.service';
 import { WishlistService } from '../../Services/wishlist.service';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product',
   standalone: true,
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
-  imports: [FilterComponent,CommonModule,FormsModule]
+  imports: [FilterComponent,CommonModule,FormsModule,TranslateModule]
 })
 export class ProductComponent implements  OnInit{
   @Input() AllProducts:ProductDto[]=[];
@@ -23,6 +24,7 @@ export class ProductComponent implements  OnInit{
   AllProductsProducts: any[]=[];
   cartItems: ProductDto[] = [];
   productList: ProductDto[] = [];
+  isArabic: boolean = false;
 // AllProducts:ProductDto[]=[];
 //  products: any;
 //searchResults: any[] = [];
@@ -44,17 +46,33 @@ pageNumbers: number[]=[];
       private _wishlist :WishlistService,
       private _searchResultsService: SearchResultsService,
       private _activeRouter: ActivatedRoute,
-      private router: Router,)
+      private router: Router,
+      private  translate: TranslateService)
    {
 
    }
    ngOnInit(): void {
+    this.translate.onLangChange.subscribe((Event)=>{
+      this.isArabic = Event.lang === 'ar'
+    })
+   
     this._ApiProductsService.products$.subscribe(products => {
       this.products = products;
     });
     this.Sershresult();
     this.getAllProducts();
    
+    }
+    changeLanguage(lang: string) {
+      if (lang == 'en') {
+        localStorage.setItem('lang', 'en')
+      }
+      else {
+        localStorage.setItem('lang', 'ar')
+      }
+  
+      window.location.reload();
+  
     }
     getProductByCategoryId(id:number)
     {

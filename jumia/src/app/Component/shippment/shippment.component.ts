@@ -22,7 +22,7 @@ export class ShippmentComponent implements OnInit{
   shippment:IShippment={} as IShippment
   order:IOrder={} as IOrder
   //Client=localStorage.getItem('userName')
-  clientId=localStorage.getItem('userId')
+  clientId=Number(localStorage.getItem('userId'))
   selectedRegionCities: string[] = [];
   regions: string[] = []
   cartItems: ProductDto[] = [];
@@ -183,19 +183,31 @@ export class ShippmentComponent implements OnInit{
     ];
   }
   ngOnInit(): void {
+    this._ShippmentService.Getshippment(this.clientId).subscribe(shippment => {
+     // this.shippment=shippment.entity
+      console.log(shippment);
+      if(shippment!=null){
+       this.shippment=shippment
+       this.onRegionChange()
+       this.onCityChange()
+       console.log(shippment);
+       this.shippment.city=shippment.city
+       console.log(shippment.city);
+      }
+   });
     this._cartService.getCart().subscribe(cartItems => {
       this.cartItems = cartItems;
      this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
       this.cartNumber=this._cartService.calculateTotalCartNumber();
     });
     this.id = Number(this.route.snapshot.paramMap.get('id'))
+   
   
   }
-  debugger: any
   AddAddress(clientAddress:IShippment){
     if(this.clientId!=null){
-      clientAddress.userIdentityId=parseInt(this.clientId)
-      clientAddress.cost=100
+      clientAddress.userIdentityId=this.clientId
+            clientAddress.cost=100
     }
    
     this._ShippmentService.AddClientAddress(clientAddress).subscribe({
@@ -205,20 +217,21 @@ export class ShippmentComponent implements OnInit{
           this.router.navigate(['/Delivary']);
         } else if (!res.isSuccess && res.entity != null) {
           alert("Your Information already Saved")
-          this.router.navigate(['/Delivary']);
-          // this._ShippmentService.UpdateClientAddress(clientAddress).subscribe({
-          //   next: (updateRes) => {
-          //     this.shippment = updateRes.Entity;
-          //     if (updateRes.isSuccess) {
-          //       alert("Address Updated Successfully");
-          //       console.log(updateRes.Entity);
-          //       this.router.navigate(['/Delivary']);
-          //     }
-          //   },
-          //   error: (updateErr) => {
-          //     console.log(updateErr);
-          //   }
-          // });
+          //this.router.navigate(['/Delivary']);
+          this._ShippmentService.UpdateClientAddress(clientAddress).subscribe({
+            next: (updateRes) => {
+              this.shippment = updateRes.entity;
+              if (updateRes.isSuccess) {
+               
+                alert("Your Information Saved successfully")
+                this.router.navigate(['/Delivary']);
+              }
+
+            },
+            error: (updateErr) => {
+              console.log(updateErr);
+            }
+          });
         }
       },
       error: (err) => {
@@ -233,7 +246,7 @@ export class ShippmentComponent implements OnInit{
     if(this.cartNumber!=null && this.TotalCartPrice!=null &&this.clientId!=null ){
       this.order.totalAmount= this.cartNumber
      // this.order.TotalOrderPrice=this.TotalCartPrice
-      this.order.customerId=parseInt(this.clientId);
+      this.order.customerId=this.clientId;
     }
    // this.order.createdDate= new Date().toDateString();
     this.order.paymentStatus=0
