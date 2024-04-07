@@ -33,7 +33,7 @@ pageNumbers: number[]=[];
   cartTotalPrice:number=0
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
   @Output() addTowashlistClicked = new EventEmitter<ProductDto>();
-  addedToCart = false;
+ // addedToCart = false;
   addedTowashlist= false;
   constructor(private _ApiProductsService :ApiProductsService ,
        private _sanitizer:DomSanitizer,
@@ -55,7 +55,6 @@ pageNumbers: number[]=[];
          this.cartTotalPrice+=prod.realPrice
          this._cartService.addToCart(prod);
          this.addToCartClicked.emit(prod);
-         prod.addedToCart = true;
          this._wishlist.removeProductFromWishlist(prod)
       }
   }
@@ -113,7 +112,7 @@ pageNumbers: number[]=[];
 getAllProducts() {
   this._ApiProductsService.getAllProducts(this.pageSize, this.pageNumber).subscribe({
       next: (data) => {
-          this.AllProducts = data;
+          this.AllProducts = data.entities;
 
 
 

@@ -1,98 +1,98 @@
 <!-- Order  when no item (heba)-->
-<div class="container-fluid" >
+<div class="container-fluid" [class.rtl]="isArabic" >
     <div class="row flex-nowrap ">
         <div class="col-auto  col-md-3 col-xl-2 px-sm-2 px-0 mx-4 shadow-sm p-3 mb-5 bg-body rounded" style="background-color: white;">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2  min-vh-100 ">
                 <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto  text-decoration-none">
-                    <i class="fa-regular fa-user" id="acc">   </i> <span for="acc"> <h1> &nbsp; My Jumia Account </h1></span>
+                    <i class="fa-regular fa-user" id="acc">   </i> <span for="acc"> <h1> &nbsp; {{'orderdetails.My Jumia Account' | translate}}</h1></span>
                 </a>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0 text-dark" >
-                            <i class="fa-solid fa-bag-shopping" id="order"></i> <span for="order" > &nbsp; Order</span>
+                            <i class="fa-solid fa-bag-shopping" id="order"></i> <span for="order" > &nbsp; {{'orderdetails.Order' | translate}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa-regular fa-message"></i><span for="order" > &nbsp; Inbox</span>
+                            <i class="fa-regular fa-message"></i><span for="order" > &nbsp; {{'orderdetails.Inbox' | translate}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa-regular fa-note-sticky"></i><span for="order" >&nbsp; Review</span>
+                            <i class="fa-regular fa-note-sticky"></i><span for="order" >&nbsp; {{'orderdetails.Review' | translate}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa-solid fa-ticket"></i><span for="order" >&nbsp; Voucher</span>
+                            <i class="fa-solid fa-ticket"></i><span for="order" >&nbsp; {{'orderdetails.Voucher' | translate}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa-regular fa-heart">  </i><span for="order" >&nbsp; Saved Item</span>
+                            <i class="fa-regular fa-heart">  </i><span for="order" >&nbsp; {{'orderdetails.Saved Item' | translate}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa-solid fa-shop"></i><span for="order" >&nbsp; Follower Seller</span>
+                            <i class="fa-solid fa-shop"></i><span for="order" >&nbsp;{{ 'orderdetails.Follower Seller' | translate}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa-regular fa-clock"></i><span for="order" >&nbsp; Recent View</span>
+                            <i class="fa-regular fa-clock"></i><span for="order" >&nbsp; {{'orderdetails.Recent View' | translate}}</span>
                         </a>
                     </li>
                    <hr>
                     <li>
                         <a href="#" class="nav-link px-0 align-middle text-dark">
-                         <span class="ms-1 d-none d-sm-inline"> Account Management</span> </a>
+                         <span class="ms-1 d-none d-sm-inline"> {{'orderdetails.Account Management' | translate}}</span> </a>
                     </li>
                     <li>
                         <a href="#" class="nav-link px-0 align-middle text-dark">
-                         <span class="ms-1 d-none d-sm-inline">Adress Book</span> </a>
+                         <span class="ms-1 d-none d-sm-inline">{{'orderdetails.Adress Book' | translate}}</span> </a>
                     </li>
                     <li>
                         <a href="#" class="nav-link px-0 align-middle text-dark">
-                         <span class="ms-1 d-none d-sm-inline">Newsletter Prefrences</span> </a>
+                         <span class="ms-1 d-none d-sm-inline">{{'orderdetails.Newsletter Prefrences'  | translate}}</span> </a>
                     </li>
                     <li>
                         <a href="#" class="nav-link px-0 align-middle text-dark">
-                         <span class="ms-1 d-none d-sm-inline">Close Account</span> </a>
+                         <span class="ms-1 d-none d-sm-inline">{{'orderdetails.Close Account' | translate}}</span> </a>
                     </li>
                 </ul>
                 <hr>
                 <br>
                 <div class="">
                  
-                <button class="btn btn-outline-warning">LOGOUT</button>
+                <button class="btn btn-outline-warning">{{'orderdetails.LOGOUT' | translate}}</button>
                 </div>
             </div>
         </div>
         <!-- body -->
         <div class="col py-3 shadow-sm p-3 mb-5 bg-body rounded " *ngIf="OrdersNumbers === 0" style="background-color: white;">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item fs-3">Orders</li>
+                <li class="list-group-item fs-3">{{'orderdetails.Orders' | translate}}</li>
                 <li class="list-group-item">
                     <ul  style="color: orange;" >
-                        <li class="d-inline"><a>ONGOING/DELIVERD (0)</a></li>
-                        <li class="d-inline"><a>CNACELD/RETURNED (0)</a></li>
+                        <li class="d-inline"><a>{{'orderdetails.ONGOING/DELIVERD (0)' | translate}}</a></li>
+                        <li class="d-inline"><a>{{'orderdetails.CNACELD/RETURNED (0)' | translate}}</a></li>
                     </ul>
                 </li>
                 <li class="list-group-item  mt-5" style="text-align: center;"><img src="https://www.jumia.com.eg/assets_he/images/orders.669c73dc.svg" class="mb-2" style="display: block;margin: 0 auto;">
-                <p class="fw-bold mb-2" >You have place no order yet!</p>
-            <p class="mb-2">All your orders will be saved here </p>
-        <button  class="btn  text-light" routerLink="/Home"  style="background-color: orange;">Go shopping</button></li>
+                <p class="fw-bold mb-2" >{{'orderdetails.You have place no order yet!' | translate}}</p>
+            <p class="mb-2">{{'orderdetails.All your orders will be saved here' | translate}} </p>
+        <button  class="btn  text-light" routerLink="/Home"  style="background-color: orange;">{{'orderdetails.Go shopping' | translate}}</button></li>
               </ul>
         </div>
         <!-- if there is order item -->
         <div class="col py-3 shadow-sm p-3 mb-5 bg-body rounded" *ngIf="OrdersNumbers > 0" style="background-color: white;">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item fs-3">Orders</li>
+                <li class="list-group-item fs-3">{{'orderdetails.Orders' | translate}}</li>
                 <li class="list-group-item mb-3">
                     <ul  style="color: orange;" >
-                        <li class="d-inline"><a>ONGOING/DELIVERD ({{openOrders}})  </a></li>
-                        <li class="d-inline"><a> CNACELD/RETURNED ({{closedOrders}})</a></li>
+                        <li class="d-inline"><a>{{'orderdetails.ONGOING/DELIVERD ' | translate}}({{openOrders}})  </a></li>
+                        <li class="d-inline"><a> {{'orderdetails.CNACELD/RETURNED' | translate}} ({{closedOrders}})</a></li>
                     </ul>
                 </li>
                 @for(ord of Orders;track ord.id;){
@@ -102,13 +102,13 @@
                         <img src="https://www.jumia.com.eg/assets_he/images/orders.669c73dc.svg">
                       </div>
                       <div class="col-6 text-"><p class="mb-1"> </p>
-                        <h6 class="text-dark mb-1">Created Date {{ord.orderDate}}</h6>
-                      <h6 class="text-secondary mb-1">Order {{ord.id}}</h6>
+                        <h6 class="text-dark mb-1">{{'orderdetails.Created Date' | translate}} {{ord.orderDate}}</h6>
+                      <h6 class="text-secondary mb-1">{{'orderdetails.Order' | translate}} {{ord.id}}</h6>
                       <p [ngStyle]="{'color': getStatusColor(ord.status.toLocaleString())}">{{ ord.status }}</p>
-                      <p class="">Quantity {{ord.totalAmount}}</p>
-                      <h1 class="h6 text-success">Total Price :  EGP {{ord.totalOrderPrice}}</h1></div>
+                      <p class="">{{'orderdetails.Quantity' | translate}} {{ord.totalAmount}}</p>
+                      <h1 class="h6 text-success">{{'orderdetails.Total Price :  EGP' | translate}} {{ord.totalOrderPrice}}</h1></div>
                       
-                      <div class="col-3"><a class=" text-decoration-none"  [routerLink]="['/OrderItems', ord.id]"  style="color: orange;" href="">SEE DETALIS</a></div>
+                      <div class="col-3"><a class=" text-decoration-none"  [routerLink]="['/OrderItems', ord.id]"  style="color: orange;" href="">{{'orderdetails.SEE DETALIS' | translate}}</a></div>
                       </div>
                 </li>
             }

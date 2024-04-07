@@ -2,7 +2,7 @@ import { DecimalPipe } from "@angular/common";
 
 export interface IShippment {
     id:number;
-    FirstNameEn :string;
+    firstNameEn :string;
     lastName:string;
     phoneNumber :string
     address:string;

@@ -8,6 +8,7 @@ import { FilterComponent } from './Component/filter/filter.component';
 import { OrdersComponent } from './Component/orders/orders.component';
 import { MyAccountComponent } from './Component/my-account/my-account.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -17,23 +18,28 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
      ProductComponent ,
       HomeComponent , FilterComponent ,
        OrdersComponent ,
-        MyAccountComponent,HttpClientModule],
+        MyAccountComponent,HttpClientModule, TranslateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
  
 })
 export class AppComponent {
-  products:any=[]
-  constructor(){
+
+  lang:any
+  
+  constructor(private translate:TranslateService){
+   this.lang =  localStorage.getItem('lang')
+    translate.use(this.lang);
 
   }
-  // fetchProducts(){
-  //   this.httpClient.get('http://localhost:64866/api/Category/4').subscribe((data:any)=>{
-  //     this.products=data;
-  //   console.log(data);
-  //   }) 
+
+
+  
+  // changeLangeue(lang: string) {
+  //   this.translate.use(lang); 
   // }
+
+
  
-  title = 'jumia';
-  //httpClient=inject(HttpClient)
+ 
 }

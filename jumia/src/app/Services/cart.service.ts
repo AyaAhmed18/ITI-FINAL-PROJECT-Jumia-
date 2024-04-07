@@ -10,13 +10,13 @@ export class CartService {
   private cartSubject = new BehaviorSubject<ProductDto[]>([]);
    cartNumber: number = 0;
    totalCartPrice: number = 0;
+  
   constructor() { this.initializeCartFromSession(); }
 
   initializeCartFromSession() {
     const cartItemsFromSession = sessionStorage.getItem('cartItems');
     if (cartItemsFromSession) {
       this.cartItems = JSON.parse(cartItemsFromSession);
-     // this.calculateTotalCartInfo();
      this.calculateTotalCartPrice();
      this.calculateTotalCartNumber();
       this.cartSubject.next([...this.cartItems]);
@@ -34,18 +34,30 @@ export class CartService {
   }
 
   addToCart(product: ProductDto) {
-    this.cartItems.push(product);
-   // this.calculateTotalCartInfo();
-    this.calculateTotalCartPrice();
-    this.calculateTotalCartNumber();
-    this.cartSubject.next([...this.cartItems]);
-    this.updateSessionStorage();
+    console.log(product.id);
+    console.log(this.cartItems);
+    const existingProduct = this.cartItems.find(item => item.id === product.id);
+    if (!existingProduct) {
+      product.addedToCart = true;
+      this.cartItems.push(product);
+      this.calculateTotalCartPrice();
+      this.calculateTotalCartNumber();
+      this.cartSubject.next([...this.cartItems]);
+      this.updateSessionStorage();
+     
+    }
+    else{
+      product.addedToCart = true;
+    }
+   
   }
   removeProduct(productToRemove: ProductDto) {
     const index = this.cartItems.indexOf(productToRemove);
     if (index !== -1) {
       this.cartItems.splice(index, 1);
+      productToRemove.stockQuantity+=productToRemove.cartQuantity
       this.calculateTotalCartInfo();
+      productToRemove.addedToCart=false
       this.cartSubject.next([...this.cartItems]);
       this.updateSessionStorage();
     }
@@ -63,4 +75,5 @@ export class CartService {
   calculateTotalCartInfo() {
      this.cartNumber = this.cartItems.reduce((total, item) => total + item.cartQuantity, 0);
  }
+
 }
