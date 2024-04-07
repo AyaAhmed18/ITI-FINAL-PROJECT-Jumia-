@@ -4,11 +4,12 @@ import { ProductDto } from '../../ViewModels/product-dto';
 import { CartService } from '../../Services/cart.service';
 import { CommonModule } from '@angular/common';
 import { WishlistService } from '../../Services/wishlist.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,CommonModule],
+  imports: [RouterLink,RouterOutlet,CommonModule,TranslateModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
@@ -20,10 +21,12 @@ export class CartComponent implements OnInit{
   showAlert1: boolean = false;
   showAlert2: boolean = false;
   PriceAfterDiscount:number=0
-  constructor(private _cartService: CartService, private router: Router,private _wishlist : WishlistService) { }
+  isArabic: boolean = false;
+  constructor(private _cartService: CartService, private router: Router,private _wishlist : WishlistService ,private  translate: TranslateService) { }
   priceAftrDiscount(pro:ProductDto){
    this.PriceAfterDiscount = pro.realPrice-(pro.realPrice*pro.discount/100)
   }
+
   
   ngOnInit(): void {
     this._wishlist.getWishlist().subscribe(Items=>{
@@ -37,7 +40,21 @@ export class CartComponent implements OnInit{
       this.cartNumber=this._cartService.calculateTotalCartNumber();
     });
     //
+    this.translate.onLangChange.subscribe((Event)=>{
+      this.isArabic = Event.lang === 'ar'
+    })
    
+  }
+  changeLanguage(lang: string) {
+    if (lang == 'en') {
+      localStorage.setItem('lang', 'en')
+    }
+    else {
+      localStorage.setItem('lang', 'ar')
+    }
+
+    window.location.reload();
+
   }
   startShopping(){
     this.router.navigate(['/Home']);

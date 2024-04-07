@@ -3,11 +3,12 @@ import { IOrder } from '../../Models/i-order';
 import { APIOrderServiceService } from '../../Services/apiorder-service.service';
 import { CommonModule } from '@angular/common';
 import {  RouterLink, RouterOutlet } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-details',
   standalone: true,
-  imports: [CommonModule,RouterLink,RouterOutlet],
+  imports: [CommonModule,RouterLink,RouterOutlet ,TranslateModule],
   templateUrl: './order-details.component.html',
   styleUrl: './order-details.component.css'
 })
@@ -17,7 +18,8 @@ export class OrderDetailsComponent implements OnInit{
   closedOrders:number=0
   openOrders:number=0
   clientId=Number(localStorage.getItem('userId'))
-  constructor(private _OrderService:APIOrderServiceService){}
+  isArabic: boolean = false;
+  constructor(private _OrderService:APIOrderServiceService ,private  translate: TranslateService ){}
  ngOnInit(): void {
   this._OrderService.GetUserOrders(this.clientId).subscribe(Orders => {
     if(Orders.length==0){
@@ -39,7 +41,21 @@ export class OrderDetailsComponent implements OnInit{
     }
     
   });
+  this.translate.onLangChange.subscribe((Event)=>{
+    this.isArabic = Event.lang === 'ar'
+  })
  }
+ changeLanguage(lang: string) {
+  if (lang == 'en') {
+    localStorage.setItem('lang', 'en')
+  }
+  else {
+    localStorage.setItem('lang', 'ar')
+  }
+
+  window.location.reload();
+
+}
  getStatusColor(status: string): string {
   switch (status) {
     case 'Pending':

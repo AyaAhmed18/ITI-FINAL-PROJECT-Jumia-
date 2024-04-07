@@ -92,7 +92,9 @@ pageNumbers: number[]=[];
         this._wishlist.addProductToWishlist(product);
     }
     product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
-}
+
+
+  }
 
 
   isInWishlist(product: ProductDto): boolean {

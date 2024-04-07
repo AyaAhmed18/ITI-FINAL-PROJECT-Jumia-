@@ -9,11 +9,12 @@ import { IOrder } from '../../Models/i-order';
 import { APIOrderServiceService } from '../../Services/apiorder-service.service';
 import { ApiShippmentService } from '../../Services/api-shippment.service';
 import { IShippment } from '../../Models/ishippment';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [FormsModule,CommonModule,RouterLink],
+  imports: [FormsModule,CommonModule,RouterLink ,TranslateModule],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.css'
 })
@@ -29,11 +30,12 @@ export class PaymentComponent implements OnInit {
   userId:number=0
   shippment:IShippment={} as IShippment
   totalamount:number = 50
+  isArabic: boolean = false;
 
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
   constructor(private _cartService:CartService,private router:Router
-    ,private _orderService:APIOrderServiceService,private _ShippmentService:ApiShippmentService ){
+    ,private _orderService:APIOrderServiceService,private _ShippmentService:ApiShippmentService,private  translate: TranslateService ){
     
   }
   ngOnInit(): void {
@@ -47,8 +49,23 @@ export class PaymentComponent implements OnInit {
       this.shippment=shipping
       console.log(shipping.firstNameEn)
      });
+     this.translate.onLangChange.subscribe((Event)=>{
+      this.isArabic = Event.lang === 'ar'
+    })
   }
   
+  changeLanguage(lang: string) {
+    if (lang == 'en') {
+      localStorage.setItem('lang', 'en')
+    }
+    else {
+      localStorage.setItem('lang', 'ar')
+    }
+
+    window.location.reload();
+
+  }
+  //
   ConfirmPayment(){
    // this.payment=true
     console.log('Selected Payment Method:', this.selectedPayment);

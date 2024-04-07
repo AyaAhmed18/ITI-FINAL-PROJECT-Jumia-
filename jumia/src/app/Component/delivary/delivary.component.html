@@ -1,44 +1,44 @@
-<div class="container">
+<div class="container" [class.rtl]="isArabic">
   <div class="col-3 float-end ">
     <div class="card mb-3 my-4" style="width: 18rem;">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Order summary</li>
+        <li class="list-group-item">{{'delivery.Order summary' | translate}}</li>
         <li class="list-group-item">
           <ul class="d-flex">
-            <li class="me-5">Item's total {{cartNumber}}</li>
-            <li class="">EGP {{TotalCartPrice}} </li>
+            <li class="me-5">{{'delivery.Item's total' | translate}} {{cartNumber}}</li>
+            <li class="">{{'delivery.EGP' | translate}} {{TotalCartPrice}} </li>
           </ul>
           <ul class="d-flex">
-            <li class="me-5">Delivery fees</li>
-            <li>EGP 300.00 </li>
+            <li class="me-5">{{'delivery.Delivery fees' | translate}}</li>
+            <li>{{'delivery.EGP' | translate}} 300.00 </li>
           </ul>
           <ul class="d-flex">
-            <li class="me-5">Prepaid discount</li>
-            <li class="text-success">-EGP 10 </li>
+            <li class="me-5">{{'delivery.Prepaid discount' | translate}}</li>
+            <li class="text-success">-{{'delivery.EGP' | translate}} 10 </li>
           </ul>
         </li>
         <li class="list-group-item">
             <ul class="d-flex">
-              <li class="me-5">Total</li>
-              <li>EGP {{TotalCartPrice +300 -10}}</li>
+              <li class="me-5">{{'delivery.Total' | translate}}</li>
+              <li>{{'delivery.EGP' | translate}} {{TotalCartPrice +300 -10}}</li>
             </ul>
            
           </li>
 
         <ul>
-        <li ><p>You will be able to add a voucher when selecting your payment method.</p> </li>
+        <li ><p>{{'delivery.You will be able to add a voucher when selecting your payment method.' | translate}}</p> </li>
         <li> <img src="../../../assets/cart.jpg" style="width: 40%;" title="img"></li>
         </ul>
       </ul>
       <div class="card-footer bg-light">
-        <button class="btn btn-warning text-light" style="width: 90%;" disabled routerLink="/shippment">Confirm Order </button>
+        <button class="btn btn-warning text-light" style="width: 90%;" disabled routerLink="/shippment">{{'delivery.Confirm Order ' | translate}}</button>
       </div>
     </div>
   </div>
     <div class="row  ">
         <div class=" my-2  col-md-8 row section1">
-           <div class="col-md-6"> <h6 class=" my-2"><i class="fa-solid fa-circle-check text-success"></i>  1.CUSTOMER ADDRESS</h6></div>
-           <div class="col-md-6 text-end"><a href="" class="text-decoration-none" [routerLink]="['/shippment']" >Change <i class="fa-solid fa-arrow-right"></i> </a></div>
+           <div class="col-md-6"> <h6 class=" my-2"><i class="fa-solid fa-circle-check text-success"></i> {{' delivery.1.CUSTOMER ADDRESS' | translate}}</h6></div>
+           <div class="col-md-6 text-end"><a href="" class="text-decoration-none" [routerLink]="['/shippment']" >{{'delivery.Change' | translate}} <i class="fa-solid fa-arrow-right"></i> </a></div>
            <div class="border-top ">
                <p class="my-0  pt-4">{{shippment.firstNameEn}}  {{shippment.lastName}}</p>
                <p class="mt-0 tb-5 text-secondary">{{shippment.region}}, {{shippment.city}} | {{shippment.address}} - {{shippment.adressInformation}} | +2 {{shippment.phoneNumber}}</p>
@@ -46,11 +46,11 @@
        </div> 
       
        <div class=" my-2  col-8 row section1">
-           <h6 class=" my-2 border-bottom "><i class="fa-solid fa-circle-check text-secondary "></i> 2.Delivary Details</h6>
+           <h6 class=" my-2 border-bottom "><i class="fa-solid fa-circle-check text-secondary "></i> {{'delivery.2.Delivary Details' | translate}}</h6>
            <div class="form-check col-md-6 ">
                <input class="form-check-input  btn-outline-warning bg-warning border border-warning rounded-circle"height="8px" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
                <label class="form-check-label " for="flexRadioDefault2">
-                 Door Delivery (From EGP 35.00)
+                {{'delivery.Door Delivery' | translate}} (From EGP 35.00)
                  <p>Delivery between 27 March and 28 March</p>
                </label>
              </div>
@@ -61,12 +61,12 @@
                <p class="smallText">Shipment 1/{{cartNumber}}</p>
              </div>
              <div class="col-md-6 text-end smallText">
-               Fulfilled by Al huda Store
+              .Fulfilled by Al huda Store
              </div>
              <div class="container">
               @for(pro of cartItems;track pro.id;){
                <div class=" pt-1 py-0 row section1 col-6" hieght="200px">
-                   <h6 class="smallText">Door Delivery</h6>
+                   <h6 class="smallText">{{'delivery.Door Delivery' | translate}}</h6>
                    <p class=" smallText ">Delivery between 27 March and 28 March</p>
                   
                    <div class="col-md-2 ">
@@ -80,12 +80,12 @@
                </div>}
            </div>
            <div class="col-12 d-flex justify-content-end mb-4 ">
-               <button type="submit" class="btn btn-warning text-white mt-4 shadow rounded save" (click)="ConfirmDelivary()" >Confirm Delivery Order</button>
+               <button type="submit" class="btn btn-warning text-white mt-4 shadow rounded save" (click)="ConfirmDelivary()" >{{'delivery.Confirm Delivery Order' | translate}}</button>
              </div>
             
        </div>  
        <div class=" my-2 checkedSigh col-8 section1">
-           <h6 class=" my-2 "><i class="fa-solid fa-circle-check"></i> 3.Payment Method</h6>
+           <h6 class=" my-2 "><i class="fa-solid fa-circle-check"></i> {{'delivery.3.Payment Method'| translate}}</h6>
        </div> 
     </div>
    </div>

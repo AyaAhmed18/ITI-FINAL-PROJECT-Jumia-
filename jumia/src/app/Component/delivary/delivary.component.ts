@@ -4,11 +4,12 @@ import { ProductDto } from '../../ViewModels/product-dto';
 import { CartService } from '../../Services/cart.service';
 import { ApiShippmentService } from '../../Services/api-shippment.service';
 import { IShippment } from '../../Models/ishippment';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-delivary',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink ,TranslateModule],
   templateUrl: './delivary.component.html',
   styleUrl: './delivary.component.css'
 })
@@ -19,8 +20,9 @@ export class DelivaryComponent implements OnInit {
   clientId=localStorage.getItem('userId')
   userId:number=0
   shippment:IShippment={} as IShippment
+  isArabic: boolean = false;
 constructor(private router:Router, private _cartService:CartService,
-  private  _ShippmentService:ApiShippmentService ){
+  private  _ShippmentService:ApiShippmentService ,private  translate: TranslateService){
 
 }
   ngOnInit(): void {
@@ -34,9 +36,25 @@ constructor(private router:Router, private _cartService:CartService,
       this.shippment=shipping
       console.log(shipping.firstNameEn)
      });
+    
+      this.translate.onLangChange.subscribe((Event)=>{
+        this.isArabic = Event.lang === 'ar'
+      })
+    
      
   }
 
+  changeLanguage(lang: string) {
+    if (lang == 'en') {
+      localStorage.setItem('lang', 'en')
+    }
+    else {
+      localStorage.setItem('lang', 'ar')
+    }
+
+    window.location.reload();
+
+  }
   ConfirmDelivary(){
     this.router.navigate(['/Payment']);
   }

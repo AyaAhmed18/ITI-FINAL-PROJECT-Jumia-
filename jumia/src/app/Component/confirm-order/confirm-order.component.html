@@ -1,32 +1,32 @@
-<div class="container">
+<div class="container" [class.rtl]="isArabic">
     <div class="col-3 float-end ">
       <div class="card mb-3 my-4 " style="width: 18rem;">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Order summary</li>
+          <li class="list-group-item">{{'confirmorder.Order summary' | translate}}</li>
           <li class="list-group-item">
             <ul class="d-flex">
-              <li class="me-5">Item's total </li>
-              <li class="">EGP  </li>
+              <li class="me-5">{{'confirmorder.Item's total' | translate}} </li>
+              <li class="">{{'confirmorder.EGP' | translate}}  </li>
             </ul>
             <ul class="d-flex">
-              <li class="me-5">Delivery fees</li>
-              <li>EGP 300.00 </li>
+              <li class="me-5">{{'confirmorder.Delivery fees' | translate}}</li>
+              <li>{{'confirmorder.EGP' | translate}} 300.00 </li>
             </ul>
             <ul class="d-flex">
-              <li class="me-5">Prepaid discount</li>
-              <li class="text-success">-EGP 10 </li>
+              <li class="me-5">{{'confirmorder.Prepaid discount' | translate}}</li>
+              <li class="text-success">-{{'confirmorder.EGP'| translate}} 10 </li>
             </ul>
           </li>
           <li class="list-group-item">
               <ul class="d-flex">
-                <li class="me-5">Total</li>
-                <li>EGP 100</li>
+                <li class="me-5">{{'confirmorder.Total' | translate}}</li>
+                <li>{{'confirmorder.EGP' | translate}} 100</li>
               </ul>
              
             </li>
   
           <ul>
-          <li ><p>You will be able to add a voucher when selecting your payment method.</p> </li>
+          <li ><p>{{'confirmorder.You will be able to add a voucher when selecting your payment method.' | translate}}</p> </li>
           <li> <img src="../../../assets/cart.jpg" style="width: 40%;" title="img"></li>
           </ul>
         </ul>

@@ -1,32 +1,32 @@
-<div class="container">
+<div class="container" [class.rtl]="isArabic">
     <div class="row  ">
         <div>
             <div class="col-9 AddressForm">
-                <h6 class=" my-2"><i class="fa-solid fa-circle-check"></i> 1.CUSTOMER ADDRESS</h6>
-                <h6 class="border-top ">EDIT ADDRESS</h6>
+                <h6 class=" my-2"><i class="fa-solid fa-circle-check"></i> {{'order.1.CUSTOMER ADDRESS' | translate}}</h6>
+                <h6 class="border-top ">{{'order.EDIT ADDRESS' | translate}}</h6>
                 <form class="row g-4" #loginForm="ngForm" >
 
                     <div class="col-md-6">
                         <fieldset class="border px-3 form-control">
-                            <legend class="float-none w-auto px-3">First Name</legend>
+                            <legend class="float-none w-auto px-3">{{'order.First Name' | translate}}</legend>
                             <input type="text"  id="firstName" value="" placeholder="Enter your first name"  name="firstName" >
                         </fieldset>
                      
                     </div>
                     <div class="col-md-6">
                         <fieldset class="border px-3 form-control">
-                            <legend class="float-none w-auto px-3">Last Name</legend>
+                            <legend class="float-none w-auto px-3">{{'order.Last Name' | translate}}</legend>
                             <input type="text" id="lastName" value="" placeholder="Enter your last name" required>
                         </fieldset>
                     </div>
                     <div class="col-md-6">
                         <div class="input-group">
                             <div class="input-group-prepend px-3 ">
-                                <label for="" class="" style="font-size: 2vmin;">Prefix</label>
-                                <span class="input-group-text" style="font-size: 2vmin;">+20</span>
+                                <label for="" class="" style="font-size: 2vmin;">{{'order.Prefix' | translate}}</label>
+                                <span class="input-group-text" style="font-size: 2vmin;">{{'oreder.+20' | translate}}</span>
                             </div>
                             <fieldset class="border px-3  form-control">
-                                <legend class="float-none w-100 px-3">Phone Number</legend>
+                                <legend class="float-none w-100 px-3">{{'order.Phone Number' | translate}}</legend>
                                 <input type="tel" id="phoneNumber" value="" placeholder="Enter your Phone Number"
                                     required>
 
@@ -40,7 +40,7 @@
                                     <span class="input-group-text" style="font-size: 2vmin;">+20</span>
                                 </div>
                                 <fieldset class="border px-3 form-control">
-                                    <legend class="float-none w-100 px-3">Additional Phone Number</legend>
+                                    <legend class="float-none w-100 px-3">{{'order.Additional Phone Number' | translate}}</legend>
                                     <input type="tel" id="AddphoneNumber" value=""
                                         placeholder="Enter Additional Phone Number" required>
                                 </fieldset>
@@ -48,59 +48,59 @@
                             </div>
                             <div class="col-12">
                                 <fieldset class="border px-3 form-control">
-                                    <legend class="float-none w-auto px-3 ">Address</legend>
+                                    <legend class="float-none w-auto px-3 ">{{'order.Address' |translate}}</legend>
                                     <input type="tel" id="address" placeholder="Enter your Address">
                                 </fieldset>
 
                             </div>
                             <div class="col-12">
                                 <fieldset class="border px-3 form-control">
-                                    <legend class="float-none w-auto px-3">Additional Information</legend>
+                                    <legend class="float-none w-auto px-3">{{'order.Additional Information' | translate}}</legend>
                                     <input type="tel" id="additionalInformation"
                                         placeholder="Enter Additional Information">
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset class="border px-3 form-control">
-                                    <legend class="float-none w-auto px-3 " for="validationServer04">Region</legend>
+                                    <legend class="float-none w-auto px-3 " for="validationServer04">{{'order.Region' | translate}}</legend>
                                     <select class="form-select " id="validationServer04"
                                         aria-describedby="validationServer04Feedback" required>
-                                        <option selected disabled value="">Choose</option>
-                                        <option>Sohag</option>
-                                        <option>Cairo</option>
+                                        <option selected disabled value="">{{'order.Choose' | translate}}</option>
+                                        <option>{{'order.Sohag' | translate}}</option>
+                                        <option>{{'order.Cairo' | translate}}</option>
                                     </select>
                                     <div id="validationServer04Feedback" class="invalid-feedback">
-                                        Please select Your Region.
+                                      {{'  order.Please select Your Region.' | translate}}
                                     </div>
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset class="border px-3 form-control">
-                                    <legend class="float-none w-auto px-3" for="validationServer04">City</legend>
+                                    <legend class="float-none w-auto px-3" for="validationServer04">{{'order.City' | translate}}</legend>
                                     <select class="form-select " id="validationServer04"
                                         aria-describedby="validationServer04Feedback" required>
-                                        <option selected disabled value="">Choose</option>
-                                        <option>Sohag</option>
-                                        <option>Cairo</option>
+                                        <option selected disabled value="">{{'order.Choose' | translate}}</option>
+                                        <option>{{'order.Sohag' | translate}}</option>
+                                        <option>{{'order.Cairo' | translate}}</option>
                                     </select>
                                     <div id="validationServer04Feedback" class="invalid-feedback">
-                                        Please select Your City.
+                                       {{' order.Please select Your City.' | translate}}
                                     </div>
                                 </fieldset>
                             </div>
                             <div class="col-12 d-flex justify-content-end  my-4">
-                                <button type="button" class="btn  me-2 mt-4 text-warning">CANCEL</button>
-                                <button type="submit" routerLink="/Delivary" class="btn btn-warning text-white mt-4" save>SAVE</button>
+                                <button type="button" class="btn  me-2 mt-4 text-warning">{{'order.CANCEL' | translate}}</button>
+                                <button type="submit" routerLink="/Delivary" class="btn btn-warning text-white mt-4" save>{{'order.SAVE' | translate}}</button>
                             </div>
                 </form>
             </div>
             <div class=" my-2 checkedSigh col-9">
-                <h6 class=" my-2 "><i class="fa-solid fa-circle-check"></i> 2.Delivary Details</h6>
+                <h6 class=" my-2 "><i class="fa-solid fa-circle-check"></i> {{'order.2.Delivary Details' | translate}}</h6>
             </div>
             <div class=" my-2 checkedSigh col-9">
-                <h6 class=" my-2 "><i class="fa-solid fa-circle-check"></i> 3.Payment Method</h6>
+                <h6 class=" my-2 "><i class="fa-solid fa-circle-check"></i> {{'order.3.Payment Method' | translate}}</h6>
             </div>
-            <a href="" class="text-decoration-none back">Go back & continue shopping</a>
+            <a href="" class="text-decoration-none back">{{'order.Go back & continue shopping' | translate}}</a>
         </div>
 
     </div>
@@ -115,4 +115,248 @@
       </div>
 </div>  -->
 
+</div>
+<!-- Order  when no item (heba)-->
+ <div class="container-fluid" [class.rtl]="isArabic">
+    <div class="row flex-nowrap ">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 mx-4 shadow-sm p-3 mb-5 bg-body rounded" style="background-color: white;">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2  min-vh-100 ">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto  text-decoration-none">
+                    <i class="fa-regular fa-user" id="acc">   </i> <span for="acc"> <h1> &nbsp;{{'order.My Jumia Account' | translate}} </h1></span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark" >
+                            <i class="fa-solid fa-bag-shopping" id="order"></i> <span for="order" > &nbsp; {{'order.Order' | translate}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa-regular fa-message"></i><span for="order" > &nbsp; {{'order.Inbox' | translate}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa-regular fa-note-sticky"></i><span for="order" >&nbsp; {{'order.Review' | translate}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa-solid fa-ticket"></i><span for="order" >&nbsp; {{'order.Voucher' | translate}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa-regular fa-heart">  </i><span for="order" >&nbsp; {{'order.Saved Item' | translate}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa-solid fa-shop"></i><span for="order" >&nbsp; {{'order.Follower Seller' | translate}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa-regular fa-clock"></i><span for="order" >&nbsp; {{'order.Recent View' | translate}}</span>
+                        </a>
+                    </li>
+                   <hr>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                         <span class="ms-1 d-none d-sm-inline"> {{'order.Account Management' | translate}}</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                         <span class="ms-1 d-none d-sm-inline">{{'order.Adress Book' | translate}}</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                         <span class="ms-1 d-none d-sm-inline">{{'order.Newsletter Prefrences' | translate}}</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                         <span class="ms-1 d-none d-sm-inline">{{'order.Close Account' | translate}}</span> </a>
+                    </li>
+                </ul>
+                <hr>
+                <br>
+                <div class="">
+                 
+                <button class="btn btn-outline-warning">{{'order.LOGOUT' | translate}}</button>
+                </div>
+            </div>
+        </div>
+        <!-- body -->
+        <div class="col py-3 shadow-sm p-3 mb-5 bg-body rounded" style="background-color: white;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item fs-3">{{'order.Orders' | translate}}</li>
+                <li class="list-group-item">
+                    <ul  style="color: orange;" >
+                        <li class="d-inline"><a>{{'order.ONGOING/DELIVERD (0)'| translate }}</a></li>
+                        <li class="d-inline"><a>{{'order.CNACELD/RETURNED (0)' | translate}}</a></li>
+                    </ul>
+                </li>
+                <li class="list-group-item  mt-5" style="text-align: center;"><img src="https://www.jumia.com.eg/assets_he/images/orders.669c73dc.svg" class="mb-2" style="display: block;margin: 0 auto;">
+                <p class="fw-bold mb-2" >{{'order.You have place no order yet!' | translate}}</p>
+            <p class="mb-2">{{'order.All your orders will be saved here' | translate}} </p>
+        <button  class="btn  text-light"  style="background-color: orange;">{{'order.Go shopping' | translate}}</button></li>
+              </ul>
+        </div>
+        <!-- if there is order item -->
+        <div class="col py-3 shadow-sm p-3 mb-5 bg-body rounded" style="background-color: white;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item fs-3">{{'order.Orders' | translate}}</li>
+                <li class="list-group-item mb-3">
+                    <ul  style="color: orange;" >
+                        <li class="d-inline"><a>{{'order.OPEN ORDES (0)' | translate}}</a></li>
+                        <li class="d-inline"><a>{{'order.CLOSE ORDERS (0)' | translate}}</a></li>
+                    </ul>
+                </li>
+                <li class="mt-2" >
+                  <div class="card-body  row ">
+                      <div class="col-3">
+                        <img src="https://eg.jumia.is/unsafe/fit-in/150x150/filters:fill(white)/product/04/545973/1.jpg?8016">
+                      </div>
+                      <div class="col-6 text-"><p class="mb-1"> NIVEA MEN MEN Face, Body & Hands Cream Moisturising, Tin 75ml</p>
+                      <h6 class="text-secondary mb-1">order id</h6>
+                      <p class="text-primary">out for delivered</p>
+                      <h1 class="h6 ">delvired by +data</h1></div>
+                      <div class="col-3"><a class=" text-decoration-none" style="color: orange;" href="">{{'order.SEE DETALIS' | translate}}</a></div>
+                      </div>
+                </li>
+                <li>
+                  <div class="card-body  row mt-2">
+                      <div class="col-3">
+                        <img src="https://eg.jumia.is/unsafe/fit-in/150x150/filters:fill(white)/product/04/545973/1.jpg?8016">
+                      </div>
+                      <div class="col-6"><p class="mb-1"> NIVEA MEN MEN Face, Body & Hands Cream Moisturising, Tin 75ml</p>
+                      <h6 class="text-secondary mb-1">order id</h6>
+                      <p class="text-success "> delivered</p>
+                      <h1 class="h6">on+date</h1></div>
+                      <div class="col-3"><a class=" text-decoration-none" style="color: orange;" href="">{{'order.SEE DETALIS' | translate}}</a></div>
+                      </div>
+                </li>
+            </ul>
+                    </div>
+        <!-- end -->
+    </div>
+</div>
+<!-- slider -->
+<div  class="container-fluid mt-5 shadow-sm p-3 mb-5 bg-body rounded " style="background-color: white;">
+    <div class="row mb-3  ">
+<div class="col"><h1 >{{'order.Top Selling Item' | translate}}</h1></div>
+
+<div class="col text-warning" style="text-align: right;">    <a href=""><h4>{{'order.See All >' | translate}} </h4></a>    </div>       </div>
+
+
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-inner">
+  <div class="carousel-item active">
+    <div class="row">
+      <div class="col-3">
+        <div class=" card-hover card d-block w-100">
+            <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/45/125043/1.jpg?7670" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build  of the card's content.</p>
+              <br>
+              <h6>EGP 1,5060</h6>
+            </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card-hover   card d-block w-100" >
+            <div style="position: absolute;right: 5px; background-color: bisque;">-26%</div>
+        <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/60/574093/1.jpg?4640" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">Eva Care Skin Care Senses Body Splash</p>
+          <h6>EGP 152.00</h6>
+          <p style="text-decoration: line-through;">EGP 205.00</p>
+        </div>
+      </div>     
+          </div>
+    <div class="col-3">
+        <div class="card-hover card d-block w-100" >
+            <div style="position: absolute;right: 5px; background-color: bisque;">-37%</div>
+            <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/44/532722/1.jpg?6899" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Axe Body Spray for Men Black Night 150ML</p>
+              <h6>EGP 79.00</h6>
+              <p style="text-decoration: line-through;">EGP 126.00</p>
+            </div>
+        </div>   
+                 </div>
+        <div class="col-3">
+            <div class="card-hover card d-block w-100">
+                <div style="position: absolute;right: 5px; background-color: bisque;">-20%</div>
+                <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/51/007016/1.jpg?7116" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-text">LC Waikiki Crew Neck Printed Boy Pajama.</p>
+                  <h6>EGP 359.00</h6>
+                  <p style="text-decoration: line-through;">EGP 449.00</p>
+                </div>
+            </div> 
+              </div>
+    </div>
+  </div>
+  <div class="carousel-item">
+    <div class="row">
+      <div class="col-3">
+        <div class=" card-hover card d-block w-100" >
+            <div style="position: absolute;right: 5px; background-color: bisque;">-30%</div>
+            <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/50/988394/1.jpg?1139" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Defacto Woman Oversize Fit Shirt Neck Woven </p>
+              <h6>EGP 489.00</h6>
+              <p style="text-decoration:line-through;">EGP 699.00</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card d-block w-100" >
+            <div style="position: absolute;right: 5px; background-color: bisque;">-49%</div>
+            <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/88/254344/1.jpg?8886" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Caesar Wool Mens Pullover With Multi Design</p>
+              <h6>EGP 228.00</h6>
+              <p style="text-decoration:line-through;">EGP 450.00</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card d-block w-100">
+            <div style="position: absolute;right: 5px; background-color: bisque;">-49%</div>
+            <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/48/100685/1.jpg?8888" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Caesar Wool Mens Pullover With Multi Design</p>
+              <h6>EGP 228.00</h6>
+              <p style="text-decoration:line-through;">EGP 450.00</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card d-block w-100">
+            <div style="position: absolute;right: 5px; background-color: bisque;">-49%</div>
+            <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/51/095712/1.jpg?8181" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Caesar Wool Mens Pullover With Multi Design</p>
+              <h6>EGP 228.00</h6>
+              <p style="text-decoration:line-through;">EGP 450.00</p>
+            </div>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+  <!-- Add more carousel items as needed -->
+  <button class="carousel-control-prev col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">{{'order.Previous' | translate}}</span>
+  </button>
+  <button class="carousel-control-next col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">{{'order.Next' | translate}}</span>
+  </button>
+</div>
+</div>
 </div>

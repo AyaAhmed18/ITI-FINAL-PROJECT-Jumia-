@@ -3,24 +3,26 @@ import { APIOrderServiceService } from '../../Services/apiorder-service.service'
 import { IOrderItems } from '../../Models/iorder-items';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IOrder } from '../../Models/i-order';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-items',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './order-items.component.html',
   styleUrl: './order-items.component.css'
 })
 export class OrderItemsComponent implements OnInit{
   OrderItems:IOrderItems[]=[] as IOrderItems[]
   constructor(private _OrderService:APIOrderServiceService,private route: ActivatedRoute,
-    private router:Router
+    private router:Router ,private  translate: TranslateService
   ){}
   ordId:number=0
   ItemsNumber:number=0
   showAlert1: boolean = false;
   showAlert2: boolean = false;
  // ordStatus: number = 0;
+ isArabic: boolean = false;
   order: IOrder  = {} as IOrder;
   ngOnInit(): void {
     this.ordId = Number(this.route.snapshot.paramMap.get('ordId'));
@@ -38,8 +40,23 @@ export class OrderItemsComponent implements OnInit{
      this.ItemsNumber=OrderItems.length
     });
 
-   
+    this.translate.onLangChange.subscribe((Event)=>{
+      this.isArabic = Event.lang === 'ar'
+    })
    }
+   
+
+  changeLanguage(lang: string) {
+    if (lang == 'en') {
+      localStorage.setItem('lang', 'en')
+    }
+    else {
+      localStorage.setItem('lang', 'ar')
+    }
+
+    window.location.reload();
+
+  }
    
    cancelOrder(){
     console.log(this.order.status);

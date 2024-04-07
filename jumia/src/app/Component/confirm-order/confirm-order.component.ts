@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { APIOrderServiceService } from '../../Services/apiorder-service.service';
 import { IOrder } from '../../Models/i-order';
 import { IOrderItems } from '../../Models/iorder-items';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-confirm-order',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule ,TranslateModule],
   templateUrl: './confirm-order.component.html',
   styleUrl: './confirm-order.component.css'
 })
@@ -24,11 +25,13 @@ export class ConfirmOrderComponent {
   orderItem:IOrderItems={} as IOrderItems
   totalamount:number = 50
   showPayment: boolean = false;
+  isArabic: boolean = false;
 
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
   constructor(private _cartService:CartService
-    ,private router:Router,private _orderService:APIOrderServiceService
+    ,private router:Router,private _orderService:APIOrderServiceService,
+    private  translate: TranslateService
   ){
     
   }
@@ -37,6 +40,10 @@ export class ConfirmOrderComponent {
       this.cartItems = cartItems;
      this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
       this.cartNumber=this._cartService.calculateTotalCartNumber();
+    });
+    //
+    this.translate.onLangChange.subscribe((Event)=>{
+      this.isArabic = Event.lang === 'ar'
     });
 
     window.paypal.Buttons({
@@ -108,6 +115,18 @@ export class ConfirmOrderComponent {
   }
 
 
+
+  changeLanguage(lang: string) {
+    if (lang == 'en') {
+      localStorage.setItem('lang', 'en')
+    }
+    else {
+      localStorage.setItem('lang', 'ar')
+    }
+
+    window.location.reload();
+
+  }
   ConfirmOrder(){
    
 
@@ -124,6 +143,6 @@ export class ConfirmOrderComponent {
     this.order.cancelOrder=false;
    
   } 
- 
+
   
 }
