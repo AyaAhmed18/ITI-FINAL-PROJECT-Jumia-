@@ -54,12 +54,12 @@ export class ApiProductsService {
   SearchByNameOrDesc(nameOrdesc:string): Observable<ProductDto>{
     return this._httpClient.get<ProductDto>(`${this.apiUrl}/SearchByName?PartialName=${nameOrdesc}`);
   }
-  getProductByCatId(id: number): Observable<ProductDto> {
-    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=10&pageNumber=1`);
-  }
-  getProductBySubCatId(id: number): Observable<ProductDto> {
-    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbySubCategoryId?SubCatId=${id}&pageSize=10&pageNumber=1`);
-  }
+  // getProductByCatId(id: number): Observable<ProductDto> {
+  //   return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=10&pageNumber=1`);
+  // }
+  // getProductBySubCatId(id: number): Observable<ProductDto> {
+  //   return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbySubCategoryId?SubCatId=${id}&pageSize=10&pageNumber=1`);
+  // }
 
 
 }

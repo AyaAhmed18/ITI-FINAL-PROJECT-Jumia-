@@ -37,6 +37,7 @@ currentCategoryId :number = 0;
   cartTotalPrice:number=0
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
   @Output() addTowashlistClicked = new EventEmitter<ProductDto>();
+  @Input() triggerFunction: boolean = false;
   addedToCart = false;
   addedTowashlist= false;
   constructor(private _ApiProductsService :ApiProductsService ,
@@ -53,28 +54,44 @@ currentCategoryId :number = 0;
    ngOnInit(): void {
     this.Sershresult();
     // this.getAllProducts();
-    this._activeRouter.paramMap.subscribe(parammap=>
-    {
-      this.currentCategoryId =Number(parammap.get('id'));
-      this.getProductByCategoryId(this.currentCategoryId);
-    })
+    // const currentRoute = this._route.url;
+    // if (currentRoute.includes('GetSubCategory')) {
+    //   this.products = []
+    //   console.log("SubCategory")
+    // }
+    // else if (currentRoute.includes('GetCategory')) {
+    //   //this.products =
+    //   this.products.length = 0
+    //   console.log("Category")
+
+    // }
+    // else
+    // {
+    //   this.products = this.products;
+    //   console.log("filter")
+    // }
+    // this._activeRouter.paramMap.subscribe(parammap=>
+    // {
+    //   this.currentCategoryId =Number(parammap.get('id'));
+    //   this.getProductByCategoryId(this.currentCategoryId);
+    // })
     console.log("onInit");
     console.log(this.products);
     //this.pageNumbers = this.products[1]
     }
 
-    getProductByCategoryId(id:number)
-    {
-      this._ApiProductsService.getProductByCatId(id).subscribe(
-      {
-        next:(data: any)=>{
-          this.productList=data.entities
-          console.log(data);
-          console.log("ProductList")
-          console.log(this.productList);
-        }
-      })
-    }
+    // getProductByCategoryId(id:number)
+    // {
+    //   this._ApiProductsService.getProductByCatId(id).subscribe(
+    //   {
+    //     next:(data: any)=>{
+    //       this.productList=data.entities
+    //       console.log(data);
+    //       console.log("ProductList")
+    //       console.log(this.productList);
+    //     }
+    //   })
+    // }
   //start Add to Cart
   AddToCart(prod:ProductDto){
       if(prod.stockQuantity>0){
