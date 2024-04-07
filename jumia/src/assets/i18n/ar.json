@@ -86,7 +86,10 @@
 "Next":"التالي",
 "Product Added To Cart Successfully" :"تمت إضافة المنتج إلى سلة التسوق بنجاح",
 "Product Removed from Cart Successfully":"تمت إزالة المنتج من سلة التسوق بنجاح",
-"Cart":"سلة التسوق"
+"Cart":"سلة التسوق",
+"Missing EGP 151.00 to reach free delivery":"ناقص 151.00 جنيهًا مصريًا للوصول إلى التوصيل المجاني",
+"off":"عن",
+"Buy 400 get":"اشتري 400 واحصل على"
     },
     "order" :{
         "1.CUSTOMER ADDRESS":"1. عنوان العميل",
@@ -157,7 +160,10 @@
 "Fulfilled by Al huda Store":"تنفيذ متجر الهدى",
 "3.Payment Method":"3. طريقة الدفع",
 "Confirm Delivery Order":"تأكيد أمر التسليم",
-"2.Delivary Details":"2. تفاصيل التسليم"
+"2.Delivary Details":"2. تفاصيل التسليم",
+"Delivery between 27 March and 28 March":"التسليم بين 27 مارس و 28 مارس",
+"Shipment 1":"شحنة 1",
+"OTY:":"OTY:"
     },
     "confirmorder":{
         "Order summary":"ملخص الطلب",
@@ -185,7 +191,8 @@
         "Paypal":"باي بال",
         "Cash":"نقدي",
         "Mobile Money":"المال المحمول",
-        "Confirm Payment Method":"تأكيد طريقة الدفع"
+        "Confirm Payment Method":"تأكيد طريقة الدفع",
+        "Delivery between 20 April and 25 April":"التسليم بين 20 أبريل و 25 أبريل"
     },
  "orderitem":{
 "you Can't Cancel This order":"لا يمكنك إلغاء هذا الطلب",
@@ -207,7 +214,8 @@
 "Order Details":"تفاصيل الطلب",
 "QTY":"الكمية",
 "Total Price":"السعر الكلي",
-"Cancel Order":"الغاء الطلب"
+"Cancel Order":"الغاء الطلب",
+"Delivered By Monday , 15-04":"تم التسليم يوم الاثنين 15-04"
     },
 
     "orderdetails" :{

@@ -90,7 +90,7 @@
         </li>
         <ul>
           <li class="m-2">
-            <p><small>Missing EGP 151.00 to reach free delivery</small> </p>
+            <p><small>{{'cart.Missing EGP 151.00 to reach free delivery' | translate}}</small> </p>
           </li>
           <li class="m-2"> <img src="assets/cart.jpg" style="width: 40%;"></li>
         </ul>
@@ -131,12 +131,12 @@
               style="height:auto; width: 150px;">
               <!-- <img [src]="pro.images" class="card-img-top" alt="Card image" style="width:100%"> -->
               <div class="label-Cards-top px-2">
-                <span class="text-white ">Buy 400 get {{pro.discount}} off</span>
+                <span class="text-white ">{{'cart.Buy 400 get' | translate}} {{pro.discount}} {{'cart.off' | translate}}</span>
               </div>
               
               <div class="card-body">
                 <p class="blockquote-footer"><small>{{pro.shortDescription}}</small></p>
-                <b><strong>EGP {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
+                <b><strong>{{'cart.EGP' | translate}} {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
                 <ul class="list-inline">
                   <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>
                   <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RegistrationService } from '../../Services/registration.service';
 import { RegisterDto } from '../../ViewModels/register-dto';
@@ -12,7 +12,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css'
 })
-export class RegistrationComponent {
+export class RegistrationComponent  implements OnInit{
   user:RegisterDto={} as RegisterDto
   isArabic: boolean = false;
   constructor( private _registrationService :RegistrationService ,private  translate: TranslateService )

@@ -100,7 +100,10 @@
     "Next" :"Next",
     "Product Added To Cart Successfully" :"Product Added To Cart Successfully",
     "Product Removed from Cart Successfully":"Product Removed from Cart Successfully",
-    "Cart":"Cart"
+    "Cart":"Cart",
+    "Missing EGP 151.00 to reach free delivery":"Missing EGP 151.00 to reach free delivery",
+    "off":"off",
+    "Buy 400 get":"Buy 400 get"
   },
   "order":{
     "1.CUSTOMER ADDRESS":"1.CUSTOMER ADDRESS",
@@ -170,7 +173,12 @@
   "Fulfilled by Al huda Store":"Fulfilled by Al huda Store",
   "3.Payment Method":"3.Payment Method",
   "Confirm Delivery Order":"Confirm Delivery Order",
-  "2.Delivary Details":"2.Delivary Details"
+  "2.Delivary Details":"2.Delivary Details",
+  "Delivery between 27 March and 28 March":"Delivery between 27 March and 28 March",
+  "Shipment 1":"Shipment 1",
+  "OTY:":"OTY:"
+ 
+ 
 
 },
 "confirmorder":{
@@ -200,7 +208,8 @@
    "Paypal":"Paypal",
    "Cash":"Cash",
    "Mobile Money":"Mobile Money",
-   "Confirm Payment Method":"Confirm Payment Method"
+   "Confirm Payment Method":"Confirm Payment Method",
+   "Delivery between 20 April and 25 April":"Delivery between 20 April and 25 April"
 },
 "orderitem" :{
 "you Can't Cancel This order":"you Can't Cancel This order",
@@ -222,7 +231,8 @@
 "Order Details":"Order Details",
 "QTY":"QTY",
 "Total Price":"Total Price",
-"Cancel Order":"Cancel Order"
+"Cancel Order":"Cancel Order",
+"Delivered By Monday , 15-04":"Delivered By Monday , 15-04"
 
 },
 "orderdetails" :{
