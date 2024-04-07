@@ -85,6 +85,7 @@ export class FilterServiceService {
     return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=10&pageNumber=1`);
   }
   getProductBySubCatId(id: number): Observable<ProductDto> {
+    console.log("SubCategoryServices");
     return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbySubCategoryId?SubCatId=${id}&pageSize=10&pageNumber=1`);
   }
   // filterByPriceRange(minPrice: number, maxPrice: number): Observable<any> {

@@ -55,8 +55,8 @@ export class FilterComponent {
       this._activeRouter.paramMap.subscribe(parammap=>
         {
           this.currentSubCategoryId =Number(parammap.get('id'));
-          console.log(this.currentCategoryId);
-          this.getProductBySubCategoryId(this.currentCategoryId);
+          console.log(this.currentSubCategoryId);
+          this.getProductBySubCategoryId(this.currentSubCategoryId);
         })
       console.log("SubCategory")
     }

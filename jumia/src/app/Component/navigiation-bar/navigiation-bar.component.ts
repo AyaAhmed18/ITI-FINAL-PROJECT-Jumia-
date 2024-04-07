@@ -57,7 +57,7 @@ export class NavigiationBarComponent implements OnInit {
 
 
   searchProducts() {
-    setInterval(() => {
+    setTimeout(() => {
     if (this.searchTerm.trim() !== '') {
       this._ApiProductsService.SearchByNameOrDesc(this.searchTerm).subscribe(
         (searchResults) => {
