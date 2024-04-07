@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BrandServiceService {
-  private apiUrl = 'http://localhost:5094/api/Brand';
+  private apiUrl = 'http://localhost:64866/api/Brand';
  
 
   constructor(private  _HttpClient:HttpClient) { }
