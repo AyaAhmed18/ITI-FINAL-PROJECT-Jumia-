@@ -159,7 +159,7 @@
 },
 "delivery" :{
   "Order summary":"Order summary",
-  "Item's total":"Item's total",
+  "Items total":"Item's total",
   "EGP":"EGP",
   "Delivery fees":"Delivery fees",
   "Prepaid discount":"Prepaid discount",
@@ -183,7 +183,7 @@
 },
 "confirmorder":{
   "Order summary":"Order summary",
-  "Item's total":"Item's total",
+  "Items total":"Item's total",
   "EGP":"EGP",
   "Delivery fees":"Delivery fees",
   "Prepaid discount":"Prepaid discount",
@@ -193,7 +193,7 @@
 },
 "payment" : {
   "Order summary":"Order summary",
-  "Item's total":"Item's total",
+  "Items total":"Item's total",
   "Delivery fees" :"Delivery fees",
   "Prepaid discount":"Prepaid discount",
   "EGP":"EGP",
@@ -212,7 +212,7 @@
    "Delivery between 20 April and 25 April":"Delivery between 20 April and 25 April"
 },
 "orderitem" :{
-"you Can't Cancel This order":"you Can't Cancel This order",
+"you Cant Cancel This order":"you Can't Cancel This order",
 "Sorry" :"Sorry",
 "Your Order Is Cancelled":"Your Order Is Cancelled",
 "My Jumia Account":"My Jumia Account",
@@ -267,7 +267,7 @@
 },
 "shipment":{
   "Order summary":"Order summary",
-  "Item's total":"Item's total",
+  "Items total":"Item's total",
   "EGP":"EGP",
   "Delivery fees":"Delivery fees",
   "Prepaid discount":"Prepaid discount",
@@ -275,7 +275,7 @@
   "You will be able to add a voucher when selecting your payment method." :"You will be able to add a voucher when selecting your payment method.",
   "Confirm Order":"Confirm Order",
   "1.CUSTOMER ADDRESS":"1.CUSTOMER ADDRESS",
-  "EDIT ADDRES":"EDIT ADDRES",
+  "EDIT ADDRESS":"EDIT ADDRESS",
   "First Name":"First Name",
   "Required field":"Required field",
   "Last Name":"Last Name",

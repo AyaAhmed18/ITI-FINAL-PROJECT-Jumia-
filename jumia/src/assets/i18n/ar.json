@@ -146,7 +146,7 @@
     ,
     "delivery" :{
         "Order summary":"ملخص الطلب",
-        "Item's total":"إجمالي السلعة",
+        "Items total":"إجمالي السلعة",
         "EGP":"جنيه مصري",
         "Delivery fees":"رسوم التوصيل",
         "Prepaid discount":"خصم الدفع المسبق",
@@ -167,7 +167,7 @@
     },
     "confirmorder":{
         "Order summary":"ملخص الطلب",
-        "Item's total":"إجمالي السلعة",
+        "Items total":"إجمالي السلعة",
         "EGP":"جنيه مصري",
         "Delivery fees":"رسوم التوصيل",
         "Prepaid discount":"خصم الدفع المسبق",
@@ -176,7 +176,7 @@
     },
     "payment" : {
         "Order summary":"ملخص الطلب",
-        "Item's total":"إجمالي السلعة",
+        "Items total":"إجمالي السلعة",
         "Delivery fees":"رسوم التوصيل",
         "Prepaid discount":"خصم الدفع المسبق",
         "EGP":"جنيه مصري",
@@ -195,7 +195,7 @@
         "Delivery between 20 April and 25 April":"التسليم بين 20 أبريل و 25 أبريل"
     },
  "orderitem":{
-"you Can't Cancel This order":"لا يمكنك إلغاء هذا الطلب",
+"you Cant Cancel This order":"لا يمكنك إلغاء هذا الطلب",
 "Sorry":"آسف",
 "Your Order Is Cancelled":"تم إلغاء طلبك",
 "My Jumia Account":"حسابي على جوميا",
@@ -249,7 +249,7 @@
     },
     "shipment":{
         "Order summary":"ملخص الطلب",
-        "Item's total":"إجمالي السلعة",
+        "Items total":"إجمالي السلعة",
         "EGP":"جنيه مصري",
         "Delivery fees":"رسوم التوصيل",
         "Prepaid discount":"خصم الدفع المسبق",
@@ -257,7 +257,7 @@
         "You will be able to add a voucher when selecting your payment method." :"ستتمكن من إضافة قسيمة عند اختيار طريقة الدفع الخاصة بك.",
         "Confirm Order":"أكد الطلب",
         "1.CUSTOMER ADDRESS" :"1. عنوان العميل",
-        "EDIT ADDRES":"تعديل العنوان",
+        "EDIT ADDRESS":"تعديل العنوان",
         "First Name":"الاسم الأول",
         "Required field" :"الحقل مطلوب",
         "Last Name":"اسم العائلة",
