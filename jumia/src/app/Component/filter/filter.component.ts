@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { BrandServiceService } from '../../Services/brand-service.service';
 import { IBrandDto } from '../../ViewModels/ibrand-dto';
 import { ProductDto } from '../../ViewModels/product-dto';
+import { ApiProductsService } from '../../Services/api-products.service';
 
 @Component({
     selector: 'app-filter',
@@ -23,12 +24,21 @@ export class FilterComponent {
     AllBrands: any = [];
     selectedBrands: number[] = [];
     selectedBrandsStr : string ='';
-    constructor(private _filterService: FilterServiceService,private _brandService : BrandServiceService) { }
+    constructor(private _filterService: FilterServiceService,
+      private _brandService : BrandServiceService,
+    private _ApiProductsService:ApiProductsService) { }
 
+    updateProductsInSharedService(products: any[]) {
+      this._ApiProductsService.updateProducts(products);
+    }
     ngOnInit(): void {
         console.log(this.minDiscount)
+        this._ApiProductsService.products$.subscribe(products => {
+          this.products = products;
+        });
       this.filterProducts();
       this.GetBrands();
+
     }
     GetBrands()
     {

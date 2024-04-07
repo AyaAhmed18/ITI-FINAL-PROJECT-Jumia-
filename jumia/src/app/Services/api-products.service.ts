@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ProductDto } from '../ViewModels/product-dto';
 
 
@@ -8,7 +8,9 @@ import { ProductDto } from '../ViewModels/product-dto';
   providedIn: 'root'
 })
 export class ApiProductsService {
- 
+  private productsSubject = new BehaviorSubject<any[]>([]);
+  products$ = this.productsSubject.asObservable();
+
   private apiUrl = 'http://localhost:64866/api/Product';
 //http://localhost:5094/api/Product bahaa
   //localhost:64866/api/Product
@@ -54,4 +56,7 @@ export class ApiProductsService {
     return this._httpClient.get<ProductDto>(`${this.apiUrl}/SearchByName?PartialName=${nameOrdesc}`);
   }
 
+  updateProducts(products: any[]) {
+    this.productsSubject.next(products);
+  }
 }

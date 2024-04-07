@@ -21,16 +21,16 @@ export class ProductComponent implements  OnInit{
   @Input() AllProducts:ProductDto[]=[];
   @Input() products: any[]=[];
   cartItems: ProductDto[] = [];
-  productList: ProductDto[] = [];
+  //productList: ProductDto[] = [];
 // AllProducts:ProductDto[]=[];
 //  products: any;
-searchResults: any[] = [];
+//searchResults: any[] = [];
 pageSize:number = 10;
 AllProd:number=0;
 totalPages: number = 0;
 pageNumber: number = 1;
 pageNumbers: number[]=[];
-AllProductsProducts : any[]=[];
+//AllProductsProducts : any[]=[];
 //  @Input() product?: ProductDto;
   cartTotalPrice:number=0
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
@@ -47,8 +47,12 @@ AllProductsProducts : any[]=[];
 
    }
    ngOnInit(): void {
+    this._ApiProductsService.products$.subscribe(products => {
+      this.products = products;
+    });
     this.Sershresult();
     this.getAllProducts();
+   
     }
     navigateToDetails(productId: number): void {
       this.router.navigateByUrl(`/Detalse/${productId}`);
@@ -65,7 +69,9 @@ AllProductsProducts : any[]=[];
   }
 
   // end Add to Cart
-
+  updateProductsInSharedService(products: any[]) {
+    this._ApiProductsService.updateProducts(products);
+  }
     //Addtowashlist
 
   addToWishlist(product: ProductDto) {
@@ -120,7 +126,7 @@ AllProductsProducts : any[]=[];
 getAllProducts() {
   this._ApiProductsService.getAllProducts(this.pageSize, this.pageNumber).subscribe({
       next: (data) => {
-          this.products = data;
+          this.products = data.entities;
           this.AllProd = data.count;
 
           this.totalPages=Math.ceil( this.AllProd / this.pageSize)
@@ -197,7 +203,7 @@ if (page >= 1 && page <= this.totalPages) {
   }
 
   sanitizeImages() {
-    this.AllProducts.forEach(product => {
+    this.products.forEach(product => {
       console.log(product.images);
       product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
       console.log(product.images);
