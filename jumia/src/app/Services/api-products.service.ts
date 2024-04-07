@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ProductDto } from '../ViewModels/product-dto';
 
 
@@ -18,6 +18,7 @@ export class ApiProductsService {
   //   let allpro= this._httpClient.get<any>(this.apiUrl);
   //   return allpro;
   // }
+
   getAllProducts(pageSize: number, pageNumber: number): Observable<any> {
     const params = new HttpParams()
         .set('pageSize', pageSize.toString())
@@ -56,5 +57,9 @@ export class ApiProductsService {
   getProductByCatId(id: number): Observable<ProductDto> {
     return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=10&pageNumber=1`);
   }
+  getProductBySubCatId(id: number): Observable<ProductDto> {
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbySubCategoryId?SubCatId=${id}&pageSize=10&pageNumber=1`);
+  }
+
 
 }

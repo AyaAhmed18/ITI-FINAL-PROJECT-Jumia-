@@ -169,5 +169,13 @@
 
         <app-product [products]="products"></app-product>
     </div>
+    <div class="b-pagination-outer">
 
+      <ul id="border-pagination">
+        <li><a (click)="prevPage()">«</a></li>
+        <li><a *ngFor="let page of pageNumbers" (click)="goToPage(page)">{{ page }}</a></li>
+
+        <li><a (click)="nextPage()">»</a></li>
+      </ul>
+    </div>
 </div>
