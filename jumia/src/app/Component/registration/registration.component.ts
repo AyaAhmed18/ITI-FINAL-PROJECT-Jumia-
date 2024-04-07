@@ -1,22 +1,41 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RegistrationService } from '../../Services/registration.service';
 import { RegisterDto } from '../../ViewModels/register-dto';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-registration',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule ,TranslateModule],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css'
 })
-export class RegistrationComponent {
+export class RegistrationComponent  implements OnInit{
   user:RegisterDto={} as RegisterDto
-  constructor( private _registrationService :RegistrationService )
+  isArabic: boolean = false;
+  constructor( private _registrationService :RegistrationService ,private  translate: TranslateService )
   {
 
   }
+  ngOnInit(): void {
+    this.translate.onLangChange.subscribe((Event)=>{
+      this.isArabic = Event.lang === 'ar'
+    })
+  }
+  changeLanguage(lang: string) {
+    if (lang == 'en') {
+      localStorage.setItem('lang', 'en')
+    }
+    else {
+      localStorage.setItem('lang', 'ar')
+    }
+
+    window.location.reload();
+
+  }
+
   register(username: string, email: string, password: string, confirmpass: string ,phonenumber :string) {
     if (password !== confirmpass) {
    
@@ -33,6 +52,7 @@ export class RegistrationComponent {
         alert("Error occurred while registering. Please try again.");
       }
     });
+
 
 
 

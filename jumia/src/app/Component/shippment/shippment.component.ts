@@ -10,11 +10,12 @@ import { APIOrderServiceService } from '../../Services/apiorder-service.service'
 import { IUserLogin } from '../../Models/iuser-login';
 import { ProductDto } from '../../ViewModels/product-dto';
 import { CartService } from '../../Services/cart.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-shippment',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,HttpClientModule,FormsModule,CommonModule,NgFor],
+  imports: [RouterLink,RouterOutlet,HttpClientModule,FormsModule,CommonModule,NgFor ,TranslateModule],
   templateUrl: './shippment.component.html',
   styleUrl: './shippment.component.css'
 })
@@ -29,6 +30,7 @@ export class ShippmentComponent implements OnInit{
   cartNumber:number=0
   TotalCartPrice=0
   id:number=0
+  isArabic: boolean = false;
   citiesByRegion: { [key: string]: string[] } = {
     'Sohag': ['Sohag City', 'Akhmim', 'Girga', 'Tahta', 'Dar El Salam', 'Saqil Qism Qena', 'Daraw', 'Juhaynah', 'Gerga', 'El Maragha', 'Tama', 'Al Monshah', 'Al Waily', 'Alawais', 'Al Hawarta', 'Dar El Salam Qism Sohag', 'Al Ghanayim', 'El Kossia', 'El Balayaza', 'Akhmim Qism Sohag', 'Sohag District', 'Akhmim District', 'Gerga District', 'El Maragha District', 'Tahta District', 'Dar El Salam District', 'Saqil Qism Qena District', 'Daraw District', 'Juhaynah District', 'Tama District'],
     'Cairo': [
@@ -170,7 +172,8 @@ export class ShippmentComponent implements OnInit{
     private _OrderServie:APIOrderServiceService,
     private router:Router,
     private _cartService:CartService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private  translate: TranslateService
     ){
     //this.client.userName!=this.Client
     this.regions= [
@@ -183,6 +186,10 @@ export class ShippmentComponent implements OnInit{
     ];
   }
   ngOnInit(): void {
+    this.translate.onLangChange.subscribe((Event)=>{
+      this.isArabic = Event.lang === 'ar'
+    });
+    //
     this._ShippmentService.Getshippment(this.clientId).subscribe(shippment => {
      // this.shippment=shippment.entity
       console.log(shippment);
@@ -283,5 +290,18 @@ export class ShippmentComponent implements OnInit{
       this.shippment.city = this.citiesByRegion[regionAr][index];
     }
   
+}
+//
+
+changeLanguage(lang: string) {
+  if (lang == 'en') {
+    localStorage.setItem('lang', 'en')
+  }
+  else {
+    localStorage.setItem('lang', 'ar')
+  }
+
+  window.location.reload();
+
 }
 }

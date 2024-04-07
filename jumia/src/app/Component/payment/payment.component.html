@@ -5,7 +5,7 @@
         <li class="list-group-item">{{'payment.Order summary' | translate}}</li>
         <li class="list-group-item">
           <ul class="d-flex">
-            <li class="me-5">{{'payment.Item's total' | translate}} {{cartNumber}}</li>
+            <li class="me-5">{{'payment.Items total' | translate}} {{cartNumber}}</li>
             <li class="">{{'payment.EGP' | translate}} {{TotalCartPrice}} </li>
           </ul>
           <ul class="d-flex">
@@ -26,7 +26,7 @@
           </li>
 
         <ul>
-        <li ><p>{{'payment.You will be able to add a voucher when selecting your payment method' | translate}}.</p> </li>
+        <li ><p>{{'payment.You will be able to add a voucher when selecting your payment method' | translate}}</p> </li>
         <li> <img src="../../../assets/cart.jpg" style="width: 40%;" title="img"></li>
         </ul>
       </ul>
@@ -37,7 +37,7 @@
   </div>
     <div class="row  ">
         <div class=" my-2  col-md-8 row section1">
-           <div class="col-md-6"> <h6 class=" my-2"><i class="fa-solid fa-circle-check text-success"></i> {{' payment.1.CUSTOMER ADDRESS' | translate}}</h6></div>
+           <div class="col-md-6"> <h6 class=" my-2"><i class="fa-solid fa-circle-check text-success"></i> {{'payment.1.CUSTOMER ADDRESS' | translate}}</h6></div>
            <div class="col-md-6 text-end"><a href="" class="text-decoration-none"  [routerLink]="['/shippment']" >{{'payment.Change' | translate}} <i class="fa-solid fa-arrow-right"></i> </a></div>
            <div class="border-top ">
             <p class="my-0  pt-4">{{shippment.firstNameEn}}  {{shippment.lastName}}</p>
@@ -51,7 +51,7 @@
         <div class="col-md-6 text-end"><a href="" class="text-decoration-none"  [routerLink]="['/Cart']" >{{'payment.Change' | translate}} <i class="fa-solid fa-arrow-right"></i> </a></div>
         <div class="border-top ">
             <p class="my-0  pt-4">{{'payment.Door Delivery' | translate}}</p>
-            <p class="mt-0 tb-5 text-secondary">Delivery between 20 April and 25 April</p>
+            <p class="mt-0 tb-5 text-secondary">{{'payment.Delivery between 20 April and 25 April' | translate}}</p>
         </div>
     </div> 
     <br>

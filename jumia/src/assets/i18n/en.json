@@ -99,7 +99,11 @@
     "Previous" :"Previous",
     "Next" :"Next",
     "Product Added To Cart Successfully" :"Product Added To Cart Successfully",
-    "Product Removed from Cart Successfully":"Product Removed from Cart Successfully"
+    "Product Removed from Cart Successfully":"Product Removed from Cart Successfully",
+    "Cart":"Cart",
+    "Missing EGP 151.00 to reach free delivery":"Missing EGP 151.00 to reach free delivery",
+    "off":"off",
+    "Buy 400 get":"Buy 400 get"
   },
   "order":{
     "1.CUSTOMER ADDRESS":"1.CUSTOMER ADDRESS",
@@ -155,7 +159,7 @@
 },
 "delivery" :{
   "Order summary":"Order summary",
-  "Item's total":"Item's total",
+  "Items total":"Item's total",
   "EGP":"EGP",
   "Delivery fees":"Delivery fees",
   "Prepaid discount":"Prepaid discount",
@@ -169,12 +173,17 @@
   "Fulfilled by Al huda Store":"Fulfilled by Al huda Store",
   "3.Payment Method":"3.Payment Method",
   "Confirm Delivery Order":"Confirm Delivery Order",
-  "2.Delivary Details":"2.Delivary Details"
+  "2.Delivary Details":"2.Delivary Details",
+  "Delivery between 27 March and 28 March":"Delivery between 27 March and 28 March",
+  "Shipment 1":"Shipment 1",
+  "OTY:":"OTY:"
+ 
+ 
 
 },
 "confirmorder":{
   "Order summary":"Order summary",
-  "Item's total":"Item's total",
+  "Items total":"Item's total",
   "EGP":"EGP",
   "Delivery fees":"Delivery fees",
   "Prepaid discount":"Prepaid discount",
@@ -184,7 +193,7 @@
 },
 "payment" : {
   "Order summary":"Order summary",
-  "Item's total":"Item's total",
+  "Items total":"Item's total",
   "Delivery fees" :"Delivery fees",
   "Prepaid discount":"Prepaid discount",
   "EGP":"EGP",
@@ -199,10 +208,11 @@
    "Paypal":"Paypal",
    "Cash":"Cash",
    "Mobile Money":"Mobile Money",
-   "Confirm Payment Method":"Confirm Payment Method"
+   "Confirm Payment Method":"Confirm Payment Method",
+   "Delivery between 20 April and 25 April":"Delivery between 20 April and 25 April"
 },
 "orderitem" :{
-"you Can't Cancel This order":"you Can't Cancel This order",
+"you Cant Cancel This order":"you Can't Cancel This order",
 "Sorry" :"Sorry",
 "Your Order Is Cancelled":"Your Order Is Cancelled",
 "My Jumia Account":"My Jumia Account",
@@ -221,7 +231,8 @@
 "Order Details":"Order Details",
 "QTY":"QTY",
 "Total Price":"Total Price",
-"Cancel Order":"Cancel Order"
+"Cancel Order":"Cancel Order",
+"Delivered By Monday , 15-04":"Delivered By Monday , 15-04"
 
 },
 "orderdetails" :{
@@ -252,6 +263,69 @@
 "Created Date":"Created Date",
 "Quantity":"Quantity", 
 "Total Price :  EGP" :"Total Price :  EGP"
+
+},
+"shipment":{
+  "Order summary":"Order summary",
+  "Items total":"Item's total",
+  "EGP":"EGP",
+  "Delivery fees":"Delivery fees",
+  "Prepaid discount":"Prepaid discount",
+  "Total":"Total",
+  "You will be able to add a voucher when selecting your payment method." :"You will be able to add a voucher when selecting your payment method.",
+  "Confirm Order":"Confirm Order",
+  "1.CUSTOMER ADDRESS":"1.CUSTOMER ADDRESS",
+  "EDIT ADDRESS":"EDIT ADDRESS",
+  "First Name":"First Name",
+  "Required field":"Required field",
+  "Last Name":"Last Name",
+  "Prefix":"Prefix",
+  "+20":"+20",
+  "Phone Number":"Phone Number",
+  "Additional Phone Number":"Additional Phone Number",
+  "Address":"Address",
+  "Additional Information":"Additional Information",
+  "Region":"Region",
+  "Choose":"Choose",
+  "Please select Your Region":"Please select Your Region",
+  "City":"City",
+  "Choose":"Choose",
+  "Please select Your City.":"Please select Your City.",
+  "CANCEL":"CANCEL",
+  "SAVE":"SAVE",
+  "2.Delivary Details":"2.Delivary Details",
+  "3.Payment Method":"3.Payment Method",
+  "Go back & continue shopping":"Go back & continue shopping"
+},
+"register":{
+  "W E L C O M E T O J U M I A":"W E L C O M E T O J U M I A",
+  "Type your e-mail or phone number to log in or create a Jumia account.":"Type your e-mail or phone number to log in or create a Jumia account.",
+  "Enter Your Name" :"Enter Your Name",
+  "Required":"Required",
+  "Your name should be between 3 and 50 characters long and contain only letters." :"Your name should be between 3 and 50 characters long and contain only letters.",
+  "email" :"email",
+  "Invalid email":"Invalid email",
+  "password":"password",
+  "Enter Valid Password":"Enter Valid Password",
+  "Confirm password":"Confirm password",
+  "InValid":"InValid",
+  "Phone Number":"Phone Number",
+  "REGISTER":"REGISTER",
+  "Do you have an account? sign in":"Do you have an account? sign in",
+  "For further support, you may visit the Help Center or contact our customer service team.":"For further support, you may visit the Help Center or contact our customer service team"
+    ,"For further support, you may visit the Help Center or contact our customer service team":"For further support, you may visit the Help Center or contact our customer service team"
+},
+"signin":{
+  "Welcome to Jumia":"Welcome to Jumia",
+  "Type your e-mail or phone number to log in or create a Jumia account.":"Type your e-mail or phone number to log in or create a Jumia account.",
+  "Enter Your Name *":"Enter Your Name *",
+  "Required":"Required",
+  "Your name should be between 3 and 50 characters long and contain only letters." :"Your name should be between 3 and 50 characters long and contain only letters.",
+  "Password *":"Password *",
+  "Enter Valid Password.":"Enter Valid Password.",
+  "Login":"Login",
+  "For further support, you may visit the Help Center or contact our customer service team.":"For further support, you may visit the Help Center or contact our customer service team."
+,"Forget Your Password?":"Forget Your Password?"
 
 }
 

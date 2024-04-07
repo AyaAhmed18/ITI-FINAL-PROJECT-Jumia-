@@ -85,7 +85,11 @@
 "Previous":"سابق",
 "Next":"التالي",
 "Product Added To Cart Successfully" :"تمت إضافة المنتج إلى سلة التسوق بنجاح",
-"Product Removed from Cart Successfully":"تمت إزالة المنتج من سلة التسوق بنجاح"
+"Product Removed from Cart Successfully":"تمت إزالة المنتج من سلة التسوق بنجاح",
+"Cart":"سلة التسوق",
+"Missing EGP 151.00 to reach free delivery":"ناقص 151.00 جنيهًا مصريًا للوصول إلى التوصيل المجاني",
+"off":"عن",
+"Buy 400 get":"اشتري 400 واحصل على"
     },
     "order" :{
         "1.CUSTOMER ADDRESS":"1. عنوان العميل",
@@ -142,7 +146,7 @@
     ,
     "delivery" :{
         "Order summary":"ملخص الطلب",
-        "Item's total":"إجمالي السلعة",
+        "Items total":"إجمالي السلعة",
         "EGP":"جنيه مصري",
         "Delivery fees":"رسوم التوصيل",
         "Prepaid discount":"خصم الدفع المسبق",
@@ -156,11 +160,14 @@
 "Fulfilled by Al huda Store":"تنفيذ متجر الهدى",
 "3.Payment Method":"3. طريقة الدفع",
 "Confirm Delivery Order":"تأكيد أمر التسليم",
-"2.Delivary Details":"2. تفاصيل التسليم"
+"2.Delivary Details":"2. تفاصيل التسليم",
+"Delivery between 27 March and 28 March":"التسليم بين 27 مارس و 28 مارس",
+"Shipment 1":"شحنة 1",
+"OTY:":"OTY:"
     },
     "confirmorder":{
         "Order summary":"ملخص الطلب",
-        "Item's total":"إجمالي السلعة",
+        "Items total":"إجمالي السلعة",
         "EGP":"جنيه مصري",
         "Delivery fees":"رسوم التوصيل",
         "Prepaid discount":"خصم الدفع المسبق",
@@ -169,7 +176,7 @@
     },
     "payment" : {
         "Order summary":"ملخص الطلب",
-        "Item's total":"إجمالي السلعة",
+        "Items total":"إجمالي السلعة",
         "Delivery fees":"رسوم التوصيل",
         "Prepaid discount":"خصم الدفع المسبق",
         "EGP":"جنيه مصري",
@@ -184,10 +191,11 @@
         "Paypal":"باي بال",
         "Cash":"نقدي",
         "Mobile Money":"المال المحمول",
-        "Confirm Payment Method":"تأكيد طريقة الدفع"
+        "Confirm Payment Method":"تأكيد طريقة الدفع",
+        "Delivery between 20 April and 25 April":"التسليم بين 20 أبريل و 25 أبريل"
     },
  "orderitem":{
-"you Can't Cancel This order":"لا يمكنك إلغاء هذا الطلب",
+"you Cant Cancel This order":"لا يمكنك إلغاء هذا الطلب",
 "Sorry":"آسف",
 "Your Order Is Cancelled":"تم إلغاء طلبك",
 "My Jumia Account":"حسابي على جوميا",
@@ -206,7 +214,8 @@
 "Order Details":"تفاصيل الطلب",
 "QTY":"الكمية",
 "Total Price":"السعر الكلي",
-"Cancel Order":"الغاء الطلب"
+"Cancel Order":"الغاء الطلب",
+"Delivered By Monday , 15-04":"تم التسليم يوم الاثنين 15-04"
     },
 
     "orderdetails" :{
@@ -237,5 +246,67 @@
       "Created Date":"تاريخ الإنشاء",
       "Quantity":"كمية",
       "Total Price :  EGP" :"السعر الإجمالي: جنيه مصري"
+    },
+    "shipment":{
+        "Order summary":"ملخص الطلب",
+        "Items total":"إجمالي السلعة",
+        "EGP":"جنيه مصري",
+        "Delivery fees":"رسوم التوصيل",
+        "Prepaid discount":"خصم الدفع المسبق",
+        "Total":"المجموع",
+        "You will be able to add a voucher when selecting your payment method." :"ستتمكن من إضافة قسيمة عند اختيار طريقة الدفع الخاصة بك.",
+        "Confirm Order":"أكد الطلب",
+        "1.CUSTOMER ADDRESS" :"1. عنوان العميل",
+        "EDIT ADDRESS":"تعديل العنوان",
+        "First Name":"الاسم الأول",
+        "Required field" :"الحقل مطلوب",
+        "Last Name":"اسم العائلة",
+        "Prefix":"بادئة",
+        "+20":"+20",
+        "Phone Number":"رقم الهاتف",
+        "Additional Phone Number":"إضافة رقم هاتف ",
+        "Address":"العنوان",
+        "Additional Information":"معلومات إضافية",
+        "Region":"منطقة",
+        "Choose":"اختار",
+        "Please select Your Region":"الرجاء تحديد منطقتك",
+        "City":"مدينة",
+        "Choose":"اختار",
+        "Please select Your City.":"الرجاء تحديد مدينتك.",
+        "CANCEL":"الغاء",
+        "SAVE":"حفظ",
+        "2.Delivary Details":"2. تفاصيل التسليم",
+        "3.Payment Method":"3. طريقة الدفع",
+        "Go back & continue shopping":"العودة ومواصلة التسوق"
+    },
+    "register":{
+        "W E L C O M E T O J U M I A":"W E L C O M E T O J U M I A",
+        "Type your e-mail or phone number to log in or create a Jumia account.":"اكتب بريدك الإلكتروني أو رقم هاتفك لتسجيل الدخول أو إنشاء حساب على جوميا.",
+        "Enter Your Name" :"أدخل أسمك",
+        "Required":"مطلوب",
+        "Your name should be between 3 and 50 characters long and contain only letters.":"يجب أن يتراوح اسمك بين 3 و50 حرفًا وأن يحتوي على أحرف فقط.",
+        "email":"بريد إلكتروني",
+        "Invalid email":"بريد إلكتروني خاطئ",
+        "password":"كلمة المرور",
+        "Enter Valid Password":"أدخل كلمة مرور صالحة",
+        "Confirm password":"تأكيد كلمة المرور",
+        "InValid":"غير صالح",
+        "Phone Number":"رقم الهاتف",
+        "REGISTER":"تسجيل",
+        "Do you have an account? sign in" :"هل لديك حساب؟ تسجيل الدخول",
+        "For further support, you may visit the Help Center or contact our customer service team.":"لمزيد من الدعم، يمكنك زيارة مركز المساعدة أو الاتصال بفريق خدمة العملاء لدينا"
+,"For further support, you may visit the Help Center or contact our customer service team":"لمزيد من الدعم، يمكنك زيارة مركز المساعدة أو الاتصال بفريق خدمة العملاء لدينا"
+    },
+    "signin":{
+        "Welcome to Jumia":"مرحبا بكم في جوميا",
+        "Type your e-mail or phone number to log in or create a Jumia account.":"اكتب بريدك الإلكتروني أو رقم هاتفك لتسجيل الدخول أو إنشاء حساب على جوميا.",
+        "Enter Your Name *" :"أدخل أسمك *",
+        "Required":"مطلوب",
+        "Your name should be between 3 and 50 characters long and contain only letters.":"يجب أن يتراوح اسمك بين 3 و50 حرفًا وأن يحتوي على أحرف فقط.",
+        "Password *":"كلمة المرور *",
+        "Enter Valid Password.":"أدخل كلمة مرور صالحة.",
+        "Login":"تسجيل الدخول",
+        "For further support, you may visit the Help Center or contact our customer service team." :"لمزيد من الدعم، يمكنك زيارة مركز المساعدة أو الاتصال بفريق خدمة العملاء لدينا."
+  ,"Forget Your Password?":"نسيت كلمة المرور؟"
     }
 }
