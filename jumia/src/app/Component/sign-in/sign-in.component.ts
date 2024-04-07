@@ -5,21 +5,23 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { IUserLogin } from '../../Models/iuser-login';
 import { BehaviorSubject } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule ,TranslateModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
-export class SignInComponent {
+export class SignInComponent  implements OnInit{
   isLogged:boolean=false
   loginRes:any
   loggedInUsername: string ="";
  // IsLoggedStatus!:BehaviorSubject<string>
   newUser:IUserLogin={} as IUserLogin
-  constructor(private _apiLoginService : ApiLoginService , private router: Router){  }
+  isArabic: boolean = false;
+  constructor(private _apiLoginService : ApiLoginService , private router: Router ,    private  translate: TranslateService){  }
 
 //signIn Function Button
   signIn(username:string,password:string){
@@ -50,4 +52,19 @@ export class SignInComponent {
     this.isLogged= this._apiLoginService.IsLoggedIn();
     //this.router.navigate(['/Home']);
   }
+  ngOnInit(): void {
+    this.translate.onLangChange.subscribe((Event)=>{
+      this.isArabic = Event.lang === 'ar'
+    });}
+    changeLanguage(lang: string) {
+  if (lang == 'en') {
+    localStorage.setItem('lang', 'en')
+  }
+  else {
+    localStorage.setItem('lang', 'ar')
+  }
+
+  window.location.reload();
+
+}
 }

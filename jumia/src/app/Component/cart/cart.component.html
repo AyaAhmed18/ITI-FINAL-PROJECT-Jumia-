@@ -1,5 +1,5 @@
 <!-- Empty Cart -->
-<nav aria-label="breadcrumb " *ngIf="cartNumber === 0">
+<nav aria-label="breadcrumb " *ngIf="cartNumber === 0" [class.rtl]="isArabic">
   <ol class="row breadcrumb m-3 ">
     <div class="d-flex justify-content-center">
       <img src="assets/ProductImg/cart.svg" alt="">
@@ -16,13 +16,13 @@
 </nav>
 
 <!-- Cart with Items -->
-<div class="row " *ngIf="cartNumber > 0">
+<div class="row " *ngIf="cartNumber > 0" [class.rtl]="isArabic">
 
 
  
   <div class="card col-8   my-4 "  >
     <div class="card-header  bg-body">
-      <h5>{{'cart.Cart'|translate}} ({{'crat.{{cartNumber}}' | translate}} )</h5>
+      <h5>{{'cart.Cart'|translate}} ({{cartNumber}})</h5>
     </div>
     <div *ngFor="let item of cartItems">
     <div class="row card-body"  >
@@ -31,7 +31,7 @@
         <img src="assets/ProductImg/1.jpg" style="height: 100px;">
       </div>
       <div class="col-5 ">
-        <p class="mb-1"><small>{{'cart.{{ item.name }} '|translate}}{{'cart.{{item.shortDescription}}'}}</small> </p>
+        <p class="mb-1"><small>{{ item.name }} {{item.shortDescription}}</small> </p>
         <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">
           <small [ngClass]="{'text-success': item.stockQuantity < 5, 'text-danger': item.stockQuantity >= 5}">
             {{ item.stockQuantity < 5 ? item.stockQuantity + ' Unifs Left' : 'Available' }}
@@ -41,9 +41,9 @@
       </div>
       <div class="col-4 ">
         <div class="row" style="text-align: end;">
-          <h1 class="h4 col-12">{{'card.EGP' | translate}} {{item.realPrice}}</h1> <!--price After Discount-->
+          <h1 class="h4 col-12">{{'cart.EGP' | translate}} {{item.realPrice}}</h1> <!--price After Discount-->
            <div class="col-12 ">
-            <p class="fa"><del>{{'card.EGP' |translate}} {{item.realPrice}}     </del>     
+            <p class="fa"><del>{{'cart.EGP' |translate}} {{item.realPrice}}     </del>     
               <strong class="offer-cards p-1">   -{{item.discount}}%</strong> </p>
           </div>
         </div>
@@ -53,7 +53,7 @@
     <div class=" bg-transparent row">
       
       <div class="col-6" (click)="removeProduct(item)">
-        <p class="text-warning"><i class="fa fa-solid fa-trash"></i> <span class="text-uppercase"> {{'card.Remove' | translate}}</span></p>
+        <p class="text-warning"><i class="fa fa-solid fa-trash"></i> <span class="text-uppercase"> {{'cart.Remove' | translate}}</span></p>
       </div>
           <div class="col-6 d-flex justify-content-end ">
             <button class="btn btn-warning btn-sm" (click)="decreaseQuantity(item)" >
@@ -81,11 +81,11 @@
   <div class="col-3 float-end ">
     <div class="card mb-3 my-4" style="width: 18rem;">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>{{'card.CART SUMMARY' | translate}}</strong> </li>
+        <li class="list-group-item"><strong>{{'cart.CART SUMMARY' | translate}}</strong> </li>
         <li class="list-group-item">
           <ul class="d-flex justify-content-start">
-            <li class="me-5 ">{{'card.Subtotal' | translate}}</li>
-            <li style="text-align:end;"><strong>{{'card.EGP' | translate}} {{TotalCartPrice}}</strong></li>
+            <li class="me-5 ">{{'cart.Subtotal' | translate}}</li>
+            <li style="text-align:end;"><strong>{{'cart.EGP' | translate}} {{TotalCartPrice}}</strong></li>
           </ul>
         </li>
         <ul>
@@ -96,7 +96,7 @@
         </ul>
       </ul>
       <div class="card-footer  ">
-        <button class="btn btn-warning text-light" style="width: 90%;" routerLink="/shippment">{{'card.Checkout'|translate}} ({{'card.EGP' | translate}}
+        <button class="btn btn-warning text-light" style="width: 90%;" routerLink="/shippment">{{'cart.Checkout'|translate}} ({{'cart.EGP' | translate}}
           {{TotalCartPrice}} )</button>
       </div>
     </div>
@@ -105,14 +105,14 @@
 
 
 <!-- washlistproduct -->
-<div class="container-fluid mt-5 shadow-sm p-3 mb-5 bg-body rounded " style="background-color: white;">
+<div class="container-fluid mt-5 shadow-sm p-3 mb-5 bg-body rounded " style="background-color: white;" [class.rtl]="isArabic">
   <div class="row mb-3  ">
     <div class="col">
-      <h1>{{'card.Saved Item'|translate}}</h1>
+      <h1>{{'cart.Saved Item'|translate}}</h1>
     </div>
 
     <div class="col text-warning" style="text-align: right;"> <a href="">
-        <h4>{{'card.See All >'|translate}} </h4>
+        <h4>{{'cart.See All >'|translate}} </h4>
       </a> </div>
   </div>
 
@@ -143,7 +143,7 @@
                 </ul>
                 <div class="hide-btn-cards">
                 <button class="btn btn-warning w-100 text-white" data-bs-toggle="modal"
-                  [attr.data-bs-target]="'#staticBackdrop-' + pro.id">{{'card.Add To Cart'|translate}}</button>
+                  [attr.data-bs-target]="'#staticBackdrop-' + pro.id">{{'cart.Add To Cart'|translate}}</button>
                 </div>
               </div>
               <!-- Model -->
@@ -157,14 +157,14 @@
                     </div>
                     <div class="modal-body">
                       <div class="center-align">
-                        <p>{{'card.Only size fit all' | translate}}</p>
-                        <h2><strong>{{'card.EGP' |translate}} {{pro.realPrice}} <del> {{'card.EGP' |translate}} </del></strong></h2>
+                        <p>{{'cart.Only size fit all' | translate}}</p>
+                        <h2><strong>{{'cart.EGP' |translate}} {{pro.realPrice}} <del> {{'card.EGP' |translate}} </del></strong></h2>
                       </div>
                     </div>
                     <div class="modal-footer">
                       <div class="hide-btn-cards">
                         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="AddToCart(pro)"
-                          aria-label="Close">{{'card.Add to cart' |translate}}</button>
+                          aria-label="Close">{{'cart.Add to cart' |translate}}</button>
                       </div>
                     </div>
                   </div>
@@ -178,7 +178,7 @@
           </div>
           <button class="carousel-control-prev col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{{'card.Previous' |translate}}</span>
+            <span class="visually-hidden">{{'cart.Previous' |translate}}</span>
           </button>
           <button class="carousel-control-next col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -191,12 +191,12 @@
   </div>
 </div>
 
-<div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1">
-  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'card.Product Added To Cart Successfully' |translate}}
+<div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1" [class.rtl]="isArabic" >
+  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Added To Cart Successfully' |translate}}
   <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close"></button>
 </div>
-<div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2">
-  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'card.Product Removed from Cart Successfully' |translate}}
+<div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2" [class.rtl]="isArabic">
+  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Removed from Cart Successfully' |translate}}
   <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close"></button>
 </div>
 
