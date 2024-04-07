@@ -68,3 +68,6 @@
     .text-danger {
         color: green;
     }
+    .rtl {
+        direction: rtl;
+      }

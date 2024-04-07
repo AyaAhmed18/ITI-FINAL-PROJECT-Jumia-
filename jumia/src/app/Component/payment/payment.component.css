@@ -5,3 +5,6 @@
     background-color: rgba(255, 115, 0, 0.842)  !important ;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5); 
   }
+  .rtl {
+    direction: rtl;
+  }

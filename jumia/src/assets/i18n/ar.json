@@ -294,8 +294,8 @@
         "Phone Number":"رقم الهاتف",
         "REGISTER":"تسجيل",
         "Do you have an account? sign in" :"هل لديك حساب؟ تسجيل الدخول",
-        "For further support, you may visit the Help Center or contact our customer service team":"لمزيد من الدعم، يمكنك زيارة مركز المساعدة أو الاتصال بفريق خدمة العملاء لدينا"
-
+        "For further support, you may visit the Help Center or contact our customer service team.":"لمزيد من الدعم، يمكنك زيارة مركز المساعدة أو الاتصال بفريق خدمة العملاء لدينا"
+,"For further support, you may visit the Help Center or contact our customer service team":"لمزيد من الدعم، يمكنك زيارة مركز المساعدة أو الاتصال بفريق خدمة العملاء لدينا"
     },
     "signin":{
         "Welcome to Jumia":"مرحبا بكم في جوميا",
@@ -307,6 +307,6 @@
         "Enter Valid Password.":"أدخل كلمة مرور صالحة.",
         "Login":"تسجيل الدخول",
         "For further support, you may visit the Help Center or contact our customer service team." :"لمزيد من الدعم، يمكنك زيارة مركز المساعدة أو الاتصال بفريق خدمة العملاء لدينا."
-  
+  ,"Forget Your Password?":"نسيت كلمة المرور؟"
     }
 }

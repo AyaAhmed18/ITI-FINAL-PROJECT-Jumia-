@@ -312,8 +312,8 @@
   "Phone Number":"Phone Number",
   "REGISTER":"REGISTER",
   "Do you have an account? sign in":"Do you have an account? sign in",
-  "For further support, you may visit the Help Center or contact our customer service team":"For further support, you may visit the Help Center or contact our customer service team"
-    
+  "For further support, you may visit the Help Center or contact our customer service team.":"For further support, you may visit the Help Center or contact our customer service team"
+    ,"For further support, you may visit the Help Center or contact our customer service team":"For further support, you may visit the Help Center or contact our customer service team"
 },
 "signin":{
   "Welcome to Jumia":"Welcome to Jumia",
@@ -325,7 +325,7 @@
   "Enter Valid Password.":"Enter Valid Password.",
   "Login":"Login",
   "For further support, you may visit the Help Center or contact our customer service team.":"For further support, you may visit the Help Center or contact our customer service team."
-
+,"Forget Your Password?":"Forget Your Password?"
 
 }
 
