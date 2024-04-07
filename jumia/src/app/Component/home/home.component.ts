@@ -29,21 +29,19 @@ export class HomeComponent {
   SubCategories : any[]=[];
   allProducts : any[]=[];
   SelectedCategoryId : number=0;
-  isArabic: boolean = false;
 constructor(private _categoryService :CategoryserviceService
   ,private _subCategoryService :SubcategoryserviceService
   ,private _apiProductsService: ApiProductsService
-  ,private _router : Router,
-  private  translate: TranslateService)
+  ,private _router : Router)
 {
 
 }
 ngOnInit(): void {
-  this.translate.onLangChange.subscribe((Event)=>{
-    this.isArabic = Event.lang === 'ar'
-    console.log( this.isArabic);
+  //this.translate.onLangChange.subscribe((Event)=>{
+  //  this.isArabic = Event.lang === 'ar'
+    //console.log( this.isArabic);
     
-  })
+  //})
 this.GetCategories();
 }
 
@@ -81,6 +79,10 @@ GetSubCategories(categoryId: number)
 GetProductsByCatId(categoryId: number):void
 {
   this._router.navigateByUrl(`/GetCategory/${categoryId}`);
+}
+GetProductsBySubCatId(subcategoryId: number):void
+{
+  this._router.navigateByUrl(`/GetSubCategory/${subcategoryId}`);
 }
 
 }

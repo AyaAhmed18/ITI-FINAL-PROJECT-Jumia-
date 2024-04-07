@@ -9,40 +9,35 @@ import { CartService } from '../../Services/cart.service';
 import { WishlistService } from '../../Services/wishlist.service';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { ApiSpecficationsService } from '../../Services/api-specfications.service';
-import { ISpecfications } from '../../Models/ispecfications';
+import { FilterServiceService } from '../../Services/filter-service.service';
 
 @Component({
   selector: 'app-product',
   standalone: true,
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
-  imports: [FilterComponent,CommonModule,FormsModule,TranslateModule]
+  imports: [FilterComponent,CommonModule,FormsModule]
 })
 export class ProductComponent implements  OnInit{
   @Input() AllProducts:ProductDto[]=[];
   @Input() products: any[]=[];
   AllProductsProducts: any[]=[];
   cartItems: ProductDto[] = [];
-  productList: ProductDto[] = [];
-  isArabic: boolean = false;
+  productList: ProductDto[]|null = null;
 // AllProducts:ProductDto[]=[];
 //  products: any;
-//searchResults: any[] = [];
-sizeSpecs: string[] = [];
-AllSpecs: ISpecfications[] = [];
+searchResults: any[] = [];
 pageSize:number = 10;
 AllProd:number=0;
 totalPages: number = 0;
 pageNumber: number = 1;
 pageNumbers: number[]=[];
-//AllProductsProducts : any[]=[];
+currentCategoryId :number = 0;
 //  @Input() product?: ProductDto;
   cartTotalPrice:number=0
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
   @Output() addTowashlistClicked = new EventEmitter<ProductDto>();
- // addedToCart = false;
+  addedToCart = false;
   addedTowashlist= false;
   constructor(private _ApiProductsService :ApiProductsService ,
        private _sanitizer:DomSanitizer,
@@ -50,60 +45,30 @@ pageNumbers: number[]=[];
       private _wishlist :WishlistService,
       private _searchResultsService: SearchResultsService,
       private _activeRouter: ActivatedRoute,
-      private router: Router,
-      private _specsServive: ApiSpecficationsService,
-      private  translate: TranslateService)
+      private _route: Router,
+      private _filterServices : FilterServiceService)
    {
 
    }
    ngOnInit(): void {
-    this.translate.onLangChange.subscribe((Event)=>{
-      this.isArabic = Event.lang === 'ar'
-    })
-    this._ApiProductsService.products$.subscribe(products => {
-      this.products = products;
-      products.forEach(element => {
-        this._specsServive.GetProductSpecs(element.id).subscribe(specs => {
-          if (specs != null) {
-            console.log(specs); 
-            specs.forEach(spec => {
-              this.AllSpecs.push(spec);
-              if (spec.specificationName === 'Size') {
-                console.log(spec.value);
-                if (spec.value.includes(',')) {
-                  this.sizeSpecs = spec.value.split(',');
-                } else {
-                  this.sizeSpecs = [spec.value];
-                }
-              }
-              console.log(this.sizeSpecs);
-            });
-          }
-        });
-      });
-    });
     this.Sershresult();
-    this.getAllProducts();
-    
+    // this.getAllProducts();
+    this._activeRouter.paramMap.subscribe(parammap=>
+    {
+      this.currentCategoryId =Number(parammap.get('id'));
+      this.getProductByCategoryId(this.currentCategoryId);
+    })
+    console.log("onInit");
+    console.log(this.products);
+    //this.pageNumbers = this.products[1]
     }
-   
-    changeLanguage(lang: string) {
-      if (lang == 'en') {
-        localStorage.setItem('lang', 'en')
-      }
-      else {
-        localStorage.setItem('lang', 'ar')
-      }
-  
-      window.location.reload();
-  
-    }
+
     getProductByCategoryId(id:number)
     {
       this._ApiProductsService.getProductByCatId(id).subscribe(
       {
         next:(data: any)=>{
-          this.productList=data
+          this.productList=data.entities
           console.log(data);
           console.log("ProductList")
           console.log(this.productList);
@@ -117,14 +82,13 @@ pageNumbers: number[]=[];
          this.cartTotalPrice+=prod.realPrice
          this._cartService.addToCart(prod);
          this.addToCartClicked.emit(prod);
+         prod.addedToCart = true;
          this._wishlist.removeProductFromWishlist(prod)
       }
   }
 
   // end Add to Cart
-  updateProductsInSharedService(products: any[]) {
-    this._ApiProductsService.updateProducts(products);
-  }
+
     //Addtowashlist
 
   addToWishlist(product: ProductDto) {
@@ -134,9 +98,7 @@ pageNumbers: number[]=[];
         this._wishlist.addProductToWishlist(product);
     }
     product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
-
-
-  }
+}
 
 
   isInWishlist(product: ProductDto): boolean {
@@ -212,12 +174,14 @@ console.log();
 prevPage(): void {
 if (this.pageNumber > 1) {
   this.pageNumber--;
+  this._filterServices.setValue(this.pageNumber);
   this.getAllProducts();
 }
 }
 goToPage(page: number): void {
 if (page >= 1 && page <= this.totalPages) {
   this.pageNumber = page;
+  this._filterServices.setValue(this.pageNumber);
   this.getAllProducts();
 }
 }
@@ -322,8 +286,5 @@ if (page >= 1 && page <= this.totalPages) {
 
 //       })
 // }
-navigateToDetails(productId: number): void {
-  this.router.navigateByUrl(`/Detalse/${productId}`);
-}
 
 }

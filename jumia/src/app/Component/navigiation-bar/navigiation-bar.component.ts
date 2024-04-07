@@ -71,6 +71,7 @@ export class NavigiationBarComponent implements OnInit {
 
 
   searchProducts() {
+    setInterval(() => {
     if (this.searchTerm.trim() !== '') {
       this._ApiProductsService.SearchByNameOrDesc(this.searchTerm).subscribe(
         (searchResults) => {
@@ -81,7 +82,7 @@ export class NavigiationBarComponent implements OnInit {
           console.error('Error occurred while searching:', error);
         }
       );
-    }
+    }}, 1000);
 
   }
 

@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { BrandServiceService } from '../../Services/brand-service.service';
 import { IBrandDto } from '../../ViewModels/ibrand-dto';
 import { ProductDto } from '../../ViewModels/product-dto';
-import { ApiProductsService } from '../../Services/api-products.service';
 
 @Component({
     selector: 'app-filter',
@@ -24,21 +23,18 @@ export class FilterComponent {
     AllBrands: any = [];
     selectedBrands: number[] = [];
     selectedBrandsStr : string ='';
-    constructor(private _filterService: FilterServiceService,
-      private _brandService : BrandServiceService,
-    private _ApiProductsService:ApiProductsService) { }
+    totalPages: number = 0;
+    pageNumber: number = 1;
+    pageNumbers: number[]=[];
+    AllProd:number=0;
+    pageSize:number = 10;
 
-    updateProductsInSharedService(products: any[]) {
-      this._ApiProductsService.updateProducts(products);
-    }
+    constructor(private _filterService: FilterServiceService,private _brandService : BrandServiceService) { }
+
     ngOnInit(): void {
         console.log(this.minDiscount)
-        this._ApiProductsService.products$.subscribe(products => {
-          this.products = products;
-        });
       this.filterProducts();
       this.GetBrands();
-
     }
     GetBrands()
     {
@@ -57,14 +53,24 @@ export class FilterComponent {
       console.log(this.selectedBrands)
       console.log(this.selectedBrandsStr)
 
-      this._filterService.filterByAll(this.minDiscount, this.minPrice, this.maxPrice  , this.selectedBrandsStr)
+      this._filterService.filterByAll(this.minDiscount, this.minPrice, this.maxPrice  , this.selectedBrandsStr, this.pageNumber,this.pageSize)
       .subscribe(data => {
+        this.products = data.entities;
+      this.AllProd = data.count;
+
+      this.totalPages=Math.ceil( this.AllProd / this.pageSize)
+      this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+        console.log("BehaviorSubject")
+        console.log(this._filterService.getValue());
+
         console.log("selected Brands");
         console.log(this.selectedBrands)
         console.log(this.selectedBrandsStr)
 
 
         this.products = data.entities;
+         console.log(data.count);
+
         console.log(this.products[1].images[0])
 
         console.log("filter--")
@@ -92,6 +98,38 @@ export class FilterComponent {
       }
 
       }
+      nextPage(): void {
+        if (this.pageNumber < this.totalPages) {
+          console.log( this.pageNumber);
+
+          this.pageNumber++;
+          console.log( this.pageNumber);
+
+
+        console.log();
+          //this.getAllProducts();
+          this.filterProducts();
+        }
+        }
+
+        prevPage(): void {
+        if (this.pageNumber > 1) {
+          this.pageNumber--;
+          //this._filterServices.setValue(this.pageNumber);
+          //this.getAllProducts();
+          this.filterProducts();
+
+        }
+        }
+        goToPage(page: number): void {
+        if (page >= 1 && page <= this.totalPages) {
+          this.pageNumber = page;
+          //this._filterServices.setValue(this.pageNumber);
+          //this.getAllProducts();
+          this.filterProducts();
+
+        }
+        }
  // this._filterService.filterByDiscountRange(this.minDiscount)
       //   .subscribe(data => {
       //     this.products = data.entities;

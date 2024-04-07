@@ -185,7 +185,7 @@ namespace JumiaStore.Controllers
             return Ok(Prds);
         }
         [HttpGet("GetbyCategoryId")]
-        public async Task<IActionResult> GetbyCategoryId(int CatId, int? pageSize, int? pageNumber)
+        public async Task<IActionResult> GetbyCategoryId(int CatId, int pageSize, int pageNumber)
         {
             var productname = await _productServices.GetProductsByCategoryId(CatId, pageSize, pageNumber);
             if (productname == null)
@@ -198,7 +198,7 @@ namespace JumiaStore.Controllers
             }
         }
         [HttpGet("GetbySubCategoryId")]
-        public async Task<IActionResult> GetbySubCategoryId(int SubCatId, int? pageSize, int? pageNumber)
+        public async Task<IActionResult> GetbySubCategoryId(int SubCatId, int pageSize, int pageNumber)
         {
             var productname = await _productServices.GetProductsBySubCategoryId(SubCatId, pageSize, pageNumber);
             if (productname == null)

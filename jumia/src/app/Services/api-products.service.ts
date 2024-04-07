@@ -8,8 +8,6 @@ import { ProductDto } from '../ViewModels/product-dto';
   providedIn: 'root'
 })
 export class ApiProductsService {
-  private productsSubject = new BehaviorSubject<any[]>([]);
-  products$ = this.productsSubject.asObservable();
 
   private apiUrl = 'http://localhost:64866/api/Product';
 //http://localhost:5094/api/Product bahaa
@@ -20,6 +18,7 @@ export class ApiProductsService {
   //   let allpro= this._httpClient.get<any>(this.apiUrl);
   //   return allpro;
   // }
+
   getAllProducts(pageSize: number, pageNumber: number): Observable<any> {
     const params = new HttpParams()
         .set('pageSize', pageSize.toString())
@@ -58,8 +57,9 @@ export class ApiProductsService {
   getProductByCatId(id: number): Observable<ProductDto> {
     return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=10&pageNumber=1`);
   }
-
-  updateProducts(products: any[]) {
-    this.productsSubject.next(products);
+  getProductBySubCatId(id: number): Observable<ProductDto> {
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbySubCategoryId?SubCatId=${id}&pageSize=10&pageNumber=1`);
   }
+
+
 }

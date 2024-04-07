@@ -1,4 +1,4 @@
-<main class="container" [class.rtl]="isArabic" >
+<main class="container"  >
   <div class="row">
     <div class="col-2 col-md mb-5 shadow-lg p-3 mb-5 rounded my-3 show-div-Linkes">
       <div class="row float-start">
@@ -22,7 +22,7 @@
     <div class="show-linkes col-7 col-md mb-5 shadow-lg p-3 mb-5 bg-body rounded my-3">
       <!-- <div *ngFor="let cat of allCategories">
         <div id="{{cat.id}}"> -->
-          <div class="row" *ngFor="let subCat of SubCategories">
+          <div class="row" *ngFor="let subCat of SubCategories" (click) = "GetProductsBySubCatId(subCat.id)">
             <div class="col-4 border-right">
               <!-- <h5 class="border-bottom">HOUSEHOLD SUPPLIES</h5> -->
               <a href="">{{ subCat.name }}</a>

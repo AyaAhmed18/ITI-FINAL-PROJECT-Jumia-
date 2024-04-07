@@ -36,8 +36,5 @@ export const routes: Routes = [
     { path: 'OrderItems/:ordId', component: OrderItemsComponent },
     { path: 'confirmOrder', component: ConfirmOrderComponent },
     {path:'GetCategory/:id',component:FilterComponent},
-   // {path:'CartProduct',component:CartwithProductComponent},
-   // {path:'test',component:TestComponent},
-
-  // canActivate:[authGuard]
+    {path:'GetSubCategory/:id',component:FilterComponent},
 ];
