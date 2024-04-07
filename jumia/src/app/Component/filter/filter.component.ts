@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ProductComponent } from "../product/product.component";
 import { FilterServiceService } from '../../Services/filter-service.service';
 import { CommonModule} from '@angular/common';
@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { BrandServiceService } from '../../Services/brand-service.service';
 import { IBrandDto } from '../../ViewModels/ibrand-dto';
 import { ProductDto } from '../../ViewModels/product-dto';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-filter',
@@ -29,13 +31,53 @@ export class FilterComponent {
     AllProd:number=0;
     pageSize:number = 10;
 
-    constructor(private _filterService: FilterServiceService,private _brandService : BrandServiceService) { }
+
+    //@ViewChild('filterComponent') filterComponent: FilterComponent | undefined; // Replace with child component type
+
+    currentCategoryId: number = 0;
+  currentSubCategoryId: number = 0;
+
+    constructor(private _filterService: FilterServiceService,private _brandService : BrandServiceService
+      ,private _router : Router, private _activeRouter: ActivatedRoute,private _sanitizer:DomSanitizer
+      ) { }
 
     ngOnInit(): void {
-        console.log(this.minDiscount)
-      this.filterProducts();
+      console.log("Starting Fillter")
       this.GetBrands();
+      //this.filterProducts();
+
+
+      console.log(this.minDiscount)
+    const currentRoute = this._router.url;
+    console.log(currentRoute)
+    if (currentRoute.includes('GetSubCategory')) {
+      //this.products = []
+      this._activeRouter.paramMap.subscribe(parammap=>
+        {
+          this.currentSubCategoryId =Number(parammap.get('id'));
+          console.log(this.currentCategoryId);
+          this.getProductBySubCategoryId(this.currentCategoryId);
+        })
+      console.log("SubCategory")
     }
+    else if (currentRoute.includes('GetCategory')) {
+      //this.products =
+      this._activeRouter.paramMap.subscribe(parammap=>
+        {
+          this.currentCategoryId =Number(parammap.get('id'));
+          console.log(this.currentCategoryId);
+          this.getProductByCategoryId(this.currentCategoryId);
+        })
+      console.log("Category")
+
+    }
+    else
+    {
+      console.log("Filter is working")
+      this.filterProducts();
+    }
+    }
+
     GetBrands()
     {
       this._brandService.getAllBrands()
@@ -46,7 +88,31 @@ export class FilterComponent {
       }
       });
     }
-
+    getProductByCategoryId(id:number)
+    {
+      this._filterService.getProductByCatId(id).subscribe(
+      {
+        next:(data: any)=>{
+          this.products=data.entities
+          console.log(data);
+          console.log("ProductList")
+          console.log(this.products);
+          this.sanitizeImages();
+        }
+      })
+    }
+    getProductBySubCategoryId(id:number)
+    {
+      this._filterService.getProductBySubCatId(id).subscribe(
+      {
+        next:(data: any)=>{
+          this.products=data.entities
+          console.log(data);
+          console.log("ProductList")
+          console.log(this.products);
+        }
+      })
+    }
     filterProducts(): void {
       this.selectedBrandsStr = this.selectedBrands.join(',');
       console.log("selected Brands");
@@ -69,12 +135,13 @@ export class FilterComponent {
 
 
         this.products = data.entities;
-         console.log(data.count);
+        console.log(data.count);
 
         console.log(this.products[1].images[0])
 
         console.log("filter--")
         console.log( this.products)
+        this.sanitizeImages();
       });
 
 
@@ -143,11 +210,20 @@ export class FilterComponent {
       //     console.log( this.products)
       //   });
 
+      sanitizeImages() {
+        this.products.forEach(product => {
+          console.log(product.images);
+          product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images);
+          console.log(product.images);
+          console.log(product.images);
 
+        });
+      }
 
 
 
 }
+
 
 
 // const rangeInput = document.querySelectorAll<HTMLInputElement>(".range-input input"),

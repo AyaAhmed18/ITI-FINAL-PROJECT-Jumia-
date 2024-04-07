@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ProductDto } from '../ViewModels/product-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterServiceService {
-  private apiUrl = 'http://localhost:5094/api/Product/FilterByAllWithPagination?';
+  private apiUrl = 'http://localhost:5094/api/Product';
   constructor(private _httpClient: HttpClient) { }
   private ChangingPages = new BehaviorSubject<any>(null);
   setValue(value: any) {
@@ -78,6 +79,13 @@ export class FilterServiceService {
     return allpro;
 
 
+  }
+  getProductByCatId(id: number): Observable<ProductDto> {
+    console.log("getProductByCatId");
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=10&pageNumber=1`);
+  }
+  getProductBySubCatId(id: number): Observable<ProductDto> {
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbySubCategoryId?SubCatId=${id}&pageSize=10&pageNumber=1`);
   }
   // filterByPriceRange(minPrice: number, maxPrice: number): Observable<any> {
   //   let allpro= this._httpClient.get<any>(`${this.apiUrl}/FilterByPriceRange?MinPrice=${minPrice}&MaxPrice=${maxPrice}`);
