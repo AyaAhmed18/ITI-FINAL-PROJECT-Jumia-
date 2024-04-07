@@ -9,8 +9,8 @@ import { ICategory } from '../Models/icategory';
 })
 export class CategoryserviceService {
 
-  private apiUrl = 'http://localhost:64866/api'
-
+  //private apiUrl = 'http://localhost:64866/api'
+  private apiUrl = environment.apiUrl;
   constructor(private  _HttpClient:HttpClient) { }
 
 
