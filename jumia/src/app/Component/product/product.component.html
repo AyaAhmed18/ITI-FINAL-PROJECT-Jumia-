@@ -1,6 +1,6 @@
 
 
-        <div class="row bg-body rounded  row-cols-1 row-cols-md-4 g-4">
+        <div class="row bg-body rounded  row-cols-1 row-cols-md-4 g-4" [class.rtl]="isArabic">
             <div class="col-12">
                 <div class="row">
                     <div class="col-8"><b><strong>Women's Sweaters</strong></b></div>
@@ -82,6 +82,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="center-align">
+                                <span class="specs" *ngFor="let s of sizeSpecs">{{ s }}</span>
                                 <input type="radio" name="size" id="size_1" value="small" />
                                 <label class=" radio-popup-size" for="size_1">M</label>
 

@@ -39,6 +39,7 @@ export class CartService {
     const existingProduct = this.cartItems.find(item => item.id === product.id);
     if (!existingProduct) {
       product.addedToCart = true;
+      sessionStorage.setItem(`addedToCart${product.id}`, product.addedToCart.toString());
       this.cartItems.push(product);
       this.calculateTotalCartPrice();
       this.calculateTotalCartNumber();
@@ -58,6 +59,7 @@ export class CartService {
       productToRemove.stockQuantity+=productToRemove.cartQuantity
       this.calculateTotalCartInfo();
       productToRemove.addedToCart=false
+      sessionStorage.removeItem(`addedToCart${productToRemove.id}`);
       this.cartSubject.next([...this.cartItems]);
       this.updateSessionStorage();
     }

@@ -10,6 +10,8 @@ import { WishlistService } from '../../Services/wishlist.service';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ApiSpecficationsService } from '../../Services/api-specfications.service';
+import { ISpecfications } from '../../Models/ispecfications';
 
 @Component({
   selector: 'app-product',
@@ -28,6 +30,8 @@ export class ProductComponent implements  OnInit{
 // AllProducts:ProductDto[]=[];
 //  products: any;
 //searchResults: any[] = [];
+sizeSpecs: string[] = [];
+AllSpecs: ISpecfications[] = [];
 pageSize:number = 10;
 AllProd:number=0;
 totalPages: number = 0;
@@ -47,6 +51,7 @@ pageNumbers: number[]=[];
       private _searchResultsService: SearchResultsService,
       private _activeRouter: ActivatedRoute,
       private router: Router,
+      private _specsServive: ApiSpecficationsService,
       private  translate: TranslateService)
    {
 
@@ -55,14 +60,33 @@ pageNumbers: number[]=[];
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'
     })
-   
     this._ApiProductsService.products$.subscribe(products => {
       this.products = products;
+      products.forEach(element => {
+        this._specsServive.GetProductSpecs(element.id).subscribe(specs => {
+          if (specs != null) {
+            console.log(specs); 
+            specs.forEach(spec => {
+              this.AllSpecs.push(spec);
+              if (spec.specificationName === 'Size') {
+                console.log(spec.value);
+                if (spec.value.includes(',')) {
+                  this.sizeSpecs = spec.value.split(',');
+                } else {
+                  this.sizeSpecs = [spec.value];
+                }
+              }
+              console.log(this.sizeSpecs);
+            });
+          }
+        });
+      });
     });
     this.Sershresult();
     this.getAllProducts();
-   
+    
     }
+   
     changeLanguage(lang: string) {
       if (lang == 'en') {
         localStorage.setItem('lang', 'en')

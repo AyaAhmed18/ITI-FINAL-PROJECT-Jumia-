@@ -5,6 +5,7 @@ import { ApiProductsService } from '../../Services/api-products.service';
 import { CategoryserviceService } from '../../Services/categoryservice.service';
 import { SubcategoryserviceService } from '../../Services/subcategoryservice.service';
 import { SliderComponent } from '../slider/slider.component';
+import { TranslateService } from '@ngx-translate/core';
 // const imgesUrl=require("../../../assets/ProductImg/ApplianceEN.png");
 @Component({
   selector: 'app-home',
@@ -28,15 +29,34 @@ export class HomeComponent {
   SubCategories : any[]=[];
   allProducts : any[]=[];
   SelectedCategoryId : number=0;
+  isArabic: boolean = false;
 constructor(private _categoryService :CategoryserviceService
   ,private _subCategoryService :SubcategoryserviceService
   ,private _apiProductsService: ApiProductsService
-  ,private _router : Router)
+  ,private _router : Router,
+  private  translate: TranslateService)
 {
 
 }
 ngOnInit(): void {
+  this.translate.onLangChange.subscribe((Event)=>{
+    this.isArabic = Event.lang === 'ar'
+    console.log( this.isArabic);
+    
+  })
 this.GetCategories();
+}
+
+changeLanguage(lang: string) {
+  if (lang == 'en') {
+    localStorage.setItem('lang', 'en')
+  }
+  else {
+    localStorage.setItem('lang', 'ar')
+  }
+
+  window.location.reload();
+
 }
 GetCategories()
     {

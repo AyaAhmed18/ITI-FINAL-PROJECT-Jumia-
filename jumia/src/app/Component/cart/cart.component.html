@@ -31,7 +31,7 @@
         <img src="assets/ProductImg/1.jpg" style="height: 100px;">
       </div>
       <div class="col-5 ">
-        <p class="mb-1"><small>{{'cart.{{ item.name }} '|translate}}{{'cart.{{item.shortDescription}}'}}</small> </p>
+        <p class="mb-1"><small>{{item.name}}{{'cart.{{item.shortDescription}}'}}</small> </p>
         <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">
           <small [ngClass]="{'text-success': item.stockQuantity < 5, 'text-danger': item.stockQuantity >= 5}">
             {{ item.stockQuantity < 5 ? item.stockQuantity + ' Unifs Left' : 'Available' }}

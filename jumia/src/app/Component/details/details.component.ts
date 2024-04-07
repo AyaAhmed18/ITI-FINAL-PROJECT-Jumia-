@@ -37,7 +37,7 @@ export class DetailsComponent implements OnInit {
      
     this._specsServive.GetProductSpecs(this.currentProdId).subscribe(specs => {
       if (specs != null) {
-        console.log(specs); // Log received specs
+        console.log(specs); 
         specs.forEach(spec => {
           this.AllSpecs.push(spec);
           if (spec.specificationName === 'Size') {
