@@ -4,5 +4,7 @@ export interface OrderItems {
     totalPrice:number
     discount:number
     productId:number
+    productName:string
+    productNameAr:string
     orderId:number
 }

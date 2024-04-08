@@ -38,6 +38,8 @@ pageNumbers: number[]=[];
 currentCategoryId :number = 0;
 sizeSpecs: string[] = [];
 AllSpecs: ISpecfications[] = [];
+showAlert1: boolean = false;
+showAlert2: boolean = false;
 //  @Input() product?: ProductDto;
   cartTotalPrice:number=0
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
@@ -61,6 +63,7 @@ AllSpecs: ISpecfications[] = [];
    }
    
    ngOnInit(): void {
+    this.isArabicLanguage();
     // this._activeRouter.paramMap.subscribe(parammap=>
     //   {
     //     this.currentCategoryId =Number(parammap.get('id'));
@@ -116,6 +119,7 @@ AllSpecs: ISpecfications[] = [];
        this._cartService.addToCart(prod);
        this.addToCartClicked.emit(prod);
        this._wishlist.removeProductFromWishlist(prod)
+       this.showAlert1 = true;
     }
 }
 
@@ -148,6 +152,7 @@ GetSpecs(pro:ProductDto){
           this._wishlist.removeProductFromWishlist(product);
       } else {
           this._wishlist.addProductToWishlist(product);
+          this.showAlert2 = true;
       }
       product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
   
@@ -354,6 +359,13 @@ changeLanguage(lang: string) {
   window.location.reload();
 
 }
-
-
+closeAlert(){
+  this.showAlert1 = false;
+  this.showAlert2 = false;
+}
+isArabicLanguage(): boolean {
+  return this.translate.currentLang === 'ar';
+  
+  
+}
 }

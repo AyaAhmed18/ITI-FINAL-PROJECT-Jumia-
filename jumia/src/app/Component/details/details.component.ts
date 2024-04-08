@@ -101,4 +101,7 @@ export class DetailsComponent implements OnInit {
     window.location.reload();
 
   }
+  isArabicLanguage(): boolean {
+    return this.translate.currentLang === 'ar';
+  }
 }

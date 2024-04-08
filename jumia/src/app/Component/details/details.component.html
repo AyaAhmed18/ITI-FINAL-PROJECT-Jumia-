@@ -22,15 +22,15 @@
         <div class="col-9 ">
 <div class="row">
     <div class="col-12">
-        <p class="mb-1 h4"><small>{{ product?.name }}{{ product?.shortDescription }}</small> </p>
+        <p class="mb-1 h4"><small>{{ isArabicLanguage() ? product.nameAr : product.name }}{{ product.shortDescription }}</small> </p>
 
         <hr>
 
     </div>
     <div class="col-12 ">
-        <p > <strong class="h3 px-2">{{'details.EGP' | translate}} {{ product?.realPrice }}</strong>
-            <del class=" px-2">{{'details.EGP' | translate}}  {{product?.realPrice}}</del>
-             <strong class="offer-cards p-1">   -{{product?.discount}}%</strong>
+        <p > <strong class="h3 px-2">{{'details.EGP' | translate}} {{ product.realPrice }}</strong>
+            <del class=" px-2">{{'details.EGP' | translate}}  {{product.realPrice}}</del>
+             <strong class="offer-cards p-1">   -{{product.discount}}%</strong>
         </p> 
     </div>
     <div class="col-12 ">

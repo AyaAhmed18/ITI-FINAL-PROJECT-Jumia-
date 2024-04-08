@@ -80,6 +80,7 @@ GetSubCategories(categoryId: number)
     this.SubCategories = data;
     console.log("SubCategories")
     console.log(data)
+        
   }
   });
 }
@@ -91,5 +92,7 @@ GetProductsBySubCatId(subcategoryId: number):void
 {
   this._router.navigateByUrl(`/GetSubCategory/${subcategoryId}`);
 }
-
+isArabicLanguage(): boolean {
+  return this.translate.currentLang === 'ar-EG';
+}
 }

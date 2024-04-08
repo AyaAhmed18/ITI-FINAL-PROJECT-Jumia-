@@ -36,7 +36,8 @@ namespace Jumia.Application.Services
                 SubCategoryId=i.subCategorySpecification.SubCategoryId,
                 SpecificationId=i.subCategorySpecification.specificationId,
                 SpecificationName=i.subCategorySpecification.Specification.Name,
-                ProductId=i.ProductId,  
+                SpecificationNameAr=i.subCategorySpecification.Specification.NameAr,
+                ProductId =i.ProductId,  
                 Value=i.Value
             
             })

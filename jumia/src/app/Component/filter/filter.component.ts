@@ -66,10 +66,12 @@ export class FilterComponent {
       this._activeRouter.paramMap.subscribe(parammap=>
         {
           this.currentSubCategoryId =Number(parammap.get('id'));
-          console.log(this.currentCategoryId);
-          this.getProductBySubCategoryId(this.currentCategoryId);
+          console.log(this.currentSubCategoryId);
+          this.getProductBySubCategoryId(this.currentSubCategoryId);
         })
       console.log("SubCategory")
+      console.log();
+      
     }
     else if (currentRoute.includes('GetCategory')) {
       //this.products =
@@ -119,9 +121,12 @@ export class FilterComponent {
         next:(data: any)=>{
           this.products=data.entities
           console.log(data);
-          console.log("ProductList")
+          console.log("ProductList12")
           console.log(this.products);
+          console.log(this.products[1].images[0])
+          this.sanitizeImages();
         }
+        
       })
     }
     filterProducts(): void {
