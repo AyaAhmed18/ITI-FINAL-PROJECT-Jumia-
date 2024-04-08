@@ -215,7 +215,7 @@ export class FilterComponent {
       sanitizeImages() {
         this.products.forEach(product => {
           console.log(product.images);
-          product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images);
+          product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
           console.log(product.images);
           console.log(product.images);
 

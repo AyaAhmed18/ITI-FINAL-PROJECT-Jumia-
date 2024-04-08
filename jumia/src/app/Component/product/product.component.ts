@@ -56,14 +56,15 @@ AllSpecs: ISpecfications[] = [];
    {
 
    }
+   
    ngOnInit(): void {
-    this._activeRouter.paramMap.subscribe(parammap=>
-      {
-        this.currentCategoryId =Number(parammap.get('id'));
-        this.getProductByCategoryId(this.currentCategoryId);
-      })
-    //
-    this.getAllProducts();
+    // this._activeRouter.paramMap.subscribe(parammap=>
+    //   {
+    //     this.currentCategoryId =Number(parammap.get('id'));
+    //     this.getProductByCategoryId(this.currentCategoryId);
+    //   })
+    // //
+    // this.getAllProducts();
     
     this.Sershresult();
     const currentRoute = this._route.url;
@@ -186,10 +187,11 @@ GetSpecs(pro:ProductDto){
         }
     });
 }
+
 getAllProducts() {
   this._ApiProductsService.getAllProducts(this.pageSize, this.pageNumber).subscribe({
       next: (data) => {
-          this.products = data.entities;
+          this.products = data;
           this.AllProd = data.count;
 
           this.totalPages=Math.ceil( this.AllProd / this.pageSize)
@@ -269,7 +271,7 @@ if (page >= 1 && page <= this.totalPages) {
   sanitizeImages() {
     this.products.forEach(product => {
       console.log(product.images);
-      product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images);
+      product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
       console.log(product.images);
       console.log(product.images);
 
