@@ -6,12 +6,13 @@ import { ApiSpecficationsService } from '../../Services/api-specfications.servic
 import { ISpecfications } from '../../Models/ispecfications';
 import { SafeUrl, DomSanitizer } from "@angular/platform-browser";
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule ,TranslateModule],
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css'], 
 })
@@ -20,16 +21,23 @@ export class DetailsComponent implements OnInit {
   product!: ProductDto;
   sizeSpecs: string[] = [];
   AllSpecs: ISpecfications[] = [];
+  isArabic: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private apiProductsService: ApiProductsService,
     private router: Router,
     private _specsServive: ApiSpecficationsService,
-    private _sanitizer: DomSanitizer
+    private _sanitizer: DomSanitizer,
+    private  translate: TranslateService
+  
   ) { }
 
   ngOnInit(): void {
+    this.translate.onLangChange.subscribe((Event)=>{
+      this.isArabic = Event.lang === 'ar'
+    })
+
     this.activatedRoute.paramMap.subscribe(paramMap => {
       this.currentProdId = Number(paramMap.get('id'));
       this.getProductById(this.currentProdId);
@@ -81,5 +89,16 @@ export class DetailsComponent implements OnInit {
 
   sanitizeImages() {
      this.product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + this.product.images);
+  }
+  changeLanguage(lang: string) {
+    if (lang == 'en') {
+      localStorage.setItem('lang', 'en')
+    }
+    else {
+      localStorage.setItem('lang', 'ar')
+    }
+
+    window.location.reload();
+
   }
 }

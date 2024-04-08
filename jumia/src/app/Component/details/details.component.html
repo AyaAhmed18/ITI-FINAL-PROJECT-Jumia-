@@ -1,6 +1,6 @@
 
 <!-- Cart with Items -->
-<div class="row ">
+<div class="row "  [class.rtl]="isArabic">
 
 
  
@@ -28,14 +28,14 @@
 
     </div>
     <div class="col-12 ">
-        <p > <strong class="h3 px-2">EGP {{ product?.realPrice }}</strong>
-            <del class=" px-2">EGP {{product?.realPrice}}</del>
+        <p > <strong class="h3 px-2">{{'details.EGP' | translate}} {{ product?.realPrice }}</strong>
+            <del class=" px-2">{{'details.EGP' | translate}}  {{product?.realPrice}}</del>
              <strong class="offer-cards p-1">   -{{product?.discount}}%</strong>
         </p> 
     </div>
     <div class="col-12 ">
         <p > 
-            <small class=" p-1">  Shipping fees from EGP 20.00 to 6th of October (free delivery if order above EGP 200.00). Save 10 EGP on shipping with prepaid payment</small>
+            <small class=" p-1">  {{'details.Shipping fees from EGP 20.00 to 6th of October (free delivery if order above EGP 200.00). Save 10 EGP on shipping with prepaid payment' | translate}}</small>
        </p> 
             
        <div class="stars">
@@ -48,14 +48,14 @@
     </div>
     <img [src]="( product.images[0])" style="height: 100px; width: auto;">
     <div >
-      <h3>VARIATION AVAILABLE</h3>
+      <h3>{{'details.VARIATION AVAILABLE' | translate}}</h3>
       <br>
       <span class="specs" *ngFor="let s of sizeSpecs">{{ s }}</span>
     </div>
     <br>
     <div class="col-12">
         <button class="btn w-100 text-white" >
-          <i class="fa fa-solid fa-shopping-cart " ></i><strong class="px-2">Add To Cart</strong>
+          <i class="fa fa-solid fa-shopping-cart " ></i><strong class="px-2">{{'details.Add To Cart' | translate}}</strong>
         </button>
     </div>
     </div>
@@ -76,22 +76,22 @@
     <div class="col-3 float-end ">
       <div class="card mb-3 my-4" style="width: 18rem;">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>DELIVERY & RETURNS</strong> </li>
+          <li class="list-group-item"><strong>{{'details.DELIVERY & RETURNS' | translate}}</strong> </li>
           <li class="list-group-item">
             <ul class=" ">
-              <li class="me-5 ">Door Delivery</li>
-              <li  class=" "><small>Ready for delivery between 21 April & 22 April when you order within next 6hrs 19mins</small> </li>
+              <li class="me-5 ">{{'details.Door Delivery' | translate}}</li>
+              <li  class=" "><small>{{'details.Ready for delivery between 21 April & 22 April when you order within next 6hrs 19mins' | translate}}</small> </li>
             </ul>
           </li>
           <li class="list-group-item">
             <ul class=" ">
-              <li class="me-5 ">Return Policy</li>
-              <li  class=" "><small>Free return within the legal return period from 14 to 30 days, and if they meet the terms & conditions, with the need to report any apparent defect within 48 hours. For more details about return policy.</small> </li>
+              <li class="me-5 ">{{'details.Return Policy' | translate}}</li>
+              <li  class=" "><small>{{'details.Free return within the legal return period from 14 to 30 days, and if they meet the terms & conditions, with the need to report any apparent defect within 48 hours. For more details about return policy.' | translate}}</small> </li>
             </ul>
           </li>
           <ul>
             <li class="m-2">
-              <p><small>Missing EGP 151.00 to reach free delivery</small> </p>
+              <p><small>{{'details.Missing EGP 151.00 to reach free delivery' | translate}}</small> </p>
             </li>
             <li class="m-2"> <img src="assets/cart.jpg" style="width: 40%;"></li>
           </ul>
@@ -106,10 +106,10 @@
 
 
 
-  <div class="col-8 card  details "> 
-    <h1 class="border-bottom">Product Details</h1>
+  <div class="col-8 card  details "  [class.rtl]="isArabic"> 
+    <h1 class="border-bottom">{{'details.Product Details' | translate}}</h1>
     <div>
-      <h3>Specfications</h3>
+      <h3>{{'details.Specfications' | translate}}</h3>
       <ul>
         
         <li class="" *ngFor="let spec of AllSpecs">
