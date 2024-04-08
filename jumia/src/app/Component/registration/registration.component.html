@@ -1,0 +1,123 @@
+<div class="container-fluid " [class.rtl]="isArabic">
+  <div class="row justify-content-md-center">
+    <div class="col-6 align-items-center text-center">
+      <form class="row g-3 inner "
+        (submit)="register(user.userName,user.email,user.password,user.confirmpass,user.phonenumber)"
+        #registerForm="ngForm">
+
+        <div class="logo mb-3 d-flex justify-content-center ">
+          <img src="assets/FooterImg/star.png" alt="" style="width: 12%;">
+        </div>
+        <div class=" mt-2 mb-3 ">
+          <h1><strong>{{'register.W E L C O M E T O J U M I A' | translate}}</strong> </h1>
+          <p>{{'register.Type your e-mail or phone number to log in or create a Jumia account.' | translate}}</p>
+        </div>
+
+        <div class="field">
+          <label>
+            <input type="text" class="form-control input" id="floatingInput" placeholder="" required
+              pattern="^[a-zA-Z]{3,50}$" #UserName="ngModel" name="userName" [(ngModel)]="user.userName">
+            <p>{{'register.Enter Your Name' | translate}} <strong class="text-danger"> *</strong> </p>
+          </label>
+          <div id="emailHelp" class="form-text text-danger" [hidden]="UserName.valid || UserName.untouched">
+            @if(UserName.errors?.['required']){
+            <p>{{'register.Required' | translate}}</p>
+            }
+            @if(UserName.errors?.['pattern']){
+            <p>{{'register.Your name should be between 3 and 50 characters long and contain only letters.' | translate}}</p>
+            }
+          </div>
+        </div>
+
+        <div class="field">
+          <label>
+
+            <input type="email" class="form-control input" placeholder="" id="floatingInput" required
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" #email="ngModel" [(ngModel)]="user.email"
+              name="email">
+            <p>{{'register.email' | translate}} <strong class="text-danger"> *</strong> </p>
+          </label>
+          <div id="emailHelp" class="form-text text-danger" [hidden]="email.valid || email.untouched">
+            @if(email.errors?.['required']){
+            <p>{{'register.Required' | translate}}</p>
+            }
+            @if(email.errors?.['pattern']){
+            <p>{{'register.Invalid email' | translate}}</p>
+            }
+          </div>
+        </div>
+
+
+        <div class="field">
+          <label>
+
+            <input type="password" class="form-control input " id="floatingPassword" placeholder="" required
+              #pass="ngModel" name="password" [(ngModel)]="user.password">
+            <p>{{'register.password' | translate}} <strong class="text-danger"> *</strong></p>
+          </label>
+          <div id="emailHelp" class="form-text text-danger" [hidden]="pass.valid || pass.untouched">
+            @if(pass.errors?.['required']){
+            <p>{{'register.Required' | translate}}</p>
+            }
+            @if(pass.errors?.['pattern']){
+            <p>{{'register.Enter Valid Password.' | translate}}</p>
+            }
+          </div>
+        </div>
+
+
+        <div class="field">
+          <label>
+
+            <input type="password" class="form-control input" id="floatingPassword" placeholder="" required
+              #confirmpass="ngModel" name="confirmpass" [(ngModel)]="user.confirmpass">
+            <p>{{'register.Confirm password' | translate}} <strong class="text-danger"> *</strong></p>
+          </label>
+          <div id="emailHelp" class="form-text text-danger" [hidden]="confirmpass.valid || confirmpass.untouched">
+            @if(confirmpass.errors?.['required']){
+            <p>{{'register.Required' | translate}}</p>
+            }
+            @if(confirmpass.errors?.['pattern']){
+            <p>{{'register.InValid .' | translate}}</p>
+            }
+          </div>
+        </div>
+
+
+        <div class="field">
+          <label>
+
+            <input type="text" class="form-control input" id="floatingInput" placeholder="" required
+              #phonenumber="ngModel" name="phonenumber" [(ngModel)]="user.phonenumber" pattern="^^01[0-9]{9}$">
+            <p>{{'register.Phone Number' | translate}}  <strong class="text-danger"> *</strong></p>
+          </label>
+          <div id="emailHelp" class="form-text text-danger" [hidden]="phonenumber.valid || phonenumber.untouched">
+            @if(phonenumber.errors?.['required']){
+            <p>{{'register.Required' | translate}}</p>
+            }
+            @if(phonenumber.errors?.['pattern']){
+            <p>{{'register.InValid ' | translate}}.</p>
+            }
+          </div>
+        </div>
+
+
+        <input type="text" hidden name="id">
+        <div class="mt-5">
+          <button class="btn-Cont" [disabled]="registerForm.invalid">{{'register.REGISTER' | translate}}</button>
+        </div>
+        <div class=" mb-5 my-3 h5">
+          <!-- <p>By continuing you agree to Jumia’s</p> -->
+          <a class="text-warning" routerLink="/SignIn">{{'register.Do you have an account? sign in' | translate}}</a>
+        </div>
+        <div class="mb-3">
+          <p>{{'register.For further support, you may visit the Help Center or contact our customer service team' | translate}}</p>
+        </div>
+        <div class="mb-3 d-flex justify-content-center  ">
+          <img src="assets/FooterImg/JumiaLogo.png" style="width: auto; height: 15px;">
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

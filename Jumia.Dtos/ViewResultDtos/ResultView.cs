@@ -9,7 +9,7 @@ namespace Jumia.DTOS.ViewResultDtos
     public class ResultView<TEntity>
     {
         public bool IsSuccess { get; set; }
-        public string Message { get; set; }
+        public string? Message{ get; set; }
         public TEntity Entity { get; set; }
     }
 }

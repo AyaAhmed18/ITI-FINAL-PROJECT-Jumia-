@@ -1,0 +1,67 @@
+﻿@model CreateOrUpdateCategoryDto
+@{
+    Layout = "_Layout";
+}
+<style>
+    .alertt {
+        display: none !important;
+    }
+</style>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-danger fixed-top align-items-center" role="alert" id="customAlert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @AdminDashBoard.Languages.Resource.FailedTODelete
+        </div>
+    </div>
+}
+
+<div class="d-flex justify-content-center">
+<div class="col-md-6 grid-margin stretch-card ">
+    <div class="card">
+        <div class="card-body">
+                <h4 class="card-title">@AdminDashBoard.Languages.Resource.AddCategory</h4>
+            
+                <form asp-action="Create" asp-controller="Category" method="post" enctype="multipart/form-data" id="createForm">
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">@AdminDashBoard.Languages.Resource.English_Name</label>
+                        <input asp-for="Name" class="form-control">
+                        <span asp-validation-for="Name" style="color:red"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="NameAr" class="form-label">@AdminDashBoard.Languages.Resource.Arabic_Name</label>
+                        <input asp-for="NameAr" class="form-control">
+                        <span asp-validation-for="NameAr" style="color:red"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
+                        <input asp-for="Description" class="form-control">
+                        <span asp-validation-for="Description" style="color:red"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Image" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
+                        <input asp-for="Image" type="file" class="form-control">
+                        <span asp-validation-for="Image" style="color:red"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">@AdminDashBoard.Languages.Resource.Create</button>
+                </form>
+        </div>
+    </div>
+</div>
+</div>
+
+   
+   
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-red alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <svg class="bi flex-shrink-0 " width="24" height="15px" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+            <div>
+                @AdminDashBoard.Languages.Resource.FailedTODelete
+            </div>
+        </div>
+    }

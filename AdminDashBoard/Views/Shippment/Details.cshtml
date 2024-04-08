@@ -1,0 +1,89 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@model GetShippmentDto
+@{
+    Layout = "_Layout";
+}
+<style>
+  a{
+      text-align:center
+  }
+  .card-description a {
+        text-decoration: none;
+        color: #fff;
+        background-color: darksalmon;
+        padding:10px;
+        border-radius: 5px;
+    }
+
+    .code {
+        color:red
+    }
+</style>
+
+
+<div class="col-md-8 grid-margin stretch-card ">
+    <div class="card">
+        <div class="card-body">
+            <h3> @Localizer["OrderDeliveryDetails"]</h3>
+            <br />
+            <p class="card-description">
+                <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@ViewBag.orderId ">@Localizer["ShippingInfo"]</a>
+               @*  <a asp-action="Details" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">@Localizer["Products"]</a>
+                <a asp-action="Edit" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">@Localizer["ChangeOrder"]</a>
+                *@ <a class="back" style="background-color:#fff;color:darksalmon;padding:0;float:@Localizer["floatdir"]" asp-action="Index" asp-controller="Order"> @Localizer["Back"] <i class="mdi mdi-arrow-right"></i></a>
+            
+        </div>
+        @if(Model!=null){
+        <div class="card-body">
+            <h4 class="card-title text-info">@Localizer["CustomerInformation"] </h4>
+            <p class="card-description">
+                @Localizer["UserData"].. <span class="code">@Localizer["Call"] </span>
+            </p>
+            <p class="">
+
+                <span>@Localizer["FirstName"] :</span> @Model.FirstNameEn
+            </p>
+            <p class="">
+                <span>@Localizer["LastName"] :</span>  @Model.LastName
+            </p>
+            <p class="">
+                <span>@Localizer["PhoneNumber"] :</span> @Model.PhoneNumber
+            </p>
+            
+        </div>
+        <div class="card-body">
+            <h4 class="card-title text-warning">@Localizer["Address"] </h4>
+            <p class="card-description">
+                @Localizer["City"] __ <span class="code"> @Localizer["Region"]</span>
+            </p>
+           
+            <p class="">
+                <span>@Localizer["Address"] :</span>  @Model.Address
+            </p> 
+            <p class="">
+                <span>@Localizer["AdressInformation"]  :</span> @Model.AdressInformation
+            </p>
+            <p class="">
+                <span>@Localizer["City"] :</span>    @Model.City
+            </p>
+            <p class="">
+                <span>@Localizer["Region"] :</span>  @Model.Region
+            </p>
+            <p class="">
+                <span> @Localizer["DelivaryCost"]   :</span>$ @Model.Cost
+            </p>
+            </div>
+        }
+        else{
+            <div class="card-body">
+                <h4 class="card-title text-info">@Localizer["CustomerInformation"] </h4>
+                <p class="card-description">
+                    @Localizer["UserData"].. <span class="code">@Localizer["Call"] </span>
+                </p>
+                <p>@ViewBag.msg</p>
+
+            </div>
+        }
+    </div>
+</div>

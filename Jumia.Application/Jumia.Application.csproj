@@ -8,9 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="8.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Jumia.Dtos\Jumia.Dtos.csproj" />
     <ProjectReference Include="..\Jumia.Model\Jumia.Model.csproj" />
   </ItemGroup>
 

@@ -1,0 +1,25 @@
+
+    .nav-link{
+        color: rgb(34, 34, 34);
+    }
+    .nav-link:hover {
+
+        color: #ff9901ea;
+      }
+    
+      .nav-item:active{
+        background: #d3d3d3;
+      }
+    
+
+
+
+
+      .rtl {
+        direction: rtl;
+      }
+      
+    
+    
+    
+    

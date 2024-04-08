@@ -1,0 +1,80 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+}
+@model CreateOrUpdateCategoryDto
+@{
+    ViewData["Title"] = "Update";
+    
+}
+
+
+
+
+
+
+<div class="d-flex justify-content-center">
+    <div class="col-md-6 grid-margin stretch-card ">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">@AdminDashBoard.Languages.Resource.UpdateCategory</h4>
+
+    <form method="post" asp-action="Update" asp-controller="Category" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label">@AdminDashBoard.Languages.Resource.English_Name</label>
+            <input asp-for="Name" class="form-control">
+            <span asp-validation-for="Name" style="color:red"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">@AdminDashBoard.Languages.Resource.Arabic_Name</label>
+            <input asp-for="NameAr" class="form-control">
+            <span asp-validation-for="NameAr" style="color:red"></span>
+        </div>
+        <div class="mb-3" hidden>
+            <input asp-for="Id" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
+            <input asp-for="Description" class="form-control">
+            <span asp-validation-for="Description" style="color:red"></span>
+        </div>
+        
+        <div class="mb-3">
+        @if (Model.Image != null && Model.Image.Length > 0)
+        {
+            <label>Current Image:</label>
+           <div> <img  src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Image)" width="200px" height="200px" alt="Current Image" class="img-fluid"> </div>
+        }
+        </div>
+     
+        <div class="mb-3">
+            <label class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
+            <input asp-for="Image" type="file" class="form-control">
+            <span asp-validation-for="Image" style="color:red"></span>
+        </div>
+
+       
+        
+        <br />
+        <button type="submit" class="btn btn-primary">@AdminDashBoard.Languages.Resource.Update</button>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+            <div>
+                @AdminDashBoard.Languages.Resource.FailedTODelete
+            </div>
+        </div>
+    }
+
+
+
+

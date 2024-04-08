@@ -1,0 +1,116 @@
+﻿@using Jumia.Dtos.User
+
+@model List<RoleUser>
+<link href="~/css/responcevtable.css" rel="stylesheet" />
+@{
+    Layout = "_Layout";
+}
+@foreach (var role in ViewBag.Roles)
+{
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Users Role</h4>
+            <p class="card-description">
+                    role is <code>.@role.Name</code>
+            </p>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                                <th>User Image</th>
+                                <th>@AdminDashBoard.Languages.Resource.UserId</th>
+                                <th>@AdminDashBoard.Languages.Resource.Name</th>
+                                <th>@AdminDashBoard.Languages.Resource.Role</th>
+                                <th>@AdminDashBoard.Languages.Resource.Email</th>
+                                <th>@AdminDashBoard.Languages.Resource.Phone Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            @foreach (var item in Model.Where(u => u.RoleName == role.Name))
+                            {
+                        <tr>
+                            <td class="py-1">
+                                        <img src="~/images/faces/profile/users.png" alt="image" />
+                                    </td>
+                                   
+                                <td data-th=" UserId">
+                                    @item.Id
+                                </td>
+                                <td data-th=" User Name">
+                                    @item.UserName
+                                </td>
+                                <td data-th=" Role">
+                                    @item.RoleName
+                                </td>
+                                <td data-th=" Email">
+                                    @item.Email
+                                </td>
+
+                                <td data-th=" phone number">
+                                    @item.PhoneNumber
+                                </td>
+                                </tr>
+}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+
+@* 
+@foreach (var role in ViewBag.Roles)
+{
+    <div class="contTable m-5">
+        <h1>@role.Name</h1>
+        <table class="rwd-table">
+            <tbody>
+                <tr>
+                    <th>@AdminDashBoard.Languages.Resource.UserId</th>
+                    <th>@AdminDashBoard.Languages.Resource.Name</th>
+                    <th>@AdminDashBoard.Languages.Resource.Role</th>
+                    <th>@AdminDashBoard.Languages.Resource.Email</th>
+             
+                    <th>@AdminDashBoard.Languages.Resource.Phone Number</th>
+                   
+                </tr>
+                @foreach (var item in Model.Where(u => u.RoleName == role.Name))
+                {
+
+                <tr>
+                <td data-th=" UserId">
+                            @item.Id
+                    </td>
+                <td data-th=" User Name">
+                            @item.UserName
+                    </td>
+                <td data-th=" Role">
+                            @item.RoleName
+                    </td>
+                <td data-th=" Email">
+                            @item.Email
+                    </td>
+                       
+                <td data-th=" phone number">
+                            @item.PhoneNumber
+                    </td>
+                    
+
+                </tr>
+                 
+                 }
+            </tbody>
+        </table>
+
+    </div>
+    
+    }
+
+
+ *@

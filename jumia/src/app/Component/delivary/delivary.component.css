@@ -1,0 +1,24 @@
+.checkedSigh{
+    color: #a3a3a6;
+    background-color: #fff;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 5px;
+    box-shadow: 0 0 0 0#a3a3a6;}
+
+    .section1{
+    border: 1px solid #eee;
+    }
+    .smallText{
+        font-size: 12px;
+    }
+    .text-warning {
+        color:  rgba(255, 115, 0, 0.842) !important; 
+      }
+      .save{
+        background-color: rgba(255, 115, 0, 0.842)  !important ;
+        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5); 
+      }
+      .rtl {
+        direction: rtl;
+      }

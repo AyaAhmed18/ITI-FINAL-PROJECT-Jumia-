@@ -1,0 +1,96 @@
+
+
+    /*style cards by Bahaa */
+
+    .label-Cards-top {
+        position: absolute;
+        background-color: rgba(255, 115, 0, 0.842);
+        color: #fff;
+        top: 8px;
+        left: 8px;
+
+        font-size: .7rem;
+        font-weight: 600;
+        border-radius: 3px;
+        text-transform: uppercase;
+    }
+
+    .offer-cards {
+        background-color: rgba(243, 152, 77, 0.397);
+        border-radius: 3px;
+        color: #ff9901;
+
+    }
+
+    .cards-heart>a {
+        position: absolute;
+        color: #ffae0069;
+        bottom: 220px;
+        right: 8px;
+
+    }
+.cards-question{
+    position: absolute;
+        color: #c9c9c9d5;
+        bottom: 80px;
+        right: 8px;
+}
+    .cards-heart:hover>a {
+        color: #ffae00;
+    }
+
+    .cards-question:hover>a{
+        color: #ffae00;
+}
+    .cards-hover:hover {
+        box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+    }
+
+    .hide-btn-cards {
+        display: none;
+    }
+
+    .show-cards-btn:hover .hide-btn-cards {
+        display: block;
+    }
+
+    .stars i {
+        color: gold;
+        font-size: .9rem;
+
+    }
+
+    /* -------------------------------------------------- */
+    .btn{
+        background-color: #ff9901ea;
+      
+    }
+    .specs{
+        border: 1px solid gray;
+        color: #000;
+       padding: 1%;
+        margin: 0.5vw;
+    }
+
+    .details{
+        padding-bottom: 4vh;
+        margin-bottom: 4vh;
+    }
+    .details h1{
+        font-size: 1.2rem;
+        font-weight: 700;
+        padding: 2vh;
+    }
+    .details h3{
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 2vh;
+    }
+    .specName{
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 2vh; 
+    }
+    .rtl {
+        direction: rtl;
+      }

@@ -1,0 +1,48 @@
+<div [class.rtl]="isArabic">
+<div class="container" >
+    <div class="col-3 float-end ">
+      <div class="card mb-3 my-4 " style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{'confirmorder.Order summary' | translate}}</li>
+          <li class="list-group-item">
+            <ul class="d-flex">
+              <li class="me-5">{{'confirmorder.Items total' | translate}} </li>
+              <li class="">{{'confirmorder.EGP' | translate}}  </li>
+            </ul>
+            <ul class="d-flex">
+              <li class="me-5">{{'confirmorder.Delivery fees' | translate}}</li>
+              <li>{{'confirmorder.EGP' | translate}} 300.00 </li>
+            </ul>
+            <ul class="d-flex">
+              <li class="me-5">{{'confirmorder.Prepaid discount' | translate}}</li>
+              <li class="text-success">-{{'confirmorder.EGP'| translate}} 10 </li>
+            </ul>
+          </li>
+          <li class="list-group-item">
+              <ul class="d-flex">
+                <li class="me-5">{{'confirmorder.Total' | translate}}</li>
+                <li>{{'confirmorder.EGP' | translate}} 100</li>
+              </ul>
+             
+            </li>
+  
+          <ul>
+          <li ><p>{{'confirmorder.You will be able to add a voucher when selecting your payment method.' | translate}}</p> </li>
+          <li> <img src="../../../assets/cart.jpg" style="width: 40%;" title="img"></li>
+          </ul>
+        </ul>
+       
+       
+      </div>
+    </div>
+   <div col="8">
+    <div #paymentRef ></div>
+   </div>
+    
+   </div>
+  </div>
+   
+   <!-- <div #paymentRef></div> -->
+   
+  
+  

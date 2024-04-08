@@ -1,0 +1,133 @@
+
+
+<div class="row bg-body rounded  row-cols-1 row-cols-md-4 g-4">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-8"><b><strong>Women's Sweaters</strong></b></div>
+            <div class="col-4 d-inline float-right">
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                    <label for="sort">storeby:</label>
+                    <select class="form-control mx-sm-3" id="sort" (change)="onSortChange($event)">
+                        <option value="allProducts">All</option>
+                        <option value="PriceLowToHigh">Price: Low to High</option>
+                        <option value="PriceHighToLow">Price: High to Low</option>
+                        <option value="NewestArrivals">Newest Arrivals</option>
+                    </select>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @for(pro of products;track pro.id;){
+    <div class="clo-2 ">
+        <div class="show-cards-btn card cards-hover" style="width:210px; height: 440px; border: none;">
+            <!-- <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image"
+                style="width:100%"> -->
+            <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%">
+            <div class="label-Cards-top px-2">
+                <span class="text-white ">Buy 400 get {{pro.discount}} off</span>
+            </div>
+            <span class=" cards-question"><a href=""><i class="fa fa-question-circle"
+                        style="cursor: pointer"></i></a></span>
+                        <span class="cards-heart">
+                            <a [href]="'#Model'+pro.id" role="button" data-bs-toggle="modal">
+                                <i class="fa"
+                                   [ngClass]="{'fa-heart-o': !isInWishlist(pro), 'fa-heart': isInWishlist(pro), 'text-warning': isInWishlist(pro), 'shadow': isInWishlist(pro)}"
+                                   style="cursor: pointer">
+                                </i>
+                            </a>
+                        </span>
+
+            <div class="card-body">
+                <p class=""><small>{{pro.shortDescription}}</small></p>
+                <b><strong>EGP {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>
+                    <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>
+                </ul>
+                <div class="stars">
+                    <i class="fa fa-star "></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa text-secondary">(44)</i>
+                </div>
+                <div class="hide-btn-cards ">
+                    <button class="btn w-100 text-white" (click)="AddToCart(pro)"[disabled]="pro.addedToCart" >Add To Cart</button>
+                    <button class="btn w-100 text-white" (click)="navigateToDetails(pro.id)" >Details</button>
+                </div>
+            </div>
+        </div>
+
+
+</div>
+
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" [id]="'Model'+pro.id" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1" (click)="GetSpecs(pro)">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Please select a variation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                </div>
+                <div class="modal-body">
+                    <div >
+                        <h3>VARIATION AVAILABLE</h3>
+                        <br>
+                        <span class="specs" *ngFor="let s of sizeSpecs"> {{ s }}</span>
+                      </div>
+                    <!-- <div class="center-align">
+                        <input type="radio" name="size" id="size_1" value="small" />
+                        <label class=" radio-popup-size" for="size_1">M</label>
+
+                        <input type="radio" name="size" id="size_2" value="small" />
+                        <label class="radio-popup-size" for="size_2">L</label>
+
+
+                        <input type="radio" name="size" id="size_3" value="small" />
+                        <label class="radio-popup-size" for="size_3">XL</label>
+
+                        <input type="radio" name="size" id="size_4" value="small" />
+                        <label class="radio-popup-size" for="size_4">XxL</label>
+
+                        <input type="radio" name="size" id="size_5" value="small" />
+                        <label class="radio-popup-size" for="size_5">XxxL</label>
+                    </div> -->
+                    <h2><strong>EGP {{pro.realPrice}}</strong></h2>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>
+                        <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>
+                    </ul>
+                </div>
+                <div class="modal-footer ">
+                    <button class="btn w-100 text-white" (click)="addToWishlist(pro)">
+                        <i class="fa" [ngClass]="{'fa-heart-o': !isInWishlist(pro), 'fa-heart': isInWishlist(pro)}"></i>
+                        <span *ngIf="!isInWishlist(pro)">ADD TO WISHLIST</span>
+                        <span *ngIf="isInWishlist(pro)">REMOVE FROM WISHLIST</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+
+
+
+<!-- <div class="b-pagination-outer">
+
+    <ul id="border-pagination">
+      <li><a (click)="prevPage()">«</a></li>
+      <li><a *ngFor="let page of pageNumbers" (click)="goToPage(page)">{{ page }}</a></li>
+
+      <li><a (click)="nextPage()">»</a></li>
+    </ul>
+  </div> -->

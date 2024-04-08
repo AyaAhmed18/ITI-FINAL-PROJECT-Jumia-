@@ -12,7 +12,7 @@ namespace Jumia.Model
         public virtual ICollection<Order>? orders { get; set; }
         public virtual ICollection<Review>? Reviews { get; set; }
         public virtual ICollection<Shippment>? Shippments { get; set; }
-
+        //public string Adress {  get; set; }
         public UserIdentity()
         {
             orders=new List<Order>();

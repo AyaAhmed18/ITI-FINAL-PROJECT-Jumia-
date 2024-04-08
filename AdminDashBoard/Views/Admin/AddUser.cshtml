@@ -1,0 +1,77 @@
+﻿@model GetAllUsers
+
+@{
+    Layout = "_Layout";
+}
+
+
+
+<link rel="stylesheet" href="~/css/AddUser.css">
+
+
+
+
+<div class="main-panel">
+    <div class="content-wrapper ">
+        <div class="">
+            <div class=" grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Add User</h4>
+        
+                        <form asp-action="Adduser" class="forms-sample" method="post">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="UserName">User Name:</label>
+                                <input asp-for="UserName" class="form-control" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Email">Email:</label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="PhoneNumber">Phone Number:</label>
+                                <input asp-for="PhoneNumber" class="form-control" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Password">Password:</label>
+                                <input asp-for="Password" type="password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="container">
+                                <h4 class="card-title">Roles</h4>
+                            <ul class="form-group ks-cboxtags">
+
+                                
+                                @foreach (var role in ViewBag.Roles)
+                                {
+                                    <li>
+                                        <input type="checkbox" name="SelectedRoles" value="@role.Name" id="role_@role.Name">
+                                        <label for="role_@role.Name">@role.Name</label>
+                                    </li>
+
+                                }
+                            </ul>
+
+                                <button type="submit" class="btn btn-primary me-2">Submit</a></button>
+                                <button class="btn btn-light">Cancel</button>
+                            </div>
+
+
+
+
+
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

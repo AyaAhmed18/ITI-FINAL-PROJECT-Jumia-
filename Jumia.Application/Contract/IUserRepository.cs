@@ -1,4 +1,6 @@
-﻿using Jumia.Model;
+﻿using Jumia.Dtos.User;
+using Jumia.DTOS.ViewResultDtos;
+using Jumia.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +11,6 @@ namespace Jumia.Application.Contract
 {
     public interface IUserRepository : IRepository<UserIdentity, int>
     {
+   
     }
 }

@@ -1,0 +1,88 @@
+
+.section1{
+    border: 1px solid #eee;
+    padding-top: 5px;
+    padding-bottom: 5px;
+   }
+   /* div:hover{
+     transform: scale(1.1,1.1);
+   } */
+   .carousel-control-prev,
+       .carousel-control-next {
+         background-color:darkgrey;
+         border-radius: 50%;
+         padding: 0;
+         margin-top: 60px;
+         width: 3vw;
+         height: 3vw;
+       }
+   
+       /* .carousel-control-prev {
+         left: 20px;
+       }
+   
+       .carousel-control-next {
+         right: 20px;
+       } */
+   .sectionHeader{
+     text-align: center;
+     background-color:#EDE5F3;
+     padding: 5px;
+     font-size: 15px;
+   
+   }
+
+   
+    /* change color or hover link side bar */
+  .Link_hover:hover {
+
+    color: #ff9901ea;
+  }
+
+  a:link,
+  a:visited {
+
+    color: rgb(0, 0, 0);
+    padding: 14px 25px;
+
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .line {
+    color: rgb(201, 201, 197);
+    /* Change background color on hover */
+  }
+
+
+
+
+
+  .show-div-Linkes {
+    height: 530px;
+  }
+
+  .show-linkes {
+    display: none;
+  }
+
+  .show-div-Linkes:hover+.show-linkes,
+  .show-linkes:hover {
+    display: block;
+  }
+
+  .show-div-Linkes:hover~.hide-slider {
+  display: none;
+  
+}
+.show-linkes:hover~.hide-slider {
+  display: none;
+  
+}
+
+.fifty-chars {
+  width: 30ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}

@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Jumia.Application\Jumia.Application.csproj" />
     <ProjectReference Include="..\Jumia.Context\Jumia.Context.csproj" />
     <ProjectReference Include="..\Jumia.Model\Jumia.Model.csproj" />
