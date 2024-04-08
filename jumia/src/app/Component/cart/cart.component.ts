@@ -90,4 +90,17 @@ export class CartComponent implements OnInit{
   isInWishlist(product: ProductDto): boolean {
     return !!product.addedTowashlist; 
 }
+
+
+
+
+
+
+
+ 
+
+
+
+
+
 }

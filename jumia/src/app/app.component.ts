@@ -35,9 +35,7 @@ export class AppComponent {
 
 
   
-  // changeLangeue(lang: string) {
-  //   this.translate.use(lang); 
-  // }
+  
 
 
  

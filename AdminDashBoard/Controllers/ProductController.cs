@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class ProductController : BaseController
     {
         private readonly IProductServices _productService;
@@ -47,7 +47,7 @@ namespace AdminDashBoard.Controllers
             var Prds = await _productService.GetAllPagination(20, 1);
             return View(Prds);
         }
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
 
@@ -65,7 +65,7 @@ namespace AdminDashBoard.Controllers
 
         // POST: ProductController/Create
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(CreateOrUpdateProductDto ProductDto,List<IFormFile> Images, CreateOrUpdateProductSpecificationSubCategory prdSubCategorySpecDto, int selectedSubCategoryId)
         {
             var subCategorySpec = (await _subCategorySpecificationsService.GetAll()).Where(i => i.SubCategoryId == selectedSubCategoryId).ToList();
@@ -132,7 +132,7 @@ namespace AdminDashBoard.Controllers
             return PartialView("_SubCategorySpecsPartial");
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> Update([FromRoute]int id)
         {
             var res = await _productService.GetOne(id);
@@ -154,7 +154,7 @@ namespace AdminDashBoard.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> Update(CreateOrUpdateProductDto productDto, List<IFormFile> Image)
         {
             if (ModelState.IsValid)

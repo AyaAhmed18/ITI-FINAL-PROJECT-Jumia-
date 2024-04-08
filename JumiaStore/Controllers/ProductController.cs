@@ -163,6 +163,7 @@ namespace JumiaStore.Controllers
 
             return Ok(Prds);
         }
+
     }
 }
 ////Bahaa http://localhost:5094/api/Product

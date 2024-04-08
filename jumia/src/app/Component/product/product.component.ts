@@ -8,13 +8,15 @@ import { SearchResultsService } from '../../Services/search-results.service';
 import { CartService } from '../../Services/cart.service';
 import { WishlistService } from '../../Services/wishlist.service';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-product',
   standalone: true,
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
-  imports: [FilterComponent,CommonModule,FormsModule]
+  imports: [FilterComponent,CommonModule,FormsModule, TranslateModule]
 })
 export class ProductComponent implements  OnInit{
   @Input() AllProducts:ProductDto[]=[];
@@ -29,6 +31,7 @@ AllProd:number=0;
 totalPages: number = 0;
 pageNumber: number = 1;
 pageNumbers: number[]=[];
+
 //  @Input() product?: ProductDto;
   cartTotalPrice:number=0
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
@@ -39,13 +42,17 @@ pageNumbers: number[]=[];
        private _sanitizer:DomSanitizer,
       private _cartService:CartService,
       private _wishlist :WishlistService,
-      private _searchResultsService: SearchResultsService)
+      private _searchResultsService: SearchResultsService, private  translate: TranslateService)
    {
 
    }
    ngOnInit(): void {
     this.Sershresult();
     this.getAllProducts();
+    
+    
+    
+    
     }
 
   //start Add to Cart
@@ -227,23 +234,26 @@ if (page >= 1 && page <= this.totalPages) {
     );
     }
 
-// ngOnInit(): void {
-//     this._ApiProductsService.getAllProductsWithOrderAasc().subscribe({
-//         next:(data)=>{
-//       this.AllProducts=data
+    
 
-//       this.AllProducts.forEach(Product => {
 
-//         Product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + Product.images);
-//      });
 
-//       },
-//       error:(err)=>{
+    isArabicLanguage(): boolean {
+      return this.translate.currentLang === 'ar';
+    }
 
-//       console.log(err)
-//       }
 
-//       })
-// }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

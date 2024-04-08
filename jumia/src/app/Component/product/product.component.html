@@ -41,7 +41,7 @@
                                 </span>
 
                     <div class="card-body">
-                        <p class=""><small>{{pro.shortDescription}}</small></p>
+                        <p class=""><small> {{ isArabicLanguage() ? pro.nameAr : pro.name }}</small></p>
                         <b><strong>EGP {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
                         <ul class="list-inline">
                             <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>
@@ -125,6 +125,9 @@
               <li><a (click)="nextPage()">»</a></li>
             </ul>
           </div>
+
+
+          
 
 
 

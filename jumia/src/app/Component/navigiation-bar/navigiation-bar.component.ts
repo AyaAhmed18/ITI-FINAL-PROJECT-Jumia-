@@ -11,6 +11,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 
 
+
 @Component({
   selector: 'app-navigiation-bar',
   standalone: true,
@@ -94,7 +95,7 @@ export class NavigiationBarComponent implements OnInit {
     else {
       localStorage.setItem('lang', 'ar')
     }
-
+       
     window.location.reload();
 
   }

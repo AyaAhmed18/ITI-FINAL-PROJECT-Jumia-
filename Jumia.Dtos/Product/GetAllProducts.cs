@@ -20,6 +20,7 @@ namespace Jumia.Dtos.Product
         public string? SubCategoryName { get; set; } // Include for easier presentation
         public int? BrandID { get; set; }
         public string? BrandName { get; set; } // Include for easier presentation
+        public string? NameAr {  get; set; }
         //public ICollection<IFormFile>? Images{ get; set; } // Simplified image representation
         public List<byte[]>? Images { get; set; }
         public GetAllProducts(Jumia.Model.Product product)
@@ -32,7 +33,7 @@ namespace Jumia.Dtos.Product
             Discount = product.Discount;
             SubCategoryID = product.SubCategoryId;
             BrandID = product.BrandId;
-
+            NameAr = product.NameAr;
             // Include logic to populate SubCategoryName and BrandName based on your data access approach
             // (e.g., eager loading, separate queries)
             if (product.SubCategory != null)
