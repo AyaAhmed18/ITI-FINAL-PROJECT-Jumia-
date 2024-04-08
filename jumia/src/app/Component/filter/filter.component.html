@@ -1,21 +1,21 @@
-<div class="row ">
+<div class="row " [class.rtl]="isArabic">
     <div class="col-3 col-md  shadow-sm rounded  " style="width: 23%;">
 
 
         <div class="row bg-body">
-            <div class="col-12"><strong class="px-2">CATEGORY</strong></div>
-            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Clothing</small></a>
-            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Cardigans & Pullovers</small></a>
-            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Cardigans</small></a>
-            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Pullovers</small></a>
-            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Shrugs</small></a>
-            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Vests</small></a>
+            <div class="col-12"><strong class="px-2">{{'filter.CATEGORY' | translate}}</strong></div>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Clothing' | translate}}</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Cardigans & Pullovers' | translate}}</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Cardigans' | translate}}</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Pullovers' | translate}}</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Shrugs' | translate}}</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Vests' | translate}}</small></a>
             <hr class="line">
 
-            <div class="col-12"> <strong>Brand</strong></div>
+            <div class="col-12"> <strong>{{'filter.Brand' | translate}}</strong></div>
             <div class="col-12">
                 <div class="searchBar">
-                    <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="Search" value="" />
+                    <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="{{'filter.Search'|translate}}" value="" />
                     <button id="searchQuerySubmit" type="submit" name="searchQuerySubmit">
                         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                             <path fill="#666666"
@@ -91,36 +91,36 @@
                 </div>
             </div> -->
 
-            <div class="col-12"><strong class="px-2">DISCOUNT</strong></div>
+            <div class="col-12"><strong class="px-2">{{'filter.DISCOUNT' | translate}}</strong></div>
             <div class="col-12 ">
                 <div class="form-check m-2">
                     <input class="form-check-input"name="minDisc" [(ngModel)]="minDiscount"  type="radio" value="50" id="offer50ormor"(click)="filterProducts()">
                     <label class="form-check-label" for="offer50ormor">
-                    <small>50% or more</small>
+                    <small>{{'filter.50% or more' | translate}}</small>
                     </label>
                 </div>
                 <div class="form-check m-2">
                     <input class="form-check-input"name="minDisc" [(ngModel)]="minDiscount" type="radio" value="40" id="offer49ormor"(click)="filterProducts()">
                     <label class="form-check-label" for="offer40ormor">
-                        <small>40% or more</small>
+                        <small>{{'filter.40% or more' | translate}}</small>
                     </label>
                 </div>
                 <div class="form-check m-2">
                     <input class="form-check-input"name="minDisc" [(ngModel)]="minDiscount" type="radio" value="30" id="offer30ormor"(click)="filterProducts()">
                     <label class="form-check-label" for="offer30ormor">
-                        <small>30% or more</small>
+                        <small>{{'filter.30% or more' | translate}}</small>
                     </label>
                 </div>
                 <div class="form-check m-2">
                     <input class="form-check-input"name="minDisc" [(ngModel)]="minDiscount" type="radio" value="20" id="offer20ormor"(click)="filterProducts()">
                     <label class="form-check-label" for="offer20ormor">
-                        <small>20% or more</small>
+                        <small>{{'filter.20% or more' | translate}}</small>
                     </label>
                 </div>
                 <div class="form-check m-2">
                     <input class="form-check-input"name="minDisc" [(ngModel)]="minDiscount" type="radio" value="10" id="offer10ormor"(click)="filterProducts()">
                     <label class="form-check-label" for="offer10ormor">
-                        <small>10% or more</small>
+                        <small>{{'filter.10% or more' | translate}}</small>
                     </label>
                 </div>
                 <!-- <button (click)="filterProducts()">Filter</button> -->
@@ -130,7 +130,7 @@
 
 
 
-                <p>PRICE (EGP)</p>
+                <p>{{'filter.PRICE (EGP)' | translate}}</p>
 
 
                 <div class="slider">
@@ -153,7 +153,7 @@
                     </div>
 
                 </div>
-                <button class="btn btn-primary" (click)="filterProducts()">Range Price</button>
+                <button class="btn btn-primary" (click)="filterProducts()">{{'filter.Range Price' | translate}}</button>
 
 
 
