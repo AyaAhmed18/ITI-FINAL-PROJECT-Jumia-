@@ -8,13 +8,14 @@ import { IBrandDto } from '../../ViewModels/ibrand-dto';
 import { ProductDto } from '../../ViewModels/product-dto';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-filter',
     standalone: true,
     templateUrl: './filter.component.html',
     styleUrl: './filter.component.css',
-    imports: [ProductComponent,FormsModule,CommonModule]
+    imports: [ProductComponent,FormsModule,CommonModule,TranslateModule]
 })
 export class FilterComponent {
     minDiscount: number=0;
@@ -36,14 +37,22 @@ export class FilterComponent {
 
     currentCategoryId: number = 0;
   currentSubCategoryId: number = 0;
+  isArabic: boolean = false;
 
     constructor(private _filterService: FilterServiceService,
       private _brandService : BrandServiceService
       ,private _router : Router, private _activeRouter: ActivatedRoute,
-      private _sanitizer:DomSanitizer
+      private _sanitizer:DomSanitizer,
+      private  translate: TranslateService 
+      
       ) { }
 
     ngOnInit(): void {
+
+      this.translate.onLangChange.subscribe((Event)=>{
+        this.isArabic = Event.lang === 'ar'
+      })
+
       console.log("Starting Fillter")
       this.GetBrands();
       //this.filterProducts();
@@ -221,9 +230,22 @@ export class FilterComponent {
 
         });
       }
+//localization
 
+changeLanguage(lang: string) {
+  if (lang == 'en') {
+    localStorage.setItem('lang', 'en')
+  }
+  else {
+    localStorage.setItem('lang', 'ar')
+  }
+
+  window.location.reload();
+
+}
     
 }
+
 
 
 // const rangeInput = document.querySelectorAll<HTMLInputElement>(".range-input input"),

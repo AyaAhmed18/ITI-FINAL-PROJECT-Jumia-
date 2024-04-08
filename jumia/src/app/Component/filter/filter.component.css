@@ -405,3 +405,7 @@
     #border-pagination li a:hover:not(.active) {
       background: #ddd;
     }
+    .rtl {
+        direction: rtl;
+      }
+    

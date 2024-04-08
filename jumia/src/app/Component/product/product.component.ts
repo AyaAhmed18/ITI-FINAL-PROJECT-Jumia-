@@ -12,13 +12,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FilterServiceService } from '../../Services/filter-service.service';
 import { ApiSpecficationsService } from '../../Services/api-specfications.service';
 import { ISpecfications } from '../../Models/ispecfications';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product',
   standalone: true,
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
-  imports: [FilterComponent,CommonModule,FormsModule]
+  imports: [FilterComponent,CommonModule,FormsModule ,TranslateModule]
 })
 export class ProductComponent implements  OnInit{
   @Input() AllProducts:ProductDto[]=[];
@@ -42,8 +43,9 @@ AllSpecs: ISpecfications[] = [];
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
   @Output() addTowashlistClicked = new EventEmitter<ProductDto>();
   @Input() triggerFunction: boolean = false;
-  addedToCart = false;
+  //addedToCart = false;
   addedTowashlist= false;
+  isArabic: boolean = false;
   constructor(private _ApiProductsService :ApiProductsService ,
        private _sanitizer:DomSanitizer,
       private _cartService:CartService,
@@ -52,7 +54,8 @@ AllSpecs: ISpecfications[] = [];
       private _activeRouter: ActivatedRoute,
       private _route: Router,
       private _filterServices : FilterServiceService,
-    private _specsServive:ApiSpecficationsService)
+    private _specsServive:ApiSpecficationsService,
+    private  translate: TranslateService)
    {
 
    }
@@ -82,6 +85,9 @@ AllSpecs: ISpecfications[] = [];
     //   this.products = this.products;
     //   console.log("filter")
     // }
+    this.translate.onLangChange.subscribe((Event)=>{
+      this.isArabic = Event.lang === 'ar'
+    })
    
     console.log("onInit");
     console.log(this.products);
@@ -103,15 +109,15 @@ AllSpecs: ISpecfications[] = [];
     }
   //start Add to Cart
   AddToCart(prod:ProductDto){
-      if(prod.stockQuantity>0){
-        prod.cartQuantity = 1;
-         this.cartTotalPrice+=prod.realPrice
-         this._cartService.addToCart(prod);
-         this.addToCartClicked.emit(prod);
-         prod.addedToCart = true;
-         this._wishlist.removeProductFromWishlist(prod)
-      }
-  }
+    if(prod.stockQuantity>0){
+      prod.cartQuantity = 1;
+       this.cartTotalPrice+=prod.realPrice
+       this._cartService.addToCart(prod);
+       this.addToCartClicked.emit(prod);
+       this._wishlist.removeProductFromWishlist(prod)
+    }
+}
+
 //Sprcifications
 GetSpecs(pro:ProductDto){
     this._specsServive.GetProductSpecs(pro.id).subscribe(specs => {
@@ -136,7 +142,6 @@ GetSpecs(pro:ProductDto){
   // end Add to Cart
 
     //Addtowashlist
-
     addToWishlist(product: ProductDto) {
       if (this.isInWishlist(product)) {
           this._wishlist.removeProductFromWishlist(product);
@@ -147,6 +152,7 @@ GetSpecs(pro:ProductDto){
   
   
     }
+  
   
     isInWishlist(product: ProductDto): boolean {
       return !!product.addedTowashlist;
@@ -334,5 +340,18 @@ if (page >= 1 && page <= this.totalPages) {
 navigateToDetails(productId: number): void {
   this._route.navigateByUrl(`/Detalse/${productId}`);
 }
+//localization
+changeLanguage(lang: string) {
+  if (lang == 'en') {
+    localStorage.setItem('lang', 'en')
+  }
+  else {
+    localStorage.setItem('lang', 'ar')
+  }
+
+  window.location.reload();
+
+}
+
 
 }

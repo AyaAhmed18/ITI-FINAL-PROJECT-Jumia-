@@ -410,3 +410,6 @@ body {
     box-shadow: 0 4px 6px rgba(241, 240, 235, 0.1), 0 1px 3px rgba(209, 136, 10, 0.55) !important;
     border-color: #ffae00; /* Add shadow effect */
 }
+.rtl {
+    direction: rtl;
+  }
