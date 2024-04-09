@@ -5,5 +5,5 @@ export interface ISpecfications {
     specificationId:number
     value:string;
     specificationName:string
-    SpecificationNameAr:string;
+    specificationNameAr:string;
 }

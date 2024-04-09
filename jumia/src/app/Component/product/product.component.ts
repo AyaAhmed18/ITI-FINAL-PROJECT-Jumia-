@@ -58,6 +58,7 @@ showAlert2: boolean = false;
       private _filterServices : FilterServiceService,
     private _specsServive:ApiSpecficationsService,
     private  translate: TranslateService)
+    
    {
 
    }
@@ -364,8 +365,6 @@ closeAlert(){
   this.showAlert2 = false;
 }
 isArabicLanguage(): boolean {
-  return this.translate.currentLang === 'ar';
-  
-  
+  return this.translate.currentLang === 'ar'; 
 }
 }

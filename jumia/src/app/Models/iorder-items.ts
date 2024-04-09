@@ -5,9 +5,10 @@ export interface IOrderItems {
     orderId:number
     productId:number
     productName:string
+    productNameAr:string
     productQuantity:number
     totalPrice:number
     discount:number
-    Images:SafeUrl
+    images:SafeUrl
     productDiscription:string
 }

@@ -79,7 +79,9 @@ namespace Jumia.Application.Mapper
             //Product
             CreateMap<Product, GetAllProducts>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
-               //  .ForMember(dest => dest.ShortDescription, opt => opt.MapFrom(src => src.GetLocalized(src.LongDescription, src.ShortDescription)))
+                 .ForMember(dest => dest.SubCategoryName, opt => opt.MapFrom(src => src.GetLocalized(src.SubCategory.NameAr, src.SubCategory.Name)))
+
+                //  .ForMember(dest => dest.ShortDescription, opt => opt.MapFrom(src => src.GetLocalized(src.LongDescription, src.ShortDescription)))
 
                 .ReverseMap();
             CreateMap<Product,CreateOrUpdateProductDto>().ReverseMap();
