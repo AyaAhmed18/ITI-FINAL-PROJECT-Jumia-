@@ -78,3 +78,6 @@
     color: #565656;
     background-color: #ffffff;
   }
+  .rtl {
+    direction: rtl;
+  }

@@ -12,6 +12,7 @@ namespace Jumia.Dtos.Product
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string? NameAr { get; set; }
         public string? ShortDescription { get; set; }
         public int StockQuantity { get; set; }
         public decimal RealPrice { get; set; }
@@ -27,6 +28,7 @@ namespace Jumia.Dtos.Product
         {
             Id = product.Id;
             Name = product.Name;
+            NameAr=product.NameAr;
             StockQuantity = product.StockQuantity;
             ShortDescription = product.ShortDescription;
             RealPrice = product.RealPrice;
@@ -45,19 +47,7 @@ namespace Jumia.Dtos.Product
                 BrandName = product.Brand.Name;
             }
             Images = product.Images;
-            //using var dataStream = new MemoryStream();
-            //await Images.CopyToAsync(dataStream);
-            //User NewAccount = new User()
-            //{
-            //    Email = user.Email,
-            //    PhoneNumber = user.PhoneNumber,
-            //    UserName = user.Name,
-            //    ProfilePicture = dataStream.ToArray()
-            //};
-
-            // Consider using a dedicated Image class or a simpler representation (e.g., string URLs)
-            //Images = product.Images // Assuming byte arrays represent images
-        }
+             }
         public GetAllProducts() { }
     }
 }

@@ -57,8 +57,7 @@ namespace JumiaStore.Controllers
                     var order = await _orderItemService.Create(creatOrUpdateOrderItems);
                     if (order.IsSuccess)
                     {
-                        return Created("http://localhost:5164/api/Order/" + creatOrUpdateOrderItems.Id, "Order Saved Successfully");
-
+                        return Ok(order.Entity);
                     }
                     else
                     {

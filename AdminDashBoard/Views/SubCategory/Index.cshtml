@@ -58,16 +58,7 @@
         <a asp-action="Create" asp-controller="SubCategory" class="btn btn-success p-3">@AdminDashBoard.Languages.Resource.AddSubCategory</a>
     </div>
 
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <div class="alert alert-red alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            <svg class="bi flex-shrink-0 " width="24" height="15px" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
-            <div>
-                @AdminDashBoard.Languages.Resource.FailedTODelete
-            </div>
-        </div>
-    }
+   
     @if (TempData["SuccessMessage1"] != null)
     {
         <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
@@ -78,13 +69,23 @@
             </div>
         </div>
     }
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+            <div>
+                @AdminDashBoard.Languages.Resource.FailedTODelete
+            </div>
+        </div>
+    }
 
    <script>
         // function confirmDelete() {
         //     $('#confirmDeleteModal').modal('show');
         // }
         function confirmDelete() {
-            var acc = confirm("Other Products may depend on this SubCategory, Are You Sure you want to delete this Category?");
+            var acc = confirm("Other Products may depend on this SubCategory, You may not be able  to delete this Category?");
             if (acc == false) {
                 event.preventDefault();
             }

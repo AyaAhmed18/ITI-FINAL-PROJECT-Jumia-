@@ -1,17 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ProductDto } from '../ViewModels/product-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterServiceService {
-  private apiUrl = 'http://localhost:5094/api/Product/FilterByAll?';
+  private apiUrl = 'http://localhost:64866/api/Product';
   constructor(private _httpClient: HttpClient) { }
+  private ChangingPages = new BehaviorSubject<any>(null);
+  setValue(value: any) {
+    this.ChangingPages.next(value);
+  }
 
-  filterByAll(minDisc?: number,minPrice?: number, maxPrice?: number,BrandList? : string): Observable<any> {
+  getValue() {
+    return this.ChangingPages.asObservable();
+  }
+  filterByAll(minDisc?: number,minPrice?: number, maxPrice?: number,BrandList? : string,pageNumber?: number ,pageSize? : number): Observable<any> {
 
-    this.apiUrl = 'http://localhost:5094/api/Product/FilterByAll?';
+    this.apiUrl = 'http://localhost:64866/api/Product/FilterByAllWithPagination?';
     if(BrandList!=undefined)
     {
       this.apiUrl+=`BrandList=${BrandList}`;
@@ -31,6 +39,31 @@ export class FilterServiceService {
       if(this.apiUrl[this.apiUrl.length-1]=='?') this.apiUrl+=`MinDisc=${minDisc}`;
       else this.apiUrl+=`&MinDisc=${minDisc}`
     }
+    if(BrandList!=undefined)
+    {
+      if(this.apiUrl[this.apiUrl.length-1]=='?') this.apiUrl+=`BrandList=${BrandList}`;
+      else this.apiUrl+=`&BrandList=${BrandList}`
+    }
+    if(pageNumber!=undefined)
+    {
+      if(this.apiUrl[this.apiUrl.length-1]=='?') this.apiUrl+=`pageNumber=${pageNumber}`;
+      else this.apiUrl+=`&pageNumber=${pageNumber}`
+    }
+    else
+    {
+      if(this.apiUrl[this.apiUrl.length-1]=='?') this.apiUrl+=`pageNumber=1`;
+      else this.apiUrl+=`&pageNumber=1`
+    }
+    if(pageSize!=undefined)
+    {
+      if(this.apiUrl[this.apiUrl.length-1]=='?') this.apiUrl+=`pageSize=${pageSize}`;
+      else this.apiUrl+=`&pageSize=${pageSize}`
+    }
+    else
+    {
+      if(this.apiUrl[this.apiUrl.length-1]=='?') this.apiUrl+=`pageSize=15`;
+      else this.apiUrl+=`&pageSize=15`
+    }
     console.log(this.apiUrl);
     let allpro= this._httpClient.get<any>(`${this.apiUrl}`);
     console.log("minDisc")
@@ -39,13 +72,22 @@ export class FilterServiceService {
     console.log(minPrice)
     console.log("maxPrice")
     console.log(maxPrice)
-    console.log("BrandList")
+    console.log("BrandList ")
     console.log(BrandList)
     console.log("allpro")
     console.log(allpro);
     return allpro;
 
 
+  }
+  getProductByCatId(id: number): Observable<ProductDto> {
+    console.log("getProductByCatId");
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=15&pageNumber=1`);
+  }
+  getProductBySubCatId(id: number): Observable<any> {
+    console.log(id);
+    
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbySubCategoryId?SubCatId=${id}&pageSize=15&pageNumber=1`);
   }
   // filterByPriceRange(minPrice: number, maxPrice: number): Observable<any> {
   //   let allpro= this._httpClient.get<any>(`${this.apiUrl}/FilterByPriceRange?MinPrice=${minPrice}&MaxPrice=${maxPrice}`);

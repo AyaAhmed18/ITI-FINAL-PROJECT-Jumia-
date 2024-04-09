@@ -20,10 +20,11 @@ namespace Jumia.Dtos.Product
         //public string? SubCategoryName { get; set; } // Include for easier presentation
         public int BrandID { get; set; }
       //  public string? BrandName { get; set; } // Include for easier presentation
-        public List<byte[]>? Images { get; set; }
+        public List<byte[]> Images { get; set; }
        // public string Value { get; set; }
         public int SubSpecId { get; set; }
         public List<string>? subCategorySpecification { get; set; }
+        public List<string>? productSubCategorySpecification { get; set; }
 
     }
 }

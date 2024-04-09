@@ -10,10 +10,12 @@ export class WishlistService {
   private wishlistSubject = new BehaviorSubject<ProductDto[]>([]);
 
   constructor(private _cartService: CartService) {
-    this.initializeCartFromSession();}
+    this.initializeCartFromSession();
+  }
 
   initializeCartFromSession() {
     const wishlistItemsFromSession = sessionStorage.getItem('wishlistItems');
+    //const existingProduct = sessionStorage.getItem('cartItems');
     if (wishlistItemsFromSession) {
       this.wishlistItems = JSON.parse(wishlistItemsFromSession);
       this.wishlistSubject.next([...this.wishlistItems]);
@@ -25,9 +27,11 @@ export class WishlistService {
   }
 
   addProductToWishlist(product: ProductDto) {
+    const existingProduct = sessionStorage.getItem('cartItems');
+    if (!existingProduct) {
     this.wishlistItems.push(product);
     this.wishlistSubject.next([...this.wishlistItems]);
-    this.updateSessionStorage();
+    this.updateSessionStorage();}
   }
   
 
@@ -39,8 +43,6 @@ export class WishlistService {
       this.wishlistSubject.next([...this.wishlistItems]);
       this.updateSessionStorage();
 
-      // Add removed product to cart
-     // this._cartService.addToCart(productToRemove);
      }}
   getWishlist() {
     return this.wishlistSubject.asObservable();}

@@ -26,7 +26,7 @@ namespace JumiaStore.Controllers
         }
 
         // GET api/<ShippmentController>/5
-        [HttpGet("{ordId}")]
+        [HttpGet("{userId}")]
         public async Task<IActionResult> Get(int userId)
         {
             var shipping = (await _shippmentService.GetAll()).Where(i => i.UserIdentityId == userId).FirstOrDefault();
@@ -92,9 +92,16 @@ namespace JumiaStore.Controllers
                 {
                     if (ship != null && createOrUpdateShipmentDto != null)
                     {
-                        await _shippmentService.Update(createOrUpdateShipmentDto);
-                        return Created("http://localhost:5164/api/Shippment/" + createOrUpdateShipmentDto.Id, "Your Address Information Updated Successfully");
-
+                       var res= await _shippmentService.Update(createOrUpdateShipmentDto);
+                        if (res.IsSuccess)
+                        {
+                            return (Ok(res));
+                        }
+                        else
+                        {
+                            return (Ok("Something went wrong"));
+                        }
+                        
                     }
                 }
                 return BadRequest(ModelState);

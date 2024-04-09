@@ -74,6 +74,7 @@ namespace Jumia.Application.Services
                         ProductName = p.Product.Name,
                         ProductQuantity=p.ProductQuantity,
                         TotalPrice = p.TotalPrice,
+                        ProductDiscription=p.Product.ShortDescription,
                         Discount = p.Discount
                     }).ToList();
 

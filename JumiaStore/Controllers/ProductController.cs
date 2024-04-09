@@ -5,6 +5,7 @@ using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Drawing.Printing;
 
 namespace JumiaStore.Controllers
 {
@@ -66,7 +67,7 @@ namespace JumiaStore.Controllers
             }
             else
             {
-                return Ok(productid);
+                return Ok(productid.Entity);
             }
 
         }
@@ -163,7 +164,52 @@ namespace JumiaStore.Controllers
 
             return Ok(Prds);
         }
+        [HttpGet("FilterByAllWithPagination")]
+        public async Task<IActionResult> FilterByAllWithPagination([FromQuery] string? BrandList, int? MinPrice, int? MaxPrice, int? MinDisc,int pageSize, int pageNumber)
+        {
+            List<int> brandIds = new List<int>();
+            if (BrandList != null && BrandList != "")
+            {
+                if (BrandList[BrandList.Length - 1] == ',') { BrandList = BrandList.Substring(0, BrandList.Length - 1); }
+                brandIds = BrandList.Split(',').Select(int.Parse).ToList();
 
+            }
+            else
+            {
+                brandIds = null;
+            }
+
+
+            var Prds = await _productServices.FilterByAll(brandIds, MinPrice, MaxPrice, MinDisc,pageSize, pageNumber);
+
+            return Ok(Prds);
+        }
+        [HttpGet("GetbyCategoryId")]
+        public async Task<IActionResult> GetbyCategoryId(int CatId, int pageSize, int pageNumber)
+        {
+            var productname = await _productServices.GetProductsByCategoryId(CatId, pageSize, pageNumber);
+            if (productname == null)
+            {
+                return Ok("NotFound");
+            }
+            else
+            {
+                return Ok(productname);
+            }
+        }
+        [HttpGet("GetbySubCategoryId")]
+        public async Task<IActionResult> GetbySubCategoryId(int SubCatId, int pageSize, int pageNumber)
+        {
+            var productname = await _productServices.GetProductsBySubCategoryId(SubCatId, pageSize, pageNumber);
+            if (productname == null)
+            {
+                return Ok("NotFound");
+            }
+            else
+            {
+                return Ok(productname);
+            }
+        }
     }
 }
 ////Bahaa http://localhost:5094/api/Product

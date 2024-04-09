@@ -9,95 +9,210 @@
 }
 
 
-<h1>Create</h1>
-<hr />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<div class="row">
-    <div class="col-md-4">
-        <form  asp-action="Create" asp-controller="Product" method="post" enctype="multipart/form-data">
+
+
+
+
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Create Products</h4>
+
+
+            <form asp-action="Create" asp-controller="Product" method="post" enctype="multipart/form-data" class="form-sample">
+
+
+
             <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="mb-3">
-                <label asp-for="Name" class="form-label"> @AdminDashBoard.Languages.Resource.English_Name</label>
-                <input asp-for="Name" class="form-control">
-                <span asp-validation-for="Name" style="color:red"></span>
+                <div class="row">
 
-            </div>
-            <div class="form-group">
-                <label asp-for="NameAr" class="control-label"></label>
-                <input asp-for="NameAr" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LongDescription" class="control-label"></label>
-                <input asp-for="LongDescription" class="form-control" />
-                <span asp-validation-for="LongDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShortDescription" class="control-label"></label>
-                <input asp-for="ShortDescription" class="form-control" />
-                <span asp-validation-for="ShortDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StockQuantity" class="control-label"></label>
-                <input asp-for="StockQuantity" class="form-control" />
-                <span asp-validation-for="StockQuantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RealPrice" class="control-label"></label>
-                <input asp-for="RealPrice" class="form-control" />
-                <span asp-validation-for="RealPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Discount" class="control-label"></label>
-                <input asp-for="Discount" class="form-control" />
-                <span asp-validation-for="Discount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SubCategoryID" class="form-label">SubCategory</label>
-                <select asp-for="SubCategoryID" asp-items="list" class="form-select" id="subCategorySelect"></select>
-                <input name="selectedSubCategoryId"  class="form-control" hidden />
-            </div>
-
-           
-           
-            <div id="subCategorySpecsContainer" style="display: none;">
-                <h3>Specifications</h3>
-                @Html.Partial("_SubCategorySpecsPartial")
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label asp-for="Name" class=" col-form-label">@AdminDashBoard.Languages.Resource.English_Name</label>
+                            
+                                <input asp-for="Name" type="text" class="form-control" />
+                                <span asp-validation-for="Name" style="color:red"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label asp-for="NameAr" class=" col-form-label"></label>
+                                <input asp-for="NameAr" type="text" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
                 </div>
-            <div class="form-group">
-                <label asp-for="BrandID" class="form-label">Brands</label>
-                <select asp-for="BrandID" asp-items="list2" class="form-select"></select>
-            </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label asp-for="StockQuantity" class=" col-form-label"></label>
+                           
+                                <input asp-for="StockQuantity" type="number" class="form-control" />
+                                <span asp-validation-for="StockQuantity" style="color:red"></span>
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label asp-for="RealPrice" class=" col-form-label"></label>
+                           
+                                <input asp-for="RealPrice" type="number" class="form-control" />
+                                <span asp-validation-for="RealPrice" class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label asp-for="Discount" class=" col-form-label"></label>
+                            
+                                <input asp-for="Discount" type="number" class="form-control" />
+                                <span asp-validation-for="Discount" style="color:red"></span>
+                            
+                        </div>
+                    </div>
+                   @*  <div class="col-md-6">
+                        <div class="form-group ">
+                            <label asp-for="RealPrice" class=" col-form-label"></label>
+                            
+                                <input asp-for="RealPrice" type="number" class="form-control" />
+                                <span asp-validation-for="RealPrice" class="text-danger"></span>
+                           
+                        </div>
+                    </div> *@
+                </div>
+
+
+                <div class="row">
+                   @*  <div class="col-md-6">
+                        <div class="form-group ">
+                            <label asp-for="StockQuantity" class=" col-form-label"></label>
+                           
+                                <input asp-for="StockQuantity" type="number" class="form-control" />
+                                <span asp-validation-for="StockQuantity" style="color:red"></span>
+                           
+                        </div>
+                    </div> *@
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label asp-for="ShortDescription" class=" col-form-label"></label>
+                            
+                                <input asp-for="ShortDescription" class="form-control" />
+                                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                           
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label asp-for="SubCategoryID" class=" col-form-label"></label>
+                            @* <input asp-for="SubCategoryID" class="form-control" hidden /> *@
+                            <input name="selectedSubCategoryId" class="form-control" hidden />
+                                <select asp-for="SubCategoryID" asp-items="list" class="form-select" id="subCategorySelect"></select>
+                                <span asp-validation-for="SubCategoryID" style="color:red"></span>
+                         
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label asp-for="BrandID" class=" col-form-label"></label>
+                          
+                                <select asp-for="BrandID" asp-items="list2" class="form-select"></select>
+                                <span asp-validation-for="BrandID" class="text-danger"></span>
+                          
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label asp-for="Images" class=" col-form-label"></label>
+                          
+                                <input asp-for="Images" type="file" class="form-control" />
+                                <span asp-validation-for="Images" style="color:red"></span>
+                          
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label  class=" col-form-label">@AdminDashBoard.Languages.Resource.Specifications</label>
+                         
+                                <div id="subCategorySpecsContainer" style="display: none;">
+                                   
+                                    @Html.Partial("_SubCategorySpecsPartial")
+                                </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label asp-for="LongDescription"></label>
+                            <textarea asp-for="LongDescription" class="form-control"  rows="3"></textarea>
+                            <span asp-validation-for="LongDescription" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <a asp-action="GetPagination" class="btn btn-warning">Back to List</a>
+
+                        </div>
+                    </div>
+                </div>
+
             
 
          
-            <div class="mb-3">
-                <label class="form-label">Image</label>
-                <input asp-for="Images" type="file" class="form-control" multiple>
-                <span asp-validation-for="Images" style="color:red"></span>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+          
+           
         </form>
+   
+
+
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="GetPagination">Back to List</a>
-</div>
+
+
+
 
 @if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-red alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+    <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <svg class="bi flex-shrink-0 " width="24" height="15px" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
         <div>
             @AdminDashBoard.Languages.Resource.FailedTODelete
         </div>
     </div>
-} 
+}
 <script>
     $(document).ready(function () {
         $('#subCategorySelect').change(function () {
@@ -105,7 +220,7 @@
             var selectedSubCategoryId = $(this).val();
             $('input[name="selectedSubCategoryId"]').val(selectedSubCategoryId);
             $.ajax({
-                url: '/Product/Action', // Replace with your controller and action method
+                url: '/Product/Action', 
                 type: 'GET',
                 data: { selectedSubCategoryId: selectedSubCategoryId },
                 success: function (data) {

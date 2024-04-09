@@ -100,7 +100,7 @@ namespace AdminDashBoard.Controllers
         public async Task<IActionResult> logout()
         {
             await _signinManager.SignOutAsync();
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("index", "Home");
         }
 
 

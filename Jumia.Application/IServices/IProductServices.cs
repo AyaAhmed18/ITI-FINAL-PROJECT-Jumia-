@@ -16,7 +16,7 @@ namespace Jumia.Application.IServices
         //    Task<ResultView<CreateOrUpdateProductDTO>> HardDelete(CreateOrUpdateProductDTO product);
         //    Task<ResultView<CreateOrUpdateProductDTO>> SoftDelete(CreateOrUpdateProductDTO product);
         Task<ResultDataForPagination<GetAllProducts>> GetAllPagination(int items, int pagenumber);
-        Task<ResultView<GetAllProducts>> GetOne(int ID);
+        Task<ResultView<CreateOrUpdateProductDto>> GetOne(int ID);
         Task<ResultView<CreateOrUpdateProductDto>> Update(CreateOrUpdateProductDto productDto, List<IFormFile> images);
         Task<ResultView<CreateOrUpdateProductDto>> Delete(CreateOrUpdateProductDto productDto);
         Task<ResultView<GetAllProducts>> Getbyname(string name);
@@ -29,5 +29,8 @@ namespace Jumia.Application.IServices
         Task<ResultDataForPagination<GetAllProducts>> FilterByBrandList(List<int> BrandIdList);
         Task<ResultDataForPagination<GetAllProducts>> FilterByDiscountRange(int MinDisc);
         Task<ResultDataForPagination<GetAllProducts>> FilterByAll(List<int>? BrandIdList, int? MinPrice, int? MaxPrice, int? MinDisc);
+        Task<ResultDataForPagination<GetAllProducts>> FilterByAll(List<int>? BrandIdList, int? MinPrice, int? MaxPrice, int? MinDisc, int items, int pagenumber);
+        Task<ResultDataForPagination<GetAllProducts>> GetProductsByCategoryId(int CategoryId, int items, int pagenumber);
+        Task<ResultDataForPagination<GetAllProducts>> GetProductsBySubCategoryId(int SubCategoryId, int items, int pagenumber);
     }
 }

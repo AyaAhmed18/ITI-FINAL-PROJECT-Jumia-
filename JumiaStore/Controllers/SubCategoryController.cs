@@ -17,11 +17,6 @@ namespace JumiaStore.Controllers
           _subCategoryService = subCategoryService;
         }
 
-
-
-
-
-
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
@@ -43,6 +38,15 @@ namespace JumiaStore.Controllers
             return Ok(SubCategory);
 
         }
+
+        [HttpGet("GetByCatId")]
+        public async Task<ActionResult> GetByCatId(int CatId)
+        {
+            var SubCategories = await _subCategoryService.GetByCategoryId(CatId);
+
+            return Ok(SubCategories.Entities);
+        }
+
 
 
 

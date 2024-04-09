@@ -179,18 +179,18 @@ namespace Jumia.Application.Services
 
 
         //GetOne
-        public async Task<ResultView<GetAllCategoryDto>> GetOne(int id)
+        public async Task<ResultView<CreateOrUpdateCategoryDto>> GetOne(int id)
         {
             var Category = await _repository.GetOneAsync(id);
             if (Category == null)
             {
-                return new ResultView<GetAllCategoryDto> { Entity = null, IsSuccess = false, Message = "Not Found!" };
+                return new ResultView<CreateOrUpdateCategoryDto> { Entity = null, IsSuccess = false, Message = "Not Found!" };
             }
             else
             {
-                var CategoryDto = _mapper.Map<GetAllCategoryDto>(Category);
+                var CategoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(Category);
 
-                return new ResultView<GetAllCategoryDto> { Entity = CategoryDto, IsSuccess = true, Message = "Succses" };
+                return new ResultView<CreateOrUpdateCategoryDto> { Entity = CategoryDto, IsSuccess = true, Message = "Succses" };
             }
         }
 

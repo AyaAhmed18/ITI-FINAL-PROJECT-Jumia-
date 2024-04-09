@@ -1,28 +1,29 @@
 <!-- Empty Cart -->
-<nav aria-label="breadcrumb " *ngIf="cartNumber === 0">
+<nav aria-label="breadcrumb " *ngIf="cartNumber === 0" [class.rtl]="isArabic">
   <ol class="row breadcrumb m-3 ">
     <div class="d-flex justify-content-center">
       <img src="assets/ProductImg/cart.svg" alt="">
     </div>
     <div>
-      <h6 class="p-4 d-flex justify-content-center">Your cart is empty!</h6>
+      <h6 class="p-4 d-flex justify-content-center">{{'cart.Your cart is empty!' | translate}}</h6>
     </div>
-    <p class="d-flex justify-content-center">Browse our categories and discover our best deals!</p>
+    <p class="d-flex justify-content-center">{{'cart.Browse our categories and discover our best deals!' |translate}}</p>
     <div class="d-flex justify-content-center"> 
-      <button class="btn btn-warning text-white m-4 " (click)="startShopping()">Start Shopping</button>
+      <button class="btn btn-warning text-white m-4 " (click)="startShopping()">{{'cart.Start Shopping' |translate}}</button>
     </div>
 
   </ol>
 </nav>
 
+<div [class.rtl]="isArabic">
 <!-- Cart with Items -->
-<div class="row " *ngIf="cartNumber > 0">
+<div class="row " *ngIf="cartNumber > 0" >
 
 
  
   <div class="card col-8   my-4 "  >
     <div class="card-header  bg-body">
-      <h5>Cart ({{cartNumber}} )</h5>
+      <h5>{{'cart.Cart'|translate}} ({{cartNumber}})</h5>
     </div>
     <div *ngFor="let item of cartItems">
     <div class="row card-body"  >
@@ -32,15 +33,19 @@
       </div>
       <div class="col-5 ">
         <p class="mb-1"><small>{{ item.name }} {{item.shortDescription}}</small> </p>
-        <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">  <small> {{item.stockQuantity}} In Stock</small>  </i> </h6>
+        <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">
+          <small [ngClass]="{'text-danger': item.stockQuantity < 5, 'text-success': item.stockQuantity >= 5}">
+            {{ item.stockQuantity < 5 ? item.stockQuantity + ' Unifs Left' : 'Available' }}
+        </small> </i> </h6>
         <a href="https://www.jumia.com.eg/nivea-men-men-face-body-hands-cream-moisturising-tin-75ml-37954540.html"> <img
             src="assets/ProductImg/express.jpg" style="width: 40%;"></a>
       </div>
       <div class="col-4 ">
         <div class="row" style="text-align: end;">
-          <h1 class="h4 col-12">EGP {{item.realPrice}}</h1> <!--price After Discount-->
+          {{item.stockQuantity}}
+          <h1 class="h4 col-12">{{'cart.EGP' | translate}} {{item.realPrice}}</h1> <!--price After Discount-->
            <div class="col-12 ">
-            <p class="fa"><del>EGP {{item.realPrice}}     </del>     
+            <p class="fa"><del>{{'cart.EGP' |translate}} {{item.realPrice}}     </del>     
               <strong class="offer-cards p-1">   -{{item.discount}}%</strong> </p>
           </div>
         </div>
@@ -50,7 +55,7 @@
     <div class=" bg-transparent row">
       
       <div class="col-6" (click)="removeProduct(item)">
-        <p class="text-warning"><i class="fa fa-solid fa-trash"></i> <span class="text-uppercase"> Remove</span></p>
+        <p class="text-warning"><i class="fa fa-solid fa-trash"></i> <span class="text-uppercase"> {{'cart.Remove' | translate}}</span></p>
       </div>
           <div class="col-6 d-flex justify-content-end ">
             <button class="btn btn-warning btn-sm" (click)="decreaseQuantity(item)" >
@@ -78,22 +83,22 @@
   <div class="col-3 float-end ">
     <div class="card mb-3 my-4" style="width: 18rem;">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>CART SUMMARY</strong> </li>
+        <li class="list-group-item"><strong>{{'cart.CART SUMMARY' | translate}}</strong> </li>
         <li class="list-group-item">
           <ul class="d-flex justify-content-start">
-            <li class="me-5 ">Subtotal</li>
-            <li style="text-align:end;"><strong>EGP {{TotalCartPrice}}</strong></li>
+            <li class="me-5 ">{{'cart.Subtotal' | translate}}</li>
+            <li style="text-align:end;"><strong>{{'cart.EGP' | translate}} {{TotalCartPrice}}</strong></li>
           </ul>
         </li>
         <ul>
           <li class="m-2">
-            <p><small>Missing EGP 151.00 to reach free delivery</small> </p>
+            <p><small>{{'cart.Missing EGP 151.00 to reach free delivery' | translate}}</small> </p>
           </li>
           <li class="m-2"> <img src="assets/cart.jpg" style="width: 40%;"></li>
         </ul>
       </ul>
       <div class="card-footer  ">
-        <button class="btn btn-warning text-light" style="width: 90%;" routerLink="/shippment">Checkout (EGP
+        <button class="btn btn-warning text-light" style="width: 90%;" routerLink="/shippment">{{'cart.Checkout'|translate}} ({{'cart.EGP' | translate}}
           {{TotalCartPrice}} )</button>
       </div>
     </div>
@@ -102,14 +107,14 @@
 
 
 <!-- washlistproduct -->
-<div class="container-fluid mt-5 shadow-sm p-3 mb-5 bg-body rounded " style="background-color: white;">
+<div class="container-fluid mt-5 shadow-sm p-3 mb-5 bg-body rounded " style="background-color: white;" [class.rtl]="isArabic">
   <div class="row mb-3  ">
     <div class="col">
-      <h1>Saved Item</h1>
+      <h1>{{'cart.Saved Item'|translate}}</h1>
     </div>
 
     <div class="col text-warning" style="text-align: right;"> <a href="">
-        <h4>See All > </h4>
+        <h4>{{'cart.See All >'|translate}} </h4>
       </a> </div>
   </div>
 
@@ -128,19 +133,19 @@
               style="height:auto; width: 150px;">
               <!-- <img [src]="pro.images" class="card-img-top" alt="Card image" style="width:100%"> -->
               <div class="label-Cards-top px-2">
-                <span class="text-white ">Buy 400 get {{pro.discount}} off</span>
+                <span class="text-white ">{{'cart.Buy 400 get' | translate}} {{pro.discount}} {{'cart.off' | translate}}</span>
               </div>
               
               <div class="card-body">
                 <p class="blockquote-footer"><small>{{pro.shortDescription}}</small></p>
-                <b><strong>EGP {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
+                <b><strong>{{'cart.EGP' | translate}} {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
                 <ul class="list-inline">
                   <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>
                   <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>
                 </ul>
                 <div class="hide-btn-cards">
                 <button class="btn btn-warning w-100 text-white" data-bs-toggle="modal"
-                  [attr.data-bs-target]="'#staticBackdrop-' + pro.id">Add To Cart</button>
+                  [attr.data-bs-target]="'#staticBackdrop-' + pro.id">{{'cart.Add To Cart'|translate}}</button>
                 </div>
               </div>
               <!-- Model -->
@@ -149,19 +154,19 @@
                 <div class="modal-dialog bg-white">
                   <div class="modal-content ">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="staticBackdropLabel">Please select a variation</h5>
+                      <h5 class="modal-title" id="staticBackdropLabel">{{'cart.Please select a variation' |translate}}</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
                     <div class="modal-body">
                       <div class="center-align">
-                        <p>Only size fit all</p>
-                        <h2><strong>EGP {{pro.realPrice}} <del> EGP</del></strong></h2>
+                        <p>{{'cart.Only size fit all' | translate}}</p>
+                        <h2><strong>{{'cart.EGP' |translate}} {{pro.realPrice}} <del> {{'cart.EGP' |translate}} </del></strong></h2>
                       </div>
                     </div>
                     <div class="modal-footer">
                       <div class="hide-btn-cards">
                         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="AddToCart(pro)"
-                          aria-label="Close">Add to cart</button>
+                          aria-label="Close">{{'cart.Add to cart' |translate}}</button>
                       </div>
                     </div>
                   </div>
@@ -175,11 +180,11 @@
           </div>
           <button class="carousel-control-prev col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span class="visually-hidden">{{'cart.Previous' |translate}}</span>
           </button>
           <button class="carousel-control-next col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span class="visually-hidden">{{'cart.Next' |translate}}</span>
           </button>
           }
         </div>
@@ -188,9 +193,19 @@
   </div>
 </div>
 
-
-
-
+<div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1" [class.rtl]="isArabic" >
+  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Added To Cart Successfully' |translate}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+    <i class="fa fa-times-circle text-success" id="close"></i>
+  </button>
+</div>
+<div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2" [class.rtl]="isArabic">
+  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Removed from Cart Successfully' |translate}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+    <i class="fa fa-times-circle text-success" id="close"></i>
+  </button>
+</div>
+</div>
 <!-- Recently Viewed -->
 <!-- <div class="">
     <div class="reco" data-list="lastViewed" pagetype="cart">

@@ -43,9 +43,10 @@ export class NavigiationBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.translate.get('navigation.loggedInUsername').subscribe((translation: string) => {
-      this.loggedInUsername = translation;
-    });
+    this._apiLoginService.gettName2().subscribe((stat) => {
+      this.loggedInUsername = stat
+    })
+   
 
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'
@@ -54,9 +55,7 @@ export class NavigiationBarComponent implements OnInit {
     this._apiLoginService.getLoggedStatus().subscribe((stat) => {
       this.IsUserLogged = stat
     })
-    this._apiLoginService.gettName2().subscribe((stat) => {
-      this.loggedInUsername = stat
-    })
+   
   }
 
   SignInNav() {
@@ -66,23 +65,28 @@ export class NavigiationBarComponent implements OnInit {
   SignOutNav() {
     this._apiLoginService.logout();
     this.IsUserLogged = this._apiLoginService.IsLoggedIn();
+    this.translate.get('navigation.loggedInUsername').subscribe((translation: string) => {
+      this.loggedInUsername = translation;
+    });
   }
 
   searchTerm: string = '';
 
 
   searchProducts() {
+    setTimeout(() => {
     if (this.searchTerm.trim() !== '') {
       this._ApiProductsService.SearchByNameOrDesc(this.searchTerm).subscribe(
         (searchResults) => {
           this._searchResultsService.setSearchResults([searchResults]);
-          // console.log(searchResults);
+          console.log("searchResults");
+          console.log(searchResults);
         },
         (error) => {
           console.error('Error occurred while searching:', error);
         }
       );
-    }
+    }}, 1000);
 
   }
 

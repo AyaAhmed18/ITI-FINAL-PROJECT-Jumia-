@@ -8,79 +8,84 @@
 @{
     ViewData["Title"] = "GetPagination";
 }
-
-
-<html>
-<head>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
-</head>
 <style>
-    a:hover{color:#fff}
-    .fifty-chars
-    {
-        width: 6ch;
+    .fifty-chars {
+        width:20ch;
         overflow:hidden;
         white-space:nowrap;
         text-overflow:ellipsis;
-
     }
 </style>
-<body>
 
-    <div class="">
 
-        <h1>@AdminDashBoard.Languages.Resource.AllProducts</h1>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.Name</th>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.Description</th>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.Image</th>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.StockQuantity</th>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.RealPrice</th>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.Discount</th>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.SubCategoryName</th>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.Brand</th>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
-                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+            <h4 class="card-title">@AdminDashBoard.Languages.Resource.AllProducts</h4>
+                <p class="card-description">
+                Table: <code>@AdminDashBoard.Languages.Resource.AllProducts</code>
+                </p>
+                <div class="table-responsive pt-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
 
-                    
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Entities)
-            {
-                <tr>
-                    <td>@item.Name</td>
-                        @* <td class="fifty-chars" width="15px">@item.ShortDescription </td> *@
-                        <td class="fifty-chars" width="6ch">@if (item.Images.Count > 0) { Convert.ToBase64String(item.Images[item.Images.Count() - 1]); }</td>
-                        @{
-                            string res = item.Images.Count > 0 ? Convert.ToBase64String(item.Images[item.Images.Count() - 1]) : "";
-                        }
-                        <td><img src="data:image;base64,@res" width="100px" height="100px" alt="Product Image" /></td>
+                            <th scope="col">@AdminDashBoard.Languages.Resource.Name</th>
+                            <th scope="col">@AdminDashBoard.Languages.Resource.Description</th>
+                            <th scope="col">@AdminDashBoard.Languages.Resource.Image</th>
+                            <th scope="col">@AdminDashBoard.Languages.Resource.StockQuantity</th>
+                            <th scope="col">@AdminDashBoard.Languages.Resource.RealPrice</th>
+                            <th scope="col">@AdminDashBoard.Languages.Resource.Discount</th>
+                            <th scope="col">@AdminDashBoard.Languages.Resource.SubCategoryName</th>
+                            <th scope="col">@AdminDashBoard.Languages.Resource.Brand</th>
+                            <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+                            <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
 
-                     <td>@item.StockQuantity</td>
-                    <td>@item.RealPrice</td>
-                    <td>@item.Discount</td>
-                    <td>@item.SubCategoryName</td>
-                    <td>@item.BrandName</td>
-                    <td>
-                            <a asp-action="Update" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-info">@AdminDashBoard.Languages.Resource.Update</a>
-                    </td>
-                    <td>
-                            <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" style="pointer-events: auto;" onclick="confirmDelete()" class="btn btn-danger disabled">@AdminDashBoard.Languages.Resource.Delete</a>
-                    </td>
-                </tr>
-            }
-
-        </tbody>
-    </table>
-    <br />
+                            </tr>
+                        </thead>
+                        <tbody >
+                            @foreach (var item in Model.Entities)
+                {
+                            <tr>
+                                <td class="p-1"><p class="fifty-chars">@item.Name</p></td>
+                                <td class="p-1"><p class="fifty-chars">@item.ShortDescription</p> </td>
+                               @*  <td class="p-1">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td> *@
+                                @{
+                                    string res = item.Images.Count > 0 ? Convert.ToBase64String(item.Images[item.Images.Count() - 1]) : "";
+                                }
+                                <td><img src="data:image;base64,@res" width="100px" height="100px" alt="Product Image" /></td>
+                                <td class="p-1">@item.StockQuantity</td>
+                                <td class="p-1">@item.RealPrice</td>
+                                <td class="p-1">@item.Discount</td>
+                                <td class="p-1">@item.SubCategoryName</td>
+                                <td class="p-1"><p class="fifty-chars">@item.BrandName</p></td>
+                                <td class="p-1">
+                                    <a asp-action="Update" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-info  btn-sm m-0 ">@AdminDashBoard.Languages.Resource.Update</a>
+                                </td>
+                                <td class="p-1">
+                                    <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" style="pointer-events: auto;" onclick="confirmDelete()" class="btn btn-danger disabled  btn-sm m-0">@AdminDashBoard.Languages.Resource.Delete</a>
+                                </td>
+                            </tr>
+                           }
+                        </tbody>
+                    </table>
+                
+                </div>
+            </div>
         <a asp-action="Create" asp-controller="Product" class="btn btn-success p-3">@AdminDashBoard.Languages.Resource.AddProduct</a>
+        </div>
     </div>
-</body>
-</html>
+
+
+
+       
+  
+
 @if (TempData["SuccessMessage1"] != null)
 {
     <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
@@ -93,14 +98,18 @@
 }
 @if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-red alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+    <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <svg class="bi flex-shrink-0 " width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
         <div>
             @AdminDashBoard.Languages.Resource.FailedTODelete
         </div>
     </div>
-}
+} 
+
+
+
+
   <script>
         function confirmDelete(){
             var acc = confirm("Some Customers may Ordered This Product,Are you sure you want to delete this product ?");

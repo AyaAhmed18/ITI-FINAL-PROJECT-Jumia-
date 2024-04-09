@@ -86,8 +86,8 @@ namespace AdminDashBoard.Controllers
 
             }
 
-            var categoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(res.Entity);
-            return View(categoryDto);
+           // var categoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(res.Entity);
+            return View(res.Entity);
         }
 
 
@@ -95,38 +95,52 @@ namespace AdminDashBoard.Controllers
         [HttpPost]
         public async Task<ActionResult> Update(CreateOrUpdateCategoryDto categoryDto, IFormFile Image)
         {
-            if (ModelState.IsValid)
+            try
             {
-
-                var category = await _categoryService.GetOne(categoryDto.Id);
-                if (category == null)
-                {
-                    return NotFound(nameof(categoryDto));
-                }
-
-                if (Image != null && Image.Length > 0)
+                if (ModelState.IsValid)
                 {
 
-                    var imageBytes = new byte[Image.Length];
-                    using (var stream = Image.OpenReadStream())
+                    var category = await _categoryService.GetOne(categoryDto.Id);
+                    if (category == null)
                     {
-                        await stream.ReadAsync(imageBytes, 0, imageBytes.Length);
+                        return NotFound(nameof(categoryDto));
                     }
-                    categoryDto.Image = imageBytes;
+
+                    if (Image != null && Image.Length > 0)
+                    {
+
+                        var imageBytes = new byte[Image.Length];
+                        using (var stream = Image.OpenReadStream())
+                        {
+                            await stream.ReadAsync(imageBytes, 0, imageBytes.Length);
+                        }
+                        categoryDto.Image = imageBytes;
+                    }
+                    else
+                    {
+                        // If no new image is provided, retain the existing image
+                        categoryDto.Image = category.Entity.Image;
+                    }
+
+                    var update = await _categoryService.Update(categoryDto, Image);
+                    if (update.IsSuccess)
+                    {
+                        TempData["SuccessMessage1"] = "Category updated successfully.";
+                        return RedirectToAction(nameof(Index), TempData["SuccessMessage1"]);
+                    }
+
+
                 }
-                else
-                {
-                    // If no new image is provided, retain the existing image
-                    categoryDto.Image = category.Entity.Image;
-                }
-              
-                await _categoryService.Update(categoryDto, Image);
-                TempData["SuccessMessage1"] = "Category updated successfully.";
-                return RedirectToAction(nameof(Index), TempData["SuccessMessage1"]);
+                TempData["SuccessMessage"] = "Failed";
+                return View(categoryDto);
 
             }
-            TempData["SuccessMessage"] = "Failed";
-            return View(categoryDto);
+            catch
+            {
+                TempData["SuccessMessage"] = "Failed";
+                return View(categoryDto);
+            }
+           
 
         }
 

@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ICategory } from '../models/icategory';
+import { ICategory } from '../Models/icategory';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryserviceService {
 
-  private apiUrl = environment.apiUrl
-
+  //private apiUrl = 'http://localhost:64866/api'
+  private apiUrl = environment.apiUrl;
   constructor(private  _HttpClient:HttpClient) { }
 
 
@@ -26,6 +26,7 @@ getCategoryById(id:number):Observable<ICategory>{
 
   return this._HttpClient.get<ICategory>(`${this.apiUrl}/Category/${id}`)
 }
+
 
 
 

@@ -8,8 +8,8 @@ import { ProductDto } from '../ViewModels/product-dto';
   providedIn: 'root'
 })
 export class FilterProductService {
-private apiUrl = `${environment.apiUrl}`; 
-
+//private apiUrl = `${environment.apiUrl}`; 
+private apiUrl = environment.apiUrl; 
   constructor(private _httpClient:HttpClient) {}
 
   filterByDiscountRange(minDisc :number):Observable<ProductDto>{

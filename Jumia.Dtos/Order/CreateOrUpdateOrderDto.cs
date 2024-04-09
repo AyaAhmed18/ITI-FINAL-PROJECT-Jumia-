@@ -40,7 +40,7 @@ namespace Jumia.Dtos.Order
             Processing ,
             Shipped ,
             Delivered ,
-            Canceled,
+            Cancelled,
             Returned
         }
        /* public string GetLocalizedStatus()

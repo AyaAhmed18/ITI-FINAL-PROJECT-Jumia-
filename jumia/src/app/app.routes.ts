@@ -11,20 +11,30 @@ import { ShippmentComponent } from './Component/shippment/shippment.component';
 import { PaymentComponent } from './Component/payment/payment.component';
 import { RegistrationComponent } from './Component/registration/registration.component';
 import { FilterComponent } from './Component/filter/filter.component';
+import { OrderDetailsComponent } from './Component/order-details/order-details.component';
+import { OrderItemsComponent } from './Component/order-items/order-items.component';
+import { ConfirmOrderComponent } from './Component/confirm-order/confirm-order.component';
+import { DetailsComponent } from './Component/details/details.component';
 export const routes: Routes = [
     {path:'',redirectTo:'/Home',pathMatch:'full'},
     {path:'Home',component:HomeComponent},
     {path:'Product',component:FilterComponent},
+    {path:'Detalse/:id',component:DetailsComponent},
     {path:'SignIn',component:SignInComponent},
     {path:'Registeration',component:RegistrationComponent},
-    {path:'Order',component:OrdersComponent },  //
+    {path:'Order',component:OrdersComponent ,canActivate:[authGuard]},  //
     {path:'Delivary',component:DelivaryComponent},
-    {path:'MyAccount',component:MyAccountComponent },  //
+    {path:'MyAccount',component:MyAccountComponent ,canActivate:[authGuard]},  //
     {path:'Cart',component:CartComponent},
-    {path:'shippment',component:ShippmentComponent},
-    {path:'Payment',component:PaymentComponent},
-   // {path:'CartProduct',component:CartwithProductComponent},
-   // {path:'test',component:TestComponent},
+    {path:'shippment',component:ShippmentComponent,canActivate:[authGuard]},
+    {path:'shippment:id',component:ShippmentComponent,canActivate:[authGuard]},
 
-  // canActivate:[authGuard]
+    {path:'Payment',component:PaymentComponent,canActivate:[authGuard]},
+    {path:'OrderDetails',component:OrderDetailsComponent,canActivate:[authGuard]},
+   // {path:'OrderItems/:ordId',component:OrderItemsComponent,canActivate:[authGuard]},
+   // { path: 'OrderDetails/:status/:ordId', component: OrderDetailsComponent },
+    { path: 'OrderItems/:ordId', component: OrderItemsComponent,canActivate:[authGuard] },
+    { path: 'confirmOrder', component: ConfirmOrderComponent,canActivate:[authGuard] },
+    {path:'GetCategory/:id',component:FilterComponent},
+    {path:'GetSubCategory/:id',component:FilterComponent},
 ];
