@@ -100,7 +100,7 @@
 
     .form-check-input[type="checkbox"]:hover {
         background-color: #ff9901;
-        box-shadow: 0 0px 28px rgba(255, 166, 0), 0 0px 20px rgb(255, 166, 0);
+      box-shadow: 0 0 0 rgba(255, 166, 0, 1), 0 0 0 rgba(255, 166, 0, 1);
     }
     .form-check-input[type="radio"]:checked {
       background-color: #ff9901;
@@ -409,3 +409,27 @@
         direction: rtl;
       }
     
+.col-3{
+    width: 23%;
+}
+        
+/* Extra small devices (phones) */
+@media only screen and (max-width:590px) {
+    .col-3{
+       width: 100%;
+    }
+       
+     
+     
+       }
+       
+    /* Small devices (portrait tablets and large phones) */
+   @media only screen and (min-width:600px) and (max-width:884px) {
+         
+       .col-3{
+           width: 30%;
+       
+       }
+   
+   }
+       
