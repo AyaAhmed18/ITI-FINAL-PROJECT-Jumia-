@@ -1,17 +1,19 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ProductDto } from '../../ViewModels/product-dto';
 import { CartService } from '../../Services/cart.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { APIOrderServiceService } from '../../Services/apiorder-service.service';
 import { IOrder } from '../../Models/i-order';
 import { IOrderItems } from '../../Models/iorder-items';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ApiShippmentService } from '../../Services/api-shippment.service';
+import { IShippment } from '../../Models/ishippment';
 
 @Component({
   selector: 'app-confirm-order',
   standalone: true,
-  imports: [CommonModule ,TranslateModule],
+  imports: [CommonModule ,TranslateModule,RouterLink],
   templateUrl: './confirm-order.component.html',
   styleUrl: './confirm-order.component.css'
 })
@@ -23,6 +25,7 @@ export class ConfirmOrderComponent {
   clientId=localStorage.getItem('userId')
   order:IOrder={} as IOrder
   orderItem:IOrderItems={} as IOrderItems
+  shippment:IShippment={} as IShippment
   totalamount:number = 50
   showPayment: boolean = false;
   isArabic: boolean = false;
@@ -32,6 +35,10 @@ export class ConfirmOrderComponent {
   constructor(private _cartService:CartService
     ,private router:Router,private _orderService:APIOrderServiceService,
     private  translate: TranslateService
+    
+    ,private _ShippmentService:ApiShippmentService 
+   
+    
   ){
     
   }

@@ -2,42 +2,6 @@
 <div class="container" [class.rtl]="isArabic">
 
 
-  <!-- <div class="col-3 float-end ">
-    <div class="card mb-3 my-4" style="width: 18rem;">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{'payment.Order summary' | translate}}</li>
-        <li class="list-group-item">
-          <ul class="d-flex">
-            <li class="me-5">{{'payment.Items total' | translate}} {{cartNumber}}</li>
-            <li class="">{{'payment.EGP' | translate}} {{TotalCartPrice}} </li>
-          </ul>
-          <ul class="d-flex">
-            <li class="me-5">{{'payment.Delivery fees' | translate}}</li>
-            <li>{{'payment.EGP' | translate}} 300.00 </li>
-          </ul>
-          <ul class="d-flex">
-            <li class="me-5">{{'payment.Prepaid discount' | translate}}</li>
-            <li class="text-success">-{{'payment.EGP' | translate}} 10 </li>
-          </ul>
-        </li>
-        <li class="list-group-item">
-            <ul class="d-flex">
-              <li class="me-5">{{'payment.Total' | translate}}</li>
-              <li>{{'payment.EGP' | translate}} {{TotalCartPrice +300 -10}}</li>
-            </ul>
-           
-          </li>
-
-        <ul>
-        <li ><p>{{'payment.You will be able to add a voucher when selecting your payment method' | translate}}</p> </li>
-        <li> <img src="../../../assets/cart.jpg" style="width: 40%;" title="img"></li>
-        </ul>
-      </ul>
-      <div class="card-footer bg-light">
-        <button class="btn btn-warning text-light save" style="width: 90%;" [disabled]="!payment"   (click)="confirmOrder()">{{'payment.Confirm Order' | translate}} </button>
-      </div>
-    </div>
-  </div> -->
    
   <div class="row  ">
   
@@ -144,7 +108,7 @@
                           
                           </small>
 
-                          <a> Details</a>
+                          <a href="#CashDetalse" role="button" data-bs-toggle="modal"> Details</a>
                          
                         </div>
                       </div>
@@ -286,5 +250,36 @@
   
   
  </div>
- 
+ <!-- Modal -->
+<div class="modal fade" id="CashDetalse" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Cash On Delivery</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+      </div>
+      <div class="modal-body">
+        <div>
+          
+          <h3><small>- Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when you choose prepaid at checkout!</small></h3>
+          <h3><small>- When you choose Cash on delivery, you can pay for your order in cash when you receive your shipment at home or Jumia’s pick-up stations.</small></h3>
+          <h3><small>- Enjoy 10 EGP discount when you pay via prepaid method.</small></h3>
+          <h3><small>- Egyptian pounds are accepted only.</small></h3>
+          <h3><small>- Please provide the specified amount only when paying for the possibility that there will be enough cash with the delivery representative if a value is paid higher than the requested one.</small></h3>
+          <h3><small>- You must pay for the product before opening the shipment.</small></h3>
+          <h3><small>- In case the product is returned, the available refund methods are (refund voucher - postal transfer).</small></h3>
+          <br>
+        
+        </div>
+
+      </div>
+    
+    </div>
+    <div class="modal-footer ">
+
+    </div>
+  </div>
+</div>
+
+
 
