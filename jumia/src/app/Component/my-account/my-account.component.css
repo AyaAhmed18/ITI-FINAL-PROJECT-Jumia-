@@ -4,3 +4,58 @@
     margin-top: 1rem;
    }
        .card-hover:hover{ transform: scale(1.1);}
+
+
+       /* change color or hover link side bar */
+    .Link_hover:hover {
+        background-color: rgba(201, 201, 197, 0.404);
+        font-weight: bold;
+    }
+
+    a:link,
+    a:visited {
+
+        color: rgb(0, 0, 0);
+        padding: 14px 25px;
+
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .line {
+        color: rgb(201, 201, 197);
+        /* Change background color on hover */
+    }
+.btn{
+    background-color: #ff9901ea;
+
+}
+
+
+
+/* Extra small devices (phones) */
+@media only screen and (max-width:590px) {
+  
+    .col-3{
+     width: 100%;
+    }
+    .col-8{
+     width: 100%;
+    
+    }
+    .col-6{
+        width: 100%; 
+    }
+     
+     }
+     
+     /* Small devices (portrait tablets and large phones) */
+     @media only screen and (min-width:600px) and (max-width:884px) {
+      .card-text{
+        font-size: 11px;
+      }
+      .card-body{
+        padding: 5px;
+      }
+      
+     }
