@@ -81,9 +81,19 @@
     -webkit-order:2;
 
     }
-    .col-3{
+    .col-4-sammary{
         width: 100%;
     }
+.col-3-cart{
+    width: 30%;
+}
+.col-5-cart{
+    width: 100%;
+    -webkit-order:2;
+}
+.col-4-cart{
+    width: 60%;
+}
      }
      
      /* Small devices (portrait tablets and large phones) */

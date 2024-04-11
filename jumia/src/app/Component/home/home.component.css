@@ -21,6 +21,13 @@
     font-size:1vw;
   
    }
+
+
+
+   a.linkSidebar:hover{
+    font-weight: bold;
+   
+   }
        /* .carousel-control-prev {
          left: 20px;
        }
@@ -38,6 +45,9 @@
 
    
     /* change color or hover link side bar */
+    .Link_hover{
+      padding: 6px;
+    }
   .Link_hover:hover {
 
     color: #ff9901ea;
@@ -119,13 +129,13 @@
     width:70%
   }
   .show-div-Linkes{
-    height: 150px;
+    height: 123px;
     padding: 0px;
   }
 
   .hide-slider ,
   .show-linkes{
-    height: 150px;
+    height: 123px;
     padding: 0px;
 
   }
@@ -145,7 +155,9 @@ display: none;
 
     
   }
-
+  .Link_hover{
+    padding: 3px;
+  }
 
   }
   

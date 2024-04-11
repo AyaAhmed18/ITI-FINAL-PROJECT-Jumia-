@@ -1,5 +1,8 @@
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 <div class="container" [class.rtl]="isArabic">
-  <div class="col-3 float-end ">
+
+
+  <!-- <div class="col-3 float-end ">
     <div class="card mb-3 my-4" style="width: 18rem;">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">{{'payment.Order summary' | translate}}</li>
@@ -34,60 +37,254 @@
         <button class="btn btn-warning text-light save" style="width: 90%;" [disabled]="!payment"   (click)="confirmOrder()">{{'payment.Confirm Order' | translate}} </button>
       </div>
     </div>
-  </div>
-    <div class="row  ">
-        <div class=" my-2  col-md-8 row section1">
-           <div class="col-md-6"> <h6 class=" my-2"><i class="fa-solid fa-circle-check text-success"></i> {{'payment.1.CUSTOMER ADDRESS' | translate}}</h6></div>
-           <div class="col-md-6 text-end"><a href="" class="text-decoration-none"  [routerLink]="['/shippment']" >{{'payment.Change' | translate}} <i class="fa-solid fa-arrow-right"></i> </a></div>
-           <div class="border-top ">
-            <p class="my-0  pt-4">{{shippment.firstNameEn}}  {{shippment.lastName}}</p>
-            <p class="mt-0 tb-5 text-secondary">{{shippment.region}}, {{shippment.city}} | {{shippment.address}} - {{shippment.adressInformation}} | +2 {{shippment.phoneNumber}}</p>
+  </div> -->
+   
+  <div class="row  ">
+  
+    <div class="col-8">
+      <div class="row m-2">
+        <div class="col-md-12 row section1 AddressForm">
+          <div class="col-md-6">
+            <h6 class=" my-2 fa">
+              <i class="fa fa-check-circle text-success"></i>
+              <strong> {{'delivery.1.CUSTOMER ADDRESS'| translate}}</strong>
+            </h6>
+  
+          </div>
+          <div class="col-md-6 text-end"><a href="" class="text-decoration-none"
+              [routerLink]="['/shippment']">{{'delivery.Change' | translate}} <i class="fa fa-solid fa-arrow-right"></i>
+            </a></div>
+          <div class="border-top ">
+            <p class="my-0  pt-4">{{shippment.firstNameEn}} {{shippment.lastName}}</p>
+            <p class="mt-0 tb-5 text-secondary">
+              {{shippment.region}}, {{shippment.city}} | {{shippment.address}} -
+              {{shippment.adressInformation}} | +2 {{shippment.phoneNumber}}
+            </p>
+          </div>
         </div>
-       </div> 
-
-       <br>
-       <div class=" my-2  col-md-8 row section1">
-        <div class="col-md-6"> <h6 class=" my-2"><i class="fa-solid fa-circle-check text-success"></i>  {{'payment.2.DELIVERY DETAILS' | translate}}</h6></div>
-        <div class="col-md-6 text-end"><a href="" class="text-decoration-none"  [routerLink]="['/Cart']" >{{'payment.Change' | translate}} <i class="fa-solid fa-arrow-right"></i> </a></div>
-        <div class="border-top ">
-            <p class="my-0  pt-4">{{'payment.Door Delivery' | translate}}</p>
-            <p class="mt-0 tb-5 text-secondary">{{'payment.Delivery between 20 April and 25 April' | translate}}</p>
-        </div>
-    </div> 
-    <br>
-    <div class="my-2 col-md-8 row section1">
-      <div class="col-md-6">
-          <h6 class="my-2"><i class="fa-solid fa-circle-check text-success"></i> {{'payment.3.PAYMENT METHOD' | translate}}</h6>
+  
+  
+  
       </div>
-      <form (ngSubmit)="ConfirmPayment()" #paymentForm="ngForm">
-          <div class="border-top">
-              <div class="check">
-                  <div class="form-check">
-                      <input class="form-check-input" type="radio" name="payment" id="paypal" value="Paypal" [(ngModel)]="selectedPayment">
-                      <label class="form-check-label" for="paypal">
-                          {{'payment.Paypal' | translate}}
-                      </label>
-                  </div>
-                  <div class="form-check">
+      <div class="row m-2">
+        <div class="col-md-12 row section1 AddressForm">
+          <div class="col-md-6">
+            
+            <h6 class=" my-2 fa">
+              <i class="fa fa-check-circle text-success"></i>
+              <strong> {{'payment.2.DELIVERY DETAILS' | translate}}</strong>
+            </h6>
+  
+          </div>
+          <div class="col-md-6 text-end"><a href="" class="text-decoration-none"
+            [routerLink]="['/Cart']" >{{'payment.Change' | translate}} <i class="fa fa-solid fa-arrow-right"></i>
+            </a></div>
+          <div class="border-top ">
+            <div class="row">
+              <div class="col-9">
+                <p class="my-0  pt-4">{{'payment.Door Delivery' | translate}}</p>
+                <p class="mt-0 tb-5 text-secondary">
+                  {{'payment.Delivery between 20 April and 25 April' | translate}}
+                </p>
+              </div>
+              <div class="col-md-3 p-2 text-end">
+                <i class="fa fa-solid fa-truck text-warning" style="font-size: 20px;"></i>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+  
+  
+  
+      </div>
+
+
+      <div class="row m-2 ">
+        <div class=" col-md-12 row section1 AddressForm ">
+
+
+          <h6 class="fa p-2 my-2 border-bottom ">
+            <i class="fa fa-check-circle text-secondary"></i>
+            <strong> {{'payment.3.PAYMENT METHOD' | translate}}</strong>
+          </h6>
+          
+            <h6 class=" p-2"> <strong>Payment on delivery</strong> </h6>
+
+
+          <form (ngSubmit)="ConfirmPayment()" #paymentForm="ngForm">
+              
+                  <div class="check">
+
+
+                    <div class="form-check">
+                      <div class="row">
+                        <div class="col-11 p-1">
                       <input class="form-check-input" type="radio" name="payment" id="cash" value="Cash" [(ngModel)]="selectedPayment">
                       <label class="form-check-label" for="cash">
                           {{'payment.Cash' | translate}}
                       </label>
+                     
+                          <p>
+                            <small>Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when</small>
+                          </p>
+                        </div>
+
+                      <div class="col-1 p-2"  >
+                        <img src="assets/icons/Cash.png" alt="pay">
+                      </div>
+                      </div>
+
+                      <div class="card">
+                        <div class="card-body">
+                          <small>
+                          - Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when you choose...!
+                          <br>
+                          - When you choose Cash on delivery, you can pay for your order in cash when you receive your shipment at home or...
+                          
+                          </small>
+
+                          <a> Details</a>
+                         
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <hr>
+
+                    <h6 class=" p-2"> <strong>Pre-pay Now</strong> </h6>
+                      <div class="form-check">
+                        <div class="row">
+                          <div class="col-11 p-1">
+                          <input class="form-check-input" type="radio" name="payment" id="paypal" value="Paypal" [(ngModel)]="selectedPayment">
+                          <label class="form-check-label" for="paypal">
+                              {{'payment.Paypal' | translate}}
+                          </label>
+                          
+                              <p>
+                                <small>Get 10 EGP Off on Shopping Free When You Pay With Your Card</small>
+                              </p>
+                            </div>
+    
+                          <div class="col-1 p-2">
+                            <img src="assets/icons/pay.png" alt="pay">
+
+                          </div>
+                          </div>
+                      </div>
+
+                      <br>
+                      <hr>
+
+
+                      <h6 class=" p-2"> <strong>Pay Using Your Mobile Wallet</strong> </h6>
+                      <div class="form-check">
+                        <div class="row">
+                          <div class="col-11 p-1">
+                          <input class="form-check-input" type="radio" name="payment" id="mobileMoney" value="Mobile Money" [(ngModel)]="selectedPayment">
+                          <label class="form-check-label" for="mobileMoney">
+                            {{'payment.Mobile Money' | translate}}
+                          </label>
+                          </div>
+                          <div class="col-1 p-2">
+                            <img src="assets/icons/pay.png" alt="pay">
+
+                          </div>
+                        </div>
+                      </div>
+
+
                   </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="radio" name="payment" id="mobileMoney" value="Mobile Money" [(ngModel)]="selectedPayment">
-                      <label class="form-check-label" for="mobileMoney">
-                        {{'payment.Mobile Money' | translate}}
-                      </label>
+                  <div class="col-12 d-flex justify-content-end mb-4">
+                      <button type="submit" class="btn btn-warning text-white mt-4 shadow rounded save">{{'payment.Confirm Payment Method' | translate}}</button>
                   </div>
-              </div>
-              <div class="col-12 d-flex justify-content-end mb-4">
-                  <button type="submit" class="btn btn-warning text-white mt-4 shadow rounded save">{{'payment.Confirm Payment Method' | translate}}</button>
-              </div>
-          </div>
-      </form>
-  </div>
+              
+          </form>
+      </div>
+      </div>
+
+
+
+      
     </div>
+    <div class="col-4 ">
+      <div class="card mb-3 ">
+
+        <p class="list-group-item"><strong>{{'shipment.Order summary' | translate}}</strong></p>
+
+        <div class="row p-2 ">
+          <div class=" col-6">
+            <p class="me-5 ">{{'shipment.Items total' | translate}} ({{cartNumber}})</p>
+          </div>
+          <div class=" col-6 " style="text-align: end;">
+            <p class=""><strong>{{'shipment.EGP' | translate}} {{TotalCartPrice}}</strong> </p>
+          </div>
+
+        </div>
+
+
+        <div class="row p-2">
+          <div class=" col-6">
+            <p class="me-5">{{'shipment.Delivery fees' | translate}}</p>
+          </div>
+          <div class=" col-6 " style="text-align: end;">
+            <p class=""><strong>{{'shipment.EGP' | translate}} 300.00 </strong></p>
+          </div>
+
+        </div>
+
+        <div class="row p-2">
+          <div class=" col-6">
+            <p class="me-5">{{'shipment.Prepaid discount' | translate}}</p>
+          </div>
+          <div class=" col-6 " style="text-align: end;">
+            <p class="text-success"><strong>- {{'shipment.EGP' | translate}} 10</strong> </p>
+          </div>
+
+        </div>
+
+        <hr>
+        <div class="row p-2">
+          <div class=" col-6">
+            <p class="me-5">{{'shipment.Total' | translate}}</p>
+          </div>
+          <div class=" col-6 " style="text-align: end;">
+            <p class=""><strong>{{'shipment.EGP' | translate}} {{TotalCartPrice +300 -10}}</strong></p>
+          </div>
+
+        </div>
+
+
+
+        <hr>
+        <div class="row p-2">
+          <div class=" col-2">
+            <i class="fa fa-solid fa-ticket text-warning " style="font-size:36px;"></i>
+          </div>
+          <div class=" col-10 ">
+            <small class=""> {{'shipment.You will be able to add a voucher when selecting your payment method.' |
+              translate}}</small>
+          </div>
+
+        </div>
+
+
+        <div class="card-footer bg-light" style="text-align: center;">
+          <button class="btn  text-light bton-order w-100" style="width: 90%;" disabled
+            routerLink="/shippment">{{'shipment.Confirm Order' | translate}} </button>
+          <b><small>(Complete the steps in order to proceed)</small></b>
+        </div>
+      </div>
+      <div class="" style="text-align: center;">
+
+        <h6><small class="text-secondary">By proceeding, you are automatically accepting the </small></h6>
+        <a><small>Terms & Conditions</small></a>
+      </div>
+
+    </div>
+  </div>
+  
+  
  </div>
  
 

@@ -23,9 +23,9 @@
     @for(pro of products;track pro.id;){
     <div class="clo-2 " [class.rtl]="isArabic">
         <div class="show-cards-btn card cards-hover" style="width:210px; height: 440px; border: none;">
-            <!-- <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image"
-                style="width:100%"> -->
-            <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%">
+            <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image"
+                style="width:100%">
+            <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
             <div class="label-Cards-top px-2">
                 <span class="text-white ">{{'product.Buy 400 get' | translate}} {{pro.discount}} {{'product.off' | translate}}</span>
             </div>

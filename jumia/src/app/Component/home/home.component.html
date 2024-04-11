@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-2 col-md mb-5 shadow-sm bg-body mb-5 rounded my-3 show-div-Linkes">
       <div class="row float-start">
-        <a class="col-12 Link_hover color-black p-1  linkSidebar"   *ngFor="let cat of allCategories" (mouseover)="GetSubCategories(cat.id)" (click) = "GetProductsByCatId(cat.id)">
+        <a class="col-12 Link_hover color-black   linkSidebar"   *ngFor="let cat of allCategories" (mouseover)="GetSubCategories(cat.id)" (click) = "GetProductsByCatId(cat.id)">
           <i class="fa fa-hand-o-right px-3" aria-hidden="true"><small>  {{ isArabicLanguage() ? cat.nameAr : cat.name }}</small></i>
         </a>
       </div>
@@ -10,11 +10,77 @@
     
     <div class="show-linkes col-7 col-md mb-5 bg-body shadow-sm p-3 mb-5  rounded my-3">
     
-          <div class="row" *ngFor="let subCat of SubCategories" (click) = "GetProductsBySubCatId(subCat.id)">
-            <div class="col-4 border-right">
-             
-              <a class="linkSidebar">{{ isArabicLanguage() ? subCat.nameAr : subCat.name }}</a>
+          <div class="row" >
+            <div class="col-4 border-right p-2">
+              <p><a class="linkSidebar d-block "routerLink = "/Product">WOMEN'S FASHION</a></p>
+              <hr>
+              <a class="linkSidebar d-block"*ngFor="let subCat of SubCategories" (click) = "GetProductsBySubCatId(subCat.id)">{{ isArabicLanguage() ? subCat.nameAr : subCat.name }}</a>
             </div>
+
+            <div class="col-4 border-right p-2">
+              <p><a class="linkSidebar d-block "routerLink = "/Product">MEN'S FASHION</a></p>
+              <hr>
+              <a class="linkSidebar d-block "routerLink = "/Product">Shirts</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">T-shirts & Polos</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Pants</a>
+              <a class="linkSidebar d-block "routerLink = "/Product"> Homewear & Underwear</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Swimsuits & Shorts</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Sports Wear</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Accessories</a>
+              <a class="linkSidebar d-block "routerLink = "/Product"> Socks</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Watches</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Pullovers & Cardigans</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Jackets & Coats</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Hoodies & Sweatshirt</a>
+              
+              <p> <a class="linkSidebar d-block "routerLink = "/Product">BABY FASHION</a></p>
+              <hr>
+              <a class="linkSidebar d-block "routerLink = "/Product">Boy's Clothes & Shoes</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Girl's Clothes & Shoes</a>
+            
+            
+
+            </div>
+
+            <div class="col-4 border-right p-2">
+              <p > <a class="linkSidebar d-block "routerLink = "/Product">WOMEN'S SHOES</a></p>
+              <hr>
+              <a class="linkSidebar d-block "routerLink = "/Product">Sneakers</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Heels</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Flats & Loafers</a>
+              <a class="linkSidebar d-block "routerLink = "/Product"> Slippers & Sandals</a>
+              <p ><a class="linkSidebar d-block "routerLink = "/Product">MEN'S SHOES</a> </p>
+              <hr>
+            
+              <a class="linkSidebar d-block "routerLink = "/Product">Sneakers</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Casual & Loafers</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Slippers & Sandals</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Formal Shoes</a>
+              <p ><a class="linkSidebar d-block "routerLink = "/Product">KID'S FASHION</a></p>
+              <hr>
+              
+              <a class="linkSidebar d-block "routerLink = "/Product">Boy's Fashion</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Girl's Fashion</a>
+             
+            
+
+            </div>
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
           </div>
         
     </div>
