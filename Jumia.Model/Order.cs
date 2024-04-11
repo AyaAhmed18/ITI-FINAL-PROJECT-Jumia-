@@ -30,7 +30,7 @@ namespace Jumia.Model
         {
             OrderItems = new List<OrderItems>();
             Status = "Pending";
-            paymentStatus = 0;
+            //paymentStatus = 0;
         }
         public enum PaymentStatus
         {

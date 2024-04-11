@@ -35,16 +35,16 @@
                                 @Localizer["Image"] 
                           </th>
                           <th>
-                                @Localizer["ProductName"] Product Name
+                                @Localizer["ProductName"] 
                           </th>
                           <th>
                                 @Localizer["Quantity"] 
                           </th>
                           <th>
-                                @Localizer["TotalPrice"]   TotalPrice
+                                @Localizer["TotalPrice"]   
                           </th>
                             <th>
-                                @Localizer["Discount"]  Discount
+                                @Localizer["Discount"]  
                             </th>
                         </tr>
                       </thead>
@@ -55,11 +55,11 @@
                             {
                                      
                         <tr>
-                                    <td class="fifty-chars" width="6ch">@if (item.Images.Count > 0) { Convert.ToBase64String(item.Images[item.Images.Count() - 1]); }</td>
+                                    <td class="fifty-chars" width="6ch">@if (item.Images.Count > 0) { Convert.ToBase64String(item.Images[item.Images.Count() - 1]); }
                                     @{
                                         string res = item.Images.Count > 0 ? Convert.ToBase64String(item.Images[item.Images.Count() - 1]) : "";
                                     }
-                                    <td><img src="data:image;base64,@res" width="100px" height="100px" alt="Product Image" /></td>
+                                    <img src="data:image;base64,@res" width="100px" height="100px" alt="Product Image" /></td>
 
                           <td>
                             @item.ProductName
@@ -71,7 +71,7 @@
                                $ @item.TotalPrice
                           </td>
                           <td>
-                            $ @item.Discount
+                            % @item.Discount
                           </td>
                          
                         </tr>

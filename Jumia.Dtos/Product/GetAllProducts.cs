@@ -26,7 +26,9 @@ namespace Jumia.Dtos.Product
         public GetAllProducts(Jumia.Model.Product product)
         {
             Id = product.Id;
+            Name = product.NameAr;
             Name = product.Name;
+            Name=product.GetLocalized(product.NameAr,product.Name);
             NameAr=product.NameAr;
             StockQuantity = product.StockQuantity;
             ShortDescription = product.ShortDescription;
@@ -39,7 +41,9 @@ namespace Jumia.Dtos.Product
             // (e.g., eager loading, separate queries)
             if (product.SubCategory != null)
             {
-                SubCategoryName = product.SubCategory.Name;
+              //  SubCategoryName = product.SubCategory.Name;
+               // SubCategoryName = product.SubCategory.NameAr;
+                SubCategoryName = product.GetLocalized(product.SubCategory.NameAr, product.SubCategory.Name);
             }
             if (product.Brand != null)
             {
