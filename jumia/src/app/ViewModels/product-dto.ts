@@ -1,6 +1,7 @@
 import { SafeUrl } from "@angular/platform-browser";
 
 export interface ProductDto {
+    product: SafeUrl;
     id:number,
     name:string,
     nameAr:string,

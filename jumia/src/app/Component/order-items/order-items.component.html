@@ -78,14 +78,14 @@
                 <li class="list-group-item fs-3">{{'orderitem.Order Details' | translate}}</li>
                 <li class="list-group-item mb-3">
                     <ul  style="color: rgb(145, 143, 140);" >
-                        <li class="d-inline"><a>{{ItemsNumber}} Items  </a></li>                    </ul>
+                        <li class="d-inline"><a>{{ItemsNumber}} {{'orderitem.Items' | translate}}   </a></li>                    </ul>
                 </li>
                 @for(ord of OrderItems;track ord.id;){
                 <li class="mt-2"  >
                   <div class="card-body  row ">
                     <!-- <h1 style="font-weight:bold">{{'orderitem.Delivered By Monday , 15-04' | translate}}</h1> -->
                       <div class="col-3">
-                        <img [src]="ord.images" title="orerI">
+                        <img [src]="ord.images" style="border-radius: 50%;" title="orerI">
                       </div>
                       <div class="col-6 text-"><p class="mb-1"> </p>
                         <h5 class="text-dark mb-1"> {{isArabicLanguage() ? ord.productNameAr : ord.productName }}</h5>

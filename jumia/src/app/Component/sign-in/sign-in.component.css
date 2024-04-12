@@ -81,6 +81,12 @@
   .rtl {
     direction: rtl;
   }
+  .text-warning{
+    color: #000 !important;
+  }
+  .newAcc:hover{
+    color: rgb(250, 130, 18);
+  }
 
 /* Extra small devices (phones) */
 @media only screen and (max-width:320px) {
@@ -128,4 +134,5 @@
      
       
     }
+   
 }

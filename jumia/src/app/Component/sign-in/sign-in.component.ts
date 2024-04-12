@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiLoginService } from '../../Services/api-login.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { IUserLogin } from '../../Models/iuser-login';
@@ -10,7 +10,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [FormsModule,CommonModule ,TranslateModule],
+  imports: [FormsModule,CommonModule ,TranslateModule,RouterLink],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
@@ -24,6 +24,7 @@ export class SignInComponent  implements OnInit{
   constructor(private _apiLoginService : ApiLoginService , private router: Router ,    private  translate: TranslateService){  }
 
 //signIn Function Button
+
   signIn(username:string,password:string){
     this._apiLoginService.login(username,password).subscribe({next:(res)=>{
       if (res && res.stringtaken) {

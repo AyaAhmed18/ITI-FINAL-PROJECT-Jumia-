@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { RegistrationService } from '../../Services/registration.service';
 import { RegisterDto } from '../../ViewModels/register-dto';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
   standalone: true,
-  imports: [FormsModule,CommonModule ,TranslateModule],
+  imports: [FormsModule,CommonModule ,TranslateModule,RouterLink],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css'
 })

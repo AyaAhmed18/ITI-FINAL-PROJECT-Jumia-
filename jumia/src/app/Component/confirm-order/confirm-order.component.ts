@@ -29,7 +29,8 @@ export class ConfirmOrderComponent {
   totalamount:number = 50
   showPayment: boolean = false;
   isArabic: boolean = false;
-
+  userId:number=0
+ // shippment:IShippment={} as IShippment
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
   constructor(private _cartService:CartService
@@ -43,12 +44,17 @@ export class ConfirmOrderComponent {
     
   }
   ngOnInit(): void {
+    this.userId=Number(this.clientId)
     this._cartService.getCart().subscribe(cartItems => {
       this.cartItems = cartItems;
      this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
       this.cartNumber=this._cartService.calculateTotalCartNumber();
     });
-    //
+    this._ShippmentService.Getshippment(this.userId).subscribe(shipping => {
+      this.shippment=shipping
+      console.log(shipping.firstNameEn)
+     });
+    
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'
     });

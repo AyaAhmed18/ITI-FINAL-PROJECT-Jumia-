@@ -82,7 +82,9 @@ background-color: #ffffff;
 .rtl {
   direction: rtl;
 }
-
+.newAcc:hover{
+  color: rgb(250, 130, 18);
+}
 
 
 /* Extra small devices (phones) */

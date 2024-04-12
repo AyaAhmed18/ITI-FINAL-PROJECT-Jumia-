@@ -31,8 +31,6 @@ export const routes: Routes = [
 
     {path:'Payment',component:PaymentComponent,canActivate:[authGuard]},
     {path:'OrderDetails',component:OrderDetailsComponent,canActivate:[authGuard]},
-   // {path:'OrderItems/:ordId',component:OrderItemsComponent,canActivate:[authGuard]},
-   // { path: 'OrderDetails/:status/:ordId', component: OrderDetailsComponent },
     { path: 'OrderItems/:ordId', component: OrderItemsComponent,canActivate:[authGuard] },
     { path: 'confirmOrder', component: ConfirmOrderComponent,canActivate:[authGuard] },
     {path:'GetCategory/:id',component:FilterComponent},
