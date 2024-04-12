@@ -94,3 +94,49 @@
     .rtl {
         direction: rtl;
       }
+
+      .img-ord{
+       width: 50px;
+       height: 50px;
+      }
+
+      
+/* Extra small devices (phones) */
+@media only screen and (max-width:590px) {
+  
+    .col-4{
+     width: 100%;
+    }
+    .img-focas{
+        width: 100%;
+    }
+    
+    .card-res-size{
+     width: 100%;
+    
+    }
+    .detImg{
+        display: none;
+     }
+     }
+     
+    
+     /* Small devices (portrait tablets and large phones) */
+     @media only screen and (min-width:600px) and (max-width:885px) {
+        
+           .img-focas{
+               width: 100%;
+           }
+           
+           .card-res-size{
+            width: 100%;
+           
+           }
+            
+           .detImg{
+           width: 100%;
+         }  
+          
+    }
+     
+     

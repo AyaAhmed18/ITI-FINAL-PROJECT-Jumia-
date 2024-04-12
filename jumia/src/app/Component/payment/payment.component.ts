@@ -84,7 +84,7 @@ export class PaymentComponent implements OnInit {
       this.order.customerId=parseInt(this.clientId);
       this.order.totalOrderPrice=this.TotalCartPrice
     }
-    this.order.paymentStatus=1
+    this.order.paymentStatus=2
     this.order.status=1
     this.order.cancelOrder=false;
    

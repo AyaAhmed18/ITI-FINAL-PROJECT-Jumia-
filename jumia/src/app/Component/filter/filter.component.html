@@ -1,8 +1,8 @@
 <div class="row " [class.rtl]="isArabic">
-    <div class="col-3 col-md  shadow-sm rounded  " style="width: 23%;">
+    <div class="col-3 col-md  shadow-sm rounded bg-body ">
 
 
-        <div class="row bg-body">
+        <div class="row ">
             <div class="col-12"><strong class="px-2">{{'filter.CATEGORY' | translate}}</strong></div>
             <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Clothing' | translate}}</small></a>
             <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Cardigans & Pullovers' | translate}}</small></a>
@@ -133,14 +133,13 @@
                 <p>{{'filter.PRICE (EGP)' | translate}}</p>
 
 
-                <div class="slider">
+                <!-- <div class="slider">
                     <div class="progress"></div>
                 </div>
                 <div class="range-input">
                     <input type="range" class="range-min" min="29" max="1900" value="500" step="5">
                     <input type="range" class="range-max" min="29" max="1900" value="1500" step="5">
                 </div>
-
                 <div class="price-input">
                     <div class="field">
 
@@ -153,7 +152,29 @@
                     </div>
 
                 </div>
-                <button class="btn btn-primary" (click)="filterProducts()">{{'filter.Range Price' | translate}}</button>
+                <button class="btn btn-primary" (click)="filterProducts()">{{'filter.Range Price' | translate}}</button> -->
+
+
+                <div class="slider">
+                    <div class="progress"></div>
+                </div>
+                <div class="range-input">
+                    <input type="range" class="range-min" min="29" max="1900" value="500" step="5">
+                    <input type="range" class="range-max" min="29" max="1900" value="1500" step="5">
+                </div>
+
+                <div class="price-input">
+                    <div class="field">
+
+                        <input type="number" class="input-min" value="2500">
+                    </div>
+                    <div class="separator">-</div>
+                    <div class="field">
+
+                        <input type="number" class="input-max" value="7500">
+                    </div>
+                </div>
+
 
 
 
@@ -165,7 +186,7 @@
 
 
 
-    <div class="col-9 col-md shadow-sm rounded m-2">
+    <div class="col-9  col-md shadow-sm rounded m-2 pro-cart">
 
         <app-product [products]="products"></app-product>
     </div>
