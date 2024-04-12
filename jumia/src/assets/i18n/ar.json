@@ -215,7 +215,7 @@
 "QTY":"الكمية",
 "Total Price":"السعر الكلي",
 "Cancel Order":"الغاء الطلب",
-"Delivered By Monday , 15-04":"تم التسليم يوم الاثنين 15-04"
+"Delivered By Monday , 15-04":"سيتم التسليم يوم الاثنين 15-04"
     },
 
     "orderdetails" :{
@@ -308,5 +308,73 @@
         "Login":"تسجيل الدخول",
         "For further support, you may visit the Help Center or contact our customer service team." :"لمزيد من الدعم، يمكنك زيارة مركز المساعدة أو الاتصال بفريق خدمة العملاء لدينا."
   ,"Forget Your Password?":"نسيت كلمة المرور؟"
+    },
+"home":{
+    "Previous":"سابق",
+    "Next":"التالي",
+    "Sell on JUMIA":"البيع على جوميا",
+    "And Grow Business":"وتنمية الأعمال التجارية",
+    "Instsllments":"أقساط",
+    "With Your Bank":"مع البنك الخاص بك",
+    "Warranty":"ضمان",
+    "On Your Purchases":"على مشترياتك",
+    "Ramadan Preparations ☾":"تجهيزات رمضان ☾",
+    "Shop All Your Needs":"تسوّق لجميع احتياجاتك",
+    "♡ Proudly Made in Egypt ♡":"♡ بكل فخر صنع في مصر ♡",
+    "Best Fashion Offers":"أفضل عروض الأزياء"
+  
+    },
+    "filter":{
+        "CATEGORY":"الفئة",
+        "Clothing":"ملابس",
+        "Cardigans & Pullovers":"سويتر وبلوفرات",
+        "Cardigans":"سويتر",
+        "Pullovers":"بلوفرات",
+        "Shrugs":"كاردجان",
+        "Vests":"سترات",
+        "Brand":"ماركة",
+        "Search":"بحث",
+        "DISCOUNT":"تخفيض",
+        "50% or more":"50% أو أكثر",
+        "40% or more":"40% أو أكثر",
+        "30% or more":"30% أو أكثر",
+        "20% or more":"20% أو أكثر",
+        "10% or more":"10% أو أكثر",
+        "PRICE (EGP)":"السعر (جنيه مصري)",
+        "Range Price":" نطاق السعر"
+    },
+    "product":{
+      
+        "Womens Sweaters":"البلوزات النسائية",
+        "All":"الجميع",
+        "Price: Low to High":"السعر من الادنى للاعلى",
+        "Price: High to Low":"السعر الاعلى الى الادنى",
+        "Newest Arrivals":"الاتي حديثا",
+        "sortbY:":"الترتيب :",
+        "Buy 400 get":"اشتري 400 واحصل على",
+        "off":"عن",
+        "EGP":"جنيه مصري",
+        "Add To Cart":"أضف إلى السلة",
+        "Details":"تفاصيل",
+        "Please select a variation":"الرجاء تحديد الاختلاف",
+        "VARIATION AVAILABLE":"الاختلاف متاح",
+        "ADD TO WISHLIST":"أضف إلى قائمة الرغبات",
+        "REMOVE FROM WISHLIST":"إزالة من قائمة الرغبات"
+    },
+ "details":{
+    "Product Details":"تفاصيل المنتج",
+    "Specfications":"تحديد",
+    "EGP":"جنيه مصري",
+    "Shipping fees from EGP 20.00 to 6th of October (free delivery if order above EGP 200.00). Save 10 EGP on shipping with prepaid payment":"مصاريف الشحن من 20.00 جنيه مصري إلى 6 أكتوبر (التوصيل مجاني إذا كان الطلب أكثر من 200.00 جنيه مصري). وفر 10 جنيه مصري على الشحن مع الدفع مقدمًا",
+    "VARIATION AVAILABLE":"الاختلاف متاح",
+    "Add To Cart":"أضف إلى السلة",
+    "DELIVERY & RETURNS":"التسليم والإرجاع",
+    "Door Delivery":"تسليم الباب",
+    "Ready for delivery between 21 April & 22 April when you order within next 6hrs 19mins":"جاهز للتسليم بين 21 أبريل و22 أبريل عند الطلب خلال 6 ساعات و19 دقيقة القادمة",
+    "Return Policy":"سياسة العائدات",
+    "Free return within the legal return period from 14 to 30 days, and if they meet the terms & conditions, with the need to report any apparent defect within 48 hours. For more details about return policy.":"إرجاع مجاني خلال فترة الإرجاع القانونية من 14 إلى 30 يومًا، وفي حال استيفائها للشروط والأحكام، مع ضرورة الإبلاغ عن أي عيب ظاهر خلال 48 ساعة. لمزيد من التفاصيل حول سياسة العودة.",
+    "Missing EGP 151.00 to reach free delivery":"ناقص 151.00 جنيهًا مصريًا للوصول إلى التوصيل المجاني"
+      
     }
+    
 }

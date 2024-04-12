@@ -154,13 +154,13 @@
                 <div class="modal-dialog bg-white">
                   <div class="modal-content ">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="staticBackdropLabel">{{'card.Please select a variation' |translate}}</h5>
+                      <h5 class="modal-title" id="staticBackdropLabel">{{'cart.Please select a variation' |translate}}</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
                     <div class="modal-body">
                       <div class="center-align">
                         <p>{{'cart.Only size fit all' | translate}}</p>
-                        <h2><strong>{{'cart.EGP' |translate}} {{pro.realPrice}} <del> {{'card.EGP' |translate}} </del></strong></h2>
+                        <h2><strong>{{'cart.EGP' |translate}} {{pro.realPrice}} <del> {{'cart.EGP' |translate}} </del></strong></h2>
                       </div>
                     </div>
                     <div class="modal-footer">
@@ -196,13 +196,13 @@
 <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1" [class.rtl]="isArabic" >
   <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Added To Cart Successfully' |translate}}
   <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
-    <i class="fa fa-times-circle text-danger" id="close"></i>
+    <i class="fa fa-times-circle text-success" id="close"></i>
   </button>
 </div>
 <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2" [class.rtl]="isArabic">
   <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Removed from Cart Successfully' |translate}}
   <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
-    <i class="fa fa-times-circle text-danger" id="close"></i>
+    <i class="fa fa-times-circle text-success" id="close"></i>
   </button>
 </div>
 </div>

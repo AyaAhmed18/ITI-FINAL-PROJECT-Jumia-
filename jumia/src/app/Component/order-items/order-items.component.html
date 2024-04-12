@@ -83,12 +83,12 @@
                 @for(ord of OrderItems;track ord.id;){
                 <li class="mt-2"  >
                   <div class="card-body  row ">
-                    <h1 style="font-weight:bold">{{'orderitem.Delivered By Monday , 15-04' | translate}}</h1>
+                    <!-- <h1 style="font-weight:bold">{{'orderitem.Delivered By Monday , 15-04' | translate}}</h1> -->
                       <div class="col-3">
-                        <img src="https://www.jumia.com.eg/assets_he/images/orders.669c73dc.svg">
+                        <img [src]="ord.images" title="orerI">
                       </div>
                       <div class="col-6 text-"><p class="mb-1"> </p>
-                        <h5 class="text-dark mb-1"> {{ord.productName}}</h5>
+                        <h5 class="text-dark mb-1"> {{isArabicLanguage() ? ord.productNameAr : ord.productName }}</h5>
                         <h6 class="text-dark mb-1"> {{ord.productDiscription}}</h6>
                       <p class="text-secondary">{{'orderitem.QTY' | translate}} {{ord.productQuantity}}</p>
                       <h1 class="h6 ">{{'orderitem.Total Price' | translate}} :  EGP {{ord.totalPrice}}</h1></div>
@@ -118,12 +118,16 @@
 
   <div class="alert alert-danger alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1" [class.rtl]="isArabic">
     <strong>{{'orderitem.Sorry' | translate}}</strong> {{'orderitem.you Cant Cancel This order' | translate}}
-    <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+        <i class="fa fa-times-circle text-danger" id="close"></i>
+    </button>
   </div>
 
   <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2" [class.rtl]="isArabic">
     <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong> {{'orderitem.Your Order Is Cancelled' | translate}}
-    <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+        <i class="fa fa-times-circle text-success" id="close"></i>
+    </button>
   </div>
 
 </div>

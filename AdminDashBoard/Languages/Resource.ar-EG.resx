@@ -336,6 +336,9 @@
   <data name="Signintoyouraccount" xml:space="preserve">
     <value>تسجيل الدخول إلى حسابك</value>
   </data>
+  <data name="Specifications" xml:space="preserve">
+    <value>المواصفات</value>
+  </data>
   <data name="Staysignedinforaweek" xml:space="preserve">
     <value>استمر بالتسجيل لمدة اسبوع</value>
   </data>

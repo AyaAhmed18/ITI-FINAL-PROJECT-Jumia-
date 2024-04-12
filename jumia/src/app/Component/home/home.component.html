@@ -1,9 +1,9 @@
-<main class="container"  >
+<main class="container"  [class.rtl]="isArabic" >
   <div class="row">
     <div class="col-2 col-md mb-5 shadow-lg p-3 mb-5 rounded my-3 show-div-Linkes">
       <div class="row float-start">
         <a class="col-12 Link_hover color-black p-2"   *ngFor="let cat of allCategories" (mouseover)="GetSubCategories(cat.id)" (click) = "GetProductsByCatId(cat.id)">
-          <i class="fa fa-hand-o-right px-3" aria-hidden="true"><small>  {{ cat.name }}</small></i>
+          <i class="fa fa-hand-o-right px-3" aria-hidden="true"><small>  {{ isArabicLanguage() ? cat.nameAr : cat.name }}</small></i>
         </a>
       </div>
     </div>
@@ -25,7 +25,7 @@
           <div class="row" *ngFor="let subCat of SubCategories" (click) = "GetProductsBySubCatId(subCat.id)">
             <div class="col-4 border-right">
               <!-- <h5 class="border-bottom">HOUSEHOLD SUPPLIES</h5> -->
-              <a href="">{{ subCat.name }}</a>
+              <a >{{ isArabicLanguage() ? subCat.nameAr : subCat.name }}</a>
             </div>
           </div>
         <!-- </div>
@@ -100,12 +100,12 @@
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
           data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+          <span class="visually-hidden">{{'home.Previous' | translate}}</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
           data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+          <span class="visually-hidden">{{'home.Next' | translate}}</span>
         </button>
       </div>
     </div>
@@ -127,8 +127,8 @@
 
                 </div>
                 <div class="col-8 p-0">
-                  <p><strong>Sell on JUMIA</strong></p>
-                  <p><small>And Grow Business</small></p>
+                  <p><strong>{{'home.Sell on JUMIA' | translate}}</strong></p>
+                  <p><small>{{'home.And Grow Business' | translate}}</small></p>
                 </div>
               </div>
             </div>
@@ -139,8 +139,8 @@
 
                 </div>
                 <div class="col-8 p-0">
-                  <p><strong>Instsllments</strong></p>
-                  <p><small>With Your Bank</small></p>
+                  <p><strong>{{'home.Instsllments' | translate}}</strong></p>
+                  <p><small>{{'home.With Your Bank' | translate}}</small></p>
                 </div>
               </div>
             </div>
@@ -151,8 +151,8 @@
 
                 </div>
                 <div class="col-8 p-0">
-                  <p><strong>Warranty</strong></p>
-                  <p><small>On Your Purchases</small></p>
+                  <p><strong>{{'home.Warranty' | translate}}</strong></p>
+                  <p><small>{{'home.On Your Purchases' | translate}}</small></p>
                 </div>
               </div>
             </div>
@@ -173,7 +173,7 @@
 
   </div>
 </main>
-<div class="container section1">
+<div class="container section1" [class.rtl]="isArabic">
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -250,9 +250,9 @@
 
 
 
-<div class="container ">
+<div class="container " [class.rtl]="isArabic">
   <div class="row sectionHeader">
-    <h5>Ramadan Preparations ☾</h5>
+    <h5>{{'home.Ramadan Preparations ☾' | translate}}</h5>
   </div>
   <div class="row section1">
 
@@ -278,9 +278,9 @@
   </div>
 </div>
 <br>
-<div class="container">
+<div class="container" [class.rtl]="isArabic">
   <div class="sectionHeader row">
-    <h5>Shop All Your Needs</h5>
+    <h5>{{'home.Shop All Your Needs' | translate}}</h5>
   </div>
   <div class="row section1">
     <div class="col ">
@@ -304,7 +304,7 @@
 <br>
 <app-slider></app-slider>
 <br>
-<div class="container section1">
+<div class="container section1" [class.rtl]="isArabic">
   <div class="row">
     <div class="col">
       <a href=""> <img src="assets/HomeImg/GeneralENDESKTOP.jpg" alt="" title="Panar" class="d-block w-100"></a>
@@ -312,9 +312,9 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container" [class.rtl]="isArabic">
   <div class=" row">
-    <h5 class="text-center">♡ Proudly Made in Egypt ♡</h5>
+    <h5 class="text-center">{{'home.♡ Proudly Made in Egypt ♡' | translate}}</h5>
   </div>
   <div class="row section1">
     <div class="col ">
@@ -325,9 +325,9 @@
 </div>
 <br>
 <app-slider></app-slider>
-<div class="container">
+<div class="container" [class.rtl]="isArabic">
   <div class=" row sectionHeader">
-    <h5 class="text-center">Best Fashion Offers</h5>
+    <h5 class="text-center">{{'home.Best Fashion Offers' | translate}}</h5>
   </div>
   <div class="row section1">
     <div class="col ">
@@ -343,7 +343,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container" [class.rtl]="isArabic">
   <section class="card d-flex overflow-hidden rounded-2">
     <div class="d-flex align-items-center p-1 px-sm-2">
       <a href="https://www.jumia.com.eg/mlp-fashion-beauty-top-deals/"

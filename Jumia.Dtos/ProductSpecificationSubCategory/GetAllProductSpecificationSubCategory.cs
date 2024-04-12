@@ -17,6 +17,7 @@ namespace Jumia.Dtos.ProductSpecificationSubCategory
         public string Value { get; set; }
 
         public string SpecificationName { get; set; }
+        public string SpecificationNameAr { get; set; }
         public string SubCategoryName { get; set; }
     }
 }

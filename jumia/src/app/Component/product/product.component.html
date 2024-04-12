@@ -1,18 +1,18 @@
 
 
-<div class="row bg-body rounded  row-cols-1 row-cols-md-4 g-4">
-    <div class="col-12">
+<div class="row bg-body rounded  row-cols-1 row-cols-md-4 g-4" [class.rtl]="isArabic">
+    <div class="col-12" [class.rtl]="isArabic">
         <div class="row">
-            <div class="col-8"><b><strong>Women's Sweaters</strong></b></div>
+            <div class="col-8"><b><strong>{{'product.Womens Sweaters' | translate}}</strong></b></div>
             <div class="col-4 d-inline float-right">
                 <form class="form-inline">
                     <div class="form-group mb-2">
-                    <label for="sort">storeby:</label>
+                    <label for="sort">{{'product.sortbY:' | translate}}</label>
                     <select class="form-control mx-sm-3" id="sort" (change)="onSortChange($event)">
-                        <option value="allProducts">All</option>
-                        <option value="PriceLowToHigh">Price: Low to High</option>
-                        <option value="PriceHighToLow">Price: High to Low</option>
-                        <option value="NewestArrivals">Newest Arrivals</option>
+                        <option value="allProducts">{{'product.All' | translate}}</option>
+                        <option value="PriceLowToHigh">{{'product.Price: Low to High' | translate}}</option>
+                        <option value="PriceHighToLow">{{'product.Price: High to Low' | translate}}</option>
+                        <option value="NewestArrivals">{{'product.Newest Arrivals' | translate}}</option>
                     </select>
                 </div>
                 </form>
@@ -21,13 +21,13 @@
     </div>
 
     @for(pro of products;track pro.id;){
-    <div class="clo-2 ">
+    <div class="clo-2 " [class.rtl]="isArabic">
         <div class="show-cards-btn card cards-hover" style="width:210px; height: 440px; border: none;">
             <!-- <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image"
                 style="width:100%"> -->
             <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%">
             <div class="label-Cards-top px-2">
-                <span class="text-white ">Buy 400 get {{pro.discount}} off</span>
+                <span class="text-white ">{{'product.Buy 400 get' | translate}} {{pro.discount}} {{'product.off' | translate}}</span>
             </div>
             <span class=" cards-question"><a href=""><i class="fa fa-question-circle"
                         style="cursor: pointer"></i></a></span>
@@ -39,12 +39,12 @@
                                 </i>
                             </a>
                         </span>
-
             <div class="card-body">
+                <p>{{ isArabicLanguage() ? pro.nameAr : pro.name }}</p>
                 <p class=""><small>{{pro.shortDescription}}</small></p>
-                <b><strong>EGP {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
+                <b><strong>{{'product.EGP' | translate}} {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
                 <ul class="list-inline">
-                    <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>
+                    <li class="list-inline-item"><small><del>{{'product.EGP' | translate}} {{pro.realPrice}}</del> </small></li>
                     <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>
                 </ul>
                 <div class="stars">
@@ -56,8 +56,8 @@
                     <i class="fa text-secondary">(44)</i>
                 </div>
                 <div class="hide-btn-cards ">
-                    <button class="btn w-100 text-white" (click)="AddToCart(pro)"[disabled]="pro.addedToCart" >Add To Cart</button>
-                    <button class="btn w-100 text-white" (click)="navigateToDetails(pro.id)" >Details</button>
+                    <button class="btn w-100 text-white" (click)="AddToCart(pro)"[disabled]="pro.addedToCart" >{{'product.Add To Cart' | translate}}</button>
+                    <button class="btn w-100 text-white" (click)="navigateToDetails(pro.id)" >{{'product.Details' | translate}}</button>
                 </div>
             </div>
         </div>
@@ -72,16 +72,16 @@
 
     <!-- Modal -->
     <div class="modal fade" [id]="'Model'+pro.id" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-        tabindex="-1" (click)="GetSpecs(pro)">
+        tabindex="-1" (click)="GetSpecs(pro)" [class.rtl]="isArabic">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel">Please select a variation</h5>
+                    <h5 class="modal-title" id="exampleModalToggleLabel">{{'product.Please select a variation' | translate}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                 </div>
                 <div class="modal-body">
                     <div >
-                        <h3>VARIATION AVAILABLE</h3>
+                        <h3>{{'product.VARIATION AVAILABLE' | translate}}</h3>
                         <br>
                         <span class="specs" *ngFor="let s of sizeSpecs"> {{ s }}</span>
                       </div>
@@ -102,17 +102,17 @@
                         <input type="radio" name="size" id="size_5" value="small" />
                         <label class="radio-popup-size" for="size_5">XxxL</label>
                     </div> -->
-                    <h2><strong>EGP {{pro.realPrice}}</strong></h2>
+                    <h2><strong>{{'product.EGP' | translate}} {{pro.realPrice}}</strong></h2>
                     <ul class="list-inline">
-                        <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>
+                        <li class="list-inline-item"><small><del>{{'product.EGP' | translate}} {{pro.realPrice}}</del> </small></li>
                         <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>
                     </ul>
                 </div>
                 <div class="modal-footer ">
                     <button class="btn w-100 text-white" (click)="addToWishlist(pro)">
                         <i class="fa" [ngClass]="{'fa-heart-o': !isInWishlist(pro), 'fa-heart': isInWishlist(pro)}"></i>
-                        <span *ngIf="!isInWishlist(pro)">ADD TO WISHLIST</span>
-                        <span *ngIf="isInWishlist(pro)">REMOVE FROM WISHLIST</span>
+                        <span *ngIf="!isInWishlist(pro)">{{'product.ADD TO WISHLIST' | translate}}</span>
+                        <span *ngIf="isInWishlist(pro)">{{'product.REMOVE FROM WISHLIST' | translate}}</span>
                     </button>
                 </div>
             </div>
@@ -120,7 +120,20 @@
     </div>
     }
 
-
+    <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1" [class.rtl]="isArabic" >
+        <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Added To Cart Successfully' |translate}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+          <i class="fa fa-times-circle text-success" id="close"></i>
+        </button>
+      </div>
+      
+      <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2" [class.rtl]="isArabic" >
+        <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Added To Cart Successfully' |translate}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+          <i class="fa fa-times-circle text-success" id="close"></i>
+        </button>
+      </div>
+      
 
 <!-- <div class="b-pagination-outer">
 

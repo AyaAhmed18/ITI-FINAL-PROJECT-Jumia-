@@ -10,10 +10,11 @@ using Jumia.Dtos.SubCategorySpecifications;
 using Jumia.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AdminDashBoard.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class ProductController : BaseController
     {
         private readonly IProductServices _productService;
@@ -158,12 +159,23 @@ namespace AdminDashBoard.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Update(CreateOrUpdateProductDto productDto, List<IFormFile> Image)
+        public async Task<ActionResult> Update(CreateOrUpdateProductDto productDto, List<IFormFile> Images)
         {
             if (ModelState.IsValid)
             {
-
-                var res  = await  _productService.Update(productDto, Image);
+                if (Images != null)
+                {
+                    foreach (var img in Images)
+                    {
+                        var imageBytes = new byte[img.Length];
+                        using (var stream = img.OpenReadStream())
+                        {
+                            await stream.ReadAsync(imageBytes, 0, imageBytes.Length);
+                        }
+                        productDto.Images.Add(imageBytes);
+                    }
+                }
+                var res  = await  _productService.Update(productDto, Images);
                 TempData["SuccessMessage1"] = "Product Created successfully.";
                 return RedirectToAction("GetPagination", TempData["SuccessMessage1"]);
 

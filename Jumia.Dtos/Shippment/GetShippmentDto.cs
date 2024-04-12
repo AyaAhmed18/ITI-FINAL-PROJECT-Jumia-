@@ -16,6 +16,8 @@ namespace Jumia.Dtos.Shippment
         public string AdressInformation { get; set; }
         public string Region { get; set; }
         public string City { get; set; }
+        public string RegionAr { get; set; }
+        public string CityAr { get; set; }
         public decimal Cost { get; set; }
          public int UserIdentityId { get; set; }
         public int UseName { get; set; }

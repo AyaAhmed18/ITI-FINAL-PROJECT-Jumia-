@@ -5,7 +5,7 @@ export interface ICategory {
 
     id:number;
     name:string;
-   // nameAr:string;
+    nameAr:string;
     description:string;
     image:SafeUrl
 

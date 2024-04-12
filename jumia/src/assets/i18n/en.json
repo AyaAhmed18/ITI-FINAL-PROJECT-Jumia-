@@ -327,6 +327,73 @@
   "For further support, you may visit the Help Center or contact our customer service team.":"For further support, you may visit the Help Center or contact our customer service team."
 ,"Forget Your Password?":"Forget Your Password?"
 
+},
+"home":{
+  "Previous":"Previous",
+  "Next":"Next",
+  "Sell on JUMIA":"Sell on JUMIA",
+  "And Grow Business":"And Grow Business",
+  "Instsllments":"Instsllments",
+  "With Your Bank":"With Your Bank",
+  "Warranty":"Warranty",
+  "On Your Purchases":"On Your Purchases",
+  "Ramadan Preparations ☾":"Ramadan Preparations ☾",
+  "Shop All Your Needs":"Shop All Your Needs",
+  "♡ Proudly Made in Egypt ♡":"♡ Proudly Made in Egypt ♡",
+  "Best Fashion Offers":"Best Fashion Offers"
+},
+"filter":{
+  "CATEGORY":"CATEGORY",
+  "Clothing":"Clothing",
+  "Cardigans & Pullovers":"Cardigans & Pullovers",
+  "Cardigans":"Cardigans",
+  "Pullovers":"Pullovers",
+  "Shrugs":"Shrugs",
+  "Vests":"Vests",
+  "Brand":"Brand",
+  "Search":"Search",
+  "DISCOUNT":"DISCOUNT",
+  "50% or more":"50% or more",
+  "40% or more":"40% or more",
+  "30% or more":"30% or more",
+  "20% or more":"20% or more",
+  "10% or more":"10% or more",
+  "PRICE (EGP)":"PRICE (EGP)",
+  "Range Price":"Range Price"
+},
+"product":{
+  "Womens Sweaters":"Women's Sweaters",
+  "All":"All",
+  "Price: Low to High":"Price: Low to High",
+  "Price: High to Low":"Price: High to Low",
+  "Newest Arrivals":"Newest Arrivals",
+  "sortbY:":"Sort By:",
+  "Buy 400 get":"Buy 400 get",
+  "off":"off",
+  "EGP":"EGP",
+  "Add To Cart":"Add To Cart",
+  "Details":"Details",
+  "Please select a variation":"Please select a variation",
+  "VARIATION AVAILABLE":"VARIATION AVAILABLE",
+  "ADD TO WISHLIST":"ADD TO WISHLIST",
+  "REMOVE FROM WISHLIST":"REMOVE FROM WISHLIST"
+
+}
+,
+"details":{
+  "Product Details":"Product Details",
+  "Specfications":"Specfications",
+  "EGP":"EGP",
+  "Shipping fees from EGP 20.00 to 6th of October (free delivery if order above EGP 200.00). Save 10 EGP on shipping with prepaid payment":"Shipping fees from EGP 20.00 to 6th of October (free delivery if order above EGP 200.00). Save 10 EGP on shipping with prepaid payment",
+  "VARIATION AVAILABLE":"VARIATION AVAILABLE",
+  "Add To Cart":"Add To Cart",
+  "DELIVERY & RETURNS":"DELIVERY & RETURNS",
+  "Door Delivery":"Door Delivery",
+  "Ready for delivery between 21 April & 22 April when you order within next 6hrs 19mins":"Ready for delivery between 21 April & 22 April when you order within next 6hrs 19mins",
+  "Return Policy":"Return Policy",
+  "Free return within the legal return period from 14 to 30 days, and if they meet the terms & conditions, with the need to report any apparent defect within 48 hours. For more details about return policy.":"Free return within the legal return period from 14 to 30 days, and if they meet the terms & conditions, with the need to report any apparent defect within 48 hours. For more details about return policy.",
+  "Missing EGP 151.00 to reach free delivery":"Missing EGP 151.00 to reach free delivery"
+  
 }
 
 

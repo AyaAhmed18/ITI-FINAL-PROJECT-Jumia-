@@ -42,7 +42,7 @@
              <div class="col-md-6 text-end"><a href="" class="text-decoration-none" [routerLink]="['/shippment']" >{{'delivery.Change' | translate}} <i class="fa-solid fa-arrow-right"></i> </a></div>
              <div class="border-top ">
                  <p class="my-0  pt-4">{{shippment.firstNameEn}}  {{shippment.lastName}}</p>
-                 <p class="mt-0 tb-5 text-secondary">{{shippment.region}}, {{shippment.city}} | {{shippment.address}} - {{shippment.adressInformation}} | +2 {{shippment.phoneNumber}}</p>
+                 <p class="mt-0 tb-5 text-secondary">{{isArabicLanguage() ? shippment.regionAr : shippment.region }}, {{isArabicLanguage() ? shippment.regionAr : shippment.region }} | {{shippment.address}} - {{shippment.adressInformation}} | +2 {{shippment.phoneNumber}}</p>
              </div>
          </div> 
         
@@ -71,7 +71,7 @@
                      <p class=" smallText ">{{'delivery.Delivery between 27 March and 28 March' | translate}}</p>
                     
                      <div class="col-md-2 ">
-                         <img [src]="pro.images"  width="30%" alt="">
+                         <img [src]="pro.images[0]"  width="30%" alt="">
                      </div>
                      <div class="col-md-10">
                          <p class="smallText my-0 mx-0 text-start">{{pro.name}}</p>

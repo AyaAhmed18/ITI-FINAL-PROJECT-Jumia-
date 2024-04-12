@@ -103,7 +103,7 @@ export class CartComponent implements OnInit{
        this._wishlist.removeProductFromWishlist(prod);
        this._cartService.addToCart(prod);
        this.showAlert1 = true;
-       console.log(this.showAlert1);
+      // console.log(this.showAlert1);
       }
 }
 
