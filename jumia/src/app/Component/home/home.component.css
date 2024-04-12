@@ -162,7 +162,7 @@ display: none;
   }
   
   /* Small devices (portrait tablets and large phones) */
-  @media only screen and (min-width:600px) and (max-width:884px) {
+  @media only screen and (min-width:600px) and (max-width:885px) {
     
     .col-2{
       width: 30%;

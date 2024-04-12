@@ -218,9 +218,6 @@
 
 
 
-
-
-
     /*style cards by Bahaa */
 
     .label-Cards-top {
@@ -419,17 +416,22 @@
        width: 100%;
     }
        
-     
+     .pro-cart{
+        width: 100%;
+     }
      
        }
        
     /* Small devices (portrait tablets and large phones) */
-   @media only screen and (min-width:600px) and (max-width:884px) {
+   @media only screen and (min-width:600px) and (max-width:885px) {
          
        .col-3{
            width: 30%;
        
        }
-   
+       .pro-cart{
+        width: 65%;
+     }
+     
    }
        
