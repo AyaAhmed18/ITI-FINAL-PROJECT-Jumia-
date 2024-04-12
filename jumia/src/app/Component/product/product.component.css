@@ -413,3 +413,31 @@ body {
 .rtl {
     direction: rtl;
   }
+  .pro-cart{
+    width:235px; 
+    height: 440px; 
+    border: none;
+
+  }   
+/* Extra small devices (phones) */
+@media only screen and (max-width:590px) {
+  .pro-cart{
+    width: 90%;
+    height: 560px; 
+    margin: 5px;
+  }
+  .col-2{
+    width: 100%;
+  }
+    
+}
+     
+     /* Small devices (portrait tablets and large phones) */
+     @media only screen and (min-width:600px) and (max-width:885px) {
+       
+            
+           
+          
+    }
+     
+     

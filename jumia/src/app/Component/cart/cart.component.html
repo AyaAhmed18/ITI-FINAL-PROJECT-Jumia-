@@ -28,10 +28,10 @@
     <div *ngFor="let item of cartItems">
     <div class="row card-body"  >
 
-      <div class="col-3">
+      <div class="col-3-cart col-3">
         <img src="assets/ProductImg/1.jpg" style="height: 100px;">
       </div>
-      <div class="col-5 ">
+      <div class="col-5-cart col-5 ">
         <p class="mb-1"><small>{{ item.name }} {{item.shortDescription}}</small> </p>
         <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">
           <small [ngClass]="{'text-danger': item.stockQuantity < 5, 'text-success': item.stockQuantity >= 5}">
@@ -40,7 +40,7 @@
         <a href="https://www.jumia.com.eg/nivea-men-men-face-body-hands-cream-moisturising-tin-75ml-37954540.html"> <img
             src="assets/ProductImg/express.jpg" style="width: 40%;"></a>
       </div>
-      <div class="col-4 ">
+      <div class="col-4 col-4-cart">
         <div class="row" style="text-align: end;">
           {{item.stockQuantity}}
           <h1 class="h4 col-12">{{'cart.EGP' | translate}} {{item.realPrice}}</h1> <!--price After Discount-->
@@ -80,8 +80,8 @@
 
 
   <!-- cart Sammary  -->
-  <div class="col-3 float-end ">
-    <div class="card mb-3 my-4" style="width: 18rem;">
+  <div class="col-4 col-4-sammary float-end ">
+    <div class="card mb-3 my-4">
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><strong>{{'cart.CART SUMMARY' | translate}}</strong> </li>
         <li class="list-group-item">
