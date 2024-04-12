@@ -1,35 +1,47 @@
 
 
 <div class="row bg-body rounded  row-cols-1 row-cols-md-4 g-4" [class.rtl]="isArabic">
-    <div class="col-12" [class.rtl]="isArabic">
+    <div class="col-12 p-3 " [class.rtl]="isArabic">
         <div class="row">
-            <div class="col-8"><b><strong>{{'product.Womens Sweaters' | translate}}</strong></b></div>
-            <div class="col-4 d-inline float-right">
-                <form class="form-inline">
-                    <div class="form-group mb-2">
-                    <label for="sort">{{'product.sortbY:' | translate}}</label>
-                    <select class="form-control mx-sm-3" id="sort" (change)="onSortChange($event)">
-                        <option value="allProducts">{{'product.All' | translate}}</option>
-                        <option value="PriceLowToHigh">{{'product.Price: Low to High' | translate}}</option>
-                        <option value="PriceHighToLow">{{'product.Price: High to Low' | translate}}</option>
-                        <option value="NewestArrivals">{{'product.Newest Arrivals' | translate}}</option>
-                    </select>
-                </div>
+            <div class="col-8"><b></b></div>
+            <!-- <strong>{{'product.Womens Sweaters' | translate}}</strong> -->
+            <div class="col-4  ">
+                <form class="form">
+                
+                    <div class="row">
+                        
+                            <div class="col-3 ">
+                                <p for="sort" class="float-end text-secondary h5"><strong>{{'product.sortbY:' | translate}}</strong></p>
+                            </div>
+                            <div class="col-8">
+                                <select class="form-control mx-sm-3 " id="sort" (change)="onSortChange($event)">
+                                    <option value="allProducts">{{'product.All' | translate}}</option>
+                                    <option value="PriceLowToHigh">{{'product.Price: Low to High' | translate}}</option>
+                                    <option value="PriceHighToLow">{{'product.Price: High to Low' | translate}}</option>
+                                    <option value="NewestArrivals">{{'product.Newest Arrivals' | translate}}</option>
+                                </select>
+                            </div>
+                           
+                        
+                    </div>
+                
+                
+                
                 </form>
             </div>
         </div>
     </div>
 
     @for(pro of products;track pro.id;){
-    <div class="clo-2 " [class.rtl]="isArabic">
-        <div class="show-cards-btn card cards-hover" style="width:210px; height: 440px; border: none;">
-            <!-- <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image"
-                style="width:100%"> -->
-            <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%">
+    <div class="clo-2 pro-cart" [class.rtl]="isArabic">
+        <div class="show-cards-btn card cards-hover" style=" border: none;"  >
+            <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image"
+                style="width:100%">
+            <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
             <div class="label-Cards-top px-2">
                 <span class="text-white ">{{'product.Buy 400 get' | translate}} {{pro.discount}} {{'product.off' | translate}}</span>
             </div>
-            <span class=" cards-question"><a href=""><i class="fa fa-question-circle"
+            <span class=" cards-question" (click)="navigateToDetails(pro.id)"><a ><i class="fa fa-question-circle"
                         style="cursor: pointer"></i></a></span>
                         <span class="cards-heart">
                             <a [href]="'#Model'+pro.id" role="button" data-bs-toggle="modal">
@@ -57,8 +69,7 @@
                 </div>
                 <div class="hide-btn-cards ">
                     <button class="btn w-100 text-white" (click)="AddToCart(pro)"[disabled]="pro.addedToCart" >{{'product.Add To Cart' | translate}}</button>
-                    <button class="btn w-100 text-white" (click)="navigateToDetails(pro.id)" >{{'product.Details' | translate}}</button>
-                </div>
+                      </div>
             </div>
         </div>
 
