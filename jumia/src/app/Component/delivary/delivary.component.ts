@@ -5,7 +5,8 @@ import { CartService } from '../../Services/cart.service';
 import { ApiShippmentService } from '../../Services/api-shippment.service';
 import { IShippment } from '../../Models/ishippment';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ApiProductsService } from '../../Services/api-products.service';
 
 @Component({
   selector: 'app-delivary',
@@ -15,7 +16,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrl: './delivary.component.css'
 })
 export class DelivaryComponent implements OnInit {
-  cartItems: ProductDto[] = [];
+  proItems: ProductDto = {} as ProductDto;
+  cartItems: any[]=[];
   cartNumber:number=0
   TotalCartPrice=0
   clientId=localStorage.getItem('userId')
@@ -24,17 +26,18 @@ export class DelivaryComponent implements OnInit {
   isArabic: boolean = false;
 constructor(private router:Router, private _cartService:CartService,
   private  _ShippmentService:ApiShippmentService ,private  translate: TranslateService,
-private _sanitizer:DomSanitizer){
+private _sanitizer:DomSanitizer,
+private _apiProductService:ApiProductsService){
 
 }
   ngOnInit(): void {
     this.userId=Number(this.clientId)
     this._cartService.getCart().subscribe(cartItems => {
       this.cartItems = cartItems;
-      this.sanitizeImages();
      this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
       this.cartNumber=this._cartService.calculateTotalCartNumber();
     });
+    this.sanitizeImages();
     this._ShippmentService.Getshippment(this.userId).subscribe(shipping => {
       this.shippment=shipping
       console.log(shipping.firstNameEn)
@@ -66,11 +69,19 @@ private _sanitizer:DomSanitizer){
   }
   sanitizeImages() {
     this.cartItems.forEach(product => {
-      console.log(product.images);
-      product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
-      console.log(product.images);
-      console.log(product.images);
-
-    });}
+      this._apiProductService.getProductById(product.id).subscribe({
+        next:  (res: ProductDto) => {
+          console.log(res.images);
+          product.images=res.images
+          product.images = res.images.map(image => 
+            this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + image) as SafeUrl
+          );
+         
+          }})
+          
+          
+          
+    });
+  }
 
 }

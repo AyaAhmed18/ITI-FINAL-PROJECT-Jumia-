@@ -21,7 +21,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class NavigiationBarComponent implements OnInit {
 
   loggedInUsername: string;
-
+  
 
 
   //load page and check if logged or not
@@ -34,7 +34,7 @@ export class NavigiationBarComponent implements OnInit {
     private _searchResultsService: SearchResultsService, private translate: TranslateService) {
     this.loggedInUsername = this._apiLoginService.getLoggedInUsername();
     if (this._apiLoginService.IsLoggedIn()) {
-
+     
     }
     else {
       this._apiLoginService.logout();
@@ -58,7 +58,6 @@ export class NavigiationBarComponent implements OnInit {
   }
 
   SignInNav() {
-
     this.IsUserLogged = this._apiLoginService.IsLoggedIn();
   }
   SignOutNav() {

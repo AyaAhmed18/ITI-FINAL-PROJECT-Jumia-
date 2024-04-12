@@ -39,10 +39,11 @@
             <p class="mb-1 h4">
               <small>
               {{ isArabicLanguage() ? product.nameAr : product.name }}
-              {{product.shortDescription }}
               </small> 
             </p>
-
+            <p> <small>
+              {{product.shortDescription }}
+              </small> </p>
             <hr>
 
           </div>
@@ -76,7 +77,7 @@
             </div>
             <br>
             <div class="col-12">
-              <button class="btn w-100 text-white">
+              <button class="btn w-100 text-white" (click)="AddToCart(product)">
                 <i class="fa fa-solid fa-shopping-cart "></i><strong class="px-2">{{'details.Add To Cart' |
                   translate}}</strong>
               </button>
@@ -185,4 +186,11 @@
     </ul>
   </div>
 
+</div>
+
+<div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1" [class.rtl]="isArabic" >
+  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Added To Cart Successfully' |translate}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+    <i class="fa fa-times-circle text-success" id="close"></i>
+  </button>
 </div>

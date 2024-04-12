@@ -111,4 +111,7 @@ closeAlert(){
   this.showAlert1 = false;
   this.showAlert2 = false;
 }
+isArabicLanguage(): boolean {
+  return this.translate.currentLang === 'ar';
+}
 }

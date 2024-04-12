@@ -92,8 +92,8 @@
                 <li class="list-group-item fs-3">{{'orderdetails.Orders' | translate}}</li>
                 <li class="list-group-item mb-3">
                     <ul  style="color: orange;" >
-                        <li class="d-inline"><a>{{'orderdetails.ONGOING/DELIVERD ' | translate}}({{openOrders}})  </a></li>
-                        <li class="d-inline"><a> {{'orderdetails.CNACELD/RETURNED' | translate}} ({{closedOrders}})</a></li>
+                        <li class="d-inline"><a>{{'orderdetails.ONGOING/DELIVERD (0) ' | translate}}({{openOrders}})  </a></li>
+                        <li class="d-inline"><a> {{'orderdetails.CNACELD/RETURNED (0)' | translate}} ({{closedOrders}})</a></li>
                     </ul>
                 </li>
                 @for(ord of Orders;track ord.id;){
