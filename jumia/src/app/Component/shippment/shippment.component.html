@@ -1,180 +1,232 @@
-<div class="container" [class.rtl]="isArabic">
-     <div class="col-3 float-end ">
-    <div class="card mb-3 my-4" style="width: 18rem;">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{'shipment.Order summary' | translate}}</li>
-        <li class="list-group-item">
-          <ul class="d-flex">
-            <li class="me-5">{{'shipment.Items total' | translate}} {{cartNumber}}</li>
-            <li class="">{{'shipment.EGP' | translate}} {{TotalCartPrice}} </li>
-          </ul>
-          <ul class="d-flex">
-            <li class="me-5">{{'shipment.Delivery fees' | translate}}</li>
-            <li>{{'shipment.EGP' | translate}} 300.00 </li>
-          </ul>
-          <ul class="d-flex">
-            <li class="me-5">{{'shipment.Prepaid discount' | translate}}</li>
-            <li class="text-success">-{{'shipment.EGP' | translate}} 10 </li>
-          </ul>
-        </li>
-        <li class="list-group-item">
-            <ul class="d-flex">
-              <li class="me-5">{{'shipment.Total' | translate}}</li>
-              <li>{{'shipment.EGP' | translate}} {{TotalCartPrice +300 -10}}</li>
-            </ul>
-           
-          </li>
+<div class="container p-1" [class.rtl]="isArabic">
 
-        <ul>
-        <li ><p>{{'shipment.You will be able to add a voucher when selecting your payment method.' | translate}}</p> </li>
-        <li> <img src="../../../assets/cart.jpg" style="width: 40%;" title="img"></li>
-        </ul>
-      </ul>
-      <div class="card-footer bg-light">
-        <button class="btn btn-warning text-light save" style="width: 90%;" disabled routerLink="/shippment">{{'shipment.Confirm Order' | translate}} </button>
-      </div>
-    </div>
-  </div>
-    <div class="row  ">   
-        <div>
-            <div class="col-9 AddressForm">
-                <h6 class=" my-2"><i class="fa-solid fa-circle-check"></i> {{'shipment.1.CUSTOMER ADDRESS' | translate}}</h6>
-                <h6 class="border-top ">{{'shipment.EDIT ADDRESS' | translate}}</h6>
-                <form class="row g-4" #addForm="ngForm" (submit)="AddAddress(shippment)">
+    <div class="row  ">
 
-                    <div class="col-md-6">
-                        <fieldset class="border px-3 form-control " [ngClass]="{'border-danger': firstName.invalid && firstName.touched}">
-                            <legend class="float-none w-auto px-3">{{'shipment.First Name' | translate}}</legend>
-                            <input type="text"  id="firstName" value=""
-                             required  placeholder="Enter your first name" 
-                             #firstName="ngModel" name="FirstNameEn" value="shippment.firstNameEn" [(ngModel)]="shippment.firstNameEn">
-                        </fieldset>
-                        <div for="firstName" class="form-text text-danger" [hidden]="firstName.valid  || firstName.untouched">
-                            <p>{{'shipment.Required field' | translate}}</p>
-                          </div>
+        <div class="col-8 AddressForm ">
+            <h6 class=" my-2 fa "><i class="fa fa-check-circle text-secondary"></i><strong> {{'shipment.1.CUSTOMER ADDRESS' | translate}}</strong></h6>
+            <hr>
+            <h6 class="fa p-2"> <strong>{{'shipment.EDIT ADDRESS' | translate}}</strong> </h6>
+
+
+
+            <form class="row g-4" #addForm="ngForm" (submit)="AddAddress(shippment)">
+
+
+                <div class="col-md-6">
+                    <fieldset class="border  form-control "
+                        [ngClass]="{'border-danger': firstName.invalid && firstName.touched}">
+                        <legend class="float-none w-auto  mx-3 ">{{'shipment.First Name' | translate}}</legend>
+                        <input type="text" class="w-100 " id="firstName" value="" required
+                            placeholder="Enter your first name" #firstName="ngModel" name="FirstNameEn"
+                            value="shippment.firstNameEn" [(ngModel)]="shippment.firstNameEn">
+                    </fieldset>
+
+                    <div for="firstName" class="form-text text-danger"
+                        [hidden]="firstName.valid  || firstName.untouched">
+                        <p>{{'shipment.Required field' | translate}}</p>
                     </div>
-                    <div class="col-md-6">
-                        <fieldset class="border px-3 form-control"  [ngClass]="{'border-danger': lastName.invalid && lastName.touched}">
-                            <legend class="float-none w-auto px-3">{{'shipment.Last Name' | translate}}</legend>
-                            <input type="text" id="lastName" placeholder="Enter your last name" 
-                                required name="lastName" [(ngModel)]="shippment.lastName" #lastName="ngModel">
-                        </fieldset>
-                        <div for="lastName" class="form-text text-danger" [hidden]="lastName.valid  || lastName.untouched">
-                            <p>{{'shipment.Required field' | translate}}</p>
-                          </div>
-                    </div>
+                </div>
 
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <div class="input-group-prepend px-3 ">
-                                <label for="" class="" style="font-size: 2vmin;">{{'shipment.Prefix' | translate}}</label>
-                                <span class="input-group-text" style="font-size: 2vmin;">{{'shipment.+20' | translate}}</span>
-                            </div>
-                            <fieldset class="border px-3  form-control"  [ngClass]="{'border-danger': phoneNumber.invalid && phoneNumber.touched}">
-                                <legend class="float-none w-100 px-3">{{'shipment.Phone Number' | translate}}</legend>
-                                <input type="tel" id="phoneNumber" value="" placeholder="Enter your Phone Number"
-                                    required  #phoneNumber="ngModel" name="phoneNumber"  [(ngModel)]="shippment.phoneNumber">
-                            </fieldset>
+
+
+                <div class="col-md-6">
+                    <fieldset class="border  form-control"
+                        [ngClass]="{'border-danger': lastName.invalid && lastName.touched , 'border-orange': !lastName.invalid || !lastName.touched}">
+                        <legend class="float-none w-auto  mx-3">{{'shipment.Last Name' | translate}}</legend>
+                        <input type="text" class="w-100 " id="lastName" placeholder="Enter your last name" required
+                            name="lastName" [(ngModel)]="shippment.lastName" #lastName="ngModel">
+                    </fieldset>
+                    <div for="lastName" class="form-text text-danger" [hidden]="lastName.valid  || lastName.untouched">
+                        <p>{{'shipment.Required field' | translate}}</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <div class="input-group-prepend p-1 ">
+                            <label for="" class="text-secondary" style="font-size: 2vmin;"><strong>{{'shipment.Prefix' | translate}}</strong></label>
+                            <span class="input-group-text text-secondary " style="font-size: 2vmin;"><strong>{{'shipment.+20' |translate}}</strong></span>
                         </div>
-                        <div for="phoneNumber" class="form-text text-danger" [hidden]="phoneNumber.valid  || phoneNumber.untouched">
-                            <p>{{'shipment.Required field' | translate}}</p>
-                          </div>
+                        <fieldset class="border   form-control"
+                            [ngClass]="{'border-danger': phoneNumber.invalid && phoneNumber.touched}">
+                            <legend class="float-none mx-3 ">{{'shipment.Phone Number' | translate}}</legend>
+                            <input type="tel" id="phoneNumber"class="w-100 " value="" placeholder="Enter your Phone Number" required
+                                #phoneNumber="ngModel" name="phoneNumber" [(ngModel)]="shippment.phoneNumber">
+                        </fieldset>
                     </div>
-                        <div class="col-md-6">
-                            <div class="input-group mx-0">
-                                <div class="input-group-prepend px-3">
-                                    <label for="" style="font-size: 2vmin;">{{'shipment.Prefix' | translate}}</label>
-                                    <span class="input-group-text" style="font-size: 2vmin;">{{'shipment.+20' | translate}}</span>
-                                </div>
-                                <fieldset class="border px-3 form-control">
-                                    <legend class="float-none w-100 px-3">{{'shipment.Additional Phone Number' | translate}}</legend>
-                                    <input type="tel" id="AddphoneNumber" value=""
-                                        placeholder="Enter Additional Phone Number">
-                                </fieldset>
-                               
-                            </div>
-                            </div>
-                            <div class="col-12">
-                                <fieldset class="border px-3 form-control"  [ngClass]="{'border-danger': address.invalid && address.touched}">
-                                    <legend class="float-none w-auto px-3 ">{{'shipment.Address' | translate}}</legend>
-                                    <input type="tel" id="address" placeholder="Enter your Address" required #address="ngModel" name="address"  [(ngModel)]="shippment.address">
-                                </fieldset>
+                    <div for="phoneNumber" class="form-text text-danger"
+                        [hidden]="phoneNumber.valid  || phoneNumber.untouched">
+                        <p>{{'shipment.Required field' | translate}}</p>
+                    </div>
+                </div>
 
-                            </div>
-                            <div class="col-12">
-                                <fieldset class="border px-3 form-control"  [ngClass]="{'border-danger': adressInformation.invalid && adressInformation.touched}">
-                                    <legend class="float-none w-auto px-3">{{'shipment.Additional Information' | translate}}</legend>
-                                    <input type="tel" id="additionalInformation"
-                                        placeholder="Enter Additional Information" required  #adressInformation="ngModel" name="adressInformation"  [(ngModel)]="shippment.adressInformation">
-                                </fieldset>
-                                <div for="adressInformation" class="form-text text-danger" [hidden]="adressInformation.valid  || adressInformation.untouched">
-                                    <p>{{'shipment.Required field' | translate}}</p>
-                                  </div>
-                            </div>
-                            <div class="col-md-6">
-                                <fieldset class="border px-3 form-control">
-                                    <legend class="float-none w-auto px-3" for="validationServer04">{{'shipment.Region' | translate}}</legend>
-                                    <select class="form-select" id="regionSelect" [(ngModel)]="shippment.region" name="region" required (change)="onRegionChange()">
-                                        <option selected disabled value="">{{'shipment.Choose' | translate}}</option>
-                                        <option *ngFor="let region of regions" [value]="region">{{ region }}</option>
-                                    </select>
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                       {{' shipment.Please select Your Region.' | translate}}
-                                    </div>
-                                </fieldset>
-                            </div>
-                            <div class="col-md-6">
-                                <fieldset class="border px-3 form-control">
-                                    <legend class="float-none w-auto px-3" for="validationServer04">{{'shipment.City' | translate}}</legend>
-                                    <select class="form-select " id="validationServer04" title="city"
-                                        aria-describedby="validationServer04Feedback" id="citySelect" [(ngModel)]="shippment.city" name="city"  required (change)="onCityChange()">
-                                        <option selected disabled value="">{{'shipment.Choose' | translate}}</option>
-                                        <option *ngFor="let city of selectedRegionCities" [value]="city">{{ city }}</option>
-                                    </select>
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                      {{'  shipment.Please select Your City.' | translate}}
-                                    </div>
-                                </fieldset>
-                            </div>
-                           
-                            <input type="text" hidden name="id" [value]="shippment.id" [(ngModel)]="shippment.id">
-                            <div class="col-12 d-flex justify-content-end  my-4">
-                                <button type="button" class="btn  me-2 mt-4 text-warning">{{'shipment.CANCEL' | translate}}</button>
-                                <button type="submit"  class="btn btn-warning text-white mt-4 save"[disabled]="addForm.invalid" save>{{'shipment.SAVE' | translate}}</button>
-                            </div>
-                </form>
-            </div>
-            <div class=" my-2 checkedSigh col-9">
-                <h6 class=" my-2 "><i class="fa-solid fa-circle-check"></i> {{'shipment.2.Delivary Details' | translate}}</h6>
-            </div>
-            <div class=" my-2 checkedSigh col-9">
-                <h6 class=" my-2 "><i class="fa-solid fa-circle-check"></i> {{'shipment.3.Payment Method' | translate}}</h6>
-            </div>
-            <a href="" class="text-decoration-none back">{{'shipment.Go back & continue shopping' | translate}}</a>
+
+
+                <div class="col-md-6">
+                    <div class="input-group mx-0">
+                        <div class="input-group-prepend p-1 ">
+                            <label for="" class="text-secondary" style="font-size: 2vmin;"><strong>{{'shipment.Prefix' | translate}}</strong></label>
+                            <span class="input-group-text text-secondary " style="font-size: 2vmin;"><strong>{{'shipment.+20' |translate}}</strong></span>
+                        </div>
+                        <fieldset class="border  form-control">
+                            <legend class="float-none  mx-3 ">{{'shipment.Additional Phone Number' | translate}}
+                            </legend>
+                            <input type="tel" id="AddphoneNumber"class="w-100 " value="" placeholder="Enter Additional Phone Number">
+                        </fieldset>
+
+                    </div>
+                </div>
+                <div class="col-12">
+                    <fieldset class="border  form-control"
+                        [ngClass]="{'border-danger': address.invalid && address.touched}">
+                        <legend class="float-none w-auto  mx-3 ">{{'shipment.Address' | translate}}</legend>
+                        <input type="tel" id="address"class="w-100 " placeholder="Enter your Address" required #address="ngModel"
+                            name="address" [(ngModel)]="shippment.address">
+                    </fieldset>
+
+                </div>
+
+
+
+
+                <div class="col-12">
+                    <fieldset class="border  form-control"
+                        [ngClass]="{'border-danger': adressInformation.invalid && adressInformation.touched}">
+                        <legend class="float-none w-auto  mx-3">{{'shipment.Additional Information' | translate}}
+                        </legend>
+                        <input type="tel" id="additionalInformation"class="w-100 " placeholder="Enter Additional Information" required
+                            #adressInformation="ngModel" name="adressInformation"
+                            [(ngModel)]="shippment.adressInformation">
+                    </fieldset>
+                    <div for="adressInformation" class="form-text text-danger"
+                        [hidden]="adressInformation.valid  || adressInformation.untouched">
+                        <p>{{'shipment.Required field' | translate}}</p>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <fieldset class="border  form-control">
+                        <legend class="float-none w-auto  mx-3" for="validationServer04">{{'shipment.Region' |
+                            translate}}</legend>
+                        <select class="form-select" id="regionSelect"class="w-100 " [(ngModel)]="shippment.region" name="region"
+                            required (change)="onRegionChange()">
+                            <option selected disabled value="">{{'shipment.Choose' | translate}}</option>
+                            <option *ngFor="let region of regions" [value]="region">{{ region }}</option>
+                        </select>
+                        <div id="validationServer04Feedback" class="invalid-feedback">
+                            {{' shipment.Please select Your Region.' | translate}}
+                        </div>
+                    </fieldset>
+                </div>
+
+
+
+                <div class="col-md-6">
+                    <fieldset class="border  form-control">
+                        <legend class="float-none w-auto  mx-3" for="validationServer04">{{'shipment.City' | translate}}
+                        </legend>
+                        <select class="form-select " id="validationServer04"class="w-100 " title="city"
+                            aria-describedby="validationServer04Feedback" id="citySelect" [(ngModel)]="shippment.city"
+                            name="city" required (change)="onCityChange()">
+                            <option selected disabled value="">{{'shipment.Choose' | translate}}</option>
+                            <option *ngFor="let city of selectedRegionCities" [value]="city">{{ city }}</option>
+                        </select>
+                        <div id="validationServer04Feedback" class="invalid-feedback">
+                            {{' shipment.Please select Your City.' | translate}}
+                        </div>
+                    </fieldset>
+                </div>
+
+
+
+
+
+                <input type="text" hidden name="id" [value]="shippment.id" [(ngModel)]="shippment.id">
+                <div class="col-12 d-flex justify-content-end  my-4">
+                    <button type="button" class="btn bton-cancel me-2 mt-4 text-warning">{{'shipment.CANCEL' | translate}}</button>
+                    <button type="submit" class="btn bton-save text-white mt-4 " [disabled]="addForm.invalid"save>{{'shipment.SAVE' | translate}}</button>
+                </div>
+
+            </form>
         </div>
-        
-    </div>
-    <!-- <div>
-        <input type="text" value="order.id" hidden name="id">
-        <input type="text" name="UserIdentityId" Value="clientId"  [(ngModel)]="shippment.userIdentityId">
-        <input type="text" value="order.customerId" hidden name="customerId">
-        <input type="text" value="order.status" hidden name="status">
-        <input type="text" value="order.cancelOrder" hidden name="cancelOrder">
-        <input type="text" value="order.totalPrice" hidden name="totalPrice">
-        <input type="text" value="order.paymentStatus" hidden name="paymentStatus">
-        <input type="text" value="order.totalAmount" hidden name="totalAmount">
-    </div> -->
-  
-    <!-- <div class="col-3">
-    <div class="card">
-        <div class="card-header">Order summary</div>
-        <div class="card-body">Item's total </div>
-        <div class="card-footer">Total</div>
-        <div>You will be able to add a voucher when selecting your payment method.</div>
-        <button class="btn btn-secondry">Confirm Order</button>
-        <p>(Complete the steps in order to proceed)</p>
-      </div>
-</div>  -->
 
+
+
+
+
+        <div class="col-4 ">
+            <div class="card mb-3 " >
+                
+                    <p class="list-group-item"><strong>{{'shipment.Order summary' | translate}}</strong></p>
+
+                            <div class="row p-2 ">
+                                <div class=" col-6">
+                                    <p class="me-5 ">{{'shipment.Items total' | translate}} ({{cartNumber}})</p>
+                                </div>
+                                <div class=" col-6 " style="text-align: end;">
+                                    <p class=""><strong>{{'shipment.EGP' | translate}} {{TotalCartPrice}}</strong> </p>
+                                </div>
+
+                            </div>
+                    
+                      
+                            <hr>
+                            <div class="row p-2">
+                                <div class=" col-6">
+                                    <p class="me-5">{{'shipment.Total' | translate}}</p>
+                                </div>
+                                <div class=" col-6 " style="text-align: end;">
+                                    <p class=""><strong>{{'shipment.EGP' | translate}} {{TotalCartPrice +300 -10}}</strong></p>
+                                </div>
+
+                            </div>
+
+                        
+                   
+                            <hr>
+                            <div class="row p-2">
+                                <div class=" col-2">
+                                    <i class="fa fa-solid fa-ticket text-warning " style="font-size:36px;"></i>
+                                </div>
+                                <div class=" col-10 " >
+                                    <small class="">  {{'shipment.You will be able to add a voucher when selecting your payment method.' | translate}}</small> 
+                                </div>
+
+                            </div>
+
+
+                        <div class="card-footer bg-light"style="text-align: center;">
+                            <button class="btn  text-light bton-order w-100" style="width: 90%;" disabled
+                                routerLink="/shippment">{{'shipment.Confirm Order' | translate}} </button>
+                                <b ><small >(Complete the steps in order to proceed)</small></b>
+                        </div>
+            </div>
+            <div class=""style="text-align: center;">
+               
+                    <h6 ><small class="text-secondary" >By proceeding, you are automatically accepting the </small></h6>
+                    <a><small>Terms & Conditions</small></a>
+            </div>
+            
+        </div>
+
+
+        <div class=" my-2 checkedSigh col-8">
+            <h6 class=" my-2 fa "><i class="fa fa-check-circle text-secondary"></i> <strong>  {{'shipment.2.Delivary Details' | translate}}</strong>
+            </h6>
+        </div>
+        <div class=" my-2 checkedSigh col-8">
+            <h6 class=" my-2 fa"><i class="fa fa-check-circle text-secondary"></i> <strong>  {{'shipment.3.Payment Method' | translate}}</strong></h6>
+        </div>
+        <a href="" class="text-decoration-none back p-3"><i class="fa fa-angle-left"></i>   {{'shipment.Go back & continue shopping' | translate}}</a>
+
+
+
+
+
+
+    </div>
+    
 </div>
-                                 
