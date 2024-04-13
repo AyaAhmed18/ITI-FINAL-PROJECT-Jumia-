@@ -55,10 +55,10 @@
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </td> *@
-                                @{
+                               @*  @{
                                     string res = item.Images.Count > 0 ? Convert.ToBase64String(item.Images[item.Images.Count() - 1]) : "";
-                                }
-                                <td><img src="data:image;base64,@res" width="100px" height="100px" alt="Product Image" /></td>
+                                } *@
+                              @*   <td><img src="data:image;base64,@res" width="100px" height="100px" alt="Product Image" /></td> *@
                                 <td class="p-1">@item.StockQuantity</td>
                                 <td class="p-1">@item.RealPrice</td>
                                 <td class="p-1">@item.Discount</td>
