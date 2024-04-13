@@ -9,20 +9,20 @@ import { ProductDto } from '../../ViewModels/product-dto';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { NgxSliderModule, Options } from '@angular-slider/ngx-slider';
 
 @Component({
     selector: 'app-filter',
     standalone: true,
     templateUrl: './filter.component.html',
     styleUrl: './filter.component.css',
-    imports: [ProductComponent,FormsModule,CommonModule,TranslateModule]
+    imports: [ProductComponent,FormsModule,CommonModule,TranslateModule , NgxSliderModule]
 })
 export class FilterComponent {
     minDiscount: number=0;
     ListPrand:string='';
     products: any[]=[];
-    minPrice: number = 0;
-    maxPrice: number = 1000000;
+    
     AllBrands: any = [];
     selectedBrands: number[] = [];
     selectedBrandsStr : string ='';
@@ -31,21 +31,28 @@ export class FilterComponent {
     pageNumbers: number[]=[];
     AllProd:number=0;
     pageSize:number = 10;
-    @ViewChild('range') range!: ElementRef;
-    @ViewChild('minPrice') minPriceInput!: ElementRef;
-    @ViewChild('maxPrice') maxPriceInput!: ElementRef;
-    priceGap: number = 1000;
+   
     //@ViewChild('filterComponent') filterComponent: FilterComponent | undefined; // Replace with child component type
 
-    currentCategoryId: number = 0;
+  currentCategoryId: number = 0;
   currentSubCategoryId: number = 0;
   isArabic: boolean = false;
+
+  minPrice: number = 0;
+  maxPrice: number = 1000000;
+  value=44;
+  highvalue=1000;
+  options:Options={
+    step:10,
+    floor:0,
+    ceil:10000
+  }
 
 
   
     constructor(private _filterService: FilterServiceService,
-      private _brandService : BrandServiceService
-      ,private _router : Router, private _activeRouter: ActivatedRoute,
+      private _brandService : BrandServiceService,
+      private _router : Router, private _activeRouter: ActivatedRoute,
       private _sanitizer:DomSanitizer,
       private  translate: TranslateService 
       
@@ -148,7 +155,6 @@ export class FilterComponent {
       this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
         console.log("BehaviorSubject")
         console.log(this._filterService.getValue());
-
         console.log("selected Brands");
         console.log(this.selectedBrands)
         console.log(this.selectedBrandsStr)
@@ -156,9 +162,7 @@ export class FilterComponent {
 
         this.products = data.entities;
         console.log(data.count);
-
         console.log(this.products[1].images[0])
-
         console.log("filter--")
         console.log( this.products)
         this.sanitizeImages();
@@ -253,7 +257,11 @@ changeLanguage(lang: string) {
 
 }
 
-
+clearSelection() {
+  this.minDiscount = 0; 
+ 
+  this.filterProducts();
+}
 
 
 // ngAfterViewInit(): void {

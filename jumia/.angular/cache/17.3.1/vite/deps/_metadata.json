@@ -4,6 +4,12 @@
   "lockfileHash": "1604e837",
   "browserHash": "0b92c942",
   "optimized": {
+    "@angular-slider/ngx-slider": {
+      "src": "../../../../../node_modules/@angular-slider/ngx-slider/fesm2022/angular-slider-ngx-slider.mjs",
+      "file": "@angular-slider_ngx-slider.js",
+      "fileHash": "93a2b0db",
+      "needsInterop": false
+    },
     "@angular/common": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
