@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiProductsService } from '../../Services/api-products.service';
 import { ProductDto } from '../../ViewModels/product-dto';
@@ -7,6 +7,8 @@ import { ISpecfications } from '../../Models/ispecfications';
 import { SafeUrl, DomSanitizer } from "@angular/platform-browser";
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { CartService } from '../../Services/cart.service';
+import { WishlistService } from '../../Services/wishlist.service';
 
 
 @Component({
@@ -22,14 +24,18 @@ export class DetailsComponent implements OnInit {
   sizeSpecs: string[] = [];
   AllSpecs: ISpecfications[] = [];
   isArabic: boolean = false;
-
+  showAlert1: boolean = false;
+  cartTotalPrice:number=0
+  @Output() addToCartClicked = new EventEmitter<ProductDto>();
   constructor(
     private activatedRoute: ActivatedRoute,
     private apiProductsService: ApiProductsService,
     private router: Router,
     private _specsServive: ApiSpecficationsService,
     private _sanitizer: DomSanitizer,
-    private  translate: TranslateService
+    private  translate: TranslateService,
+    private _cartService:CartService,
+    private _wishlist :WishlistService,
   
   ) { }
 
@@ -104,4 +110,20 @@ export class DetailsComponent implements OnInit {
   isArabicLanguage(): boolean {
     return this.translate.currentLang === 'ar';
   }
+  AddToCart(prod:ProductDto){
+    if(prod.stockQuantity>0){
+      prod.cartQuantity = 1;
+       this.cartTotalPrice+=prod.realPrice
+       this._cartService.addToCart(prod);
+       this.addToCartClicked.emit(prod);
+       this._wishlist.removeProductFromWishlist(prod)
+       this.showAlert1 = true;
+    }
+  }
+  closeAlert(){
+    this.showAlert1 = false;
+    //this.showAlert2 = false;
+  }
+  //localization
+
 }

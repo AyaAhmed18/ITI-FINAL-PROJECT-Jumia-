@@ -232,7 +232,9 @@
 "QTY":"QTY",
 "Total Price":"Total Price",
 "Cancel Order":"Cancel Order",
-"Delivered By Monday , 15-04":"Delivered By Monday , 15-04"
+"Delivered By Monday , 15-04":"Delivered By Monday , 15-04",
+"Items":"Items"
+
 
 },
 "orderdetails" :{
@@ -367,7 +369,7 @@
   "Price: Low to High":"Price: Low to High",
   "Price: High to Low":"Price: High to Low",
   "Newest Arrivals":"Newest Arrivals",
-  "storeby:":"storeby:",
+  "sortbY:":"Sort By:",
   "Buy 400 get":"Buy 400 get",
   "off":"off",
   "EGP":"EGP",

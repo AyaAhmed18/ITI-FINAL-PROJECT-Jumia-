@@ -72,6 +72,7 @@ namespace Jumia.Application.Services
                         Id = p.Id,
                         Customer = p.Customer.UserName,
                         Status = p.Status.ToString(),
+                        paymentStatus= (GetAllOrdersDTO.PaymentStatus)p.paymentStatus,
                         OrderDate = p.CreatedDate,
                         TotalOrderPrice = p.TotalOrderPrice,
                         Discount=p.Discount,

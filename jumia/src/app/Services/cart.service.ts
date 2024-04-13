@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
-  private cartItems: ProductDto[] = [];
+  private cartItems: ProductDto[] = [] as ProductDto[];
   private cartSubject = new BehaviorSubject<ProductDto[]>([]);
    cartNumber: number = 0;
    totalCartPrice: number = 0;

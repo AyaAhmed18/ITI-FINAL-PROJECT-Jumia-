@@ -3,14 +3,15 @@
 <div class="row bg-body rounded  row-cols-1 row-cols-md-4 g-4" [class.rtl]="isArabic">
     <div class="col-12 p-3 " [class.rtl]="isArabic">
         <div class="row">
-            <div class="col-8"><b><strong>{{'product.Womens Sweaters' | translate}}</strong></b></div>
+            <div class="col-8"><b></b></div>
+            <!-- <strong>{{'product.Womens Sweaters' | translate}}</strong> -->
             <div class="col-4  ">
                 <form class="form">
                 
                     <div class="row">
                         
                             <div class="col-3 ">
-                                <p for="sort" class="float-end text-secondary h5"><strong>{{'product.storeby:' | translate}}</strong></p>
+                                <p for="sort" class="float-end text-secondary h5"><strong>{{'product.sortbY:' | translate}}</strong></p>
                             </div>
                             <div class="col-8">
                                 <select class="form-control mx-sm-3 " id="sort" (change)="onSortChange($event)">
@@ -34,9 +35,9 @@
     @for(pro of products;track pro.id;){
     <div class="clo-2 pro-cart" [class.rtl]="isArabic">
         <div class="show-cards-btn card cards-hover" style=" border: none;"  >
-            <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image"
-                style="width:100%">
-            <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
+            <!-- <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image" -->
+                <!-- style="width:100%"> -->
+            <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%">
             <div class="label-Cards-top px-2">
                 <span class="text-white ">{{'product.Buy 400 get' | translate}} {{pro.discount}} {{'product.off' | translate}}</span>
             </div>
@@ -50,7 +51,6 @@
                                 </i>
                             </a>
                         </span>
-
             <div class="card-body">
                 <p>{{ isArabicLanguage() ? pro.nameAr : pro.name }}</p>
                 <p class=""><small>{{pro.shortDescription}}</small></p>

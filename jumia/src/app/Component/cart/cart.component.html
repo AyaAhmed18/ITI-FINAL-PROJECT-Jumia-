@@ -32,7 +32,8 @@
         <img src="assets/ProductImg/1.jpg" style="height: 100px;">
       </div>
       <div class="col-5-cart col-5 ">
-        <p class="mb-1"><small>{{ item.name }} {{item.shortDescription}}</small> </p>
+        <p class="mb-1"><small> {{ isArabicLanguage() ? item.nameAr : item.name }} </small> </p>
+        <p><small>{{item.shortDescription}}</small></p>
         <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">
           <small [ngClass]="{'text-danger': item.stockQuantity < 5, 'text-success': item.stockQuantity >= 5}">
             {{ item.stockQuantity < 5 ? item.stockQuantity + ' Unifs Left' : 'Available' }}
@@ -42,7 +43,6 @@
       </div>
       <div class="col-4 col-4-cart">
         <div class="row" style="text-align: end;">
-          {{item.stockQuantity}}
           <h1 class="h4 col-12">{{'cart.EGP' | translate}} {{item.realPrice}}</h1> <!--price After Discount-->
            <div class="col-12 ">
             <p class="fa"><del>{{'cart.EGP' |translate}} {{item.realPrice}}     </del>     

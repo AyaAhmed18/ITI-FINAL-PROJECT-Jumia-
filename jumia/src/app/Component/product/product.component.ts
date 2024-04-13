@@ -58,6 +58,7 @@ showAlert2: boolean = false;
       private _filterServices : FilterServiceService,
     private _specsServive:ApiSpecficationsService,
     private  translate: TranslateService)
+    
    {
 
    }
@@ -359,13 +360,12 @@ changeLanguage(lang: string) {
   window.location.reload();
 
 }
+
+isArabicLanguage(): boolean {
+  return this.translate.currentLang === 'ar'; 
+}
 closeAlert(){
   this.showAlert1 = false;
   this.showAlert2 = false;
-}
-isArabicLanguage(): boolean {
-  return this.translate.currentLang === 'ar';
-  
-  
 }
 }

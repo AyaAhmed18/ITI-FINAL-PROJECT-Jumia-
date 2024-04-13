@@ -215,7 +215,8 @@
 "QTY":"الكمية",
 "Total Price":"السعر الكلي",
 "Cancel Order":"الغاء الطلب",
-"Delivered By Monday , 15-04":"سيتم التسليم يوم الاثنين 15-04"
+"Delivered By Monday , 15-04":"سيتم التسليم يوم الاثنين 15-04",
+"Items":"عنصر"
     },
 
     "orderdetails" :{
@@ -350,7 +351,7 @@
         "Price: Low to High":"السعر من الادنى للاعلى",
         "Price: High to Low":"السعر الاعلى الى الادنى",
         "Newest Arrivals":"الاتي حديثا",
-        "storeby:":"مخزن بواسطة:",
+        "sortbY:":"الترتيب :",
         "Buy 400 get":"اشتري 400 واحصل على",
         "off":"عن",
         "EGP":"جنيه مصري",

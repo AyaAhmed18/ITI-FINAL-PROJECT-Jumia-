@@ -4,6 +4,7 @@ import { IOrderItems } from '../../Models/iorder-items';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IOrder } from '../../Models/i-order';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-order-items',
@@ -15,7 +16,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class OrderItemsComponent implements OnInit{
   OrderItems:IOrderItems[]=[] as IOrderItems[]
   constructor(private _OrderService:APIOrderServiceService,private route: ActivatedRoute,
-    private router:Router ,private  translate: TranslateService
+    private router:Router ,private  translate: TranslateService,
+    private _sanitizer:DomSanitizer
   ){}
   ordId:number=0
   ItemsNumber:number=0
@@ -38,6 +40,7 @@ export class OrderItemsComponent implements OnInit{
     this._OrderService.GetOrderItems(this.ordId).subscribe(OrderItems => {
      this.OrderItems=OrderItems
      this.ItemsNumber=OrderItems.length
+     this.sanitizeImages()
     });
 
     this.translate.onLangChange.subscribe((Event)=>{
@@ -45,7 +48,18 @@ export class OrderItemsComponent implements OnInit{
     })
    }
    
+   isArabicLanguage(): boolean {
+    return this.translate.currentLang === 'ar'; 
+  }
+  sanitizeImages() {
+    this.OrderItems.forEach(product => {
+      console.log(product.images);
+      product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images);
+      console.log(product.images);
+      console.log(product.images);
 
+    });
+  }
   changeLanguage(lang: string) {
     if (lang == 'en') {
       localStorage.setItem('lang', 'en')

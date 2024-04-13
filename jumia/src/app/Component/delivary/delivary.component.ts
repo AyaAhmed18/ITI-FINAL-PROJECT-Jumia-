@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Sanitizer } from '@angular/core';
 import {  Router, RouterLink } from '@angular/router';
 import { ProductDto } from '../../ViewModels/product-dto';
 import { CartService } from '../../Services/cart.service';
 import { ApiShippmentService } from '../../Services/api-shippment.service';
 import { IShippment } from '../../Models/ishippment';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ApiProductsService } from '../../Services/api-products.service';
 
 @Component({
   selector: 'app-delivary',
@@ -14,7 +16,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   styleUrl: './delivary.component.css'
 })
 export class DelivaryComponent implements OnInit {
-  cartItems: ProductDto[] = [];
+  proItems: ProductDto = {} as ProductDto;
+  cartItems: any[]=[];
   cartNumber:number=0
   TotalCartPrice=0
   clientId=localStorage.getItem('userId')
@@ -22,7 +25,9 @@ export class DelivaryComponent implements OnInit {
   shippment:IShippment={} as IShippment
   isArabic: boolean = false;
 constructor(private router:Router, private _cartService:CartService,
-  private  _ShippmentService:ApiShippmentService ,private  translate: TranslateService){
+  private  _ShippmentService:ApiShippmentService ,private  translate: TranslateService,
+private _sanitizer:DomSanitizer,
+private _apiProductService:ApiProductsService){
 
 }
   ngOnInit(): void {
@@ -32,6 +37,7 @@ constructor(private router:Router, private _cartService:CartService,
      this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
       this.cartNumber=this._cartService.calculateTotalCartNumber();
     });
+    this.sanitizeImages();
     this._ShippmentService.Getshippment(this.userId).subscribe(shipping => {
       this.shippment=shipping
       console.log(shipping.firstNameEn)
@@ -58,4 +64,24 @@ constructor(private router:Router, private _cartService:CartService,
   ConfirmDelivary(){
     this.router.navigate(['/Payment']);
   }
+  isArabicLanguage(): boolean {
+    return this.translate.currentLang === 'ar'; 
+  }
+  sanitizeImages() {
+    this.cartItems.forEach(product => {
+      this._apiProductService.getProductById(product.id).subscribe({
+        next:  (res: ProductDto) => {
+          console.log(res.images);
+          product.images=res.images
+          product.images = res.images.map(image => 
+            this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + image) as SafeUrl
+          );
+         
+          }})
+          
+          
+          
+    });
+  }
+
 }

@@ -135,10 +135,10 @@ namespace Jumia.Application.Services
                     return new ResultView<CreateOrUpdateCategoryDto> { Entity = null, IsSuccess = false, Message = "Category Not Found!" };
                 }
 
-                await _repository.DeleteAsync(category);
-                await _repository.SaveChangesAsync();
+               var res= await _repository.DeleteAsync(category);
+               var res1= await _repository.SaveChangesAsync();
 
-                var CategoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(category);
+                var CategoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(res);
                 return new ResultView<CreateOrUpdateCategoryDto> { Entity = categoryDto, IsSuccess = true, Message = "Deleted Successfully" };
             }
             catch (Exception ex)
