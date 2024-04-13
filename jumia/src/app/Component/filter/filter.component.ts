@@ -34,7 +34,7 @@ export class FilterComponent {
    
     //@ViewChild('filterComponent') filterComponent: FilterComponent | undefined; // Replace with child component type
 
-    currentCategoryId: number = 0;
+  currentCategoryId: number = 0;
   currentSubCategoryId: number = 0;
   isArabic: boolean = false;
 
@@ -51,8 +51,8 @@ export class FilterComponent {
 
   
     constructor(private _filterService: FilterServiceService,
-      private _brandService : BrandServiceService
-      ,private _router : Router, private _activeRouter: ActivatedRoute,
+      private _brandService : BrandServiceService,
+      private _router : Router, private _activeRouter: ActivatedRoute,
       private _sanitizer:DomSanitizer,
       private  translate: TranslateService 
       
@@ -155,7 +155,6 @@ export class FilterComponent {
       this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
         console.log("BehaviorSubject")
         console.log(this._filterService.getValue());
-
         console.log("selected Brands");
         console.log(this.selectedBrands)
         console.log(this.selectedBrandsStr)
@@ -163,9 +162,7 @@ export class FilterComponent {
 
         this.products = data.entities;
         console.log(data.count);
-
         console.log(this.products[1].images[0])
-
         console.log("filter--")
         console.log( this.products)
         this.sanitizeImages();
