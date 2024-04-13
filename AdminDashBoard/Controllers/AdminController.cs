@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
 {
-    [Authorize(Roles = "ADMIN")]
+    //[Authorize(Roles = "Admin")]
     public class AdminController : BaseController
     {
         private readonly IRoleService _roleService;

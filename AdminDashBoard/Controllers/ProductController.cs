@@ -10,11 +10,10 @@ using Jumia.Dtos.SubCategorySpecifications;
 using Jumia.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace AdminDashBoard.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class ProductController : BaseController
     {
         private readonly IProductServices _productService;
@@ -45,10 +44,10 @@ namespace AdminDashBoard.Controllers
         // GET: ProductController
         public async Task<ActionResult> GetPagination()
         {
-            var Prds = await _productService.GetAllPagination(100, 1);
+            var Prds = await _productService.GetAllPagination(20, 1);
             return View(Prds);
         }
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
 
@@ -66,7 +65,7 @@ namespace AdminDashBoard.Controllers
 
         // POST: ProductController/Create
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(CreateOrUpdateProductDto ProductDto,List<IFormFile> Images, CreateOrUpdateProductSpecificationSubCategory prdSubCategorySpecDto, int selectedSubCategoryId)
         {
             var subCategorySpec = (await _subCategorySpecificationsService.GetAll()).Where(i => i.SubCategoryId == selectedSubCategoryId).ToList();
@@ -104,10 +103,10 @@ namespace AdminDashBoard.Controllers
                         };
                         await _productSpecificationSubCategoryServices.Create(subCategorySpecification);
                     }
-                      
+                        TempData["SuccessMessage1"] = "Category Created successfully.";
+                        return RedirectToAction("GetPagination", TempData["SuccessMessage1"]);
+
                     }
-                    TempData["SuccessMessage1"] = "Category Created successfully.";
-                    return RedirectToAction("GetPagination", TempData["SuccessMessage1"]);
 
                 }
 
@@ -133,7 +132,7 @@ namespace AdminDashBoard.Controllers
             return PartialView("_SubCategorySpecsPartial");
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> Update([FromRoute]int id)
         {
             var res = await _productService.GetOne(id);
@@ -148,9 +147,6 @@ namespace AdminDashBoard.Controllers
             ViewBag.SubCategory = subCatName;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
-            var prdSpecs = (await _productSpecificationSubCategoryServices.GetAll())
-                .Entities.Where(p=>p.ProductId==id).Select(i=> new {i.SpecificationName,i.Value});
-            ViewBag.prdSpecs = prdSpecs;
             var productDto = _mapper.Map<CreateOrUpdateProductDto>(res.Entity);
             return View(productDto);
         }
@@ -158,24 +154,13 @@ namespace AdminDashBoard.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Update(CreateOrUpdateProductDto productDto, List<IFormFile> Images)
+        //[Authorize(Roles = "Admin")]
+        public async Task<ActionResult> Update(CreateOrUpdateProductDto productDto, List<IFormFile> Image)
         {
             if (ModelState.IsValid)
             {
-                if (Images != null)
-                {
-                    foreach (var img in Images)
-                    {
-                        var imageBytes = new byte[img.Length];
-                        using (var stream = img.OpenReadStream())
-                        {
-                            await stream.ReadAsync(imageBytes, 0, imageBytes.Length);
-                        }
-                        productDto.Images.Add(imageBytes);
-                    }
-                }
-                var res  = await  _productService.Update(productDto, Images);
+
+                var res  = await  _productService.Update(productDto, Image);
                 TempData["SuccessMessage1"] = "Product Created successfully.";
                 return RedirectToAction("GetPagination", TempData["SuccessMessage1"]);
 
@@ -187,10 +172,7 @@ namespace AdminDashBoard.Controllers
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
             TempData["SuccessMessage"] = "Failed.";
-            var prdSpecs = (await _productSpecificationSubCategoryServices.GetAll())
-                .Entities.Where(p => p.ProductId == productDto.Id).Select(i => new { i.SpecificationName, i.Value });
-            ViewBag.prdSpecs = prdSpecs;
-            return View(productDto);
+             return View(productDto);
 
         }
 
@@ -208,7 +190,6 @@ namespace AdminDashBoard.Controllers
 
             var ProductToDelete = _mapper.Map<CreateOrUpdateProductDto>(res.Entity);
            var del= await _productService.Delete(ProductToDelete);
-         //   var dels= await _productSpecificationSubCategoryServices.d
             if (del.IsSuccess)
             {
                 TempData["SuccessMessage1"] = "Successed";
