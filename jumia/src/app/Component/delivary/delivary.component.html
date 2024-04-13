@@ -79,7 +79,7 @@
                 <img   [src]="pro.images[0]"  alt="">
               </div>
               <div class="col-md-10">
-                <p class="smallText my-0 mx-0 text-start">{{pro.name}}</p>
+                <p class="smallText my-0 mx-0 text-start">{{isArabicLanguage() ? pro.nameAr : pro.name}}</p>
                 <p class="smallText">{{'delivery.OTY:' | translate}} {{pro.cartQuantity}}</p>
               </div>
 
