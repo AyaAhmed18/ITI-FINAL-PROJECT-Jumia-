@@ -73,7 +73,7 @@
             <strong> {{'payment.3.PAYMENT METHOD' | translate}}</strong>
           </h6>
           
-            <h6 class=" p-2"> <strong>Payment on delivery</strong> </h6>
+            <h6 class=" p-2"> <strong>{{'payment.Payment on delivery' | translate}}</strong> </h6>
 
 
           <form (ngSubmit)="ConfirmPayment()" #paymentForm="ngForm">
@@ -90,7 +90,7 @@
                       </label>
                      
                           <p>
-                            <small>Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when</small>
+                            <small>{{'payment.Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when' | translate}}</small>
                           </p>
                         </div>
 
@@ -102,13 +102,13 @@
                       <div class="card">
                         <div class="card-body">
                           <small>
-                          - Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when you choose...!
+                         {{'payment.- Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when you choose...!'| translate}}
                           <br>
-                          - When you choose Cash on delivery, you can pay for your order in cash when you receive your shipment at home or...
+                          {{'payment.- When you choose Cash on delivery, you can pay for your order in cash when you receive your shipment at home or...'| translate}}
                           
                           </small>
 
-                          <a href="#CashDetalse" role="button" data-bs-toggle="modal"> Details</a>
+                          <a href="#CashDetalse" role="button" data-bs-toggle="modal"> {{'payment.Details' | translate}}</a>
                          
                         </div>
                       </div>
@@ -116,7 +116,7 @@
                     <br>
                     <hr>
 
-                    <h6 class=" p-2"> <strong>Pre-pay Now</strong> </h6>
+                    <h6 class=" p-2"> <strong>{{'payment.Pre-pay Now' | translate}}</strong> </h6>
                       <div class="form-check">
                         <div class="row">
                           <div class="col-11 p-1">
@@ -126,7 +126,7 @@
                           </label>
                           
                               <p>
-                                <small>Get 10 EGP Off on Shopping Free When You Pay With Your Card</small>
+                                <small>{{'payment.Get 10 EGP Off on Shopping Free When You Pay With Your Card' | translate}}</small>
                               </p>
                             </div>
     
@@ -141,7 +141,7 @@
                       <hr>
 
 
-                      <h6 class=" p-2"> <strong>Pay Using Your Mobile Wallet</strong> </h6>
+                      <h6 class=" p-2"> <strong>{{'payment.Pay Using Your Mobile Wallet' | translate}}</strong> </h6>
                       <div class="form-check">
                         <div class="row">
                           <div class="col-11 p-1">
@@ -236,13 +236,13 @@
         <div class="card-footer bg-light" style="text-align: center;">
           <button class="btn  text-light bton-order w-100" style="width: 90%;" 
             routerLink="/shippment">{{'shipment.Confirm Order' | translate}} </button>
-          <b><small>(Complete the steps in order to proceed)</small></b>
+          <b><small>{{'shipment.(Complete the steps in order to proceed)' | translate}}</small></b>
         </div>
       </div>
       <div class="" style="text-align: center;">
 
-        <h6><small class="text-secondary">By proceeding, you are automatically accepting the </small></h6>
-        <a><small>Terms & Conditions</small></a>
+        <h6><small class="text-secondary">{{'shipment.By proceeding, you are automatically accepting the' | translate}} </small></h6>
+        <a><small>{{'shipment.Terms & Conditions' | translate}}</small></a>
       </div>
 
     </div>
@@ -255,19 +255,19 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel">Cash On Delivery</h5>
+        <h5 class="modal-title" id="exampleModalToggleLabel">{{'shipment.Cash On Delivery' | translate}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
       </div>
       <div class="modal-body">
         <div>
           
-          <h3><small>- Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when you choose prepaid at checkout!</small></h3>
-          <h3><small>- When you choose Cash on delivery, you can pay for your order in cash when you receive your shipment at home or Jumia’s pick-up stations.</small></h3>
-          <h3><small>- Enjoy 10 EGP discount when you pay via prepaid method.</small></h3>
-          <h3><small>- Egyptian pounds are accepted only.</small></h3>
-          <h3><small>- Please provide the specified amount only when paying for the possibility that there will be enough cash with the delivery representative if a value is paid higher than the requested one.</small></h3>
-          <h3><small>- You must pay for the product before opening the shipment.</small></h3>
-          <h3><small>- In case the product is returned, the available refund methods are (refund voucher - postal transfer).</small></h3>
+          <h3><small>{{'shipment.- Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when you choose prepaid at checkout!' | translate}}</small></h3>
+          <h3><small>{{'shipment.- When you choose Cash on delivery, you can pay for your order in cash when you receive your shipment at home or Jumia’s pick-up stations.' | translate}}</small></h3>
+          <h3><small>{{'shipment.- Enjoy 10 EGP discount when you pay via prepaid method.' | translate}}</small></h3>
+          <h3><small>{{'shipment.- Egyptian pounds are accepted only.' | translate}}</small></h3>
+          <h3><small>{{'shipment.- Please provide the specified amount only when paying for the possibility that there will be enough cash with the delivery representative if a value is paid higher than the requested one.' | translate}}</small></h3>
+          <h3><small>{{'shipment.- You must pay for the product before opening the shipment.' | translate}}</small></h3>
+          <h3><small>{{'shipment.- In case the product is returned, the available refund methods are (refund voucher - postal transfer).' | translate}}</small></h3>
           <br>
         
         </div>
