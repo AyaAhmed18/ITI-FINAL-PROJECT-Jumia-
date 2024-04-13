@@ -93,6 +93,6 @@ GetProductsBySubCatId(subcategoryId: number):void
   this._router.navigateByUrl(`/GetSubCategory/${subcategoryId}`);
 }
 isArabicLanguage(): boolean {
-  return this.translate.currentLang === 'ar-EG';
+  return this.translate.currentLang === 'ar';
 }
 }
