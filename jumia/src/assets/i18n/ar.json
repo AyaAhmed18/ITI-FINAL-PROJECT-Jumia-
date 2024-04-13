@@ -78,8 +78,8 @@
 "Checkout":"الدفع",
 "Saved Item":"العنصر المحفوظ",
 "See All >":"شاهد الكل >",
-"Please select a variation":"الرجاء تحديد الاختلاف",
-"Only size fit all":"الحجم الوحيد الذي يناسب الجميع",
+"Please select a variation":"يرجى اختيار تفاصيل الاختلاف",
+"Only size fit all":"حجم واحد يناسب الجميع",
 "EGP":"جنيه مصري",
 "Add to cart" :"أضف إلى السلة",
 "Previous":"سابق",
@@ -89,7 +89,8 @@
 "Cart":"سلة التسوق",
 "Missing EGP 151.00 to reach free delivery":"ناقص 151.00 جنيهًا مصريًا للوصول إلى التوصيل المجاني",
 "off":"عن",
-"Buy 400 get":"اشتري 400 واحصل على"
+"Buy 400 get":"اشتري 400 واحصل على",
+"Product Added To wishlist Successfully":"تمت إضافة المنتج إلى قائمة الرغبات بنجاح"
     },
     "order" :{
         "1.CUSTOMER ADDRESS":"1. عنوان العميل",
@@ -129,18 +130,24 @@
 "Close Account":"أغلق الحساب",
 "LOGOUT":"تسجيل خروج",
 "Orders":"طلبات",
-"ONGOING/DELIVERD (0)":"جاري/التسليم (0)",
-"CNACELD/RETURNED (0)":"إلغاء/إرجاع (0)",
-"You have place no order yet!":"لم تقم بوضع أي أمر حتى الآن!",
+"ONGOING/DELIVERD (0)":"تم التقديم/جاري التوصيل (0)",
+"CNACELD/RETURNED (0)":"تم الإلغاء/المُرجَع (0)",
+"You have place no order yet!":"لم تقم بوضع أي طلب حتى الآن!",
 "All your orders will be saved here":"سيتم حفظ جميع طلباتك هنا",
 "Go shopping" :"اذهب للتسوق",
 "OPEN ORDES (0)":"افتح الطلبات",
 "CLOSE ORDERS (0)":"أغلق الطلبات",
-"SEE DETALIS" :"انظر التفاصيل",
+"SEE DETALIS" :"انظر للتفاصيل",
 "Top Selling Item":"السلع الأكثر مبيعًا",
 "See All >":"اظهار الكل",
 "Previous":"سابق",
-"Next":"التالي"
+"Next":"التالي",
+"Enter your first name":"أدخل اسمك الأول",
+"Enter your last name":"أدخل اسمك الأخير",
+"Enter your Phone Number":"أدخل رقم هاتفك",
+"Enter Additional Phone Number":" أدخل  رقم هاتف إضافي",
+"Enter your Address":"أدخل عنوانك",
+"Enter Additional Information":" أدخل معلومات إضافية"
 
     }
     ,
@@ -149,30 +156,30 @@
         "Items total":"إجمالي السلعة",
         "EGP":"جنيه مصري",
         "Delivery fees":"رسوم التوصيل",
-        "Prepaid discount":"خصم الدفع المسبق",
+        "Prepaid discount":" خصم مدفوع مُسبقًا",
         "Total":"المجموع",
-        "You will be able to add a voucher when selecting your payment method":"ستتمكن من إضافة قسيمة عند اختيار طريقة الدفع الخاصة بك",
+        "You will be able to add a voucher when selecting your payment method":" سيتاح لك إضافة قسيمة عند اختيار طريقة الدفع الخاصة بك.",
         "Confirm Order":"أكد الطلب",
         "1.CUSTOMER ADDRESS":"1. عنوان العميل",
         "Change":"تغيير",
         "Delivary Details":"تفاصيل التسليم",
-        "Door Delivery":"تسليم الباب",
-"Fulfilled by Al huda Store":"تنفيذ متجر الهدى",
+        "Door Delivery":" توصيل للباب",
+"Fulfilled by Al huda Store":" تم تنفيذه بواسطة متجر الهدى",
 "3.Payment Method":"3. طريقة الدفع",
 "Confirm Delivery Order":"تأكيد أمر التسليم",
 "2.Delivary Details":"2. تفاصيل التسليم",
-"Delivery between 27 March and 28 March":"التسليم بين 27 مارس و 28 مارس",
+"Delivery between 27 March and 28 March":"التوصيل بين 27 مارس و 28 مارس",
 "Shipment 1":"شحنة 1",
-"OTY:":"OTY:"
+"OTY:":"كمية:"
     },
     "confirmorder":{
         "Order summary":"ملخص الطلب",
         "Items total":"إجمالي السلعة",
         "EGP":"جنيه مصري",
         "Delivery fees":"رسوم التوصيل",
-        "Prepaid discount":"خصم الدفع المسبق",
+        "Prepaid discount":" خصم مدفوع مُسبقًا",
         "Total":"المجموع",
-        "You will be able to add a voucher when selecting your payment method.":"ستتمكن من إضافة قسيمة عند اختيار طريقة الدفع الخاصة بك."
+        "You will be able to add a voucher when selecting your payment method.":" سيتاح لك إضافة قسيمة عند اختيار طريقة الدفع الخاصة بك."
     },
     "payment" : {
         "Order summary":"ملخص الطلب",
@@ -181,18 +188,26 @@
         "Prepaid discount":"خصم الدفع المسبق",
         "EGP":"جنيه مصري",
         "Total":"المجموع",
-        "You will be able to add a voucher when selecting your payment method":"ستتمكن من إضافة قسيمة عند اختيار طريقة الدفع الخاصة بك",
+        "You will be able to add a voucher when selecting your payment method":" سيتاح لك إضافة قسيمة عند اختيار طريقة الدفع الخاصة بك.",
         "Confirm Order":"أكد الطلب",
         "1.CUSTOMER ADDRESS":"1. عنوان العميل",
         "Change":"تغيير",
         "2.DELIVERY DETAILS":"2. تفاصيل التسليم",
-        "Door Delivery":"تسليم الباب",
+        "Door Delivery":" توصيل للباب",
         "3.PAYMENT METHOD":"3. طريقة الدفع",
         "Paypal":"باي بال",
         "Cash":"نقدي",
-        "Mobile Money":"المال المحمول",
+        "Mobile Money":"المال النقال",
         "Confirm Payment Method":"تأكيد طريقة الدفع",
-        "Delivery between 20 April and 25 April":"التسليم بين 20 أبريل و 25 أبريل"
+        "Delivery between 20 April and 25 April":"التوصيل بين 20 إبريل و 25 إبريل",
+        "Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when":"الدفع عند الاستلام نقدًا، أو عبر بطاقة بنكية، أو عبر المحفظة الذكية. استمتع بخصم قيمته 10 جنيهات مصرية على رسوم الشحن.",
+        "- Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when you choose...!":"ادفع عند التسليم عبر النقد، بطاقة بنكية، أو محفظة ذكية. استمتع بخصم قيمته 10 جنيهات مصرية على رسوم الشحن عند اختيارك...",
+        "- When you choose Cash on delivery, you can pay for your order in cash when you receive your shipment at home or...":"عندما تختار الدفع عند الاستلام نقدًا، يمكنك دفع ثمن طلبك نقدًا عند استلام شحنتك في المنزل أو...",
+        "Details":"تفاصيل",
+        "Payment on delivery":"الدفع عند الاستلام",
+        "Pre-pay Now":"دفع مقدمًا الآن",
+        "Get 10 EGP Off on Shopping Free When You Pay With Your Card":"احصل على خصم بقيمة 10 جنيهات مصرية على التسوق مجانًا عندما تدفع ببطاقتك.",
+        "Pay Using Your Mobile Wallet":"ادفع باستخدام محفظتك الجوالة"
     },
  "orderitem":{
 "you Cant Cancel This order":"لا يمكنك إلغاء هذا الطلب",
@@ -215,7 +230,7 @@
 "QTY":"الكمية",
 "Total Price":"السعر الكلي",
 "Cancel Order":"الغاء الطلب",
-"Delivered By Monday , 15-04":"سيتم التسليم يوم الاثنين 15-04",
+"Delivered By Monday , 15-04":"سيتم التوصيل بحلول يوم الاثنين، 15-04",
 "Items":"عنصر"
     },
 
@@ -238,9 +253,9 @@
 "Total Price":"السعر الكلي",
 "Cancel Order":"الغاء الطلب",
 "Orders":"طلبات",
-"ONGOING/DELIVERD (0)":"جاري/التسليم (0)",
-"CNACELD/RETURNED (0)":"إلغاء/إرجاع (0)",
-"You have place no order yet!":"لم تقم بوضع أي أمر حتى الآن!",
+"ONGOING/DELIVERD (0)":"تم التقديم/جاري التوصيل (0)",
+"CNACELD/RETURNED (0)":"تم الإلغاء/المُرجَع (0)",
+"You have place no order yet!":"لم تقم بوضع أي طلب حتى الآن!",
 "All your orders will be saved here":"سيتم حفظ جميع طلباتك هنا",
 "Go shopping" :"اذهب للتسوق",
 "Order Details":"تفاصيل الطلب",
@@ -253,9 +268,9 @@
         "Items total":"إجمالي السلعة",
         "EGP":"جنيه مصري",
         "Delivery fees":"رسوم التوصيل",
-        "Prepaid discount":"خصم الدفع المسبق",
+        "Prepaid discount":" خصم مدفوع مُسبقًا",
         "Total":"المجموع",
-        "You will be able to add a voucher when selecting your payment method." :"ستتمكن من إضافة قسيمة عند اختيار طريقة الدفع الخاصة بك.",
+        "You will be able to add a voucher when selecting your payment method." :" سيتاح لك إضافة قسيمة عند اختيار طريقة الدفع الخاصة بك.",
         "Confirm Order":"أكد الطلب",
         "1.CUSTOMER ADDRESS" :"1. عنوان العميل",
         "EDIT ADDRESS":"تعديل العنوان",
@@ -278,10 +293,27 @@
         "SAVE":"حفظ",
         "2.Delivary Details":"2. تفاصيل التسليم",
         "3.Payment Method":"3. طريقة الدفع",
-        "Go back & continue shopping":"العودة ومواصلة التسوق"
+        "Go back & continue shopping":"العودة ومواصلة التسوق",
+        "(Complete the steps in order to proceed)":"(أكمل الخطوات للمتابعة)",
+        "By proceeding, you are automatically accepting the":"بالمتابعة، أنت تقبل تلقائياً",
+        "Terms & Conditions":"الشروط والأحكام",
+        "- Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when you choose prepaid at checkout!":"الدفع عند الاستلام عبر النقد، بطاقة بنكية، أو محفظة ذكية. استمتع بخصم قدره 10 جنيهات مصرية على رسوم الشحن عند اختيار الدفع المسبق عند الخروج!",
+        "- When you choose Cash on delivery, you can pay for your order in cash when you receive your shipment at home or Jumia’s pick-up stations.":"عندما تختار الدفع عند الاستلام نقدًا، يمكنك دفع ثمن طلبك نقدًا عند استلام شحنتك في المنزل أو في محطات الاستلام التابعة لجوميا.",
+        "- Enjoy 10 EGP discount when you pay via prepaid method.":"استمتع بخصم 10 جنيهات مصرية عند الدفع عن طريق الطريقة المدفوعة مسبقًا.",
+        "- Egyptian pounds are accepted only.":"يتم قبول الجنيه المصري فقط.",
+        "- Please provide the specified amount only when paying for the possibility that there will be enough cash with the delivery representative if a value is paid higher than the requested one.":"يرجى تقديم المبلغ المحدد فقط عند الدفع، لتوفير احتمالية وجود ما يكفي من النقد مع مندوب التوصيل في حال تم دفع مبلغ أعلى من المطلوب.",
+        "- You must pay for the product before opening the shipment.":"يجب عليك دفع ثمن المنتج قبل فتح الشحنة.",
+        "- In case the product is returned, the available refund methods are (refund voucher - postal transfer).":"في حال تم إرجاع المنتج، فإن وسائل الاسترداد المتاحة هي (قسيمة استرداد - تحويل بريدي).",
+        "Enter your first name":"أدخل اسمك الأول",
+        "Enter your last name":"أدخل اسمك الأخير",
+        "Enter your Phone Number":"أدخل رقم هاتفك",
+        "Additional Phone Number":"إضافة رقم هاتف ",
+        "Enter your Address":"أدخل عنوانك",
+        "Additional Information":"معلومات إضافية"
+
     },
     "register":{
-        "W E L C O M E T O J U M I A":"W E L C O M E T O J U M I A",
+        "W E L C O M E T O J U M I A":"اهلا في جوميا",
         "Type your e-mail or phone number to log in or create a Jumia account.":"اكتب بريدك الإلكتروني أو رقم هاتفك لتسجيل الدخول أو إنشاء حساب على جوميا.",
         "Enter Your Name" :"أدخل أسمك",
         "Required":"مطلوب",
@@ -308,7 +340,8 @@
         "Enter Valid Password.":"أدخل كلمة مرور صالحة.",
         "Login":"تسجيل الدخول",
         "For further support, you may visit the Help Center or contact our customer service team." :"لمزيد من الدعم، يمكنك زيارة مركز المساعدة أو الاتصال بفريق خدمة العملاء لدينا."
-  ,"Forget Your Password?":"نسيت كلمة المرور؟"
+  ,"Forget Your Password?":"نسيت كلمة المرور؟",
+  "Create your Jumia Account":"قم بإنشاء حساب جوميا الخاص بك"
     },
 "home":{
     "Previous":"سابق",
@@ -322,7 +355,8 @@
     "Ramadan Preparations ☾":"تجهيزات رمضان ☾",
     "Shop All Your Needs":"تسوّق لجميع احتياجاتك",
     "♡ Proudly Made in Egypt ♡":"♡ بكل فخر صنع في مصر ♡",
-    "Best Fashion Offers":"أفضل عروض الأزياء"
+    "Best Fashion Offers":"أفضل عروض الأزياء",
+    "WOMEN'S FASHION":"أزياء النساء"
   
     },
     "filter":{
@@ -357,7 +391,7 @@
         "EGP":"جنيه مصري",
         "Add To Cart":"أضف إلى السلة",
         "Details":"تفاصيل",
-        "Please select a variation":"الرجاء تحديد الاختلاف",
+        "Please select a variation":"يرجى اختيار تفاصيل الاختلاف",
         "VARIATION AVAILABLE":"الاختلاف متاح",
         "ADD TO WISHLIST":"أضف إلى قائمة الرغبات",
         "REMOVE FROM WISHLIST":"إزالة من قائمة الرغبات"
@@ -370,7 +404,7 @@
     "VARIATION AVAILABLE":"الاختلاف متاح",
     "Add To Cart":"أضف إلى السلة",
     "DELIVERY & RETURNS":"التسليم والإرجاع",
-    "Door Delivery":"تسليم الباب",
+    "Door Delivery":" توصيل للباب",
     "Ready for delivery between 21 April & 22 April when you order within next 6hrs 19mins":"جاهز للتسليم بين 21 أبريل و22 أبريل عند الطلب خلال 6 ساعات و19 دقيقة القادمة",
     "Return Policy":"سياسة العائدات",
     "Free return within the legal return period from 14 to 30 days, and if they meet the terms & conditions, with the need to report any apparent defect within 48 hours. For more details about return policy.":"إرجاع مجاني خلال فترة الإرجاع القانونية من 14 إلى 30 يومًا، وفي حال استيفائها للشروط والأحكام، مع ضرورة الإبلاغ عن أي عيب ظاهر خلال 48 ساعة. لمزيد من التفاصيل حول سياسة العودة.",

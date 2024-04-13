@@ -17,7 +17,7 @@
                         [ngClass]="{'border-danger': firstName.invalid && firstName.touched}">
                         <legend class="float-none w-auto  mx-3 ">{{'shipment.First Name' | translate}}</legend>
                         <input type="text" class="w-100 " id="firstName" value="" required
-                            placeholder="Enter your first name" #firstName="ngModel" name="FirstNameEn"
+                            placeholder="{{'shipment.Enter your first name'|translate}}" #firstName="ngModel" name="FirstNameEn"
                             value="shippment.firstNameEn" [(ngModel)]="shippment.firstNameEn">
                     </fieldset>
 
@@ -33,7 +33,7 @@
                     <fieldset class="border  form-control"
                         [ngClass]="{'border-danger': lastName.invalid && lastName.touched , 'border-orange': !lastName.invalid || !lastName.touched}">
                         <legend class="float-none w-auto  mx-3">{{'shipment.Last Name' | translate}}</legend>
-                        <input type="text" class="w-100 " id="lastName" placeholder="Enter your last name" required
+                        <input type="text" class="w-100 " id="lastName" placeholder="{{'shipment.Enter your last name'|translate}}" required
                             name="lastName" [(ngModel)]="shippment.lastName" #lastName="ngModel">
                     </fieldset>
                     <div for="lastName" class="form-text text-danger" [hidden]="lastName.valid  || lastName.untouched">
@@ -52,7 +52,7 @@
                         <fieldset class="border   form-control"
                             [ngClass]="{'border-danger': phoneNumber.invalid && phoneNumber.touched}">
                             <legend class="float-none mx-3 ">{{'shipment.Phone Number' | translate}}</legend>
-                            <input type="tel" id="phoneNumber"class="w-100 " value="" placeholder="Enter your Phone Number" required
+                            <input type="tel" id="phoneNumber"class="w-100 " value="" placeholder="{{'shipment.Enter your Phone Number'|translate}}" required
                                 #phoneNumber="ngModel" name="phoneNumber" [(ngModel)]="shippment.phoneNumber">
                         </fieldset>
                     </div>
@@ -73,7 +73,7 @@
                         <fieldset class="border  form-control">
                             <legend class="float-none  mx-3 ">{{'shipment.Additional Phone Number' | translate}}
                             </legend>
-                            <input type="tel" id="AddphoneNumber"class="w-100 " value="" placeholder="Enter Additional Phone Number">
+                            <input type="tel" id="AddphoneNumber"class="w-100 " value="" placeholder="{{'shipment.Additional Phone Number'|translate}}">
                         </fieldset>
 
                     </div>
@@ -82,7 +82,7 @@
                     <fieldset class="border  form-control"
                         [ngClass]="{'border-danger': address.invalid && address.touched}">
                         <legend class="float-none w-auto  mx-3 ">{{'shipment.Address' | translate}}</legend>
-                        <input type="tel" id="address"class="w-100 " placeholder="Enter your Address" required #address="ngModel"
+                        <input type="tel" id="address"class="w-100 " placeholder="{{'shipment.Enter your Address'|translate}}" required #address="ngModel"
                             name="address" [(ngModel)]="shippment.address">
                     </fieldset>
 
@@ -96,7 +96,7 @@
                         [ngClass]="{'border-danger': adressInformation.invalid && adressInformation.touched}">
                         <legend class="float-none w-auto  mx-3">{{'shipment.Additional Information' | translate}}
                         </legend>
-                        <input type="tel" id="additionalInformation"class="w-100 " placeholder="Enter Additional Information" required
+                        <input type="tel" id="additionalInformation"class="w-100 " placeholder="{{'shipment.Additional Information'|translate}}" required
                             #adressInformation="ngModel" name="adressInformation"
                             [(ngModel)]="shippment.adressInformation">
                     </fieldset>
@@ -135,7 +135,7 @@
                             <option *ngFor="let city of selectedRegionCities" [value]="city">{{ city }}</option>
                         </select>
                         <div id="validationServer04Feedback" class="invalid-feedback">
-                            {{' shipment.Please select Your City.' | translate}}
+                            {{'shipment.Please select Your City.' | translate}}
                         </div>
                     </fieldset>
                 </div>
@@ -201,13 +201,13 @@
                         <div class="card-footer bg-light"style="text-align: center;">
                             <button class="btn  text-light bton-order w-100" style="width: 90%;" disabled
                                 routerLink="/shippment">{{'shipment.Confirm Order' | translate}} </button>
-                                <b ><small >(Complete the steps in order to proceed)</small></b>
+                                <b ><small >{{'shipment.(Complete the steps in order to proceed)' | translate}}</small></b>
                         </div>
             </div>
             <div class=""style="text-align: center;">
                
-                    <h6 ><small class="text-secondary" >By proceeding, you are automatically accepting the </small></h6>
-                    <a><small>Terms & Conditions</small></a>
+                    <h6 ><small class="text-secondary" >{{'shipment.By proceeding, you are automatically accepting the' | translate}} </small></h6>
+                    <a><small>{{'shipment.Terms & Conditions' | translate}}</small></a>
             </div>
             
         </div>
