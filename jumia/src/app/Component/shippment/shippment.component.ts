@@ -189,6 +189,7 @@ export class ShippmentComponent implements OnInit{
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'
     });
+   
     //
     this._ShippmentService.Getshippment(this.clientId).subscribe(shippment => {
      // this.shippment=shippment.entity
@@ -303,5 +304,8 @@ changeLanguage(lang: string) {
 
   window.location.reload();
 
+}
+isArabicLanguage(): boolean {
+  return this.translate.currentLang === 'ar'; 
 }
 }

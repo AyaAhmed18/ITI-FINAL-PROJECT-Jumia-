@@ -84,4 +84,15 @@ private _apiProductService:ApiProductsService){
     });
   }
 
+  increaseDate(days: number): { dayName: string, dayNumber: number, monthName: string } {
+    let date = new Date();
+    date.setDate(date.getDate() + days);
+  
+  
+    const dayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date);
+    const dayNumber = date.getDate();
+    const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(date);
+  
+    return { dayName, dayNumber, monthName };
+  }
 }

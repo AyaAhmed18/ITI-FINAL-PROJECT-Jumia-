@@ -46,7 +46,8 @@
               <label class="form-check-label " for="flexRadioDefault2">
                 <strong> {{'delivery.Door Delivery' | translate}}</strong>
                 <small>{{'delivery.(From EGP 35.00)' | translate}}</small>
-                <p> <small>{{'delivery.Delivery between 27 March and 28 March'| translate}}</small></p>
+                <p> <small>Delivered between {{ increaseDate(5).dayNumber }} {{ increaseDate(5).monthName }}
+                  and  {{ increaseDate(10).dayNumber }} {{ increaseDate(10).monthName }}</small></p>
               </label>
 
             </div>
@@ -126,7 +127,7 @@
               <p class="me-5">{{'shipment.Delivery fees' | translate}}</p>
             </div>
             <div class=" col-6 " style="text-align: end;">
-              <p class=""><strong>{{'shipment.EGP' | translate}} 300.00 </strong></p>
+              <p class=""><strong>{{'shipment.EGP' | translate}} 35.00 </strong></p>
             </div>
 
           </div>
@@ -136,7 +137,7 @@
               <p class="me-5">{{'shipment.Prepaid discount' | translate}}</p>
             </div>
             <div class=" col-6 " style="text-align: end;">
-              <p class="text-success"><strong>- {{'shipment.EGP' | translate}} 10</strong> </p>
+              <p class="text-success"><strong> {{'shipment.EGP' | translate}} -10</strong> </p>
             </div>
 
           </div>
@@ -147,7 +148,7 @@
               <p class="me-5">{{'shipment.Total' | translate}}</p>
             </div>
             <div class=" col-6 " style="text-align: end;">
-              <p class=""><strong>{{'shipment.EGP' | translate}} {{TotalCartPrice +300 -10}}</strong></p>
+              <p class=""><strong>{{'shipment.EGP' | translate}} {{TotalCartPrice +35 -10}}</strong></p>
             </div>
 
           </div>
