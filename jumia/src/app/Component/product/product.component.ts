@@ -45,7 +45,7 @@ showAlert2: boolean = false;
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
   @Output() addTowashlistClicked = new EventEmitter<ProductDto>();
   @Input() triggerFunction: boolean = false;
-  //addedToCart = false;
+  addedToCart = false;
   addedTowashlist= false;
   isArabic: boolean = false;
   constructor(private _ApiProductsService :ApiProductsService ,
@@ -119,6 +119,7 @@ showAlert2: boolean = false;
        this.cartTotalPrice+=prod.realPrice
        this._cartService.addToCart(prod);
        this.addToCartClicked.emit(prod);
+       prod.addedToCart = true;
        this._wishlist.removeProductFromWishlist(prod)
        this.showAlert1 = true;
     }
