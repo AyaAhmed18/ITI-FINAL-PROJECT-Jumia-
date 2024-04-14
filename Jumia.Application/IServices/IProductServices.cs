@@ -33,5 +33,8 @@ namespace Jumia.Application.IServices
         Task<ResultDataForPagination<GetAllProducts>> FilterByAll(List<int>? BrandIdList, int? MinPrice, int? MaxPrice, int? MinDisc, int items, int pagenumber);
         Task<ResultDataForPagination<GetAllProducts>> GetProductsByCategoryId(int CategoryId, int items, int pagenumber);
         Task<ResultDataForPagination<GetAllProducts>> GetProductsBySubCategoryId(int SubCategoryId, int items, int pagenumber);
+        Task<ResultDataForPagination<GetAllProducts>> GetOrderedAscWithPagination(int items, int pagenumber);
+        Task<ResultDataForPagination<GetAllProducts>> GetOrderedDscWithPagination(int items, int pagenumber);
+        Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivalsWithPagination(int items, int pagenumber);
     }
 }

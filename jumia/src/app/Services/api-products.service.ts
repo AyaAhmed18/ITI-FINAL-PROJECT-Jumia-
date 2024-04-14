@@ -14,7 +14,7 @@ export class ApiProductsService {
   //private apiUrl = 'http://localhost:64866/api/Product';
 //http://localhost:5094/api/Product bahaa
   //localhost:64866/api/Product
-  constructor(private _httpClient:HttpClient) { 
+  constructor(private _httpClient:HttpClient) {
     this.httpHeader={headers:new HttpHeaders(
       {"Content-Type":"application/json","Accept-Language":"ar-EG"}
       //{"Content-Type":"application/json"}
@@ -34,19 +34,35 @@ export class ApiProductsService {
     return this._httpClient.get<any>(`${this.apiUrl}/Product`, { params});
 }
 
-
+getAllProductsWithOrderAascWithPagination(pageSize: number, pageNumber: number): Observable<any> {
+  const params = new HttpParams()
+      .set('pageSize', pageSize.toString())
+      .set('pageNumber', pageNumber.toString());
+  return this._httpClient.get<any>(`${this.apiUrl}/Product/GetOrderedAscByPagination`, { params});
+}
   getAllProductsWithOrderAasc(): Observable<any> {
 
 
     let allpro= this._httpClient.get<any>(`${this.apiUrl}/Product/GetOrderedAsc`);
     return allpro;
   }
-
+  getAllProductsWithOrderDascWithPagination(pageSize: number, pageNumber: number): Observable<any> {
+    const params = new HttpParams()
+        .set('pageSize', pageSize.toString())
+        .set('pageNumber', pageNumber.toString());
+    return this._httpClient.get<any>(`${this.apiUrl}/Product/GetOrderedDscByPagination`, { params});
+  }
   getAllProductsWithOrderDasc(): Observable<any> {
 
 
     let allpro= this._httpClient.get<any>(`${this.apiUrl}/Product/GetOrderedDsc`);
     return allpro;
+  }
+  getAllProductsWithNewestArrivalsWithPagination(pageSize: number, pageNumber: number): Observable<any> {
+    const params = new HttpParams()
+        .set('pageSize', pageSize.toString())
+        .set('pageNumber', pageNumber.toString());
+    return this._httpClient.get<any>(`${this.apiUrl}/Product/GetNewestArrivalByPagination`, { params});
   }
   getAllProductsWithNewestArrivals(): Observable<any> {
 

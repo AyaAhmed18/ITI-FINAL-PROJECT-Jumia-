@@ -221,6 +221,24 @@ namespace JumiaStore.Controllers
                 return Ok(productname);
             }
         }
+        [HttpGet("GetOrderedAscByPagination")]
+        public async Task<IActionResult> GetOrderedAscByPagination(int pageSize, int pageNumber)
+        {
+            var Prds = await _productServices.GetOrderedAscWithPagination(pageSize,pageNumber);
+            return Ok(Prds.Entities);
+        }
+        [HttpGet("GetOrderedDscByPagination")]
+        public async Task<IActionResult> GetOrderedDscByPagination(int pageSize, int pageNumber)
+        {
+            var Prds = await _productServices.GetOrderedDscWithPagination(pageSize, pageNumber);
+            return Ok(Prds.Entities);
+        }
+        [HttpGet("GetNewestArrivalByPagination")]
+        public async Task<IActionResult> GetNewestArrivalByPagination(int pageSize, int pageNumber)
+        {
+            var Prds = await _productServices.GetNewestArrivalsWithPagination(pageSize, pageNumber);
+            return Ok(Prds.Entities);
+        }
     }
 }
 ////Bahaa http://localhost:5094/api/Product

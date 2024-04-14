@@ -47,7 +47,8 @@ showAlert2: boolean = false;
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
   @Output() addTowashlistClicked = new EventEmitter<ProductDto>();
   @Input() triggerFunction: boolean = false;
-  addedToCart = false;
+  WhichSorting: Number = 0;
+  //addedToCart = false;
   addedTowashlist= false;
   isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   constructor(private _ApiProductsService :ApiProductsService ,
@@ -60,11 +61,11 @@ showAlert2: boolean = false;
       private _filterServices : FilterServiceService,
     private _specsServive:ApiSpecficationsService,
     private  translate: TranslateService)
-    
+
    {
 
    }
-   
+
    ngOnInit(): void {
     this.isArabicLanguage();
     // this._activeRouter.paramMap.subscribe(parammap=>
@@ -74,7 +75,6 @@ showAlert2: boolean = false;
     //   })
     // //
     // this.getAllProducts();
-    this.getAllProducts();
     this.Sershresult();
     const currentRoute = this._route.url;
     // if (currentRoute.includes('GetSubCategory')) {
@@ -95,7 +95,7 @@ showAlert2: boolean = false;
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'
     })
-   
+
     console.log("onInit");
     console.log(this.products);
     //this.pageNumbers = this.products[1]
@@ -136,7 +136,7 @@ showAlert2: boolean = false;
 GetSpecs(pro:ProductDto){
     this._specsServive.GetProductSpecs(pro.id).subscribe(specs => {
       if (specs != null) {
-        console.log(specs); 
+        console.log(specs);
         specs.forEach(spec => {
           this.AllSpecs.push(spec);
           if (spec.specificationName === 'Size') {
@@ -151,7 +151,7 @@ GetSpecs(pro:ProductDto){
         });
       }
     });
-  
+
 }
   // end Add to Cart
 
@@ -164,11 +164,11 @@ GetSpecs(pro:ProductDto){
           this.showAlert2 = true;
       }
       product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
-  
-  
+
+
     }
-  
-  
+
+
     isInWishlist(product: ProductDto): boolean {
       return !!product.addedTowashlist;
   }  // ngOnInit(): void {
@@ -218,6 +218,7 @@ getAllProducts() {
           this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
           console.log("all");
           console.log( this.products);
+          this.WhichSorting = 1;
         //  this.sanitizeImages();
       },
       error: (err) => {
@@ -234,7 +235,11 @@ if (this.pageNumber < this.totalPages) {
 
 
 console.log();
-  this.getAllProducts();
+if(this.WhichSorting == 2)this.loadAllProductsOrderedAsc();
+else if(this.WhichSorting == 3)this.loadAllProductsOrderedDsc();
+else if(this.WhichSorting == 4)this.loadAllProductsNewestArrivals();
+else this.getAllProducts();
+  //this.getAllProducts();
 }
 }
 
@@ -242,22 +247,36 @@ prevPage(): void {
 if (this.pageNumber > 1) {
   this.pageNumber--;
   this._filterServices.setValue(this.pageNumber);
-  this.getAllProducts();
+  if(this.WhichSorting == 2)this.loadAllProductsOrderedAsc();
+  else if(this.WhichSorting == 3)this.loadAllProductsOrderedDsc();
+  else if(this.WhichSorting == 4)this.loadAllProductsNewestArrivals();
+  else this.getAllProducts();
 }
 }
 goToPage(page: number): void {
 if (page >= 1 && page <= this.totalPages) {
   this.pageNumber = page;
   this._filterServices.setValue(this.pageNumber);
-  this.getAllProducts();
+  if(this.WhichSorting == 2)this.loadAllProductsOrderedAsc();
+  else if(this.WhichSorting == 3)this.loadAllProductsOrderedDsc();
+  else if(this.WhichSorting == 4)this.loadAllProductsNewestArrivals();
+  else this.getAllProducts();
+  //this.getAllProducts();
 }
 }
   loadAllProductsOrderedAsc() {
-    this._ApiProductsService.getAllProductsWithOrderAasc().subscribe({
+    this._ApiProductsService.getAllProductsWithOrderAascWithPagination(this.pageSize, this.pageNumber).subscribe({
       next: (data) => {
-        this.products = data;
         this.AllProd=data.length;
-        this.sanitizeImages();
+        this.products = data;
+        this.AllProd = data.count;
+
+        this.totalPages=Math.ceil( this.AllProd / this.pageSize)
+        this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+          console.log("all");
+          console.log( this.products);
+          this.WhichSorting  = 2;
+        //this.sanitizeImages();
       },
       error: (err) => {
         console.log(err);
@@ -266,10 +285,17 @@ if (page >= 1 && page <= this.totalPages) {
   }
 
   loadAllProductsOrderedDsc() {
-    this._ApiProductsService.getAllProductsWithOrderDasc().subscribe({
+    this._ApiProductsService.getAllProductsWithOrderDascWithPagination(this.pageSize, this.pageNumber).subscribe({
       next: (data) => {
+        this.AllProd=data.length;
         this.products = data;
-        this.sanitizeImages();
+        this.AllProd = data.count;
+
+        this.totalPages=Math.ceil( this.AllProd / this.pageSize)
+        this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+          console.log("all");
+          console.log( this.products);
+          this.WhichSorting  = 3;
       },
       error: (err) => {
         console.log(err);
@@ -277,10 +303,17 @@ if (page >= 1 && page <= this.totalPages) {
     });
   }
   loadAllProductsNewestArrivals() {
-    this._ApiProductsService.getAllProductsWithNewestArrivals().subscribe({
+    this._ApiProductsService.getAllProductsWithNewestArrivalsWithPagination(this.pageSize, this.pageNumber).subscribe({
       next: (data) => {
+        this.AllProd=data.length;
         this.products = data;
-        this.sanitizeImages();
+        this.AllProd = data.count;
+
+        this.totalPages=Math.ceil( this.AllProd / this.pageSize)
+        this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+          console.log("all");
+          console.log( this.products);
+          this.WhichSorting  = 4;
       },
       error: (err) => {
         console.log(err);
@@ -370,7 +403,7 @@ changeLanguage(lang: string) {
 }
 
 isArabicLanguage(): boolean {
-  return this.translate.currentLang === 'ar'; 
+  return this.translate.currentLang === 'ar';
 }
 closeAlert(){
   this.showAlert1 = false;

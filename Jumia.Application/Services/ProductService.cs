@@ -478,6 +478,53 @@ namespace Jumia.Application.Services
             //var ProductsInCategory = MakeFinalResult(productsInCategoryAfterFeltering);
 
         }
+        public async Task<ResultDataForPagination<GetAllProducts>> GetOrderedAscWithPagination(int items, int pagenumber)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.RealPrice, OrderBy.Ascending));
+                //.Select(p => new GetAllProducts(p))
+                //.ToList();
+            var productsSortedAscInPagination = Prds
+              .Skip(items * (pagenumber - 1))
+              .Take(items)
+              .Select(p => new GetAllProducts(p))
+              .ToList();
+
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = productsSortedAscInPagination;
+            return resultDataList;
+        }
+
+        public async Task<ResultDataForPagination<GetAllProducts>> GetOrderedDscWithPagination(int items, int pagenumber)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.RealPrice, OrderBy.Descending));
+                //.Select(p => new GetAllProducts(p))
+                //.ToList();
+            var productsSortedDscInPagination = Prds
+              .Skip(items * (pagenumber - 1))
+              .Take(items)
+              .Select(p => new GetAllProducts(p))
+              .ToList();
+
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = productsSortedDscInPagination;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivalsWithPagination(int items, int pagenumber)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.CreatedDate, OrderBy.Descending));
+                //.Select(p => new GetAllProducts(p))
+                //.ToList();
+
+            var productsSortedDscInPagination = Prds
+               .Skip(items * (pagenumber - 1))
+               .Take(items)
+               .Select(p => new GetAllProducts(p))
+               .ToList();
+
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = productsSortedDscInPagination;
+            return resultDataList;
+        }
 
         //public async List<GetAllProducts> MakeIncludable(IQueryable<GetAllProducts> Prds, int? items, int? pagenumber)
         //{

@@ -31,9 +31,8 @@ export class AppComponent implements OnInit{
   IsUserLogged: boolean = false
   loggedInUsername: string;
   isArabic: boolean = false;
-  constructor(private translate:TranslateService,
-    private reloadService: ReloadService,private _apiLoginService: ApiLoginService){
-      this.loggedInUsername = this._apiLoginService.getLoggedInUsername();
+  constructor(private translate:TranslateService,private _apiLoginService: ApiLoginService){
+  this.loggedInUsername = this._apiLoginService.getLoggedInUsername();
    this.lang =  localStorage.getItem('lang')
   
     translate.use(this.lang);
@@ -49,19 +48,7 @@ export class AppComponent implements OnInit{
    
     //localStorage.removeItem("isArabic")
   }
- reload(){
-  if (this.reloadService.getReloadCount() < 2) {
-    setTimeout(() => {
-      window.location.reload();
-      // Increment the reload count after reloading
-      this.reloadService.incrementReloadCount();
-      // Reset reload count if it's now 2
-      if (this.reloadService.getReloadCount() >= 2) {
-        this.reloadService.resetReloadCount();
-      }
-    }, 2000); // Adjust the interval as needed
-  }
- }
+ 
  changeLanguage(lang: string) {
   if (lang == 'en') {
     localStorage.setItem('lang', 'en')
