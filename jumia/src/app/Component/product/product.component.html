@@ -10,15 +10,15 @@
                 
                     <div class="row">
                         
-                            <div class="col-3 ">
-                                <p for="sort" class="float-end text-secondary h5"><strong>{{'product.sortbY:' | translate}}</strong></p>
-                            </div>
-                            <div class="col-8">
+                            <!-- <div class="col-4 ">
+                                <p for="sort" class="float-end text-secondary h6"><strong>{{'product.sortbY:' | translate}}</strong></p>
+                            </div> -->
+                            <div class="col-12">
                                 <select class="form-control mx-sm-3 " id="sort" (change)="onSortChange($event)">
-                                    <option value="allProducts">{{'product.All' | translate}}</option>
-                                    <option value="PriceLowToHigh">{{'product.Price: Low to High' | translate}}</option>
-                                    <option value="PriceHighToLow">{{'product.Price: High to Low' | translate}}</option>
-                                    <option value="NewestArrivals">{{'product.Newest Arrivals' | translate}}</option>
+                                    <option value="allProducts"><strong>{{'product.sortbY:' | translate}}</strong>{{'product.All' | translate}}</option>
+                                    <option value="PriceLowToHigh"><strong>{{'product.sortbY:' | translate}}</strong>{{'product.Price: Low to High' | translate}}</option>
+                                    <option value="PriceHighToLow"><strong>{{'product.sortbY:' | translate}}</strong>{{'product.Price: High to Low' | translate}}</option>
+                                    <option value="NewestArrivals"><strong>{{'product.sortbY:' | translate}}</strong>{{'product.Newest Arrivals' | translate}}</option>
                                 </select>
                             </div>
                            
@@ -37,7 +37,7 @@
         <div class="show-cards-btn card cards-hover" style=" border: none;"  >
             <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image"
                 style="width:100%">
-            <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%">-->
+            <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
             <div class="label-Cards-top px-2"> 
                 <span class="text-white ">{{'product.Buy 400 get' | translate}} {{pro.discount}} {{'product.off' | translate}}</span>
             </div>

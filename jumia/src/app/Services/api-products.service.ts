@@ -70,5 +70,7 @@ export class ApiProductsService {
     return this._httpClient.get<ProductDto>(`${this.apiUrl}/Product/GetbySubCategoryId?SubCatId=${id}&pageSize=10&pageNumber=1`);
   }
 
-
+  FilterByDiscountRangeToSlider(): Observable<ProductDto> {
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/Product/FilterByDiscountRangeToSlider?MinDisc=30&pageSize=20&pageNumber=1`);
+  }
 }

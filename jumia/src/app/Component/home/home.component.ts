@@ -7,6 +7,7 @@ import { SubcategoryserviceService } from '../../Services/subcategoryservice.ser
 import { SliderComponent } from '../slider/slider.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ApiLoginService } from '../../Services/api-login.service';
+import { ProductDto } from '../../ViewModels/product-dto';
 // const imgesUrl=require("../../../assets/ProductImg/ApplianceEN.png");
 @Component({
   selector: 'app-home',
@@ -29,12 +30,15 @@ export class HomeComponent implements OnInit {
   allCategories : any[]=[];
   SubCategories : any[]=[];
   allProducts : any[]=[];
+
+  productDesc: ProductDto[]|null = null;
+
   SelectedCategoryId : number=0;
   isArabic: boolean = false;
   loggedInUsername!:string
 constructor(private _categoryService :CategoryserviceService
   ,private _subCategoryService :SubcategoryserviceService
-  ,private _apiProductsService: ApiProductsService
+  ,private _ApiProductsService: ApiProductsService
   ,private _router : Router,
   private  translate: TranslateService,
 private _apiLoginService:ApiLoginService)
@@ -45,6 +49,7 @@ ngOnInit(): void {
   this._apiLoginService.gettName2().subscribe((stat) => {
     this.loggedInUsername = stat
   })
+  this.FilterByDiscountRangeToSlider();
   //this.translate.onLangChange.subscribe((Event)=>{
   //  this.isArabic = Event.lang === 'ar'
     //console.log( this.isArabic);
@@ -53,6 +58,11 @@ ngOnInit(): void {
   this.translate.onLangChange.subscribe((Event)=>{
     this.isArabic = Event.lang === 'ar'
   })
+
+ 
+  
+
+
 
 this.GetCategories();
 }
@@ -101,4 +111,28 @@ GetProductsBySubCatId(subcategoryId: number):void
 isArabicLanguage(): boolean {
   return this.translate.currentLang === 'ar-EG';
 }
+
+
+
+FilterByDiscountRangeToSlider() {
+  this._ApiProductsService.FilterByDiscountRangeToSlider().subscribe(
+    {
+      next: (data) => {
+        this.productDesc=data.entities;
+        console.log("GetProductByDiscountRange");
+        console.log(data);
+      },
+      error: (error) => {
+        console.error('Error fetching product data:', error);
+      }
+    }
+  );
 }
+navigateToDetails(productId: number): void {
+  this._router.navigateByUrl(`/Detalse/${productId}`);
+}
+
+
+}
+
+
