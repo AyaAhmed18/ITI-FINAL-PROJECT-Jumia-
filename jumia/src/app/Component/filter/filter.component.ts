@@ -16,6 +16,7 @@ import { NgxSliderModule, Options } from '@angular-slider/ngx-slider';
     standalone: true,
     templateUrl: './filter.component.html',
     styleUrl: './filter.component.css',
+    
     imports: [ProductComponent,FormsModule,CommonModule,TranslateModule , NgxSliderModule]
 })
 export class FilterComponent {
@@ -310,4 +311,6 @@ clearSelection() {
 //     });
 //   });
 // }
+
+
 }

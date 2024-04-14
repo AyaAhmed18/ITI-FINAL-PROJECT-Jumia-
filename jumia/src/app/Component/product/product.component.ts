@@ -29,6 +29,8 @@ export class ProductComponent implements  OnInit{
   productList: ProductDto[]|null = null;
 // AllProducts:ProductDto[]=[];
 //  products: any;
+
+
 searchResults: any[] = [];
 pageSize:number = 10;
 AllProd:number=0;
@@ -72,7 +74,7 @@ showAlert2: boolean = false;
     //   })
     // //
     // this.getAllProducts();
-    
+    this.getAllProducts();
     this.Sershresult();
     const currentRoute = this._route.url;
     // if (currentRoute.includes('GetSubCategory')) {
@@ -99,6 +101,11 @@ showAlert2: boolean = false;
     //this.pageNumbers = this.products[1]
    /// this.GetSpecs()
     }
+
+
+
+
+
 
     getProductByCategoryId(id:number)
     {
