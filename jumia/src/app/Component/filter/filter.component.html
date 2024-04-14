@@ -90,8 +90,12 @@
 
                 </div>
             </div> -->
+<div class="row">
+    <div class="col-8"><strong class="px-2">{{'filter.DISCOUNT' | translate}}</strong></div>
+    <div class="col-4"> <button class="btn  btn-sm d-flex justify-content-end" (click)="clearSelection()">Clear</button></div>
 
-            <div class="col-12"><strong class="px-2">{{'filter.DISCOUNT' | translate}}</strong></div>
+</div>
+            
             <div class="col-12 ">
                 <div class="form-check m-2">
                     <input class="form-check-input"name="minDisc" [(ngModel)]="minDiscount"  type="radio" value="50" id="offer50ormor"(click)="filterProducts()">
@@ -123,6 +127,7 @@
                         <small>{{'filter.10% or more' | translate}}</small>
                     </label>
                 </div>
+                
                 <!-- <button (click)="filterProducts()">Filter</button> -->
             </div>
             <div class="col-12">
@@ -133,48 +138,28 @@
                 <p>{{'filter.PRICE (EGP)' | translate}}</p>
 
 
-                <!-- <div class="slider">
-                    <div class="progress"></div>
+                
+                <div class="custom-slider">
+                    <ngx-slider [(value)]="minPrice"[(highValue)]="maxPrice" [options]="options" > </ngx-slider>
                 </div>
-                <div class="range-input">
-                    <input type="range" class="range-min" min="29" max="1900" value="500" step="5">
-                    <input type="range" class="range-max" min="29" max="1900" value="1500" step="5">
-                </div>
-                <div class="price-input">
-                    <div class="field">
+                    
+                  
+               
 
-                        <input type="number" class="input-min"[(ngModel)]="minPrice" value="2500">
-                    </div>
-                    <div class="separator">-</div>
-                    <div class="field">
-
-                        <input type="number" class="input-max"[(ngModel)]="maxPrice" value="7500">
-                    </div>
-
-                </div>
-                <button class="btn btn-primary" (click)="filterProducts()">{{'filter.Range Price' | translate}}</button> -->
-
-
-                <div class="slider">
-                    <div class="progress"></div>
-                </div>
-                <div class="range-input">
-                    <input type="range" class="range-min" min="29" max="1900" value="500" step="5">
-                    <input type="range" class="range-max" min="29" max="1900" value="1500" step="5">
-                </div>
 
                 <div class="price-input">
                     <div class="field">
 
-                        <input type="number" class="input-min" value="2500">
+                        <input type="number" [(ngModel)]="value" [(value)]="minPrice">
                     </div>
                     <div class="separator">-</div>
                     <div class="field">
 
-                        <input type="number" class="input-max" value="7500">
+                        <input type="number"[(ngModel)]="highvalue" [(value)]="maxPrice">
                     </div>
-                </div>
 
+                </div>
+                <button class="btn btn-primary " (click)="filterProducts()">{{'filter.Range Price' | translate}}</button>
 
 
 

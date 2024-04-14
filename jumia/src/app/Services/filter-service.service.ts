@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ProductDto } from '../ViewModels/product-dto';
+import { environment } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterServiceService {
-  private apiUrl = 'http://localhost:64866/api/Product';
+ // private apiUrl = 'http://localhost:64866/api/Product' ;
+ private apiUrl = `${environment.apiUrl}/Product`;
   constructor(private _httpClient: HttpClient) { }
   private ChangingPages = new BehaviorSubject<any>(null);
   setValue(value: any) {

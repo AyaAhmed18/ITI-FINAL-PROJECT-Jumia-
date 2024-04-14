@@ -34,6 +34,28 @@
       .bton-order{
         background-color: rgb(51, 51, 50);
       }
+      .ltr .delivery {
+        text-align: left !important;
+    }
+      .rtl .delivery {
+        text-align: right !important;
+    }
+    .rtl .starright{
+      float: right;
+      margin-right: -1em !important;
+      margin-left: 0.5em !important;
+    }
+    .rtl .channge{
+      text-align: left !important;
+    }
+    .rtl .reverse{
+     transform:scaleX(-1);
+    }
+    .rtl .track{
+      float: left;
+      transform:scaleX(-1);
+    }
+
       /* xtra small devices (phones)  */
 @media only screen and (max-width:590px) {
   

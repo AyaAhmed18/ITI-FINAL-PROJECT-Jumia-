@@ -32,8 +32,7 @@ export class CartComponent implements OnInit{
     this._wishlist.getWishlist().subscribe(Items=>{
       this.wishlistItems =Items
       console.log(Items);});
-    console.log(this.wishlistItems);
-    
+    console.log(this.wishlistItems); 
     this._cartService.getCart().subscribe(cartItems => {
       this.cartItems = cartItems;
      this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
@@ -90,7 +89,6 @@ export class CartComponent implements OnInit{
   removeProductFromWishlist(productToRemove: any) {
     this._wishlist.removeProductFromWishlist(productToRemove);
   }
-  
    
    //start Add to Cart 
    AddToCart(prod:ProductDto){
@@ -103,7 +101,7 @@ export class CartComponent implements OnInit{
        this._wishlist.removeProductFromWishlist(prod);
        this._cartService.addToCart(prod);
        this.showAlert1 = true;
-      // console.log(this.showAlert1);
+       console.log(this.showAlert1);
       }
 }
 
