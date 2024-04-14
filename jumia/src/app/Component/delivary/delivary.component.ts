@@ -23,7 +23,7 @@ export class DelivaryComponent implements OnInit {
   clientId=localStorage.getItem('userId')
   userId:number=0
   shippment:IShippment={} as IShippment
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
 constructor(private router:Router, private _cartService:CartService,
   private  _ShippmentService:ApiShippmentService ,private  translate: TranslateService,
 private _sanitizer:DomSanitizer,

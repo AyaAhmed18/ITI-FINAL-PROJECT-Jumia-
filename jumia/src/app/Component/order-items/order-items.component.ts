@@ -29,7 +29,7 @@ export class OrderItemsComponent implements OnInit{
   showAlert2: boolean = false;
   clientId=localStorage.getItem('userId')
   userId:number=0
- isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
  shippment:IShippment={} as IShippment
   order: IOrder  = {} as IOrder;
   ngOnInit(): void {

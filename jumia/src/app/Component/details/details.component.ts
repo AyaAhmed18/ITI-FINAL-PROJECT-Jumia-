@@ -23,7 +23,7 @@ export class DetailsComponent implements OnInit {
   product!: ProductDto;
   sizeSpecs: string[] = [];
   AllSpecs: ISpecfications[] = [];
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   showAlert1: boolean = false;
   cartTotalPrice:number=0
   @Output() addToCartClicked = new EventEmitter<ProductDto>();

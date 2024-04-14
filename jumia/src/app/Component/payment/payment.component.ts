@@ -30,7 +30,7 @@ export class PaymentComponent implements OnInit {
   userId:number=0
   shippment:IShippment={} as IShippment
   totalamount:number = 50
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
 
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 

@@ -35,19 +35,19 @@ export class AppComponent implements OnInit{
     private reloadService: ReloadService,private _apiLoginService: ApiLoginService){
       this.loggedInUsername = this._apiLoginService.getLoggedInUsername();
    this.lang =  localStorage.getItem('lang')
+  
     translate.use(this.lang);
     
 
   }
   
-  ngOnInit() {
-    this._apiLoginService.gettName2().subscribe((stat) => {
-      this.loggedInUsername = stat
-    })
+  ngOnInit() { 
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'
+      localStorage.setItem("isArabic",this.isArabic.toString())
     })
    
+    //localStorage.removeItem("isArabic")
   }
  reload(){
   if (this.reloadService.getReloadCount() < 2) {

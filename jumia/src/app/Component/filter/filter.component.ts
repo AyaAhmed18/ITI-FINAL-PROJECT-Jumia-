@@ -37,7 +37,7 @@ export class FilterComponent {
 
   currentCategoryId: number = 0;
   currentSubCategoryId: number = 0;
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
 
   minPrice: number = 0;
   maxPrice: number = 1000000;

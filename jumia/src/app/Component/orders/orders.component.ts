@@ -13,7 +13,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   styleUrl: './orders.component.css'
 })
 export class OrdersComponent implements OnInit {
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
 
   constructor(private  translate: TranslateService ){}
   ngOnInit(): void {

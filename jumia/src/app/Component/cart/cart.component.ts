@@ -21,7 +21,7 @@ export class CartComponent implements OnInit{
   showAlert1: boolean = false;
   showAlert2: boolean = false;
   PriceAfterDiscount:number=0
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   constructor(private _cartService: CartService, private router: Router,private _wishlist : WishlistService ,private  translate: TranslateService) { }
   priceAftrDiscount(pro:ProductDto){
    this.PriceAfterDiscount = pro.realPrice-(pro.realPrice*pro.discount/100)

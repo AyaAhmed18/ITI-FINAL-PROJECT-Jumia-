@@ -15,7 +15,7 @@ import { RouterLink } from '@angular/router';
 })
 export class RegistrationComponent  implements OnInit{
   user:RegisterDto={} as RegisterDto
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   constructor( private _registrationService :RegistrationService ,private  translate: TranslateService )
   {
 

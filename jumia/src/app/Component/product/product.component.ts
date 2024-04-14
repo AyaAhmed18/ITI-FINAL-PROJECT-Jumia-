@@ -49,7 +49,7 @@ showAlert2: boolean = false;
   @Input() triggerFunction: boolean = false;
   addedToCart = false;
   addedTowashlist= false;
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   constructor(private _ApiProductsService :ApiProductsService ,
        private _sanitizer:DomSanitizer,
       private _cartService:CartService,

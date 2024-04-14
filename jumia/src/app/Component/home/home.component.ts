@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
   productDesc: ProductDto[]|null = null;
 
   SelectedCategoryId : number=0;
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   loggedInUsername!:string
 constructor(private _categoryService :CategoryserviceService
   ,private _subCategoryService :SubcategoryserviceService
@@ -48,8 +48,10 @@ private _apiLoginService:ApiLoginService)
 ngOnInit(): void {
   this._apiLoginService.gettName2().subscribe((stat) => {
     this.loggedInUsername = stat
+   
   })
   this.FilterByDiscountRangeToSlider();
+  
   //this.translate.onLangChange.subscribe((Event)=>{
   //  this.isArabic = Event.lang === 'ar'
     //console.log( this.isArabic);
