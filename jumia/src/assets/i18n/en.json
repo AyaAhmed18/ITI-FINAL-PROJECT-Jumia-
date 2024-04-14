@@ -274,13 +274,15 @@
 "Orders":"Orders",
 "ONGOING/DELIVERD (0)":"ONGOING/DELIVERD (0)",
 "CNACELD/RETURNED (0)":"CNACELD/RETURNED (0)",
+"ONGOING/DELIVERD":"ONGOING/DELIVERD",
+"CNACELD/RETURNED":"CNACELD/RETURNED",
 "You have place no order yet!":"You have place no order yet!",
 "All your orders will be saved here":"All your orders will be saved here",
 "Go shopping":"Go shopping",
 "SEE DETALIS":"SEE DETALIS",
-"Created Date":"Created Date",
+"Created Date":"Placed On",
 "Quantity":"Quantity", 
-"Total Price :  EGP" :"Total Price :  EGP"
+"Total PriceE" :"Total Price :  EGP"
 
 },
 "shipment":{

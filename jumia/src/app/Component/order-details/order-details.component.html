@@ -92,8 +92,8 @@
                 <li class="list-group-item fs-3">{{'orderdetails.Orders' | translate}}</li>
                 <li class="list-group-item mb-3">
                     <ul  style="color: orange;" >
-                        <li class="d-inline"><a>{{'orderdetails.ONGOING/DELIVERD (0) ' | translate}}({{openOrders}})  </a></li>
-                        <li class="d-inline"><a> {{'orderdetails.CNACELD/RETURNED (0)' | translate}} ({{closedOrders}})</a></li>
+                        <li class="d-inline"><a>{{'orderdetails.ONGOING/DELIVERD' | translate}}({{openOrders}})  </a></li>
+                        <li class="d-inline"><a> {{'orderdetails.CNACELD/RETURNED' | translate}} ({{closedOrders}})</a></li>
                     </ul>
                 </li>
                 @for(ord of Orders;track ord.id;){
@@ -103,11 +103,11 @@
                         <img src="https://www.jumia.com.eg/assets_he/images/orders.669c73dc.svg">
                       </div>
                       <div class="col-6 text-"><p class="mb-1"> </p>
-                        <h6 class="text-dark mb-1">{{'orderdetails.Created Date' | translate}} {{ord.orderDate}}</h6>
+                        <h6 class="text-dark mb-1">{{'orderdetails.Created Date' | translate}} : {{  ord.orderDate | date: 'dd-MM-yyyy'}}</h6>
                       <h6 class="text-secondary mb-1">{{'orderdetails.Order' | translate}} {{ord.id}}</h6>
                       <p [ngStyle]="{'color': getStatusColor(ord.status.toLocaleString())}">{{ ord.status }}</p>
                       <p class="">{{'orderdetails.Quantity' | translate}} {{ord.totalAmount}}</p>
-                      <h1 class="h6 text-success">{{'orderdetails.Total Price :  EGP' | translate}} {{ord.totalOrderPrice}}</h1></div>
+                      <h1 class="h6 text-success">{{'orderdetails.Total PriceE' | translate}} {{ord.totalOrderPrice}}</h1></div>
                       
                       <div class="col-3"><a class=" text-decoration-none"  [routerLink]="['/OrderItems', ord.id]"  style="color: orange;" href="">{{'orderdetails.SEE DETALIS' | translate}}</a></div>
                       </div>

@@ -76,28 +76,71 @@
         <div class="col py-3 shadow-sm p-3 mb-5 bg-body rounded"  style="background-color: white;">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item fs-3">{{'orderitem.Order Details' | translate}}</li>
-                <li class="list-group-item mb-3">
+                <li class="list-group-item ">
                     <ul  style="color: rgb(145, 143, 140);" >
-                        <li class="d-inline"><a>{{ItemsNumber}} {{'orderitem.Items' | translate}}   </a></li>                    </ul>
+                        <li class="text-dark " style="font-weight: 700;"><a> {{'orderitem.Order' | translate}} ْ {{ordId}}  </a></li>             
+                        <li class=""><a>{{ItemsNumber}} {{'orderitem.Items' | translate}}   </a></li>      
+                        <li class=""><a> {{'orderdetails.Created Date' | translate}}  {{order.createdDate | date: 'dd-MM-yyyy'}} </a></li>             
+                        <li class=""><a> {{'orderdetails.Total PriceE' | translate}}  {{order.totalOrderPrice}} </a></li>             
+       
+                  </ul>
+                  <br>
+                  <h2  style="font-weight: 700;">ITEMS IN YOUR ORDER</h2>
                 </li>
+               
                 @for(ord of OrderItems;track ord.id;){
-                <li class="mt-2"  >
+                <li class="mt-2 border"  >
                   <div class="card-body  row ">
-                    <!-- <h1 style="font-weight:bold">{{'orderitem.Delivered By Monday , 15-04' | translate}}</h1> -->
-                      <div class="col-3">
+                     <div class="col-3">
                         <img [src]="ord.images" style="border-radius: 50%;" title="orerI">
                       </div>
                       <div class="col-6 text-"><p class="mb-1"> </p>
+                         <h1 style="font-weight:bold"> Delivered between {{ increaseDate(5).dayName }} {{ increaseDate(5).dayNumber }} {{ increaseDate(5).monthName }}
+                             and {{ increaseDate(10).dayName }} {{ increaseDate(10).dayNumber }} {{ increaseDate(10).monthName }}</h1>
+                    
                         <h5 class="text-dark mb-1"> {{isArabicLanguage() ? ord.productNameAr : ord.productName }}</h5>
                         <h6 class="text-dark mb-1"> {{ord.productDiscription}}</h6>
                       <p class="text-secondary">{{'orderitem.QTY' | translate}} {{ord.productQuantity}}</p>
                       <h1 class="h6 ">{{'orderitem.Total Price' | translate}} :  EGP {{ord.totalPrice}}</h1></div>
-                      <div class="col-3">
-                                           </div>
-
+                      
                     </div>
                 </li>
             }
+            <br>
+            <div class="container-fluid" >
+                <div class="row ">
+                    <div class="col border">
+                        <h2 style="font-weight: 700; padding: 10px;" >PAYMENT INFORMATION</h2>
+                        <div>
+                            <h3 style="font-weight: 700;" >Payment Method</h3>
+                            <p style="color: rgb(145, 143, 140);">Pay by {{getPaymentStatusWord()}} </p>
+                       
+                        </div>
+                        <div>
+                            <h3 style="font-weight: 700;" >Payment Details</h3>
+                            <p style="color: rgb(145, 143, 140);">Total Amount  EGP {{order.totalOrderPrice}} </p>
+                             <p style="color: rgb(145, 143, 140);">Delivery Fees 35 EGP  </p>
+                       
+                        </div>
+                    </div>
+                    <div class="col border">
+                        <h2 style="font-weight: 700; padding: 10px;">DELIVERY INFORMATION</h2>
+                         <div>
+                            <h3 style="font-weight: 700;" >Delivery Method</h3>
+                            <p style="color: rgb(145, 143, 140);">Door Delivery</p>                       
+                        </div>
+                        <div>
+                            <h3 style="font-weight: 700;" >Shipping Address</h3>
+                            <p style="color: rgb(145, 143, 140);">{{shippment.firstNameEn}} {{shippment.lastName}}</p>
+                             <p style="color: rgb(145, 143, 140);">{{shippment.phoneNumber}}</p>
+                               <p style="color: rgb(145, 143, 140);">{{shippment.city}} | {{shippment.region}}</p>  
+                               <p style="color: rgb(145, 143, 140);">{{shippment.address}} | {{shippment.adressInformation}}</p>                     
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <br>
             <button class="btn me-2" (click)="cancelOrder()" >{{'orderitem.Cancel Order' | translate}}</button>
 
            
