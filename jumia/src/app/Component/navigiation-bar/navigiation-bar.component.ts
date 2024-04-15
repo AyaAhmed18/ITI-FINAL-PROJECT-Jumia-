@@ -27,8 +27,8 @@ export class NavigiationBarComponent implements OnInit {
 
   //load page and check if logged or not
   IsUserLogged: boolean = false
-  isArabic: boolean = false;
-
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
+ // isArabic1: string =  localStorage.getItem('isArabic')!;
   constructor(private _apiLoginService: ApiLoginService
     , private router: Router,
     private _ApiProductsService: ApiProductsService,

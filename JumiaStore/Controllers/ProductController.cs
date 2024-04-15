@@ -138,12 +138,23 @@ namespace JumiaStore.Controllers
             var Prds = await _productServices.FilterByBrandList(brandIds);
             return Ok(Prds);
         }
-        [HttpGet("FilterByDiscountRange")]
+
+
+        [HttpGet("FilterByDiscountRangeToSlider")]
+        public async Task<IActionResult> FilterByDiscountRangeToSlider(int MinDisc=30, int pageSize=20, int pageNumber=1)
+        {
+            var Prds = await _productServices.FilterByDiscountRangeToSlider(MinDisc, pageSize, pageNumber);
+            return Ok(Prds);
+        }
+
+         [HttpGet("FilterByDiscountRange")]
         public async Task<IActionResult> FilterByDiscountRange(int MinDisc)
         {
             var Prds = await _productServices.FilterByDiscountRange(MinDisc);
             return Ok(Prds);
         }
+
+
         [HttpGet("FilterByAll")]
         public async Task<IActionResult> FilterByAll([FromQuery] string? BrandList,int? MinPrice, int? MaxPrice, int? MinDisc)
         {
@@ -209,6 +220,24 @@ namespace JumiaStore.Controllers
             {
                 return Ok(productname);
             }
+        }
+        [HttpGet("GetOrderedAscByPagination")]
+        public async Task<IActionResult> GetOrderedAscByPagination(int pageSize, int pageNumber)
+        {
+            var Prds = await _productServices.GetOrderedAscWithPagination(pageSize,pageNumber);
+            return Ok(Prds.Entities);
+        }
+        [HttpGet("GetOrderedDscByPagination")]
+        public async Task<IActionResult> GetOrderedDscByPagination(int pageSize, int pageNumber)
+        {
+            var Prds = await _productServices.GetOrderedDscWithPagination(pageSize, pageNumber);
+            return Ok(Prds.Entities);
+        }
+        [HttpGet("GetNewestArrivalByPagination")]
+        public async Task<IActionResult> GetNewestArrivalByPagination(int pageSize, int pageNumber)
+        {
+            var Prds = await _productServices.GetNewestArrivalsWithPagination(pageSize, pageNumber);
+            return Ok(Prds.Entities);
         }
     }
 }

@@ -11,32 +11,32 @@
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0 text-dark" >
-                            <i class="fa-solid fa-bag-shopping" id="order"></i> <span for="order" > &nbsp; {{'orderitem.Order' | translate}}</span>
+                            <i class="fa fa-solid fa-bag-shopping" id="order"></i> <span for="order" > &nbsp; {{'orderitem.Order' | translate}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa-regular fa-message"></i><span for="order" > &nbsp; {{'orderitem.Inbox'  | translate}}</span>
+                            <i class="fa fa-regular fa-message"></i><span for="order" > &nbsp; {{'orderitem.Inbox'  | translate}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa-regular fa-note-sticky"></i><span for="order" >&nbsp; {{'orderitem.Review' | translate}}</span>
+                            <i class="fa fa-regular fa-note-sticky"></i><span for="order" >&nbsp; {{'orderitem.Review' | translate}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa-solid fa-ticket"></i><span for="order" >&nbsp; {{'orderitem.Voucher' | translate}}</span>
+                            <i class="fa fa-solid fa-ticket"></i><span for="order" >&nbsp; {{'orderitem.Voucher' | translate}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa-regular fa-heart">  </i><span for="order" >&nbsp; {{'orderitem.Saved Item' | translate}}</span>
+                            <i class="fa fa-regular fa-heart">  </i><span for="order" >&nbsp; {{'orderitem.Saved Item' | translate}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa-solid fa-shop"></i><span for="order" >&nbsp; {{'orderitem.Follower Seller' | translate}}</span>
+                            <i class="fa fa-solid fa-shop"></i><span for="order" >&nbsp; {{'orderitem.Follower Seller' | translate}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -76,28 +76,71 @@
         <div class="col py-3 shadow-sm p-3 mb-5 bg-body rounded"  style="background-color: white;">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item fs-3">{{'orderitem.Order Details' | translate}}</li>
-                <li class="list-group-item mb-3">
+                <li class="list-group-item ">
                     <ul  style="color: rgb(145, 143, 140);" >
-                        <li class="d-inline"><a>{{ItemsNumber}} {{'orderitem.Items' | translate}}   </a></li>                    </ul>
+                        <li class="text-dark " style="font-weight: 700;"><a> {{'orderitem.Order' | translate}} ْ {{ordId}}  </a></li>             
+                        <li class=""><a>{{ItemsNumber}} {{'orderitem.Items' | translate}}   </a></li>      
+                        <li class=""><a> {{'orderdetails.Created Date' | translate}}  {{order.createdDate | date: 'dd-MM-yyyy'}} </a></li>             
+                        <li class=""><a> {{'orderdetails.Total PriceE' | translate}}  {{order.totalOrderPrice}} </a></li>             
+       
+                  </ul>
+                  <br>
+                  <h2  style="font-weight: 700;">{{'orderitem.ITEMS IN YOUR ORDER'|translate}}</h2>
                 </li>
+               
                 @for(ord of OrderItems;track ord.id;){
-                <li class="mt-2"  >
+                <li class="mt-2 border"  >
                   <div class="card-body  row ">
-                    <!-- <h1 style="font-weight:bold">{{'orderitem.Delivered By Monday , 15-04' | translate}}</h1> -->
-                      <div class="col-3">
+                     <div class="col-3">
                         <img [src]="ord.images" style="border-radius: 50%;" title="orerI">
                       </div>
                       <div class="col-6 text-"><p class="mb-1"> </p>
+                         <h1 style="font-weight:bold"> {{'orderitem.Delivered between'|translate}} {{ increaseDate(5).dayName }} {{ increaseDate(5).dayNumber }} {{ increaseDate(5).monthName }}
+                             {{'orderitem.and'|translate}} {{ increaseDate(10).dayName }} {{ increaseDate(10).dayNumber }} {{ increaseDate(10).monthName }}</h1>
+                    
                         <h5 class="text-dark mb-1"> {{isArabicLanguage() ? ord.productNameAr : ord.productName }}</h5>
                         <h6 class="text-dark mb-1"> {{ord.productDiscription}}</h6>
                       <p class="text-secondary">{{'orderitem.QTY' | translate}} {{ord.productQuantity}}</p>
                       <h1 class="h6 ">{{'orderitem.Total Price' | translate}} :  EGP {{ord.totalPrice}}</h1></div>
-                      <div class="col-3">
-                                           </div>
-
+                      
                     </div>
                 </li>
             }
+            <br>
+            <div class="container-fluid" >
+                <div class="row ">
+                    <div class="col border">
+                        <h2 style="font-weight: 700; padding: 10px;" >{{'orderitem.PAYMENT INFORMATION'| translate}}</h2>
+                        <div>
+                            <h3 style="font-weight: 700;" >{{'orderitem.Payment Method'| translate}}</h3>
+                            <p style="color: rgb(145, 143, 140);">{{'orderitem.Pay by'| translate}} {{getPaymentStatusWord()}} </p>
+                       
+                        </div>
+                        <div>
+                            <h3 style="font-weight: 700;" >{{'orderitem.Payment Details'|translate}}</h3>
+                            <p style="color: rgb(145, 143, 140);">{{'orderitem.Total Amount EGP'|translate}} {{order.totalOrderPrice}} </p>
+                             <p style="color: rgb(145, 143, 140);">{{'orderitem.Delivery Fees 35 EGP'|translate}}  </p>
+                       
+                        </div>
+                    </div>
+                    <div class="col border">
+                        <h2 style="font-weight: 700; padding: 10px;">{{'orderitem.DELIVERY INFORMATION'|translate}}</h2>
+                         <div>
+                            <h3 style="font-weight: 700;" >{{'orderitem.Delivery Method'|translate}}</h3>
+                            <p style="color: rgb(145, 143, 140);">{{'orderitem.Door Delivery'|translate}}</p>                       
+                        </div>
+                        <div>
+                            <h3 style="font-weight: 700;" >{{'orderitem.Shipping Address'|translate}}</h3>
+                            <p style="color: rgb(145, 143, 140);">{{shippment.firstNameEn}} {{shippment.lastName}}</p>
+                             <p style="color: rgb(145, 143, 140);">{{shippment.phoneNumber}}</p>
+                               <p style="color: rgb(145, 143, 140);">{{shippment.city}} | {{shippment.region}}</p>  
+                               <p style="color: rgb(145, 143, 140);">{{shippment.address}} | {{shippment.adressInformation}}</p>                     
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <br>
             <button class="btn me-2" (click)="cancelOrder()" >{{'orderitem.Cancel Order' | translate}}</button>
 
            

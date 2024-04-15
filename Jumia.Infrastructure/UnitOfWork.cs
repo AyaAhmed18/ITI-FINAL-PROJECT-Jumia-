@@ -14,7 +14,7 @@ namespace Jumia.Infrastructure
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly JumiaContext _jumiaContext;
-        private readonly ILogger _logger; // Assuming you have a logging mechanism
+        private readonly ILogger _logger;       // Assuming you have a logging mechanism
         private Hashtable _repositories;
 
         public UnitOfWork(JumiaContext jumiaContext, ILoggerFactory loggerFactory)

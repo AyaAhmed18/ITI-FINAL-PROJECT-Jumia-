@@ -18,7 +18,7 @@ export class OrderDetailsComponent implements OnInit{
   closedOrders:number=0
   openOrders:number=0
   clientId=Number(localStorage.getItem('userId'))
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   constructor(private _OrderService:APIOrderServiceService ,private  translate: TranslateService ){}
  ngOnInit(): void {
   this._OrderService.GetUserOrders(this.clientId).subscribe(Orders => {

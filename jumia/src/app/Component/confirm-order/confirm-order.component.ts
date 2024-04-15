@@ -28,7 +28,7 @@ export class ConfirmOrderComponent {
   shippment:IShippment={} as IShippment
   totalamount:number = 50
   showPayment: boolean = false;
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   userId:number=0
  // shippment:IShippment={} as IShippment
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;

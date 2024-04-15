@@ -197,15 +197,53 @@
       </div>
 
     </div>
-
-
-
-
-
-
   </div>
 </main>
-<div class="container section1" [class.rtl]="isArabic">
+
+
+
+
+<div *ngIf="productDesc">
+  <div class="container section1" [class.rtl]="isArabic">
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active p-0">
+
+          <div class="row ">
+            <div *ngFor="let proDes of productDesc.slice(0, 7); let index = index" class="col sl-scall" (click)="navigateToDetails(proDes.id)">
+              <a > <img src="assets/HomeImg/2.png" class="d-block w-100" alt="Image {{ index }}"></a>
+              <b>{{proDes.name}}{{proDes.discount}}</b>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div *ngFor="let proDes of productDesc.slice(8, 15); let index = index" class="col sl-scall"(click)="navigateToDetails(proDes.id)">
+              <a > <img src="assets/HomeImg/2.png" class="d-block w-100" alt="Image {{ index }}"></a>
+              <b>{{proDes.name}}{{proDes.discount}}</b>
+            </div>
+          </div>
+        </div>
+     
+      <button class="carousel-control-prev col-1 fixed-n-p" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next col-1 fixed-n-p" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- <div class="container section1" [class.rtl]="isArabic">
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active p-0">
@@ -264,8 +302,9 @@
           </div>
         </div>
 
-      </div>
-      <!-- Add more carousel items as needed -->
+      </div> -->
+    
+      <!--
       <button class="carousel-control-prev col-1 fixed-n-p" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -278,7 +317,32 @@
 
 
   </div>
-</div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -286,30 +350,66 @@
   <div class="row sectionHeader">
     <h5>{{'home.Ramadan Preparations ☾' | translate}}</h5>
   </div>
-  <div class="row section1">
 
-    <div class="col sl-scall">
-      <a href=""><img src="assets/HomeImg/R1.jpg" class="d-block w-100" alt="Image 8"></a>
-    </div>
-    <div class="col sl-scall">
-      <a href=""><img src="assets/HomeImg/R2.png" class="d-block w-100" alt="Image 8"></a>
-    </div>
-    <div class="col sl-scall">
-      <a href=""><img src="assets/HomeImg/R3.png" class="d-block w-100" alt="Image 8"></a>
-    </div>
-    <div class="col sl-scall">
-      <a href=""><img src="assets/HomeImg/R4.png" class="d-block w-100" alt="Image 8"></a>
-    </div>
-    <div class="col sl-scall">
-      <a href=""><img src="assets/HomeImg/R5.png" class="d-block w-100" alt="Image 8"></a>
-    </div>
-    <div class="col sl-scall">
-      <a href=""><img src="assets/HomeImg/R6.gif" class="d-block w-100" alt="Image 8"></a>
-    </div>
+  <div *ngIf="allCategories">
+    <div class="container section1" [class.rtl]="isArabic">
+      <div id="myCarousel1" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
 
+
+
+          <div class="carousel-item active p-0">
+            <div class="row ">
+              <div *ngFor="let allCat of allCategories.slice(0, 5); let index = index" class="col sl-scall" (click) = "GetProductsByCatId(allCat.id)">
+                <a ><img src="assets/HomeImg/R1.jpg" class="" alt="Image 8"></a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div *ngFor="let allCat of allCategories.slice(5, 10); let index = index" class="col sl-scall" (click) = "GetProductsByCatId(allCat.id)">
+                <a ><img src="assets/HomeImg/R1.jpg" class="" alt="Image 8"></a>
+              </div>
+            </div>
+          </div>
+
+        <!-- Add more carousel items as needed -->
+        <button class="carousel-control-prev col-1 fixed-n-p" type="button" data-bs-target="#myCarousel1" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next col-1 fixed-n-p" type="button" data-bs-target="#myCarousel1" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+  
+    </div>
+    </div>
   </div>
+  
+
+
+
+
 </div>
 <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container" [class.rtl]="isArabic">
   <div class="sectionHeader row">
     <h5>{{'home.Shop All Your Needs' | translate}}</h5>
