@@ -68,6 +68,7 @@ showAlert2: boolean = false;
 
    ngOnInit(): void {
     this.isArabicLanguage();
+    this.sanitizeImages()
     // this._activeRouter.paramMap.subscribe(parammap=>
     //   {
     //     this.currentCategoryId =Number(parammap.get('id'));
@@ -219,7 +220,7 @@ getAllProducts() {
           console.log("all");
           console.log( this.products);
           this.WhichSorting = 1;
-        //  this.sanitizeImages();
+          this.sanitizeImages();
       },
       error: (err) => {
           console.log(err);
@@ -276,7 +277,7 @@ if (page >= 1 && page <= this.totalPages) {
           console.log("all");
           console.log( this.products);
           this.WhichSorting  = 2;
-        //this.sanitizeImages();
+        this.sanitizeImages();
       },
       error: (err) => {
         console.log(err);
@@ -290,7 +291,7 @@ if (page >= 1 && page <= this.totalPages) {
         this.AllProd=data.length;
         this.products = data;
         this.AllProd = data.count;
-
+        this.sanitizeImages();
         this.totalPages=Math.ceil( this.AllProd / this.pageSize)
         this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
           console.log("all");
@@ -308,7 +309,7 @@ if (page >= 1 && page <= this.totalPages) {
         this.AllProd=data.length;
         this.products = data;
         this.AllProd = data.count;
-
+        this.sanitizeImages();
         this.totalPages=Math.ceil( this.AllProd / this.pageSize)
         this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
           console.log("all");
@@ -324,8 +325,8 @@ if (page >= 1 && page <= this.totalPages) {
   sanitizeImages() {
     this.products.forEach(product => {
       console.log(product.images);
-      product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
-      console.log(product.images);
+      product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
+      console.log("Images");
       console.log(product.images);
 
     });

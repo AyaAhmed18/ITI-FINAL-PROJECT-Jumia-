@@ -231,7 +231,8 @@
 "Total Price":"السعر الكلي",
 "Cancel Order":"الغاء الطلب",
 "Delivered By Monday , 15-04":"سيتم التوصيل بحلول يوم الاثنين، 15-04",
-"Items":"عنصر"
+"Items":"عنصر",
+"ITEMS IN YOUR ORDER":" العناصر في طلبك"
     },
 
     "orderdetails" :{

@@ -7,12 +7,9 @@
         </div>
         <div class="row ">
             <div class="col-12"><strong class="px-2">{{'filter.CATEGORY' | translate}}</strong></div>
-            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Clothing' | translate}}</small></a>
-            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Cardigans & Pullovers' | translate}}</small></a>
-            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Cardigans' | translate}}</small></a>
-            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Pullovers' | translate}}</small></a>
-            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Shrugs' | translate}}</small></a>
-            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">{{'filter.Vests' | translate}}</small></a>
+            <ng-container *ngFor="let cat of allCategories.slice(0, 7); let i = index">
+            <a class="col-12 Link_hover color-black p-2"  (click) = "GetProductsByCatId(cat.id)"><small class="px-3">{{ isArabicLanguage() ? cat.nameAr : cat.name }}</small></a>
+        </ng-container>
             <hr class="line">
 
             <div class="col-12"> <strong>{{'filter.Brand' | translate}}</strong></div>

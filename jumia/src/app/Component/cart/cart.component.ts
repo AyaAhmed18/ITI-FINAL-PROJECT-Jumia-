@@ -112,4 +112,7 @@ closeAlert(){
 isArabicLanguage(): boolean {
   return this.translate.currentLang === 'ar';
 }
+
+
+
 }
