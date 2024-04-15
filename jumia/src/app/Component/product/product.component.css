@@ -426,12 +426,12 @@ body {
 /* Extra small devices (phones) */
 @media only screen and (max-width:590px) {
   .pro-cart{
-    width: 90%;
-    height: 560px; 
-    margin: 5px;
+    width: 49%;
+    /* height: 560px;  */
+    /* margin: 5px; */
   }
   .col-2{
-    width: 100%;
+    width: 50%;
   }
   .filterbutton{
     display: block;
@@ -441,8 +441,14 @@ body {
      /* Small devices (portrait tablets and large phones) */
      @media only screen and (min-width:600px) and (max-width:885px) {
        
-            
-           
+      .pro-cart{
+        width: 49%;
+        /* height: 560px;  */
+        /* margin: 5px; */
+      }
+      .col-2{
+        width: 50%;
+      }     
           
     }
      

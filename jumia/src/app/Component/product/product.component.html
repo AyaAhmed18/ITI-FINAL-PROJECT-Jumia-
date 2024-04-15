@@ -61,7 +61,7 @@
             <div class="card-body">
                 <p>{{ isArabicLanguage() ? pro.nameAr : pro.name }}</p>
                 <p class=""><small>{{pro.shortDescription}}</small></p>
-                <b><strong>{{'product.EGP' | translate}} {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
+                <b><strong>{{'product.EGP' | translate}} {{(pro.realPrice-(pro.realPrice*pro.discount/100)).toFixed(2)}}</strong></b>
                 <ul class="list-inline">
                     <li class="list-inline-item"><small><del>{{'product.EGP' | translate}} {{pro.realPrice}}</del> </small></li>
                     <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>
