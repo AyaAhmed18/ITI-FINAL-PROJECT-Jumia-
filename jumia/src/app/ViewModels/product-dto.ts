@@ -1,6 +1,7 @@
 import { SafeUrl } from "@angular/platform-browser";
 
 export interface ProductDto {
+    
     entities: any[];
     product: SafeUrl;
     id:number,

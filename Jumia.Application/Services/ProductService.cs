@@ -375,6 +375,18 @@ namespace Jumia.Application.Services
             resultDataList.count = Prds.Count;
             return resultDataList;
         }
+
+        public async Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivalsToSlider(int items, int pagenumber)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.CreatedDate, OrderBy.Descending))
+                .Skip(items * (pagenumber - 1))
+                .Take(items)
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
+        }
         public async Task<ResultDataForPagination<GetAllProducts>> FilterByBrandName(int BrandId)
         {
             var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.BrandId == BrandId, null, null))

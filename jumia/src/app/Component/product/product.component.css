@@ -418,7 +418,11 @@ body {
     height: 440px; 
     border: none;
 
-  }   
+  }  
+  
+  .filterbutton{
+    display: none;
+  }
 /* Extra small devices (phones) */
 @media only screen and (max-width:590px) {
   .pro-cart{
@@ -429,7 +433,9 @@ body {
   .col-2{
     width: 100%;
   }
-    
+  .filterbutton{
+    display: block;
+  }
 }
      
      /* Small devices (portrait tablets and large phones) */
