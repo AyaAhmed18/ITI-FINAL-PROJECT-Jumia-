@@ -13,13 +13,14 @@ import { FilterServiceService } from '../../Services/filter-service.service';
 import { ApiSpecficationsService } from '../../Services/api-specfications.service';
 import { ISpecfications } from '../../Models/ispecfications';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ScrollToTopComponent } from "../scroll-to-top/scroll-to-top.component";
 
 @Component({
-  selector: 'app-product',
-  standalone: true,
-  templateUrl: './product.component.html',
-  styleUrl: './product.component.css',
-  imports: [FilterComponent,CommonModule,FormsModule ,TranslateModule]
+    selector: 'app-product',
+    standalone: true,
+    templateUrl: './product.component.html',
+    styleUrl: './product.component.css',
+    imports: [FilterComponent, CommonModule, FormsModule, TranslateModule, ScrollToTopComponent]
 })
 export class ProductComponent implements  OnInit{
   @Input() AllProducts:ProductDto[]=[];
