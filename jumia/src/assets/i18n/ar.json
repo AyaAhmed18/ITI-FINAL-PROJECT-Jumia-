@@ -232,7 +232,20 @@
 "Cancel Order":"الغاء الطلب",
 "Delivered By Monday , 15-04":"سيتم التوصيل بحلول يوم الاثنين، 15-04",
 "Items":"عنصر",
-"ITEMS IN YOUR ORDER":" العناصر في طلبك"
+"ITEMS IN YOUR ORDER":" العناصر في طلبك",
+"Delivered between":"تسليم بين",
+"and":"و",
+"PAYMENT INFORMATION":"معلومات الدفع",
+"Payment Method":"طريقة الدفع",
+"Pay by":"لدفع عن طريق",
+"Payment Details":"تفاصيل الدفع",
+"Total Amount EGP":"المبلغ الإجمالي بالجنيه المصري",
+"Delivery Fees 35 EGP":"رسوم التوصيل 35 جنيه مصري",
+"DELIVERY INFORMATION":"معلومات التوصيل",
+"Delivery Method":"طريقة التوصيل",
+"Door Delivery":" توصيل للباب",
+"Shipping Address":"عنوان الشحن"
+
     },
 
     "orderdetails" :{
