@@ -147,7 +147,15 @@ namespace JumiaStore.Controllers
             return Ok(Prds);
         }
 
-         [HttpGet("FilterByDiscountRange")]
+
+        [HttpGet("GetNewestArrivalsToSlider")]
+        public async Task<IActionResult> GetNewestArrivalsToSlider(int pageSize = 20, int pageNumber = 1)
+        {
+            var Prds = await _productServices.GetNewestArrivalsToSlider( pageSize, pageNumber);
+            return Ok(Prds);
+        }
+
+        [HttpGet("FilterByDiscountRange")]
         public async Task<IActionResult> FilterByDiscountRange(int MinDisc)
         {
             var Prds = await _productServices.FilterByDiscountRange(MinDisc);
