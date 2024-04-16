@@ -1,4 +1,4 @@
-﻿@*
+﻿    @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -21,80 +21,95 @@
     SelectList list = new SelectList(ViewBag.Category, "Id", "Name");
 }
 
-<h1>@AdminDashBoard.Languages.Resource.UpdateSubCategory</h1>
 
 
-<html>
-<head>
-
-
-
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
-</head>
-<body>
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">@AdminDashBoard.Languages.Resource.UpdateSubCategory</h4>
 
 
 
-
-    <form method="post" asp-action="Update" asp-controller="SubCategory" enctype="multipart/form-data">
-
+            <form method="post" asp-action="Update" asp-controller="SubCategory" enctype="multipart/form-data" class="form-sample">
 
 
-        <div class="mb-3">
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group ">
             <label asp-for="Name" class="form-label">@AdminDashBoard.Languages.Resource.English_Name</label>
             <input asp-for="Name" class="form-control">
             <span asp-validation-for="Name" style="color:red"></span>
 
         </div>
-        <div class="mb-3">
+        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group ">
+       
             <label asp-for="NameAr" class="form-label">@AdminDashBoard.Languages.Resource.Arabic_Name</label>
             <input asp-for="NameAr" class="form-control">
             <span asp-validation-for="NameAr" style="color:red"></span>
 
+        </div>
         </div>
         <div class="mb-3" hidden>
 
             <input asp-for="Id" class="form-control">
 
         </div>
-        <div class="mb-3">
+              
+
+
+        <div class="col-md-6">
+            <div class="form-group ">
             <label asp-for="Description" class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
             <input asp-for="Description" class="form-control">
             <span asp-validation-for="Description" style="color:red"></span>
+            </div>
         </div>
 
-        <div class="mb-3">
+        <div class="col-md-6">
+            <div class="form-group ">
             <label asp-for="Image" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
             <input asp-for="Image" type="file" class="form-control">
             <span asp-validation-for="Image" style="color:red"></span>
+            </div>
         </div>
 
-
-        <div>
+        <div class="col-md-6">
+            <div class="form-group ">
             <label asp-for="CategoryId" class="form-label"> @AdminDashBoard.Languages.Resource.Categoryies</label>
             <select asp-for="CategoryId" asp-items="list" class="form-select"></select>
+            </div>
         </div>
 
-        <br />
-
-        <div>
-            <p>Specifications</p>
-            @foreach (var spec in ViewBag.subSpec)
-            {
-                <input type="checkbox" name="SpecificationName" checked disabled value="@spec.SpecificationName" id="spec_@spec.SpecificationName">
-                    <br />
-                <label for="spec_@spec.SpecificationName">@spec.SpecificationName</label>
-                    <br />
-            }
+        <div class="col-md-6">
+            <div class="form-group ">
+                    <p>Specifications</p>
+                            <div class="row">
+                    @foreach (var spec in ViewBag.subSpec)
+                    {
+                                    <div class="col-4">
+                        <input type="checkbox" name="SpecificationName" checked disabled value="@spec.SpecificationName" id="spec_@spec.SpecificationName">
+                         
+                        <label for="spec_@spec.SpecificationName">@spec.SpecificationName</label>
+                         </div>
+                    }
+                    </div>
         </div>
-
-        <br />
+        </div>
+      
 
 
 
         <button type="submit" class="btn btn-info  text-white ">@AdminDashBoard.Languages.Resource.Update</button>
+        </div>
     </form>
-
+    </div>
+    </div>
+</div>
 
     @if (TempData["SuccessMessage"] != null)
     {
@@ -107,7 +122,4 @@
         </div>
     }
 
-
-
-</body>
-</html>
+>
