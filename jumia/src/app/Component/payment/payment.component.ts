@@ -10,6 +10,7 @@ import { APIOrderServiceService } from '../../Services/apiorder-service.service'
 import { ApiShippmentService } from '../../Services/api-shippment.service';
 import { IShippment } from '../../Models/ishippment';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ApiProductsService } from '../../Services/api-products.service';
 
 @Component({
   selector: 'app-payment',
@@ -35,7 +36,9 @@ export class PaymentComponent implements OnInit {
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
   constructor(private _cartService:CartService,private router:Router
-    ,private _orderService:APIOrderServiceService,private _ShippmentService:ApiShippmentService,private  translate: TranslateService ){
+    ,private _orderService:APIOrderServiceService,
+    private _ShippmentService:ApiShippmentService,private  translate: TranslateService,
+  private _productService:ApiProductsService ){
     
   }
   ngOnInit(): void {
@@ -77,7 +80,7 @@ export class PaymentComponent implements OnInit {
     this.order.paymentStatus=2
     this.order.status=1
     this.order.cancelOrder=false;
-    this.order.createdDate= new Date().toDateString();
+   // this.order.createdDate= new Date().toDateString();
     this.order.discount=10
    
   } 
@@ -97,13 +100,20 @@ export class PaymentComponent implements OnInit {
           this.orderItem.productId=element.id
           console.log(element.id);
           console.log(res.entity.id);
+          console.log(element.stockQuantity);
+          
           this.orderItem.totalPrice=element.realPrice*element.cartQuantity
-
+          element.stockQuantity-=1;
           this._orderService.AddOrderItems(this.orderItem).subscribe({
+           
             next: (res) => {
+              console.log("iteeeems");
+              this._cartService.removeProduct(element)
+              this._productService.UpdateProductQuantity(element).subscribe({next:(res)=>{alert("Quantity updated")}})
               console.log(res);
               if(res.isSuccess){
               this._cartService.removeProduct(element)
+             // alert("your cart is empty")
             }}
           })
          

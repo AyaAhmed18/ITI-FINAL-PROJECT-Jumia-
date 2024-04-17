@@ -37,5 +37,7 @@ namespace Jumia.Application.IServices
         Task<ResultDataForPagination<GetAllProducts>> GetOrderedAscWithPagination(int items, int pagenumber);
         Task<ResultDataForPagination<GetAllProducts>> GetOrderedDscWithPagination(int items, int pagenumber);
         Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivalsWithPagination(int items, int pagenumber);
+        Task<ResultView<CreateOrUpdateProductDto>> UpdateQuantity(CreateOrUpdateProductDto productDto);
+
     }
 }

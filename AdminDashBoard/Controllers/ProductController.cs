@@ -104,7 +104,7 @@ namespace AdminDashBoard.Controllers
                         };
                         await _productSpecificationSubCategoryServices.Create(subCategorySpecification);
                     }
-                        TempData["SuccessMessage1"] = "Category Created successfully.";
+                        TempData["SuccessMessage1"] = "Product Created successfully.";
                         return RedirectToAction("GetPagination", TempData["SuccessMessage1"]);
 
                     }
@@ -149,6 +149,9 @@ namespace AdminDashBoard.Controllers
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
             var productDto = _mapper.Map<CreateOrUpdateProductDto>(res.Entity);
+            var prdSpecs = (await _productSpecificationSubCategoryServices.GetAll())
+                 .Entities.Where(p => p.ProductId == id).Select(i => new { i.SpecificationName, i.Value });
+            ViewBag.prdSpecs = prdSpecs;
             return View(productDto);
         }
 
@@ -174,8 +177,8 @@ namespace AdminDashBoard.Controllers
                 }
 
                 var res  = await  _productService.Update(productDto, Images);
-                TempData["SuccessMessage1"] = "Product Created successfully.";
-                return RedirectToAction("GetPagination", TempData["SuccessMessage1"]);
+                TempData["SuccessMessage2"] = "Product Updated successfully.";
+                return RedirectToAction("GetPagination", TempData["SuccessMessage2"]);
 
 
             }
@@ -184,6 +187,9 @@ namespace AdminDashBoard.Controllers
             ViewBag.SubCategory = subCatName;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
+            var prdSpecs = (await _productSpecificationSubCategoryServices.GetAll())
+               .Entities.Where(p => p.ProductId == productDto.Id).Select(i => new { i.SpecificationName, i.Value });
+            ViewBag.prdSpecs = prdSpecs;
             TempData["SuccessMessage"] = "Failed.";
              return View(productDto);
 
@@ -205,12 +211,12 @@ namespace AdminDashBoard.Controllers
            var del= await _productService.Delete(ProductToDelete);
             if (del.IsSuccess)
             {
-                TempData["SuccessMessage1"] = "Successed";
+                TempData["SuccessMessage3"] = "Product Deleted Successfully";
                 return RedirectToAction(nameof(GetPagination));
             }
             else
             {
-                TempData["SuccessMessage"] = "Failed";
+                TempData["SuccessMessage"] = "Sorry, Failed to Delete this product";
                 return RedirectToAction(nameof(GetPagination));
             }
 

@@ -92,34 +92,7 @@ namespace JumiaStore.Controllers
 
         }
 
-        // POST api/<OrderController>
-        //  [Authorize (Roles ="user")]
-        [HttpPost]
-        public async Task<IActionResult> Post( CreateOrUpdateOrderDto createOrderDto)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var order = await _orderService.Create(createOrderDto);
-                    if (order.IsSuccess)
-                    {
-                        return (Ok(order));
-                    }
-                    else
-                    {
-                        return Ok("Invaliiiid");
-                        
-                    }
-
-                }
-                return StatusCode(500,"Erroras");
-                //url.link()
-            }
-            catch (Exception ex) { return Ok("this Is a problem here"); }
-            //  return BadRequest(ModelState);
-        }
-
+       
         // PUT api/<OrderController>/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(CreateOrUpdateOrderDto orderDto)

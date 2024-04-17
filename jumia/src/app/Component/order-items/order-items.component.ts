@@ -89,10 +89,10 @@ export class OrderItemsComponent implements OnInit{
       this.order.status=4
       this._OrderService.UpdateOrder(this.order).subscribe(order => {
         this.order=order
-        
+        this.router.navigate(['/OrderDetails']);
         });
         this.showAlert2 = true;
-        this.router.navigate(['/OrderDetails']);
+      //  this.router.navigate(['/OrderDetails']);
        
     }
     

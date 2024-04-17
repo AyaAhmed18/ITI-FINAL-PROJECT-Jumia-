@@ -142,6 +142,26 @@ namespace Jumia.Application.Services
                 return new ResultView<CreateOrUpdateProductDto> { Entity = ProductDto, IsSuccess = true, Message = "product Updated Successfully" };
             }
         }
+        public async Task<ResultView<CreateOrUpdateProductDto>> UpdateQuantity(CreateOrUpdateProductDto productDto)
+        {
+
+            var Oldproduct = await _unitOfWork.ProductRepository.GetOneAsync(productDto.Id);
+            if (Oldproduct == null)
+            {
+                return new ResultView<CreateOrUpdateProductDto> { Entity = null, IsSuccess = false, Message = "product Not Found!" };
+
+            }
+            else
+            {
+                //_mapper.Map<product>(productDto);
+                _mapper.Map(productDto, Oldproduct);
+                var UPproduct = await _unitOfWork.ProductRepository.UpdateAsync(Oldproduct);
+                await _unitOfWork.ProductRepository.SaveChangesAsync();
+                var ProductDto = _mapper.Map<CreateOrUpdateProductDto>(UPproduct);
+
+                return new ResultView<CreateOrUpdateProductDto> { Entity = ProductDto, IsSuccess = true, Message = "product Updated Successfully" };
+            }
+        }
 
 
 
