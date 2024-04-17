@@ -27,6 +27,7 @@ export class AppComponent {
 
   lang:any
   
+  
   constructor(private translate:TranslateService){
    this.lang =  localStorage.getItem('lang')
     translate.use(this.lang);

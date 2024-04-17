@@ -65,9 +65,27 @@
 
         <div class="mb-3">
             <label asp-for="Image" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
-            <input asp-for="Image" type="file" class="form-control">
+           
+            @if (Model.Image == null)
+            {
+                <input asp-for="Image" type="file" class="form-control">
+            }
+            else
+            {
+                
+                <input asp-for="Image" type="hidden" />
+                
+                <img src="data:image;base64,@Convert.ToBase64String(Model.Image)" width="100px" height="100px" alt="Current Image" />
+            }
             <span asp-validation-for="Image" style="color:red"></span>
         </div>
+
+
+       @*  <div class="mb-3">
+            <label asp-for="Image" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
+            <input asp-for="Image" type="file" class="form-control">
+            <span asp-validation-for="Image" style="color:red"></span>
+        </div> *@
 
 
         <div>

@@ -132,22 +132,23 @@ namespace Jumia.Application.Services.Services
             var AllData = (await _subCategoryRepository.GetAllAsync()).Include(p=>p.Category);
             var SubCategory = AllData.Skip(item * (pagnumber - 1)).Take(item).ToList();
             var SubCategorys = _mapper.Map<List<GetAllSubDto>>(SubCategory);
-           /* var SubCategorys = AllData.Skip(item * (pagnumber - 1)).Take(item)
-             .Select(c => new GetAllSubDto
-             {
-                 Id = c.Id,
-                 Description = c.Description,
-                 Image = c.Image,
-                 CategoryName = c.Category.Name,
 
+            var totalItems = AllData.Count(c => c.IsDeleted != true);
+            var totalPages = (int)Math.Ceiling((double)totalItems / item);
 
+            var resultDataFor = new ResultDataForPagination<GetAllSubDto>()
+            {
 
-             }).ToList();*/
+                Entities = SubCategorys,
+                count = totalItems,
+                TotalPages = totalPages,
+                CurrentPage = pagnumber,
+                PageSize = item
 
-            ResultDataForPagination<GetAllSubDto> resultDataFor = new ResultDataForPagination<GetAllSubDto>();
+            };
 
-            resultDataFor.Entities = SubCategorys;
-            resultDataFor.count = AllData.Count();
+            //resultDataFor.Entities = SubCategorys;
+            //resultDataFor.count = AllData.Count();
 
 
             return resultDataFor;

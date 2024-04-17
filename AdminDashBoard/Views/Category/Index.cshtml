@@ -1,5 +1,6 @@
 ﻿@model ResultDataForPagination<GetAllCategoryDto>
 
+
 @{
     ViewData["Title"] = "Index";
     Layout = "_Layout";
@@ -24,9 +25,14 @@
         <div class="card-body">
             <h4 class="card-title">@AdminDashBoard.Languages.Resource.AllCategory</h4>
             <p class="card-description">
-                length: <span style="color:red">@AdminDashBoard.Languages.Resource.AllCategory</span>
+               @*  length: <span style="color:red">@AdminDashBoard.Languages.Resource.AllCategory</span> *@
+                <a asp-action="Create" asp-controller="Category" class="btn btn-success p-3">@AdminDashBoard.Languages.Resource.AddCategory</a>
+               
+        </div>
             </p>
             <div class="table-responsive pt-3">
+            
+
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -60,11 +66,42 @@
                     </tbody>
                 </table>
 
+
             </div>
+        <div class="pagination">
+            @if (Model.CurrentPage > 1)
+            {
+                <a href="@Url.Action("Index", new { pageNumber = Model.CurrentPage - 1, pageSize = Model.PageSize })" class="btn btn-warning">Previous</a>
+            }
+
+            @if (Model.TotalPages > 5 && Model.CurrentPage > 3)
+            {
+                <a href="@Url.Action("Index", new { pageNumber = 1, pageSize = Model.PageSize })" class="btn btn-default">1</a>
+                <span>...</span>
+            }
+
+            @for (int i = Math.Max(1, (int)Model.CurrentPage - 2); i <= Math.Min((int)Model.TotalPages, (int)Model.CurrentPage + 2); i++)
+            {
+                <a href="@Url.Action("Index", new { pageNumber = i, pageSize = Model.PageSize })" class="btn @(Model.CurrentPage == i ? "btn-warning active" : "btn-default")">@i</a>
+            }
+
+            @if (Model.TotalPages > 5 && Model.CurrentPage < Model.TotalPages - 2)
+            {
+                <span>...</span>
+                <a href="@Url.Action("Index", new { pageNumber = Model.TotalPages, pageSize = Model.PageSize })" class="btn btn-default">@Model.TotalPages</a>
+            }
+
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <a href="@Url.Action("Index", new { pageNumber = Model.CurrentPage + 1, pageSize = Model.PageSize })" class="btn btn-warning">Next</a>
+            }
         </div>
 
-        <a asp-action="Create" asp-controller="Category" class="btn btn-success p-3">@AdminDashBoard.Languages.Resource.AddCategory</a>
-    </div>
+
+
+        </div>
+
+       
 </div>
 @if (TempData["SuccessMessage"] != null)
 {

@@ -25,17 +25,7 @@ export class RegistrationComponent  implements OnInit{
       this.isArabic = Event.lang === 'ar'
     })
   }
-  changeLanguage(lang: string) {
-    if (lang == 'en') {
-      localStorage.setItem('lang', 'en')
-    }
-    else {
-      localStorage.setItem('lang', 'ar')
-    }
-
-    window.location.reload();
-
-  }
+  
 
   register(username: string, email: string, password: string, confirmpass: string ,phonenumber :string) {
     if (password !== confirmpass) {

@@ -54,17 +54,7 @@ export class PaymentComponent implements OnInit {
     })
   }
   
-  changeLanguage(lang: string) {
-    if (lang == 'en') {
-      localStorage.setItem('lang', 'en')
-    }
-    else {
-      localStorage.setItem('lang', 'ar')
-    }
-
-    window.location.reload();
-
-  }
+ 
   //
   ConfirmPayment(){
    // this.payment=true

@@ -42,9 +42,10 @@ namespace AdminDashBoard.Controllers
 
         }
         // GET: ProductController
-        public async Task<ActionResult> GetPagination()
+        public async Task<ActionResult> GetPagination(int pageNumber = 1)
         {
-            var Prds = await _productService.GetAllPagination(20, 1);
+            var pageSize = 10;
+            var Prds = await _productService.GetAllPagination(pageSize, pageNumber);
             return View(Prds);
         }
         //[Authorize(Roles = "Admin")]

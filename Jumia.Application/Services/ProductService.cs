@@ -48,9 +48,23 @@ namespace Jumia.Application.Services
                 .Take(items)
                 .Select(p => new GetAllProducts(p))
                 .ToList();
-            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
-            resultDataList.Entities = Prds;
-            resultDataList.count = AlldAta.Count();
+
+            var totalItems = AlldAta.Count(c => c.IsDeleted != true);
+            var totalPages = (int)Math.Ceiling((double)totalItems / items);
+
+            var resultDataList = new ResultDataForPagination<GetAllProducts>()
+            {
+                Entities = Prds,
+                count = totalItems,
+                TotalPages = totalPages,
+                CurrentPage = pagenumber,
+                PageSize = items
+
+            };
+
+
+            //resultDataList.Entities = Prds;
+            //resultDataList.count = AlldAta.Count();
             return resultDataList;
         }
 
