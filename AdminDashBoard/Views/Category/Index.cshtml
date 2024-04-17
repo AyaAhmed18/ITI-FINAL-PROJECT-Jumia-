@@ -11,7 +11,7 @@
 
 <style>
     .fifty-chars {
-        width: 50ch;
+        width: 20ch;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -28,7 +28,7 @@
                @*  length: <span style="color:red">@AdminDashBoard.Languages.Resource.AllCategory</span> *@
                 <a asp-action="Create" asp-controller="Category" class="btn btn-success p-3">@AdminDashBoard.Languages.Resource.AddCategory</a>
                
-        </div>
+        
             </p>
             <div class="table-responsive pt-3">
             
@@ -97,12 +97,12 @@
             }
         </div>
 
-
-
+        </div>
+        </div>
         </div>
 
        
-</div>
+
 @if (TempData["SuccessMessage"] != null)
 {
     <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">

@@ -102,7 +102,6 @@ namespace AdminDashBoard.Controllers
         public async Task<IActionResult> logout()
         {
             await _signinManager.SignOutAsync();
-            HttpContext.Session.Remove("Username");
             return RedirectToAction("index", "Home");
         }
 
