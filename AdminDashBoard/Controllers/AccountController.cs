@@ -82,8 +82,8 @@ namespace AdminDashBoard.Controllers
 
                 if (result.Succeeded)
                 {
-                    HttpContext.Session.SetString("Username", loginDtos.Username);
-                    ViewBag.Username = HttpContext.Session.GetString("Username");
+                  //  HttpContext.Session.SetString("Username", loginDtos.Username);
+                  //  ViewBag.Username = HttpContext.Session.GetString("Username");
                     return RedirectToAction("Index", "Category");
                 }
                 else

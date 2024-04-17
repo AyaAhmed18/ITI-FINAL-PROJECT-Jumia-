@@ -78,6 +78,7 @@ export class NavigiationBarComponent implements OnInit {
       this._ApiProductsService.SearchByNameOrDesc(this.searchTerm).subscribe(
         (searchResults) => {
           this._searchResultsService.setSearchResults([searchResults]);
+         
           console.log("searchResults");
           console.log(searchResults);
         },
@@ -86,7 +87,7 @@ export class NavigiationBarComponent implements OnInit {
         }
       );
     }}, 1000);
-
+    this.router.navigate(['/Product'])
   }
 
 

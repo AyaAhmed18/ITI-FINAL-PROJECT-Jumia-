@@ -83,6 +83,7 @@ export class OrderItemsComponent implements OnInit{
     console.log(this.order.status);
     if(this.order.status>=2){
       this.showAlert1 = true;
+     // this.router.navigate(['/OrderDetails']);
     }
     else{
       this.order.status=4
@@ -91,7 +92,7 @@ export class OrderItemsComponent implements OnInit{
         
         });
         this.showAlert2 = true;
-        //this.router.navigate(['/OrderDetails']);
+        this.router.navigate(['/OrderDetails']);
        
     }
     

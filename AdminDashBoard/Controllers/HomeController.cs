@@ -17,6 +17,7 @@ namespace AdminDashBoard.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
+           
             return View();
         }
 
