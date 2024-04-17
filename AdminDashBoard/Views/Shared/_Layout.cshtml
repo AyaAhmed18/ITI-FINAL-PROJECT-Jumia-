@@ -1,4 +1,6 @@
-﻿﻿
+﻿@{
+    var name = ViewBag.Username as string;
+}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +55,7 @@
             <div class="navbar-menu-wrapper d-flex align-items-top">
                 <ul class="navbar-nav">
                     <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                        <h1 class="welcome-text">@AdminDashBoard.Languages.Resource.GoodMorning, <span class="text-black fw-bold">John Doe</span></h1>
+                        <h1 class="welcome-text">@AdminDashBoard.Languages.Resource.GoodMorning, <span class="text-black fw-bold">@name  </span></h1>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
@@ -66,12 +68,12 @@
                             <input type="text" class="form-control">
                         </div>
                     </li>
-                    <li class="nav-item">
+                   @*  <li class="nav-item">
                         <form class="search-form" action="#">
                             <i class="icon-search"></i>
                             <input type="search" class="form-control" placeholder="Search here" title="@AdminDashBoard.Languages.Resource.SearchHere">
                         </form>
-                    </li>
+                    </li> *@
                     <li class="nav-item dropdown">
                         <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
                             <i class="icon-mail icon-lg"></i>

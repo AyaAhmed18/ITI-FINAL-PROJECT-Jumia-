@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 
 namespace AdminDashBoard.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class OrderController : BaseController
     {
         private readonly IOrderService _orderService;

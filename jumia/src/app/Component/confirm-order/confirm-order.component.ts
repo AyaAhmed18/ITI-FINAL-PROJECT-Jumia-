@@ -153,6 +153,8 @@ export class ConfirmOrderComponent {
     }
     this.order.paymentStatus=1
     this.order.status=1
+    this.order.createdDate= new Date().toDateString();
+    this.order.discount=10
     this.order.cancelOrder=false;
    
   } 

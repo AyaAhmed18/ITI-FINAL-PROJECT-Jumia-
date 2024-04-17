@@ -88,6 +88,7 @@ export class PaymentComponent implements OnInit {
     this.order.status=1
     this.order.cancelOrder=false;
     this.order.createdDate= new Date().toDateString();
+    this.order.discount=10
    
   } 
 

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Localization;
 
 namespace AdminDashBoard.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class ShippmentController : BaseController
     {
         private readonly IShippmentService _shippmentService;
