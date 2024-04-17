@@ -66,14 +66,14 @@
     }
   },
   "chunks": {
-    "chunk-O2OJXMDP": {
-      "file": "chunk-O2OJXMDP.js"
-    },
     "chunk-ZRSTFPJB": {
       "file": "chunk-ZRSTFPJB.js"
     },
     "chunk-6ZMXXLGZ": {
       "file": "chunk-6ZMXXLGZ.js"
+    },
+    "chunk-O2OJXMDP": {
+      "file": "chunk-O2OJXMDP.js"
     },
     "chunk-AT2CF3YS": {
       "file": "chunk-AT2CF3YS.js"
