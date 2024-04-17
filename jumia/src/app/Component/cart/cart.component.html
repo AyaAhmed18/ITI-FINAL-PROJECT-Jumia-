@@ -29,7 +29,9 @@
     <div class="row card-body"  >
 
       <div class="col-3-cart col-3">
-        <img src="assets/ProductImg/1.jpg" style="height: 100px;">
+        <!-- <img src="assets/ProductImg/1.jpg" style="height: 100px;"> -->
+        <img class="card-img-top" [src]="item.images[0]" alt="Card image"
+        style="height: 150px; width:100%">
       </div>
       <div class="col-5-cart col-5 ">
         <p class="mb-1"><small> {{ isArabicLanguage() ? item.nameAr : item.name }} </small> </p>
@@ -55,7 +57,7 @@
     <div class=" bg-transparent row">
       
       <div class="col-6" (click)="removeProduct(item)">
-       <button> <p class="text-warning"><i class="fa fa-solid fa-trash"></i> <span class="text-uppercase"> {{'cart.Remove' | translate}}</span></p> </button>
+       <button class="btn bg-white"> <p class="" style="color: #ff9901ea;"><i class="fa fa-solid fa-trash"></i> <span class="text-uppercase"> {{'cart.Remove' | translate}}</span></p> </button>
       </div>
           <div class="col-6 d-flex justify-content-end ">
             <button class="btn btn-warning btn-sm" (click)="decreaseQuantity(item)" >
@@ -129,9 +131,9 @@
           @for(pro of wishlistItems;track pro.id;){
           <div class="col-3">
             <div class="show-cards-btn card cards-hover" style="width:210px; height: 300px; border: none;">
-              <img class="card-img-top" src="assets/ProductImg/1.jpg" alt="Card image"
-              style="height:auto; width: 150px;">
-              <!-- <img [src]="pro.images" class="card-img-top" alt="Card image" style="width:100%"> -->
+              <!-- <img class="card-img-top" src="assets/ProductImg/1.jpg" alt="Card image" -->
+              <!-- style="height:auto; width: 150px;"> -->
+              <img [src]="pro.images[0]" class="card-img-top" alt="Card image" style="width:100%; height: 200px;">
               <div class="label-Cards-top px-2">
                 <span class="text-white ">{{'cart.Buy 400 get' | translate}} {{pro.discount}} {{'cart.off' | translate}}</span>
               </div>
@@ -165,7 +167,7 @@
                     </div>
                     <div class="modal-footer">
                       <div class="hide-btn-cards">
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="AddToCart(pro)"
+                        <button type="submit" class="btn btn-warning" data-bs-dismiss="modal" (click)="AddToCart(pro)"
                           aria-label="Close">{{'cart.Add to cart' |translate}}</button>
                       </div>
                     </div>
@@ -178,11 +180,11 @@
             <div class="row">
             </div>
           </div>
-          <button class="carousel-control-prev col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <button class="carousel-control-prev col-1 bg-white" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">{{'cart.Previous' |translate}}</span>
           </button>
-          <button class="carousel-control-next col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <button class="carousel-control-next col-1 bg-white" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">{{'cart.Next' |translate}}</span>
           </button>

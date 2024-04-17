@@ -130,9 +130,9 @@
                 <div class="modal-footer ">
                     <button class="btn w-100 text-white" (click)="addToWishlist(pro)">
                         <i class="fa" [ngClass]="{'fa-heart-o': !isInWishlist(pro), 'fa-heart': isInWishlist(pro)}"></i>
-                        <span *ngIf="!isInWishlist(pro)">{{'product.ADD TO WISHLIST' | translate}}</span>
-                        <span *ngIf="isInWishlist(pro)">{{'product.REMOVE FROM WISHLIST' | translate}}</span>
-                    </button>
+                        <span *ngIf="!isInWishlist(pro); else removeText">{{ 'product.ADD TO WISHLIST' | translate }}</span>
+                        <ng-template #removeText>{{ 'product.REMOVE FROM WISHLIST' | translate }}</ng-template>
+                    </button>
                 </div>
             </div>
         </div>
