@@ -33,6 +33,7 @@ export class CartComponent implements OnInit{
       this.wishlistItems =Items
       console.log(Items);});
     console.log(this.wishlistItems); 
+    
     this._cartService.getCart().subscribe(cartItems => {
       this.cartItems = cartItems;
      this.TotalCartPrice= this._cartService.calculateTotalCartPrice();

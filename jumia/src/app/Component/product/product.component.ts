@@ -123,16 +123,19 @@ showAlert2: boolean = false;
     }
   //start Add to Cart
   AddToCart(prod:ProductDto){
+    this.showAlert1 = false;
+    console.log(this.showAlert1);
+    
     if(prod.stockQuantity>0){
       prod.cartQuantity = 1;
-       this.cartTotalPrice+=prod.realPrice
+      prod.stockQuantity--;
+       this._wishlist.removeProductFromWishlist(prod);
        this._cartService.addToCart(prod);
-       this.addToCartClicked.emit(prod);
-       prod.addedToCart = true;
-       this._wishlist.removeProductFromWishlist(prod)
        this.showAlert1 = true;
-    }
+       console.log(this.showAlert1);
+      }
 }
+
 
 //Sprcifications
 GetSpecs(pro:ProductDto){
