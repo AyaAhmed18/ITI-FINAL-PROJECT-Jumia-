@@ -22,8 +22,8 @@ namespace Jumia.Application.Services.IServices
 
         Task<ResultDataForPagination<GetAllSubDto>> GetAll(int item, int pagnumber);
 
-        Task<ResultView<GetAllSubDto>> GetOne(int id);
-
+        Task<ResultView<CreateOrUpdateSubDto>> GetOne(int id);
+        Task<ResultDataForPagination<GetAllSubDto>> GetByCategoryId(int catId);
 
 
 

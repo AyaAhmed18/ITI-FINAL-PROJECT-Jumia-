@@ -1,53 +1,192 @@
-<div class="container">
+<div [class.rtl]="isArabic">
+  <div class="container mt-5  mb-5  rounded ">
+
     <div class="row  ">
-        <div class=" my-2  col-md-8 row section1">
-           <div class="col-md-6"> <h6 class=" my-2"><i class="fa-solid fa-circle-check text-success"></i>  1.CUSTOMER ADDRESS</h6></div>
-           <div class="col-md-6 text-end"><a href="" class="text-decoration-none" >Change <i class="fa-solid fa-arrow-right"></i> </a></div>
-           <div class="border-top ">
-               <p class="my-0  pt-4">Aya Ahmed</p>
-               <p class="mt-0 tb-5 text-secondary">Sohag, sohag | Sohag - Sohag | +20 1024940918</p>
-           </div>
-       </div> 
-      
-       <div class=" my-2  col-8 row section1">
-           <h6 class=" my-2 border-bottom "><i class="fa-solid fa-circle-check text-secondary "></i> 2.Delivary Details</h6>
-           <div class="form-check col-md-6 ">
-               <input class="form-check-input  btn-outline-warning bg-warning border border-warning rounded-circle"height="8px" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-               <label class="form-check-label " for="flexRadioDefault2">
-                 Door Delivery (From EGP 35.00)
-                 <p>Delivery between 27 March and 28 March</p>
-               </label>
-             </div>
-             <div class="col-md-6 text-end">
-               <i class="fa-solid fa-truck text-warning"></i>
-             </div>
-             <div class="col-md-6">
-               <p class="smallText">Shipment 1/1</p>
-             </div>
-             <div class="col-md-6 text-end smallText">
-               Fulfilled by Al huda Store
-             </div>
-             <div class="container">
-               <div class=" pt-1 py-0 row section1 ">
-                   <h6 class="smallText">Door Delivery</h6>
-                   <p class="border-bottom smallText ">Delivery between 27 March and 28 March</p>
-                   <div class="col-md-2 ">
-                       <img src="2.png"  width="30%" alt="">
-                   </div>
-                   <div class="col-md-10">
-                       <p class="smallText my-0 mx-0 text-start">Black & Decker Digital Electric Air Fryer -12 Liter - Silver - AOF100</p>
-                       <p class="smallText">OTY: 1</p>
-                   </div>
-                  
-               </div>
-           </div>
-           <div class="col-12 d-flex justify-content-end mb-4 ">
-               <button type="submit" class="btn btn-warning text-white mt-4 shadow rounded" save>Confirm Delivery Order</button>
-             </div>
-            
-       </div>  
-       <div class=" my-2 checkedSigh col-8 section1">
-           <h6 class=" my-2 "><i class="fa-solid fa-circle-check"></i> 3.Payment Method</h6>
-       </div> 
+
+      <div class="col-8">
+        <div class="row">
+          <div class="col-md-12 row section1 AddressForm">
+            <div class="col-md-6">
+              <h6 class=" my-2 fa">
+                <i class="fa fa-check-circle text-success"></i>
+                <strong> {{'delivery.1.CUSTOMER ADDRESS'| translate}}</strong>
+              </h6>
+
+            </div>
+            <div class=" channge col-md-6 text-end" ><a href="" class="text-decoration-none"
+                [routerLink]="['/shippment']">{{'delivery.Change' | translate}} <i
+                  class="fa fa-solid fa-arrow-right reverse" ></i> </a></div>
+            <div class="border-top ">
+              <p class="my-0  pt-4">{{shippment.firstNameEn}} {{shippment.lastName}}</p>
+              <p class="mt-0 tb-5 text-secondary">
+                {{shippment.region}}, {{shippment.city}} | {{shippment.address}} -
+                {{shippment.adressInformation}} | +2 {{shippment.phoneNumber}}
+              </p>
+            </div>
+          </div>
+
+
+
+
+          <div class=" my-2  col-12 row section1 AddressForm">
+
+
+            <h6 class="fa p-2 my-2 border-bottom ">
+              <i class="fa fa-check-circle text-secondary"></i>
+              <strong> {{'delivery.2.Delivary Details' | translate}}</strong>
+            </h6>
+
+
+            <div class="form-check col-md-9 ">
+
+              <input class="starright    form-check-input  btn-outline-warning bg-warning border border-warning rounded-circle"
+                height="8px" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+
+
+              <label class="form-check-label " for="flexRadioDefault2">
+                <strong> {{'delivery.Door Delivery' | translate}}</strong>
+                <small>{{'delivery.(From EGP 35.00)' | translate}}</small>
+                <p> <small>Delivered between {{ increaseDate(5).dayNumber }} {{ increaseDate(5).monthName }}
+                  and  {{ increaseDate(10).dayNumber }} {{ increaseDate(10).monthName }}</small></p>
+              </label>
+
+            </div>
+
+
+            <div class="col-md-3 text-end">
+              <i class=" track fa fa-solid fa-truck text-warning" style="font-size: 20px;"></i>
+            </div>
+
+
+
+            <div class="col-md-6 p-3">
+              <p class="smallText">{{'delivery.Shipment 1' | translate}}/{{cartNumber}}</p>
+            </div>
+
+
+            <div class="col-md-6 p-3 text-end smallText">
+              {{'delivery.Fulfilled by Al huda Store'| translate}}
+            </div>
+
+
+
+
+            @for(pro of cartItems;track pro.id;){
+            <div class=" p-3 mx-3  row section1 col-5 rounded">
+              <h6 class="smallText"><strong>{{'delivery.Door Delivery' | translate}}</strong></h6>
+              <p class=" smallText ">{{'delivery.Delivery between 27 March and 28 March' | translate}}</p>
+              <hr>
+              <div class="col-md-2 ">
+                <img   [src]="pro.images[0]"  alt="">
+              </div>
+              <div class="delvery col-md-10">
+                <p class="smallText my-0 mx-0 ">{{isArabicLanguage() ? pro.nameAr : pro.name}}</p>
+                <p class="smallText">{{'delivery.OTY:' | translate}} {{pro.cartQuantity}}</p>
+              </div>
+
+            </div>
+            }
+
+            <div class="col-12 d-flex justify-content-end mb-4 ">
+              <button type="submit" class="btn btn-warning text-white mt-4 shadow rounded save"
+                (click)="ConfirmDelivary()">{{'delivery.Confirm Delivery Order' | translate}}</button>
+            </div>
+
+          </div>
+          <div class=" my-2  col-12 row section1 AddressForm">
+
+            <h6 class="fa p-2 my-2 border-bottom ">
+              <i class="fa fa-check-circle text-secondary"></i>
+              <strong> {{'delivery.3.Payment Method'| translate}}</strong>
+            </h6>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <div class="col-4 ">
+        <div class="card mb-3 ">
+
+          <p class="list-group-item"><strong>{{'shipment.Order summary' | translate}}</strong></p>
+
+          <div class="row p-2 ">
+            <div class=" col-6">
+              <p class="me-5 ">{{'shipment.Items total' | translate}} ({{cartNumber}})</p>
+            </div>
+            <div class=" col-6 " style="text-align: end;">
+              <p class=""><strong>{{'shipment.EGP' | translate}} {{TotalCartPrice}}</strong> </p>
+            </div>
+
+          </div>
+
+
+          <div class="row p-2">
+            <div class=" col-6">
+              <p class="me-5">{{'shipment.Delivery fees' | translate}}</p>
+            </div>
+            <div class=" col-6 " style="text-align: end;">
+              <p class=""><strong>{{'shipment.EGP' | translate}} 35.00 </strong></p>
+            </div>
+
+          </div>
+
+          <div class="row p-2">
+            <div class=" col-6">
+              <p class="me-5">{{'shipment.Prepaid discount' | translate}}</p>
+            </div>
+            <div class=" col-6 " style="text-align: end;">
+              <p class="text-success"><strong> {{'shipment.EGP' | translate}} -10</strong> </p>
+            </div>
+
+          </div>
+
+          <hr>
+          <div class="row p-2">
+            <div class=" col-6">
+              <p class="me-5">{{'shipment.Total' | translate}}</p>
+            </div>
+            <div class=" col-6 " style="text-align: end;">
+              <p class=""><strong>{{'shipment.EGP' | translate}} {{TotalCartPrice +35 -10}}</strong></p>
+            </div>
+
+          </div>
+
+
+
+          <hr>
+          <div class="row p-2">
+            <div class=" col-2">
+              <i class="fa fa-solid fa-ticket text-warning " style="font-size:36px;"></i>
+            </div>
+            <div class=" col-10 ">
+              <small class=""> {{'shipment.You will be able to add a voucher when selecting your payment method.' |
+                translate}}</small>
+            </div>
+
+          </div>
+
+
+          <div class="card-footer bg-light" style="text-align: center;">
+            <button class="btn  text-light bton-order w-100" style="width: 90%;" disabled
+              routerLink="/shippment">{{'shipment.Confirm Order' | translate}} </button>
+            <b><small>{{'shipment.(Complete the steps in order to proceed)' | translate}}</small></b>
+          </div>
+        </div>
+        <div class="" style="text-align: center;">
+
+          <h6><small class="text-secondary">{{'shipment.By proceeding, you are automatically accepting the' | translate}} </small></h6>
+          <a><small>{{'shipment.Terms & Conditions' | translate}}</small></a>
+        </div>
+
+      </div>
+
+
+
     </div>
-   </div>
+  </div>
+
+
+
+</div>

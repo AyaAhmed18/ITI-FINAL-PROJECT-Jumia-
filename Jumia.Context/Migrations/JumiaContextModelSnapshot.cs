@@ -135,7 +135,7 @@ namespace Jumia.Context.Migrations
                     b.Property<int>("TotalAmount")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("TotalPrice")
+                    b.Property<decimal>("TotalOrderPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UpdatedBy")
@@ -357,15 +357,7 @@ namespace Jumia.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AddressAr")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("AdressInformation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AdressInformationAr")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -386,10 +378,6 @@ namespace Jumia.Context.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FirstNameAr")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FirstNameEn")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -400,13 +388,6 @@ namespace Jumia.Context.Migrations
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastNameAr")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -426,13 +407,10 @@ namespace Jumia.Context.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserIdentityId")
+                    b.Property<int>("UserIdentityId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrderId")
-                        .IsUnique();
 
                     b.HasIndex("UserIdentityId");
 
@@ -460,6 +438,10 @@ namespace Jumia.Context.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("NameAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -832,15 +814,13 @@ namespace Jumia.Context.Migrations
 
             modelBuilder.Entity("Jumia.Model.Shippment", b =>
                 {
-                    b.HasOne("Jumia.Model.Order", null)
-                        .WithOne("Shipping")
-                        .HasForeignKey("Jumia.Model.Shippment", "OrderId")
+                    b.HasOne("Jumia.Model.UserIdentity", "Customer")
+                        .WithMany("Shippments")
+                        .HasForeignKey("UserIdentityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Jumia.Model.UserIdentity", null)
-                        .WithMany("Shippments")
-                        .HasForeignKey("UserIdentityId");
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("Jumia.Model.SubCategory", b =>
@@ -937,9 +917,6 @@ namespace Jumia.Context.Migrations
             modelBuilder.Entity("Jumia.Model.Order", b =>
                 {
                     b.Navigation("OrderItems");
-
-                    b.Navigation("Shipping")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Jumia.Model.Product", b =>

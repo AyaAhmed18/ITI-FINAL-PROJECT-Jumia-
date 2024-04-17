@@ -1,53 +1,75 @@
-<main class="container">
+<main class="container"  [class.rtl]="isArabic" >
   <div class="row">
-
-    <div class="col-2 col-md mb-5 shadow-lg p-3 mb-5 bg-body rounded my-3  show-div-Linkes">
-
-
-      <div class="row float-start  ">
-
-        <a class="col-12 Link_hover color-black p-2" href="#"><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Clothing</a>
-        <a class="col-12 Link_hover color-black p-2" href="#"><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Cardigans & Pullovers</a>
-        <a class="col-12 Link_hover color-black p-2" href="#"><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Cardigans</a>
-        <a class="col-12 Link_hover color-black p-2" href="#"><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Pullovers</a>
-        <a class="col-12 Link_hover color-black p-2" href="#"><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Shrugs</a>
-        <a class="col-12 Link_hover color-black p-2" href="#"><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Vests</a>
-        <a class="col-12 Link_hover color-black p-2" href="#"><i class="fa fa-hand-o-right px-3"
-            aria-hidden="true"></i>Vests</a>
-      </div>
-
-    </div>
-    <div class="show-linkes col-7 col-md mb-5 shadow-lg p-3 mb-5 bg-body rounded my-3">
-
-      <div id="" class=" ">
-        <div class="row">
-          <div class="col " class="border-right">
-            <h5 class="border-bottom">HOUSEHOLD SUPPLIES</h5>
-
-            <a href="">ddd</a>
-          </div>
-          <div class="col" class="border-right">
-            <h5 class="border-bottom">HOUSEHOLD SUPPLIES</h5>
-            <a href="">ddd</a>
-          </div>
-          <div class="col" class="border-right">
-            <h5 class="border-bottom">HOUSEHOLD SUPPLIES</h5>
-            <a href="">ddd</a>
-          </div>
-
-
-        </div>
-
-
+    <div class="col-2 col-md mb-5 shadow-sm bg-body mb-5 rounded my-3 show-div-Linkes">
+      <div class="row float-start">
+        <a class="col-12 Link_hover color-black   linkSidebar"   *ngFor="let cat of allCategories" (mouseover)="GetSubCategories(cat.id)" (click) = "GetProductsByCatId(cat.id)">
+          <i class="fa fa-hand-o-right px-3" aria-hidden="true"><small>  {{ isArabicLanguage() ? cat.nameAr : cat.name }}</small></i>
+        </a>
       </div>
     </div>
-    <div class="hide-slider col-7 col-md mb-5 shadow-lg p-3  bg-body rounded my-3">
+    
+    <div class="show-linkes col-7 col-md mb-5 bg-body shadow-sm p-3 mb-5  rounded my-3">
+    
+          <div class="row" >
+            <div class="col-4 border-right p-2">
+              <p><a class="linkSidebar d-block "routerLink = "/Product">WOMEN'S FASHION</a></p>
+              <hr>
+              <a class="linkSidebar d-block"*ngFor="let subCat of SubCategories" (click) = "GetProductsBySubCatId(subCat.id)">{{ isArabicLanguage() ? subCat.nameAr : subCat.name }}</a>
+            </div>
+
+            <div class="col-4 border-right p-2">
+              <p><a class="linkSidebar d-block "routerLink = "/Product">MEN'S FASHION</a></p>
+              <hr>
+              <a class="linkSidebar d-block "routerLink = "/Product">Shirts</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">T-shirts & Polos</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Pants</a>
+              <a class="linkSidebar d-block "routerLink = "/Product"> Homewear & Underwear</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Swimsuits & Shorts</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Sports Wear</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Accessories</a>
+              <a class="linkSidebar d-block "routerLink = "/Product"> Socks</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Watches</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Pullovers & Cardigans</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Jackets & Coats</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Hoodies & Sweatshirt</a>
+              
+              <p> <a class="linkSidebar d-block "routerLink = "/Product">BABY FASHION</a></p>
+              <hr>
+              <a class="linkSidebar d-block "routerLink = "/Product">Boy's Clothes & Shoes</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Girl's Clothes & Shoes</a>
+            
+            
+
+            </div>
+
+            <div class="col-4 border-right p-2">
+              <p > <a class="linkSidebar d-block "routerLink = "/Product">WOMEN'S SHOES</a></p>
+              <hr>
+              <a class="linkSidebar d-block "routerLink = "/Product">Sneakers</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Heels</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Flats & Loafers</a>
+              <a class="linkSidebar d-block "routerLink = "/Product"> Slippers & Sandals</a>
+              <p ><a class="linkSidebar d-block "routerLink = "/Product">MEN'S SHOES</a> </p>
+              <hr>
+            
+              <a class="linkSidebar d-block "routerLink = "/Product">Sneakers</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Casual & Loafers</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Slippers & Sandals</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Formal Shoes</a>
+              <p ><a class="linkSidebar d-block "routerLink = "/Product">KID'S FASHION</a></p>
+              <hr>
+              
+              <a class="linkSidebar d-block "routerLink = "/Product">Boy's Fashion</a>
+              <a class="linkSidebar d-block "routerLink = "/Product">Girl's Fashion</a>
+             
+            
+
+            </div>
+          </div>
+        
+    </div>
+    
+    <div class="hide-slider col-7 col-md   p-3  rounded">
 
       <div id="carouselExampleIndicators" class="carousel slide  " data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -68,7 +90,7 @@
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7"
             aria-label="Slide 8"></button>
         </div>
-        <div class="carousel-inner">
+        <div class="carousel-inner rounded">
           <div class="carousel-item active">
             <img src="assets/sliderImg/1.png" class="d-block w-100" alt="...">
           </div>
@@ -97,145 +119,263 @@
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
           data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+          <span class="visually-hidden">{{'home.Previous' | translate}}</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
           data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+          <span class="visually-hidden">{{'home.Next' | translate}}</span>
         </button>
       </div>
     </div>
 
+    <div class="panerRight col-3 col-md mb-5     my-2">
 
 
-
-    <div class="col-3 col-md mb-5     my-3">
-
-
-      <div class="row m-3">
+      <div class="row m-2 ">
         <div class="col-12">
 
-          <div class="row bg-light ">
+          <div class="row bg-body rounded ">
             <div class="col-12">
-              <div class="row my-2">
+              <div class="row my-1">
                 <div class="col-4">
                   <img src="assets/HomeImg/11.png" alt="">
 
                 </div>
                 <div class="col-8 p-0">
-                  <p><strong>Sell on JUMIA</strong></p>
-                  <p><small>And Grow Business</small></p>
+                  <p><strong>{{'home.Sell on JUMIA' | translate}}</strong></p>
+                  <p><small>{{'home.And Grow Business' | translate}}</small></p>
                 </div>
               </div>
             </div>
             <div class="col-12 ">
-              <div class="row my-2">
+              <div class="row my-1">
                 <div class="col-4">
                   <img src="assets/HomeImg/22.png" alt="">
 
                 </div>
                 <div class="col-8 p-0">
-                  <p><strong>Instsllments</strong></p>
-                  <p><small>With Your Bank</small></p>
+                  <p><strong>{{'home.Instsllments' | translate}}</strong></p>
+                  <p><small>{{'home.With Your Bank' | translate}}</small></p>
                 </div>
               </div>
             </div>
             <div class="col-12">
-              <div class="row my-2">
+              <div class="row my-1">
                 <div class="col-4">
                   <img src="assets/HomeImg/33.png" alt="">
 
                 </div>
                 <div class="col-8 p-0">
-                  <p><strong>Warranty</strong></p>
-                  <p><small>On Your Purchases</small></p>
+                  <p><strong>{{'home.Warranty' | translate}}</strong></p>
+                  <p><small>{{'home.On Your Purchases' | translate}}</small></p>
                 </div>
               </div>
             </div>
           </div>
 
         </div>
- <div class="col-12 p-0 my-3">
-  <img class="w-100" src="assets/HomeImg/33.gif" alt="">
+ <div class="col-12 p-1  ">
+  <img class="w-100 rounded" src="assets/HomeImg/33.gif" alt=""style="height: 200px;">
 </div>
       </div>
 
     </div>
-
-
-
-
-
-
   </div>
 </main>
-<div class="container section1">
+
+<!-- --------------------------allCategories------------------------- -->
+<div class="container bg-body rounded-3" [class.rtl]="isArabic">
+  <!-- <div class="row sectionHeader">
+    <h5>{{'home.Ramadan Preparations ☾' | translate}}</h5>
+  </div> -->
+
+  <div *ngIf="allCategories">
+    <div class="container section1" [class.rtl]="isArabic">
+      <div id="myCarousel1" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+
+
+          <div class="carousel-item active p-0">
+            <div class="row ">
+              <div *ngFor="let allCat of allCategories.slice(0, 6); let index = index" class="col col-slider sl-scall " (click) = "GetProductsByCatId(allCat.id)">
+                <a > <img src="assets/HomeImg/2.png" class="d-block " alt="Image {{ index }}"></a>
+                <p class="linkSidebar text-center">{{allCat.name}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div *ngFor="let allCat of allCategories.slice(4, 10); let index = index" class="col col-slider  sl-scall " (click) = "GetProductsByCatId(allCat.id)">
+                <a > <img src="assets/HomeImg/2.png" class="d-block " alt="Image {{ index }}"></a>
+                <p class="linkSidebar text-center">{{allCat.name}}</p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Add more carousel items as needed -->
+        <button class="carousel-control-prev col-1 fixed-n-p" type="button" data-bs-target="#myCarousel1" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next col-1 fixed-n-p" type="button" data-bs-target="#myCarousel1" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+  
+    </div>
+    </div>
+  </div>
+  
+
+
+
+
+</div>
+<br>
+
+<!-- --------------------------productDesc------------------------- -->
+  <div class="container bg-body rounded-3 " [class.rtl]="isArabic">
+    <div *ngIf="productDesc">
+<div class="row ">
+  <div class="col-6 p-1 h5">
+    <strong class="">
+      <p class="linkSidebar">product descound 30% or more</p>
+    </strong>
+  </div>
+  <div class="col-6 p-1 h5">
+    <strong>
+      <a class="Link_hover color-black   linkSidebar float-end" routerLink="/Product">SEE ALL ></a>
+    </strong>
+  </div>
+</div>
+
+    <div id="myCarousel" class="carousel slide p-2" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active ">
+    
+          <div class="row p-1">
+            <div *ngFor="let proDes of productDesc.slice(0, 6); let index = index" class="col col-slider sl-scall"
+              (click)="navigateToDetails(proDes.id)">
+              <div class="cards" [class.rtl]="isArabic">
+                <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
+                  <img class="card-img-top" src="assets/ProductImg/1.jpg" alt="Card image">
+                  <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
+                  <p class=" linkSidebar label-Cards-top p-1 "> {{proDes.discount}}% </p>
+                  <p class="linkSidebar ">{{ isArabicLanguage() ? proDes.nameAr : proDes.name }}</p>
+                  <p class="linkSidebar  "><strong>{{'product.EGP' | translate}}
+                      {{(proDes.realPrice-(proDes.realPrice*proDes.discount/100)).toFixed(2)}}</strong></p>
+                  <del class="linkSidebar ">{{'product.EGP' | translate}} {{proDes.realPrice}}</del>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+       
+        <div class="carousel-item  ">
+          <div class="row p-1">
+            <div *ngFor="let proDes of productDesc.slice(6, 12); let index = index" class="col col-slider sl-scall"(click)="navigateToDetails(proDes.id)">
+              <div class="" [class.rtl]="isArabic">
+                <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
+                  <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image">
+                  <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
+                  <p class=" linkSidebar label-Cards-top p-1 "> {{proDes.discount}}% </p>
+                  <p class="linkSidebar ">{{ isArabicLanguage() ? proDes.nameAr : proDes.name }}</p>
+                  <p class="linkSidebar  "><strong>{{'product.EGP' | translate}}
+                    {{(proDes.realPrice-(proDes.realPrice*proDes.discount/100)).toFixed(2)}}</strong></p>
+                  <del class="linkSidebar ">{{'product.EGP' | translate}} {{proDes.realPrice}}</del>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+     
+
+
+      <button class="carousel-control-prev col-1 fixed-p-p" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next col-1 fixed-n-p" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  </div>
+</div>
+<br>
+
+<!-- <div class="container section1" [class.rtl]="isArabic">
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="row">
-          <div class="col">
+      <div class="carousel-item active p-0">
+        <div class="row ">
+          <div class="col sl-scall">
             <a href=""> <img src="assets/HomeImg/2.png" class="d-block w-100" alt="Image 7"></a>
           </div>
-          <div class="col sm-4">
+          <div class="col sl-scall">
             <a href=""><img src="assets/HomeImg/FlashSaleEN.png" class="d-block w-100" alt="Image 8"></a>
           </div>
-          <div class="col">
+          <div class="col sl-scall">
             <a href=""><img src="assets/HomeImg/ApplianceEN.png" class="d-block w-100" alt="Image 8"></a>
           </div>
-          <div class="col">
+          <div class="col sl-scall">
             <a href=""><img src="assets/HomeImg/2.png" class="d-block w-100" alt="Image 8"></a>
           </div>
-          <div class="col">
+          <div class="col sl-scall">
             <a href=""><img src="assets/HomeImg/ApplianceEN.png" class="d-block w-100" alt="Image 8"></a>
           </div>
-          <div class="col">
+          <div class="col sl-scall">
             <a href=""><img src="assets/HomeImg/TodayEN.png" class="d-block w-100" alt="Image 8"></a>
           </div>
-          <div class="col">
+          <div class="col sl-scall">
             <a href=""><img src="assets/HomeImg/FashionEn.gif" class="d-block w-100" alt="Image 8"></a>
           </div>
-          <div class="col">
+          <div class="col sl-scall">
             <a href=""><img src="assets/HomeImg/EN9ffcopy.png" class="d-block w-100" alt="Image 8"></a>
           </div>
         </div>
       </div>
       <div class="carousel-item">
         <div class="row">
-          <div class="col">
+          <div class="col sl-scall">
             <a href=""> <img src="assets/HomeImg/FashionEn.gif" class="d-block w-100" alt="Image 7"></a>
           </div>
-          <div class="col">
+          <div class="col sl-scall">
             <a href=""> <img src="assets/HomeImg/FlashSaleEN.png" class="d-block w-100" alt="Image 7"></a>
           </div>
-          <div class="col">
+          <div class="col sl-scall">
             <a href=""><img src="assets/HomeImg/INSEN.png" class="d-block w-100" alt="Image 8"></a>
           </div>
-          <div class="col">
+          <div class="col sl-scall">
             <a href=""><img src="assets/HomeImg/RedeemEN.png" class="d-block w-100" alt="Image 8"></a>
           </div>
-          <div class="col">
+          <div class="col sl-scall">
             <a href=""> <img src="assets/HomeImg/MIEEN.png" class="d-block w-100" alt="Image 7"></a>
           </div>
-          <div class="col">
+          <div class="col sl-scall">
             <a href=""><img src="assets/HomeImg/RedeemEN.png" class="d-block w-100" alt="Image 8"></a>
           </div>
-          <div class="col">
+          <div class="col sl-scall">
             <img src="assets/HomeImg/2.png" class="d-block w-100" alt="Image 7">
           </div>
-          <div class="col">
+          <div class="col sl-scall">
             <a href=""><img src="assets/HomeImg/EN9ffcopy.png" class="d-block w-100" alt="Image 8"></a>
           </div>
         </div>
 
-      </div>
-      <!-- Add more carousel items as needed -->
-      <button class="carousel-control-prev col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      </div> 
+    
+    
+      <button class="carousel-control-prev col-1 fixed-n-p" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <button class="carousel-control-next col-1 fixed-n-p" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
@@ -243,52 +383,26 @@
 
 
   </div>
-</div>
+</div> -->
 
-
-
-<div class="container ">
-  <div class="row sectionHeader">
-    <h5>Ramadan Preparations ☾</h5>
-  </div>
-  <div class="row section1">
-
-    <div class="col">
-      <a href=""><img src="assets/HomeImg/R1.jpg" class="d-block w-100" alt="Image 8"></a>
-    </div>
-    <div class="col">
-      <a href=""><img src="assets/HomeImg/R2.png" class="d-block w-100" alt="Image 8"></a>
-    </div>
-    <div class="col">
-      <a href=""><img src="assets/HomeImg/R3.png" class="d-block w-100" alt="Image 8"></a>
-    </div>
-    <div class="col">
-      <a href=""><img src="assets/HomeImg/R4.png" class="d-block w-100" alt="Image 8"></a>
-    </div>
-    <div class="col">
-      <a href=""><img src="assets/HomeImg/R5.png" class="d-block w-100" alt="Image 8"></a>
-    </div>
-    <div class="col">
-      <a href=""><img src="assets/HomeImg/R6.gif" class="d-block w-100" alt="Image 8"></a>
+<div class="" [class.rtl]="isArabic">
+  <div class="row">
+    <div class="sectionHeader col-12 p-3 rounded-3">
+      <h5>{{'home.Shop All Your Needs' | translate}}</h5>
     </div>
 
   </div>
-</div>
-
-<div class="container">
-  <div class="sectionHeader row">
-    <h5>Shop All Your Needs</h5>
-  </div>
-  <div class="row section1">
+  
+  <div class="row  container bg-body rounded-3 p-2">
     <div class="col ">
       <a href=""><img src="assets/HomeImg/p1.png" class="d-block w-100" alt="Image 8"></a>
     </div>
-    <div class="col e-0">
+    <div class="col ">
       <a href=""><img src="assets/HomeImg/p1.png" class="d-block w-100" alt="Image 8"></a>
     </div>
   </div>
   <br>
-  <div class="row section1">
+  <div class="row container bg-body rounded-3 p-2">
     <div class="col">
       <a href=""><img src="assets/HomeImg/p1.png" class="d-block w-100" alt="Image 8"></a>
     </div>
@@ -298,19 +412,83 @@
 
   </div>
 </div>
-
 <br>
-<div class="container section1">
+
+<!-- --------------------------productNews------------------------- -->
+<div class="container bg-body rounded-3" [class.rtl]="isArabic">
+  <div *ngIf="productNews">
+    <div class="row ">
+      <div class="col-6 p-1 h5">
+        <strong class="">
+          <p class="linkSidebar">New Products for you</p>
+        </strong>
+      </div>
+      <div class="col-6 p-1 h5">
+        <strong>
+          <a class="Link_hover color-black   linkSidebar float-end" routerLink="/Product">SEE ALL ></a>
+        </strong>
+      </div>
+    </div>
+  <div id="myCarousel2" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active p-0">
+
+        <div class="row ">
+          <div *ngFor="let pronew of productNews.slice(0, 6); let index = index" class="col sl-scall" (click)="navigateToDetails(pronew.id)">
+            <div class="" [class.rtl]="isArabic">
+              <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
+                <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image">
+                <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
+            
+                <p class="linkSidebar ">{{ isArabicLanguage() ? pronew.nameAr : pronew.name }}</p>
+             
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row">
+          <div *ngFor="let pronew of productNews.slice(6, 12); let index = index" class="col sl-scall"(click)="navigateToDetails(pronew.id)">
+            <div class="" [class.rtl]="isArabic">
+              <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
+                <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image">
+                <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
+            
+                <p class="linkSidebar ">{{ isArabicLanguage() ? pronew.nameAr : pronew.name }}</p>
+             
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+    <button class="carousel-control-prev col-1 fixed-n-p" type="button" data-bs-target="#myCarousel2" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next col-1 fixed-n-p" type="button" data-bs-target="#myCarousel2" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+</div>
+</div>
+<br>
+
+<div class="container section1" [class.rtl]="isArabic">
   <div class="row">
     <div class="col">
       <a href=""> <img src="assets/HomeImg/GeneralENDESKTOP.jpg" alt="" title="Panar" class="d-block w-100"></a>
     </div>
   </div>
 </div>
+<br>
 
-<div class="container">
+<div class="container" [class.rtl]="isArabic">
   <div class=" row">
-    <h5 class="text-center">♡ Proudly Made in Egypt ♡</h5>
+    <h5 class="text-center">{{'home.♡ Proudly Made in Egypt ♡' | translate}}</h5>
   </div>
   <div class="row section1">
     <div class="col ">
@@ -319,10 +497,11 @@
 
   </div>
 </div>
+<br>
 
-<div class="container">
+<div class="container" [class.rtl]="isArabic">
   <div class=" row sectionHeader">
-    <h5 class="text-center">Best Fashion Offers</h5>
+    <h5 class="text-center">{{'home.Best Fashion Offers' | translate}}</h5>
   </div>
   <div class="row section1">
     <div class="col ">
@@ -337,8 +516,9 @@
 
   </div>
 </div>
+<br>
 
-<div class="container">
+<div class="container" [class.rtl]="isArabic">
   <section class="card d-flex overflow-hidden rounded-2">
     <div class="d-flex align-items-center p-1 px-sm-2">
       <a href="https://www.jumia.com.eg/mlp-fashion-beauty-top-deals/"

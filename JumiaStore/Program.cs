@@ -99,8 +99,10 @@ namespace JumiaStore
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<ISubCategoryService, SubCategoryService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
+            builder.Services.AddScoped<IProductSpecificationSubCategoryServices, ProductSpecificationSubCategoryServices>();
             builder.Services.AddScoped<IOrderItemService, OrderItemService>();
             builder.Services.AddScoped<IShippmentService, ShippmentService>();
+            builder.Services.AddScoped<IBrandService,BrandService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -113,7 +115,7 @@ namespace JumiaStore
                 op.UseSqlServer(builder.Configuration.GetConnectionString("Db"));
             });
             #region Localization
-            /*builder.Services.AddSession(options =>
+         /*   builder.Services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
@@ -148,6 +150,8 @@ namespace JumiaStore
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+           // app.UseRouting();
+            app.UseRequestLocalization();
             app.UseCors("Default");
             app.UseAuthentication();
             app.UseAuthorization();

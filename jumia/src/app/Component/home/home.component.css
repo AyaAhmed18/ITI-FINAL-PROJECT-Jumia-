@@ -1,22 +1,43 @@
 
-.section1{
+
+/* .section1{
     border: 1px solid #eee;
     padding-top: 5px;
     padding-bottom: 5px;
-   }
+   } */
    /* div:hover{
      transform: scale(1.1,1.1);
    } */
-   .carousel-control-prev,
-       .carousel-control-next {
-         background-color:darkgrey;
-         border-radius: 50%;
-         padding: 0;
-         margin-top: 60px;
-         width: 3vw;
-         height: 3vw;
-       }
+  
+       .fixed-n-p {
+        background-color:rgb(51, 51, 51);
+        border-radius: 50%;
+        padding: 0;
+        margin-top:90px;
+      
+        width: 3vw;
+        height: 3vw;
+      }
+      .fixed-p-p {
+        background-color:rgb(51, 51, 51);
+        border-radius: 50%;
+        padding: 0;
+        margin-top:90px;
+      
+        width: 3vw;
+        height: 3vw;
+      }
+   .linkSidebar{
+    font-size:1vw;
+  
+   }
+
+
+
+   a.linkSidebar:hover{
+    font-weight: bold;
    
+   }
        /* .carousel-control-prev {
          left: 20px;
        }
@@ -27,13 +48,17 @@
    .sectionHeader{
      text-align: center;
      background-color:#EDE5F3;
-     padding: 5px;
-     font-size: 15px;
+  padding: 10px;
+  
+  font-size:1vw;
    
    }
 
    
     /* change color or hover link side bar */
+    .Link_hover{
+      padding: 6px;
+    }
   .Link_hover:hover {
 
     color: #ff9901ea;
@@ -43,23 +68,28 @@
   a:visited {
 
     color: rgb(0, 0, 0);
-    padding: 14px 25px;
+    padding: 0px ;
 
     text-decoration: none;
     display: inline-block;
   }
-
+  .sl-scall:hover{
+       
+    transform: scale(1.1);
+    
+    
+        }
   .line {
     color: rgb(201, 201, 197);
     /* Change background color on hover */
   }
 
 
-
-
-
-  .show-div-Linkes {
-    height: 560px;
+  .show-div-Linkes ,
+  .hide-slider ,
+  .show-linkes
+   {
+    height: 380px;
   }
 
   .show-linkes {
@@ -69,6 +99,7 @@
   .show-div-Linkes:hover+.show-linkes,
   .show-linkes:hover {
     display: block;
+  
   }
 
   .show-div-Linkes:hover~.hide-slider {
@@ -79,3 +110,160 @@
   display: none;
   
 }
+
+.fifty-chars {
+  width: 30ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+
+.rtl {
+  direction: rtl;
+}
+.carousel-indicators button{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: orange;
+}
+
+.col-slider{
+  width: 16%;
+}
+
+ /*style cards by Bahaa */
+
+ .label-Cards-top {
+  position: absolute;
+  background-color: rgba(255, 115, 0, 0.842);
+  color: #fff;
+  top: 8px;
+  left: 8px;
+
+  
+  border-radius: 3px;
+ 
+}
+.diccProduct{
+  padding: 10px;
+}
+.cards-hover:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+}
+
+/* Extra small devices (phones) */
+@media only screen and (max-width:590px) {
+ 
+  .col-2{
+    width: 30%;
+   padding: 5px;
+
+  }
+  .col-7{
+    width:70%
+  }
+  .show-div-Linkes{
+    height: 123px;
+    padding: 0px;
+  }
+
+  .hide-slider ,
+  .show-linkes{
+    height: 123px;
+    padding: 0px;
+
+  }
+  .panerRight{
+display: none;
+  }
+
+  
+
+  a:link,
+  a:visited {
+
+    
+    padding: 0px;
+
+    
+  }
+  .Link_hover{
+    padding: 3px;
+  }
+
+
+
+
+  .diccProduct{
+    padding: 1px;
+  }
+  .label-Cards-top {
+   
+    background-color: rgba(255, 115, 0, 0.842);
+    color: #fff;
+    top: 2px;
+    left: 2px;
+
+  
+ 
+   
+  }
+
+
+
+
+
+  }
+  
+  /* Small devices (portrait tablets and large phones) */
+  @media only screen and (min-width:600px) and (max-width:885px) {
+    
+    .col-2{
+      width: 30%;
+     padding: 5px;
+  
+    }
+    .col-7{
+      width:70%
+    }
+    .show-div-Linkes{
+      height: 265px;
+      padding: 0px;
+    }
+  
+    .hide-slider ,
+    .show-linkes{
+      height: 265px;
+  
+    }
+    .panerRight{
+  display: none;
+    }
+  
+    .col{
+      width: 40%;
+    }
+  
+    a:link,
+    a:visited {
+  
+      
+      padding: 0px;
+  
+      
+    }
+  
+
+
+
+
+
+
+
+
+
+
+
+  }
+  

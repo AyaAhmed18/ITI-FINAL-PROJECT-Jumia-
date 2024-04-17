@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 using Microsoft.EntityFrameworkCore;
+using Jumia.Dtos.Product;
 
 namespace Jumia.Application.Services.Services
 {
@@ -157,18 +158,18 @@ namespace Jumia.Application.Services.Services
 
 
         //GetOne
-        public async Task<ResultView<GetAllSubDto>> GetOne(int id)
+        public async Task<ResultView<CreateOrUpdateSubDto>> GetOne(int id)
         {
             var SubCategory = await _subCategoryRepository.GetOneAsync(id);
             if (SubCategory == null)
             {
-                return new ResultView<GetAllSubDto> { Entity = null, IsSuccess = false, Message = "Not Found!" };
+                return new ResultView<CreateOrUpdateSubDto> { Entity = null, IsSuccess = false, Message = "Not Found!" };
             }
             else
             {
-                var SubCategoryDto = _mapper.Map<GetAllSubDto>(SubCategory);
+                var SubCategoryDto = _mapper.Map<CreateOrUpdateSubDto>(SubCategory);
 
-                return new ResultView<GetAllSubDto> { Entity = SubCategoryDto, IsSuccess = true, Message = "Succses" };
+                return new ResultView<CreateOrUpdateSubDto> { Entity = SubCategoryDto, IsSuccess = true, Message = "Succses" };
             }
         }
 
@@ -177,7 +178,16 @@ namespace Jumia.Application.Services.Services
 
 
 
+        public async Task<ResultDataForPagination<GetAllSubDto>> GetByCategoryId(int catId)
+        {
+            var AllData = (await _subCategoryRepository.GetAllAsync()).Where(p => p.CategoryId == catId);
+            var SubCategorys = _mapper.Map<List<GetAllSubDto>>(AllData);
 
+            ResultDataForPagination<GetAllSubDto> resultDataFor = new ResultDataForPagination<GetAllSubDto>();
+            resultDataFor.Entities = SubCategorys;
+            resultDataFor.count = AllData.Count();
+            return resultDataFor;
+        }
 
 
 

@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class AdminController : BaseController
     {
         private readonly IRoleService _roleService;
@@ -79,7 +79,7 @@ namespace AdminDashBoard.Controllers
                         }
                     }
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Admin");
 
                 }
                 else

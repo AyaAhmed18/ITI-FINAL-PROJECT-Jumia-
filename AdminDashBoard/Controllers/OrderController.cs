@@ -1,6 +1,7 @@
 ﻿using Jumia.Application.IServices;
 using Jumia.Dtos.Order;
 using Jumia.Model;
+using Jumia.Model.Commons;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +12,7 @@ using System.Security.Cryptography;
 
 namespace AdminDashBoard.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class OrderController : BaseController
     {
         private readonly IOrderService _orderService;
@@ -87,7 +88,9 @@ namespace AdminDashBoard.Controllers
         {
            
             var order = await _orderService.GetOrder(id);
-            var user = _userManager.Users.FirstOrDefault(u => u.Id == order.CustomerId)?.UserName;
+            var user = order.CustomerId;
+
+            var userName = _userManager.Users.FirstOrDefault(u => u.Id == order.CustomerId)?.UserName;
             /*if (user != null)
             {
                 order.Customer = user;
@@ -105,6 +108,7 @@ namespace AdminDashBoard.Controllers
             // Set the SelectListItems in ViewBag
             ViewBag.OrderStatusOptions = orderStatusValues;
             ViewBag.User = user;
+            ViewBag.UserName = userName;
             return View(order);
         }
 
@@ -113,7 +117,8 @@ namespace AdminDashBoard.Controllers
        // [ValidateAntiForgeryToken]
         public async Task<ActionResult> EditAsync(CreateOrUpdateOrderDto OrderDto)
         {
-            
+            var user = OrderDto.CustomerId;
+            var userName = _userManager.Users.FirstOrDefault(u => u.Id == OrderDto.CustomerId)?.UserName;
             try
             {
                 var order = await _orderService.GetOrder(OrderDto.Id);
@@ -125,7 +130,8 @@ namespace AdminDashBoard.Controllers
                     var Res = await _orderService.Update(order);
                     if (Res.IsSuccess)
                     {
-                        return RedirectToAction("Index");
+                        TempData["SuccessMessage1"] = "successfully.";
+                        return RedirectToAction("Index", TempData["SuccessMessage1"]);
                     }
                     else
                     {
@@ -139,8 +145,9 @@ namespace AdminDashBoard.Controllers
                        })
                        .ToList();
                                 ViewBag.OrderStatusOptions = orderStatusValues;
-                        var user = _userManager.Users.FirstOrDefault(u => u.Id == order.CustomerId)?.UserName;
                         ViewBag.User = user;
+                        ViewBag.UserName = userName;
+                        TempData["SuccessMessage"] = "Failed";
                         return  View("Edit", OrderDto); ;
                     }
                    
@@ -159,6 +166,9 @@ namespace AdminDashBoard.Controllers
 
                     // Set the SelectListItems in ViewBag
                     ViewBag.OrderStatusOptions = orderStatusValues;
+                    ViewBag.User = user;
+                    ViewBag.UserName = userName;
+                    TempData["SuccessMessage"] = "Failed.";
                     return View("Edit",OrderDto);
 
                 }
@@ -175,6 +185,9 @@ namespace AdminDashBoard.Controllers
                 })
                 .ToList();
                 ViewBag.OrderStatusOptions = orderStatusValues;
+                ViewBag.User = user;
+                ViewBag.UserName = userName;
+                TempData["SuccessMessage"] = "Failed";
                 return View("Edit",OrderDto);
             }
         }

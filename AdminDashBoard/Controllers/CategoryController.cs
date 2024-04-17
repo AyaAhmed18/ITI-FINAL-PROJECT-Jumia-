@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AdminDashBoard.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class CategoryController : BaseController
     {
         private readonly ICategoryService _categoryService;
@@ -59,15 +59,16 @@ namespace AdminDashBoard.Controllers
 
 
                 var res = await _categoryService.Create(CategoryDto, Image);
-
+               
                 if (res.IsSuccess)
                 {
-
-                    return RedirectToAction("Index");
+                    TempData["SuccessMessage1"] = "Category Created successfully.";
+                    return RedirectToAction("Index", TempData["SuccessMessage1"]);
                 }
                
 
             }
+            TempData["SuccessMessage"] = "Failed";
             return View(CategoryDto);
 
 
@@ -85,8 +86,8 @@ namespace AdminDashBoard.Controllers
 
             }
 
-            var categoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(res.Entity);
-            return View(categoryDto);
+           // var categoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(res.Entity);
+            return View(res.Entity);
         }
 
 
@@ -94,38 +95,52 @@ namespace AdminDashBoard.Controllers
         [HttpPost]
         public async Task<ActionResult> Update(CreateOrUpdateCategoryDto categoryDto, IFormFile Image)
         {
-            if (ModelState.IsValid)
+            try
             {
-
-                var category = await _categoryService.GetOne(categoryDto.Id);
-                if (category == null)
-                {
-                    return NotFound(nameof(categoryDto));
-                }
-
-                if (Image != null && Image.Length > 0)
+                if (ModelState.IsValid)
                 {
 
-                    var imageBytes = new byte[Image.Length];
-                    using (var stream = Image.OpenReadStream())
+                    var category = await _categoryService.GetOne(categoryDto.Id);
+                    if (category == null)
                     {
-                        await stream.ReadAsync(imageBytes, 0, imageBytes.Length);
+                        return NotFound(nameof(categoryDto));
                     }
-                    categoryDto.Image = imageBytes;
-                }
-                else
-                {
-                    // If no new image is provided, retain the existing image
-                    categoryDto.Image = category.Entity.Image;
-                }
-              
-                await _categoryService.Update(categoryDto, Image);
 
-                return RedirectToAction(nameof(Index));
+                    if (Image != null && Image.Length > 0)
+                    {
+
+                        var imageBytes = new byte[Image.Length];
+                        using (var stream = Image.OpenReadStream())
+                        {
+                            await stream.ReadAsync(imageBytes, 0, imageBytes.Length);
+                        }
+                        categoryDto.Image = imageBytes;
+                    }
+                    else
+                    {
+                        // If no new image is provided, retain the existing image
+                        categoryDto.Image = category.Entity.Image;
+                    }
+
+                    var update = await _categoryService.Update(categoryDto, Image);
+                    if (update.IsSuccess)
+                    {
+                        TempData["SuccessMessage1"] = "Category updated successfully.";
+                        return RedirectToAction(nameof(Index), TempData["SuccessMessage1"]);
+                    }
+
+
+                }
+                TempData["SuccessMessage"] = "Failed";
+                return View(categoryDto);
 
             }
-
-            return View(categoryDto);
+            catch
+            {
+                TempData["SuccessMessage"] = "Failed";
+                return View(categoryDto);
+            }
+           
 
         }
 
@@ -142,10 +157,18 @@ namespace AdminDashBoard.Controllers
             }
 
             var CategoryToD = _mapper.Map<CreateOrUpdateCategoryDto>(res.Entity);
-            await _categoryService.Delete(CategoryToD);
+           var del= await _categoryService.Delete(CategoryToD);
+            if(del.IsSuccess){
+                TempData["SuccessMessage1"] = "Successed";
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["SuccessMessage"] = "Failed";
+                return RedirectToAction(nameof(Index));
+            }
 
-
-            return RedirectToAction(nameof(Index));
+            
         }
 
 

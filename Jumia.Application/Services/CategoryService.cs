@@ -135,10 +135,10 @@ namespace Jumia.Application.Services
                     return new ResultView<CreateOrUpdateCategoryDto> { Entity = null, IsSuccess = false, Message = "Category Not Found!" };
                 }
 
-                await _repository.DeleteAsync(category);
-                await _repository.SaveChangesAsync();
+               var res= await _repository.DeleteAsync(category);
+               var res1= await _repository.SaveChangesAsync();
 
-                var CategoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(category);
+                var CategoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(res);
                 return new ResultView<CreateOrUpdateCategoryDto> { Entity = categoryDto, IsSuccess = true, Message = "Deleted Successfully" };
             }
             catch (Exception ex)
@@ -179,18 +179,18 @@ namespace Jumia.Application.Services
 
 
         //GetOne
-        public async Task<ResultView<GetAllCategoryDto>> GetOne(int id)
+        public async Task<ResultView<CreateOrUpdateCategoryDto>> GetOne(int id)
         {
             var Category = await _repository.GetOneAsync(id);
             if (Category == null)
             {
-                return new ResultView<GetAllCategoryDto> { Entity = null, IsSuccess = false, Message = "Not Found!" };
+                return new ResultView<CreateOrUpdateCategoryDto> { Entity = null, IsSuccess = false, Message = "Not Found!" };
             }
             else
             {
-                var CategoryDto = _mapper.Map<GetAllCategoryDto>(Category);
+                var CategoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(Category);
 
-                return new ResultView<GetAllCategoryDto> { Entity = CategoryDto, IsSuccess = true, Message = "Succses" };
+                return new ResultView<CreateOrUpdateCategoryDto> { Entity = CategoryDto, IsSuccess = true, Message = "Succses" };
             }
         }
 

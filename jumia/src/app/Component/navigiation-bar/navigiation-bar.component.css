@@ -1,0 +1,35 @@
+
+    .nav-link{
+        color: rgb(34, 34, 34);
+    }
+    .nav-link:hover {
+
+        color: orange;
+      }
+    
+      .nav-item:active{
+        background: #d3d3d3;
+      }
+    
+
+      .rtl {
+        direction: rtl;
+      }
+      .rtl .cartt{
+        font-weight:1px !important;
+      }
+      /* Extra small devices (phones) */
+      @media only screen and (max-width:590px) {
+ 
+        .col-sm{
+          width: 37%;
+          padding: 0px;
+        }
+        div.jumia-logo{
+          width: 20%;
+        }
+      }
+       
+   
+    
+    

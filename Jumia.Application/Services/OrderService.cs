@@ -72,9 +72,12 @@ namespace Jumia.Application.Services
                         Id = p.Id,
                         Customer = p.Customer.UserName,
                         Status = p.Status.ToString(),
+                        paymentStatus= (GetAllOrdersDTO.PaymentStatus)p.paymentStatus,
                         OrderDate = p.CreatedDate,
-                        TotalPrice = p.TotalPrice,
-                        Discount=p.Discount
+                        TotalOrderPrice = p.TotalOrderPrice,
+                        Discount=p.Discount,
+                        CustomerId=p.CustomerId,
+                        TotalAmount=p.TotalAmount
                     }).ToList();
 
                     return orders;
@@ -105,7 +108,7 @@ namespace Jumia.Application.Services
                                                       Id = p.Id,
                                                       Customer=p.Customer.UserName,
                                                       Status=p.Status.ToString(),
-                                                      TotalPrice=p.TotalPrice,
+                                                      TotalOrderPrice=p.TotalOrderPrice,
                                                       Discount=p.Discount
                                                      
                                                   }).ToList();
@@ -145,7 +148,7 @@ namespace Jumia.Application.Services
                 var existingBook = await _OrderRepository.GetOneAsync(id);
                 if (existingBook == null)
                 {
-                    return new ResultView<CreateOrUpdateOrderDto> { Entity = null, IsSuccess = false, Message = "Book not found" };
+                    return new ResultView<CreateOrUpdateOrderDto> { Entity = null, IsSuccess = false, Message = "Order not found" };
                 }
                 var Oldbook = _OrderRepository.DeleteAsync(existingBook);
                 await _OrderRepository.SaveChangesAsync();

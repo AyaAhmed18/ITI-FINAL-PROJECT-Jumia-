@@ -1,69 +1,108 @@
-.breadcrumb {
-    display: block;
-    background-color: white;
-    text-align: center;
-    width: 98.5%;
-    margin-left: 15px;
+
+
+    /*style cards by Bahaa */
+
+    .label-Cards-top {
+        position: absolute;
+        background-color: rgba(255, 115, 0, 0.842);
+        color: #fff;
+        top: 8px;
+        left: 8px;
+
+        font-size: .7rem;
+        font-weight: 600;
+        border-radius: 3px;
+        text-transform: uppercase;
+    }
+
+    .offer-cards {
+        background-color: rgba(243, 152, 77, 0.397);
+        border-radius: 3px;
+        color: #ff9901;
+
+    }
+
+    .cards-heart>a {
+        position: absolute;
+        color: #ffae0069;
+        bottom: 220px;
+        right: 8px;
+
+    }
+.cards-question{
+    position: absolute;
+        color: #c9c9c9d5;
+        bottom: 80px;
+        right: 8px;
 }
+    .cards-heart:hover>a {
+        color: #ffae00;
+    }
 
-.btn {
-    background-color: rgb(243, 132, 22);
-    height: 45px;
+    .cards-question:hover>a{
+        color: #ffae00;
 }
+    .cards-hover:hover {
+        box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+    }
 
-.-df {
-    font-size: 1rem;
-    text-decoration: none;
-    color: rgb(243, 132, 22);
+    .hide-btn-cards {
+        display: none;
+    }
+
+    .show-cards-btn:hover .hide-btn-cards {
+        display: block;
+    }
+
+    .stars i {
+        color: gold;
+        font-size: .9rem;
+
+    }
+
+    /* -------------------------------------------------- */
+    .text-success {
+        color: red;
+    }
+    
+    .text-danger {
+        color: green;
+    }
+    .rtl {
+        direction: rtl;
+      }
+
+      
+/* Extra small devices (phones) */
+@media only screen and (max-width:590px) {
+ 
+    .col-8{
+     width: 100%;
+    -webkit-order:2;
+
+    }
+    .col-4-sammary{
+        width: 100%;
+    }
+.col-3-cart{
+    width: 30%;
 }
-
-
-.-phs {
-    font-size: .8rem;
-    margin-right: 900px;
-
-}
-
-header {
-    color: #313133;
-    font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif;
-    font-size: .875rem;
-    direction: ltr;
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
+.col-5-cart{
     width: 100%;
-    min-height: 48px;
-    padding: 8px;
-
-
+    -webkit-order:2;
 }
-
-.card {
-    margin-left: 16px;
-    text-decoration: none;
-
+.col-4-cart{
+    width: 60%;
 }
-
-
-
-a {
-    text-decoration: none;
-    color: #444141;
-}
-
-
-.bdg {
-    position: absolute;
-    top: 8px;
-    right: 5px;
-    color: rgb(243, 132, 22);
-    background-color: rgb(245, 220, 195);
-}
-
-
-.card-text {
-    position: absolute;
- top:158px;
-}
+     }
+     
+     /* Small devices (portrait tablets and large phones) */
+     @media only screen and (min-width:600px) and (max-width:885px) {
+       
+       
+     
+         
+       
+     
+     }
+     

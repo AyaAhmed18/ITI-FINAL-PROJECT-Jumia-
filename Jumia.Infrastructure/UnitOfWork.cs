@@ -14,7 +14,7 @@ namespace Jumia.Infrastructure
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly JumiaContext _jumiaContext;
-        private readonly ILogger _logger; // Assuming you have a logging mechanism
+        private readonly ILogger _logger;       // Assuming you have a logging mechanism
         private Hashtable _repositories;
 
         public UnitOfWork(JumiaContext jumiaContext, ILoggerFactory loggerFactory)
@@ -35,7 +35,7 @@ namespace Jumia.Infrastructure
 
         public ISubCategorySpecificationRepository SubCategorySpecificationRepository => GetRepository<ISubCategorySpecificationRepository, SubCategorySpecificationRepository>();
         public IProductSpecificationSubCategoryRepository productSpecificationSubCategoryRepository => GetRepository<IProductSpecificationSubCategoryRepository, ProductSpecificationSubCategoryRepository>();
-
+        public IBrandRepository BrandRepository => GetRepository<IBrandRepository, BrandRepository>();
 
         public async Task SaveChangesAsync()
         {

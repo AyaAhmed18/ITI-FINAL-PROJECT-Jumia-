@@ -8,7 +8,9 @@ import { FilterComponent } from './Component/filter/filter.component';
 import { OrdersComponent } from './Component/orders/orders.component';
 import { MyAccountComponent } from './Component/my-account/my-account.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { APICategoryService } from './Services/apicategory.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ReloadService } from './Services/reload.service';
+import { ApiLoginService } from './Services/api-login.service';
 
 @Component({
   selector: 'app-root',
@@ -18,25 +20,52 @@ import { APICategoryService } from './Services/apicategory.service';
      ProductComponent ,
       HomeComponent , FilterComponent ,
        OrdersComponent ,
-        MyAccountComponent,HttpClientModule],
+        MyAccountComponent,HttpClientModule, TranslateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
  
 })
 export class AppComponent implements OnInit{
-  products:any=[]
-  constructor(private apiCategory:APICategoryService){
+
+  lang:any
+  IsUserLogged: boolean = false
+  loggedInUsername: string;
+  isArabic: boolean = false;
+  constructor(private translate:TranslateService,private _apiLoginService: ApiLoginService){
+  this.loggedInUsername = this._apiLoginService.getLoggedInUsername();
+   this.lang =  localStorage.getItem('lang')
+  
+    translate.use(this.lang);
+    
 
   }
-  // fetchProducts(){
-  //   this.httpClient.get('http://localhost:64866/api/Category/4').subscribe((data:any)=>{
-  //     this.products=data;
-  //   console.log(data);
-  //   }) 
-  // }
-  ngOnInit(): void {
-    this.apiCategory.fetchCategories()
+  
+  ngOnInit() { 
+    this.translate.onLangChange.subscribe((Event)=>{
+      this.isArabic = Event.lang === 'ar'
+      localStorage.setItem("isArabic",this.isArabic.toString())
+    })
+   
+    //localStorage.removeItem("isArabic")
   }
-  title = 'jumia';
-  //httpClient=inject(HttpClient)
+ 
+ changeLanguage(lang: string) {
+  if (lang == 'en') {
+    localStorage.setItem('lang', 'en')
+  }
+  else {
+    localStorage.setItem('lang', 'ar')
+  }
+     
+  window.location.reload();
+
 }
+  }
+
+  
+  
+
+
+ 
+ 
+

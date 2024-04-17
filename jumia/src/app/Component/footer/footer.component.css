@@ -1,0 +1,30 @@
+.afterNave{
+    background-color: #313133;
+}
+.foterbg{
+    background-color: #535357;
+}
+
+.rtl {
+    direction: rtl;
+  }
+
+/* Extra small devices (phones) */
+@media only screen and (max-width:590px) {
+ 
+    .afterNave{
+        display: none;
+    }
+     
+    }
+    
+    /* Small devices (portrait tablets and large phones) */
+    @media only screen and (min-width:600px) and (max-width:885px) {
+      
+        .afterNave{
+            display: none;
+        }
+              
+        
+    }
+    

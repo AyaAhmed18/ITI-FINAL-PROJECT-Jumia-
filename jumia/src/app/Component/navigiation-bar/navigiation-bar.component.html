@@ -1,80 +1,132 @@
-<div class="container-fluid bg-light">
-    <div class="row">
-      <div class="col-sm ">
-        <div class="row">
-        <div class="col-2"><img src="./../../assets/FooterImg/JumiaLogostar.png" style="width: auto; height: 15px;"></div>
-        <div class="col-10"><a href="https://sell.jumia.com/en/start-now/" target="_blank" class="text-warning">Sell on Jumia</a></div>
+
+<img data-src="https://eg.jumia.is/cms/EID-24/Initiatives/FlashSale/FLASHSALE1170x60AR.png " width="100%" src="https://eg.jumia.is/cms/EID-24/Initiatives/FlashSale/FLASHSALE1170x60AR.png" class="_ni" alt="Desk-EID-FS">
+<div class="container-fluid bg-light sticky-top sticky-lg-top">
+  <div class="row" [class.rtl]="isArabic">
+    <div class="col-sm ">
+      <div class="row ">
+
+        <div class="col-12 fa my-1"><a href="https://sell.jumia.com/en/start-now/" target="_blank" class="text-warning">
+            <img class="fa mx-2 " src="assets/FooterImg/JumiaLogostar.png" style="width: auto; height: 15px;">
+            <small>{{'navigation.SellonJumia'|translate}}</small>
+          </a>
+        </div>
+      </div>
     </div>
-      </div>
-    
-    
-      <div class="col-sm my-1">
-         <img src="../../../assets/FooterImg/JumiaLogo.png" style="width: auto;height: 10px;">
-      </div>
-      <div class="col-sm" style="text-align: right;">
-       
-        <a href="" ><span>English</span></a>
-        <a href="" ><span>عربي</span></a>
-      </div>
+
+
+    <div class="col-sm jumia-logo my-2  d-flex justify-content-around">
+      <img src="assets/FooterImg/JumiaLogo.png" style="width: auto;height: 10px;">
+    </div>
+
+
+    <div class="col-sm" style="text-align: right;">
+      <button>
+      <small (click)="changeLanguage('en')" >English</small><img src="assets/icons/english.png" alt="" class="fa"
+          style="width: auto;height: 15px;"></button> | 
+          <button> <small (click)="changeLanguage('ar')" >عربي</small><img src="assets/icons/egypt.png" alt="" class="fa"
+          style="width: auto;height: 15px;"> </button> 
     </div>
   </div>
   <hr>
   <!-- navigationbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <img class="navbar-brand" src="../../../assets/FooterImg/JumiaLogo.png" style="width: auto;height: 30px;">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-<div class="max-w-2xl mx-auto">
 
-  <form class="flex items-center">   
-        <div class="relative w-full">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary  " [class.rtl]="isArabic">
+    <div class="container-fluid">
+      <img class="navbar-brand px-3" src="assets/FooterImg/JumiaLogo.png" alter="JumiaLogo"
+        style="width: auto;height: 30px;">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+      </button>
+      <div class="w-100">
+
+        <form class="flex items-center" (ngSubmit)="searchProducts()">
+          <div class="relative w-full">
             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+              <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clip-rule="evenodd"></path>
+              </svg>
             </div>
-            <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search products, prand and categories" required>
-        </div>
-        <button type="submit" class="btn btn mx-3" style="background-color: orange;">Search</button>
-    </form>
-</div>
-
-<div>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-regular fa-user" id="acc">   </i><span for="acc"> Account</span>
-                    </a>
-                    <ul class="dropdown-menu">         
-                        <li style="text-align: center;"><button routerLink="/SignIn" class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">   Sign in </button></li>
-                        <li><a class="dropdown-item" routerLink="/MyAccount"> My account</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-bag-shopping" id="order"> </i><span for="order" > Order</span></a></li>
-                      <li> <a class="dropdown-item" href="#"><i class="fa-regular fa-heart">  </i><span for="acc">  Saved items</span></a></li>
-                    </ul>
-                  </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fa-regular fa-circle-question" id="help">  </i><span for="help"> Help</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Help Center</a></li>
-                      <li><a class="dropdown-item" href="#">Place an Order </a></li>
-                      <li><a class="dropdown-item" href="#">Pay For Your Order </a></li>
-                      <li><a class="dropdown-item" href="#">Track Your Order </a></li>
-                      <li><a class="dropdown-item" href="#">Cancel an Order </a></li>
-                      <li><a class="dropdown-item" href="#">Create a return  </a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li style="text-align: center;"><button class=" btn btn " style="background-color: orange; text-align: center;width: 120px;">Live  Chat </button></li>
-                    </ul>
-                  </li>
-            
-            <a class="nav-link "routerLink="/Cart">
-              <i class="fa-solid fa-cart-shopping" id="card"> </i><span for="card">Cart</span>
-          </a>
-            </ul> 
+            <input type="text" id="simple-search" [(ngModel)]="searchTerm" name="searchTerm"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="{{'navigation.Search products'|translate}}, {{'navigation.brand and categories'|translate}}" required>
           </div>
-</div>
+          <button type="submit" class="btn btn mx-3" style="background-color: orange;">{{'navigation.Search'|translate}}</button>
+        </form>
+      </div>
+
+      <div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-4">
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-regular fa-user-o"><strong class="px-1">{{loggedInUsername}}</strong> </i>
+              </a>
+              <ul class="dropdown-menu">
+
+                <li>
+                  <a class="dropdown-item  " routerLink="/MyAccount">
+                    <i class="fa fa-user-o" id="acc"><small class="px-2">{{'navigation.MyAccount'|translate}}</small> </i>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" >
+                    <i for="order" class="fa fa-regular fa-clipboard"><small class="px-2"  routerLink="/OrderDetails">{{'navigation.Order'|translate}}</small></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <i class="fa fa-heart-o" for="acc"> <small class="px-2">{{'navigation.Saved items'|translate}}</small></i>
+                  </a>
+                </li>
+
+                <li style="text-align: center;"><button routerLink="/SignIn" [hidden]="IsUserLogged"
+                    (click)="SignInNav()" class=" btn btn "
+                    style="background-color: orange; text-align: center;width: 120px;"> {{ 'navigation.SignIn' | translate }}</button></li>
+                <li style="text-align: center;"><button routerLink="/Home" [hidden]="!IsUserLogged"
+                    (click)="SignOutNav()" class=" btn btn "
+                    style="background-color: orange; text-align: center;width: 120px;">  {{ 'navigation.SignOut' | translate }} </button></li>
+                <!-- <li> <a class="dropdown-item"routerLink="/SignIn"><span for="acc">  Login</span></a></li> -->
+
+              </ul>
+            </li>
+
+
+
+            <li class="nav-item dropdown px-1">
+
+              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-question-circle-o" id="help"><strong class="px-2">{{'navigation.Help'|translate}}</strong> </i>
+              </a>
+
+
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"><small>{{'navigation.Help Center'|translate}}</small> </a></li>
+                <li><a class="dropdown-item" href="#"><small>{{'navigation.Place an Order'|translate}}</small> </a></li>
+                <li><a class="dropdown-item" href="#"><small>{{'navigation.Pay For Your Order'|translate}}</small> </a></li>
+                <li><a class="dropdown-item" href="#"><small>{{'navigation.Track Your Order'|translate}}</small> </a></li>
+                <li><a class="dropdown-item" href="#"><small>{{'navigation.Cancel an Order'|translate}}</small> </a></li>
+                <li><a class="dropdown-item" href="#"><small>{{'navigation.Create a return'|translate}}</small> </a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li style="text-align: center;"><button class=" btn btn "
+                    style="background-color: orange; text-align: center;width: 120px;">{{'navigation.Live Chat'|translate}} </button></li>
+              </ul>
+            </li>
+            <li>
+              <a class="nav-link " routerLink="/Cart">
+                <i class="cartt fa fa-solid fa-shopping-cart"><strong class="cartt px-2">{{'navigation.Cart'|translate}}</strong></i>
+              </a>
+            </li>
+          </ul>
         </div>
-    </nav>
-           
+      </div>
+    </div>
+  </nav>

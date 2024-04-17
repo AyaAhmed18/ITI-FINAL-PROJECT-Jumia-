@@ -1,4 +1,5 @@
 ﻿using Jumia.Application.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace JumiaStore.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
+
         private readonly ICategoryService _categoryService;
 
 
@@ -22,9 +24,9 @@ namespace JumiaStore.Controllers
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
-            var categories = await _categoryService.GetAll(50, 1);
+            var categories = await _categoryService.GetAll(10, 1);
 
-            return Ok(categories);
+            return Ok(categories.Entities);
         }
 
         [HttpGet("{id}")]
@@ -40,6 +42,17 @@ namespace JumiaStore.Controllers
             return Ok(Category);
 
         }
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }

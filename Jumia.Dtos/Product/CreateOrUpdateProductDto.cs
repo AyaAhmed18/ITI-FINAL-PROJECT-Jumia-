@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jumia.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,15 +15,19 @@ namespace Jumia.Dtos.Product
         public string LongDescription { get; set; }
         public string ShortDescription { get; set; }
         public decimal RealPrice { get; set; }
+        public int StockQuantity { get; set; }
         public decimal Discount { get; set; } = 0;
         public int SubCategoryID { get; set; }
         //public string? SubCategoryName { get; set; } // Include for easier presentation
         public int BrandID { get; set; }
       //  public string? BrandName { get; set; } // Include for easier presentation
-        public List<byte[]>? Images { get; set; }
+        public List<byte[]> Images { get; set; }
        // public string Value { get; set; }
         public int SubSpecId { get; set; }
+       // public string? BrandName { get; set; }
         public List<string>? subCategorySpecification { get; set; }
+        public List<string>? productSubCategorySpecification { get; set; }
+       
 
     }
 }

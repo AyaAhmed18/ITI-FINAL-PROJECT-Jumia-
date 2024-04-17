@@ -7,10 +7,12 @@ using Jumia.Dtos.ProductSpecificationSubCategory;
 using Jumia.Dtos.Specification;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
+using Jumia.Model.Commons;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +39,10 @@ namespace Jumia.Application.Services
         //}
         public async Task<ResultDataForPagination<GetAllProducts>> GetAllPagination(int items, int pagenumber) //10 , 3 -- 20 30
         {
-            var AlldAta = (await _unitOfWork.ProductRepository.GetAllAsync());
+            var AlldAta = (await _unitOfWork.ProductRepository.GetAllAsync())
+                .Include(Prd => Prd.SubCategory)
+                .Include(Prd => Prd.Brand);
+
             var Prds = AlldAta
                 .Skip(items * (pagenumber - 1))
                 .Take(items)
@@ -45,7 +50,7 @@ namespace Jumia.Application.Services
                 .ToList();
             ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
             resultDataList.Entities = Prds;
-            //resultDataList.Count = AlldAta.Count();
+            resultDataList.count = AlldAta.Count();
             return resultDataList;
         }
 
@@ -126,7 +131,7 @@ namespace Jumia.Application.Services
 
 
 
-       
+
 
 
 
@@ -160,18 +165,18 @@ namespace Jumia.Application.Services
 
 
         //GetOne
-        public async Task<ResultView<GetAllProducts>> GetOne(int id)
+        public async Task<ResultView<CreateOrUpdateProductDto>> GetOne(int id)
         {
             var product = await _unitOfWork.ProductRepository.GetOneAsync(id);
             if (product == null)
             {
-                return new ResultView<GetAllProducts> { Entity = null, IsSuccess = false, Message = "Not Found!" };
+                return new ResultView<CreateOrUpdateProductDto> { Entity = null, IsSuccess = false, Message = "Not Found!" };
             }
             else
             {
-                var productDto = _mapper.Map<GetAllProducts>(product);
+                var productDto = _mapper.Map<CreateOrUpdateProductDto>(product);
 
-                return new ResultView<GetAllProducts> { Entity = productDto, IsSuccess = true, Message = "Succses" };
+                return new ResultView<CreateOrUpdateProductDto> { Entity = productDto, IsSuccess = true, Message = "Succses" };
             }
         }
         //public async Task<ResultView<GetAllSpecificationDto>> GetSpecificationsOfProduct(int SubCategoryId)
@@ -278,8 +283,8 @@ namespace Jumia.Application.Services
         //}
         public async Task<ResultView<GetAllProducts>> Getbyname(string name)
         {
-         //   var product = await _unitOfWork..Getbyname(name);
-            var product = (await _unitOfWork.ProductRepository.GetAllAsync()).Where(p=>p.Name==name).FirstOrDefault();
+            //   var product = await _unitOfWork..Getbyname(name);
+            var product = (await _unitOfWork.ProductRepository.GetAllAsync()).Where(p => p.Name == name).FirstOrDefault();
             if (product == null)
             {
                 return new ResultView<GetAllProducts> { Entity = null, IsSuccess = false, Message = "Not Found!" };
@@ -291,6 +296,252 @@ namespace Jumia.Application.Services
                 return new ResultView<GetAllProducts> { Entity = productDto, IsSuccess = true, Message = "Succses" };
             }
         }
+
+        public async Task<ResultDataForPagination<GetAllProducts>> GetOrderedAsc()
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.RealPrice, OrderBy.Ascending))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
+        }
+
+        public async Task<ResultDataForPagination<GetAllProducts>> GetOrderedDsc()
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.RealPrice, OrderBy.Descending))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivals()
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.CreatedDate, OrderBy.Descending))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
+        }
+
+
+
+
+        public async Task<ResultDataForPagination<GetAllProducts>> Search(string PartialName)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.Name.Contains(PartialName) || Prd.ShortDescription.Contains(PartialName), null, null))
+               .Select(p => new GetAllProducts(p))
+               .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
+        }
+        //FilterByPriceRange
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByPriceRange(int MinPrice, int MaxPrice)
+        {
+
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.RealPrice >= MinPrice && Prd.RealPrice <= MaxPrice, null, null))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByDiscountRange(int MinDisc)
+        {
+
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.Discount >= MinDisc, null, null))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByDiscountRangeToSlider(int MinDisc, int items, int pagenumber)
+        {
+
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.Discount >= MinDisc, null, null))
+                .Skip(items * (pagenumber - 1))
+                .Take(items)
+                .Select(p => new GetAllProducts(p))
+                
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+
+        public async Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivalsToSlider(int items, int pagenumber)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.CreatedDate, OrderBy.Descending))
+                .Skip(items * (pagenumber - 1))
+                .Take(items)
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByBrandName(int BrandId)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => Prd.BrandId == BrandId, null, null))
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByAll(List<int>? BrandIdList, int? MinPrice, int? MaxPrice, int? MinDisc)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd =>
+            (BrandIdList == null || BrandIdList.Any(brandId => brandId == Prd.BrandId))
+            && (MinDisc == null || Prd.Discount >= MinDisc)
+            && (MinPrice == null || Prd.RealPrice >= MinPrice)
+            && (MaxPrice == null || Prd.RealPrice <= MaxPrice)
+            , null, null))
+              .Include(Prd => Prd.SubCategory)
+              .Include(Prd => Prd.Brand)
+              .Select(p => new GetAllProducts(p))
+              .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByAll(List<int>? BrandIdList, int? MinPrice, int? MaxPrice, int? MinDisc, int items, int pagenumber)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd =>
+            (BrandIdList == null || BrandIdList.Any(brandId => brandId == Prd.BrandId))
+            && (MinDisc == null || Prd.Discount >= MinDisc)
+            && (MinPrice == null || Prd.RealPrice >= MinPrice)
+            && (MaxPrice == null || Prd.RealPrice <= MaxPrice)
+            , null, null))
+            .Include(Prd => Prd.SubCategory)
+            .Include(Prd => Prd.Brand);
+            var PrdsAfterFiltering = Prds
+              .Skip(items * (pagenumber - 1))
+              .Take(items)
+              .Select(p => new GetAllProducts(p))
+              .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = PrdsAfterFiltering;
+            resultDataList.count = Prds.Count();
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> FilterByBrandList(List<int> BrandIdList)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(Prd => BrandIdList.Any(brandId => brandId == Prd.BrandId), null, null))
+              .Select(p => new GetAllProducts(p))
+              .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
+            resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> MakeFinalResult(List<GetAllProducts> FinalResult)
+        {
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = FinalResult;
+            resultDataList.count = FinalResult.Count;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> GetProductsByCategoryId(int CategoryId, int items, int pagenumber)
+        {
+
+            var productsInCategory = _unitOfWork.ProductRepository.FindAll(
+                criteria: product => product.SubCategory.CategoryId == CategoryId
+                , null
+                , null);
+
+            var productsInCategoryAfterFeltering = productsInCategory
+             .Skip(items * (pagenumber - 1))
+             .Take(items)
+             .Select(p => new GetAllProducts(p))
+             .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = productsInCategoryAfterFeltering;
+            resultDataList.count = productsInCategory.Count();
+            return resultDataList;
+
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> GetProductsBySubCategoryId(int SubCategoryId, int items, int pagenumber)
+        {
+
+
+            var productsInSubCategory = _unitOfWork.ProductRepository.FindAll(
+                criteria: product => product.SubCategoryId == SubCategoryId
+                , null
+                , null);
+            var productsInSubCategoryAfterFeltering = productsInSubCategory
+                .Skip(items * (pagenumber - 1))
+                .Take(items)
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = productsInSubCategoryAfterFeltering;
+            resultDataList.count = productsInSubCategory.Count();
+            return resultDataList;
+            //var ProductsInCategory = MakeFinalResult(productsInCategoryAfterFeltering);
+
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> GetOrderedAscWithPagination(int items, int pagenumber)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.RealPrice, OrderBy.Ascending));
+                //.Select(p => new GetAllProducts(p))
+                //.ToList();
+            var productsSortedAscInPagination = Prds
+              .Skip(items * (pagenumber - 1))
+              .Take(items)
+              .Select(p => new GetAllProducts(p))
+              .ToList();
+
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = productsSortedAscInPagination;
+            return resultDataList;
+        }
+
+        public async Task<ResultDataForPagination<GetAllProducts>> GetOrderedDscWithPagination(int items, int pagenumber)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.RealPrice, OrderBy.Descending));
+                //.Select(p => new GetAllProducts(p))
+                //.ToList();
+            var productsSortedDscInPagination = Prds
+              .Skip(items * (pagenumber - 1))
+              .Take(items)
+              .Select(p => new GetAllProducts(p))
+              .ToList();
+
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = productsSortedDscInPagination;
+            return resultDataList;
+        }
+        public async Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivalsWithPagination(int items, int pagenumber)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.CreatedDate, OrderBy.Descending));
+                //.Select(p => new GetAllProducts(p))
+                //.ToList();
+
+            var productsSortedDscInPagination = Prds
+               .Skip(items * (pagenumber - 1))
+               .Take(items)
+               .Select(p => new GetAllProducts(p))
+               .ToList();
+
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = productsSortedDscInPagination;
+            return resultDataList;
+        }
+
+        //public async List<GetAllProducts> MakeIncludable(IQueryable<GetAllProducts> Prds, int? items, int? pagenumber)
+        //{
+        //    Prds.Take(items);
+        //}
     }
 
 }

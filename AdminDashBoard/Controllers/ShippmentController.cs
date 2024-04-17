@@ -7,7 +7,7 @@ using Microsoft.Extensions.Localization;
 
 namespace AdminDashBoard.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class ShippmentController : BaseController
     {
         private readonly IShippmentService _shippmentService;
@@ -34,13 +34,13 @@ namespace AdminDashBoard.Controllers
                 var AllData = await _shippmentService.GetAll();
                 if (AllData != null)
                 {
-                    var details = AllData.Where(o => o.OrderId == id).FirstOrDefault();
-                    ViewBag.orderId = details.OrderId;
+                    var details = AllData.Where(o => o.UserIdentityId == id).FirstOrDefault();
+                    
                     return View(details);
                 }
                 else
                 {
-                    ViewBag.msg = "The customer has not confirmed the Order yet";
+                    ViewBag.msg = "The customer has not confirmed his Address Information yet";
                     return View();
                 }
                 

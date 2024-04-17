@@ -1,0 +1,176 @@
+<!-- Order  when no item (heba)-->
+<div  [class.rtl]="isArabic">
+<div class="container-fluid" >
+    <div class="row flex-nowrap ">
+        <div class="col-auto  col-md-3 col-xl-2 px-sm-2 px-0 mx-4 shadow-sm p-3 mb-5 bg-body rounded" style="background-color: white;">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2  min-vh-100 ">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto  text-decoration-none">
+                    <i class="fa-regular fa-user" id="acc">   </i> <span for="acc"> <h1> &nbsp; {{'orderitem.My Jumia Account' | translate}} </h1></span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark" >
+                            <i class="fa fa-solid fa-bag-shopping" id="order"></i> <span for="order" > &nbsp; {{'orderitem.Order' | translate}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa fa-regular fa-message"></i><span for="order" > &nbsp; {{'orderitem.Inbox'  | translate}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa fa-regular fa-note-sticky"></i><span for="order" >&nbsp; {{'orderitem.Review' | translate}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa fa-solid fa-ticket"></i><span for="order" >&nbsp; {{'orderitem.Voucher' | translate}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa fa-regular fa-heart">  </i><span for="order" >&nbsp; {{'orderitem.Saved Item' | translate}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa fa-solid fa-shop"></i><span for="order" >&nbsp; {{'orderitem.Follower Seller' | translate}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <i class="fa-regular fa-clock"></i><span for="order" >&nbsp; {{'orderitem.Recent View' | translate}}</span>
+                        </a>
+                    </li>
+                   <hr>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                         <span class="ms-1 d-none d-sm-inline"> {{'orderitem.Account Management' | translate}}</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                         <span class="ms-1 d-none d-sm-inline">{{'orderitem.Adress Book' | translate}}</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                         <span class="ms-1 d-none d-sm-inline">{{'orderitem.Newsletter Prefrences' |translate}}</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                         <span class="ms-1 d-none d-sm-inline">{{'orderitem.Close Account' | translate}}</span> </a>
+                    </li>
+                </ul>
+                <hr>
+                <br>
+                <div class="">
+                 
+                <button class="btn btn-outline-warning">{{'orderitem.LOGOUT' | translate}}</button>
+                </div>
+            </div>
+        </div>
+        <!-- body -->
+       
+        <!-- if there is order item -->
+        <div class="col py-3 shadow-sm p-3 mb-5 bg-body rounded"  style="background-color: white;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item fs-3">{{'orderitem.Order Details' | translate}}</li>
+                <li class="list-group-item ">
+                    <ul  style="color: rgb(145, 143, 140);" >
+                        <li class="text-dark " style="font-weight: 700;"><a> {{'orderitem.Order' | translate}} ْ {{ordId}}  </a></li>             
+                        <li class=""><a>{{ItemsNumber}} {{'orderitem.Items' | translate}}   </a></li>      
+                        <li class=""><a> {{'orderdetails.Created Date' | translate}}  {{order.createdDate | date: 'dd-MM-yyyy'}} </a></li>             
+                        <li class=""><a> {{'orderdetails.Total PriceE' | translate}}  {{order.totalOrderPrice}} </a></li>             
+       
+                  </ul>
+                  <br>
+                  <h2  style="font-weight: 700;">{{'orderitem.ITEMS IN YOUR ORDER'|translate}}</h2>
+                </li>
+               
+                @for(ord of OrderItems;track ord.id;){
+                <li class="mt-2 border"  >
+                  <div class="card-body  row ">
+                     <div class="col-3">
+                        <img [src]="ord.images" style="border-radius: 50%;" title="orerI">
+                      </div>
+                      <div class="col-6 text-"><p class="mb-1"> </p>
+                         <h1 style="font-weight:bold"> {{'orderitem.Delivered between'|translate}} {{ increaseDate(5).dayName }} {{ increaseDate(5).dayNumber }} {{ increaseDate(5).monthName }}
+                             {{'orderitem.and'|translate}} {{ increaseDate(10).dayName }} {{ increaseDate(10).dayNumber }} {{ increaseDate(10).monthName }}</h1>
+                    
+                        <h5 class="text-dark mb-1"> {{isArabicLanguage() ? ord.productNameAr : ord.productName }}</h5>
+                        <h6 class="text-dark mb-1"> {{ord.productDiscription}}</h6>
+                      <p class="text-secondary">{{'orderitem.QTY' | translate}} {{ord.productQuantity}}</p>
+                      <h1 class="h6 ">{{'orderitem.Total Price' | translate}} :  EGP {{ord.totalPrice}}</h1></div>
+                      
+                    </div>
+                </li>
+            }
+            <br>
+            <div class="container-fluid" >
+                <div class="row ">
+                    <div class="col border">
+                        <h2 style="font-weight: 700; padding: 10px;" >{{'orderitem.PAYMENT INFORMATION'| translate}}</h2>
+                        <div>
+                            <h3 style="font-weight: 700;" >{{'orderitem.Payment Method'| translate}}</h3>
+                            <p style="color: rgb(145, 143, 140);">{{'orderitem.Pay by'| translate}} {{getPaymentStatusWord()}} </p>
+                       
+                        </div>
+                        <div>
+                            <h3 style="font-weight: 700;" >{{'orderitem.Payment Details'|translate}}</h3>
+                            <p style="color: rgb(145, 143, 140);">{{'orderitem.Total Amount EGP'|translate}} {{order.totalOrderPrice}} </p>
+                             <p style="color: rgb(145, 143, 140);">{{'orderitem.Delivery Fees 35 EGP'|translate}}  </p>
+                       
+                        </div>
+                    </div>
+                    <div class="col border">
+                        <h2 style="font-weight: 700; padding: 10px;">{{'orderitem.DELIVERY INFORMATION'|translate}}</h2>
+                         <div>
+                            <h3 style="font-weight: 700;" >{{'orderitem.Delivery Method'|translate}}</h3>
+                            <p style="color: rgb(145, 143, 140);">{{'orderitem.Door Delivery'|translate}}</p>                       
+                        </div>
+                        <div>
+                            <h3 style="font-weight: 700;" >{{'orderitem.Shipping Address'|translate}}</h3>
+                            <p style="color: rgb(145, 143, 140);">{{shippment.firstNameEn}} {{shippment.lastName}}</p>
+                             <p style="color: rgb(145, 143, 140);">{{shippment.phoneNumber}}</p>
+                               <p style="color: rgb(145, 143, 140);">{{shippment.city}} | {{shippment.region}}</p>  
+                               <p style="color: rgb(145, 143, 140);">{{shippment.address}} | {{shippment.adressInformation}}</p>                     
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <br>
+            <button class="btn me-2" (click)="cancelOrder()" >{{'orderitem.Cancel Order' | translate}}</button>
+
+           
+            </ul>
+                    </div>
+        <!-- end -->
+    </div>
+</div>
+
+
+
+<!-- <div class=" alert-success alert-dismissible fixed-top custom-alert text-center"  id="customAlert" [hidden]="!showAlert">
+    <div class="text">Your order is shipped you can't Cancel it</div>
+    <button type="button" class="btn-close" (click)="closeAlert()" aria-label="Close"></button>
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+    
+  </div> -->
+
+  <div class="alert alert-danger alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1" [class.rtl]="isArabic">
+    <strong>{{'orderitem.Sorry' | translate}}</strong> {{'orderitem.you Cant Cancel This order' | translate}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+        <i class="fa fa-times-circle text-danger" id="close"></i>
+    </button>
+  </div>
+
+  <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2" [class.rtl]="isArabic">
+    <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong> {{'orderitem.Your Order Is Cancelled' | translate}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+        <i class="fa fa-times-circle text-success" id="close"></i>
+    </button>
+  </div>
+
+</div>

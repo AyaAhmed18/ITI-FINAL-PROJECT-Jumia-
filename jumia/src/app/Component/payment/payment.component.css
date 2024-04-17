@@ -1,0 +1,56 @@
+
+.AddressForm{
+  border: 2px solid #fff;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 1%;;
+}
+
+.bton-order{
+  background-color: rgb(51, 51, 50);
+}
+.text-warning {
+    color:  rgba(255, 115, 0, 0.842) !important; 
+  }
+  .save{
+    background-color: rgba(255, 115, 0, 0.842)  !important ;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5); 
+  }
+  .rtl {
+    direction: rtl;
+  }
+.rtl .change{
+  text-align: left !important;
+}
+.rtl .reverse{
+  transform:scaleX(-1);
+ }
+  
+ .rtl .track{
+  float: left;
+  transform:scaleX(-1);
+}
+/* Extra small devices (phones) */
+@media only screen and (max-width:590px) {
+  
+  .col-4{
+   width: 100%;
+  }
+  .col-8{
+   width: 100%;
+   -webkit-order:2;
+  }
+   
+   }
+   
+   /* Small devices (portrait tablets and large phones) */
+   @media only screen and (min-width:600px) and (max-width:885px) {
+     .col-4{
+       width: 100%;
+      }
+      .col-8{
+       width: 100%;
+       -webkit-order:2;
+      }
+       
+   }

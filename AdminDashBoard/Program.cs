@@ -34,6 +34,8 @@ namespace AdminDashBoard
             builder.Services.AddScoped<IProductServices, ProductService>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+            builder.Services.AddScoped<IBrandRepository, BrandRepository>();
+            builder.Services.AddScoped<IBrandService, BrandService>();
             builder.Services.AddScoped<ISpecificationServices, SpecificationServices>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IRoleService, RoleService>();

@@ -144,6 +144,9 @@
   <data name="AllCategory" xml:space="preserve">
     <value>All Category</value>
   </data>
+  <data name="AllProducts" xml:space="preserve">
+    <value>All Products</value>
+  </data>
   <data name="AllSubCategory" xml:space="preserve">
     <value>All SubCategory</value>
   </data>
@@ -162,11 +165,17 @@
   <data name="Audiences" xml:space="preserve">
     <value />
   </data>
+  <data name="Brand" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="BrandName" xml:space="preserve">
+    <value>Brand Name</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Category</value>
   </data>
   <data name="Categoryies" xml:space="preserve">
-    <value>Categoryies</value>
+    <value>Categories</value>
   </data>
   <data name="CategoryName" xml:space="preserve">
     <value>Category Name</value>
@@ -204,6 +213,9 @@
   <data name="dir" xml:space="preserve">
     <value>ltr</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Discount</value>
+  </data>
   <data name="DonthaveanaccountSignup" xml:space="preserve">
     <value>Don't have an account? Sign up</value>
   </data>
@@ -221,6 +233,9 @@
   </data>
   <data name="Export" xml:space="preserve">
     <value>Export</value>
+  </data>
+  <data name="FailedTODelete" xml:space="preserve">
+    <value>Failed</value>
   </data>
   <data name="Features" xml:space="preserve">
     <value>Features</value>
@@ -288,6 +303,9 @@
   <data name="Product" xml:space="preserve">
     <value>Product</value>
   </data>
+  <data name="RealPrice" xml:space="preserve">
+    <value>Real Price</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
@@ -318,14 +336,26 @@
   <data name="Signintoyouraccount" xml:space="preserve">
     <value>Sign in to your account</value>
   </data>
+  <data name="Specifications" xml:space="preserve">
+    <value>Specifications</value>
+  </data>
   <data name="Staysignedinforaweek" xml:space="preserve">
     <value>Stay signed in for a week</value>
+  </data>
+  <data name="StockQuantity" xml:space="preserve">
+    <value>Stock Quantity</value>
   </data>
   <data name="SubCategory" xml:space="preserve">
     <value>SubCategory</value>
   </data>
+  <data name="SubCategoryName" xml:space="preserve">
+    <value>SubCategory Name</value>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
+  </data>
+  <data name="SuccessMessage" xml:space="preserve">
+    <value>Successeded</value>
   </data>
   <data name="UpdataOrder" xml:space="preserve">
     <value>Updata Order</value>
@@ -350,5 +380,8 @@
   </data>
   <data name="UserPages" xml:space="preserve">
     <value>User Pages</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
   </data>
 </root>

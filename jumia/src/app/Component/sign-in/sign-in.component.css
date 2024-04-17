@@ -1,12 +1,4 @@
 
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #d3d1d1;
-    margin: 20px;
-    
-  }
   .field {
       margin-bottom: 15px;
   }
@@ -14,14 +6,14 @@ body {
   .field label {
     position: relative;
   }
-  
+ 
   .field label input {
       border: none;
     outline: none;
     box-sizing: border-box;
     font-size: 1rem;
     color: #565656;
-    background: transparent;
+    background: white;
     padding: 1rem 1.2rem;
     min-width: 30rem;
     border-radius: 0.2rem; 
@@ -43,7 +35,7 @@ body {
   .btn-Login{
     
       outline: none;
-    background-color:  #fdf1e2;
+    background-color:  #ffffff;
     color: rgb(250, 130, 18);
     padding: 1rem 1.2rem;
     min-width: 30rem;
@@ -80,7 +72,67 @@ body {
     top: -5px;
     font-size: 0.9rem;
     color: #ffaf47;
+    background-color: #ffffff;
   }
   .field label input:not(:focus) + p {
     color: #565656;
+    background-color: #ffffff;
   }
+  .rtl {
+    direction: rtl;
+  }
+  .text-warning{
+    color: #000 !important;
+  }
+  .newAcc:hover{
+    color: rgb(250, 130, 18);
+  }
+
+/* Extra small devices (phones) */
+@media only screen and (max-width:320px) {
+ 
+.col-5{
+  width: 100%;
+}
+
+
+    .field label input {
+    font-size: 0.5rem;
+   
+    min-width: 20rem;
+  }
+  .btn-Cont  { 
+  
+    
+    padding: 1rem 1.2rem;
+    min-width: 10rem;
+   
+   
+    
+  }
+ 
+}
+
+/* Small devices (portrait tablets and large phones) */
+@media only screen and (min-width:321px) and (max-width:885px) {
+  .col-5{
+    width: 100%;
+  }
+  
+  
+      .field label input {
+      font-size: 0.5rem;
+     
+      min-width: 20rem;
+    }
+    .btn-Cont  { 
+    
+      
+      padding: 1rem 1.2rem;
+      min-width: 10rem;
+     
+     
+      
+    }
+   
+}

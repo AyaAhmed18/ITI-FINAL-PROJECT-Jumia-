@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Jumia.Model
 {
+
     public class Product: LocalizableEntity
     {
         public string Name { get; set; }
         public string NameAr { get; set; }
-        public string? LongDescription { get; set; }
-        public string? ShortDescription { get; set; }
+        public string? LongDescription { get; set; }  //Arabic
+        public string? ShortDescription { get; set; } //English
         public int StockQuantity { get; set; }
         public decimal RealPrice { get; set; }
         public decimal? Discount { get; set; }
         public List<byte[]>? Images { get; set; }
-
         [ForeignKey(nameof(SubCategory))]
         public int SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }

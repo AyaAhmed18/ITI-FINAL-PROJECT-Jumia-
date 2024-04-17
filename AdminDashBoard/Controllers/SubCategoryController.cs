@@ -2,6 +2,7 @@
 using Jumia.Application.IServices;
 using Jumia.Application.Services;
 using Jumia.Application.Services.IServices;
+using Jumia.Context.Migrations;
 using Jumia.Dtos.Category;
 using Jumia.Dtos.SubCategory;
 using Jumia.Dtos.SubCategorySpecifications;
@@ -10,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class SubCategoryController : BaseController
     {
         private readonly ISubCategoryService _subCategoryService;
@@ -41,7 +42,7 @@ namespace AdminDashBoard.Controllers
 
         public async Task <ActionResult> Index()
         {
-            var SubCategoryes = await _subCategoryService.GetAll(10, 1);
+            var SubCategoryes = await _subCategoryService.GetAll(20, 1);
 
             return View(SubCategoryes);
         }
@@ -49,7 +50,7 @@ namespace AdminDashBoard.Controllers
 
         public async Task<ActionResult> Create()
         {
-            var Categories = await _categoryService.GetAll(5, 1);
+            var Categories = await _categoryService.GetAll(15, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
             var spec = (await _specificationServices.GetAll()).ToList();
@@ -88,10 +89,17 @@ namespace AdminDashBoard.Controllers
                         };
                          await _subCategorySpecificationsService.Create(subCategorySpecification);
                     }
-                 
-                    return RedirectToAction("Index");
+
+                    TempData["SuccessMessage1"] = "Category Created successfully.";
+                    return RedirectToAction("Index", TempData["SuccessMessage1"]);
                 }
             }
+            var Categories = await _categoryService.GetAll(15, 1);
+            var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
+            ViewBag.Category = CategoryName;
+            var spec = (await _specificationServices.GetAll()).ToList();
+            ViewBag.spec = spec;
+            TempData["SuccessMessage"] = "Failed.";
             return View(SubDto);
         }
 
@@ -105,8 +113,14 @@ namespace AdminDashBoard.Controllers
             var Categories = await _categoryService.GetAll(5, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
-            var spec = (await _specificationServices.GetAll()).ToList();
-            ViewBag.spec = spec;
+           
+            var subSpec = (await _subCategorySpecificationsService.GetAll()).Where(i=>i.SubCategoryId==id).ToList();
+           // var specName = subSpec.Select(s => s.SpecificationName);
+            ViewBag.subSpec= subSpec;
+
+           // var spec = (await _specificationServices.GetAll())
+             //   .Where(s => !specName.Contains(s.Name)).ToList();
+            //ViewBag.spec = spec;
             var res = await _subCategoryService.GetOne(id);
 
             if (res == null)
@@ -125,7 +139,7 @@ namespace AdminDashBoard.Controllers
      
 
         [HttpPost]
-        public async Task<ActionResult> Update(CreateOrUpdateSubDto SubDto, IFormFile Image,CreateOrUpdateSubCategorySpecificationDto subCategorySpecificationDto)
+        public async Task<ActionResult> Update(CreateOrUpdateSubDto SubDto, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
@@ -146,27 +160,29 @@ namespace AdminDashBoard.Controllers
                 var res = await _subCategoryService.Update(SubDto, Image);
                 if (res.IsSuccess)
                 {
-                  //  var selectedSpec= _subCategorySpecificationsService
-                    foreach (var specItems in SubDto.SelectedSpecification)
-                    {
-                        var specName = (await _specificationServices.GetAll()).Where(s => s.Name == specItems).FirstOrDefault();
-                        subCategorySpecificationDto.specificationId = specName.Id;
-                        subCategorySpecificationDto.SubCategoryId = SubDto.Id;
-                        await _subCategorySpecificationsService.Update(subCategorySpecificationDto);
-                    }
+                    //  var selectedSpec= _subCategorySpecificationsService
+                    /* foreach (var specItems in SubDto.SelectedSpecification)
+                     {
+                         var specName = (await _specificationServices.GetAll()).Where(s => s.Name == specItems).FirstOrDefault();
+                         subCategorySpecificationDto.specificationId = specName.Id;
+                         subCategorySpecificationDto.SubCategoryId = SubDto.Id;
+                         await _subCategorySpecificationsService.Create(subCategorySpecificationDto);
+                     }*/
 
-                    return RedirectToAction("Index");
+                    TempData["SuccessMessage1"] = "Category Created successfully.";
+                    return RedirectToAction("Index", TempData["SuccessMessage1"]);
                 }
 
-                return RedirectToAction(nameof(Index));
+                TempData["SuccessMessage"] = "Failed.";
+                return View(SubDto);
 
-                
+
 
             }
             var Categories = await _categoryService.GetAll(5, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
-
+            TempData["SuccessMessage"] = "Failed.";
             return View(SubDto);
 
         }
@@ -185,10 +201,24 @@ namespace AdminDashBoard.Controllers
             }
 
             var SubCategoryToD = _mapper.Map<CreateOrUpdateSubDto>(res.Entity);
-            await _subCategoryService.Delete(SubCategoryToD);
+            var specs =( await _subCategorySpecificationsService.GetAll()).Where(s=>s.SubCategoryId == id).ToList();
+            foreach (var spec in specs)
+            {
+                await _subCategorySpecificationsService.Delete(spec.Id);
+            }
+           var del= await _subCategoryService.Delete(SubCategoryToD);
 
 
-            return RedirectToAction(nameof(Index));
+            if (del.IsSuccess)
+            {
+                TempData["SuccessMessage1"] = "Successed";
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["SuccessMessage"] = "Failed";
+                return RedirectToAction(nameof(Index));
+            }
         }
 
 

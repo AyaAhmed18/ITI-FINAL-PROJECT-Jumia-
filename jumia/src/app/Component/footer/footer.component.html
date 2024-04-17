@@ -1,398 +1,407 @@
-<section class="bg-dark text-light">
+<section class="afterNave text-light" [class.rtl]="isArabic">
+  <!--Grid row-->
+  <div class="row m-0">
+    <!--Grid column-->
+    <div class="col-lg-2 col-md-6 m-4 mb-md-0  d-flex justify-content-center ">
+      <img src="assets/FooterImg/JumiaLogo.png" style="height: 30px;width: auto;">
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-lg-5 col-md-6 m-4 mb-md-0  ">
+      <h5 class="text-uppercase pb-1"><strong><small>{{'footer.New to Jumia?'|translate}}</small></strong> </h5>
+      <p><small>{{'footer.subscribe to our newsletter to get update on our lastes offers!'|translate}}</small></p>
+      <div class="form-outline form-white mb-4">
+        <div class="row">
+          <div class="col-md-6"><input type="text" class="form-control form-control-lg w-100 p-0 "
+              placeholder="{{'footer.Enter Email Adress'|translate}}" />
+
+            </div>
+          <div class="col-md "> 
+            
+            <button type="button" class="btn btn-outline-light p-2 mx-2 btn-inline ">{{'footer.Male'|translate}}</button>
+            <button type="button" class="btn btn-outline-light p-2 btn-inline ">{{'footer.Female'|translate}}</button>
+          </div>
+          
+        </div>
+        <br>
+        <div class="form-check ">
+          <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label " for="flexCheckDefault">
+            <small>
+                {{ 'footer.I agree to Jumia\'s Privacy and Cookie Policy. You can unsubscribe from newsletters at any time.' | translate }}
+          </small>
+          </label>
+          <a href="https://www.jumia.com.eg/ar/sp-privacy/" class="text-warning">{{'footer.I accept the legal terms'|translate}}</a>
+        </div>
+      </div>
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 my-3">
+      <div class="row ">
+        <div class="col-3">
+          <img src="assets/FooterImg/star.png" style="width: auto;height:50px;">
+        </div>
+        <div class="col-9" style="text-align: center;">
+          <h6>{{'footer.DOWNLOAD JUMIA FREE APP'|translate}}</h6>
+          <p>{{'footer.Get access to exclusive offers!'|translate}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" style="text-align: right;">
+          <a href="https://apps.apple.com/us/app/jumia-online-shopping/id925015459" target="_blank"> <input type="image"
+              src="../../../assets/FooterImg/app.png"></a>
+        </div>
+        <div class="col">
+          <a href="https://play.google.com/store/apps/details?id=com.jumia.android&referrer=adjust_reftag%3DcdTxOjM"
+            target="_blank"> <input type="image" src="../../../assets/FooterImg/goole.png"></a>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+<footer class=" foterbg   text-light"  [class.rtl]="isArabic">
+
+  <!-- Second section -->
+  <div class="container p-4">
     <!--Grid row-->
     <div class="row">
       <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4 mb-md-0 my-3 ">
-        <img src="../../../assets/FooterImg/JumiaLogo.png" style="height: 40px;width: auto;">
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h6 class="text-uppercase fw-bold mb-3">
+          {{'footer.Need help?'|translate}}
+        </h6>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.chat with us'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Help Center'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Contact us'|translate}}</a>
+        </p>
+        <h6 class="text-uppercase fw-bold mb-4">
+          {{'footer.Useful Linkes'|translate}}
+        </h6>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.How to shop in jumia?'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.How to pay on jumia?'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Delivery timelines'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Return & Refund policy'|translate}}</a>
+        </p>
+
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Payment Information Guidlines'|translate}}</a>
+        </p>
       </div>
       <!--Grid column-->
 
       <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4 mb-md-0 my-3">
-        <h5 class="text-uppercase mb-4 pb-1">New to Jumia?</h5>
-        <p>subscribe to our newsletter to get update on our lastes offers!</p>
-                  <div class="form-outline form-white mb-4">
-                    <div class="row">
-                      <div class="col-md-6"><input type="text" class="form-control form-control-lg"  placeholder="Enter Email Adress"  /></div>
-                      <div class="col-md-3"> <button type="button" class="btn btn-outline-warning">Male</button></div>
-                      <div class="col-md-3">      
-                        <button type="button" class="btn btn-outline-warning">Female</button>
-                      </div>
-                    </div>
-                    <br>
-                   <div class="form-check ">
-                    <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label " for="flexCheckDefault">
-                    "I agree to Jumia's Privacy and Cookie Policy. You can unsubscribe from newsletters at any time."
-                  
-                    </label>
-                    <a href="https://www.jumia.com.eg/ar/sp-privacy/" class="text-warning">I accept the legal terms</a>
-                   </div>
-      </div>
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h6 class="text-uppercase fw-bold mb-4">
+          {{'footer.About jumia Egypt'|translate}} </h6>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Jumia Logistics Services'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Jumia Careers'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Terms and Conditions'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Stores Credit Terms & Conditions'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Privacy Policy'|translate}} </a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Free Shipping'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Flash Sales'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Join the Jumia DA Academy'|translate}}</a>
+        </p>
+
+
       </div>
       <!--Grid column-->
 
       <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4 mb-md-0 my-3">
-        <div class="row ">
-            <div class="col-4" style="text-align: right;">
-                <img src="../../../assets/FooterImg/star.png" style="width: auto;height:50px;">
-            </div>
-            <div class="col-8" style="text-align: center;">
-                <h6>DOWNLOAD JUMIA FREE APP</h6>
-                <p>Get access to exclusive offers!</p>
-            </div>
-        </div>
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h6 class="text-uppercase fw-bold mb-4">
+          {{'footer.Make money with jumia'|translate}} </h6>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Sell on jumia'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Vendor Hub'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Become a Logistics service partner'|translate}}</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">{{'footer.Become a Sale Consultant(J-Force)'|translate}}</a>
+        </p>
+      </div>
+
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h6 class="text-uppercase fw-bold mb-4">
+          {{'footer.Jumia International'|translate}}
+        </h6>
         <div class="row">
-            <div class="col" style="text-align: right;">
-          <a href="https://apps.apple.com/us/app/jumia-online-shopping/id925015459" target="_blank"> <input type="image" src="../../../assets/FooterImg/app.png" ></a>
-            </div>
-            <div class="col" >
-         <a href="https://play.google.com/store/apps/details?id=com.jumia.android&referrer=adjust_reftag%3DcdTxOjM" target="_blank"> <input type="image" src="../../../assets/FooterImg/goole.png"></a>
-            </div>
+          <div class="col-md-6">
+            <p>
+              <a href="#!" class="text-reset">{{'footer.Algira'|translate}}</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">{{'footer.Ivory Coast'|translate}}</a>
+            </p>
+            
+            <p>
+              <a href="#!" class="text-reset">{{'footer.Ghana'|translate}}</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">{{'footer.Kenya'|translate}}</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">{{'footer.Morocco'|translate}}</a>
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              <a href="#!" class="text-reset">{{'footer.Nigeria'|translate}}</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">{{'footer.Senegal'|translate}}</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">{{'footer.Tunisia'|translate}}</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">{{'footer.Oganda'|translate}}</a>
+            </p>
+          </div>
         </div>
-  
+
 
       </div>
       <!--Grid column-->
     </div>
-    <!--Grid row-->
-  </section>
-<footer class=" bg-secondary   text-light">
-  
-    <!-- Second section -->
-    <div class="container p-4">
-      <!--Grid row-->
-      <div class="row">
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h6 class="text-uppercase fw-bold mb-3">
-                Need help?
-               </h6>
-               <p>
-                 <a href="#!" class="text-reset">chat with us</a>
-               </p>  
-                <p>
-                 <a href="#!" class="text-reset">Help Center</a>
-               </p> 
-                 <p>
-                 <a href="#!" class="text-reset">Contact us</a>
-               </p> 
-               <h6 class="text-uppercase fw-bold mb-4">
-              Useful Linkes
-                </h6>
-                <p>
-                 <a href="#!" class="text-reset">How to  shop in jumia?</a>
-               </p>
-               <p>
-                 <a href="#!" class="text-reset">How to pay on jumia?</a>
-               </p>    
-                 <p>
-                 <a href="#!" class="text-reset">Delivery timelines</a>
-               </p>   
-                  <p>
-                 <a href="#!" class="text-reset">Disput resoltion policy</a>
-               </p>   
-                  <p>
-                 <a href="#!" class="text-reset">Return  & Refund policy</a>
-               </p>  
-                 
-                  <p>
-                 <a href="#!" class="text-reset">Payment Information Guidlines</a>
-               </p>  
-        </div>
-        <!--Grid column-->
-  
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h6 class="text-uppercase fw-bold mb-4">
-                About jumia Egypt            </h6>
-               <p>
-                 <a href="#!" class="text-reset">Jumia Logistics Services</a>
-               </p>
-               <p>
-                 <a href="#!" class="text-reset">Jumia Careers</a>
-               </p>
-               <p>
-                 <a href="#!" class="text-reset">Terms and Conditions</a>
-               </p>
-               <p>
-                 <a href="#!" class="text-reset">Stores Credit Terms & Conditions</a>
-               </p>
-               <p>
-                 <a href="#!" class="text-reset">Privacy Policy </a>
-               </p>
-               <p>
-                 <a href="#!" class="text-reset">Fress Shipping</a>
-               </p>
-               <p>
-                 <a href="#!" class="text-reset">Flash Sales</a>
-               </p>
-               <p>
-                 <a href="#!" class="text-reset">Join the Jumia DA Academy</a>
-               </p>
-               
-             
-            </div>
-        <!--Grid column-->
-  
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h6 class="text-uppercase fw-bold mb-4">
-                Make money with jumia           </h6>
-                <p>
-                  <a href="#!" class="text-reset">Sell on jumia</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">Vendor Hub</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">Become a Logistics service partner</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">Become a Sale Consultant(J-Force)</a>
-                </p>
-              </div>
-    
-        <!--Grid column-->
-  
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h6 class="text-uppercase fw-bold mb-4">
-                Jumia International
-                </h6>
-              <div class="row">
-                <div class="col-md-6">
-                  <p>
-                    <a href="#!" class="text-reset">Algira</a>
-                  </p>
-                  <p>
-                    <a href="#!" class="text-reset">Ivory</a>
-                  </p>
-                  <p>
-                    <a href="#!" class="text-reset">Coast</a>
-                  </p>
-                  <p>
-                    <a href="#!" class="text-reset">Ghana</a>
-                  </p>
-                  <p>
-                    <a href="#!" class="text-reset">Konya</a>
-                  </p>
-                  <p>
-                    <a href="#!" class="text-reset">Morocco</a>
-                  </p>
-                </div>
-                <div class="col-md-6">
-                  <p>
-                    <a href="#!" class="text-reset">Nigeria</a>
-                  </p>   <p>
-                    <a href="#!" class="text-reset">Senegal</a>
-                  </p>   <p>
-                    <a href="#!" class="text-reset">Tunisia</a>
-                  </p>   <p>
-                    <a href="#!" class="text-reset">Oganda</a>
-                  </p>
-                </div>
-              </div>
-           
-             
-        </div>
-        <!--Grid column-->
-      </div>
-    </div>
-    <!-- Grid container -->
-    <div class="container p-4">
-  <div class="row">
-    <!-- column -->
-    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+  </div>
+  <!-- Grid container -->
+  <div class="container p-4">
+    <div class="row">
+      <!-- column -->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
         <h5 class="text-uppercase fw-bold mb-3">
-            Join us on
-               </h5>
-               <div>
-                <a href="" class="me-4 text-reset">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                  <i class="fab fa-twitter"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                <i class="fa-brands fa-youtube"></i>
-              </a>
-              </div>
+          {{'footer.Join us on'|translate}}
+        </h5>
+        <div>
+          <a href="" class="me-4 text-reset">
+            <i class="fa fa-facebook-f"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fa fa-instagram"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fa fa-brands fa-youtube"></i>
+          </a>
+        </div>
       </div>
       <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
         <h5 class="text-uppercase fw-bold mb-3">
-            Payment method
-                 </h5>
-                 <div>
-                  <a href="" class="me-4 text-reset">
-                    <i class="fa-solid fa-hand-holding-dollar"></i>
-                  </a>
-                  <a href="" class="me-4 text-reset">
-                    <i class="fa-brands fa-cc-mastercard"></i>
-                  </a>
-                  <a href="" class="me-4 text-reset">
-                    <i class="fa-brands fa-cc-visa"></i>
-                  </a>
-                  <a href="" class="me-4 text-reset">
-                <i class="fa-solid fa-mobile"></i>
-                  </a>
-                </div>
-                <!-- <div class="col-lg-3 col-md-6 mb-4 mb-md-0"></div>
+          {{'footer.Payment method'|translate}}
+        </h5>
+        <div>
+          <a href="" class="me-4 text-reset">
+            <i class="fa fa-solid fa-hand-holding-dollar"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fa fa-brands fa-cc-mastercard"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fa fa-brands fa-cc-visa"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fa fa-solid fa-mobile"></i>
+          </a>
+        </div>
+        <!-- <div class="col-lg-3 col-md-6 mb-4 mb-md-0"></div>
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0"></div> -->
-            </div>
+      </div>
       <!-- <div class="col-lg-3 col-md-6 mb-4 mb-md-0"></div>
       <div class="col-lg-3 col-md-6 mb-4 mb-md-0"></div> -->
-  </div>
-    </div>
-    <!-- row -->
-    <div class="container p-4">
-  <div class="row">
-    <!-- column -->
-    <div class="col">
-            <p>
-            <a href="#!" class="text-reset">Activ</a>
-           </p> 
-          <p>
-            <a href="#!" class="text-reset">Adidas</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">American Egle</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Andora</a>
-          </p> 
-    </div>
-     <!-- column -->
-    <div class="col">
-       <p>
-            <a href="#!" class="text-reset">Apple</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Braun</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Casio</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Cottonil</a>
-          </p> 
-    </div>
-     <!-- column -->
-    <div class="col">
-        <p>
-            <a href="#!" class="text-reset">Defacto</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Dejavu</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Dice</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Fresh</a>
-          </p> 
-    </div>
-     <!-- column -->
-    <div class="col">
-        <p>
-            <a href="#!" class="text-reset">Garnier</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">HP</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Izor</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Kady</a>
-          </p> 
-    </div>
-     <!-- column -->
-    <div class="col">
-        <p>
-            <a href="#!" class="text-reset">L'Oreal paris</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">LC Waikiki</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Lenovo</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Maybelline New</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">York</a>
-          </p> 
-    </div>
-     <!-- column -->
-    <div class="col">
-        <p>
-            <a href="#!" class="text-reset">Mesery</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">MotherCare</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">NIVEA</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Nokia</a>
-          </p> 
-    </div>
-     <!-- column -->
-    <div class="col">
-        <p>
-            <a href="#!" class="text-reset">OPPO</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Ravin</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Samsung</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">SHEIN</a>
-          </p> 
-    </div>
-     <!-- column -->
-    <div class="col">
-        <p>
-            <a href="#!" class="text-reset">Sokany</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Tornado</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">XAIMO</a>
-          </p> 
-          <p>
-            <a href="#!" class="text-reset">Fresh</a>
-          </p> 
     </div>
   </div>
+  <!-- row -->
+  <div class="container p-4">
+    <div class="row">
+      <!-- column -->
+      <div class="col">
+        <p>
+          <a href="#!" class="text-reset">Activ</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Adidas</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">American Egle</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Andora</a>
+        </p>
+      </div>
+      <!-- column -->
+      <div class="col">
+        <p>
+          <a href="#!" class="text-reset">Apple</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Braun</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Casio</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Cottonil</a>
+        </p>
+      </div>
+      <!-- column -->
+      <div class="col">
+        <p>
+          <a href="#!" class="text-reset">Defacto</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Dejavu</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Dice</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Fresh</a>
+        </p>
+      </div>
+      <!-- column -->
+      <div class="col">
+        <p>
+          <a href="#!" class="text-reset">Garnier</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">HP</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Izor</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Kady</a>
+        </p>
+      </div>
+      <!-- column -->
+      <div class="col">
+        <p>
+          <a href="#!" class="text-reset">L'Oreal paris</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">LC Waikiki</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Lenovo</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Maybelline New</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">York</a>
+        </p>
+      </div>
+      <!-- column -->
+      <div class="col">
+        <p>
+          <a href="#!" class="text-reset">Mesery</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">MotherCare</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">NIVEA</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Nokia</a>
+        </p>
+      </div>
+      <!-- column -->
+      <div class="col">
+        <p>
+          <a href="#!" class="text-reset">OPPO</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Ravin</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Samsung</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">SHEIN</a>
+        </p>
+      </div>
+      <!-- column -->
+      <div class="col">
+        <p>
+          <a href="#!" class="text-reset">Sokany</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Tornado</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">XAIMO</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Fresh</a>
+        </p>
+      </div>
     </div>
-    <!-- Copyright -->
-    <hr>
-      <div class="container-fluid">
-        <div class="row">
-         
-        
-        
-          <div class="col-sm my-1" style="text-align: right;">
-             <img src="../../../assets/FooterImg/JumiaLogo.png" style="width: auto;height: 10px;">
-          </div>
-          <div class="col-sm " style="text-align: right;">
-           
-            <a class="text-light" ><span>English/</span></a>
-            <a class="text-light" ><span>عربي</span></a>
-          </div>
-        </div>
-    
+  </div>
+  <!-- Copyright -->
+  <hr>
+  <div class="container-fluid">
+    <div class="row">
+
+
+
+      <div class="col-sm my-1" style="text-align: right;">
+        <img src="assets/FooterImg/JumiaLogo.png" style="width: auto;height: 10px;">
+      </div>
+      <div class="col-sm" style="text-align: right;">
+
+        <a href="" class="px-2"><small (click)="changeLanguage('en')" >English</small><img src="assets/icons/english.png" alt="" class="fa"
+            style="width: auto;height: 15px;"></a> |
+        <a href="" class="px-2"><small (click)="changeLanguage('ar')" >عربي</small><img src="assets/icons/egypt.png" alt="" class="fa"
+            style="width: auto;height: 15px;"></a>
+      </div>
+     
     </div>
-    <!-- Copyright -->
-  </footer>
+
+  </div>
+  <!-- Copyright -->
+</footer>

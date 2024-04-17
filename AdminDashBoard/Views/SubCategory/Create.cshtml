@@ -12,48 +12,53 @@
     SelectList list = new SelectList(ViewBag.Category, "Id", "Name");
 }
 
-
-<h1>@AdminDashBoard.Languages.Resource.AddSubCategory</h1>
-
-
-<html>
-
-<head>
-
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">@AdminDashBoard.Languages.Resource.AddSubCategory</h4>
 
 
-</head>
-<body>
-    <form asp-action="Create" asp-controller="SubCategory" method="post" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label asp-for="Name" class="form-label"> @AdminDashBoard.Languages.Resource.English_Name</label>
-            <input asp-for="Name" class="form-control">
-            <span asp-validation-for="Name" style="color:red"></span>
 
-        </div>
-        <div class="mb-3">
+            <form asp-action="Create" asp-controller="SubCategory" method="post" enctype="multipart/form-data" class="form-sample">
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                        <label asp-for="Name" class="form-label"> @AdminDashBoard.Languages.Resource.English_Name</label>
+                        <input asp-for="Name" class="form-control">
+                        <span asp-validation-for="Name" style="color:red"></span>
+                    
+                         </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group ">
             <label asp-for="NameAr" class="form-label">@AdminDashBoard.Languages.Resource.Arabic_Name</label>
             <input asp-for="NameAr" class="form-control">
             <span asp-validation-for="NameAr" style="color:red"></span>
 
         </div>
-        <div class="mb-3">
+        </div>
+                    <div class="col-md-6">
+                        <div class="form-group ">
             <label asp-for="Description" class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
             <input asp-for="Description" class="form-control">
             <span asp-validation-for="Description" style="color:red"></span>
         </div>
-
-        <div class="mb-3">
+        </div>
+                    <div class="col-md-6">
+                        <div class="form-group ">
             <label asp-for="Image" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
             <input asp-for="Image" type="file" class="form-control">
             <span asp-validation-for="Image" style="color:red"></span>
         </div>
+        </div>
 
 
 
-
-        <div>
+                    <div class="col-md-6">
+                        <div class="form-group ">
             <label asp-for="CategoryId" class="form-label">@AdminDashBoard.Languages.Resource.Categoryies</label>
             <select asp-for="CategoryId" asp-items="list" class="form-select"></select>
 
@@ -61,26 +66,68 @@
 
 
         </div>
-        <br />
-
-        <div>
-            <p>Specifications</p>
-            @foreach (var spec in ViewBag.spec)
-            {
-                
-                    <input type="checkbox" name="SelectedSpecification" value="@spec.Name" id="spec_@spec.Name">
-                    <label for="spec_@spec.Name">@spec.Name</label>
-              
-            }
         </div>
 
 
+
+
+
+
+        <br />
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-red alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <svg class="bi flex-shrink-0 " width="24" height="15px" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+                <div>
+                    @AdminDashBoard.Languages.Resource.FailedTODelete
+                </div>
+            </div>
+        }
+        <div>
+           
+                        <div class="col-md-12">
+                            <div class="form-group ">
+                                <div class="row">
+            <p class="text-center">Specifications</p>
+                                    <hr />
+            @foreach (var spec in ViewBag.spec)
+            {
+                <div class="col-4">
+                    <input type="checkbox" name="SelectedSpecification" value="@spec.Name" id="spec_@spec.Name">
+                    <label for="spec_@spec.Name">@spec.Name</label>
+             </div>
+            }
+                                </div>
+        </div>
+                        </div>
+                    </div>
+
         <button type="submit" class="btn btn-info text-white">@AdminDashBoard.Languages.Resource.Create</button>
+        </div>
     </form>
+        </div>
+    </div>
+</div>
 
 
 
-</body>
 
 
-</html>
+
+
+
+
+
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-red alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <svg class="bi flex-shrink-0 " width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+            <div>
+                @AdminDashBoard.Languages.Resource.FailedTODelete
+            </div>
+        </div>
+    }
+

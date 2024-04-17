@@ -17,12 +17,7 @@ namespace Jumia.Dtos.ProductSpecificationSubCategory
         public string Value { get; set; }
 
         public string SpecificationName { get; set; }
+        public string SpecificationNameAr { get; set; }
         public string SubCategoryName { get; set; }
-
-        // [ForeignKey(nameof(Specification))]
-        //  public virtual SubCategory SubCategory { get; set; }
-        //[ForeignKey(nameof(SubCategory))]
-        //public int SubCategoryId { get; set; }
-        //public virtual SubCategory SubCategory { get; set; }
     }
 }

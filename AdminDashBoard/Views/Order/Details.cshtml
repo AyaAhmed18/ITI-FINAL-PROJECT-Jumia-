@@ -20,31 +20,31 @@
                 <div class="card-body">
             <h4 class="card-title">@Localizer["ProductsDetails"]</h4>
             <p class="card-description">
-                <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@ViewBag.orderId ">@Localizer["ShippingInfo"]</a>
-                <a asp-action="Details" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">@Localizer["Products"]</a>
+               @*  <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@ViewBag.orderId ">@Localizer["ShippingInfo"]</a>
+                *@ <a asp-action="Details" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">@Localizer["Products"]</a>
                 <a asp-action="Edit" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">@Localizer["ChangeOrder"]</a>
                 <a class="back" style="background-color:#fff;color:darksalmon;padding:0;float:@Localizer["floatdir"]" asp-action="Index" asp-controller="Order"> @Localizer["Back"] <i class="mdi mdi-arrow-right"></i></a>
 
 
             </p>
-                  <div class="table-responsive pt-3">
-                    <table class="table table-bordered">
+            <div class="table-responsive pt-3  ">
+                <table class="table table-bordered  ">
                       <thead>
                         <tr>
                           <th>
                                 @Localizer["Image"] 
                           </th>
                           <th>
-                                @Localizer["ProductName"] Product Name
+                                @Localizer["ProductName"] 
                           </th>
                           <th>
                                 @Localizer["Quantity"] 
                           </th>
                           <th>
-                                @Localizer["TotalPrice"]   TotalPrice
+                                @Localizer["TotalPrice"]   
                           </th>
                             <th>
-                                @Localizer["Discount"]  Discount
+                                @Localizer["Discount"]  
                             </th>
                         </tr>
                       </thead>
@@ -55,7 +55,12 @@
                             {
                                      
                         <tr>
-                          <td><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="100px" , height="100px" alt="Product Image" /></td>
+                                    <td class="fifty-chars" width="6ch">@if (item.Images.Count > 0) { Convert.ToBase64String(item.Images[item.Images.Count() - 1]); }
+                                    @{
+                                        string res = item.Images.Count > 0 ? Convert.ToBase64String(item.Images[item.Images.Count() - 1]) : "";
+                                    }
+                                    <img src="data:image;base64,@res" width="100px" height="100px" alt="Product Image" /></td>
+
                           <td>
                             @item.ProductName
                           </td>
@@ -66,7 +71,7 @@
                                $ @item.TotalPrice
                           </td>
                           <td>
-                            $ @item.Discount
+                            % @item.Discount
                           </td>
                          
                         </tr>
