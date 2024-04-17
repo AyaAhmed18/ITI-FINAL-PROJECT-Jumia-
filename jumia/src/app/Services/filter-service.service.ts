@@ -21,7 +21,7 @@ export class FilterServiceService {
   }
   filterByAll(minDisc?: number,minPrice?: number, maxPrice?: number,BrandList? : string,pageNumber?: number ,pageSize? : number): Observable<any> {
 
-    this.apiUrl = 'http://localhost:5094/api/Product/FilterByAllWithPagination?';
+    this.apiUrl = 'http://localhost:64866/api/Product/FilterByAllWithPagination?';
     if(BrandList!=undefined)
     {
       this.apiUrl+=`BrandList=${BrandList}`;

@@ -201,7 +201,7 @@ GetSpecs(pro:ProductDto){
           console.log("in product ts")
             this.products = data[0];
             console.log(this.products );
-            this.sanitizeImages();
+           // this.sanitizeImages();
 
         },
         error: (err) => {
