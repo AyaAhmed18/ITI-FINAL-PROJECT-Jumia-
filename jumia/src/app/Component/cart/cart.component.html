@@ -55,7 +55,7 @@
     <div class=" bg-transparent row">
       
       <div class="col-6" (click)="removeProduct(item)">
-        <p class="text-warning"><i class="fa fa-solid fa-trash"></i> <span class="text-uppercase"> {{'cart.Remove' | translate}}</span></p>
+       <button> <p class="text-warning"><i class="fa fa-solid fa-trash"></i> <span class="text-uppercase"> {{'cart.Remove' | translate}}</span></p> </button>
       </div>
           <div class="col-6 d-flex justify-content-end ">
             <button class="btn btn-warning btn-sm" (click)="decreaseQuantity(item)" >
@@ -200,7 +200,7 @@
   </button>
 </div>
 <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2" [class.rtl]="isArabic">
-  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Removed from Cart Successfully' |translate}}
+  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Removed from Cart Successfully' |translate}} 
   <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
     <i class="fa fa-times-circle text-success" id="close"></i>
   </button>

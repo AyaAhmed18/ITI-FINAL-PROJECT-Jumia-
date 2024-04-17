@@ -25,13 +25,17 @@ namespace AdminDashBoard.Controllers
             _mapper = mapper;
         }
 
-
-        public async Task <ActionResult> Index()
+        
+        public async Task <ActionResult> Index(int pageNumber = 1)
         {
-            var Categoryes = await _categoryService.GetAll(10 , 1);
+            var pageSize = 10;
+            var Categoryes = await _categoryService.GetAll(pageSize, pageNumber);
 
             return View(Categoryes);
+
         }
+
+       
 
 
         public IActionResult Create()

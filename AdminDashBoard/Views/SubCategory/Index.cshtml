@@ -22,69 +22,68 @@
 </style>
 
 
+        <h1>@AdminDashBoard.Languages.Resource.AllSubCategory</h1>
+        <a asp-action="Create" asp-controller="SubCategory" class="btn btn-success p-3">@AdminDashBoard.Languages.Resource.AddSubCategory</a>
 
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Name</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Description</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Image</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.CategoryName</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+                    <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Entities)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="100px" , height="100px" alt="SubCategory Image" /></td>
+                    <td>@item.CategoryName</td>
+                    <td>
+                            <a asp-action="Update" asp-controller="SubCategory" asp-route-id="@item.Id" class="btn btn-info">@AdminDashBoard.Languages.Resource.Update</a>
+                    </td>
+                        <td>
+                            <a asp-action="Delete" asp-controller="SubCategory" asp-route-id="@item.Id" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger disabled">@AdminDashBoard.Languages.Resource.Delete</a>
+                        </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+        <div class="pagination">
+            @if (Model.CurrentPage > 1)
+            {
+                <a href="@Url.Action("Index", new { pageNumber = Model.CurrentPage - 1, pageSize = Model.PageSize })" class="btn btn-warning">Previous</a>
+            }
 
-    <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-8">
-                    <h4 class="card-title">@AdminDashBoard.Languages.Resource.AllSubCategory</h4>
-                    <p class="card-description">
-                        length: <span style="color:red">@AdminDashBoard.Languages.Resource.AllSubCategory</span>
-                    </p>
-                    </div>
-                <div class="col-4">
-                    <a asp-action="Create" asp-controller="SubCategory" class="btn btn-success p-3 w-100">@AdminDashBoard.Languages.Resource.AddSubCategory</a>
-                </div>
+            @if (Model.TotalPages > 5 && Model.CurrentPage > 3)
+            {
+                <a href="@Url.Action("Index", new { pageNumber = 1, pageSize = Model.PageSize })" class="btn btn-default">1</a>
+                <span>...</span>
+            }
 
-                </div>
-               
-              
-                <div class="table-responsive pt-3">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
+            @for (int i = Math.Max(1, (int)Model.CurrentPage - 2); i <= Math.Min((int)Model.TotalPages, (int)Model.CurrentPage + 2); i++)
+            {
+                <a href="@Url.Action("Index", new { pageNumber = i, pageSize = Model.PageSize })" class="btn @(Model.CurrentPage == i ? "btn-warning active" : "btn-default")">@i</a>
+            }
 
+            @if (Model.TotalPages > 5 && Model.CurrentPage < Model.TotalPages - 2)
+            {
+                <span>...</span>
+                <a href="@Url.Action("Index", new { pageNumber = Model.TotalPages, pageSize = Model.PageSize })" class="btn btn-default">@Model.TotalPages</a>
+            }
 
-                                <th scope="col"><p class="fifty-chars">@AdminDashBoard.Languages.Resource.Name</p></th>
-                                <th scope="col"><p class="fifty-chars">@AdminDashBoard.Languages.Resource.Description</p></th>
-                                <th scope="col">@AdminDashBoard.Languages.Resource.Image</th>
-                                <th scope="col"><p class="fifty-chars">@AdminDashBoard.Languages.Resource.CategoryName</p></th>
-                                <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
-                                <th scope="col">@AdminDashBoard.Languages.Resource.Action</th>
-
-
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            @foreach (var item in Model.Entities)
-                            {
-                                <tr>
-                                    <td class="p-1">@item.Name</td>
-                                    <td class="p-1"><p class="fifty-chars">@item.Description</p></td>
-                                    <td class="p-1"><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="100px" , height="100px" alt="S-C-Img" /></td>
-                                    <td class="p-1">@item.CategoryName</td>
-                                    <td class="p-1">
-                                        <a asp-action="Update" asp-controller="SubCategory" asp-route-id="@item.Id" class="btn btn-info btn-sm m-0">@AdminDashBoard.Languages.Resource.Update</a>
-                                    </td>
-                                    <td class="p-1">
-                                        <a asp-action="Delete" asp-controller="SubCategory" asp-route-id="@item.Id" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger disabled btn-sm m-0">@AdminDashBoard.Languages.Resource.Delete</a>
-                                    </td>
-                                </tr>
-                            }
-
-
-
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-
-           
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <a href="@Url.Action("Index", new { pageNumber = Model.CurrentPage + 1, pageSize = Model.PageSize })" class="btn btn-warning">Next</a>
+            }
         </div>
+
+       
     </div>
 
 

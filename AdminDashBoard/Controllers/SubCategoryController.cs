@@ -40,9 +40,10 @@ namespace AdminDashBoard.Controllers
 
 
 
-        public async Task <ActionResult> Index()
+        public async Task <ActionResult> Index(int pageNumber = 1)
         {
-            var SubCategoryes = await _subCategoryService.GetAll(20, 1);
+            var pageSize = 10;
+            var SubCategoryes = await _subCategoryService.GetAll(pageSize, pageNumber);
 
             return View(SubCategoryes);
         }

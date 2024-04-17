@@ -395,17 +395,7 @@ navigateToDetails(productId: number): void {
   this._route.navigateByUrl(`/Detalse/${productId}`);
 }
 //localization
-changeLanguage(lang: string) {
-  if (lang == 'en') {
-    localStorage.setItem('lang', 'en')
-  }
-  else {
-    localStorage.setItem('lang', 'ar')
-  }
 
-  window.location.reload();
-
-}
 
 isArabicLanguage(): boolean {
   return this.translate.currentLang === 'ar';

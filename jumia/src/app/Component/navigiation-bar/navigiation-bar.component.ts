@@ -50,6 +50,7 @@ export class NavigiationBarComponent implements OnInit {
 
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'
+      
     })
 
     this._apiLoginService.getLoggedStatus().subscribe((stat) => {

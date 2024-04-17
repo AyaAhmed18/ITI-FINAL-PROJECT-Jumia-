@@ -155,21 +155,18 @@ namespace Jumia.Application.Services
             var AllData =( await _repository.GetAllAsync());
             var Category = AllData.Skip(item * (pagnumber - 1)).Take(item).ToList();
             var Categorys = _mapper.Map<List<GetAllCategoryDto>>(Category);
-            /* .Select(c => new GetAllCategoryDto
-             {
-                 Id = c.Id,
-                 Name = c.Name,
-                 Description = c.Description,
-                 Image = c.Image,
-                 
 
-             }).ToList();*/
+            var totalItems = AllData.Count(c => c.IsDeleted != true);
+            var totalPages = (int)Math.Ceiling((double)totalItems / item);
 
-            ResultDataForPagination<GetAllCategoryDto> resultDataFor = new ResultDataForPagination<GetAllCategoryDto>();
-
-            resultDataFor.Entities = Categorys;
-            resultDataFor.count = AllData.Count(c => c.IsDeleted != true);
-
+            var resultDataFor = new ResultDataForPagination<GetAllCategoryDto>
+            {
+                Entities = Categorys,
+                count = totalItems,
+                TotalPages = totalPages,
+                CurrentPage = pagnumber,
+                PageSize = item
+            };
 
             return resultDataFor;
 
