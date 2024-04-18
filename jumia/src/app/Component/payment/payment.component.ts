@@ -103,13 +103,13 @@ export class PaymentComponent implements OnInit {
           console.log(element.stockQuantity);
           
           this.orderItem.totalPrice=element.realPrice*element.cartQuantity
-          element.stockQuantity-=1;
           this._orderService.AddOrderItems(this.orderItem).subscribe({
            
             next: (res) => {
               console.log("iteeeems");
+              element.stockQuantity-=element.cartQuantity;
               this._cartService.removeProduct(element)
-              this._productService.UpdateProductQuantity(element).subscribe({next:(res)=>{alert("Quantity updated")}})
+           //   this._productService.UpdateProductQuantity(element).subscribe({next:(res)=>{alert("Quantity updated")}})
               console.log(res);
               if(res.isSuccess){
               this._cartService.removeProduct(element)
