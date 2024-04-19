@@ -215,16 +215,16 @@ export class ShippmentComponent implements OnInit{
   AddAddress(clientAddress:IShippment){
     if(this.clientId!=null){
       clientAddress.userIdentityId=this.clientId
-            clientAddress.cost=100
+            clientAddress.cost=20
     }
    
     this._ShippmentService.AddClientAddress(clientAddress).subscribe({
       next: (res) => {
         if (res.isSuccess && res.entity != null) {
-          alert("Added Successfully");
+          alert("Your Address Information Added Successfully");
           this.router.navigate(['/Delivary']);
         } else if (!res.isSuccess && res.entity != null) {
-          alert("Your Information already Saved")
+         // alert("Your Address Information already Saved")
           //this.router.navigate(['/Delivary']);
           this._ShippmentService.UpdateClientAddress(clientAddress).subscribe({
             next: (updateRes) => {

@@ -9,6 +9,7 @@ import { IOrderItems } from '../../Models/iorder-items';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ApiShippmentService } from '../../Services/api-shippment.service';
 import { IShippment } from '../../Models/ishippment';
+import { ApiProductsService } from '../../Services/api-products.service';
 
 @Component({
   selector: 'app-confirm-order',
@@ -35,8 +36,8 @@ export class ConfirmOrderComponent {
 
   constructor(private _cartService:CartService
     ,private router:Router,private _orderService:APIOrderServiceService,
-    private  translate: TranslateService
-    
+    private  translate: TranslateService,
+    private _productService:ApiProductsService
     ,private _ShippmentService:ApiShippmentService 
    
     
@@ -101,8 +102,12 @@ export class ConfirmOrderComponent {
                   this._orderService.AddOrderItems(this.orderItem).subscribe({
                     next: (res) => {
                       console.log(res);
+                      this._cartService.removeProduct(element)
+                      element.stockQuantity-=1;
+                      this._productService.UpdateProductQuantity(element)
                       if(res.isSuccess){
                       this._cartService.removeProduct(element)
+                      alert("your cart is empty")
                     }}
                   })
                  
@@ -153,6 +158,8 @@ export class ConfirmOrderComponent {
     }
     this.order.paymentStatus=1
     this.order.status=1
+    //this.order.createdDate= new Date();
+    this.order.discount=10
     this.order.cancelOrder=false;
    
   } 

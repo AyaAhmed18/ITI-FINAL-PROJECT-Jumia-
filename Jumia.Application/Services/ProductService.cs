@@ -48,9 +48,23 @@ namespace Jumia.Application.Services
                 .Take(items)
                 .Select(p => new GetAllProducts(p))
                 .ToList();
-            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
-            resultDataList.Entities = Prds;
-            resultDataList.count = AlldAta.Count();
+
+            var totalItems = AlldAta.Count(c => c.IsDeleted != true);
+            var totalPages = (int)Math.Ceiling((double)totalItems / items);
+
+            var resultDataList = new ResultDataForPagination<GetAllProducts>()
+            {
+                Entities = Prds,
+                count = totalItems,
+                TotalPages = totalPages,
+                CurrentPage = pagenumber,
+                PageSize = items
+
+            };
+
+
+            //resultDataList.Entities = Prds;
+            //resultDataList.count = AlldAta.Count();
             return resultDataList;
         }
 
@@ -121,6 +135,26 @@ namespace Jumia.Application.Services
                     }
                 }
 
+                var UPproduct = await _unitOfWork.ProductRepository.UpdateAsync(Oldproduct);
+                await _unitOfWork.ProductRepository.SaveChangesAsync();
+                var ProductDto = _mapper.Map<CreateOrUpdateProductDto>(UPproduct);
+
+                return new ResultView<CreateOrUpdateProductDto> { Entity = ProductDto, IsSuccess = true, Message = "product Updated Successfully" };
+            }
+        }
+        public async Task<ResultView<CreateOrUpdateProductDto>> UpdateQuantity(CreateOrUpdateProductDto productDto)
+        {
+
+            var Oldproduct = await _unitOfWork.ProductRepository.GetOneAsync(productDto.Id);
+            if (Oldproduct == null)
+            {
+                return new ResultView<CreateOrUpdateProductDto> { Entity = null, IsSuccess = false, Message = "product Not Found!" };
+
+            }
+            else
+            {
+                //_mapper.Map<product>(productDto);
+                _mapper.Map(productDto, Oldproduct);
                 var UPproduct = await _unitOfWork.ProductRepository.UpdateAsync(Oldproduct);
                 await _unitOfWork.ProductRepository.SaveChangesAsync();
                 var ProductDto = _mapper.Map<CreateOrUpdateProductDto>(UPproduct);
@@ -373,6 +407,18 @@ namespace Jumia.Application.Services
             ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
             resultDataList.Entities = Prds;
             resultDataList.count = Prds.Count;
+            return resultDataList;
+        }
+
+        public async Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivalsToSlider(int items, int pagenumber)
+        {
+            var Prds = (_unitOfWork.ProductRepository.FindAll(null, null, null, Prd => Prd.CreatedDate, OrderBy.Descending))
+                .Skip(items * (pagenumber - 1))
+                .Take(items)
+                .Select(p => new GetAllProducts(p))
+                .ToList();
+            ResultDataForPagination<GetAllProducts> resultDataList = new ResultDataForPagination<GetAllProducts>();
+            resultDataList.Entities = Prds;
             return resultDataList;
         }
         public async Task<ResultDataForPagination<GetAllProducts>> FilterByBrandName(int BrandId)

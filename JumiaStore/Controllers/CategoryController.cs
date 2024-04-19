@@ -24,7 +24,7 @@ namespace JumiaStore.Controllers
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
-            var categories = await _categoryService.GetAll(10, 1);
+            var categories = await _categoryService.GetAll(50, 1);
 
             return Ok(categories.Entities);
         }

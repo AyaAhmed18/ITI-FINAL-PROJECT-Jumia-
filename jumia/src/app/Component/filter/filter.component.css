@@ -392,9 +392,12 @@
 
 
 /* ---------------------------------popup-filter------------------------------------ */
-
+.vcms__popup {
+    z-index: -1;
+  }
 .vcms__popup-check {
   display: none;
+
 }
 .triggers{
 display:none;
@@ -606,7 +609,9 @@ display:none;
      .pro-cart{
         width: 100%;
      }
-     
+     .hide{
+        display: none;
+     }
        }
        
     /* Small devices (portrait tablets and large phones) */

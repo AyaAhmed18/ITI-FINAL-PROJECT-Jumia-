@@ -5,6 +5,8 @@ import { CartService } from '../../Services/cart.service';
 import { CommonModule } from '@angular/common';
 import { WishlistService } from '../../Services/wishlist.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ApiProductsService } from '../../Services/api-products.service';
 
 @Component({
   selector: 'app-cart',
@@ -22,7 +24,10 @@ export class CartComponent implements OnInit{
   showAlert2: boolean = false;
   PriceAfterDiscount:number=0
   isArabic: boolean = localStorage.getItem('isArabic') === 'true';
-  constructor(private _cartService: CartService, private router: Router,private _wishlist : WishlistService ,private  translate: TranslateService) { }
+  constructor(private _cartService: CartService, private router: Router,
+    private _wishlist : WishlistService ,private  translate: TranslateService,
+  private _sanitizer:DomSanitizer,
+private _apiProductService:ApiProductsService) { }
   priceAftrDiscount(pro:ProductDto){
    this.PriceAfterDiscount = pro.realPrice-(pro.realPrice*pro.discount/100)
   }
@@ -31,10 +36,13 @@ export class CartComponent implements OnInit{
   ngOnInit(): void {
     this._wishlist.getWishlist().subscribe(Items=>{
       this.wishlistItems =Items
+      this.sanitizeImagesWhishlist()
       console.log(Items);});
     console.log(this.wishlistItems); 
+    
     this._cartService.getCart().subscribe(cartItems => {
       this.cartItems = cartItems;
+      this.sanitizeImagesCart()
      this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
       this.cartNumber=this._cartService.calculateTotalCartNumber();
     });
@@ -112,7 +120,39 @@ closeAlert(){
 isArabicLanguage(): boolean {
   return this.translate.currentLang === 'ar';
 }
+sanitizeImagesCart() {
+  this.cartItems.forEach(product => {
+    this._apiProductService.getProductById(product.id).subscribe({
+      next:  (res: ProductDto) => {
+        console.log(res.images);
+        product.images=res.images
+        product.images = res.images.map(image => 
+          this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + image) 
+        );
+       
+        }})
+        
+        
+        
+  });
+}
 
+sanitizeImagesWhishlist() {
+  this.wishlistItems.forEach(product => {
+    this._apiProductService.getProductById(product.id).subscribe({
+      next:  (res: ProductDto) => {
+        console.log(res.images);
+        product.images=res.images
+        product.images = res.images.map(image => 
+          this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + image) 
+        );
+       
+        }})
+        
+        
+        
+  });
+}
 
 
 }

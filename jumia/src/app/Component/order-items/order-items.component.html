@@ -1,87 +1,38 @@
 <!-- Order  when no item (heba)-->
 <div  [class.rtl]="isArabic">
 <div class="container-fluid" >
-    <div class="row flex-nowrap ">
-        <div class="col-auto  col-md-3 col-xl-2 px-sm-2 px-0 mx-4 shadow-sm p-3 mb-5 bg-body rounded" style="background-color: white;">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2  min-vh-100 ">
-                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto  text-decoration-none">
-                    <i class="fa-regular fa-user" id="acc">   </i> <span for="acc"> <h1> &nbsp; {{'orderitem.My Jumia Account' | translate}} </h1></span>
-                </a>
-                <hr>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0 text-dark" >
-                            <i class="fa fa-solid fa-bag-shopping" id="order"></i> <span for="order" > &nbsp; {{'orderitem.Order' | translate}}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa fa-regular fa-message"></i><span for="order" > &nbsp; {{'orderitem.Inbox'  | translate}}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa fa-regular fa-note-sticky"></i><span for="order" >&nbsp; {{'orderitem.Review' | translate}}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa fa-solid fa-ticket"></i><span for="order" >&nbsp; {{'orderitem.Voucher' | translate}}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa fa-regular fa-heart">  </i><span for="order" >&nbsp; {{'orderitem.Saved Item' | translate}}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa fa-solid fa-shop"></i><span for="order" >&nbsp; {{'orderitem.Follower Seller' | translate}}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0 text-dark">
-                            <i class="fa-regular fa-clock"></i><span for="order" >&nbsp; {{'orderitem.Recent View' | translate}}</span>
-                        </a>
-                    </li>
-                   <hr>
-                    <li>
-                        <a href="#" class="nav-link px-0 align-middle text-dark">
-                         <span class="ms-1 d-none d-sm-inline"> {{'orderitem.Account Management' | translate}}</span> </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-0 align-middle text-dark">
-                         <span class="ms-1 d-none d-sm-inline">{{'orderitem.Adress Book' | translate}}</span> </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-0 align-middle text-dark">
-                         <span class="ms-1 d-none d-sm-inline">{{'orderitem.Newsletter Prefrences' |translate}}</span> </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-0 align-middle text-dark">
-                         <span class="ms-1 d-none d-sm-inline">{{'orderitem.Close Account' | translate}}</span> </a>
-                    </li>
-                </ul>
-                <hr>
-                <br>
-                <div class="">
-                 
-                <button class="btn btn-outline-warning">{{'orderitem.LOGOUT' | translate}}</button>
-                </div>
-            </div>
+    <div class="row ">
+        <div class="col-3 col-md shadow-sm rounded m-2 bg-body">
+    
+    
+          <div class="row  rounded">
+            <div class="col-12"><strong class="px-2">My Jumia Account</strong></div>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Order</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Inbox</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Review</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Voucher</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Saved Item</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Follower Seller</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Recent View</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Account Management</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Adress Book</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Newsletter Prefrences</small></a>
+            <a class="col-12 Link_hover color-black p-2" href="#"><small class="px-3">Close Account</small></a>
+          </div>
+    
         </div>
         <!-- body -->
        
         <!-- if there is order item -->
-        <div class="col py-3 shadow-sm p-3 mb-5 bg-body rounded"  style="background-color: white;">
+        <div class="col-8 card-col col-md shadow-sm rounded m-2 bg-body" >
             <ul class="list-group list-group-flush">
-                <li class="list-group-item fs-3">{{'orderitem.Order Details' | translate}}</li>
+                <li class="list-group-item fs-3"><strong>{{'orderitem.Order Details' | translate}}</strong></li>
                 <li class="list-group-item ">
                     <ul  style="color: rgb(145, 143, 140);" >
-                        <li class="text-dark " style="font-weight: 700;"><a> {{'orderitem.Order' | translate}} ْ {{ordId}}  </a></li>             
-                        <li class=""><a>{{ItemsNumber}} {{'orderitem.Items' | translate}}   </a></li>      
-                        <li class=""><a> {{'orderdetails.Created Date' | translate}}  {{order.createdDate | date: 'dd-MM-yyyy'}} </a></li>             
-                        <li class=""><a> {{'orderdetails.Total PriceE' | translate}}  {{order.totalOrderPrice}} </a></li>             
+                        <li class="text-dark  row" ><strong class="col-6">{{'orderitem.Order' | translate}} :</strong>  <span class="col-6">{{ordId}} </span> </li>             
+                        <li class="row"><strong class="col-6">{{'orderitem.Items' | translate}}</strong> <span class="col-6">{{ItemsNumber}} </span>   </li>      
+                        <li class="row"><strong class="col-6">{{'orderdetails.Created Date' | translate}}</strong>   <span class="col-6"> {{order.createdDate | date: 'dd-MM-yyyy'}}</span> </li>             
+                        <li class="row"><strong class="col-6">{{'orderdetails.Total PriceE' | translate}}</strong>  <span class="col-6">  {{order.totalOrderPrice}}</span> </li>             
        
                   </ul>
                   <br>
@@ -89,27 +40,30 @@
                 </li>
                
                 @for(ord of OrderItems;track ord.id;){
-                <li class="mt-2 border"  >
+                <li class="mt-2 border rounded"  >
                   <div class="card-body  row ">
                      <div class="col-3">
-                        <img [src]="ord.images" style="border-radius: 50%;" title="orerI">
+                        <div class="d-flex justify-content-center">
+                        <img [src]="ord.images" style="border-radius: 50%; height: 150px; width: auto;" title="orerI">
+                        </div>
                       </div>
-                      <div class="col-6 text-"><p class="mb-1"> </p>
-                         <h1 style="font-weight:bold"> {{'orderitem.Delivered between'|translate}} {{ increaseDate(5).dayName }} {{ increaseDate(5).dayNumber }} {{ increaseDate(5).monthName }}
-                             {{'orderitem.and'|translate}} {{ increaseDate(10).dayName }} {{ increaseDate(10).dayNumber }} {{ increaseDate(10).monthName }}</h1>
+                      <div class="col-9 "><p class="mb-1"> </p>
+                         <h1 class="row"><strong class="col-4">{{'orderitem.Delivered between'|translate}} : </strong><span class="col-8 side-card">{{ increaseDate(5).dayName }} {{ increaseDate(5).dayNumber }} {{ increaseDate(5).monthName }}
+                            {{'orderitem.and'|translate}} {{ increaseDate(10).dayName }} {{ increaseDate(10).dayNumber }} {{ increaseDate(10).monthName }}</span>  </h1>
                     
-                        <h5 class="text-dark mb-1"> {{isArabicLanguage() ? ord.productNameAr : ord.productName }}</h5>
-                        <h6 class="text-dark mb-1"> {{ord.productDiscription}}</h6>
-                      <p class="text-secondary">{{'orderitem.QTY' | translate}} {{ord.productQuantity}}</p>
-                      <h1 class="h6 ">{{'orderitem.Total Price' | translate}} :  EGP {{ord.totalPrice}}</h1></div>
+                        <h5 class="text-dark row"><strong class="col-4">product Name : </strong><span class="col-8 side-card">{{isArabicLanguage() ? ord.productNameAr : ord.productName }}</span></h5>
+                        <h6 class="text-dark row"><strong class="col-4">product Discription : </strong><span class="col-8 side-card"> {{ord.productDiscription}}</span></h6>
+                      <p class="text-secondary row"><strong class="col-4">{{'orderitem.QTY' | translate}} : </strong><span class="col-8 side-card">{{ord.productQuantity}}</span> </p>
+                      <h1 class="h6 row"><strong class="col-4">{{'orderitem.Total Price' | translate}} : </strong> <span class="col-8 side-card"> EGP {{ord.totalPrice}}</span></h1></div>
                       
                     </div>
                 </li>
             }
             <br>
+
             <div class="container-fluid" >
                 <div class="row ">
-                    <div class="col border">
+                    <div class="col border rounded">
                         <h2 style="font-weight: 700; padding: 10px;" >{{'orderitem.PAYMENT INFORMATION'| translate}}</h2>
                         <div>
                             <h3 style="font-weight: 700;" >{{'orderitem.Payment Method'| translate}}</h3>
@@ -123,7 +77,7 @@
                        
                         </div>
                     </div>
-                    <div class="col border">
+                    <div class="col border rounded">
                         <h2 style="font-weight: 700; padding: 10px;">{{'orderitem.DELIVERY INFORMATION'|translate}}</h2>
                          <div>
                             <h3 style="font-weight: 700;" >{{'orderitem.Delivery Method'|translate}}</h3>
@@ -141,8 +95,12 @@
                 </div>
             </div>
             <br>
+            @if(order.status<2){
             <button class="btn me-2" (click)="cancelOrder()" >{{'orderitem.Cancel Order' | translate}}</button>
-
+          }@else{
+            <button class="btn me-2 hidden" (click)="cancelOrder()" >{{'orderitem.Cancel Order' | translate}}</button>
+         
+          }
            
             </ul>
                     </div>

@@ -83,15 +83,16 @@ export class OrderItemsComponent implements OnInit{
     console.log(this.order.status);
     if(this.order.status>=2){
       this.showAlert1 = true;
+     // this.router.navigate(['/OrderDetails']);
     }
     else{
       this.order.status=4
       this._OrderService.UpdateOrder(this.order).subscribe(order => {
         this.order=order
-        
+        this.router.navigate(['/OrderDetails']);
         });
         this.showAlert2 = true;
-        //this.router.navigate(['/OrderDetails']);
+      //  this.router.navigate(['/OrderDetails']);
        
     }
     

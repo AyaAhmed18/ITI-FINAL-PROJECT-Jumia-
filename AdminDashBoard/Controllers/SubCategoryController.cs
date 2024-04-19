@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class SubCategoryController : BaseController
     {
         private readonly ISubCategoryService _subCategoryService;
@@ -40,9 +40,10 @@ namespace AdminDashBoard.Controllers
 
 
 
-        public async Task <ActionResult> Index()
+        public async Task <ActionResult> Index(int pageNumber = 1)
         {
-            var SubCategoryes = await _subCategoryService.GetAll(20, 1);
+            var pageSize = 10;
+            var SubCategoryes = await _subCategoryService.GetAll(pageSize, pageNumber);
 
             return View(SubCategoryes);
         }
@@ -50,7 +51,7 @@ namespace AdminDashBoard.Controllers
 
         public async Task<ActionResult> Create()
         {
-            var Categories = await _categoryService.GetAll(15, 1);
+            var Categories = await _categoryService.GetAll(30, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
             var spec = (await _specificationServices.GetAll()).ToList();
@@ -94,7 +95,7 @@ namespace AdminDashBoard.Controllers
                     return RedirectToAction("Index", TempData["SuccessMessage1"]);
                 }
             }
-            var Categories = await _categoryService.GetAll(15, 1);
+            var Categories = await _categoryService.GetAll(30, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
             var spec = (await _specificationServices.GetAll()).ToList();
@@ -110,7 +111,7 @@ namespace AdminDashBoard.Controllers
         public async Task<ActionResult> Update(int id)
         {
 
-            var Categories = await _categoryService.GetAll(5, 1);
+            var Categories = await _categoryService.GetAll(30, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
            
@@ -179,7 +180,7 @@ namespace AdminDashBoard.Controllers
 
 
             }
-            var Categories = await _categoryService.GetAll(5, 1);
+            var Categories = await _categoryService.GetAll(30, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
             TempData["SuccessMessage"] = "Failed.";

@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 
 namespace AdminDashBoard.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class OrderController : BaseController
     {
         private readonly IOrderService _orderService;
@@ -130,7 +130,7 @@ namespace AdminDashBoard.Controllers
                     var Res = await _orderService.Update(order);
                     if (Res.IsSuccess)
                     {
-                        TempData["SuccessMessage1"] = "successfully.";
+                        TempData["SuccessMessage1"] = "Order Status Updated successfully.";
                         return RedirectToAction("Index", TempData["SuccessMessage1"]);
                     }
                     else
@@ -147,7 +147,7 @@ namespace AdminDashBoard.Controllers
                                 ViewBag.OrderStatusOptions = orderStatusValues;
                         ViewBag.User = user;
                         ViewBag.UserName = userName;
-                        TempData["SuccessMessage"] = "Failed";
+                        TempData["SuccessMessage"] = "Failed TO Update this Order Status";
                         return  View("Edit", OrderDto); ;
                     }
                    

@@ -81,6 +81,7 @@ namespace Jumia.Application.Mapper
             CreateMap<Product, GetAllProducts>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
                  .ForMember(dest => dest.SubCategoryName, opt => opt.MapFrom(src => src.GetLocalized(src.SubCategory.NameAr, src.SubCategory.Name)))
+                  .ForMember(dest => dest.BrandName, opt => opt.MapFrom(src => src.Brand.Name))
 
                 //  .ForMember(dest => dest.ShortDescription, opt => opt.MapFrom(src => src.GetLocalized(src.LongDescription, src.ShortDescription)))
 

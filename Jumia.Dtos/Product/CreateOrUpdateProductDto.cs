@@ -24,7 +24,7 @@ namespace Jumia.Dtos.Product
         public List<byte[]> Images { get; set; }
        // public string Value { get; set; }
         public int SubSpecId { get; set; }
-        public string? BrandName { get; set; }
+       // public string? BrandName { get; set; }
         public List<string>? subCategorySpecification { get; set; }
         public List<string>? productSubCategorySpecification { get; set; }
        

@@ -3,7 +3,13 @@
 <div class="row bg-body rounded  row-cols-1 row-cols-md-4 g-4" [class.rtl]="isArabic">
     <div class="col-12 p-3 " [class.rtl]="isArabic">
         <div class="row">
-            <div class="col-8"><b></b></div>
+            <div class="col-8">
+             
+            </div>
+            
+
+                
+           
             <!-- <strong>{{'product.Womens Sweaters' | translate}}</strong> -->
             <div class="col-4  ">
                 <form class="form">
@@ -54,7 +60,12 @@
 
             <div class="card-body">
                 <p>{{ isArabicLanguage() ? pro.nameAr : pro.name }}</p>
+                {{pro.stockQuantity}}
                 <p class=""><small>{{pro.shortDescription}}</small></p>
+                <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">
+                    <small [ngClass]="{'text-danger': pro.stockQuantity < 5, 'text-success': pro.stockQuantity >= 5}">
+                      {{ pro.stockQuantity < 5 ? pro.stockQuantity + ' Unifs Left' : 'Available' }}
+                  </small> </i> </h6>
                 <p>Brand: <small style="color: grey;"> {{pro.brandName}}</small> </p>
                 <b><strong>{{'product.EGP' | translate}} {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
                 <ul class="list-inline">
@@ -70,7 +81,14 @@
                     <i class="fa text-secondary">(44)</i>
                 </div>
                 <div class="hide-btn-cards ">
-                    <button class="btn w-100 text-white" (click)="AddToCart(pro)"[disabled]="pro.addedToCart" >{{'product.Add To Cart' | translate}}</button>
+                    @if(pro.stockQuantity==0){
+                        <button class="btn w-100 text-white hidden" (click)="AddToCart(pro)"[disabled]="pro.addedToCart" >{{'product.Add To Cart' | translate}}</button>
+                     
+                    }
+                    @else {
+                        <button class="btn w-100 text-white" (click)="AddToCart(pro)"[disabled]="pro.addedToCart" >{{'product.Add To Cart' | translate}}</button>
+                   
+                    }
                       </div>
             </div>
         </div>
@@ -148,6 +166,12 @@
       </div>
       
 
+      <button  class="bott">
+
+        <label class=" filterbutton text-center filterbut" for="popup-2"><i class="fa fa-filter text-center">  filter</i></label>
+      </button>
+
+
 <!-- <div class="b-pagination-outer">
 
     <ul id="border-pagination">
@@ -157,3 +181,5 @@
       <li><a (click)="nextPage()">»</a></li>
     </ul>
   </div> -->
+  <app-scroll-to-top></app-scroll-to-top>
+

@@ -1,6 +1,7 @@
 ﻿using Jumia.Dtos.AccountDtos;
 using Jumia.Model;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Win32;
@@ -81,8 +82,9 @@ namespace AdminDashBoard.Controllers
 
                 if (result.Succeeded)
                 {
-
-                    return RedirectToAction("Index", "Home");
+                  //  HttpContext.Session.SetString("Username", loginDtos.Username);
+                  //  ViewBag.Username = HttpContext.Session.GetString("Username");
+                    return RedirectToAction("Index", "Category");
                 }
                 else
                 {

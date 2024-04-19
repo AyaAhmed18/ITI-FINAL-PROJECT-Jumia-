@@ -50,6 +50,7 @@ export class NavigiationBarComponent implements OnInit {
 
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'
+      
     })
 
     this._apiLoginService.getLoggedStatus().subscribe((stat) => {
@@ -78,6 +79,7 @@ export class NavigiationBarComponent implements OnInit {
       this._ApiProductsService.SearchByNameOrDesc(this.searchTerm).subscribe(
         (searchResults) => {
           this._searchResultsService.setSearchResults([searchResults]);
+         
           console.log("searchResults");
           console.log(searchResults);
         },
@@ -86,7 +88,7 @@ export class NavigiationBarComponent implements OnInit {
         }
       );
     }}, 1000);
-
+    this.router.navigate(['/Product'])
   }
 
 

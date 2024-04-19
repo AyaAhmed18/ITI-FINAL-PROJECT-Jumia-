@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminDashBoard.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class ProductController : BaseController
     {
         private readonly IProductServices _productService;
@@ -42,9 +42,10 @@ namespace AdminDashBoard.Controllers
 
         }
         // GET: ProductController
-        public async Task<ActionResult> GetPagination()
+        public async Task<ActionResult> GetPagination(int pageNumber = 1)
         {
-            var Prds = await _productService.GetAllPagination(20, 1);
+            var pageSize = 10;
+            var Prds = await _productService.GetAllPagination(pageSize, pageNumber);
             return View(Prds);
         }
         //[Authorize(Roles = "Admin")]
@@ -103,7 +104,7 @@ namespace AdminDashBoard.Controllers
                         };
                         await _productSpecificationSubCategoryServices.Create(subCategorySpecification);
                     }
-                        TempData["SuccessMessage1"] = "Category Created successfully.";
+                        TempData["SuccessMessage1"] = "Product Created successfully.";
                         return RedirectToAction("GetPagination", TempData["SuccessMessage1"]);
 
                     }
@@ -148,6 +149,9 @@ namespace AdminDashBoard.Controllers
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
             var productDto = _mapper.Map<CreateOrUpdateProductDto>(res.Entity);
+            var prdSpecs = (await _productSpecificationSubCategoryServices.GetAll())
+                 .Entities.Where(p => p.ProductId == id).Select(i => new { i.SpecificationName, i.Value });
+            ViewBag.prdSpecs = prdSpecs;
             return View(productDto);
         }
 
@@ -155,14 +159,26 @@ namespace AdminDashBoard.Controllers
 
         [HttpPost]
         //[Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Update(CreateOrUpdateProductDto productDto, List<IFormFile> Image)
+        public async Task<ActionResult> Update(CreateOrUpdateProductDto productDto, List<IFormFile> Images)
         {
             if (ModelState.IsValid)
             {
+                if (Images != null)
+                {
+                    foreach (var img in Images)
+                    {
+                        var imageBytes = new byte[img.Length];
+                        using (var stream = img.OpenReadStream())
+                        {
+                            await stream.ReadAsync(imageBytes, 0, imageBytes.Length);
+                        }
+                        productDto.Images.Add(imageBytes);
+                    }
+                }
 
-                var res  = await  _productService.Update(productDto, Image);
-                TempData["SuccessMessage1"] = "Product Created successfully.";
-                return RedirectToAction("GetPagination", TempData["SuccessMessage1"]);
+                var res  = await  _productService.Update(productDto, Images);
+                TempData["SuccessMessage2"] = "Product Updated successfully.";
+                return RedirectToAction("GetPagination", TempData["SuccessMessage2"]);
 
 
             }
@@ -171,6 +187,9 @@ namespace AdminDashBoard.Controllers
             ViewBag.SubCategory = subCatName;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
+            var prdSpecs = (await _productSpecificationSubCategoryServices.GetAll())
+               .Entities.Where(p => p.ProductId == productDto.Id).Select(i => new { i.SpecificationName, i.Value });
+            ViewBag.prdSpecs = prdSpecs;
             TempData["SuccessMessage"] = "Failed.";
              return View(productDto);
 
@@ -192,12 +211,12 @@ namespace AdminDashBoard.Controllers
            var del= await _productService.Delete(ProductToDelete);
             if (del.IsSuccess)
             {
-                TempData["SuccessMessage1"] = "Successed";
+                TempData["SuccessMessage3"] = "Product Deleted Successfully";
                 return RedirectToAction(nameof(GetPagination));
             }
             else
             {
-                TempData["SuccessMessage"] = "Failed";
+                TempData["SuccessMessage"] = "Sorry, Failed to Delete this product";
                 return RedirectToAction(nameof(GetPagination));
             }
 

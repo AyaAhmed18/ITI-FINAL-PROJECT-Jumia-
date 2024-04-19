@@ -13,13 +13,14 @@ import { FilterServiceService } from '../../Services/filter-service.service';
 import { ApiSpecficationsService } from '../../Services/api-specfications.service';
 import { ISpecfications } from '../../Models/ispecfications';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ScrollToTopComponent } from "../scroll-to-top/scroll-to-top.component";
 
 @Component({
-  selector: 'app-product',
-  standalone: true,
-  templateUrl: './product.component.html',
-  styleUrl: './product.component.css',
-  imports: [FilterComponent,CommonModule,FormsModule ,TranslateModule]
+    selector: 'app-product',
+    standalone: true,
+    templateUrl: './product.component.html',
+    styleUrl: './product.component.css',
+    imports: [FilterComponent, CommonModule, FormsModule, TranslateModule, ScrollToTopComponent]
 })
 export class ProductComponent implements  OnInit{
   @Input() AllProducts:ProductDto[]=[];
@@ -122,16 +123,19 @@ showAlert2: boolean = false;
     }
   //start Add to Cart
   AddToCart(prod:ProductDto){
+    this.showAlert1 = false;
+    console.log(this.showAlert1);
+    
     if(prod.stockQuantity>0){
       prod.cartQuantity = 1;
-       this.cartTotalPrice+=prod.realPrice
+      prod.stockQuantity--;
+       this._wishlist.removeProductFromWishlist(prod);
        this._cartService.addToCart(prod);
-       this.addToCartClicked.emit(prod);
-       prod.addedToCart = true;
-       this._wishlist.removeProductFromWishlist(prod)
        this.showAlert1 = true;
-    }
+       console.log(this.showAlert1);
+      }
 }
+
 
 //Sprcifications
 GetSpecs(pro:ProductDto){
@@ -399,17 +403,7 @@ navigateToDetails(productId: number): void {
   this._route.navigateByUrl(`/Detalse/${productId}`);
 }
 //localization
-changeLanguage(lang: string) {
-  if (lang == 'en') {
-    localStorage.setItem('lang', 'en')
-  }
-  else {
-    localStorage.setItem('lang', 'ar')
-  }
 
-  window.location.reload();
-
-}
 
 isArabicLanguage(): boolean {
   return this.translate.currentLang === 'ar';

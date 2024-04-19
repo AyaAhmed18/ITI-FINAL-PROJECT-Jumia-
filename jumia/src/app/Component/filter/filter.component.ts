@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { ProductComponent } from "../product/product.component";
 import { FilterServiceService } from '../../Services/filter-service.service';
 import { CommonModule} from '@angular/common';
@@ -20,7 +20,11 @@ import { CategoryserviceService } from '../../Services/categoryservice.service';
     
     imports: [ProductComponent,FormsModule,CommonModule,TranslateModule , NgxSliderModule]
 })
-export class FilterComponent {
+export class FilterComponent  {
+
+  isMobile: boolean=false;
+
+
     minDiscount: number=0;
     ListPrand:string='';
     products: any[]=[];
@@ -57,16 +61,36 @@ export class FilterComponent {
       private _router : Router, private _activeRouter: ActivatedRoute,
       private _sanitizer:DomSanitizer,
       private  translate: TranslateService ,
-      private _categoryService:CategoryserviceService
-      
-      ) { }
-
+      private _categoryService:CategoryserviceService,
+      private renderer: Renderer2
+      ) {
+        this.checkScreenSize();
+      }
+  
+      @HostListener('window:resize', [])
+      onResize() {
+        this.checkScreenSize();
+      }
+    
+      checkScreenSize() {
+        const screenWidth = window.innerWidth;
+        this.isMobile = screenWidth < 768; 
+        console.log(this.isMobile);
+      }
+    
+    
     ngOnInit(): void {
       this.GetCategories()
       this.sanitizeImages()
       this.translate.onLangChange.subscribe((Event)=>{
-        this.isArabic = Event.lang === 'ar'
+       
+        
+          this.isArabic = Event.lang === 'ar'
+          // window.location.reload();
+      
       })
+      //location.reload();
+
 
       console.log("Starting Fillter")
       this.GetBrands();
@@ -172,7 +196,7 @@ export class FilterComponent {
         this.sanitizeImages();
       });
 
-
+     
 
 
     }
@@ -257,7 +281,7 @@ changeLanguage(lang: string) {
     localStorage.setItem('lang', 'ar')
   }
 
-  window.location.reload();
+ 
 
 }
 
