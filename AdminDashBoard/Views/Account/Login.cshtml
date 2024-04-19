@@ -8,6 +8,9 @@
 @{
     Layout = null;
 }
+@{
+    ViewData["Title"] = "Login";
+}
 <!DOCTYPE html>
 <html dir="@AdminDashBoard.Languages.Resource.dir">
 
@@ -40,6 +43,13 @@
     <link href="~/css/Log_Reg.css" rel="stylesheet" />
 </head>
 <body>
+    @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+    {
+        <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+            @ViewData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+    }
 <div class="login-root">
     <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
 
@@ -101,6 +111,22 @@
         </div>
     </div>
 </div>
+    @section Scripts {
+        <script defer>
+            document.addEventListener('DOMContentLoaded', function () {
+                var closeButton = document.querySelector('#errorAlert .close');
+
+                if (closeButton) {
+                    closeButton.addEventListener('click', function () {
+                        var errorAlert = this.closest('.alert');
+                        if (errorAlert) {
+                            errorAlert.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        </script>
+    }
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
