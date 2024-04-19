@@ -10,6 +10,7 @@ using Jumia.Dtos.SubCategorySpecifications;
 using Jumia.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OfficeOpenXml;
 
 namespace AdminDashBoard.Controllers
 {
@@ -48,6 +49,49 @@ namespace AdminDashBoard.Controllers
             var Prds = await _productService.GetAllPagination(pageSize, pageNumber);
             return View(Prds);
         }
+
+        public async Task<IActionResult> ExportToExcel()
+        {
+            var pageSize = 200;
+            var Prds = await _productService.GetAllPagination(pageSize, 1);
+
+            ExcelPackage excelPackage = new ExcelPackage();
+            ExcelWorksheet Worksheet = excelPackage.Workbook.Worksheets.Add("Prds");
+
+            // Set column headers
+            Worksheet.Cells[1, 1].Value = "English Name";
+            Worksheet.Cells[1, 2].Value = "Arabic Name";
+            Worksheet.Cells[1, 3].Value = "Description";
+            Worksheet.Cells[1, 4].Value = "Quantity";
+            Worksheet.Cells[1, 5].Value = "Price";
+            Worksheet.Cells[1, 6].Value = "Brand";
+
+
+            // Populate the Excel worksheet with data from Categoryes
+            int row = 2;
+            foreach (var product in Prds.Entities)
+            {
+                Worksheet.Cells[row, 1].Value = product.Name;
+                Worksheet.Cells[row, 2].Value = product.NameAr;
+                Worksheet.Cells[row, 3].Value = product.ShortDescription;
+                Worksheet.Cells[row, 4].Value = product.StockQuantity;
+                Worksheet.Cells[row, 5].Value = product.RealPrice;
+                Worksheet.Cells[row, 6].Value = product.BrandName;
+
+
+
+                row++;
+            }
+
+            using (var memoryStream = new MemoryStream())
+            {
+                excelPackage.SaveAs(memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Products.xlsx");
+            }
+        }
+
+
         //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {

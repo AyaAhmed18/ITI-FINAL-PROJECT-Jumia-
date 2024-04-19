@@ -20,7 +20,7 @@
     a:hover{color:#fff}
 </style>
 <body>
-
+    <a id="exportButton" class="btn btn-primary" href="#">Export to Excel</a>
     <div class="container">
 
         <h1>@AdminDashBoard.Languages.Resource.AllSubCategory</h1>
@@ -119,6 +119,31 @@
                 event.preventDefault();
             }
         }
+
+        //-----
+        document.getElementById("exportButton").addEventListener("click", function () {
+            // Send AJAX request to the server to export the data to Excel
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/SubCategory/ExportToExcel", true);
+            xhr.responseType = "blob";
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Create a temporary anchor element to download the file
+                    var a = document.createElement("a");
+                    var url = window.URL.createObjectURL(xhr.response);
+                    a.href = url;
+                    a.download = "SubCategories.xlsx";
+                    a.click();
+
+                    // Clean up the temporary URL
+                    window.URL.revokeObjectURL(url);
+                }
+            };
+
+            xhr.send();
+        });
+
        
     </script>
 </body>
