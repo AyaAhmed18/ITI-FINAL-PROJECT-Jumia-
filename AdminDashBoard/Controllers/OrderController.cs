@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using OfficeOpenXml;
 using System.Security.Cryptography;
 
 namespace AdminDashBoard.Controllers
@@ -212,5 +213,51 @@ namespace AdminDashBoard.Controllers
                 return View();
             }
         }
+
+        public async Task<IActionResult> ExportToExcel()
+        {
+
+            var orders = await _orderService.GetAllOrders();
+
+            ExcelPackage excelPackage = new ExcelPackage();
+            ExcelWorksheet Worksheet = excelPackage.Workbook.Worksheets.Add("orders");
+
+            // Set column headers
+            Worksheet.Cells[1, 1].Value = "Id";
+            Worksheet.Cells[1, 2].Value = "Customer";
+            Worksheet.Cells[1, 3].Value = "Status";
+            Worksheet.Cells[1, 4].Value = "Payment";
+            Worksheet.Cells[1, 5].Value = "CreatedDate";
+            Worksheet.Cells[1, 6].Value = "TotalPrice";
+            Worksheet.Cells[1, 7].Value = "Discount";
+
+
+
+
+            // Populate the Excel worksheet with data from Categoryes
+            int row = 2;
+            foreach (var order in orders)
+            {
+                Worksheet.Cells[row, 1].Value = order.CustomerId;
+                Worksheet.Cells[row, 2].Value = order.Customer;
+                Worksheet.Cells[row, 3].Value = order.Status;
+                Worksheet.Cells[row, 4].Value = order.paymentStatus;
+                Worksheet.Cells[row, 5].Value = order.OrderDate;
+                Worksheet.Cells[row, 6].Value = order.TotalOrderPrice;
+                Worksheet.Cells[row, 7].Value = order.Discount;
+
+
+
+                row++;
+            }
+
+            using (var memoryStream = new MemoryStream())
+            {
+                excelPackage.SaveAs(memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Orders.xlsx");
+            }
+        }
+
     }
 }
