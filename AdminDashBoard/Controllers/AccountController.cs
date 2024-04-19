@@ -73,22 +73,53 @@ namespace AdminDashBoard.Controllers
 
 
         [HttpPost]
+        //public async Task<IActionResult> Login(LoginDtos loginDtos)
+        //{
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        var result = await _signinManager.PasswordSignInAsync(loginDtos.Username, loginDtos.Password, false, false);
+
+        //        if (result.Succeeded)
+        //        {
+        //          //  HttpContext.Session.SetString("Username", loginDtos.Username);
+        //          //  ViewBag.Username = HttpContext.Session.GetString("Username");
+        //            return RedirectToAction("Index", "Category");
+        //        }
+        //        else
+        //        {
+        //            ViewData["ErrorMessage"] = "Invalid username or password.";
+        //            return View("Login", loginDtos);
+        //        }
+        //    }
+
+        //    return View("Login", loginDtos);
+        //}
         public async Task<IActionResult> Login(LoginDtos loginDtos)
         {
-
             if (ModelState.IsValid)
             {
                 var result = await _signinManager.PasswordSignInAsync(loginDtos.Username, loginDtos.Password, false, false);
 
                 if (result.Succeeded)
                 {
-                  //  HttpContext.Session.SetString("Username", loginDtos.Username);
-                  //  ViewBag.Username = HttpContext.Session.GetString("Username");
+                    //  HttpContext.Session.SetString("Username", loginDtos.Username);
+                    //  ViewBag.Username = HttpContext.Session.GetString("Username");
                     return RedirectToAction("Index", "Category");
                 }
                 else
                 {
-                    ViewData["ErrorMessage"] = "Invalid username or password.";
+                    // Check if the username is incorrect
+                    var user = await _userManager.FindByNameAsync(loginDtos.Username);
+                    if (user == null)
+                    {
+                        ViewData["ErrorMessage"] = "Invalid username.";
+                    }
+                    else
+                    {
+                        ViewData["ErrorMessage"] = "Invalid password.";
+                    }
+
                     return View("Login", loginDtos);
                 }
             }

@@ -2,7 +2,7 @@
 
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add Product";
     // Layout = "_Layout";
     SelectList list = new SelectList(ViewBag.SubCategory, "Id", "Name");
     SelectList list2 = new SelectList(ViewBag.brand, "BrandID", "Name");
@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <label asp-for="NameAr" class=" col-form-label"></label>
+                            <label asp-for="NameAr" class=" col-form-label">@AdminDashBoard.Languages.Resource.Arabic_Name</label>
                                 <input asp-for="NameAr" type="text" class="form-control" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
@@ -115,7 +115,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <label asp-for="SubCategoryID" class=" col-form-label"></label>
+                            <label asp-for="SubCategoryID" class=" col-form-label">>@AdminDashBoard.Languages.Resource.SubCategory</label>
                             @* <input asp-for="SubCategoryID" class="form-control" hidden /> *@
                             <input name="selectedSubCategoryId" class="form-control" hidden />
                                 <select asp-for="SubCategoryID" asp-items="list" class="form-select" id="subCategorySelect"></select>
@@ -138,7 +138,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <label asp-for="Images" class=" col-form-label"></label>
+                            <label asp-for="Images" class=" col-form-label">>@AdminDashBoard.Languages.Resource.Image</label>
                           
                                 <input asp-for="Images" type="file" class="form-control" />
                                 <span asp-validation-for="Images" style="color:red"></span>

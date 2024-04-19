@@ -31,12 +31,12 @@ namespace Jumia.Dtos.Order
         {
             Pending=0,
             PayPall=1,
-            MobileMoney=2,
-            Cash=3
+            Cash = 2,
+         //   MobileMoney =3,
+            
         }
         public enum OrderStatus
-        {
-            Pending,
+        { 
             Processing ,
             Shipped ,
             Delivered ,

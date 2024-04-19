@@ -1,11 +1,15 @@
 ﻿@using Jumia.Dtos.AccountDtos
 @{
-    ViewBag.Title = "Login";
+    ViewData["Title"] = "Login";
+
     // ViewBag.icon = "About.png";
 }
 @model LoginDtos
 @{
     Layout = null;
+}
+@{
+    ViewData["Title"] = "Login";
 }
 <!DOCTYPE html>
 <html dir="@AdminDashBoard.Languages.Resource.dir">
@@ -14,7 +18,7 @@
     <!-- Required meta tags -->
     <meta char="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin2 </title>
+    <title>@ViewData["Title"] </title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="~/vendors/feather/feather.css">
     <link rel="stylesheet" href="~/vendors/mdi/css/materialdesignicons.min.css">
@@ -35,10 +39,17 @@
     <!-- endinject -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AdminDashBoard.styles.css" asp-append-version="true" />
-    <link rel="shortcut icon" href="~/images/favicon.png" />
+    <link rel="shortcut icon" href="~/images/logo.svg" />
     <link href="~/css/Log_Reg.css" rel="stylesheet" />
 </head>
 <body>
+    @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+    {
+        <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+            @ViewData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+    }
 <div class="login-root">
     <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
 
@@ -87,10 +98,10 @@
                             </div>
 
 
-                            <div class="field">
+                           @*  <div class="field">
                                 <a class="ssolink" href="#">@AdminDashBoard.Languages.Resource.DonthaveanaccountSignup</a>
                             </div>
-
+ *@
 
                         </form>
                     </div>
@@ -100,7 +111,27 @@
         </div>
     </div>
 </div>
- <script src="~/vendors/js/vendor.bundle.base.js"></script>
+    @section Scripts {
+        <script defer>
+            document.addEventListener('DOMContentLoaded', function () {
+                var closeButton = document.querySelector('#errorAlert .close');
+
+                if (closeButton) {
+                    closeButton.addEventListener('click', function () {
+                        var errorAlert = this.closest('.alert');
+                        if (errorAlert) {
+                            errorAlert.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        </script>
+    }
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/vendors/js/vendor.bundle.base.js"></script>
 </body>
 </html>
 

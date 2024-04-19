@@ -117,16 +117,6 @@
        
   
 
-@if (TempData["SuccessMessage1"] != null)
-{
-    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <svg class="bi flex-shrink-0 me-2" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
-        <div>
-            @TempData["SuccessMessage1"]
-        </div>
-    </div>
-}
 @if (TempData["SuccessMessage"] != null)
 {
     <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
@@ -136,7 +126,38 @@
             @TempData["SuccessMessage"]
         </div>
     </div>
-} 
+}
+
+@if (TempData["SuccessMessage1"] != null)
+{
+    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @TempData["SuccessMessage1"]
+        </div>
+    </div>
+}
+@if (TempData["SuccessMessage2"] != null)
+{
+    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @TempData["SuccessMessage2"]
+        </div>
+    </div>
+}
+@if (TempData["SuccessMessage3"] != null)
+{
+    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @TempData["SuccessMessage3"]
+        </div>
+    </div>
+}
 
 
 

@@ -122,20 +122,34 @@ showAlert2: boolean = false;
       })
     }
   //start Add to Cart
-  AddToCart(prod:ProductDto){
-    this.showAlert1 = false;
-    console.log(this.showAlert1);
+//   AddToCart(prod:ProductDto){
+//     this.showAlert1 = false;
+//     console.log(this.showAlert1);
     
-    if(prod.stockQuantity>0){
-      prod.cartQuantity = 1;
-      prod.stockQuantity--;
-       this._wishlist.removeProductFromWishlist(prod);
-       this._cartService.addToCart(prod);
-       this.showAlert1 = true;
-       console.log(this.showAlert1);
-      }
-}
+//     if(prod.stockQuantity>0){
+//       prod.cartQuantity = 1;
+//       prod.stockQuantity--;
+//       this._wishlist.removeProductFromWishlist(prod);
+//        this._cartService.addToCart(prod);
+//        this.showAlert1 = true;
+//        console.log(this.showAlert1);
+//       }
+// }
 
+AddToCart(prod: ProductDto) {
+  this.showAlert1 = false;
+  console.log(this.showAlert1);
+  
+  if (prod.stockQuantity > 0) {
+    prod.cartQuantity = 1;
+    prod.stockQuantity--;
+    // this.cartTotalPrice += prod.realPrice
+    this._cartService.addToCart(prod);
+    this.addToCartClicked.emit(prod);
+    prod.addedToCart = true;
+    // this._wishlist.removeProductFromWishlist(prod);
+  }
+}
 
 //Sprcifications
 GetSpecs(pro:ProductDto){

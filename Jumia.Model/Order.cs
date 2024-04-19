@@ -29,15 +29,16 @@ namespace Jumia.Model
         public Order()
         {
             OrderItems = new List<OrderItems>();
-            Status = "Pending";
+            Status = "Processing";
             //paymentStatus = 0;
         }
         public enum PaymentStatus
         {
             Pending,
             PayPall,
-            MobileMoney,
-            Cash
+            Cash,
+            //MobileMoney,
+            
         }
         
 

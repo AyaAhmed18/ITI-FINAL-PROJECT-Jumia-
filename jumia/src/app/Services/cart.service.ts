@@ -52,6 +52,7 @@ export class CartService {
     }
    
   }
+
   removeProduct(productToRemove: ProductDto) {
     const index = this.cartItems.indexOf(productToRemove);
     if (index !== -1) {

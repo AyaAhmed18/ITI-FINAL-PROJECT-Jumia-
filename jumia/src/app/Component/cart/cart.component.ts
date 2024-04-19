@@ -99,20 +99,32 @@ private _apiProductService:ApiProductsService) { }
   }
    
    //start Add to Cart 
-   AddToCart(prod:ProductDto){
-    this.showAlert1 = false;
-    console.log(this.showAlert1);
+//    AddToCart(prod:ProductDto){
+//     this.showAlert1 = false;
+//     console.log(this.showAlert1);
     
-    if(prod.stockQuantity>0){
-      prod.cartQuantity = 1;
-      prod.stockQuantity--;
-       this._wishlist.removeProductFromWishlist(prod);
-       this._cartService.addToCart(prod);
-       this.showAlert1 = true;
-       console.log(this.showAlert1);
-      }
+//     if(prod.stockQuantity>0){
+//       prod.cartQuantity = 1;
+//       prod.stockQuantity--;
+//        this._wishlist.removeProductFromWishlist(prod);
+//        this._cartService.addToCart(prod);
+//        this.showAlert1 = true;
+//        console.log(this.showAlert1);
+//       }
+// }
+AddToCart(prod:ProductDto){
+  this.showAlert1 = false;
+  console.log(this.showAlert1);
+  if(prod.stockQuantity>0){
+    prod.cartQuantity = 1;
+    prod.stockQuantity--;
+    this._wishlist.removeProductFromWishlist(prod);
+     this._cartService.addToCart(prod);
+     prod.addedToCart = true;
+     this.showAlert1 = true;
+     console.log(this.showAlert1);
+  }
 }
-
 closeAlert(){
   this.showAlert1 = false;
   this.showAlert2 = false;

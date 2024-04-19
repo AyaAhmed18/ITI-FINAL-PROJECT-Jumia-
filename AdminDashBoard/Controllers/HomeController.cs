@@ -37,9 +37,15 @@ namespace AdminDashBoard.Controllers
             _logger = logger;
         }
         [Authorize(Roles = "Admin")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-           
+            var products = await _productService.GetAllPagination(1000,1);
+            ViewBag.product=products.count;
+            ViewBag.Category = (await _categoryService.GetAll(25, 1)).count;
+            ViewBag.SubCategory = (await _subCategoryService.GetAll(100, 1)).count;
+            ViewBag.Orders = (await _orderService.GetAllOrders()).Count();
+            var rolesResult = await _roleService.GetUsername();
+            ViewBag.Admins = rolesResult.Where(i => i.RoleName == "Admin");
             return View();
         }
 

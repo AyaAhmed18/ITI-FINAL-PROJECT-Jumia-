@@ -19,4 +19,5 @@ export interface ProductDto {
     cartQuantity:number
     addedTowashlist?: boolean,
     brandName:string
+    prodcutid:string
 }
