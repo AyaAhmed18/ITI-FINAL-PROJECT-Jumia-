@@ -35,8 +35,8 @@
     @for(pro of products;track pro.id;){
     <div class="clo-2 pro-cart" [class.rtl]="isArabic">
         <div class="show-cards-btn card cards-hover" style=" border: none;"  >
-            <img class="card-img-top" [src]="pro.images[0]" alt="Card image"
-                style="width:100%">
+            <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image"
+            style="width:100%">
             <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
             <div class="label-Cards-top px-2"> 
                 <span class="text-white ">{{'product.Buy 400 get' | translate}} {{pro.discount}} {{'product.off' | translate}}</span>
@@ -124,8 +124,8 @@
                 <div class="modal-footer ">
                     <button class="btn w-100 text-white" (click)="addToWishlist(pro)">
                         <i class="fa" [ngClass]="{'fa-heart-o': !isInWishlist(pro), 'fa-heart': isInWishlist(pro)}"></i>
-                        <span *ngIf="!isInWishlist(pro)">{{'product.ADD TO WISHLIST' | translate}}</span>
-                        <span *ngIf="isInWishlist(pro)">{{'product.REMOVE FROM WISHLIST' | translate}}</span>
+                        <span *ngIf="!isInWishlist(pro); else removeText">{{ 'product.ADD TO WISHLIST' | translate }}</span>
+                        <ng-template #removeText>{{ 'product.REMOVE FROM WISHLIST' | translate }}</ng-template>
                     </button>
                 </div>
             </div>

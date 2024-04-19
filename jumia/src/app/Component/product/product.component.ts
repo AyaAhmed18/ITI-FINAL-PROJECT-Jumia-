@@ -156,23 +156,31 @@ GetSpecs(pro:ProductDto){
 }
   // end Add to Cart
 
-    //Addtowashlist
-    addToWishlist(product: ProductDto) {
-      if (this.isInWishlist(product)) {
-          this._wishlist.removeProductFromWishlist(product);
-      } else {
-          this._wishlist.addProductToWishlist(product);
-          this.showAlert2 = true;
-      }
-      product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
+// Add to wishlist method
+addToWishlist(product: ProductDto) {
+  if (this.isInWishlist(product)) {
+      this._wishlist.removeProductFromWishlist(product);
+  } else {
+      this._wishlist.addProductToWishlist(product);
+  }
+  product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
+  this.updateSessionStorage(); // Update session storage after toggling
+}
+
+isInWishlist(product: ProductDto): boolean {
+  // Implement logic to check if the product is in the wishlist
+  // For example, you might check if the product ID exists in the wishlist
+  return this._wishlist.getWishlistItemsFromSession().some(item => item.id === product.id);
+}
+
+updateSessionStorage() {
+  // Update session storage with the updated wishlist items
+  sessionStorage.setItem('wishlistItems', JSON.stringify(this._wishlist.getWishlistItemsFromSession()));
+}
 
 
-    }
 
-
-    isInWishlist(product: ProductDto): boolean {
-      return !!product.addedTowashlist;
-  }  // ngOnInit(): void {
+    // ngOnInit(): void {
   //     this._ApiProductsService.getAllProducts().subscribe({
   //         next:(data)=>{
   //       this.AllProducts=data
