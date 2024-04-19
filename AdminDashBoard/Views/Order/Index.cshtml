@@ -1,6 +1,8 @@
 ﻿@model List<GetAllOrdersDTO>
 @{
     Layout = "_Layout";
+    ViewData["Title"] = "Orders";
+
 }
 <style>
     a{
@@ -18,10 +20,10 @@
                     <div class="card-body">
                         <h1 class="card-title">@Localizer["Orders"]</h1>
                         <p class="card-description">
-                            @Localizer["orderview"]  <code>@Localizer["Info"]  </code>
+                            @Localizer["orderview"]  <span style="color:red">@Localizer["Info"]  </span>
                         </p>
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table class="table table-hover  table-bordered">
                                 <thead>
                                     <tr>
                                         <th>@Localizer["Id"]</th>
@@ -45,7 +47,7 @@
                                                 <td>@item.Id</td>
                                                 <td>@item.Customer</td>
                                                 <td><label class="badge badge-danger">@item.Status</label></td>
-                                                <td><label class="badge badge-danger">@item.GetPaymentStatusWord()</label></td>
+                                                <td><label class="badge badge-warning">@item.GetPaymentStatusWord()</label></td>
                                                 <td>@item.OrderDate</td>
                                                 <td><label class="badge badge-danger">@item.TotalOrderPrice</label></td>
                                                 <td class="text-danger"> @item.Discount % <i class="ti-arrow-down"></i></td>
@@ -74,7 +76,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
         <div>
-            @AdminDashBoard.Languages.Resource.SuccessMessage
+            @TempData["SuccessMessage1"]
+            @* @AdminDashBoard.Languages.Resource.SuccessMessage *@
         </div>
     </div>
 }

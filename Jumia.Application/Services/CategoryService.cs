@@ -135,10 +135,10 @@ namespace Jumia.Application.Services
                     return new ResultView<CreateOrUpdateCategoryDto> { Entity = null, IsSuccess = false, Message = "Category Not Found!" };
                 }
 
-                await _repository.DeleteAsync(category);
-                await _repository.SaveChangesAsync();
+               var res= await _repository.DeleteAsync(category);
+               var res1= await _repository.SaveChangesAsync();
 
-                var CategoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(category);
+                var CategoryDto = _mapper.Map<CreateOrUpdateCategoryDto>(res);
                 return new ResultView<CreateOrUpdateCategoryDto> { Entity = categoryDto, IsSuccess = true, Message = "Deleted Successfully" };
             }
             catch (Exception ex)
@@ -155,21 +155,18 @@ namespace Jumia.Application.Services
             var AllData =( await _repository.GetAllAsync());
             var Category = AllData.Skip(item * (pagnumber - 1)).Take(item).ToList();
             var Categorys = _mapper.Map<List<GetAllCategoryDto>>(Category);
-            /* .Select(c => new GetAllCategoryDto
-             {
-                 Id = c.Id,
-                 Name = c.Name,
-                 Description = c.Description,
-                 Image = c.Image,
-                 
 
-             }).ToList();*/
+            var totalItems = AllData.Count(c => c.IsDeleted != true);
+            var totalPages = (int)Math.Ceiling((double)totalItems / item);
 
-            ResultDataForPagination<GetAllCategoryDto> resultDataFor = new ResultDataForPagination<GetAllCategoryDto>();
-
-            resultDataFor.Entities = Categorys;
-            resultDataFor.count = AllData.Count(c => c.IsDeleted != true);
-
+            var resultDataFor = new ResultDataForPagination<GetAllCategoryDto>
+            {
+                Entities = Categorys,
+                count = totalItems,
+                TotalPages = totalPages,
+                CurrentPage = pagnumber,
+                PageSize = item
+            };
 
             return resultDataFor;
 

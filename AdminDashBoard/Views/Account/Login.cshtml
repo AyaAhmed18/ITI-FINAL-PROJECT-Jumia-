@@ -1,13 +1,45 @@
 ﻿@using Jumia.Dtos.AccountDtos
 @{
-    ViewBag.Title = "Login";
+    ViewData["Title"] = "Login";
+
     // ViewBag.icon = "About.png";
 }
 @model LoginDtos
 @{
-    Layout = "_AccountLayout";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html dir="@AdminDashBoard.Languages.Resource.dir">
 
+<head>
+    <!-- Required meta tags -->
+    <meta char="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"] </title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/vendors/feather/feather.css">
+    <link rel="stylesheet" href="~/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/vendors/typicons/typicons.css">
+    <link rel="stylesheet" href="~/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="~/vendors/css/vendor.bundle.base.css">
+
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AdminDashBoard.styles.css" asp-append-version="true" />
+    <link rel="shortcut icon" href="~/images/logo.svg" />
+    <link href="~/css/Log_Reg.css" rel="stylesheet" />
+</head>
+<body>
 <div class="login-root">
     <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
 
@@ -56,10 +88,10 @@
                             </div>
 
 
-                            <div class="field">
+                           @*  <div class="field">
                                 <a class="ssolink" href="#">@AdminDashBoard.Languages.Resource.DonthaveanaccountSignup</a>
                             </div>
-
+ *@
 
                         </form>
                     </div>
@@ -69,5 +101,11 @@
         </div>
     </div>
 </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
-}
+    <script src="~/vendors/js/vendor.bundle.base.js"></script>
+</body>
+</html>
+

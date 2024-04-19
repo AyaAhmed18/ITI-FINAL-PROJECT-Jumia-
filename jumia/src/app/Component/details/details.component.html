@@ -1,146 +1,200 @@
-
 <!-- Cart with Items -->
-<div class="row ">
+<div class="row " [class.rtl]="isArabic">
 
 
- 
-    <div class="card col-8   my-4 "  >
-      
-   
-      <div class="row card-body"  >
-  
-        <div class="col-3">
-          <img [src]="( product.images[0])" alt="Product Image">
-          <!-- <img src="assets/ProductImg/1.jpg" style="height: 250px; width: auto;"> -->
-          <div>
 
-            <!-- <div *ngFor="let image of product?.images">
-              <img [src]="(image)" alt="Product Image" style="height: 35px; width: auto;">
-            </div> -->
+  <div class="card card-res-size col-8   my-4 ">
+
+
+    <div class="row card-body">
+
+      <div class="img-focas col-3">
+        
+        <img [src]="( product.images[0])" alt="Product Image">
+        <!-- <img src="assets/ProductImg/1.jpg" style="height: 250px; width: auto;"> -->
+
+        <div class="row my-2 ">
+          <div class="col-4">
+            <img class="detImg" [src]="( product.images[0])" alt="Product Image">
+          </div>
+          <div class="col-4">
+            <img class="detImg" [src]="( product.images[0])" alt="Product Image">
+          </div>
+          <div class="col-4">
+            <img class="detImg" [src]="( product.images[0])" alt="Product Image">
           </div>
         </div>
-        <div class="col-9 ">
-<div class="row">
-    <div class="col-12">
-        <p class="mb-1 h4"><small>{{ product?.name }}{{ product?.shortDescription }}</small> </p>
+        <div>
 
-        <hr>
-
-    </div>
-    <div class="col-12 ">
-        <p > <strong class="h3 px-2">EGP {{ product?.realPrice }}</strong>
-            <del class=" px-2">EGP {{product?.realPrice}}</del>
-             <strong class="offer-cards p-1">   -{{product?.discount}}%</strong>
-        </p> 
-    </div>
-    <div class="col-12 ">
-        <p > 
-            <small class=" p-1">  Shipping fees from EGP 20.00 to 6th of October (free delivery if order above EGP 200.00). Save 10 EGP on shipping with prepaid payment</small>
-       </p> 
-            
-       <div class="stars">
-        <i class="fa fa-star "></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star-o"></i>
-        <i class="fa fa-star-o"></i>
-        <i class="fa text-secondary">(44)</i>
-    </div>
-    <img [src]="( product.images[0])" style="height: 100px; width: auto;">
-    <div >
-      <h3>VARIATION AVAILABLE</h3>
-      <br>
-      <span class="specs" *ngFor="let s of sizeSpecs">{{ s }}</span>
-    </div>
-    <br>
-    <div class="col-12">
-        <button class="btn w-100 text-white" >
-          <i class="fa fa-solid fa-shopping-cart " ></i><strong class="px-2">Add To Cart</strong>
-        </button>
-    </div>
-    </div>
-</div>
-
-          
-
-          
-        
-        
-           
-            
+          <!-- <div *ngFor="let image of product?.images">
+              <img [src]="(image)" alt="Product Image" style="height: 35px; width: auto;">
+            </div> -->
         </div>
       </div>
+
+
+      <div class="col-9 card-res-size">
+        <div class="row">
+          <div class="col-12">
+            <p class="mb-1 h4">
+              <small>
+              {{ isArabicLanguage() ? product.nameAr : product.name }}
+              </small> 
+            </p>
+            <p> <small>
+              {{product.shortDescription }}
+              </small> </p>
+              <p> Brand: <small style="color: grey;">
+               <!-- {{product.brandName}} -->
+                </small> </p>
+            <hr>
+
+          </div>
+
+
+          <div class="col-12 ">
+            <p> <strong class="h3 px-2">{{'details.EGP' | translate}} {{ product.realPrice }}</strong>
+              <del class=" px-2 text-secondary ">{{'details.EGP' | translate}} {{product.realPrice}}</del>
+              <strong class="offer-cards p-1"> -{{product.discount}}%</strong>
+            </p>
+          </div>
+          <div class="col-12 ">
+            <p>
+              <small class=" p-1"> 
+                {{'details.Shipping fees from EGP 20.00 to 6th of October (free delivery if order above EGP 200.00). Save 10 EGP on shipping with prepaid payment' | translate}}</small>
+            </p>
+
+            <div class="stars">
+              <i class="fa fa-star "></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+              <i class="fa fa-star-o"></i>
+              <i class="fa text-secondary">(44)</i>
+            </div>
+           
+            <div>
+              <h3>{{'details.VARIATION AVAILABLE' | translate}}</h3>
+              <br>
+              <span class="specs" *ngFor="let s of sizeSpecs">{{ s }}</span>
+            </div>
+            <br>
+            <div class="col-12">
+              <button class="btn w-100 text-white" (click)="AddToCart(product)">
+                <i class="fa fa-solid fa-shopping-cart "></i><strong class="px-2">{{'details.Add To Cart' |
+                  translate}}</strong>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="col-4 my-4 card-res-size">
+    <div class="card mb-3 ">
+
+      <p class="list-group-item"><strong>{{'details.DELIVERY & RETURNS' | translate}}</strong></p>
+
+      <div class="row p-2 ">
+        <div class=" col-3">
+          <img class="img-ord border rounded p-1" src="assets/icons/Station.png" alt="">
+        </div>
+        <div class=" col-9 " >
+          <p><strong>Pickup Station</strong></p>
+          <p>
+            <small>
+              Delivery Fees EGP 20.00
+              Ready for pickup between 18 April & 21 April when you order within next 22hrs 39mins
+            </small>
+          </p>
+        </div>
+
+      </div>
+      <hr>
+
+
+      <div class="row p-2 ">
+        <div class=" col-3">
+          <img class="img-ord border rounded p-1" src="assets/icons/Delivery.png" alt="">
+        </div>
+        <div class=" col-9 " >
+          <p><strong>{{'details.Door Delivery' | translate}}</strong></p>
+          <p>
+            <small>
+              {{'details.Ready for delivery between 21 April & 22 April when you order within next 6hrs 19mins'|translate}}
+            </small>
+          </p>
+        </div>
+
+      </div>
+      <hr>
+
+      <div class="row p-2 ">
+        <div class=" col-3">
+          <img class="img-ord border rounded p-1" src="assets/icons/Return .png" alt="">
+        </div>
+        <div class=" col-9 ">
+          <p class="me-5 "><strong>{{'details.Return Policy' | translate}}</strong></p>
+          <p>
+            <small>
+              {{'details.Free return within the legal return period from 14 to 30 days, and if they meet the terms & conditions, with the need to report any apparent defect within 48 hours. For more details about return policy.' | translate}}</small>
+          </p>
+        </div>
+
+      </div>
+      <hr>
+      <div class="row p-2 ">
+        
+        <div class=" col-12 " style="text-align: center;">
+          
+          <p>
+            <small>
+              {{'details.Missing EGP 151.00 to reach free delivery' | translate}}
+            </small> 
+            </p>
+            <div style="text-align: center;"><img src="assets/cart.jpg" style="width: 40%; "></div>
+            
+        </div>
+
+      </div>
+
+
       
     </div>
-    <!-- cart Sammary  -->
-    <div class="col-3 float-end ">
-      <div class="card mb-3 my-4" style="width: 18rem;">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>DELIVERY & RETURNS</strong> </li>
-          <li class="list-group-item">
-            <ul class=" ">
-              <li class="me-5 ">Door Delivery</li>
-              <li  class=" "><small>Ready for delivery between 21 April & 22 April when you order within next 6hrs 19mins</small> </li>
-            </ul>
-          </li>
-          <li class="list-group-item">
-            <ul class=" ">
-              <li class="me-5 ">Return Policy</li>
-              <li  class=" "><small>Free return within the legal return period from 14 to 30 days, and if they meet the terms & conditions, with the need to report any apparent defect within 48 hours. For more details about return policy.</small> </li>
-            </ul>
-          </li>
-          <ul>
-            <li class="m-2">
-              <p><small>Missing EGP 151.00 to reach free delivery</small> </p>
-            </li>
-            <li class="m-2"> <img src="assets/cart.jpg" style="width: 40%;"></li>
-          </ul>
-        </ul>
-        <div class="card-footer  ">
-         
-        </div>
-      </div>
+    <div class="" style="text-align: center;">
+
+      <h6><small class="text-secondary">By proceeding, you are automatically accepting the </small></h6>
+      <a><small>Terms & Conditions</small></a>
     </div>
+
   </div>
 
 
 
 
-  <div class="col-8 card  details "> 
-    <h1 class="border-bottom">Product Details</h1>
-    <div>
-      <h3>Specfications</h3>
-      <ul>
-        
-        <li class="" *ngFor="let spec of AllSpecs">
-            <span class="specName" >{{ spec.specificationName }}:</span> <span> {{ spec.value }}</span>
-        </li>
+
+<div class="col-8 card-res-size card  details " [class.rtl]="isArabic">
+  <h1 class="border-bottom">{{'details.Product Details' | translate}}</h1>
+  <div>
+    <h3>{{'details.Specfications' | translate}}</h3>
+    <ul>
+
+      <li class="" *ngFor="let spec of AllSpecs">
+       
+        <span class="specName">{{ spec.specificationName }}:</span> <span> {{ spec.value }}</span>
+      </li>
     </ul>
-    </div>
-
   </div>
-  
 
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1" [class.rtl]="isArabic" >
+  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Added To Cart Successfully' |translate}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+    <i class="fa fa-times-circle text-success" id="close"></i>
+  </button>
+</div>

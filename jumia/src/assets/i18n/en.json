@@ -101,9 +101,10 @@
     "Product Added To Cart Successfully" :"Product Added To Cart Successfully",
     "Product Removed from Cart Successfully":"Product Removed from Cart Successfully",
     "Cart":"Cart",
-    "Missing EGP 151.00 to reach free delivery":"Missing EGP 151.00 to reach free delivery",
+    "Missing EGP 151.00 to reach free delivery":"This price will increase by free delivery fees",
     "off":"off",
-    "Buy 400 get":"Buy 400 get"
+    "Buy 400 get":"Buy 400 get",
+    "Product Added To wishlist Successfully":"Product Added To wishlist Successfully"
   },
   "order":{
     "1.CUSTOMER ADDRESS":"1.CUSTOMER ADDRESS",
@@ -154,7 +155,13 @@
 "Top Selling Item":"Top Selling Item",
 "See All >":"See All >",
 "Previous":"Previous",
-"Next":"Next"
+"Next":"Next",
+"Enter your first name":"Enter your first name",
+"Enter your last name":"Enter your last name",
+"Enter your Phone Number":"Enter your Phone Number",
+"Enter Additional Phone Number":"Enter Additional Phone Number",
+"Enter your Address":"Enter your Address",
+"Enter Additional Information":"Enter Additional Information"
 
 },
 "delivery" :{
@@ -176,7 +183,8 @@
   "2.Delivary Details":"2.Delivary Details",
   "Delivery between 27 March and 28 March":"Delivery between 27 March and 28 March",
   "Shipment 1":"Shipment 1",
-  "OTY:":"OTY:"
+  "OTY:":"OTY:",
+  "(From EGP 35.00)":  "(From EGP 35.00)"
  
  
 
@@ -209,7 +217,15 @@
    "Cash":"Cash",
    "Mobile Money":"Mobile Money",
    "Confirm Payment Method":"Confirm Payment Method",
-   "Delivery between 20 April and 25 April":"Delivery between 20 April and 25 April"
+   "Delivery between 20 April and 25 April":"Delivery between 20 April and 25 April",
+   "Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when":"Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when",
+   "- Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when you choose...!":"- Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when you choose...!",
+   "- When you choose Cash on delivery, you can pay for your order in cash when you receive your shipment at home or...":"- When you choose Cash on delivery, you can pay for your order in cash when you receive your shipment at home or...",
+   "Details":"Details",
+   "Payment on delivery":"Payment on delivery",
+   "Pre-pay Now":"Pre-pay Now",
+   "Get 10 EGP Off on Shopping Free When You Pay With Your Card":"Get 10 EGP Off on Shopping Free When You Pay With Your Card",
+   "Pay Using Your Mobile Wallet":"Pay Using Your Mobile Wallet"
 },
 "orderitem" :{
 "you Cant Cancel This order":"you Can't Cancel This order",
@@ -232,7 +248,23 @@
 "QTY":"QTY",
 "Total Price":"Total Price",
 "Cancel Order":"Cancel Order",
-"Delivered By Monday , 15-04":"Delivered By Monday , 15-04"
+"Delivered By Monday , 15-04":"Delivered By Monday , 15-04",
+"Items":"Items",
+"ITEMS IN YOUR ORDER":"ITEMS IN YOUR ORDER",
+"Delivered between":"Delivered between",
+"and":"and",
+"PAYMENT INFORMATION":"PAYMENT INFORMATION",
+"Payment Method":"Payment Method",
+"Pay by":"Pay by",
+"Payment Details":"Payment Details",
+"Total Amount EGP":"Total Amount  EGP",
+"Delivery Fees 35 EGP":"Delivery Fees 35 EGP",
+"DELIVERY INFORMATION":"DELIVERY INFORMATION",
+"Delivery Method":"Delivery Method",
+"Door Delivery":"Door Delivery",
+"Shipping Address":"Shipping Address"
+
+
 
 },
 "orderdetails" :{
@@ -256,13 +288,15 @@
 "Orders":"Orders",
 "ONGOING/DELIVERD (0)":"ONGOING/DELIVERD (0)",
 "CNACELD/RETURNED (0)":"CNACELD/RETURNED (0)",
+"ONGOING/DELIVERD":"ONGOING/DELIVERD",
+"CNACELD/RETURNED":"CNACELD/RETURNED",
 "You have place no order yet!":"You have place no order yet!",
 "All your orders will be saved here":"All your orders will be saved here",
 "Go shopping":"Go shopping",
 "SEE DETALIS":"SEE DETALIS",
-"Created Date":"Created Date",
+"Created Date":"Placed On",
 "Quantity":"Quantity", 
-"Total Price :  EGP" :"Total Price :  EGP"
+"Total PriceE" :"Total Price :  EGP"
 
 },
 "shipment":{
@@ -295,7 +329,23 @@
   "SAVE":"SAVE",
   "2.Delivary Details":"2.Delivary Details",
   "3.Payment Method":"3.Payment Method",
-  "Go back & continue shopping":"Go back & continue shopping"
+  "Go back & continue shopping":"Go back & continue shopping",
+  "(Complete the steps in order to proceed)":"(Complete the steps in order to proceed)",
+  "By proceeding, you are automatically accepting the":"By proceeding, you are automatically accepting the",
+  "Terms & Conditions":"Terms & Conditions",
+  "- Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when you choose prepaid at checkout!":"- Pay on delivery via cash, bank card, or smart wallet. enjoy a 10 EGP discount on shipping fess when you choose prepaid at checkout!",
+  "- When you choose Cash on delivery, you can pay for your order in cash when you receive your shipment at home or Jumia’s pick-up stations.":"- When you choose Cash on delivery, you can pay for your order in cash when you receive your shipment at home or Jumia’s pick-up stations.",
+  "- Enjoy 10 EGP discount when you pay via prepaid method.":"- Enjoy 10 EGP discount when you pay via prepaid method.",
+  "- Egyptian pounds are accepted only.":"- Egyptian pounds are accepted only.",
+  "- Please provide the specified amount only when paying for the possibility that there will be enough cash with the delivery representative if a value is paid higher than the requested one.":"- Please provide the specified amount only when paying for the possibility that there will be enough cash with the delivery representative if a value is paid higher than the requested one.",
+  "- You must pay for the product before opening the shipment.":"- You must pay for the product before opening the shipment.",
+  "- In case the product is returned, the available refund methods are (refund voucher - postal transfer).":"- In case the product is returned, the available refund methods are (refund voucher - postal transfer).",
+  "Enter your first name":"Enter your first name",
+  "Enter your last name":"Enter your last name",
+  "Enter your Phone Number":"Enter your Phone Number",
+  "Additional Phone Number":"Additional Phone Number",
+  "Enter your Address":"Enter your Address",
+  "Additional Information":"Additional Information"
 },
 "register":{
   "W E L C O M E T O J U M I A":"W E L C O M E T O J U M I A",
@@ -325,8 +375,77 @@
   "Enter Valid Password.":"Enter Valid Password.",
   "Login":"Login",
   "For further support, you may visit the Help Center or contact our customer service team.":"For further support, you may visit the Help Center or contact our customer service team."
-,"Forget Your Password?":"Forget Your Password?"
+,"Forget Your Password?":"Forget Your Password?",
+"Create your Jumia Account":"Create your Jumia Account"
 
+},
+"home":{
+  "Previous":"Previous",
+  "Next":"Next",
+  "Sell on JUMIA":"Sell on JUMIA",
+  "And Grow Business":"And Grow Business",
+  "Instsllments":"Instsllments",
+  "With Your Bank":"With Your Bank",
+  "Warranty":"Warranty",
+  "On Your Purchases":"On Your Purchases",
+  "Ramadan Preparations ☾":"Ramadan Preparations ☾",
+  "Shop All Your Needs":"Shop All Your Needs",
+  "♡ Proudly Made in Egypt ♡":"♡ Proudly Made in Egypt ♡",
+  "Best Fashion Offers":"Best Fashion Offers",
+  "WOMEN'S FASHION":"WOMEN'S FASHION"
+},
+"filter":{
+  "CATEGORY":"CATEGORY",
+  "Clothing":"Clothing",
+  "Cardigans & Pullovers":"Cardigans & Pullovers",
+  "Cardigans":"Cardigans",
+  "Pullovers":"Pullovers",
+  "Shrugs":"Shrugs",
+  "Vests":"Vests",
+  "Brand":"Brand",
+  "Search":"Search",
+  "DISCOUNT":"DISCOUNT",
+  "50% or more":"50% or more",
+  "40% or more":"40% or more",
+  "30% or more":"30% or more",
+  "20% or more":"20% or more",
+  "10% or more":"10% or more",
+  "PRICE (EGP)":"PRICE (EGP)",
+  "Range Price":"Range Price"
+},
+"product":{
+  "Womens Sweaters":"Women's Sweaters",
+  "All":"All",
+  "Price: Low to High":"Price: Low to High",
+  "Price: High to Low":"Price: High to Low",
+  "Newest Arrivals":"Newest Arrivals",
+  "sortbY:":"Sort By:",
+  "Buy 400 get":"Buy 400 get",
+  "off":"off",
+  "EGP":"EGP",
+  "Add To Cart":"Add To Cart",
+  "Details":"Details",
+  "Please select a variation":"Please select a variation",
+  "VARIATION AVAILABLE":"VARIATION AVAILABLE",
+  "ADD TO WISHLIST":"ADD TO WISHLIST",
+  "REMOVE FROM WISHLIST":"REMOVE FROM WISHLIST"
+
+}
+,
+"details":{
+  "Product Details":"Product Details",
+  "Specfications":"Specfications",
+  "EGP":"EGP",
+  "Shipping fees from EGP 20.00 to 6th of October (free delivery if order above EGP 200.00). Save 10 EGP on shipping with prepaid payment":"Shipping fees from EGP 20.00 to 6th of October (free delivery if order above EGP 200.00). Save 10 EGP on shipping with prepaid payment",
+  "VARIATION AVAILABLE":"VARIATION AVAILABLE",
+  "Add To Cart":"Add To Cart",
+  "DELIVERY & RETURNS":"DELIVERY & RETURNS",
+  "Door Delivery":"Door Delivery",
+  "Ready for delivery between 21 April & 22 April when you order within next 6hrs 19mins":"Ready for delivery between 21 April & 22 April when you order within next 6hrs 19mins",
+  "Return Policy":"Return Policy",
+  "Free return within the legal return period from 14 to 30 days, and if they meet the terms & conditions, with the need to report any apparent defect within 48 hours. For more details about return policy.":"Free return within the legal return period from 14 to 30 days, and if they meet the terms & conditions, with the need to report any apparent defect within 48 hours. For more details about return policy.",
+  "Missing EGP 151.00 to reach free delivery":"Missing EGP 151.00 to reach free delivery"
+  
 }
 
 

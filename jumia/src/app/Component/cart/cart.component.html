@@ -28,11 +28,14 @@
     <div *ngFor="let item of cartItems">
     <div class="row card-body"  >
 
-      <div class="col-3">
-        <img src="assets/ProductImg/1.jpg" style="height: 100px;">
+      <div class="col-3-cart col-3">
+        <!-- <img src="assets/ProductImg/1.jpg" style="height: 100px;"> -->
+        <img class="card-img-top" [src]="item.images[0]" alt="Card image"
+        style="height: 150px; width:100%">
       </div>
-      <div class="col-5 ">
-        <p class="mb-1"><small>{{ item.name }} {{item.shortDescription}}</small> </p>
+      <div class="col-5-cart col-5 ">
+        <p class="mb-1"><small> {{ isArabicLanguage() ? item.nameAr : item.name }} </small> </p>
+        <p><small>{{item.shortDescription}}</small></p>
         <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">
           <small [ngClass]="{'text-danger': item.stockQuantity < 5, 'text-success': item.stockQuantity >= 5}">
             {{ item.stockQuantity < 5 ? item.stockQuantity + ' Unifs Left' : 'Available' }}
@@ -40,9 +43,8 @@
         <a href="https://www.jumia.com.eg/nivea-men-men-face-body-hands-cream-moisturising-tin-75ml-37954540.html"> <img
             src="assets/ProductImg/express.jpg" style="width: 40%;"></a>
       </div>
-      <div class="col-4 ">
+      <div class="col-4 col-4-cart">
         <div class="row" style="text-align: end;">
-          {{item.stockQuantity}}
           <h1 class="h4 col-12">{{'cart.EGP' | translate}} {{item.realPrice}}</h1> <!--price After Discount-->
            <div class="col-12 ">
             <p class="fa"><del>{{'cart.EGP' |translate}} {{item.realPrice}}     </del>     
@@ -55,7 +57,7 @@
     <div class=" bg-transparent row">
       
       <div class="col-6" (click)="removeProduct(item)">
-        <p class="text-warning"><i class="fa fa-solid fa-trash"></i> <span class="text-uppercase"> {{'cart.Remove' | translate}}</span></p>
+       <button class="btn bg-white"> <p class="" style="color: #ff9901ea;"><i class="fa fa-solid fa-trash"></i> <span class="text-uppercase"> {{'cart.Remove' | translate}}</span></p> </button>
       </div>
           <div class="col-6 d-flex justify-content-end ">
             <button class="btn btn-warning btn-sm" (click)="decreaseQuantity(item)" >
@@ -80,8 +82,8 @@
 
 
   <!-- cart Sammary  -->
-  <div class="col-3 float-end ">
-    <div class="card mb-3 my-4" style="width: 18rem;">
+  <div class="col-4 col-4-sammary float-end ">
+    <div class="card mb-3 my-4">
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><strong>{{'cart.CART SUMMARY' | translate}}</strong> </li>
         <li class="list-group-item">
@@ -129,9 +131,9 @@
           @for(pro of wishlistItems;track pro.id;){
           <div class="col-3">
             <div class="show-cards-btn card cards-hover" style="width:210px; height: 300px; border: none;">
-              <img class="card-img-top" src="assets/ProductImg/1.jpg" alt="Card image"
-              style="height:auto; width: 150px;">
-              <!-- <img [src]="pro.images" class="card-img-top" alt="Card image" style="width:100%"> -->
+              <!-- <img class="card-img-top" src="assets/ProductImg/1.jpg" alt="Card image" -->
+              <!-- style="height:auto; width: 150px;"> -->
+              <img [src]="pro.images[0]" class="card-img-top" alt="Card image" style="width:100%; height: 200px;">
               <div class="label-Cards-top px-2">
                 <span class="text-white ">{{'cart.Buy 400 get' | translate}} {{pro.discount}} {{'cart.off' | translate}}</span>
               </div>
@@ -154,18 +156,18 @@
                 <div class="modal-dialog bg-white">
                   <div class="modal-content ">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="staticBackdropLabel">{{'card.Please select a variation' |translate}}</h5>
+                      <h5 class="modal-title" id="staticBackdropLabel">{{'cart.Please select a variation' |translate}}</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
                     <div class="modal-body">
                       <div class="center-align">
                         <p>{{'cart.Only size fit all' | translate}}</p>
-                        <h2><strong>{{'cart.EGP' |translate}} {{pro.realPrice}} <del> {{'card.EGP' |translate}} </del></strong></h2>
+                        <h2><strong>{{'cart.EGP' |translate}} {{pro.realPrice}} <del> {{'cart.EGP' |translate}} </del></strong></h2>
                       </div>
                     </div>
                     <div class="modal-footer">
                       <div class="hide-btn-cards">
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="AddToCart(pro)"
+                        <button type="submit" class="btn btn-warning" data-bs-dismiss="modal" (click)="AddToCart(pro)"
                           aria-label="Close">{{'cart.Add to cart' |translate}}</button>
                       </div>
                     </div>
@@ -178,11 +180,11 @@
             <div class="row">
             </div>
           </div>
-          <button class="carousel-control-prev col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <button class="carousel-control-prev col-1 bg-white" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">{{'cart.Previous' |translate}}</span>
           </button>
-          <button class="carousel-control-next col-1" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <button class="carousel-control-next col-1 bg-white" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">{{'cart.Next' |translate}}</span>
           </button>
@@ -196,13 +198,13 @@
 <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1" [class.rtl]="isArabic" >
   <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Added To Cart Successfully' |translate}}
   <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
-    <i class="fa fa-times-circle text-danger" id="close"></i>
+    <i class="fa fa-times-circle text-success" id="close"></i>
   </button>
 </div>
 <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2" [class.rtl]="isArabic">
-  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Removed from Cart Successfully' |translate}}
+  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Removed from Cart Successfully' |translate}} 
   <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
-    <i class="fa fa-times-circle text-danger" id="close"></i>
+    <i class="fa fa-times-circle text-success" id="close"></i>
   </button>
 </div>
 </div>

@@ -336,6 +336,9 @@
   <data name="Signintoyouraccount" xml:space="preserve">
     <value>Sign in to your account</value>
   </data>
+  <data name="Specifications" xml:space="preserve">
+    <value>Specifications</value>
+  </data>
   <data name="Staysignedinforaweek" xml:space="preserve">
     <value>Stay signed in for a week</value>
   </data>

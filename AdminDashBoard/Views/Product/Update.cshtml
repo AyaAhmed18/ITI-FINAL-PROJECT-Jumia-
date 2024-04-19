@@ -13,7 +13,7 @@
 <div class="col-12 grid-margin">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Create Products</h4>
+            <h4 class="card-title">Update Products</h4>
 
 
             <form asp-action="Update" method="post" asp-controller="Product" enctype="multipart/form-data"class="form-sample">
@@ -22,7 +22,7 @@
 
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="row">
-
+                    <input asp-for="Id" type="number" class="form-control" hidden />
                     <div class="col-md-6">
                         <div class="form-group ">
                             <label asp-for="Name" class=" col-form-label">@AdminDashBoard.Languages.Resource.English_Name</label>
@@ -215,7 +215,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
         <div>
-            @AdminDashBoard.Languages.Resource.FailedTODelete
+            failed to Update this Product data
+            @* @AdminDashBoard.Languages.Resource.FailedTODelete *@
         </div>
     </div>
 }

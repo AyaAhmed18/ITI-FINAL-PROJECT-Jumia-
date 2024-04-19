@@ -22,10 +22,10 @@ namespace Jumia.Dtos.Order
         {
             Pending = 0,
             PayPall = 1,
-            MobileMoney = 2,
-            Cash = 3
+            Cash = 2,
+           // Cash = 3
         }
-        public string GetPaymentStatusWord()
+       /* public string GetPaymentStatusWord()
         {
             switch (paymentStatus)
             {
@@ -37,6 +37,22 @@ namespace Jumia.Dtos.Order
                     return "Mobile Money";
                 case PaymentStatus.Cash:
                     return "Cash";
+                default:
+                    return "UNConfirmed";
+            }
+        }*/
+        public string GetPaymentStatusWord()
+        {
+            switch (paymentStatus)
+            {
+                case 0:
+                    return "Pending";
+                case (PaymentStatus)1:
+                    return "PayPall";
+                case (PaymentStatus)2:
+                    return "Cash";
+                //case (PaymentStatus)3:
+               //     return "Cash";
                 default:
                     return "UNConfirmed";
             }

@@ -1,6 +1,6 @@
 
 <img data-src="https://eg.jumia.is/cms/EID-24/Initiatives/FlashSale/FLASHSALE1170x60AR.png " width="100%" src="https://eg.jumia.is/cms/EID-24/Initiatives/FlashSale/FLASHSALE1170x60AR.png" class="_ni" alt="Desk-EID-FS">
-<div class="container-fluid bg-light">
+<div class="container-fluid bg-light sticky-top sticky-lg-top">
   <div class="row" [class.rtl]="isArabic">
     <div class="col-sm ">
       <div class="row ">
@@ -14,22 +14,23 @@
     </div>
 
 
-    <div class="col-sm my-2  d-flex justify-content-around">
+    <div class="col-sm jumia-logo my-2  d-flex justify-content-around">
       <img src="assets/FooterImg/JumiaLogo.png" style="width: auto;height: 10px;">
     </div>
 
 
     <div class="col-sm" style="text-align: right;">
-
-      <a href="" class="px-2"><small (click)="changeLanguage('en')" >English</small><img src="assets/icons/english.png" alt="" class="fa"
-          style="width: auto;height: 15px;"></a> |
-      <a href="" class="px-2"><small (click)="changeLanguage('ar')" >عربي</small><img src="assets/icons/egypt.png" alt="" class="fa"
-          style="width: auto;height: 15px;"></a>
+      <button>
+      <small (click)="changeLanguage('en')" >English</small><img src="assets/icons/english.png" alt="" class="fa"
+          style="width: auto;height: 15px;"></button> | 
+          <button> <small (click)="changeLanguage('ar')" >عربي</small><img src="assets/icons/egypt.png" alt="" class="fa"
+          style="width: auto;height: 15px;"> </button> 
     </div>
   </div>
   <hr>
   <!-- navigationbar -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary" [class.rtl]="isArabic">
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary  " [class.rtl]="isArabic">
     <div class="container-fluid">
       <img class="navbar-brand px-3" src="assets/FooterImg/JumiaLogo.png" alter="JumiaLogo"
         style="width: auto;height: 30px;">
@@ -53,7 +54,7 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="{{'navigation.Search products'|translate}}, {{'navigation.brand and categories'|translate}}" required>
           </div>
-          <button type="submit" class="btn btn mx-3" style="background-color: orange;"  routerLink = "/Product">{{'navigation.Search'|translate}}</button>
+          <button type="submit" class="btn btn mx-3"  style="background-color: orange;">{{'navigation.Search'|translate}}</button>
         </form>
       </div>
 
@@ -75,8 +76,8 @@
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
-                    <i for="order" class="fa fa-regular fa-clipboard"><small class="px-2">{{'navigation.Order'|translate}}</small></i>
+                  <a class="dropdown-item" >
+                    <i for="order" class="fa fa-regular fa-clipboard"><small class="px-2"  routerLink="/OrderDetails">{{'navigation.Order'|translate}}</small></i>
                   </a>
                 </li>
                 <li>
@@ -121,7 +122,7 @@
             </li>
             <li>
               <a class="nav-link " routerLink="/Cart">
-                <i class="fa fa-solid fa-shopping-cart"><strong class="px-2">{{'navigation.Cart'|translate}}</strong></i>
+                <i class="cartt fa fa-solid fa-shopping-cart"><strong class="cartt px-2">{{'navigation.Cart'|translate}}</strong></i>
               </a>
             </li>
           </ul>

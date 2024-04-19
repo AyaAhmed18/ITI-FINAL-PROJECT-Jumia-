@@ -1,48 +1,186 @@
 <div [class.rtl]="isArabic">
-<div class="container" >
-    <div class="col-3 float-end ">
-      <div class="card mb-3 my-4 " style="width: 18rem;">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">{{'confirmorder.Order summary' | translate}}</li>
-          <li class="list-group-item">
-            <ul class="d-flex">
-              <li class="me-5">{{'confirmorder.Items total' | translate}} </li>
-              <li class="">{{'confirmorder.EGP' | translate}}  </li>
-            </ul>
-            <ul class="d-flex">
-              <li class="me-5">{{'confirmorder.Delivery fees' | translate}}</li>
-              <li>{{'confirmorder.EGP' | translate}} 300.00 </li>
-            </ul>
-            <ul class="d-flex">
-              <li class="me-5">{{'confirmorder.Prepaid discount' | translate}}</li>
-              <li class="text-success">-{{'confirmorder.EGP'| translate}} 10 </li>
-            </ul>
-          </li>
-          <li class="list-group-item">
-              <ul class="d-flex">
-                <li class="me-5">{{'confirmorder.Total' | translate}}</li>
-                <li>{{'confirmorder.EGP' | translate}} 100</li>
-              </ul>
-             
-            </li>
+  <div class="container">
+
+    <div class="row  ">
+
+      <div class="col-8">
+        <div class="row m-2">
+          <div class="col-md-12 row section1 AddressForm">
+            <div class="col-md-6">
+              <h6 class=" my-2 fa">
+                <i class="fa fa-check-circle text-success"></i>
+                <strong> {{'delivery.1.CUSTOMER ADDRESS'| translate}}</strong>
+              </h6>
+
+            </div>
+            <div class="change col-md-6 text-end"><a href="" class="text-decoration-none"
+                [routerLink]="['/shippment']">{{'delivery.Change' | translate}} <i
+                  class="reverse fa fa-solid fa-arrow-right"></i>
+              </a></div>
+            <div class="border-top ">
+              <p class="my-0  pt-4">{{shippment.firstNameEn}} {{shippment.lastName}}</p>
+              <p class="mt-0 tb-5 text-secondary">
+                {{shippment.region}}, {{shippment.city}} | {{shippment.address}} -
+                {{shippment.adressInformation}} | +2 {{shippment.phoneNumber}}
+              </p>
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="row m-2">
+          <div class="col-md-12 row section1 AddressForm">
+            <div class="col-md-6">
+
+              <h6 class=" my-2 fa">
+                <i class="fa fa-check-circle text-success"></i>
+                <strong> {{'payment.2.DELIVERY DETAILS' | translate}}</strong>
+              </h6>
+
+            </div>
+            <div class="change col-md-6 text-end"><a href="" class="text-decoration-none"
+                [routerLink]="['/Cart']">{{'payment.Change' | translate}} <i class="reverse fa fa-solid fa-arrow-right"></i>
+              </a></div>
+            <div class="border-top ">
+              <div class="row">
+                <div class="col-9">
+                  <p class="my-0  pt-4">{{'payment.Door Delivery' | translate}}</p>
+                  <p class="mt-0 tb-5 text-secondary">
+                    {{'payment.Delivery between 20 April and 25 April' | translate}}
+                  </p>
+                </div>
+                <div class="col-md-3 p-2 text-end">
+                  <i class="track fa fa-solid fa-truck text-warning" style="font-size: 20px;"></i>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="row m-2">
+          <div class="col-md-12 row section1 AddressForm">
+            <div class="col-md-6">
+              <h6 class="fa p-2 my-2 ">
+                <i class="fa fa-check-circle text-success"></i>
+                <strong> {{'payment.3.PAYMENT METHOD' | translate}}</strong>
+              </h6>
+
+
+            </div>
+            <div class="change col-md-6 text-end"><a href="" class="text-decoration-none"
+                [routerLink]="['/Cart']">{{'payment.Change' | translate}} <i class="reverse fa fa-solid fa-arrow-right"></i>
+              </a></div>
+
+
+            <div class="border-top ">
+              <div class="row">
+                <div class="col-11 p-1">
+                  <label class="form-check-label" for="Paypal">
+                    {{'payment.Paypal' | translate}}
+                  </label>
+
+                  <p>
+                    <small>{{'payment.Get 10 EGP Off on Shopping Free When You Pay With Your Card' | translate}}</small>
+                  </p>
+                </div>
+
+                <div class="col-1 p-2">
+                  <img src="assets/icons/pay.png" alt="pay">
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+        <div class="row m-2">
+          <div class="col-md-12 row section1 AddressForm">
+          <div #paymentRef></div>
+        </div>
+        </div>
+      </div>
+
+
+      <div class="col-4 ">
+        <div class="card mb-3 ">
   
-          <ul>
-          <li ><p>{{'confirmorder.You will be able to add a voucher when selecting your payment method.' | translate}}</p> </li>
-          <li> <img src="../../../assets/cart.jpg" style="width: 40%;" title="img"></li>
-          </ul>
-        </ul>
-       
-       
+          <p class="list-group-item"><strong>{{'shipment.Order summary' | translate}}</strong></p>
+  
+          <div class="row p-2 ">
+            <div class=" col-6">
+              <p class="me-5 ">{{'shipment.Items total' | translate}} ({{cartNumber}})</p>
+            </div>
+            <div class=" col-6 " style="text-align: end;">
+              <p class=""><strong>{{'shipment.EGP' | translate}} {{TotalCartPrice}}</strong> </p>
+            </div>
+  
+          </div>
+  
+  
+          <div class="row p-2">
+            <div class=" col-6">
+              <p class="me-5">{{'shipment.Delivery fees' | translate}}</p>
+            </div>
+            <div class=" col-6 " style="text-align: end;">
+              <p class=""><strong>{{'shipment.EGP' | translate}} 35.00 </strong></p>
+            </div>
+  
+          </div>
+  
+          <div class="row p-2">
+            <div class=" col-6">
+              <p class="me-5">{{'shipment.Prepaid discount' | translate}}</p>
+            </div>
+            <div class=" col-6 " style="text-align: end;">
+              <p class="text-success"><strong>- {{'shipment.EGP' | translate}} 10</strong> </p>
+            </div>
+  
+          </div>
+  
+          <hr>
+          <div class="row p-2">
+            <div class=" col-6">
+              <p class="me-5">{{'shipment.Total' | translate}}</p>
+            </div>
+            <div class=" col-6 " style="text-align: end;">
+              <p class=""><strong>{{'shipment.EGP' | translate}} {{TotalCartPrice +35 -10}}</strong></p>
+            </div>
+  
+          </div>
+  
+  
+  
+          <hr>
+          <div class="row p-2">
+            <div class=" col-2">
+              <i class="fa fa-solid fa-ticket text-warning " style="font-size:36px;"></i>
+            </div>
+            <div class=" col-10 ">
+              <small class=""> {{'shipment.You will be able to add a voucher when selecting your payment method.' |
+                translate}}</small>
+            </div>
+  
+          </div>
+  
+  
+          <div class="card-footer bg-light" style="text-align: center;">
+            <button class="btn  text-light bton-order w-100" style="width: 90%;" disabled
+              routerLink="/shippment">{{'shipment.Confirm Order' | translate}} </button>
+            <b><small>{{'shipment.(Complete the steps in order to proceed)'|translate}}</small></b>
+          </div>
+        </div>
+        <div class="" style="text-align: center;">
+  
+          <h6><small class="text-secondary">{{'shipment.By proceeding, you are automatically accepting the' | translate}} </small></h6>
+          <a><small>{{'shipment.Terms & Conditions'| translate}}</small></a>
+        </div>
+  
       </div>
     </div>
-   <div col="8">
-    <div #paymentRef ></div>
-   </div>
-    
-   </div>
-  </div>
-   
-   <!-- <div #paymentRef></div> -->
-   
-  
-  
+
+    <!-- <div #paymentRef></div> -->

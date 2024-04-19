@@ -82,3 +82,56 @@ background-color: #ffffff;
 .rtl {
   direction: rtl;
 }
+.newAcc:hover{
+  color: rgb(250, 130, 18);
+}
+
+
+/* Extra small devices (phones) */
+@media only screen and (max-width:590px) {
+ 
+  .col-6{
+    width: 100%;
+  }
+  
+  
+      .field label input {
+      font-size: 0.5rem;
+     
+      min-width: 18rem;
+    }
+    .btn-Cont  { 
+    
+      
+      padding: 1rem 1.2rem;
+      min-width: 10rem;
+     
+     
+      
+    }
+   
+  }
+  
+  /* Small devices (portrait tablets and large phones) */
+  @media only screen and (min-width:600px) and (max-width:885px) {
+    .col-6{
+      width: 100%;
+    }
+    
+    
+        .field label input {
+        font-size: 0.5rem;
+       
+        min-width: 30rem;
+      }
+      .btn-Cont  { 
+      
+        
+        padding: 1rem 1.2rem;
+        min-width: 30rem;
+       
+       
+        
+      }
+  }
+  

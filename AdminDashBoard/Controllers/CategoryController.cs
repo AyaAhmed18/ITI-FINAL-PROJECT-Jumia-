@@ -25,13 +25,17 @@ namespace AdminDashBoard.Controllers
             _mapper = mapper;
         }
 
-
-        public async Task <ActionResult> Index()
+        
+        public async Task <ActionResult> Index(int pageNumber = 1)
         {
-            var Categoryes = await _categoryService.GetAll(10 , 1);
+            var pageSize = 10;
+            var Categoryes = await _categoryService.GetAll(pageSize, pageNumber);
 
             return View(Categoryes);
+
         }
+
+       
 
 
         public IActionResult Create()
@@ -125,8 +129,8 @@ namespace AdminDashBoard.Controllers
                     var update = await _categoryService.Update(categoryDto, Image);
                     if (update.IsSuccess)
                     {
-                        TempData["SuccessMessage1"] = "Category updated successfully.";
-                        return RedirectToAction(nameof(Index), TempData["SuccessMessage1"]);
+                        TempData["SuccessMessage2"] = "Category updated successfully.";
+                        return RedirectToAction(nameof(Index), TempData["SuccessMessage2"]);
                     }
 
 
@@ -159,12 +163,12 @@ namespace AdminDashBoard.Controllers
             var CategoryToD = _mapper.Map<CreateOrUpdateCategoryDto>(res.Entity);
            var del= await _categoryService.Delete(CategoryToD);
             if(del.IsSuccess){
-                TempData["SuccessMessage1"] = "Successed";
+                TempData["SuccessMessage3"] = "Category Deleted Successfully";
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                TempData["SuccessMessage"] = "Failed";
+                TempData["SuccessMessage"] = "Sorry,Failed to Delete this Category";
                 return RedirectToAction(nameof(Index));
             }
 

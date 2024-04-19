@@ -22,19 +22,17 @@ export const routes: Routes = [
     {path:'Detalse/:id',component:DetailsComponent},
     {path:'SignIn',component:SignInComponent},
     {path:'Registeration',component:RegistrationComponent},
-    {path:'Order',component:OrdersComponent },  //
+    {path:'Order',component:OrdersComponent ,canActivate:[authGuard]},  //
     {path:'Delivary',component:DelivaryComponent},
-    {path:'MyAccount',component:MyAccountComponent },  //
+    {path:'MyAccount',component:MyAccountComponent ,canActivate:[authGuard]},  //
     {path:'Cart',component:CartComponent},
     {path:'shippment',component:ShippmentComponent,canActivate:[authGuard]},
     {path:'shippment:id',component:ShippmentComponent,canActivate:[authGuard]},
 
     {path:'Payment',component:PaymentComponent,canActivate:[authGuard]},
     {path:'OrderDetails',component:OrderDetailsComponent,canActivate:[authGuard]},
-   // {path:'OrderItems/:ordId',component:OrderItemsComponent,canActivate:[authGuard]},
-   // { path: 'OrderDetails/:status/:ordId', component: OrderDetailsComponent },
-    { path: 'OrderItems/:ordId', component: OrderItemsComponent },
-    { path: 'confirmOrder', component: ConfirmOrderComponent },
+    { path: 'OrderItems/:ordId', component: OrderItemsComponent,canActivate:[authGuard] },
+    { path: 'confirmOrder', component: ConfirmOrderComponent,canActivate:[authGuard] },
     {path:'GetCategory/:id',component:FilterComponent},
     {path:'GetSubCategory/:id',component:FilterComponent},
 ];

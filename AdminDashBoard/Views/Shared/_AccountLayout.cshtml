@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta char="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin2 </title>
+    <title>@ViewData["Title"] </title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="~/vendors/feather/feather.css">
     <link rel="stylesheet" href="~/vendors/mdi/css/materialdesignicons.min.css">
@@ -27,7 +27,7 @@
     <!-- endinject -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AdminDashBoard.styles.css" asp-append-version="true" />
-    <link rel="shortcut icon" href="~/images/favicon.png" />
+    <link rel="shortcut icon" href="~/images/logo.svg" />
     <link href="~/css/Log_Reg.css" rel="stylesheet" />
 </head>
 <body dir="@AdminDashBoard.Languages.Resource.dir">
@@ -411,8 +411,7 @@
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" asp-controller="Account" asp-action="Login">@AdminDashBoard.Languages.Resource.Login</a></li>
-                                <li class="nav-item"> <a class="nav-link" asp-controller="Admin" asp-action="AddUser">@AdminDashBoard.Languages.Resource.AddUser</a></li>
+                               <li class="nav-item"> <a class="nav-link" asp-controller="Admin" asp-action="AddUser">@AdminDashBoard.Languages.Resource.AddUser</a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-controller="Admin" asp-action="Admin">@AdminDashBoard.Languages.Resource.Users</a></li>
 
                             </ul>
@@ -492,11 +491,7 @@
                                 <li class="nav-item"> <a class="nav-link" asp-action="create" asp-controller="SubCategory">@AdminDashBoard.Languages.Resource.AddSubCategory</a></li>
                             </ul>
                         </div>
-                        <div class="collapse" id="suptables">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">@AdminDashBoard.Languages.Resource.UpdateSubCategory</a></li>
-                            </ul>
-                        </div>
+                       
                     </li>
 
 

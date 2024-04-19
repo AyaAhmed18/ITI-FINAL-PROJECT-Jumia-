@@ -1,17 +1,20 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ProductDto } from '../../ViewModels/product-dto';
 import { CartService } from '../../Services/cart.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { APIOrderServiceService } from '../../Services/apiorder-service.service';
 import { IOrder } from '../../Models/i-order';
 import { IOrderItems } from '../../Models/iorder-items';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ApiShippmentService } from '../../Services/api-shippment.service';
+import { IShippment } from '../../Models/ishippment';
+import { ApiProductsService } from '../../Services/api-products.service';
 
 @Component({
   selector: 'app-confirm-order',
   standalone: true,
-  imports: [CommonModule ,TranslateModule],
+  imports: [CommonModule ,TranslateModule,RouterLink],
   templateUrl: './confirm-order.component.html',
   styleUrl: './confirm-order.component.css'
 })
@@ -23,25 +26,36 @@ export class ConfirmOrderComponent {
   clientId=localStorage.getItem('userId')
   order:IOrder={} as IOrder
   orderItem:IOrderItems={} as IOrderItems
+  shippment:IShippment={} as IShippment
   totalamount:number = 50
   showPayment: boolean = false;
-  isArabic: boolean = false;
-
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
+  userId:number=0
+ // shippment:IShippment={} as IShippment
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
   constructor(private _cartService:CartService
     ,private router:Router,private _orderService:APIOrderServiceService,
-    private  translate: TranslateService
+    private  translate: TranslateService,
+    private _productService:ApiProductsService
+    ,private _ShippmentService:ApiShippmentService 
+   
+    
   ){
     
   }
   ngOnInit(): void {
+    this.userId=Number(this.clientId)
     this._cartService.getCart().subscribe(cartItems => {
       this.cartItems = cartItems;
      this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
       this.cartNumber=this._cartService.calculateTotalCartNumber();
     });
-    //
+    this._ShippmentService.Getshippment(this.userId).subscribe(shipping => {
+      this.shippment=shipping
+      console.log(shipping.firstNameEn)
+     });
+    
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'
     });
@@ -88,8 +102,12 @@ export class ConfirmOrderComponent {
                   this._orderService.AddOrderItems(this.orderItem).subscribe({
                     next: (res) => {
                       console.log(res);
+                      this._cartService.removeProduct(element)
+                      element.stockQuantity-=1;
+                      this._productService.UpdateProductQuantity(element)
                       if(res.isSuccess){
                       this._cartService.removeProduct(element)
+                      alert("your cart is empty")
                     }}
                   })
                  
@@ -140,6 +158,8 @@ export class ConfirmOrderComponent {
     }
     this.order.paymentStatus=1
     this.order.status=1
+    //this.order.createdDate= new Date();
+    this.order.discount=10
     this.order.cancelOrder=false;
    
   } 

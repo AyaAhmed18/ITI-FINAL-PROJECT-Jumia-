@@ -31,22 +31,8 @@ export class FooterComponent implements OnInit {
       localStorage.setItem('lang', 'ar')
     }
 
-    window.location.reload();
+    // window.location.reload();
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

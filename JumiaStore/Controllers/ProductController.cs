@@ -1,5 +1,8 @@
 ﻿using Jumia.Application.IServices;
+using Jumia.Application.Services;
 using Jumia.Application.Services.IServices;
+using Jumia.Application.Services.Services;
+using Jumia.Dtos.Order;
 using Jumia.Dtos.Product;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
@@ -138,12 +141,31 @@ namespace JumiaStore.Controllers
             var Prds = await _productServices.FilterByBrandList(brandIds);
             return Ok(Prds);
         }
+
+
+        [HttpGet("FilterByDiscountRangeToSlider")]
+        public async Task<IActionResult> FilterByDiscountRangeToSlider(int MinDisc=30, int pageSize=20, int pageNumber=1)
+        {
+            var Prds = await _productServices.FilterByDiscountRangeToSlider(MinDisc, pageSize, pageNumber);
+            return Ok(Prds);
+        }
+
+
+        [HttpGet("GetNewestArrivalsToSlider")]
+        public async Task<IActionResult> GetNewestArrivalsToSlider(int pageSize = 20, int pageNumber = 1)
+        {
+            var Prds = await _productServices.GetNewestArrivalsToSlider( pageSize, pageNumber);
+            return Ok(Prds);
+        }
+
         [HttpGet("FilterByDiscountRange")]
         public async Task<IActionResult> FilterByDiscountRange(int MinDisc)
         {
             var Prds = await _productServices.FilterByDiscountRange(MinDisc);
             return Ok(Prds);
         }
+
+
         [HttpGet("FilterByAll")]
         public async Task<IActionResult> FilterByAll([FromQuery] string? BrandList,int? MinPrice, int? MaxPrice, int? MinDisc)
         {
@@ -210,6 +232,58 @@ namespace JumiaStore.Controllers
                 return Ok(productname);
             }
         }
+        [HttpGet("GetOrderedAscByPagination")]
+        public async Task<IActionResult> GetOrderedAscByPagination(int pageSize, int pageNumber)
+        {
+            var Prds = await _productServices.GetOrderedAscWithPagination(pageSize,pageNumber);
+            return Ok(Prds.Entities);
+        }
+        [HttpGet("GetOrderedDscByPagination")]
+        public async Task<IActionResult> GetOrderedDscByPagination(int pageSize, int pageNumber)
+        {
+            var Prds = await _productServices.GetOrderedDscWithPagination(pageSize, pageNumber);
+            return Ok(Prds.Entities);
+        }
+        [HttpGet("GetNewestArrivalByPagination")]
+        public async Task<IActionResult> GetNewestArrivalByPagination(int pageSize, int pageNumber)
+        {
+            var Prds = await _productServices.GetNewestArrivalsWithPagination(pageSize, pageNumber);
+            return Ok(Prds.Entities);
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(CreateOrUpdateProductDto productDto)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    var ord = await _productServices.GetOne(productDto.Id);
+                    if (ord != null)
+                    {
+                        var order = await _productServices.UpdateQuantity(productDto);
+                        if (order.IsSuccess)
+                        {
+                            return Created("http://localhost:5164/api/Order/" + productDto.Id, "Product Quantity Updated Successfully");
+
+                        }
+                        else
+                        {
+                            return Ok("Enter valid Data");
+                        }
+
+                    }
+                }
+                return BadRequest(ModelState);
+
+            }
+            catch
+            {
+                return BadRequest(ModelState);
+            }
+        }
+
+
     }
 }
 ////Bahaa http://localhost:5094/api/Product

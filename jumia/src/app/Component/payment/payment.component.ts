@@ -10,6 +10,7 @@ import { APIOrderServiceService } from '../../Services/apiorder-service.service'
 import { ApiShippmentService } from '../../Services/api-shippment.service';
 import { IShippment } from '../../Models/ishippment';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ApiProductsService } from '../../Services/api-products.service';
 
 @Component({
   selector: 'app-payment',
@@ -30,12 +31,14 @@ export class PaymentComponent implements OnInit {
   userId:number=0
   shippment:IShippment={} as IShippment
   totalamount:number = 50
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
 
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
   constructor(private _cartService:CartService,private router:Router
-    ,private _orderService:APIOrderServiceService,private _ShippmentService:ApiShippmentService,private  translate: TranslateService ){
+    ,private _orderService:APIOrderServiceService,
+    private _ShippmentService:ApiShippmentService,private  translate: TranslateService,
+  private _productService:ApiProductsService ){
     
   }
   ngOnInit(): void {
@@ -54,17 +57,7 @@ export class PaymentComponent implements OnInit {
     })
   }
   
-  changeLanguage(lang: string) {
-    if (lang == 'en') {
-      localStorage.setItem('lang', 'en')
-    }
-    else {
-      localStorage.setItem('lang', 'ar')
-    }
-
-    window.location.reload();
-
-  }
+ 
   //
   ConfirmPayment(){
    // this.payment=true
@@ -84,9 +77,11 @@ export class PaymentComponent implements OnInit {
       this.order.customerId=parseInt(this.clientId);
       this.order.totalOrderPrice=this.TotalCartPrice
     }
-    this.order.paymentStatus=1
+    this.order.paymentStatus=2
     this.order.status=1
     this.order.cancelOrder=false;
+   // this.order.createdDate= new Date().toDateString();
+    this.order.discount=10
    
   } 
 
@@ -105,13 +100,20 @@ export class PaymentComponent implements OnInit {
           this.orderItem.productId=element.id
           console.log(element.id);
           console.log(res.entity.id);
+          console.log(element.stockQuantity);
+          
           this.orderItem.totalPrice=element.realPrice*element.cartQuantity
-
           this._orderService.AddOrderItems(this.orderItem).subscribe({
+           
             next: (res) => {
+              console.log("iteeeems");
+              element.stockQuantity-=element.cartQuantity;
+              this._cartService.removeProduct(element)
+           //   this._productService.UpdateProductQuantity(element).subscribe({next:(res)=>{alert("Quantity updated")}})
               console.log(res);
               if(res.isSuccess){
               this._cartService.removeProduct(element)
+             // alert("your cart is empty")
             }}
           })
          

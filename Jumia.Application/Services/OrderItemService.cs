@@ -71,7 +71,7 @@ namespace Jumia.Application.Services
                     {
                         OrderId = p.OrderId,
                         Images = p.Product.Images,
-                        ProductName = p.Product.Name,
+                        ProductName = p.Product.GetLocalized(p.Product.NameAr,p.Product.Name),
                         ProductQuantity=p.ProductQuantity,
                         TotalPrice = p.TotalPrice,
                         ProductDiscription=p.Product.ShortDescription,
