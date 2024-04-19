@@ -1,1 +1,50 @@
-<p>category-slider works!</p>
+<!-- --------------------------allCategories------------------------- -->
+<div class="container bg-body rounded-3" [class.rtl]="isArabic">
+    <!-- <div class="row sectionHeader">
+      <h5>{{'home.Ramadan Preparations ☾' | translate}}</h5>
+    </div> -->
+  
+    <div *ngIf="allCategories">
+      <div class="container section1" [class.rtl]="isArabic">
+        <div id="myCarousel1" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+  
+  
+  
+            <div class="carousel-item active p-0">
+              <div class="row ">
+                <div *ngFor="let allCat of allCategories.slice(0, 6); let index = index" class="col col-slider sl-scall " (click) = "GetProductsByCatId(allCat.id)">
+                  <a > <img src="assets/HomeImg/2.png" class="d-block " alt="Image {{ index }}"></a>
+                  <p class="linkSidebar text-center">{{allCat.name}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div *ngFor="let allCat of allCategories.slice(4, 10); let index = index" class="col col-slider  sl-scall " (click) = "GetProductsByCatId(allCat.id)">
+                  <a > <img src="assets/HomeImg/2.png" class="d-block " alt="Image {{ index }}"></a>
+                  <p class="linkSidebar text-center">{{allCat.name}}</p>
+                </div>
+              </div>
+            </div>
+  
+          <!-- Add more carousel items as needed -->
+          <button class="carousel-control-prev col-1 fixed-n-p" type="button" data-bs-target="#myCarousel1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next col-1 fixed-n-p" type="button" data-bs-target="#myCarousel1" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+    
+      </div>
+      </div>
+    </div>
+    
+  
+  
+  
+  
+  </div>

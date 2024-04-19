@@ -185,10 +185,9 @@
 </main>
 
 <!-- --------------------------allCategories------------------------- -->
-<div class="container bg-body rounded-3" [class.rtl]="isArabic">
-  <!-- <div class="row sectionHeader">
-    <h5>{{'home.Ramadan Preparations ☾' | translate}}</h5>
-  </div> -->
+<app-category-slider></app-category-slider>
+ <div class="container bg-body rounded-3" [class.rtl]="isArabic">
+
 
   <div *ngIf="allCategories">
     <div class="container section1" [class.rtl]="isArabic">
@@ -200,7 +199,8 @@
           <div class="carousel-item active p-0">
             <div class="row ">
               <div *ngFor="let allCat of allCategories.slice(0, 6); let index = index" class="col col-slider sl-scall " (click) = "GetProductsByCatId(allCat.id)">
-                <a > <img src="assets/HomeImg/2.png" class="d-block " alt="Image {{ index }}"></a>
+                <img class="card-img-top" [src]="allCat.image" alt="Card image" style="height: 200px; width:100%">
+               
                 <p class="linkSidebar text-center">{{allCat.name}}</p>
               </div>
             </div>
@@ -208,13 +208,12 @@
           <div class="carousel-item">
             <div class="row">
               <div *ngFor="let allCat of allCategories.slice(4, 10); let index = index" class="col col-slider  sl-scall " (click) = "GetProductsByCatId(allCat.id)">
-                <a > <img src="assets/HomeImg/2.png" class="d-block " alt="Image {{ index }}"></a>
+                <img class="card-img-top" [src]="allCat.image" alt="Card image" style="height: 200px; width:100%">
                 <p class="linkSidebar text-center">{{allCat.name}}</p>
               </div>
             </div>
           </div>
 
-        <!-- Add more carousel items as needed -->
         <button class="carousel-control-prev col-1 fixed-n-p" type="button" data-bs-target="#myCarousel1" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
@@ -233,11 +232,13 @@
 
 
 
-</div>
+</div> 
 <br>
 
 <!-- --------------------------productDesc------------------------- -->
-  <div class="container bg-body rounded-3 " [class.rtl]="isArabic">
+<app-discount-slider></app-discount-slider>
+
+   <div class="container bg-body rounded-3 " [class.rtl]="isArabic">
     <div *ngIf="productDesc">
 <div class="row ">
   <div class="col-6 p-1 h5">
@@ -261,8 +262,9 @@
               (click)="navigateToDetails(proDes.id)">
               <div class="cards" [class.rtl]="isArabic">
                 <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
-                  <img class="card-img-top" src="assets/ProductImg/1.jpg" alt="Card image">
-                  <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
+                  <img class="card-img-top" [src]="proDes.images[0]" alt="Card image"
+                  style="height: 200px; width:100%">
+                 
                   <p class=" linkSidebar label-Cards-top p-1 "> {{proDes.discount}}% </p>
                   <p class="linkSidebar ">{{ isArabicLanguage() ? proDes.nameAr : proDes.name }}</p>
                   <p class="linkSidebar  "><strong>{{'product.EGP' | translate}}
@@ -280,8 +282,9 @@
             <div *ngFor="let proDes of productDesc.slice(6, 12); let index = index" class="col col-slider sl-scall"(click)="navigateToDetails(proDes.id)">
               <div class="" [class.rtl]="isArabic">
                 <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
-                  <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image">
-                  <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
+                  <img class="card-img-top" [src]="proDes.images[0]" alt="Card image"
+                  style="height: 200px; width:100%">
+                 
                   <p class=" linkSidebar label-Cards-top p-1 "> {{proDes.discount}}% </p>
                   <p class="linkSidebar ">{{ isArabicLanguage() ? proDes.nameAr : proDes.name }}</p>
                   <p class="linkSidebar  "><strong>{{'product.EGP' | translate}}
@@ -306,7 +309,7 @@
     </div>
   </div>
   </div>
-</div>
+</div> 
 <br>
 
 <!-- <div class="container section1" [class.rtl]="isArabic">
@@ -415,7 +418,8 @@
 <br>
 
 <!-- --------------------------productNews------------------------- -->
-<div class="container bg-body rounded-3" [class.rtl]="isArabic">
+<app-newest-arrivals-slider></app-newest-arrivals-slider>
+ <div class="container bg-body rounded-3" [class.rtl]="isArabic">
   <div *ngIf="productNews">
     <div class="row ">
       <div class="col-6 p-1 h5">
@@ -437,8 +441,9 @@
           <div *ngFor="let pronew of productNews.slice(0, 6); let index = index" class="col sl-scall" (click)="navigateToDetails(pronew.id)">
             <div class="" [class.rtl]="isArabic">
               <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
-                <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image">
-                <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
+                <img class="card-img-top" [src]="pronew.images[0]" alt="Card image"
+                  style="height: 200px; width:100%">
+       
             
                 <p class="linkSidebar ">{{ isArabicLanguage() ? pronew.nameAr : pronew.name }}</p>
              
@@ -452,8 +457,8 @@
           <div *ngFor="let pronew of productNews.slice(6, 12); let index = index" class="col sl-scall"(click)="navigateToDetails(pronew.id)">
             <div class="" [class.rtl]="isArabic">
               <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
-                <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image">
-                <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
+                <img class="card-img-top" [src]="pronew.images[0]" alt="Card image"
+                style="height: 200px; width:100%">
             
                 <p class="linkSidebar ">{{ isArabicLanguage() ? pronew.nameAr : pronew.name }}</p>
              

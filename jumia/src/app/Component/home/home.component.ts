@@ -9,23 +9,27 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ApiLoginService } from '../../Services/api-login.service';
 import { ProductDto } from '../../ViewModels/product-dto';
 import { DomSanitizer } from '@angular/platform-browser';
+import { DiscountSliderComponent } from "../discount-slider/discount-slider.component";
+import { NewestArrivalsSliderComponent } from "../newest-arrivals-slider/newest-arrivals-slider.component";
+import { CategorySliderComponent } from "../category-slider/category-slider.component";
+import { ICategory } from '../../Models/icategory';
+
 // const imgesUrl=require("../../../assets/ProductImg/ApplianceEN.png");
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [RouterLink,RouterOutlet,SliderComponent,CommonModule,TranslateModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
-
-  providers: [
-    {
-      provide: IMAGE_CONFIG,
-      useValue: {
-        disableImageSizeWarning: true,
-        disableImageLazyLoadWarning: true
-      }
-    }
-  ],
+    selector: 'app-home',
+    standalone: true,
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    providers: [
+        {
+            provide: IMAGE_CONFIG,
+            useValue: {
+                disableImageSizeWarning: true,
+                disableImageLazyLoadWarning: true
+            }
+        }
+    ],
+    imports: [RouterLink, RouterOutlet, SliderComponent, CommonModule, TranslateModule, DiscountSliderComponent, NewestArrivalsSliderComponent, CategorySliderComponent]
 })
 export class HomeComponent implements OnInit,AfterViewInit {
   allCategories : any[]=[];
@@ -102,6 +106,7 @@ GetCategories()
         this.allCategories = data;
         console.log("allCategories")
         console.log(data)
+        this.sanitizeImages()
       }
       });
     }
@@ -137,6 +142,7 @@ FilterByDiscountRangeToSlider() {
         this.productDesc=data.entities;
         console.log("GetProductByDiscountRange");
         console.log(data);
+        this.sanitizeImages2()
       },
       error: (error) => {
         console.error('Error fetching product data:', error);
@@ -152,7 +158,7 @@ GetNewestArrivalsToSlider() {
         this.productNews=data.entities;
         console.log("GetNewestArrivalsToSlider");
         console.log(data);
-        
+        this.sanitizeImages3();
       },
       error: (error) => {
         console.error('Error fetching product data:', error);
@@ -166,7 +172,36 @@ navigateToDetails(productId: number): void {
   this._router.navigateByUrl(`/Detalse/${productId}`);
 }
 
+sanitizeImages() {
+  this.allCategories.forEach(Category => {
+    console.log(Category.image);
+    Category.image = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + Category.image);
+    console.log(Category.image);
+    console.log(Category.image);
 
+  });
+}
+sanitizeImages2() {
+  this.productDesc?.forEach(product => {
+    console.log(product.images);
+    product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
+    console.log("Images");
+    console.log(product.images);
+
+  });
+
+}
+
+sanitizeImages3() {
+  this.productNews?.forEach(product => {
+    console.log(product.images);
+    product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
+    console.log("Images");
+    console.log(product.images);
+
+  });
+
+}
 }
 
 

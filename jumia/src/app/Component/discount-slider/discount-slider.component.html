@@ -1,1 +1,76 @@
-<p>discount-slider works!</p>
+
+<!-- --------------------------productDesc------------------------- -->
+<div class="container bg-body rounded-3 " [class.rtl]="isArabic">
+    <div *ngIf="productDesc">
+<div class="row ">
+  <div class="col-6 p-1 h5">
+    <strong class="">
+      <p class="linkSidebar">product descound 30% or more</p>
+    </strong>
+  </div>
+  <div class="col-6 p-1 h5">
+    <strong>
+      <a class="Link_hover color-black   linkSidebar float-end" routerLink="/Product">SEE ALL ></a>
+    </strong>
+  </div>
+</div>
+
+    <div id="myCarousel" class="carousel slide p-2" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active ">
+    
+          <div class="row p-1">
+            <div *ngFor="let proDes of productDesc.slice(0, 6); let index = index" class="col col-slider sl-scall"
+              (click)="navigateToDetails(proDes.id)">
+              <div class="cards" [class.rtl]="isArabic">
+                <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
+                  <!-- <img class="card-img-top" src="assets/ProductImg/1.jpg" alt="Card image"> -->
+                  <img class="card-img-top" [src]="proDes.images[1]" alt="Card image"
+                  style="height: 200px; width:100%">
+                  
+                  <p class=" linkSidebar label-Cards-top p-1 "> {{proDes.discount}}% </p>
+                  <p class="linkSidebar ">{{ isArabicLanguage() ? proDes.nameAr : proDes.name }}</p>
+                  <p class="linkSidebar  "><strong>{{'product.EGP' | translate}}
+                      {{(proDes.realPrice-(proDes.realPrice*proDes.discount/100)).toFixed(2)}}</strong></p>
+                  <del class="linkSidebar ">{{'product.EGP' | translate}} {{proDes.realPrice}}</del>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+       
+        <div class="carousel-item  ">
+          <div class="row p-1">
+            <div *ngFor="let proDes of productDesc.slice(6, 12); let index = index" class="col col-slider sl-scall"(click)="navigateToDetails(proDes.id)">
+              <div class="" [class.rtl]="isArabic">
+                <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
+                  <!-- <img class="card-img-top" src="../../../assets/ProductImg/1.jpg" alt="Card image"> -->
+                  <img class="card-img-top" [src]="proDes.images[0]" alt="Card image"
+                  style="height: 200px; width:100%">
+                  <p class=" linkSidebar label-Cards-top p-1 "> {{proDes.discount}}% </p>
+                  <p class="linkSidebar ">{{ isArabicLanguage() ? proDes.nameAr : proDes.name }}</p>
+                  <p class="linkSidebar  "><strong>{{'product.EGP' | translate}}
+                    {{(proDes.realPrice-(proDes.realPrice*proDes.discount/100)).toFixed(2)}}</strong></p>
+                  <del class="linkSidebar ">{{'product.EGP' | translate}} {{proDes.realPrice}}</del>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+     
+
+
+      <button class="carousel-control-prev col-1 fixed-p-p" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next col-1 fixed-n-p" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  </div>
+</div>
+<br>
