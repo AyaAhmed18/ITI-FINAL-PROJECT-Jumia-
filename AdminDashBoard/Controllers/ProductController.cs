@@ -134,7 +134,7 @@ namespace AdminDashBoard.Controllers
         }
 
         //[Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Update([FromRoute]int id)
+        public async Task<ActionResult> Update(int id)
         {
             var res = await _productService.GetOne(id);
 
@@ -143,7 +143,7 @@ namespace AdminDashBoard.Controllers
                 return NotFound();
 
             }
-            var subCategory = await _subCategoryService.GetAll(5, 1);
+            var subCategory = await _subCategoryService.GetAll(100, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
@@ -182,7 +182,7 @@ namespace AdminDashBoard.Controllers
 
 
             }
-            var subCategory = await _subCategoryService.GetAll(5, 1);
+            var subCategory = await _subCategoryService.GetAll(100, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();

@@ -43,7 +43,7 @@ namespace Jumia.Application.Mapper
             CreateMap<SubCategorySpecification, CreateOrUpdateSubDto>().ReverseMap();
             CreateMap< SubCategory, GetAllSubDto>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
-                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.GetLocalized(src.NameAr, src.Name)))
+                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.GetLocalized(src.Category.NameAr, src.Category.Name)))
                 .ReverseMap();
             CreateMap<GetAllSubDto , CreateOrUpdateSubDto>().ReverseMap() ;
             CreateMap<Specification, GetAllSpecificationDto > ().ReverseMap();

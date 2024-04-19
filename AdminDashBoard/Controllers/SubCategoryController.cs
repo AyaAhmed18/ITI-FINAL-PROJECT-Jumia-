@@ -91,7 +91,7 @@ namespace AdminDashBoard.Controllers
                          await _subCategorySpecificationsService.Create(subCategorySpecification);
                     }
 
-                    TempData["SuccessMessage1"] = "Category Created successfully.";
+                    TempData["SuccessMessage1"] = "SubCategory Created successfully.";
                     return RedirectToAction("Index", TempData["SuccessMessage1"]);
                 }
             }
@@ -170,7 +170,7 @@ namespace AdminDashBoard.Controllers
                          await _subCategorySpecificationsService.Create(subCategorySpecificationDto);
                      }*/
 
-                    TempData["SuccessMessage1"] = "Category Created successfully.";
+                    TempData["SuccessMessage2"] = "SubCategory Updated successfully.";
                     return RedirectToAction("Index", TempData["SuccessMessage1"]);
                 }
 
@@ -212,12 +212,12 @@ namespace AdminDashBoard.Controllers
 
             if (del.IsSuccess)
             {
-                TempData["SuccessMessage1"] = "Successed";
+                TempData["SuccessMessage3"] = "This SubCategory Deleted Successfully";
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                TempData["SuccessMessage"] = "Failed";
+                TempData["SuccessMessage"] = "Sorry ,Failed to delete this SubCategory";
                 return RedirectToAction(nameof(Index));
             }
         }
