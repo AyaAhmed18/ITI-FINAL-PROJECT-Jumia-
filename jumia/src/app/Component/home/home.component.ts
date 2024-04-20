@@ -110,6 +110,16 @@ GetCategories()
       }
       });
     }
+    GetOtherCategories(){
+      this._categoryService.getAllCategory()
+      .subscribe({ next: (data) => {
+        this.allCategories = data;
+        console.log("allCategories")
+        console.log(data)
+        this.sanitizeImages()
+      }
+      });
+    }
 GetSubCategories(categoryId: number)
 {
   this._subCategoryService.getSubCategoryByCategoryId(categoryId)

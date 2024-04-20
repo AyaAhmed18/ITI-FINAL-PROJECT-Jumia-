@@ -2,8 +2,11 @@
   <div class="row">
     <div class="col-2 col-md mb-5 shadow-sm bg-body mb-5 rounded my-3 show-div-Linkes">
       <div class="row float-start">
-        <a class="col-12 Link_hover color-black   linkSidebar"   *ngFor="let cat of allCategories" (mouseover)="GetSubCategories(cat.id)" (click) = "GetProductsByCatId(cat.id)">
+        <a class="col-12 Link_hover color-black   linkSidebar"   *ngFor="let cat of allCategories.slice(0, 9);" (mouseover)="GetSubCategories(cat.id)" (click) = "GetProductsByCatId(cat.id)">
           <i class="fa fa-hand-o-right px-3" aria-hidden="true"><small>  {{ isArabicLanguage() ? cat.nameAr : cat.name }}</small></i>
+        </a>
+        <a class="col-12 Link_hover color-black   linkSidebar" (mouseover)="GetOtherCategories()">
+          <i class="fa fa-braille px-3" aria-hidden="true"><small>  Other</small></i>
         </a>
       </div>
     </div>
@@ -12,60 +15,29 @@
     
           <div class="row" >
             <div class="col-4 border-right p-2">
-              <p><a class="linkSidebar d-block "routerLink = "/Product">WOMEN'S FASHION</a></p>
+              <p><a class="linkSidebar d-block "routerLink = "/Product">Categorys section 1</a></p>
               <hr>
-              <a class="linkSidebar d-block"*ngFor="let subCat of SubCategories" (click) = "GetProductsBySubCatId(subCat.id)">{{ isArabicLanguage() ? subCat.nameAr : subCat.name }}</a>
+              <a class="linkSidebar d-block"*ngFor="let subCat of SubCategories.slice(0, 10);" (click) = "GetProductsBySubCatId(subCat.id)">{{ isArabicLanguage() ? subCat.nameAr : subCat.name }}</a>
+
+              
             </div>
 
             <div class="col-4 border-right p-2">
-              <p><a class="linkSidebar d-block "routerLink = "/Product">MEN'S FASHION</a></p>
+              <p><a class="linkSidebar d-block "routerLink = "/Product">Categorys section 2</a></p>
               <hr>
-              <a class="linkSidebar d-block "routerLink = "/Product">Shirts</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">T-shirts & Polos</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Pants</a>
-              <a class="linkSidebar d-block "routerLink = "/Product"> Homewear & Underwear</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Swimsuits & Shorts</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Sports Wear</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Accessories</a>
-              <a class="linkSidebar d-block "routerLink = "/Product"> Socks</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Watches</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Pullovers & Cardigans</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Jackets & Coats</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Hoodies & Sweatshirt</a>
-              
-              <p> <a class="linkSidebar d-block "routerLink = "/Product">BABY FASHION</a></p>
-              <hr>
-              <a class="linkSidebar d-block "routerLink = "/Product">Boy's Clothes & Shoes</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Girl's Clothes & Shoes</a>
-            
-            
-
+              <a class="linkSidebar d-block"*ngFor="let subCat of SubCategories.slice(10, 20);" (click) = "GetProductsBySubCatId(subCat.id)">{{ isArabicLanguage() ? subCat.nameAr : subCat.name }}</a>
             </div>
 
             <div class="col-4 border-right p-2">
-              <p > <a class="linkSidebar d-block "routerLink = "/Product">WOMEN'S SHOES</a></p>
+              <p><a class="linkSidebar d-block "routerLink = "/Product">Categorys section 3</a></p>
               <hr>
-              <a class="linkSidebar d-block "routerLink = "/Product">Sneakers</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Heels</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Flats & Loafers</a>
-              <a class="linkSidebar d-block "routerLink = "/Product"> Slippers & Sandals</a>
-              <p ><a class="linkSidebar d-block "routerLink = "/Product">MEN'S SHOES</a> </p>
-              <hr>
-            
-              <a class="linkSidebar d-block "routerLink = "/Product">Sneakers</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Casual & Loafers</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Slippers & Sandals</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Formal Shoes</a>
-              <p ><a class="linkSidebar d-block "routerLink = "/Product">KID'S FASHION</a></p>
-              <hr>
-              
-              <a class="linkSidebar d-block "routerLink = "/Product">Boy's Fashion</a>
-              <a class="linkSidebar d-block "routerLink = "/Product">Girl's Fashion</a>
-             
-            
-
+              <a class="linkSidebar d-block"*ngFor="let subCat of SubCategories.slice(20, 30);" (click) = "GetProductsBySubCatId(subCat.id)">{{ isArabicLanguage() ? subCat.nameAr : subCat.name }}</a>
             </div>
+
+
+
           </div>
+
         
     </div>
     
@@ -199,7 +171,7 @@
           <div class="carousel-item active p-0">
             <div class="row ">
               <div *ngFor="let allCat of allCategories.slice(0, 6); let index = index" class="col col-slider sl-scall " (click) = "GetProductsByCatId(allCat.id)">
-                <img class="card-img-top" [src]="allCat.image" alt="Card image" style="height: 200px; width:100%">
+                <img class="card-img-top" [src]="allCat.image" alt="" >
                
                 <p class="linkSidebar text-center">{{allCat.name}}</p>
               </div>
@@ -208,7 +180,7 @@
           <div class="carousel-item">
             <div class="row">
               <div *ngFor="let allCat of allCategories.slice(4, 10); let index = index" class="col col-slider  sl-scall " (click) = "GetProductsByCatId(allCat.id)">
-                <img class="card-img-top" [src]="allCat.image" alt="Card image" style="height: 200px; width:100%">
+                <img class="card-img-top" [src]="allCat.image" alt="" >
                 <p class="linkSidebar text-center">{{allCat.name}}</p>
               </div>
             </div>
@@ -262,8 +234,7 @@
               (click)="navigateToDetails(proDes.id)">
               <div class="cards" [class.rtl]="isArabic">
                 <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
-                  <img class="card-img-top" [src]="proDes.images[0]" alt="Card image"
-                  style="height: 200px; width:100%">
+                  <img class="card-img-top" [src]="proDes.images[0]" alt="">
                  
                   <p class=" linkSidebar label-Cards-top p-1 "> {{proDes.discount}}% </p>
                   <p class="linkSidebar ">{{ isArabicLanguage() ? proDes.nameAr : proDes.name }}</p>
@@ -282,8 +253,7 @@
             <div *ngFor="let proDes of productDesc.slice(6, 12); let index = index" class="col col-slider sl-scall"(click)="navigateToDetails(proDes.id)">
               <div class="" [class.rtl]="isArabic">
                 <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
-                  <img class="card-img-top" [src]="proDes.images[0]" alt="Card image"
-                  style="height: 200px; width:100%">
+                  <img class="card-img-top" [src]="proDes.images[0]" alt="">
                  
                   <p class=" linkSidebar label-Cards-top p-1 "> {{proDes.discount}}% </p>
                   <p class="linkSidebar ">{{ isArabicLanguage() ? proDes.nameAr : proDes.name }}</p>
@@ -418,6 +388,7 @@
 <br>
 
 <!-- --------------------------productNews------------------------- -->
+
 <app-newest-arrivals-slider></app-newest-arrivals-slider>
  <div class="container bg-body rounded-3" [class.rtl]="isArabic">
   <div *ngIf="productNews">
@@ -441,8 +412,7 @@
           <div *ngFor="let pronew of productNews.slice(0, 6); let index = index" class="col sl-scall" (click)="navigateToDetails(pronew.id)">
             <div class="" [class.rtl]="isArabic">
               <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
-                <img class="card-img-top" [src]="pronew.images[0]" alt="Card image"
-                  style="height: 200px; width:100%">
+                <img class="card-img-top" [src]="pronew.images[0]" alt="">
        
             
                 <p class="linkSidebar ">{{ isArabicLanguage() ? pronew.nameAr : pronew.name }}</p>
@@ -457,8 +427,7 @@
           <div *ngFor="let pronew of productNews.slice(6, 12); let index = index" class="col sl-scall"(click)="navigateToDetails(pronew.id)">
             <div class="" [class.rtl]="isArabic">
               <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
-                <img class="card-img-top" [src]="pronew.images[0]" alt="Card image"
-                style="height: 200px; width:100%">
+                <img class="card-img-top" [src]="pronew.images[0]" alt="">
             
                 <p class="linkSidebar ">{{ isArabicLanguage() ? pronew.nameAr : pronew.name }}</p>
              
