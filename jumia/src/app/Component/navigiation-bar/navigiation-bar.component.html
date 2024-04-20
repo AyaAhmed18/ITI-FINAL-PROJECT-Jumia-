@@ -15,7 +15,7 @@
 
 
     <div class="col-sm jumia-logo my-2  d-flex justify-content-around">
-      <img src="assets/FooterImg/JumiaLogo.png" style="width: auto;height: 10px;">
+     <a routerLink="/Home"><img src="assets/FooterImg/JumiaLogo.png" style="width: auto;height: 10px;"></a> 
     </div>
 
 
@@ -32,8 +32,9 @@
 
   <nav class="navbar navbar-expand-lg bg-body-tertiary  " [class.rtl]="isArabic">
     <div class="container-fluid">
-      <img class="navbar-brand px-3" src="assets/FooterImg/JumiaLogo.png" alter="JumiaLogo"
+      <img class="navbar-brand px-3" routerLink="/Home" src="assets/FooterImg/JumiaLogo.png" alter="JumiaLogo"
         style="width: auto;height: 30px;">
+      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>

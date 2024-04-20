@@ -31,6 +31,7 @@ export class ConfirmOrderComponent {
   showPayment: boolean = false;
   isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   userId:number=0
+  prd!:ProductDto
  // shippment:IShippment={} as IShippment
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
@@ -98,16 +99,26 @@ export class ConfirmOrderComponent {
                   console.log(element.id);
                   console.log(res.entity.id);
                   this.orderItem.totalPrice=element.realPrice*element.cartQuantity
-
+                 // element.stockQuantity-=element.cartQuantity;
                   this._orderService.AddOrderItems(this.orderItem).subscribe({
                     next: (res) => {
                       console.log(res);
+                      //Update product quantity
+
+                      this._productService.getProductById(element.id).subscribe({
+                        next:  (res: ProductDto) => {
+                          res.stockQuantity-=element.cartQuantity
+                          this._productService.UpdateProductQuantity(res).subscribe({
+                            next:(res:ProductDto)=>{
+                             console.log(res.stockQuantity);
+                            }
+                            })
+                          }}) 
+                           //end Update product quantity
                       this._cartService.removeProduct(element)
-                      element.stockQuantity-=1;
-                      this._productService.UpdateProductQuantity(element)
+                      
                       if(res.isSuccess){
                       this._cartService.removeProduct(element)
-                      alert("your cart is empty")
                     }}
                   })
                  
@@ -157,7 +168,7 @@ export class ConfirmOrderComponent {
       this.order.totalOrderPrice=this.TotalCartPrice
     }
     this.order.paymentStatus=1
-    this.order.status=1
+    this.order.status=0
     //this.order.createdDate= new Date();
     this.order.discount=10
     this.order.cancelOrder=false;

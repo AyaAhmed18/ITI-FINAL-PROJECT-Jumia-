@@ -34,6 +34,13 @@ private _apiProductService:ApiProductsService) { }
 
   
   ngOnInit(): void {
+
+    this._cartService.getCart().subscribe(cartItems => {
+      this.cartItems = cartItems;
+      this.sanitizeImagesCart()
+     this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
+      this.cartNumber=this._cartService.calculateTotalCartNumber();
+    });
     
     this._wishlist.getWishlist().subscribe(Items=>{
       this.wishlistItems =Items
@@ -41,12 +48,7 @@ private _apiProductService:ApiProductsService) { }
       console.log(Items);});
     console.log(this.wishlistItems); 
     
-    this._cartService.getCart().subscribe(cartItems => {
-      this.cartItems = cartItems;
-      this.sanitizeImagesCart()
-     this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
-      this.cartNumber=this._cartService.calculateTotalCartNumber();
-    });
+   
     //
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'

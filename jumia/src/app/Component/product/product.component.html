@@ -60,7 +60,7 @@
 
             <div class="card-body">
                 <p>{{ isArabicLanguage() ? pro.nameAr : pro.name }}</p>
-                {{pro.stockQuantity}}
+                <!-- {{pro.stockQuantity}} -->
                 <p class=""><small>{{pro.shortDescription}}</small></p>
                 <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">
                     <small [ngClass]="{'text-danger': pro.stockQuantity < 5, 'text-success': pro.stockQuantity >= 5}">
