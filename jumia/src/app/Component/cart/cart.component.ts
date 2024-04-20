@@ -34,6 +34,7 @@ private _apiProductService:ApiProductsService) { }
 
   
   ngOnInit(): void {
+    
     this._wishlist.getWishlist().subscribe(Items=>{
       this.wishlistItems =Items
       this.sanitizeImagesWhishlist()
