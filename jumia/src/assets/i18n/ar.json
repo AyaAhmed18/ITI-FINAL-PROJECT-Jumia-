@@ -87,7 +87,7 @@
 "Product Added To Cart Successfully" :"تمت إضافة المنتج إلى سلة التسوق بنجاح",
 "Product Removed from Cart Successfully":"تمت إزالة المنتج من سلة التسوق بنجاح",
 "Cart":"سلة التسوق",
-"Missing EGP 151.00 to reach free delivery":"ناقص 151.00 جنيهًا مصريًا للوصول إلى التوصيل المجاني",
+"Missing EGP 151.00 to reach free delivery":"سيزيد هذا السعر عن طريق رسوم التوصيل المجاني",
 "off":"عن",
 "Buy 400 get":"اشتري 400 واحصل على",
 "Product Added To wishlist Successfully":"تمت إضافة المنتج إلى قائمة الرغبات بنجاح"
@@ -231,7 +231,21 @@
 "Total Price":"السعر الكلي",
 "Cancel Order":"الغاء الطلب",
 "Delivered By Monday , 15-04":"سيتم التوصيل بحلول يوم الاثنين، 15-04",
-"Items":"عنصر"
+"Items":"عنصر",
+"ITEMS IN YOUR ORDER":" العناصر في طلبك",
+"Delivered between":"تسليم بين",
+"and":"و",
+"PAYMENT INFORMATION":"معلومات الدفع",
+"Payment Method":"طريقة الدفع",
+"Pay by":"لدفع عن طريق",
+"Payment Details":"تفاصيل الدفع",
+"Total Amount EGP":"المبلغ الإجمالي بالجنيه المصري",
+"Delivery Fees 35 EGP":"رسوم التوصيل 35 جنيه مصري",
+"DELIVERY INFORMATION":"معلومات التوصيل",
+"Delivery Method":"طريقة التوصيل",
+"Door Delivery":" توصيل للباب",
+"Shipping Address":"عنوان الشحن"
+
     },
 
     "orderdetails" :{
@@ -255,13 +269,15 @@
 "Orders":"طلبات",
 "ONGOING/DELIVERD (0)":"تم التقديم/جاري التوصيل (0)",
 "CNACELD/RETURNED (0)":"تم الإلغاء/المُرجَع (0)",
+"ONGOING/DELIVERD":"تم التقديم/جاري التوصيل",
+"CNACELD/RETURNED":"تم الإلغاء/المُرجَع ",
 "You have place no order yet!":"لم تقم بوضع أي طلب حتى الآن!",
 "All your orders will be saved here":"سيتم حفظ جميع طلباتك هنا",
 "Go shopping" :"اذهب للتسوق",
 "Order Details":"تفاصيل الطلب",
       "Created Date":"تاريخ الإنشاء",
       "Quantity":"كمية",
-      "Total Price :  EGP" :"السعر الإجمالي: جنيه مصري"
+      "Total PriceE" :"السعر الإجمالي: جنيه مصري"
     },
     "shipment":{
         "Order summary":"ملخص الطلب",

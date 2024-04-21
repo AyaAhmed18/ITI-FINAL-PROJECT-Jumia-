@@ -1,10 +1,10 @@
 
 
-.section1{
+/* .section1{
     border: 1px solid #eee;
     padding-top: 5px;
     padding-bottom: 5px;
-   }
+   } */
    /* div:hover{
      transform: scale(1.1,1.1);
    } */
@@ -13,7 +13,17 @@
         background-color:rgb(51, 51, 51);
         border-radius: 50%;
         padding: 0;
-        margin-top: 60px;
+        margin-top:90px;
+      
+        width: 3vw;
+        height: 3vw;
+      }
+      .fixed-p-p {
+        background-color:rgb(51, 51, 51);
+        border-radius: 50%;
+        padding: 0;
+        margin-top:90px;
+      
         width: 3vw;
         height: 3vw;
       }
@@ -38,8 +48,9 @@
    .sectionHeader{
      text-align: center;
      background-color:#EDE5F3;
-     padding: 5px;
-     font-size: 15px;
+  padding: 10px;
+  
+  font-size:1vw;
    
    }
 
@@ -117,6 +128,36 @@
   background-color: orange;
 }
 
+.col-slider{
+  width: 16%;
+}
+
+ /*style cards by Bahaa */
+
+ .label-Cards-top {
+  position: absolute;
+  background-color: rgba(255, 115, 0, 0.842);
+  color: #fff;
+  top: 8px;
+  left: 8px;
+
+  
+  border-radius: 3px;
+ 
+}
+.diccProduct{
+  padding: 10px;
+}
+.cards-hover:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+}
+
+
+.card-img-top{
+  width: 90%;
+  height: 190px;
+}
+
 /* Extra small devices (phones) */
 @media only screen and (max-width:590px) {
  
@@ -143,9 +184,7 @@
 display: none;
   }
 
-  .col{
-    width: 20%;
-  }
+  
 
   a:link,
   a:visited {
@@ -157,6 +196,45 @@ display: none;
   }
   .Link_hover{
     padding: 3px;
+  }
+
+
+
+
+  .diccProduct{
+    padding: 1px;
+  }
+  .label-Cards-top {
+   
+    background-color: rgba(255, 115, 0, 0.842);
+    color: #fff;
+    top: 2px;
+    left: 2px;
+
+  
+ 
+   
+  }
+
+
+
+  .card-img-top{
+    width: 90%;
+    height: 60px;
+  }
+
+  .fixed-n-p {
+     
+    margin-top:30px;
+  
+    width: 3vw;
+    height: 3vw;
+  }
+  
+  .row {
+    --bs-gutter-x:0rem;
+
+
   }
 
   }
@@ -199,5 +277,33 @@ display: none;
       
     }
   
+
+
+
+
+    .card-img-top{
+      width: 90%;
+      height: 120px;
+    }
+  
+
+
+
+
+    .fixed-n-p {
+     
+      margin-top:50px;
+    
+      width: 3vw;
+      height: 3vw;
+    }
+    
+
+    .row {
+      --bs-gutter-x:0rem;
+  
+  
+    }
+
   }
   

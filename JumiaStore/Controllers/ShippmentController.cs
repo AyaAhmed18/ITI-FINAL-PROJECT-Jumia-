@@ -47,14 +47,14 @@ namespace JumiaStore.Controllers
                     if (createOrUpdateShipmentDto != null)
                     {
                         var ship=await _shippmentService.Create(createOrUpdateShipmentDto);
-                        if (ship.IsSuccess && ship.Entity==null)
+                        if (ship.IsSuccess)
                         {
-                            return Ok(ship);
+                            return (Ok(ship));
 
                         }
                         else if (!ship.IsSuccess && ship.Entity != null)
                         {
-                            RedirectToAction("Put",ship.Entity);
+                            RedirectToAction("Put", ship.Entity);
                             return Ok(ship);
                         }
                         else 
@@ -64,7 +64,8 @@ namespace JumiaStore.Controllers
 
 
                     }
-                    return BadRequest(ModelState.Values);
+                    return BadRequest("something went wrong Please Try again");
+
 
                 }
                 else
@@ -74,11 +75,11 @@ namespace JumiaStore.Controllers
                
 
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest(ModelState);
+                return StatusCode(500, $"Internal server error: {ex}");
             }
-            
+
         }
 
         // PUT api/<ShippmentController>/5

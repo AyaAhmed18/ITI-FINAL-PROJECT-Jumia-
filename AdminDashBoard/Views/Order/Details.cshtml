@@ -2,6 +2,8 @@
 @model List<GetAllOrderItemsDto>
 @{
     Layout = "_Layout";
+    ViewData["Title"] = "Order Items";
+
 }
 <style>
     .card-description a {
@@ -55,22 +57,22 @@
                             {
                                      
                         <tr>
-                                    <td class="fifty-chars" width="6ch">@if (item.Images.Count > 0) { Convert.ToBase64String(item.Images[item.Images.Count() - 1]); }
+                                    <td class="p-1 fifty-chars" width="6ch">@if (item.Images.Count > 0) { Convert.ToBase64String(item.Images[item.Images.Count() - 1]); }
                                     @{
                                         string res = item.Images.Count > 0 ? Convert.ToBase64String(item.Images[item.Images.Count() - 1]) : "";
                                     }
                                     <img src="data:image;base64,@res" width="100px" height="100px" alt="Product Image" /></td>
 
-                          <td>
+                          <td class="p-1">
                             @item.ProductName
                           </td>
-                          <td>
+                                    <td class="p-1">
                             @item.ProductQuantity
                           </td>
-                          <td>
+                                    <td class="p-1">
                                $ @item.TotalPrice
                           </td>
-                          <td>
+                                    <td class="p-1">
                             % @item.Discount
                           </td>
                          

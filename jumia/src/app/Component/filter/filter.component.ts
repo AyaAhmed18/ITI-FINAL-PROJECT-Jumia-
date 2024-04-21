@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { ProductComponent } from "../product/product.component";
 import { FilterServiceService } from '../../Services/filter-service.service';
 import { CommonModule} from '@angular/common';
@@ -10,19 +10,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NgxSliderModule, Options } from '@angular-slider/ngx-slider';
+import { CategoryserviceService } from '../../Services/categoryservice.service';
 
 @Component({
     selector: 'app-filter',
     standalone: true,
     templateUrl: './filter.component.html',
     styleUrl: './filter.component.css',
+    
     imports: [ProductComponent,FormsModule,CommonModule,TranslateModule , NgxSliderModule]
 })
-export class FilterComponent {
+export class FilterComponent  {
+
+  isMobile: boolean=false;
+
+
     minDiscount: number=0;
     ListPrand:string='';
     products: any[]=[];
-    
+    allCategories:any[]=[]
     AllBrands: any = [];
     selectedBrands: number[] = [];
     selectedBrandsStr : string ='';
@@ -36,7 +42,7 @@ export class FilterComponent {
 
   currentCategoryId: number = 0;
   currentSubCategoryId: number = 0;
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
 
   minPrice: number = 0;
   maxPrice: number = 1000000;
@@ -54,15 +60,37 @@ export class FilterComponent {
       private _brandService : BrandServiceService,
       private _router : Router, private _activeRouter: ActivatedRoute,
       private _sanitizer:DomSanitizer,
-      private  translate: TranslateService 
-      
-      ) { }
-
+      private  translate: TranslateService ,
+      private _categoryService:CategoryserviceService,
+      private renderer: Renderer2
+      ) {
+        this.checkScreenSize();
+      }
+  
+      @HostListener('window:resize', [])
+      onResize() {
+        this.checkScreenSize();
+      }
+    
+      checkScreenSize() {
+        const screenWidth = window.innerWidth;
+        this.isMobile = screenWidth < 768; 
+        console.log(this.isMobile);
+      }
+    
+    
     ngOnInit(): void {
-      
+      this.GetCategories()
+      this.sanitizeImages()
       this.translate.onLangChange.subscribe((Event)=>{
-        this.isArabic = Event.lang === 'ar'
+       
+        
+          this.isArabic = Event.lang === 'ar'
+          // window.location.reload();
+      
       })
+      //location.reload();
+
 
       console.log("Starting Fillter")
       this.GetBrands();
@@ -168,7 +196,7 @@ export class FilterComponent {
         this.sanitizeImages();
       });
 
-
+     
 
 
     }
@@ -253,7 +281,7 @@ changeLanguage(lang: string) {
     localStorage.setItem('lang', 'ar')
   }
 
-  window.location.reload();
+ 
 
 }
 
@@ -310,4 +338,22 @@ clearSelection() {
 //     });
 //   });
 // }
+
+isArabicLanguage(): boolean {
+  return this.translate.currentLang === 'ar';
+}
+GetCategories()
+    {
+      this._categoryService.getAllCategory()
+      .subscribe({ next: (data) => {
+        this.allCategories = data;
+        console.log("allCategories")
+        console.log(data)
+      }
+      });
+    }
+    GetProductsByCatId(categoryId: number):void
+{
+  this._router.navigateByUrl(`/GetCategory/${categoryId}`);
+}
 }

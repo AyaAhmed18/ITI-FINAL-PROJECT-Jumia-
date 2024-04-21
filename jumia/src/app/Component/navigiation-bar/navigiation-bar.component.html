@@ -15,7 +15,7 @@
 
 
     <div class="col-sm jumia-logo my-2  d-flex justify-content-around">
-      <img src="assets/FooterImg/JumiaLogo.png" style="width: auto;height: 10px;">
+     <a routerLink="/Home"><img src="assets/FooterImg/JumiaLogo.png" style="width: auto;height: 10px;"></a> 
     </div>
 
 
@@ -32,8 +32,9 @@
 
   <nav class="navbar navbar-expand-lg bg-body-tertiary  " [class.rtl]="isArabic">
     <div class="container-fluid">
-      <img class="navbar-brand px-3" src="assets/FooterImg/JumiaLogo.png" alter="JumiaLogo"
+      <img class="navbar-brand px-3" routerLink="/Home" src="assets/FooterImg/JumiaLogo.png" alter="JumiaLogo"
         style="width: auto;height: 30px;">
+      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
@@ -54,7 +55,7 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="{{'navigation.Search products'|translate}}, {{'navigation.brand and categories'|translate}}" required>
           </div>
-          <button type="submit" class="btn btn mx-3" style="background-color: orange;">{{'navigation.Search'|translate}}</button>
+          <button type="submit" class="btn btn mx-3"  style="background-color: orange;">{{'navigation.Search'|translate}}</button>
         </form>
       </div>
 
@@ -122,7 +123,7 @@
             </li>
             <li>
               <a class="nav-link " routerLink="/Cart">
-                <i class="fa fa-solid fa-shopping-cart"><strong class="px-2">{{'navigation.Cart'|translate}}</strong></i>
+                <i class="cartt fa fa-solid fa-shopping-cart"><strong class="cartt px-2">{{'navigation.Cart'|translate}}</strong></i>
               </a>
             </li>
           </ul>

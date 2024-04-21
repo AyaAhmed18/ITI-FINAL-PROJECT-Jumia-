@@ -12,7 +12,7 @@ using OfficeOpenXml;
 
 namespace AdminDashBoard.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class SubCategoryController : BaseController
     {
         private readonly ISubCategoryService _subCategoryService;
@@ -85,7 +85,7 @@ namespace AdminDashBoard.Controllers
 
         public async Task<ActionResult> Create()
         {
-            var Categories = await _categoryService.GetAll(15, 1);
+            var Categories = await _categoryService.GetAll(30, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
             var spec = (await _specificationServices.GetAll()).ToList();
@@ -125,11 +125,11 @@ namespace AdminDashBoard.Controllers
                          await _subCategorySpecificationsService.Create(subCategorySpecification);
                     }
 
-                    TempData["SuccessMessage1"] = "Category Created successfully.";
+                    TempData["SuccessMessage1"] = "SubCategory Created successfully.";
                     return RedirectToAction("Index", TempData["SuccessMessage1"]);
                 }
             }
-            var Categories = await _categoryService.GetAll(15, 1);
+            var Categories = await _categoryService.GetAll(30, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
             var spec = (await _specificationServices.GetAll()).ToList();
@@ -145,7 +145,7 @@ namespace AdminDashBoard.Controllers
         public async Task<ActionResult> Update(int id)
         {
 
-            var Categories = await _categoryService.GetAll(5, 1);
+            var Categories = await _categoryService.GetAll(30, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
            
@@ -204,7 +204,7 @@ namespace AdminDashBoard.Controllers
                          await _subCategorySpecificationsService.Create(subCategorySpecificationDto);
                      }*/
 
-                    TempData["SuccessMessage1"] = "Category Created successfully.";
+                    TempData["SuccessMessage2"] = "SubCategory Updated successfully.";
                     return RedirectToAction("Index", TempData["SuccessMessage1"]);
                 }
 
@@ -214,7 +214,7 @@ namespace AdminDashBoard.Controllers
 
 
             }
-            var Categories = await _categoryService.GetAll(5, 1);
+            var Categories = await _categoryService.GetAll(30, 1);
             var CategoryName = Categories.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.Category = CategoryName;
             TempData["SuccessMessage"] = "Failed.";
@@ -246,18 +246,50 @@ namespace AdminDashBoard.Controllers
 
             if (del.IsSuccess)
             {
-                TempData["SuccessMessage1"] = "Successed";
+                TempData["SuccessMessage3"] = "This SubCategory Deleted Successfully";
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                TempData["SuccessMessage"] = "Failed";
+                TempData["SuccessMessage"] = "Sorry ,Failed to delete this SubCategory";
                 return RedirectToAction(nameof(Index));
             }
         }
 
 
 
+        public async Task<IActionResult> ExportToExcel()
+        {
+            var pageSize = 200;
+            var SubCategoryes = await _subCategoryService.GetAll(pageSize, 1);
+
+            ExcelPackage excelPackage = new ExcelPackage();
+            ExcelWorksheet Worksheet = excelPackage.Workbook.Worksheets.Add("SubCategoryes");
+
+            // Set column headers
+            Worksheet.Cells[1, 1].Value = "Name";
+            Worksheet.Cells[1, 2].Value = "Description";
+
+
+            // Populate the Excel worksheet with data from SubCategoryes
+            int row = 2;
+            foreach (var subcategory in SubCategoryes.Entities)
+            {
+                Worksheet.Cells[row, 1].Value = subcategory.Name;
+                Worksheet.Cells[row, 2].Value = subcategory.Description;
+
+
+
+                row++;
+            }
+
+            using (var memoryStream = new MemoryStream())
+            {
+                excelPackage.SaveAs(memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "SubCategories.xlsx");
+            }
+        }
 
 
 

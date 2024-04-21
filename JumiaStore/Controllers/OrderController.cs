@@ -92,10 +92,9 @@ namespace JumiaStore.Controllers
 
         }
 
-        // POST api/<OrderController>
-        //  [Authorize (Roles ="user")]
+
         [HttpPost]
-        public async Task<IActionResult> Post( CreateOrUpdateOrderDto createOrderDto)
+        public async Task<IActionResult> Post(CreateOrUpdateOrderDto createOrderDto)
         {
             try
             {
@@ -109,17 +108,16 @@ namespace JumiaStore.Controllers
                     else
                     {
                         return Ok("Invaliiiid");
-                        
+
                     }
 
                 }
-                return StatusCode(500,"Erroras");
+                return StatusCode(500, "Erroras");
                 //url.link()
             }
             catch (Exception ex) { return Ok("this Is a problem here"); }
             //  return BadRequest(ModelState);
         }
-
         // PUT api/<OrderController>/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(CreateOrUpdateOrderDto orderDto)

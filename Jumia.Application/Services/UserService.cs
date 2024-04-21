@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using Jumia.Application.Contract;
 using Jumia.Application.Services.IServices;
+using Jumia.Dtos.Category;
+using Jumia.Dtos.Order;
 using Jumia.Dtos.User;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +57,46 @@ namespace Jumia.Application.Services.Services
             }
         }
 
+        // delete
+        public async Task<ResultView<GetAllUsers>> Delete(GetAllUsers getAllUsers)
+        {
+            try
+            {
+                var category = await _userRepository.GetOneAsync(getAllUsers.Id);
+                if (category == null)
+                {
+                    return new ResultView<GetAllUsers> { Entity = null, IsSuccess = false, Message = "User Not Found!" };
+                }
+
+                var res = await _userRepository.DeleteAsync(category);
+                var res1 = await _userRepository.SaveChangesAsync();
+
+                var CategoryDto = _mapper.Map<GetAllUsers>(res);
+                return new ResultView<GetAllUsers> { Entity = getAllUsers, IsSuccess = true, Message = "Deleted Successfully" };
+            }
+            catch (Exception ex)
+            {
+                return new ResultView<GetAllUsers> { Entity = null, IsSuccess = false, Message = ex.Message };
+            }
+        }
+
+
+        //GetOne
+        public async Task<ResultView<GetAllUsers>> GetOne(int id)
+        {
+            var user = await _userRepository.GetOneAsync(id);
+            if (user == null)
+            {
+                return new ResultView<GetAllUsers> { Entity = null, IsSuccess = false, Message = "Not Found!" };
+            }
+            else
+            {
+                var UserDto = _mapper.Map<GetAllUsers>(user);
+
+                return new ResultView<GetAllUsers> { Entity = UserDto, IsSuccess = true, Message = "Succses" };
+            }
+        }
+
         public async Task<ResultDataForPagination<GetAllUsers>> GetAll()
         {
 
@@ -69,6 +112,8 @@ namespace Jumia.Application.Services.Services
         
             return   resultDataList;
         }
+
+
     }
 }
 

@@ -3,22 +3,28 @@
 <div class="row bg-body rounded  row-cols-1 row-cols-md-4 g-4" [class.rtl]="isArabic">
     <div class="col-12 p-3 " [class.rtl]="isArabic">
         <div class="row">
-            <div class="col-8"><b></b></div>
+            <div class="col-8">
+             
+            </div>
+            
+
+                
+           
             <!-- <strong>{{'product.Womens Sweaters' | translate}}</strong> -->
             <div class="col-4  ">
                 <form class="form">
                 
                     <div class="row">
                         
-                            <div class="col-3 ">
-                                <p for="sort" class="float-end text-secondary h5"><strong>{{'product.sortbY:' | translate}}</strong></p>
-                            </div>
-                            <div class="col-8">
+                            <!-- <div class="col-4 ">
+                                <p for="sort" class="float-end text-secondary h6"><strong>{{'product.sortbY:' | translate}}</strong></p>
+                            </div> -->
+                            <div class="col-12">
                                 <select class="form-control mx-sm-3 " id="sort" (change)="onSortChange($event)">
-                                    <option value="allProducts">{{'product.All' | translate}}</option>
-                                    <option value="PriceLowToHigh">{{'product.Price: Low to High' | translate}}</option>
-                                    <option value="PriceHighToLow">{{'product.Price: High to Low' | translate}}</option>
-                                    <option value="NewestArrivals">{{'product.Newest Arrivals' | translate}}</option>
+                                    <option value="allProducts"><strong>{{'product.sortbY:' | translate}}</strong>{{'product.All' | translate}}</option>
+                                    <option value="PriceLowToHigh"><strong>{{'product.sortbY:' | translate}}</strong>{{'product.Price: Low to High' | translate}}</option>
+                                    <option value="PriceHighToLow"><strong>{{'product.sortbY:' | translate}}</strong>{{'product.Price: High to Low' | translate}}</option>
+                                    <option value="NewestArrivals"><strong>{{'product.sortbY:' | translate}}</strong>{{'product.Newest Arrivals' | translate}}</option>
                                 </select>
                             </div>
                            
@@ -35,9 +41,9 @@
     @for(pro of products;track pro.id;){
     <div class="clo-2 pro-cart" [class.rtl]="isArabic">
         <div class="show-cards-btn card cards-hover" style=" border: none;"  >
-            <img class="card-img-top" [src]="pro.images" alt="Card image"
-                style="width:100%">
-            <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%">-->
+            <img class="card-img-top" [src]="pro.images[0]" alt="Card image"
+                style="height: 200px; width:100%">
+            <!-- <img  [src]="pro.images[0]"  class="card-img-top"alt="Card image"style="width:100%"> -->
             <div class="label-Cards-top px-2"> 
                 <span class="text-white ">{{'product.Buy 400 get' | translate}} {{pro.discount}} {{'product.off' | translate}}</span>
             </div>
@@ -51,9 +57,16 @@
                                 </i>
                             </a>
                         </span>
+
             <div class="card-body">
                 <p>{{ isArabicLanguage() ? pro.nameAr : pro.name }}</p>
+                <!-- {{pro.stockQuantity}} -->
                 <p class=""><small>{{pro.shortDescription}}</small></p>
+                <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">
+                    <small [ngClass]="{'text-danger': pro.stockQuantity < 5, 'text-success': pro.stockQuantity >= 5}">
+                      {{ pro.stockQuantity < 5 ? pro.stockQuantity + ' Unifs Left' : 'Available' }}
+                  </small> </i> </h6>
+                <p>Brand: <small style="color: grey;"> {{pro.brandName}}</small> </p>
                 <b><strong>{{'product.EGP' | translate}} {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
                 <ul class="list-inline">
                     <li class="list-inline-item"><small><del>{{'product.EGP' | translate}} {{pro.realPrice}}</del> </small></li>
@@ -68,7 +81,14 @@
                     <i class="fa text-secondary">(44)</i>
                 </div>
                 <div class="hide-btn-cards ">
-                    <button class="btn w-100 text-white" (click)="AddToCart(pro)"[disabled]="pro.addedToCart" >{{'product.Add To Cart' | translate}}</button>
+                    @if(pro.stockQuantity==0){
+                        <button class="btn w-100 text-white hidden" (click)="AddToCart(pro)"[disabled]="pro.addedToCart" >{{'product.Add To Cart' | translate}}</button>
+                     
+                    }
+                    @else {
+                        <button class="btn w-100 text-white" (click)="AddToCart(pro)"[disabled]="pro.addedToCart" >{{'product.Add To Cart' | translate}}</button>
+                   
+                    }
                       </div>
             </div>
         </div>
@@ -122,9 +142,9 @@
                 <div class="modal-footer ">
                     <button class="btn w-100 text-white" (click)="addToWishlist(pro)">
                         <i class="fa" [ngClass]="{'fa-heart-o': !isInWishlist(pro), 'fa-heart': isInWishlist(pro)}"></i>
-                        <span *ngIf="!isInWishlist(pro)">{{'product.ADD TO WISHLIST' | translate}}</span>
-                        <span *ngIf="isInWishlist(pro)">{{'product.REMOVE FROM WISHLIST' | translate}}</span>
-                    </button>
+                        <span *ngIf="!isInWishlist(pro); else removeText">{{ 'product.ADD TO WISHLIST' | translate }}</span>
+                        <ng-template #removeText>{{ 'product.REMOVE FROM WISHLIST' | translate }}</ng-template>
+                    </button>
                 </div>
             </div>
         </div>
@@ -146,6 +166,12 @@
       </div>
       
 
+      <button  class="bott">
+
+        <label class=" filterbutton text-center filterbut" for="popup-2"><i class="fa fa-filter text-center">  filter</i></label>
+      </button>
+
+
 <!-- <div class="b-pagination-outer">
 
     <ul id="border-pagination">
@@ -155,3 +181,5 @@
       <li><a (click)="nextPage()">»</a></li>
     </ul>
   </div> -->
+  <!-- <app-scroll-to-top></app-scroll-to-top> -->
+

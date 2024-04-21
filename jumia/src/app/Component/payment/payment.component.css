@@ -19,8 +19,17 @@
   .rtl {
     direction: rtl;
   }
-
+.rtl .change{
+  text-align: left !important;
+}
+.rtl .reverse{
+  transform:scaleX(-1);
+ }
   
+ .rtl .track{
+  float: left;
+  transform:scaleX(-1);
+}
 /* Extra small devices (phones) */
 @media only screen and (max-width:590px) {
   

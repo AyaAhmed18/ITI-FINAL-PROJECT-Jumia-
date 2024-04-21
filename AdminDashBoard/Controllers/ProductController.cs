@@ -14,7 +14,7 @@ using OfficeOpenXml;
 
 namespace AdminDashBoard.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class ProductController : BaseController
     {
         private readonly IProductServices _productService;
@@ -96,7 +96,7 @@ namespace AdminDashBoard.Controllers
         public async Task<ActionResult> Create()
         {
 
-            var subCategory = await _subCategoryService.GetAll(30, 1);
+            var subCategory = await _subCategoryService.GetAll(250, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
 
@@ -148,7 +148,7 @@ namespace AdminDashBoard.Controllers
                         };
                         await _productSpecificationSubCategoryServices.Create(subCategorySpecification);
                     }
-                        TempData["SuccessMessage1"] = "Category Created successfully.";
+                        TempData["SuccessMessage1"] = "Product Created successfully.";
                         return RedirectToAction("GetPagination", TempData["SuccessMessage1"]);
 
                     }
@@ -157,7 +157,7 @@ namespace AdminDashBoard.Controllers
 
 
             }
-            var subcategory = await _subCategoryService.GetAll(55, 1);
+            var subcategory = await _subCategoryService.GetAll(200, 1);
             var subcatname = subcategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.subcategory = subcatname;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
@@ -178,7 +178,7 @@ namespace AdminDashBoard.Controllers
         }
 
         //[Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Update([FromRoute]int id)
+        public async Task<ActionResult> Update(int id)
         {
             var res = await _productService.GetOne(id);
 
@@ -187,12 +187,15 @@ namespace AdminDashBoard.Controllers
                 return NotFound();
 
             }
-            var subCategory = await _subCategoryService.GetAll(5, 1);
+            var subCategory = await _subCategoryService.GetAll(200, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
             var productDto = _mapper.Map<CreateOrUpdateProductDto>(res.Entity);
+            var prdSpecs = (await _productSpecificationSubCategoryServices.GetAll())
+                 .Entities.Where(p => p.ProductId == id).Select(i => new { i.SpecificationName, i.Value });
+            ViewBag.prdSpecs = prdSpecs;
             return View(productDto);
         }
 
@@ -200,22 +203,37 @@ namespace AdminDashBoard.Controllers
 
         [HttpPost]
         //[Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Update(CreateOrUpdateProductDto productDto, List<IFormFile> Image)
+        public async Task<ActionResult> Update(CreateOrUpdateProductDto productDto, List<IFormFile> Images)
         {
             if (ModelState.IsValid)
             {
+                if (Images != null)
+                {
+                    foreach (var img in Images)
+                    {
+                        var imageBytes = new byte[img.Length];
+                        using (var stream = img.OpenReadStream())
+                        {
+                            await stream.ReadAsync(imageBytes, 0, imageBytes.Length);
+                        }
+                        productDto.Images.Add(imageBytes);
+                    }
+                }
 
-                var res  = await  _productService.Update(productDto, Image);
-                TempData["SuccessMessage1"] = "Product Created successfully.";
-                return RedirectToAction("GetPagination", TempData["SuccessMessage1"]);
+                var res  = await  _productService.Update(productDto, Images);
+                TempData["SuccessMessage2"] = "Product Updated successfully.";
+                return RedirectToAction("GetPagination", TempData["SuccessMessage2"]);
 
 
             }
-            var subCategory = await _subCategoryService.GetAll(5, 1);
+            var subCategory = await _subCategoryService.GetAll(200, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
             ViewBag.brand = brand;
+            var prdSpecs = (await _productSpecificationSubCategoryServices.GetAll())
+               .Entities.Where(p => p.ProductId == productDto.Id).Select(i => new { i.SpecificationName, i.Value });
+            ViewBag.prdSpecs = prdSpecs;
             TempData["SuccessMessage"] = "Failed.";
              return View(productDto);
 
@@ -237,16 +255,57 @@ namespace AdminDashBoard.Controllers
            var del= await _productService.Delete(ProductToDelete);
             if (del.IsSuccess)
             {
-                TempData["SuccessMessage1"] = "Successed";
+                TempData["SuccessMessage3"] = "Product Deleted Successfully";
                 return RedirectToAction(nameof(GetPagination));
             }
             else
             {
-                TempData["SuccessMessage"] = "Failed";
+                TempData["SuccessMessage"] = "Sorry, Failed to Delete this product";
                 return RedirectToAction(nameof(GetPagination));
             }
 
             
+        }
+
+        public async Task<IActionResult> ExportToExcel()
+        {
+            var pageSize = 200;
+            var Prds = await _productService.GetAllPagination(pageSize, 1);
+
+            ExcelPackage excelPackage = new ExcelPackage();
+            ExcelWorksheet Worksheet = excelPackage.Workbook.Worksheets.Add("Prds");
+
+            // Set column headers
+            Worksheet.Cells[1, 1].Value = "English Name";
+            Worksheet.Cells[1, 2].Value = "Arabic Name";
+            Worksheet.Cells[1, 3].Value = "Description";
+            Worksheet.Cells[1, 4].Value = "Quantity";
+            Worksheet.Cells[1, 5].Value = "Price";
+            Worksheet.Cells[1, 6].Value = "Brand";
+
+
+            // Populate the Excel worksheet with data from Categoryes
+            int row = 2;
+            foreach (var product in Prds.Entities)
+            {
+                Worksheet.Cells[row, 1].Value = product.Name;
+                Worksheet.Cells[row, 2].Value = product.NameAr;
+                Worksheet.Cells[row, 3].Value = product.ShortDescription;
+                Worksheet.Cells[row, 4].Value = product.StockQuantity;
+                Worksheet.Cells[row, 5].Value = product.RealPrice;
+                Worksheet.Cells[row, 6].Value = product.BrandName;
+
+
+
+                row++;
+            }
+
+            using (var memoryStream = new MemoryStream())
+            {
+                excelPackage.SaveAs(memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Products.xlsx");
+            }
         }
 
     }

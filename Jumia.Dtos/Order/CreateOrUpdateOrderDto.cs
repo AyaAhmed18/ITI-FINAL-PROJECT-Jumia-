@@ -14,8 +14,8 @@ namespace Jumia.Dtos.Order
         public int Id { get; set; }
         public int TotalAmount { get; set; }
         public decimal TotalOrderPrice { get; set; }
-        public DateTime CreatedDate { get; set; }
-       // public int? Discount { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        // public int? Discount { get; set; }
         public OrderStatus Status { get; set; }  //for admin only
        // public bool? Shipped { get; set; } //for admin only
        // public DateTime? ShippedDate { get; set; } 
@@ -31,12 +31,12 @@ namespace Jumia.Dtos.Order
         {
             Pending=0,
             PayPall=1,
-            MobileMoney=2,
-            Cash=3
+            Cash = 2,
+         //   MobileMoney =3,
+            
         }
         public enum OrderStatus
-        {
-            Pending,
+        { 
             Processing ,
             Shipped ,
             Delivered ,

@@ -13,7 +13,7 @@ using System.Security.Cryptography;
 
 namespace AdminDashBoard.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class OrderController : BaseController
     {
         private readonly IOrderService _orderService;
@@ -176,7 +176,7 @@ namespace AdminDashBoard.Controllers
                     var Res = await _orderService.Update(order);
                     if (Res.IsSuccess)
                     {
-                        TempData["SuccessMessage1"] = "successfully.";
+                        TempData["SuccessMessage1"] = "Order Status Updated successfully.";
                         return RedirectToAction("Index", TempData["SuccessMessage1"]);
                     }
                     else
@@ -193,7 +193,7 @@ namespace AdminDashBoard.Controllers
                                 ViewBag.OrderStatusOptions = orderStatusValues;
                         ViewBag.User = user;
                         ViewBag.UserName = userName;
-                        TempData["SuccessMessage"] = "Failed";
+                        TempData["SuccessMessage"] = "Failed TO Update this Order Status";
                         return  View("Edit", OrderDto); ;
                     }
                    
@@ -258,5 +258,51 @@ namespace AdminDashBoard.Controllers
                 return View();
             }
         }
+
+        public async Task<IActionResult> ExportToExcel()
+        {
+
+            var orders = await _orderService.GetAllOrders();
+
+            ExcelPackage excelPackage = new ExcelPackage();
+            ExcelWorksheet Worksheet = excelPackage.Workbook.Worksheets.Add("orders");
+
+            // Set column headers
+            Worksheet.Cells[1, 1].Value = "Id";
+            Worksheet.Cells[1, 2].Value = "Customer";
+            Worksheet.Cells[1, 3].Value = "Status";
+            Worksheet.Cells[1, 4].Value = "Payment";
+            Worksheet.Cells[1, 5].Value = "CreatedDate";
+            Worksheet.Cells[1, 6].Value = "TotalPrice";
+            Worksheet.Cells[1, 7].Value = "Discount";
+
+
+
+
+            // Populate the Excel worksheet with data from Categoryes
+            int row = 2;
+            foreach (var order in orders)
+            {
+                Worksheet.Cells[row, 1].Value = order.CustomerId;
+                Worksheet.Cells[row, 2].Value = order.Customer;
+                Worksheet.Cells[row, 3].Value = order.Status;
+                Worksheet.Cells[row, 4].Value = order.paymentStatus;
+                Worksheet.Cells[row, 5].Value = order.OrderDate;
+                Worksheet.Cells[row, 6].Value = order.TotalOrderPrice;
+                Worksheet.Cells[row, 7].Value = order.Discount;
+
+
+
+                row++;
+            }
+
+            using (var memoryStream = new MemoryStream())
+            {
+                excelPackage.SaveAs(memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Orders.xlsx");
+            }
+        }
+
     }
 }

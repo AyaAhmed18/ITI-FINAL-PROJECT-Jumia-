@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RegistrationService } from '../../Services/registration.service';
 import { RegisterDto } from '../../ViewModels/register-dto';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -15,8 +15,9 @@ import { RouterLink } from '@angular/router';
 })
 export class RegistrationComponent  implements OnInit{
   user:RegisterDto={} as RegisterDto
-  isArabic: boolean = false;
-  constructor( private _registrationService :RegistrationService ,private  translate: TranslateService )
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
+  constructor( private _registrationService :RegistrationService ,
+    private  translate: TranslateService,private router:Router )
   {
 
   }
@@ -37,6 +38,7 @@ export class RegistrationComponent  implements OnInit{
       next: (res) => {
         console.log(res)
         alert("Successfully registered!");
+        this.router.navigate(['/SignIn']);
       },
       error: (err) => {
         console.error(err);

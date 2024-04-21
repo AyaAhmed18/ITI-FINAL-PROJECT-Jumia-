@@ -12,21 +12,51 @@
 
 @* <h1>@Model.count</h1> *@
 
-<html>
-<head>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
-</head>
 <style>
-    a:hover{color:#fff}
+    .fifty-chars {
+        width: 20ch;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .btn-warning {
+       background-color:white
+   }
 </style>
-<body>
-    <a id="exportButton" class="btn btn-primary" href="#">Export to Excel</a>
-    <div class="container">
+<a href="#" id="exportButton" class="btn btn-success text-white me-0"><i class="icon-download"></i> @AdminDashBoard.Languages.Resource.Export</a>
 
-        <h1>@AdminDashBoard.Languages.Resource.AllSubCategory</h1>
-        <a asp-action="Create" asp-controller="SubCategory" class="btn btn-success p-3">@AdminDashBoard.Languages.Resource.AddSubCategory</a>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
 
-    <table class="table table-striped">
+            <div class="row">
+                <div class="col-8">
+                    <h4 class="card-title">@AdminDashBoard.Languages.Resource.AllSubCategory</h4>
+                    <p class="card-description">
+                        Table: <span style="color:red">@AdminDashBoard.Languages.Resource.AllSubCategory</span>
+                    </p>
+                    
+                </div>
+                <div class="col-4">
+                    <div class="centered-container">
+                        <button type="button" onclick="location.href='@Url.Action("Create", "SubCategory")'" class="icon-btn add-btn">
+                            <div class="add-icon"></div>
+                            <div class="btn-txt">@AdminDashBoard.Languages.Resource.AddSubCategory</div>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+            
+     
+<div class="table-responsive pt-3">
+<table class ="table table-bordered">
         <thead>
             <tr>
                     <th scope="col">@AdminDashBoard.Languages.Resource.Name</th>
@@ -41,24 +71,34 @@
             @foreach (var item in Model.Entities)
             {
                 <tr>
-                    <td>@item.Name</td>
-                    <td>@item.Description</td>
-                    <td><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="100px" , height="100px" alt="SubCategory Image" /></td>
-                    <td>@item.CategoryName</td>
-                    <td>
-                            <a asp-action="Update" asp-controller="SubCategory" asp-route-id="@item.Id" class="btn btn-info">@AdminDashBoard.Languages.Resource.Update</a>
-                    </td>
-                        <td>
-                            <a asp-action="Delete" asp-controller="SubCategory" asp-route-id="@item.Id" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger disabled">@AdminDashBoard.Languages.Resource.Delete</a>
-                        </td>
+                                <td class="p-1">@item.Name</td>
+                    @* <td class="fifty-chars">@item.Description</td> *@
+                                <td class="p-1"><p class="fifty-chars">@item.Description</p> </td>
+
+                                <td class="p-1"><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="100px" , height="100px" alt="" /></td>
+                                <td class="p-1">@item.CategoryName</td>
+                                <td class="p-1">
+                                    <a asp-action="Update" asp-controller="SubCategory" asp-route-id="@item.Id" class="btn btn-info">
+                                        <i class="fa fa-edit"></i> 
+                                        @AdminDashBoard.Languages.Resource.Update
+                                       </a>
+                                  </td>
+                                <td class="p-1">
+                                    <a asp-action="Delete" asp-controller="SubCategory" asp-route-id="@item.Id" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger disabled">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        @AdminDashBoard.Languages.Resource.Delete
+                                    </a>
+                                 </td>
                 </tr>
             }
         </tbody>
     </table>
-        <div class="pagination">
+</div>
+<br />
+<div class="pagination">
             @if (Model.CurrentPage > 1)
             {
-                <a href="@Url.Action("Index", new { pageNumber = Model.CurrentPage - 1, pageSize = Model.PageSize })" class="btn btn-warning">Previous</a>
+                    <a href="@Url.Action("Index", new { pageNumber = Model.CurrentPage - 1, pageSize = Model.PageSize })" class="btn btn-warning">Previous</a>
             }
 
             @if (Model.TotalPages > 5 && Model.CurrentPage > 3)
@@ -69,7 +109,7 @@
 
             @for (int i = Math.Max(1, (int)Model.CurrentPage - 2); i <= Math.Min((int)Model.TotalPages, (int)Model.CurrentPage + 2); i++)
             {
-                <a href="@Url.Action("Index", new { pageNumber = i, pageSize = Model.PageSize })" class="btn @(Model.CurrentPage == i ? "btn-warning active" : "btn-default")">@i</a>
+                    <a href="@Url.Action("Index", new { pageNumber = i, pageSize = Model.PageSize })" class="btn @(Model.CurrentPage == i ? "btn-warning active" : "btn-default")">@i</a>
             }
 
             @if (Model.TotalPages > 5 && Model.CurrentPage < Model.TotalPages - 2)
@@ -80,34 +120,76 @@
 
             @if (Model.CurrentPage < Model.TotalPages)
             {
-                <a href="@Url.Action("Index", new { pageNumber = Model.CurrentPage + 1, pageSize = Model.PageSize })" class="btn btn-warning">Next</a>
+                    <a href="@Url.Action("Index", new { pageNumber = Model.CurrentPage + 1, pageSize = Model.PageSize })" class="btn btn-warning">Next</a>
             }
         </div>
 
-       
+   
+    </div>
+    </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    
-    @if (TempData["SuccessMessage1"] != null)
-    {
-        <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            <svg class="bi flex-shrink-0 " width="24" height="15px" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
-            <div>
-                @AdminDashBoard.Languages.Resource.SuccessMessage
-            </div>
+@if (TempData["SuccessMessage1"] != null)
+{
+    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @TempData["SuccessMessage1"]
         </div>
-    }
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
-            <div>
-                @AdminDashBoard.Languages.Resource.FailedTODelete
-            </div>
+    </div>
+}
+@if (TempData["SuccessMessage2"] != null)
+{
+    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @TempData["SuccessMessage2"]
         </div>
-    }
+    </div>
+}
+@if (TempData["SuccessMessage3"] != null)
+{
+    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @TempData["SuccessMessage3"]
+        </div>
+    </div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @TempData["SuccessMessage"]
+        </div>
+    </div>
+}
 
    <script>
         // function confirmDelete() {
@@ -120,33 +202,29 @@
             }
         }
 
-        //-----
-        document.getElementById("exportButton").addEventListener("click", function () {
-            // Send AJAX request to the server to export the data to Excel
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "/SubCategory/ExportToExcel", true);
-            xhr.responseType = "blob";
-
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    // Create a temporary anchor element to download the file
-                    var a = document.createElement("a");
-                    var url = window.URL.createObjectURL(xhr.response);
-                    a.href = url;
-                    a.download = "SubCategories.xlsx";
-                    a.click();
-
-                    // Clean up the temporary URL
-                    window.URL.revokeObjectURL(url);
-                }
-            };
-
-            xhr.send();
-        });
-
+    document.getElementById("exportButton").addEventListener("click", function () {
        
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/SubCategory/ExportToExcel", true);
+        xhr.responseType = "blob";
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                
+                var a = document.createElement("a");
+                var url = window.URL.createObjectURL(xhr.response);
+                a.href = url;
+                a.download = "SubCategories.xlsx";
+                a.click();
+
+                
+                window.URL.revokeObjectURL(url);
+            }
+        };
+
+        xhr.send();
+    });
     </script>
-</body>
-</html>
+
 
 

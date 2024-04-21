@@ -13,13 +13,14 @@ import { FilterServiceService } from '../../Services/filter-service.service';
 import { ApiSpecficationsService } from '../../Services/api-specfications.service';
 import { ISpecfications } from '../../Models/ispecfications';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ScrollToTopComponent } from "../scroll-to-top/scroll-to-top.component";
 
 @Component({
-  selector: 'app-product',
-  standalone: true,
-  templateUrl: './product.component.html',
-  styleUrl: './product.component.css',
-  imports: [FilterComponent,CommonModule,FormsModule ,TranslateModule]
+    selector: 'app-product',
+    standalone: true,
+    templateUrl: './product.component.html',
+    styleUrl: './product.component.css',
+    imports: [FilterComponent, CommonModule, FormsModule, TranslateModule, ScrollToTopComponent]
 })
 export class ProductComponent implements  OnInit{
   @Input() AllProducts:ProductDto[]=[];
@@ -29,6 +30,8 @@ export class ProductComponent implements  OnInit{
   productList: ProductDto[]|null = null;
 // AllProducts:ProductDto[]=[];
 //  products: any;
+
+
 searchResults: any[] = [];
 pageSize:number = 10;
 AllProd:number=0;
@@ -45,9 +48,10 @@ showAlert2: boolean = false;
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
   @Output() addTowashlistClicked = new EventEmitter<ProductDto>();
   @Input() triggerFunction: boolean = false;
+  WhichSorting: Number = 0;
   //addedToCart = false;
   addedTowashlist= false;
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   constructor(private _ApiProductsService :ApiProductsService ,
        private _sanitizer:DomSanitizer,
       private _cartService:CartService,
@@ -58,13 +62,14 @@ showAlert2: boolean = false;
       private _filterServices : FilterServiceService,
     private _specsServive:ApiSpecficationsService,
     private  translate: TranslateService)
-    
+
    {
 
    }
-   
+
    ngOnInit(): void {
     this.isArabicLanguage();
+    this.sanitizeImages()
     // this._activeRouter.paramMap.subscribe(parammap=>
     //   {
     //     this.currentCategoryId =Number(parammap.get('id'));
@@ -72,7 +77,6 @@ showAlert2: boolean = false;
     //   })
     // //
     // this.getAllProducts();
-    
     this.Sershresult();
     const currentRoute = this._route.url;
     // if (currentRoute.includes('GetSubCategory')) {
@@ -93,12 +97,17 @@ showAlert2: boolean = false;
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'
     })
-   
+
     console.log("onInit");
     console.log(this.products);
     //this.pageNumbers = this.products[1]
    /// this.GetSpecs()
     }
+
+
+
+
+
 
     getProductByCategoryId(id:number)
     {
@@ -114,21 +123,25 @@ showAlert2: boolean = false;
     }
   //start Add to Cart
   AddToCart(prod:ProductDto){
+    this.showAlert1 = false;
+    console.log(this.showAlert1);
+    
     if(prod.stockQuantity>0){
       prod.cartQuantity = 1;
-       this.cartTotalPrice+=prod.realPrice
+      prod.stockQuantity--;
+       this._wishlist.removeProductFromWishlist(prod);
        this._cartService.addToCart(prod);
-       this.addToCartClicked.emit(prod);
-       this._wishlist.removeProductFromWishlist(prod)
        this.showAlert1 = true;
-    }
+       console.log(this.showAlert1);
+      }
 }
+
 
 //Sprcifications
 GetSpecs(pro:ProductDto){
     this._specsServive.GetProductSpecs(pro.id).subscribe(specs => {
       if (specs != null) {
-        console.log(specs); 
+        console.log(specs);
         specs.forEach(spec => {
           this.AllSpecs.push(spec);
           if (spec.specificationName === 'Size') {
@@ -143,44 +156,30 @@ GetSpecs(pro:ProductDto){
         });
       }
     });
-  
+
 }
   // end Add to Cart
 
-    //Addtowashlist
-    addToWishlist(product: ProductDto) {
-      if (this.isInWishlist(product)) {
-          this._wishlist.removeProductFromWishlist(product);
-      } else {
-          this._wishlist.addProductToWishlist(product);
-          this.showAlert2 = true;
-      }
-      product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
-  
-  
+  addToWishlist(product: ProductDto) {
+    if (this.isInWishlist(product)) {
+        this._wishlist.removeProductFromWishlist(product);
+    } else {
+        this._wishlist.addProductToWishlist(product);
     }
+    product.addedTowashlist = !this.isInWishlist(product); // Toggle the addedTowashlist property
+    this.updateSessionStorage(); // Update session storage after toggling
+  }
   
+  isInWishlist(product: ProductDto): boolean {
+    // Implement logic to check if the product is in the wishlist
+    // For example, you might check if the product ID exists in the wishlist
+    return this._wishlist.getWishlistItemsFromSession().some(item => item.id === product.id);
+  }
   
-    isInWishlist(product: ProductDto): boolean {
-      return !!product.addedTowashlist;
-  }  // ngOnInit(): void {
-  //     this._ApiProductsService.getAllProducts().subscribe({
-  //         next:(data)=>{
-  //       this.AllProducts=data
-  //       console.log(data);
-
-  //       this.AllProducts.forEach(Product => {
-
-  //         Product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + Product.images);
-  //       });
-  //       },
-  //       error:(err)=>{
-
-  //       console.log(err)
-  //       }
-
-  //       })
-  // }
+  updateSessionStorage() {
+    // Update session storage with the updated wishlist items
+    sessionStorage.setItem('wishlistItems', JSON.stringify(this._wishlist.getWishlistItemsFromSession()));
+  }
   Sershresult() {
     this._searchResultsService.getSearchResults().subscribe({
         next: (data) => {
@@ -210,7 +209,8 @@ getAllProducts() {
           this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
           console.log("all");
           console.log( this.products);
-        //  this.sanitizeImages();
+          this.WhichSorting = 1;
+          this.sanitizeImages();
       },
       error: (err) => {
           console.log(err);
@@ -226,7 +226,11 @@ if (this.pageNumber < this.totalPages) {
 
 
 console.log();
-  this.getAllProducts();
+if(this.WhichSorting == 2)this.loadAllProductsOrderedAsc();
+else if(this.WhichSorting == 3)this.loadAllProductsOrderedDsc();
+else if(this.WhichSorting == 4)this.loadAllProductsNewestArrivals();
+else this.getAllProducts();
+  //this.getAllProducts();
 }
 }
 
@@ -234,21 +238,35 @@ prevPage(): void {
 if (this.pageNumber > 1) {
   this.pageNumber--;
   this._filterServices.setValue(this.pageNumber);
-  this.getAllProducts();
+  if(this.WhichSorting == 2)this.loadAllProductsOrderedAsc();
+  else if(this.WhichSorting == 3)this.loadAllProductsOrderedDsc();
+  else if(this.WhichSorting == 4)this.loadAllProductsNewestArrivals();
+  else this.getAllProducts();
 }
 }
 goToPage(page: number): void {
 if (page >= 1 && page <= this.totalPages) {
   this.pageNumber = page;
   this._filterServices.setValue(this.pageNumber);
-  this.getAllProducts();
+  if(this.WhichSorting == 2)this.loadAllProductsOrderedAsc();
+  else if(this.WhichSorting == 3)this.loadAllProductsOrderedDsc();
+  else if(this.WhichSorting == 4)this.loadAllProductsNewestArrivals();
+  else this.getAllProducts();
+  //this.getAllProducts();
 }
 }
   loadAllProductsOrderedAsc() {
-    this._ApiProductsService.getAllProductsWithOrderAasc().subscribe({
+    this._ApiProductsService.getAllProductsWithOrderAascWithPagination(this.pageSize, this.pageNumber).subscribe({
       next: (data) => {
-        this.products = data;
         this.AllProd=data.length;
+        this.products = data;
+        this.AllProd = data.count;
+
+        this.totalPages=Math.ceil( this.AllProd / this.pageSize)
+        this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+          console.log("all");
+          console.log( this.products);
+          this.WhichSorting  = 2;
         this.sanitizeImages();
       },
       error: (err) => {
@@ -258,10 +276,17 @@ if (page >= 1 && page <= this.totalPages) {
   }
 
   loadAllProductsOrderedDsc() {
-    this._ApiProductsService.getAllProductsWithOrderDasc().subscribe({
+    this._ApiProductsService.getAllProductsWithOrderDascWithPagination(this.pageSize, this.pageNumber).subscribe({
       next: (data) => {
+        this.AllProd=data.length;
         this.products = data;
+        this.AllProd = data.count;
         this.sanitizeImages();
+        this.totalPages=Math.ceil( this.AllProd / this.pageSize)
+        this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+          console.log("all");
+          console.log( this.products);
+          this.WhichSorting  = 3;
       },
       error: (err) => {
         console.log(err);
@@ -269,10 +294,17 @@ if (page >= 1 && page <= this.totalPages) {
     });
   }
   loadAllProductsNewestArrivals() {
-    this._ApiProductsService.getAllProductsWithNewestArrivals().subscribe({
+    this._ApiProductsService.getAllProductsWithNewestArrivalsWithPagination(this.pageSize, this.pageNumber).subscribe({
       next: (data) => {
+        this.AllProd=data.length;
         this.products = data;
+        this.AllProd = data.count;
         this.sanitizeImages();
+        this.totalPages=Math.ceil( this.AllProd / this.pageSize)
+        this.pageNumbers = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+          console.log("all");
+          console.log( this.products);
+          this.WhichSorting  = 4;
       },
       error: (err) => {
         console.log(err);
@@ -283,8 +315,8 @@ if (page >= 1 && page <= this.totalPages) {
   sanitizeImages() {
     this.products.forEach(product => {
       console.log(product.images);
-      product.images = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
-      console.log(product.images);
+      product.images[0] = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + product.images[0]);
+      console.log("Images");
       console.log(product.images);
 
     });
@@ -352,7 +384,7 @@ navigateToDetails(productId: number): void {
 
 
 isArabicLanguage(): boolean {
-  return this.translate.currentLang === 'ar'; 
+  return this.translate.currentLang === 'ar';
 }
 closeAlert(){
   this.showAlert1 = false;

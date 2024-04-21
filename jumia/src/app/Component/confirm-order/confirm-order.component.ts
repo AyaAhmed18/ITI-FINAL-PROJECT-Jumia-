@@ -9,6 +9,7 @@ import { IOrderItems } from '../../Models/iorder-items';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ApiShippmentService } from '../../Services/api-shippment.service';
 import { IShippment } from '../../Models/ishippment';
+import { ApiProductsService } from '../../Services/api-products.service';
 
 @Component({
   selector: 'app-confirm-order',
@@ -28,15 +29,16 @@ export class ConfirmOrderComponent {
   shippment:IShippment={} as IShippment
   totalamount:number = 50
   showPayment: boolean = false;
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   userId:number=0
+  prd!:ProductDto
  // shippment:IShippment={} as IShippment
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
   constructor(private _cartService:CartService
     ,private router:Router,private _orderService:APIOrderServiceService,
-    private  translate: TranslateService
-    
+    private  translate: TranslateService,
+    private _productService:ApiProductsService
     ,private _ShippmentService:ApiShippmentService 
    
     
@@ -97,10 +99,24 @@ export class ConfirmOrderComponent {
                   console.log(element.id);
                   console.log(res.entity.id);
                   this.orderItem.totalPrice=element.realPrice*element.cartQuantity
-
+                 // element.stockQuantity-=element.cartQuantity;
                   this._orderService.AddOrderItems(this.orderItem).subscribe({
                     next: (res) => {
                       console.log(res);
+                      //Update product quantity
+
+                      this._productService.getProductById(element.id).subscribe({
+                        next:  (res: ProductDto) => {
+                          res.stockQuantity-=element.cartQuantity
+                          this._productService.UpdateProductQuantity(res).subscribe({
+                            next:(res:ProductDto)=>{
+                             console.log(res.stockQuantity);
+                            }
+                            })
+                          }}) 
+                           //end Update product quantity
+                      this._cartService.removeProduct(element)
+                      
                       if(res.isSuccess){
                       this._cartService.removeProduct(element)
                     }}
@@ -152,7 +168,9 @@ export class ConfirmOrderComponent {
       this.order.totalOrderPrice=this.TotalCartPrice
     }
     this.order.paymentStatus=1
-    this.order.status=1
+    this.order.status=0
+    //this.order.createdDate= new Date();
+    this.order.discount=10
     this.order.cancelOrder=false;
    
   } 

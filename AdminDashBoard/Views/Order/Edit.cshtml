@@ -1,6 +1,8 @@
 ﻿@model CreateOrUpdateOrderDto
 @{
     Layout = "_Layout";
+    ViewData["Title"] = "Update Order";
+
    // SelectList list = new SelectList(ViewBag.OrderStatusOptions,"Status","Status");
 }
 <style>
@@ -23,20 +25,18 @@
 
     }
 select {
-    color:#fff;
-        background-color: darksalmon;
+    color:#000;
+       
 }
 
 
-.select option {
-    color:#fff;
-}
+
   
    
 </style>
 
-<div class="col-md-12 grid-margin grid-margin-md-0 stretch-card">
-    <div class="card">
+
+<div class="card container">
         <div class="card-body">
             <h4 class="card-title">@Localizer["OrderInfo"]</h4>
             <br />
@@ -47,11 +47,11 @@ select {
                 <a class="back" style="background-color:#fff;color:darksalmon;padding:0;float:@Localizer["floatdir"]" asp-action="Index" asp-controller="Order"> @Localizer["Back"] <i class="mdi mdi-arrow-right"></i></a>
 
             </p>
-            <ul class="list-star">
+            <ul class="">
                 <form method="post">
                 <li> <span>@Localizer["Order"]   <i class="mdi mdi-help-circle"></i> </span>  @Model.Id</li>
                 <li> <span>@Localizer["Customer"]    <i class="mdi mdi-help-circle"></i></span>   @ViewBag.UserName</li>
-                <li> <span>@Localizer["OrderStatus"] <i class="mdi mdi-help-circle"></i></span>   <select asp-for="Status" asp-items="ViewBag.OrderStatusOptions" class="form-control bg-danger select"></select></li>
+                <li> <span>@Localizer["OrderStatus"] <i class="mdi mdi-help-circle"></i></span>   <select asp-for="Status" asp-items="ViewBag.OrderStatusOptions" class=" select"></select></li>
  
                 <li> <span>@Localizer["TotalPrice"]   <i class="mdi mdi-help-circle"></i></span>  $ @Model.TotalOrderPrice </li>
                 <li> <span>@Localizer["CreatedDate"]   <i class="mdi mdi-help-circle"></i></span>   @Model.CreatedDate</li>
@@ -65,14 +65,15 @@ select {
         </div>
         </div>
     
-</div>
+
 @if (TempData["SuccessMessage"] != null)
 {
     <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
         <div>
-            @AdminDashBoard.Languages.Resource.FailedTODelete
+            Failed to Update this Order Status
+            @* @AdminDashBoard.Languages.Resource.FailedTODelete *@
         </div>
     </div>
 }

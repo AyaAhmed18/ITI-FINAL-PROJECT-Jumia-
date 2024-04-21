@@ -30,7 +30,7 @@ export class ShippmentComponent implements OnInit{
   cartNumber:number=0
   TotalCartPrice=0
   id:number=0
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   citiesByRegion: { [key: string]: string[] } = {
     'Sohag': ['Sohag City', 'Akhmim', 'Girga', 'Tahta', 'Dar El Salam', 'Saqil Qism Qena', 'Daraw', 'Juhaynah', 'Gerga', 'El Maragha', 'Tama', 'Al Monshah', 'Al Waily', 'Alawais', 'Al Hawarta', 'Dar El Salam Qism Sohag', 'Al Ghanayim', 'El Kossia', 'El Balayaza', 'Akhmim Qism Sohag', 'Sohag District', 'Akhmim District', 'Gerga District', 'El Maragha District', 'Tahta District', 'Dar El Salam District', 'Saqil Qism Qena District', 'Daraw District', 'Juhaynah District', 'Tama District'],
     'Cairo': [
@@ -189,6 +189,7 @@ export class ShippmentComponent implements OnInit{
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'
     });
+   
     //
     this._ShippmentService.Getshippment(this.clientId).subscribe(shippment => {
      // this.shippment=shippment.entity
@@ -214,16 +215,17 @@ export class ShippmentComponent implements OnInit{
   AddAddress(clientAddress:IShippment){
     if(this.clientId!=null){
       clientAddress.userIdentityId=this.clientId
-            clientAddress.cost=100
+            clientAddress.cost=20
     }
    
     this._ShippmentService.AddClientAddress(clientAddress).subscribe({
       next: (res) => {
-        if (res.isSuccess && res.entity != null) {
-          alert("Added Successfully");
+        if (res.isSuccess) {
+          alert("Your Address Information Added Successfully");
           this.router.navigate(['/Delivary']);
+         
         } else if (!res.isSuccess && res.entity != null) {
-          alert("Your Information already Saved")
+         // alert("Your Address Information already Saved")
           //this.router.navigate(['/Delivary']);
           this._ShippmentService.UpdateClientAddress(clientAddress).subscribe({
             next: (updateRes) => {
@@ -303,5 +305,8 @@ changeLanguage(lang: string) {
 
   window.location.reload();
 
+}
+isArabicLanguage(): boolean {
+  return this.translate.currentLang === 'ar'; 
 }
 }

@@ -10,10 +10,9 @@ using Jumia.Application.Services.IServices;
 using Microsoft.AspNetCore.Authorization;
 using OfficeOpenXml;
 
-
 namespace AdminDashBoard.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class CategoryController : BaseController
     {
         private readonly ICategoryService _categoryService;
@@ -33,44 +32,11 @@ namespace AdminDashBoard.Controllers
             var pageSize = 10;
             var Categoryes = await _categoryService.GetAll(pageSize, pageNumber);
 
-            
-
             return View(Categoryes);
 
         }
 
-        public async Task<IActionResult> ExportToExcel()
-        {
-            var pageSize = 200;
-            var Categoryes = await _categoryService.GetAll(pageSize, 1);
-
-            ExcelPackage excelPackage = new ExcelPackage();
-            ExcelWorksheet Worksheet = excelPackage.Workbook.Worksheets.Add("Categoryes");
-
-            // Set column headers
-            Worksheet.Cells[1, 1].Value = "Name";
-            Worksheet.Cells[1, 2].Value = "Description";
-         
-
-            // Populate the Excel worksheet with data from Categoryes
-            int row = 2;
-            foreach (var category in Categoryes.Entities)
-            {
-                Worksheet.Cells[row, 1].Value = category.Name;
-                Worksheet.Cells[row, 2].Value = category.Description;
-
-               
-
-                row++;
-            }
-
-            using (var memoryStream = new MemoryStream())
-            {
-                excelPackage.SaveAs(memoryStream);
-                memoryStream.Seek(0, SeekOrigin.Begin);
-                return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Categories.xlsx");
-            }
-        }
+       
 
 
         public IActionResult Create()
@@ -164,8 +130,8 @@ namespace AdminDashBoard.Controllers
                     var update = await _categoryService.Update(categoryDto, Image);
                     if (update.IsSuccess)
                     {
-                        TempData["SuccessMessage1"] = "Category updated successfully.";
-                        return RedirectToAction(nameof(Index), TempData["SuccessMessage1"]);
+                        TempData["SuccessMessage2"] = "Category updated successfully.";
+                        return RedirectToAction(nameof(Index), TempData["SuccessMessage2"]);
                     }
 
 
@@ -198,16 +164,51 @@ namespace AdminDashBoard.Controllers
             var CategoryToD = _mapper.Map<CreateOrUpdateCategoryDto>(res.Entity);
            var del= await _categoryService.Delete(CategoryToD);
             if(del.IsSuccess){
-                TempData["SuccessMessage1"] = "Successed";
+                TempData["SuccessMessage3"] = "Category Deleted Successfully";
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                TempData["SuccessMessage"] = "Failed";
+                TempData["SuccessMessage"] = "Sorry,Failed to Delete this Category";
                 return RedirectToAction(nameof(Index));
             }
 
             
+        }
+
+
+
+        public async Task<IActionResult> ExportToExcel()
+        {
+            var pageSize = 200;
+            var Categoryes = await _categoryService.GetAll(pageSize, 1);
+
+            ExcelPackage excelPackage = new ExcelPackage();
+            ExcelWorksheet Worksheet = excelPackage.Workbook.Worksheets.Add("Categoryes");
+
+            // Set column headers
+            Worksheet.Cells[1, 1].Value = "Name";
+            Worksheet.Cells[1, 2].Value = "Description";
+
+
+            // Populate the Excel worksheet with data from Categoryes
+            int row = 2;
+            foreach (var category in Categoryes.Entities)
+            {
+                Worksheet.Cells[row, 1].Value = category.Name;
+                Worksheet.Cells[row, 2].Value = category.Description;
+
+
+
+                row++;
+            }
+
+            using (var memoryStream = new MemoryStream())
+            {
+                excelPackage.SaveAs(memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Categories.xlsx");
+            }
         }
 
 
@@ -217,9 +218,6 @@ namespace AdminDashBoard.Controllers
 
 
 
-
-
-        
 
 
 

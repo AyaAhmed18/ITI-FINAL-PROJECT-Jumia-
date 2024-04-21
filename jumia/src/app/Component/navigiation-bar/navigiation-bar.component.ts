@@ -27,8 +27,8 @@ export class NavigiationBarComponent implements OnInit {
 
   //load page and check if logged or not
   IsUserLogged: boolean = false
-  isArabic: boolean = false;
-
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
+ // isArabic1: string =  localStorage.getItem('isArabic')!;
   constructor(private _apiLoginService: ApiLoginService
     , private router: Router,
     private _ApiProductsService: ApiProductsService,
@@ -79,6 +79,7 @@ export class NavigiationBarComponent implements OnInit {
       this._ApiProductsService.SearchByNameOrDesc(this.searchTerm).subscribe(
         (searchResults) => {
           this._searchResultsService.setSearchResults([searchResults]);
+         
           console.log("searchResults");
           console.log(searchResults);
         },
@@ -87,7 +88,7 @@ export class NavigiationBarComponent implements OnInit {
         }
       );
     }}, 1000);
-
+    this.router.navigate(['/Product'])
   }
 
 

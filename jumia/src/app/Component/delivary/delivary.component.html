@@ -13,9 +13,9 @@
               </h6>
 
             </div>
-            <div class="col-md-6 text-end"><a href="" class="text-decoration-none"
+            <div class=" channge col-md-6 text-end" ><a href="" class="text-decoration-none"
                 [routerLink]="['/shippment']">{{'delivery.Change' | translate}} <i
-                  class="fa fa-solid fa-arrow-right"></i> </a></div>
+                  class="fa fa-solid fa-arrow-right reverse" ></i> </a></div>
             <div class="border-top ">
               <p class="my-0  pt-4">{{shippment.firstNameEn}} {{shippment.lastName}}</p>
               <p class="mt-0 tb-5 text-secondary">
@@ -39,21 +39,22 @@
 
             <div class="form-check col-md-9 ">
 
-              <input class="form-check-input  btn-outline-warning bg-warning border border-warning rounded-circle"
+              <input class="starright    form-check-input  btn-outline-warning bg-warning border border-warning rounded-circle"
                 height="8px" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
 
 
               <label class="form-check-label " for="flexRadioDefault2">
                 <strong> {{'delivery.Door Delivery' | translate}}</strong>
                 <small>{{'delivery.(From EGP 35.00)' | translate}}</small>
-                <p> <small>{{'delivery.Delivery between 27 March and 28 March'| translate}}</small></p>
+                <p> <small>Delivered between {{ increaseDate(5).dayNumber }} {{ increaseDate(5).monthName }}
+                  and  {{ increaseDate(10).dayNumber }} {{ increaseDate(10).monthName }}</small></p>
               </label>
 
             </div>
 
 
             <div class="col-md-3 text-end">
-              <i class="fa fa-solid fa-truck text-warning" style="font-size: 20px;"></i>
+              <i class=" track fa fa-solid fa-truck text-warning" style="font-size: 20px;"></i>
             </div>
 
 
@@ -78,8 +79,8 @@
               <div class="col-md-2 ">
                 <img   [src]="pro.images[0]"  alt="">
               </div>
-              <div class="col-md-10">
-                <p class="smallText my-0 mx-0 text-start">{{isArabicLanguage() ? pro.nameAr : pro.name}}</p>
+              <div class="delvery col-md-10">
+                <p class="smallText my-0 mx-0 ">{{isArabicLanguage() ? pro.nameAr : pro.name}}</p>
                 <p class="smallText">{{'delivery.OTY:' | translate}} {{pro.cartQuantity}}</p>
               </div>
 
@@ -126,20 +127,20 @@
               <p class="me-5">{{'shipment.Delivery fees' | translate}}</p>
             </div>
             <div class=" col-6 " style="text-align: end;">
-              <p class=""><strong>{{'shipment.EGP' | translate}} 300.00 </strong></p>
+              <p class=""><strong>{{'shipment.EGP' | translate}} 15.00 </strong></p>
             </div>
 
           </div>
 
-          <div class="row p-2">
+          <!-- <div class="row p-2">
             <div class=" col-6">
               <p class="me-5">{{'shipment.Prepaid discount' | translate}}</p>
             </div>
             <div class=" col-6 " style="text-align: end;">
-              <p class="text-success"><strong>- {{'shipment.EGP' | translate}} 10</strong> </p>
+              <p class="text-success"><strong> {{'shipment.EGP' | translate}}</strong> </p>
             </div>
 
-          </div>
+          </div> -->
 
           <hr>
           <div class="row p-2">
@@ -147,7 +148,7 @@
               <p class="me-5">{{'shipment.Total' | translate}}</p>
             </div>
             <div class=" col-6 " style="text-align: end;">
-              <p class=""><strong>{{'shipment.EGP' | translate}} {{TotalCartPrice +300 -10}}</strong></p>
+              <p class=""><strong>{{'shipment.EGP' | translate}} {{TotalCartPrice+15}}</strong></p>
             </div>
 
           </div>

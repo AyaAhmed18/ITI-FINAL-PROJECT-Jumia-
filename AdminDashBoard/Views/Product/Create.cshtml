@@ -2,7 +2,7 @@
 
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add Product";
     // Layout = "_Layout";
     SelectList list = new SelectList(ViewBag.SubCategory, "Id", "Name");
     SelectList list2 = new SelectList(ViewBag.brand, "BrandID", "Name");
@@ -10,13 +10,66 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
 
+    .image-upload {
+        position: relative;
+        max-width: 360px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+        .image-upload input {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 90%;
+            opacity: 0;
+        }
+
+    .upload-field {
+        display: block;
+        padding: 12px;
+        border-radius: 11px;
+    }
+
+        .upload-field .file-thumbnail {
+            cursor: pointer;
+            border: 1px dashed #BBD9EC;
+            border-radius: 11px;
+            text-align: center;
+            padding: 20px;
+        }
+
+            .upload-field .file-thumbnail img {
+                width: 50px;
+            }
+
+            .upload-field .file-thumbnail h3 {
+                font-size: 12px;
+                color: #000000;
+                font-weight: 600;
+                margin-bottom: 4px;
+            }
+
+            .upload-field .file-thumbnail p {
+                font-size: 12px;
+                color: #9ABCD1;
+                margin-bottom: 0;
+            }
+
+    a {
+        text-decoration: none;
+        color: teal;
+    }
+</style>
 
 
 
 
 <div class="col-12 grid-margin">
-    <div class="card">
+    <div class="card container">
         <div class="card-body">
             <h4 class="card-title">Create Products</h4>
 
@@ -38,7 +91,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <label asp-for="NameAr" class=" col-form-label"></label>
+                            <label asp-for="NameAr" class=" col-form-label">@AdminDashBoard.Languages.Resource.Arabic_Name</label>
                                 <input asp-for="NameAr" type="text" class="form-control" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
@@ -67,58 +120,68 @@
                     </div>
                 </div>
 
-
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group ">
-                            <label asp-for="Discount" class=" col-form-label"></label>
-                            
-                                <input asp-for="Discount" type="number" class="form-control" />
-                                <span asp-validation-for="Discount" style="color:red"></span>
-                            
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group ">
+                                    <label asp-for="Discount" class=" col-form-label"></label>
+
+                                    <input asp-for="Discount" type="number" class="form-control" />
+                                    <span asp-validation-for="Discount" style="color:red"></span>
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group ">
+                                    <label asp-for="ShortDescription" class=" col-form-label"></label>
+
+                                    <input asp-for="ShortDescription" class="form-control" />
+                                    <span asp-validation-for="ShortDescription" class="text-danger"></span>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
-                   @*  <div class="col-md-6">
-                        <div class="form-group ">
-                            <label asp-for="RealPrice" class=" col-form-label"></label>
-                            
-                                <input asp-for="RealPrice" type="number" class="form-control" />
-                                <span asp-validation-for="RealPrice" class="text-danger"></span>
-                           
-                        </div>
-                    </div> *@
-                </div>
-
-
-                <div class="row">
-                   @*  <div class="col-md-6">
-                        <div class="form-group ">
-                            <label asp-for="StockQuantity" class=" col-form-label"></label>
-                           
-                                <input asp-for="StockQuantity" type="number" class="form-control" />
-                                <span asp-validation-for="StockQuantity" style="color:red"></span>
-                           
-                        </div>
-                    </div> *@
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <label asp-for="ShortDescription" class=" col-form-label"></label>
-                            
-                                <input asp-for="ShortDescription" class="form-control" />
-                                <span asp-validation-for="ShortDescription" class="text-danger"></span>
-                           
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="image-upload ">
+                                        <label asp-for="Images" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
+                                        <input asp-for="Images" id="Images" type="file" onchange="fileValue(this)">
+
+                                        <label asp-for="Images" for="Images" class="upload-field">
+                                            <div class="file-thumbnail">
+                                                <img id="image-preview" src="https://www.btklsby.go.id/images/placeholder/basic.png" alt="">
+                                                <h3 id="filename">
+                                                    Drag and Drop
+                                                </h3>
+                                                <p>Supports JPG, PNG, SVG</p>
+                                            </div>
+                                        </label>
+                                        <span asp-validation-for="Images" style="color:red"></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
+                
+
+
+               
 
 
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <label asp-for="SubCategoryID" class=" col-form-label"></label>
+                            <label asp-for="SubCategoryID" class=" col-form-label">>@AdminDashBoard.Languages.Resource.SubCategory</label>
                             @* <input asp-for="SubCategoryID" class="form-control" hidden /> *@
                             <input name="selectedSubCategoryId" class="form-control" hidden />
-                                <select asp-for="SubCategoryID" asp-items="list" class="form-select" id="subCategorySelect"></select>
+                                <select asp-for="SubCategoryID" asp-items="list" class="form-select" id="subCategorySelect">@AdminDashBoard.Languages.Resource.SubCategory</select>
                                 <span asp-validation-for="SubCategoryID" style="color:red"></span>
                          
                         </div>
@@ -127,7 +190,7 @@
                         <div class="form-group ">
                             <label asp-for="BrandID" class=" col-form-label"></label>
                           
-                                <select asp-for="BrandID" asp-items="list2" class="form-select"></select>
+                                <select asp-for="BrandID" asp-items="list2" class="form-select">@AdminDashBoard.Languages.Resource.Brand</select>
                                 <span asp-validation-for="BrandID" class="text-danger"></span>
                           
                         </div>
@@ -136,15 +199,15 @@
 
 
                 <div class="row">
-                    <div class="col-md-6">
+                    @* <div class="col-md-6">
                         <div class="form-group ">
-                            <label asp-for="Images" class=" col-form-label"></label>
+                            <label asp-for="Images" class=" col-form-label">>@AdminDashBoard.Languages.Resource.Image</label>
                           
                                 <input asp-for="Images" type="file" class="form-control" />
                                 <span asp-validation-for="Images" style="color:red"></span>
                           
                         </div>
-                    </div>
+                    </div> *@
                     <div class="col-md-6">
                         <div class="form-group ">
                             <label  class=" col-form-label">@AdminDashBoard.Languages.Resource.Specifications</label>
@@ -169,21 +232,25 @@
                 </div>
 
 
+               @*  <button type="submit" class="btn btn-info text-white">@AdminDashBoard.Languages.Resource.Create</button>
 
+                <div class="form-group ">
+                    <input type="submit" value="Create" class="btn btn-success text-white" />
 
+                </div>  *@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <input type="submit" value="Create" class="btn btn-primary" />
+                            <input type="submit" value="Create" class="btn btn-success text-white col-12 w-100" />
 
                         </div>
                     </div>
-                    <div class="col-md-6">
+                  @*   <div class="col-md-6">
                         <div class="form-group ">
                             <a asp-action="GetPagination" class="btn btn-warning">Back to List</a>
 
                         </div>
-                    </div>
+                    </div> *@
                 </div>
 
             
@@ -209,7 +276,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
         <div>
-            @AdminDashBoard.Languages.Resource.FailedTODelete
+            Failed to add this Product
+            @* @AdminDashBoard.Languages.Resource.FailedTODelete *@
         </div>
     </div>
 }

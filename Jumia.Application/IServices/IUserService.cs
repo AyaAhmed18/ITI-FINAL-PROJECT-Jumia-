@@ -1,5 +1,7 @@
-﻿using Jumia.Dtos.User;
+﻿using Jumia.Dtos.Category;
+using Jumia.Dtos.User;
 using Jumia.DTOS.ViewResultDtos;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,9 @@ namespace Jumia.Application.Services.IServices
     { 
         Task<ResultDataForPagination<GetAllUsers>> GetAll();
         Task<ResultView<GetAllUsers>> CreateAsync( GetAllUsers getAllUsers);
+        Task<ResultView<GetAllUsers>> Delete(GetAllUsers getAllUsers);
+        Task<ResultView<GetAllUsers>> GetOne(int id);
+      
 
     }
 }

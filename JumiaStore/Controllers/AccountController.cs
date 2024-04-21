@@ -93,7 +93,7 @@ namespace JumiaStore.Controllers
                         var Key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
                         var token = new JwtSecurityToken(
                             issuer: _configuration["Jwt:Issuer"],
-                            audience: _configuration["Jwt:Audiences"], expires: DateTime.Now.AddDays(30),
+                            audience: _configuration["Jwt:Audiences"], expires: DateTime.Now.AddDays(10),
                             signingCredentials: new Microsoft.IdentityModel.Tokens.SigningCredentials
                             (Key, SecurityAlgorithms.HmacSha256Signature));
 

@@ -1,5 +1,10 @@
 
-
+button{
+    background-color: #ff9901ea;
+}
+a{
+    color:#ff9901ea
+}
     /*style cards by Bahaa */
 
     .label-Cards-top {
@@ -61,18 +66,44 @@
     }
 
     /* -------------------------------------------------- */
-    .text-success {
-        color: red;
-    }
-    
-    .text-danger {
-        color: green;
-    }
-    .rtl {
-        direction: rtl;
+    .fixed-n-p {
+        background-color:rgb(51, 51, 51);
+        border-radius: 50%;
+        padding: 0;
+        margin-top:90px;
+      
+        width: 3vw;
+        height: 3vw;
+      }
+      .fixed-p-p {
+        background-color:rgb(51, 51, 51);
+        border-radius: 50%;
+        padding: 0;
+        margin-top:90px;
+      
+        width: 3vw;
+        height: 3vw;
       }
 
-      
+   .col-slider{
+    width: 16%;
+  }
+
+
+   a.linkSidebar:hover{
+    font-weight: bold;
+   
+   }  
+   .linkSidebar{
+    font-size:1vw;
+  
+   }
+   .diccProduct{
+    padding: 10px;
+  }
+  .cards-hover:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+  }
 /* Extra small devices (phones) */
 @media only screen and (max-width:590px) {
  
@@ -94,6 +125,53 @@
 .col-4-cart{
     width: 60%;
 }
+
+
+
+.diccProduct{
+    padding: 1px;
+  }
+  .label-Cards-top {
+   
+    background-color: rgba(255, 115, 0, 0.842);
+    color: #fff;
+    top: 2px;
+    left: 2px;
+
+  
+ 
+   
+  }
+
+
+
+  .card-img-top{
+    width: 90%;
+    height: 60px;
+  }
+
+  .fixed-n-p {
+     
+    margin-top:30px;
+  
+    width: 3vw;
+    height: 3vw;
+  }
+  
+  .row {
+    --bs-gutter-x:0rem;
+
+
+  }
+  .card-body {
+    flex: 0;
+    padding: 0rem 0rem;
+}
+.blockquote-footer {
+    margin-top: 0rem; 
+ margin-bottom: 0rem; 
+    
+}
      }
      
      /* Small devices (portrait tablets and large phones) */
@@ -101,8 +179,50 @@
        
        
      
-         
+
+
+    .card-img-top{
+        width: 90%;
+        height: 120px;
+      }
+    
+  
+  
+  
+  
+      .fixed-n-p {
        
+        margin-top:50px;
+      
+        width: 3vw;
+        height: 3vw;
+      }
+      
+  
+      .row {
+        --bs-gutter-x:0rem;
+    
+    
+      }
+         
+      .card-body {
+        flex: 0;
+        padding: 0rem 0rem;
+    }
+    .blockquote-footer {
+        margin-top: 0rem; 
+     margin-bottom: 0rem; 
+        
+    }
      
      }
+     
+
+
+
+
+
+
+
+
      

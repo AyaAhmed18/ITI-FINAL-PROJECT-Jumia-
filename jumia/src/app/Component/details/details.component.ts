@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CartService } from '../../Services/cart.service';
 import { WishlistService } from '../../Services/wishlist.service';
+import { BrandServiceService } from '../../Services/brand-service.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class DetailsComponent implements OnInit {
   product!: ProductDto;
   sizeSpecs: string[] = [];
   AllSpecs: ISpecfications[] = [];
-  isArabic: boolean = false;
+  isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   showAlert1: boolean = false;
   cartTotalPrice:number=0
   @Output() addToCartClicked = new EventEmitter<ProductDto>();
@@ -36,10 +37,11 @@ export class DetailsComponent implements OnInit {
     private  translate: TranslateService,
     private _cartService:CartService,
     private _wishlist :WishlistService,
-  
+    private _brand:BrandServiceService
   ) { }
 
   ngOnInit(): void {
+    this.brand();
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'
     })
@@ -125,5 +127,16 @@ export class DetailsComponent implements OnInit {
     //this.showAlert2 = false;
   }
   //localization
-
+  brand() {
+    this._brand.getAllBrands().subscribe((brands: any[]) => { 
+        const brand = brands.find((brand: any) => brand.id === this.product.brandId); 
+       const brandName = brand.name;
+       this.product.brandName=brandName
+       console.log(this.product.brandId);
+       
+            console.log("Brand Name:", brandName);
+       return brandName     
+       
+    });
+}
 }

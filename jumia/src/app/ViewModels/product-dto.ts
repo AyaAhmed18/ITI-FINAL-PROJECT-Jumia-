@@ -1,6 +1,8 @@
 import { SafeUrl } from "@angular/platform-browser";
 
 export interface ProductDto {
+    
+    entities: any[];
     product: SafeUrl;
     id:number,
     name:string,
@@ -16,4 +18,6 @@ export interface ProductDto {
     addedToCart?: boolean,
     cartQuantity:number
     addedTowashlist?: boolean,
+    brandName:string
+    prodcutid:string
 }

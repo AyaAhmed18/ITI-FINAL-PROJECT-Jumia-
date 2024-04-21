@@ -15,6 +15,9 @@
       .rtl {
         direction: rtl;
       }
+      .rtl .cartt{
+        font-weight:1px !important;
+      }
       /* Extra small devices (phones) */
       @media only screen and (max-width:590px) {
  
