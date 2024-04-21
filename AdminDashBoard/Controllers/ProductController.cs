@@ -53,7 +53,7 @@ namespace AdminDashBoard.Controllers
         public async Task<ActionResult> Create()
         {
 
-            var subCategory = await _subCategoryService.GetAll(30, 1);
+            var subCategory = await _subCategoryService.GetAll(250, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
 
@@ -114,7 +114,7 @@ namespace AdminDashBoard.Controllers
 
 
             }
-            var subcategory = await _subCategoryService.GetAll(55, 1);
+            var subcategory = await _subCategoryService.GetAll(200, 1);
             var subcatname = subcategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.subcategory = subcatname;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
@@ -144,7 +144,7 @@ namespace AdminDashBoard.Controllers
                 return NotFound();
 
             }
-            var subCategory = await _subCategoryService.GetAll(100, 1);
+            var subCategory = await _subCategoryService.GetAll(200, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
@@ -183,7 +183,7 @@ namespace AdminDashBoard.Controllers
 
 
             }
-            var subCategory = await _subCategoryService.GetAll(100, 1);
+            var subCategory = await _subCategoryService.GetAll(200, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();

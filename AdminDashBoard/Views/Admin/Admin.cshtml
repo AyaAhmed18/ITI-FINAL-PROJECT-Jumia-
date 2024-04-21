@@ -28,7 +28,7 @@
                                 <th>@AdminDashBoard.Languages.Resource.Email</th>
                                 <th>@AdminDashBoard.Languages.Resource.Phone Number</th>
                                 <th>@AdminDashBoard.Languages.Resource.Delete</th>
-                                <th>@AdminDashBoard.Languages.Resource.Update</th>
+                              @*   <th>@AdminDashBoard.Languages.Resource.Update</th> *@
                         </tr>
                     </thead>
                     <tbody>
@@ -56,11 +56,11 @@
                                     @item.PhoneNumber
                                 </td>
                                     <td class="p-1">
-                                        <a asp-action="Delete" asp-controller="Admin" asp-route-id="@item.Id" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger disabled btn-sm m-0">@AdminDashBoard.Languages.Resource.Delete</a>
+                                        <a asp-action="Delete" asp-controller="Admin" asp-route-id="@item.Id" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger  btn-sm m-0">@AdminDashBoard.Languages.Resource.Delete</a>
                                     </td>
-                                    <td class="p-1">
+                                   @*  <td class="p-1">
                                         <a asp-action="Update" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-info  btn-sm m-0 ">@AdminDashBoard.Languages.Resource.Update</a>
-                                    </td>
+                                    </td> *@
                                 </tr>
 }
                     </tbody>

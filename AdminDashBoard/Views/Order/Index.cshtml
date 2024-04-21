@@ -7,8 +7,14 @@
 <style>
     a{
         text-decoration:none;
-        color:teal
+        color:teal ;
+       
     }
+
+    .view {
+        background-color: teal;
+    }
+    
 </style>
 
 
@@ -16,7 +22,9 @@
                 
                 <div class="card">
                     <div class="card-body">
-                        <a id="exportButton" class="btn btn-primary" href="#">Export to Excel</a>
+        <a href="#" id="exportButton" class="btn btn-success text-white me-0"><i class="icon-download"></i> @AdminDashBoard.Languages.Resource.Export</a>
+
+        @* <a id="exportButton" class="btn btn-primary" href="#">Export to Excel</a> *@
                         <h1 class="card-title">@Localizer["Orders"]</h1>
                         <p class="card-description">
                             @Localizer["orderview"]  <span style="color:red">@Localizer["Info"]  </span>
@@ -51,8 +59,8 @@
                                                 <td class="p-1"><label class="badge badge-danger">@item.TotalOrderPrice</label></td>
                                                 <td class="text-danger p-1"> @item.Discount % <i class="ti-arrow-down"></i></td>
                                                 <td class="p-1  ">
-                                                    <a asp-action="Edit" asp-controller="Order" asp-route-Id="@item.Id" class="btn btn-warning   btn-sm "> 
-                                                        <i class="mdi mdi-eye p-1"></i>  View 
+                                    <a asp-action="Edit" asp-controller="Order" asp-route-Id="@item.Id" class="btn btn-success text-white    btn-sm ">
+                                        <i class="mdi mdi-eye p-1"></i>  View 
                                                         </a>
                                                  </td>
 

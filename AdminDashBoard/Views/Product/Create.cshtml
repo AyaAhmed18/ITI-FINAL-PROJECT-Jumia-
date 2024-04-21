@@ -58,6 +58,11 @@
                 color: #9ABCD1;
                 margin-bottom: 0;
             }
+
+    a {
+        text-decoration: none;
+        color: teal;
+    }
 </style>
 
 
@@ -227,21 +232,25 @@
                 </div>
 
 
+               @*  <button type="submit" class="btn btn-info text-white">@AdminDashBoard.Languages.Resource.Create</button>
 
+                <div class="form-group ">
+                    <input type="submit" value="Create" class="btn btn-success text-white" />
 
+                </div>  *@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <input type="submit" value="Create" class="btn btn-primary" />
+                            <input type="submit" value="Create" class="btn btn-success text-white" />
 
                         </div>
                     </div>
-                    <div class="col-md-6">
+                  @*   <div class="col-md-6">
                         <div class="form-group ">
                             <a asp-action="GetPagination" class="btn btn-warning">Back to List</a>
 
                         </div>
-                    </div>
+                    </div> *@
                 </div>
 
             

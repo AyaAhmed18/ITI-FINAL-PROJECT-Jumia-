@@ -22,7 +22,7 @@
             <h3> @Localizer["OrderDeliveryDetails"]</h3>
             <br />
             <p class="card-description">
-            <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@ViewBag.orderId " class="btn btn-warning">@Localizer["ShippingInfo"]</a>
+            @* <a asp-action="Details" asp-controller="Shippment" asp-route-Id="@ViewBag.orderId " class="btn btn-warning">@Localizer["ShippingInfo"]</a> *@
                @*  <a asp-action="Details" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">@Localizer["Products"]</a>
                 <a asp-action="Edit" asp-controller="Order" asp-route-Id="@ViewBag.orderId ">@Localizer["ChangeOrder"]</a>
                 <a class="back" style="background-color:#fff;color:darksalmon;padding:0;float:@Localizer["floatdir"]" asp-action="Index" asp-controller="Order"> @Localizer["Back"] <i class="mdi mdi-arrow-right"></i></a> *@
@@ -35,7 +35,7 @@
                 
 
                 <div class="card col-md-5  p-0">
-                        <h5 class="card-header ">@Localizer["CustomerInformation"]</h5>
+                        <h5 class="card-header " style="color:teal">@Localizer["CustomerInformation"]</h5>
                         <div class="card-body">
                             <p class="card-description">
                                 @Localizer["UserData"].. <span class="code">@Localizer["Call"] </span>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="col-md-1"></div>
                 <div class="card col-md-5  p-0">
-                    <h5 class="card-header">@Localizer["Address"]</h5>
+                <h5 class="card-header" style="color:darksalmon">@Localizer["Address"]</h5>
                     <div class="card-body">
                     <p class="card-description">
                         @Localizer["City"] __ <span class="code"> @Localizer["Region"]</span>
