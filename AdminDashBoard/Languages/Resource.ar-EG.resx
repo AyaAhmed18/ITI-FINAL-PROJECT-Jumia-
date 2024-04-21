@@ -171,6 +171,9 @@
   <data name="BrandName" xml:space="preserve">
     <value>براند</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>الغاء</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>فئة</value>
   </data>
@@ -291,6 +294,9 @@
   <data name="Phone" xml:space="preserve">
     <value>الهاتف</value>
   </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>رقم الهاتف</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>سابق</value>
   </data>
@@ -317,6 +323,9 @@
   </data>
   <data name="Role" xml:space="preserve">
     <value>الدور</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>الأدوار</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>بحث</value>

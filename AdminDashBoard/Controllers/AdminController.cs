@@ -2,6 +2,7 @@
 using Jumia.Application.Services.IServices;
 using Jumia.Application.Services.Services;
 using Jumia.Context;
+using Jumia.Dtos.AccountDtos;
 using Jumia.Dtos.User;
 using Jumia.Infrastructure;
 using Jumia.Model;
@@ -59,7 +60,7 @@ namespace AdminDashBoard.Controllers
 
                 IdentityResult res = await _userManager.CreateAsync(user, getAllUsers.Password);
 
-                if (res.Succeeded)
+                if (res.Succeeded && res.Succeeded && getAllUsers.Password == getAllUsers.Confirmpass)
                 {
                     //if (!string.IsNullOrEmpty(getAllUsers.RoleName) && await _roleManager.RoleExistsAsync(getAllUsers.RoleName))
 
