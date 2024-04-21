@@ -7,11 +7,12 @@ import { WishlistService } from '../../Services/wishlist.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ApiProductsService } from '../../Services/api-products.service';
+import { NewestArrivalsSliderComponent } from '../newest-arrivals-slider/newest-arrivals-slider.component';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,CommonModule,TranslateModule],
+  imports: [RouterLink,RouterOutlet,CommonModule,TranslateModule,NewestArrivalsSliderComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })

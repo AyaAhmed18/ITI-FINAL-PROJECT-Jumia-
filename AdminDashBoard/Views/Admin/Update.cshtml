@@ -2,11 +2,16 @@
 
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Add User";
+    ViewData["Title"] = "Update";
 
 }
 
-
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
 
 <link rel="stylesheet" href="~/css/AddUser.css">
 
@@ -15,13 +20,13 @@
 
 <div class="main-panel">
     <div class="content-wrapper ">
-        <div class="container">
+        <div class="">
             <div class=" grid-margin stretch-card">
-                <div class="card ">
+                <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">@AdminDashBoard.Languages.Resource.AddUser</h4>
-        
-                        <form asp-action="Adduser" class="forms-sample" method="post">
+                        <h4 class="card-title">@AdminDashBoard.Languages.Resource.UpdateUser</h4>
+                        <form asp-action="Update" asp-controller="Admin" class="forms-sample" method="post">
+
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <div class="form-group">
                                 <label asp-for="UserName">@AdminDashBoard.Languages.Resource.UserName:</label>
@@ -39,7 +44,7 @@
                                 <label asp-for="PhoneNumber">@AdminDashBoard.Languages.Resource.PhoneNumber:</label>
                                 <input asp-for="PhoneNumber" class="form-control" />
                                 <span class="text-danger"><span asp-validation-for="PhoneNumber" style="color: red"></span></span>
-                                
+
                             </div>
 
                             <div class="form-group">
@@ -54,28 +59,23 @@
                             </div>
                             <div class="container">
                                 <h4 class="card-title">@AdminDashBoard.Languages.Resource.Roles</h4>
-                            <ul class="form-group ks-cboxtags">
+                                <ul class="form-group ks-cboxtags">
 
-                                
-                                @foreach (var role in ViewBag.Roles)
-                                {
-                                    <li>
-                                        <input type="checkbox" name="SelectedRoles" value="@role.Name" id="role_@role.Name" class="fa">
-                                            <label for="role_@role.Name" class="fa">@role.Name</label>
-                                    </li>
 
-                                }
-                            </ul>
+                                    @foreach (var role in ViewBag.Roles)
+                                    {
+                                        <li>
+                                            <input type="checkbox" name="SelectedRoles" value="@role.Name" id="role_@role.Name">
+                                            <label for="role_@role.Name">@role.Name</label>
+                                        </li>
 
-                                <button type="submit" class="btn btn-primary me-2">@AdminDashBoard.Languages.Resource.Submit</a></button>
-                                <button class="btn btn-light">@AdminDashBoard.Languages.Resource.Cancel</button>
+                                    }
+                                </ul>
+                                <br />
+                                <button type="submit" class="btn btn-primary">@AdminDashBoard.Languages.Resource.Update</button>
                             </div>
 
 
-
-
-
-                            
                         </form>
                     </div>
                 </div>
@@ -83,3 +83,4 @@
         </div>
     </div>
 </div>
+

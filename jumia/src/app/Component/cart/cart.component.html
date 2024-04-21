@@ -231,7 +231,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <div class="hide-btn-cards">
+                <div class="">
                   <button type="submit" class="btn btn-warning" data-bs-dismiss="modal" (click)="AddToCart(pro)"
                     aria-label="Close">{{'cart.Add to cart' |translate}}</button>
                 </div>
@@ -255,190 +255,18 @@
     [hidden]="!showAlert1" [class.rtl]="isArabic">
     <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Added To Cart Successfully'
     |translate}}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="closeAlert()" aria-label="Close">
+    <button type="button" class="btn-close bg-light" data-bs-dismiss="alert" (click)="closeAlert()" aria-label="Close">
       <i class="fa fa-times-circle text-success" id="close"></i>
     </button>
   </div>
   <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert"
     [hidden]="!showAlert2" [class.rtl]="isArabic">
     <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Removed from Cart Successfully' |translate}}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="closeAlert()" aria-label="Close">
+    <button type="button" class="btn-close bg-light" data-bs-dismiss="alert" (click)="closeAlert()" aria-label="Close">
       <i class="fa fa-times-circle text-success" id="close"></i>
     </button>
   </div>
 </div>
-<!-- Recently Viewed -->
-<!-- <div class="">
-    <div class="reco" data-list="lastViewed" pagetype="cart">
-      <div class="reco-w card -mtm">
-        <header class="-df -fw -pas -i-ctr -mh-48px">
-          <h1 class="-phs -fs20 -m -f1 -elli">Recently Viewed<span class="-r" data-plc-subtitle="true"></span></h1><a
-            class="-df -i-ctr -fsh0 -upp -m -lh-1 -pvxs -mla -or5" data-plc-href="true" href="/history/?prods=5">SEE ALL
-            <i class="fa-solid fa-angle-right"></i>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-          </a>
-
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-
-          </a>
 
 
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-<br>
-<div class="col16">
-  <div class="reco" data-list="lastViewed" pagetype="cart">
-    <div class="reco-w card -mtm">
-      <header class="-df -fw -pas -i-ctr -mh-48px">
-        <h2 class="-phs -fs20 -m -f1 -elli">Top selling items<span class="-r" data-plc-subtitle="true"></span></h2><a
-          class="-df -i-ctr -fsh0 -upp -m -lh-1 -pvxs -mla -or5" data-plc-href="true" href="/history/?prods=5">SEE
-          ALL
-          <i class="fa-solid fa-angle-right"></i>
-        </a>
-      </header>
-      <div data-plc="true">
-        <div class="row ">
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-          </a>
-
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example</p>
-                <h6>EGP 590.00</h6>
-                <del> EGP 690.00</del>
-                <div class="bdg _dsct">19%</div>
-
-              </div>
-            </div>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-
-          </a>
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  </div> -->
-<!-- Recently Viewed -->
+<app-newest-arrivals-slider></app-newest-arrivals-slider>

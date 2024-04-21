@@ -27,6 +27,8 @@
                                 <th>@AdminDashBoard.Languages.Resource.Role</th>
                                 <th>@AdminDashBoard.Languages.Resource.Email</th>
                                 <th>@AdminDashBoard.Languages.Resource.Phone Number</th>
+                                <th>@AdminDashBoard.Languages.Resource.Delete</th>
+                              @*   <th>@AdminDashBoard.Languages.Resource.Update</th> *@
                         </tr>
                     </thead>
                     <tbody>
@@ -53,9 +55,14 @@
                                 <td data-th=" phone number">
                                     @item.PhoneNumber
                                 </td>
+                                    <td class="p-1">
+                                        <a asp-action="Delete" asp-controller="Admin" asp-route-id="@item.Id" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger  btn-sm m-0">@AdminDashBoard.Languages.Resource.Delete</a>
+                                    </td>
+                                   @*  <td class="p-1">
+                                        <a asp-action="Update" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-info  btn-sm m-0 ">@AdminDashBoard.Languages.Resource.Update</a>
+                                    </td> *@
                                 </tr>
 }
-
                     </tbody>
                 </table>
             </div>
@@ -63,6 +70,57 @@
     </div>
 </div>
 }
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @TempData["SuccessMessage"]
+        </div>
+    </div>
+}
+
+@if (TempData["SuccessMessage1"] != null)
+{
+    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @TempData["SuccessMessage1"]
+        </div>
+    </div>
+}
+@if (TempData["SuccessMessage2"] != null)
+{
+    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @TempData["SuccessMessage2"]
+        </div>
+    </div>
+}
+@if (TempData["SuccessMessage3"] != null)
+{
+    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+        <div>
+            @TempData["SuccessMessage3"]
+        </div>
+    </div>
+}
+<script>
+    function confirmDelete() {
+        var acc = confirm("Are you sure you want delete this user?");
+        if (acc == false) {
+            event.preventDefault();
+        }
+    }
+
+
+</script>
 
 
 

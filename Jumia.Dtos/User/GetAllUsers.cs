@@ -28,6 +28,11 @@ namespace Jumia.Dtos.User
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [Display(Name = "Confirm Password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [DataType(DataType.Password)]
+        public string Confirmpass { get; set; }
+
         public int RoleId { get; set; }
 
         //public string RoleName { get; set; }
