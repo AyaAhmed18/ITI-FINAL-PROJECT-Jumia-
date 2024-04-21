@@ -78,7 +78,7 @@ export class PaymentComponent implements OnInit {
       this.order.totalOrderPrice=this.TotalCartPrice
     }
     this.order.paymentStatus=2
-    this.order.status=1
+    this.order.status=0
     this.order.cancelOrder=false;
    // this.order.createdDate= new Date().toDateString();
     this.order.discount=10
@@ -103,15 +103,30 @@ export class PaymentComponent implements OnInit {
           console.log(element.stockQuantity);
           
           this.orderItem.totalPrice=element.realPrice*element.cartQuantity
+         // element.stockQuantity-=element.cartQuantity;
           this._orderService.AddOrderItems(this.orderItem).subscribe({
-           
             next: (res) => {
               console.log("iteeeems");
-              element.stockQuantity-=element.cartQuantity;
+
+               //Update product quantity
+
+               this._productService.getProductById(element.id).subscribe({
+                next:  (res: ProductDto) => {
+                  res.stockQuantity-=element.cartQuantity
+                  this._productService.UpdateProductQuantity(res).subscribe({
+                   next:(res:ProductDto)=>{
+                    console.log(res.stockQuantity);
+                   }
+                   })
+                 
+                  }}) 
+                   //end Update product quantity
               this._cartService.removeProduct(element)
            //   this._productService.UpdateProductQuantity(element).subscribe({next:(res)=>{alert("Quantity updated")}})
               console.log(res);
               if(res.isSuccess){
+                this._productService.UpdateProductQuantity(element).subscribe({next:(res)=>{alert("Quantity updated")}})
+             
               this._cartService.removeProduct(element)
              // alert("your cart is empty")
             }}

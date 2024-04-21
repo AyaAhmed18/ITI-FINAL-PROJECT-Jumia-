@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Jumia.Application.Services.IServices;
 using Microsoft.AspNetCore.Authorization;
+using OfficeOpenXml;
 
 namespace AdminDashBoard.Controllers
 {
@@ -177,6 +178,38 @@ namespace AdminDashBoard.Controllers
 
 
 
+        public async Task<IActionResult> ExportToExcel()
+        {
+            var pageSize = 200;
+            var Categoryes = await _categoryService.GetAll(pageSize, 1);
+
+            ExcelPackage excelPackage = new ExcelPackage();
+            ExcelWorksheet Worksheet = excelPackage.Workbook.Worksheets.Add("Categoryes");
+
+            // Set column headers
+            Worksheet.Cells[1, 1].Value = "Name";
+            Worksheet.Cells[1, 2].Value = "Description";
+
+
+            // Populate the Excel worksheet with data from Categoryes
+            int row = 2;
+            foreach (var category in Categoryes.Entities)
+            {
+                Worksheet.Cells[row, 1].Value = category.Name;
+                Worksheet.Cells[row, 2].Value = category.Description;
+
+
+
+                row++;
+            }
+
+            using (var memoryStream = new MemoryStream())
+            {
+                excelPackage.SaveAs(memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Categories.xlsx");
+            }
+        }
 
 
 
@@ -184,7 +217,7 @@ namespace AdminDashBoard.Controllers
 
 
 
-        
+
 
 
 

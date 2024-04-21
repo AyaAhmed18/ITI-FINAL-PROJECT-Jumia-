@@ -258,14 +258,13 @@ namespace JumiaStore.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    var ord = await _productServices.GetOne(productDto.Id);
-                    if (ord != null)
+                    var prd = await _productServices.GetOne(productDto.Id);
+                    if (prd != null)
                     {
-                        var order = await _productServices.UpdateQuantity(productDto);
-                        if (order.IsSuccess)
+                        var product = await _productServices.UpdateQuantity(productDto);
+                        if (product.IsSuccess)
                         {
-                            return Created("http://localhost:5164/api/Order/" + productDto.Id, "Product Quantity Updated Successfully");
-
+                            return (Ok(product));
                         }
                         else
                         {

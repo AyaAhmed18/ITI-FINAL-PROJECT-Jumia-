@@ -7,380 +7,266 @@
     <div>
       <h6 class="p-4 d-flex justify-content-center">{{'cart.Your cart is empty!' | translate}}</h6>
     </div>
-    <p class="d-flex justify-content-center">{{'cart.Browse our categories and discover our best deals!' |translate}}</p>
-    <div class="d-flex justify-content-center"> 
-      <button class="btn btn-warning text-white m-4 " (click)="startShopping()">{{'cart.Start Shopping' |translate}}</button>
+    <p class="d-flex justify-content-center">{{'cart.Browse our categories and discover our best deals!' |translate}}
+    </p>
+    <div class="d-flex justify-content-center">
+      <button class="btn btn-warning text-white m-4 " (click)="startShopping()">{{'cart.Start Shopping'
+        |translate}}</button>
     </div>
 
   </ol>
 </nav>
 
 <div [class.rtl]="isArabic">
-<!-- Cart with Items -->
-<div class="row " *ngIf="cartNumber > 0" >
+  <!-- Cart with Items -->
+  <div class="row " *ngIf="cartNumber > 0">
 
-
- 
-  <div class="card col-8   my-4 "  >
-    <div class="card-header  bg-body">
-      <h5>{{'cart.Cart'|translate}} ({{cartNumber}})</h5>
-    </div>
-    <div *ngFor="let item of cartItems">
-    <div class="row card-body"  >
-
-      <div class="col-3-cart col-3">
-        <!-- <img src="assets/ProductImg/1.jpg" style="height: 100px;"> -->
-        <img class="card-img-top" [src]="item.images[0]" alt="Card image"
-        style="height: 150px; width:100%">
+    <div class="card col-8   my-4 ">
+      <div class="card-header  bg-body">
+        <h5>{{'cart.Cart'|translate}} ({{cartNumber}})</h5>
       </div>
-      <div class="col-5-cart col-5 ">
-        <p class="mb-1"><small> {{ isArabicLanguage() ? item.nameAr : item.name }} </small> </p>
-        <p><small>{{item.shortDescription}}</small></p>
-        <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">
-          <small [ngClass]="{'text-danger': item.stockQuantity < 5, 'text-success': item.stockQuantity >= 5}">
-            {{ item.stockQuantity < 5 ? item.stockQuantity + ' Unifs Left' : 'Available' }}
-        </small> </i> </h6>
-        <a href="https://www.jumia.com.eg/nivea-men-men-face-body-hands-cream-moisturising-tin-75ml-37954540.html"> <img
-            src="assets/ProductImg/express.jpg" style="width: 40%;"></a>
-      </div>
-      <div class="col-4 col-4-cart">
-        <div class="row" style="text-align: end;">
-          <h1 class="h4 col-12">{{'cart.EGP' | translate}} {{item.realPrice}}</h1> <!--price After Discount-->
-           <div class="col-12 ">
-            <p class="fa"><del>{{'cart.EGP' |translate}} {{item.realPrice}}     </del>     
-              <strong class="offer-cards p-1">   -{{item.discount}}%</strong> </p>
-          </div>
-        </div>
-      </div>
-     
-    </div>
-    <div class=" bg-transparent row">
       
-      <div class="col-6" (click)="removeProduct(item)">
-       <button class="btn bg-white"> <p class="" style="color: #ff9901ea;"><i class="fa fa-solid fa-trash"></i> <span class="text-uppercase"> {{'cart.Remove' | translate}}</span></p> </button>
-      </div>
+      <div *ngFor="let item of cartItems">
+        <div class="row card-body">
+
+          <div class="col-3-cart col-3">
+            <!-- <img src="assets/ProductImg/1.jpg" style="height: 100px;"> -->
+            <img class="card-img-top" [src]="item.images[0]" alt="Card image" style="height: 150px; width:100%">
+          </div>
+
+          <div class="col-5-cart col-5 ">
+            <p class="mb-1"><small> {{ isArabicLanguage() ? item.nameAr : item.name }} </small> </p>
+            <p><small>{{item.shortDescription}}</small></p>
+            <h6 class=" mb-1"><i class="fa fa-exclamation-circle ">
+                <small [ngClass]="{'text-danger': item.stockQuantity < 5, 'text-success': item.stockQuantity >= 5}">
+                  {{ item.stockQuantity < 5 ? item.stockQuantity + ' Unifs Left' : 'Available' }} </small> </i> </h6>
+            <a href="https://www.jumia.com.eg/nivea-men-men-face-body-hands-cream-moisturising-tin-75ml-37954540.html">
+              <img src="assets/ProductImg/express.jpg" style="width: 40%;"></a>
+          </div>
+
+
+          <div class="col-4 col-4-cart">
+            <div class="row" style="text-align: end;">
+              <h1 class="h4 col-12">{{'cart.EGP' | translate}} {{item.realPrice}}</h1> <!--price After Discount-->
+              <div class="col-12 ">
+                <p class="fa"><del>{{'cart.EGP' |translate}} {{item.realPrice}} </del>
+                  <strong class="offer-cards p-1"> -{{item.discount}}%</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class=" bg-transparent row">
+
+          <div class="col-6" (click)="removeProduct(item)">
+            <button class="btn bg-white">
+              <p class="" style="color: #ff9901ea;"><i class="fa fa-solid fa-trash"></i> <span class="text-uppercase">
+                  {{'cart.Remove' | translate}}</span></p>
+            </button>
+          </div>
+
           <div class="col-6 d-flex justify-content-end ">
-            <button class="btn btn-warning btn-sm" (click)="decreaseQuantity(item)" >
+            <button class="btn btn-warning btn-sm" (click)="decreaseQuantity(item)">
               <i class="fa fa-solid fa-minus text-light"></i>
             </button>
-
             <p class="px-4"><strong>{{item.cartQuantity}}</strong> </p>
-
             <button class="btn btn-warning btn-sm" (click)="increaseQuantity(item)">
               <i class="fa fa-solid fa-plus text-light"></i>
             </button>
           </div>
-          
+
+        </div>
+        <hr>
+      </div>
+
     </div>
-    <hr>
-  </div>
- 
-  </div>
 
 
 
 
 
-  <!-- cart Sammary  -->
-  <div class="col-4 col-4-sammary float-end ">
-    <div class="card mb-3 my-4">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>{{'cart.CART SUMMARY' | translate}}</strong> </li>
-        <li class="list-group-item">
-          <ul class="d-flex justify-content-start">
-            <li class="me-5 ">{{'cart.Subtotal' | translate}}</li>
-            <li style="text-align:end;"><strong>{{'cart.EGP' | translate}} {{TotalCartPrice}}</strong></li>
-          </ul>
-        </li>
-        <ul>
-          <li class="m-2">
-            <p><small>{{'cart.Missing EGP 151.00 to reach free delivery' | translate}}</small> </p>
+    <!-- cart Sammary  -->
+    <div class="col-4 col-4-sammary float-end ">
+      <div class="card mb-3 my-4">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>{{'cart.CART SUMMARY' | translate}}</strong> </li>
+          <li class="list-group-item">
+            <ul class="d-flex justify-content-start">
+              <li class="me-5 ">{{'cart.Subtotal' | translate}}</li>
+              <li style="text-align:end;"><strong>{{'cart.EGP' | translate}} {{TotalCartPrice}}</strong></li>
+            </ul>
           </li>
-          <li class="m-2"> <img src="assets/cart.jpg" style="width: 40%;"></li>
+          <ul>
+            <li class="m-2">
+              <p><small>{{'cart.Missing EGP 151.00 to reach free delivery' | translate}}</small> </p>
+            </li>
+            <li class="m-2"> <img src="assets/cart.jpg" style="width: 40%;"></li>
+          </ul>
         </ul>
-      </ul>
-      <div class="card-footer  ">
-        <button class="btn btn-warning text-light" style="width: 90%;" routerLink="/shippment">{{'cart.Checkout'|translate}} ({{'cart.EGP' | translate}}
-          {{TotalCartPrice}} )</button>
+        <div class="card-footer  ">
+          <button class="btn btn-warning text-light" style="width: 90%;"
+            routerLink="/shippment">{{'cart.Checkout'|translate}} ({{'cart.EGP' | translate}}
+            {{TotalCartPrice}} )</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
-<!-- washlistproduct -->
-<div class="container-fluid mt-5 shadow-sm p-3 mb-5 bg-body rounded " style="background-color: white;" [class.rtl]="isArabic">
-  <div class="row mb-3  ">
-    <div class="col">
-      <h1>{{'cart.Saved Item'|translate}}</h1>
+
+  <!-- washlistproduct -->
+  <div class="container-fluid mt-5 shadow-sm p-3 mb-5 bg-body rounded " 
+  style="background-color: white;"[class.rtl]="isArabic">
+
+    <div class="row mb-3  ">
+
+      <div class="col">
+        <h1>{{'cart.Saved Item'|translate}}</h1>
+      </div>
+
+      <div class="col text-warning" style="text-align: right;"> <a href="">
+          <h4>{{'cart.See All >'|translate}} </h4>
+        </a> 
+      </div>
     </div>
 
-    <div class="col text-warning" style="text-align: right;"> <a href="">
-        <h4>{{'cart.See All >'|translate}} </h4>
-      </a> </div>
-  </div>
+    <div id="myCarousel" class="carousel slide p-2" data-bs-ride="carousel">
+      <div class="carousel-inner">
 
-  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="row">
-          <div class="col-3">
-            <div class=" card-hover card d-block w-100">
-            </div>
-          </div>
-          @for(pro of wishlistItems;track pro.id;){
-          <div class="col-3">
-            <div class="show-cards-btn card cards-hover" style="width:210px; height: 300px; border: none;">
-              <!-- <img class="card-img-top" src="assets/ProductImg/1.jpg" alt="Card image" -->
-              <!-- style="height:auto; width: 150px;"> -->
-              <img [src]="pro.images[0]" class="card-img-top" alt="Card image" style="width:100%; height: 200px;">
-              <div class="label-Cards-top px-2">
-                <span class="text-white ">{{'cart.Buy 400 get' | translate}} {{pro.discount}} {{'cart.off' | translate}}</span>
-              </div>
-              
-              <div class="card-body">
-                <p class="blockquote-footer"><small>{{pro.shortDescription}}</small></p>
-                <b><strong>{{'cart.EGP' | translate}} {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
-                <ul class="list-inline">
-                  <li class="list-inline-item"><small><del>EGP {{pro.realPrice}}</del> </small></li>
-                  <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>
-                </ul>
-                <div class="hide-btn-cards">
-                <button class="btn btn-warning w-100 text-white" data-bs-toggle="modal"
-                  [attr.data-bs-target]="'#staticBackdrop-' + pro.id">{{'cart.Add To Cart'|translate}}</button>
-                </div>
-              </div>
-              <!-- Model -->
-              <div class="modal fade" [id]="'staticBackdrop-' + pro.id" data-bs-backdrop="static"
-                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog bg-white">
-                  <div class="modal-content ">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="staticBackdropLabel">{{'cart.Please select a variation' |translate}}</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="center-align">
-                        <p>{{'cart.Only size fit all' | translate}}</p>
-                        <h2><strong>{{'cart.EGP' |translate}} {{pro.realPrice}} <del> {{'cart.EGP' |translate}} </del></strong></h2>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <div class="hide-btn-cards">
-                        <button type="submit" class="btn btn-warning" data-bs-dismiss="modal" (click)="AddToCart(pro)"
-                          aria-label="Close">{{'cart.Add to cart' |translate}}</button>
-                      </div>
+        <div class="carousel-item active">
+          <div class="row p-1">
+
+            <!-- @for(pro of wishlistItems;track pro.id;){ -->
+            <div *ngFor="let pro of wishlistItems.slice(0, 6); let index = index" class=" col-slider sl-scall">
+              <div class="cards" [class.rtl]="isArabic">
+                <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
+
+                  <img [src]="pro.images[0]" class="card-img-top" alt="Card image" >
+                  <div class="label-Cards-top ">
+                    <span class="text-white "> <p class=" linkSidebar">{{'cart.Buy 400 get' | translate}} {{pro.discount}} {{'cart.off' |translate}}</p></span>
+                  </div>
+
+                  <div class="card-body">
+                    <p class="blockquote-footer linkSidebar"><small >{{pro.shortDescription}}</small></p>
+                    <p class=" linkSidebar"><strong>{{'cart.EGP' | translate}}
+                        {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></p>
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><p class="linkSidebar"><small ><del>EGP {{pro.realPrice}}</del> </small></p></li>
+                      <li class="list-inline-item offer-cards px-1"><p class="linkSidebar"><small>-{{pro.discount}}%</small></p></li>
+                    </ul>
+                    <div class="hide-btn-cards">
+                      <button class="btn btn-warning w-100 text-white" data-bs-toggle="modal"
+                        [attr.data-bs-target]="'#staticBackdrop-' + pro.id"> <p class="linkSidebar  ">Add To Cart</p></button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="row">
+        </div>
+
+
+
+
+        <div class="carousel-item ">
+          <div class="row p-1">
+
+            <!-- @for(pro of wishlistItems;track pro.id;){ -->
+            <div *ngFor="let pro of wishlistItems.slice(6, 12); let index = index" class=" col-slider sl-scall">
+              <div class="cards" [class.rtl]="isArabic">
+                <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
+
+                  <img [src]="pro.images[0]" class="card-img-top" alt="Card image" >
+                  <div class="label-Cards-top ">
+                    <span class="text-white "> <p class=" linkSidebar">{{'cart.Buy 400 get' | translate}} {{pro.discount}} {{'cart.off' |translate}}</p></span>
+                  </div>
+
+                  <div class="card-body">
+                    <p class="blockquote-footer linkSidebar"><small >{{pro.shortDescription}}</small></p>
+                    <p class=" linkSidebar"><strong>{{'cart.EGP' | translate}}
+                        {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></p>
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><p class="linkSidebar"><small ><del>EGP {{pro.realPrice}}</del> </small></p></li>
+                      <li class="list-inline-item offer-cards px-1"><p class="linkSidebar"><small>-{{pro.discount}}%</small></p></li>
+                    </ul>
+                    <div class="hide-btn-cards">
+                      <button class="btn btn-warning w-100 text-white" data-bs-toggle="modal"
+                        [attr.data-bs-target]="'#staticBackdrop-' + pro.id"><p class="linkSidebar  ">Add To Cart</p></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <button class="carousel-control-prev col-1 bg-white" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{{'cart.Previous' |translate}}</span>
-          </button>
-          <button class="carousel-control-next col-1 bg-white" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{{'cart.Next' |translate}}</span>
-          </button>
-          }
         </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1" [class.rtl]="isArabic" >
-  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Added To Cart Successfully' |translate}}
-  <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
-    <i class="fa fa-times-circle text-success" id="close"></i>
-  </button>
-</div>
-<div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2" [class.rtl]="isArabic">
-  <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Removed from Cart Successfully' |translate}} 
-  <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
-    <i class="fa fa-times-circle text-success" id="close"></i>
-  </button>
-</div>
-</div>
-<!-- Recently Viewed -->
-<!-- <div class="">
-    <div class="reco" data-list="lastViewed" pagetype="cart">
-      <div class="reco-w card -mtm">
-        <header class="-df -fw -pas -i-ctr -mh-48px">
-          <h1 class="-phs -fs20 -m -f1 -elli">Recently Viewed<span class="-r" data-plc-subtitle="true"></span></h1><a
-            class="-df -i-ctr -fsh0 -upp -m -lh-1 -pvxs -mla -or5" data-plc-href="true" href="/history/?prods=5">SEE
-            ALL
-            <i class="fa-solid fa-angle-right"></i>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
 
+        
+      <button class="carousel-control-prev col-1 fixed-p-p" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next col-1 fixed-n-p" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+        <!-- Model -->
+        <div *ngFor="let pro of wishlistItems; let index = index" class="modal fade" [id]="'staticBackdrop-' + pro.id"
+          data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+          aria-hidden="true">
+          <div class="modal-dialog bg-white">
+            <div class="modal-content ">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">{{'cart.Please select a variation' |translate}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+              </div>
+              <div class="modal-body">
+                <div class="center-align">
+                  <p>{{'cart.Only size fit all' | translate}}</p>
+                  <h2><strong>{{'cart.EGP' |translate}} {{pro.realPrice}} <del> {{'cart.EGP' |translate}}
+                      </del></strong></h2>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="">
+                  <button type="submit" class="btn btn-warning" data-bs-dismiss="modal" (click)="AddToCart(pro)"
+                    aria-label="Close">{{'cart.Add to cart' |translate}}</button>
+                </div>
               </div>
             </div>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-          </a>
-
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-
-          </a>
-
-
-
-
+          </div>
         </div>
+
+
+
+
+
+
       </div>
     </div>
   </div>
 
-</div>
-<br>
-<div class="col16">
-  <div class="reco" data-list="lastViewed" pagetype="cart">
-    <div class="reco-w card -mtm">
-      <header class="-df -fw -pas -i-ctr -mh-48px">
-        <h2 class="-phs -fs20 -m -f1 -elli">Top selling items<span class="-r" data-plc-subtitle="true"></span></h2><a
-          class="-df -i-ctr -fsh0 -upp -m -lh-1 -pvxs -mla -or5" data-plc-href="true" href="/history/?prods=5">SEE
-          ALL
-          <i class="fa-solid fa-angle-right"></i>
-        </a>
-      </header>
-      <div data-plc="true">
-        <div class="row ">
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-          </a>
-
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example</p>
-                <h6>EGP 590.00</h6>
-                <del> EGP 690.00</del>
-                <div class="bdg _dsct">19%</div>
-
-              </div>
-            </div>
-          </a>
-          <a href="#">
-            <div appProductCard class="card" style="width: 10.5rem;">
-              <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/163605/1.jpg?7610"
-                class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example </p>
-                <h6>EGP 590.00</h6>
-                <div class="bdg _dsct">19%</div>
-                <del> EGP 690.00</del>
-
-              </div>
-            </div>
-
-          </a>
 
 
-        </div>
-      </div>
-    </div>
+  <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert"
+    [hidden]="!showAlert1" [class.rtl]="isArabic">
+    <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Added To Cart Successfully'
+    |translate}}
+    <button type="button" class="btn-close bg-light" data-bs-dismiss="alert" (click)="closeAlert()" aria-label="Close">
+      <i class="fa fa-times-circle text-success" id="close"></i>
+    </button>
   </div>
-  
-  </div> -->
-<!-- Recently Viewed -->
+  <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert"
+    [hidden]="!showAlert2" [class.rtl]="isArabic">
+    <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong>{{'cart.Product Removed from Cart Successfully' |translate}}
+    <button type="button" class="btn-close bg-light" data-bs-dismiss="alert" (click)="closeAlert()" aria-label="Close">
+      <i class="fa fa-times-circle text-success" id="close"></i>
+    </button>
+  </div>
+</div>
+
+
+<app-newest-arrivals-slider></app-newest-arrivals-slider>

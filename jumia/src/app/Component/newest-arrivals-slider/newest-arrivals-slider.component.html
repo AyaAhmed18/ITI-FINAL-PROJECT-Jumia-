@@ -1,1 +1,61 @@
-<p>newest-arrivals-slider works!</p>
+<!-- --------------------------productNews------------------------- -->
+<div class="container bg-body rounded-3" [class.rtl]="isArabic">
+    <div *ngIf="productNews">
+      <div class="row ">
+        <div class="col-6 p-1 h5">
+          <strong class="">
+            <p class="linkSidebar">New Products for you</p>
+          </strong>
+        </div>
+        <div class="col-6 p-1 h5">
+          <strong>
+            <a class="Link_hover color-black   linkSidebar float-end" routerLink="/Product">SEE ALL ></a>
+          </strong>
+        </div>
+      </div>
+    <div id="myCarousel2" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active p-0">
+  
+          <div class="row ">
+            <div *ngFor="let pronew of productNews.slice(0, 6); let index = index" class="col sl-scall" (click)="navigateToDetails(pronew.id)">
+              <div class="" [class.rtl]="isArabic">
+                <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
+                  <img class="card-img-top" [src]="pronew.images[0]" alt="Card image"
+                  style="height: 200px; width:100%">
+              
+                  <p class="linkSidebar ">{{ isArabicLanguage() ? pronew.nameAr : pronew.name }}</p>
+               
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div *ngFor="let pronew of productNews.slice(6, 12); let index = index" class="col sl-scall"(click)="navigateToDetails(pronew.id)">
+              <div class="" [class.rtl]="isArabic">
+                <div class="show-cards-btn card cards-hover diccProduct " style=" border: none;">
+                  <img class="card-img-top" [src]="pronew.images[0]" alt="Card image"
+                  style="height: 200px; width:100%">
+              
+                  <p class="linkSidebar ">{{ isArabicLanguage() ? pronew.nameAr : pronew.name }}</p>
+               
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+     
+      <button class="carousel-control-prev col-1 fixed-n-p" type="button" data-bs-target="#myCarousel2" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next col-1 fixed-n-p" type="button" data-bs-target="#myCarousel2" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  </div>
+  </div>

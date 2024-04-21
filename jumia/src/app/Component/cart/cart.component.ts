@@ -7,11 +7,12 @@ import { WishlistService } from '../../Services/wishlist.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ApiProductsService } from '../../Services/api-products.service';
+import { NewestArrivalsSliderComponent } from '../newest-arrivals-slider/newest-arrivals-slider.component';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,CommonModule,TranslateModule],
+  imports: [RouterLink,RouterOutlet,CommonModule,TranslateModule,NewestArrivalsSliderComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
@@ -34,18 +35,21 @@ private _apiProductService:ApiProductsService) { }
 
   
   ngOnInit(): void {
-    this._wishlist.getWishlist().subscribe(Items=>{
-      this.wishlistItems =Items
-      this.sanitizeImagesWhishlist()
-      console.log(Items);});
-    console.log(this.wishlistItems); 
-    
+
     this._cartService.getCart().subscribe(cartItems => {
       this.cartItems = cartItems;
       this.sanitizeImagesCart()
      this.TotalCartPrice= this._cartService.calculateTotalCartPrice();
       this.cartNumber=this._cartService.calculateTotalCartNumber();
     });
+    
+    this._wishlist.getWishlist().subscribe(Items=>{
+      this.wishlistItems =Items
+      this.sanitizeImagesWhishlist()
+      console.log(Items);});
+    console.log(this.wishlistItems); 
+    
+   
     //
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'

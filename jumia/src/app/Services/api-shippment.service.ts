@@ -14,7 +14,6 @@ export class ApiShippmentService {
   constructor(private _httpClient:HttpClient) { }
  
   AddClientAddress(shippment:IShippment): Observable<any> {
-    console.log(shippment)
     return this._httpClient.post<any>(`${this.apiUrl}/Shippment`,  shippment );
 }
 
