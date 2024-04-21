@@ -15,9 +15,9 @@
 
 <div class="main-panel">
     <div class="content-wrapper ">
-        <div class="">
+        <div class="container">
             <div class=" grid-margin stretch-card">
-                <div class="card">
+                <div class="card ">
                     <div class="card-body">
                         <h4 class="card-title">@AdminDashBoard.Languages.Resource.AddUser</h4>
         
@@ -60,8 +60,8 @@
                                 @foreach (var role in ViewBag.Roles)
                                 {
                                     <li>
-                                        <input type="checkbox" name="SelectedRoles" value="@role.Name" id="role_@role.Name">
-                                        <label for="role_@role.Name">@role.Name</label>
+                                        <input type="checkbox" name="SelectedRoles" value="@role.Name" id="role_@role.Name" class="fa">
+                                            <label for="role_@role.Name" class="fa">@role.Name</label>
                                     </li>
 
                                 }

@@ -11,7 +11,55 @@
 @{
     Layout = "_Layout";
 }
+<style>
 
+    .image-upload {
+        position: relative;
+        max-width: 360px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+        .image-upload input {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 90%;
+            opacity: 0;
+        }
+
+    .upload-field {
+        display: block;
+        padding: 12px;
+        border-radius: 11px;
+    }
+
+        .upload-field .file-thumbnail {
+            cursor: pointer;
+            border: 1px dashed #BBD9EC;
+            border-radius: 11px;
+            text-align: center;
+            padding: 20px;
+        }
+
+            .upload-field .file-thumbnail img {
+                width: 50px;
+            }
+
+            .upload-field .file-thumbnail h3 {
+                font-size: 12px;
+                color: #000000;
+                font-weight: 600;
+                margin-bottom: 4px;
+            }
+
+            .upload-field .file-thumbnail p {
+                font-size: 12px;
+                color: #9ABCD1;
+                margin-bottom: 0;
+            }
+</style>
 
 
 
@@ -23,8 +71,8 @@
 
 
 
-<div class="col-12 grid-margin">
-    <div class="card">
+
+    <div class="card container">
         <div class="card-body">
             <h4 class="card-title">@AdminDashBoard.Languages.Resource.UpdateSubCategory</h4>
 
@@ -60,32 +108,52 @@
 
                     </div>
 
-
-
-                    <div class="col-md-6">
+                    
+                    <div class="col-md-12">
                         <div class="form-group ">
                             <label asp-for="Description" class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
                             <input asp-for="Description" class="form-control">
                             <span asp-validation-for="Description" style="color:red"></span>
                         </div>
                     </div>
+                </div>
 
+
+                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <label asp-for="Image" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
-                            <input asp-for="Image" type="file" class="form-control">
-                            <span asp-validation-for="Image" style="color:red"></span>
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="image-upload ">
+                                    <label asp-for="Image" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
+                                    <input asp-for="Image" id="Image" type="file" onchange="fileValue(this)">
+
+                                    <label asp-for="Image" for="Image" class="upload-field">
+                                        <div class="file-thumbnail">
+                                            <img id="image-preview" src="https://www.btklsby.go.id/images/placeholder/basic.png" alt="">
+                                            <h3 id="filename">
+                                                Drag and Drop
+                                            </h3>
+                                            <p>Supports JPG, PNG, SVG</p>
+                                        </div>
+                                    </label>
+                                    <span asp-validation-for="Image" style="color:red"></span>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
-
                     <div class="col-md-6">
+                        <div class="row">
+                    <div class="col-md-12">
                         <div class="form-group ">
                             <label asp-for="CategoryId" class="form-label"> @AdminDashBoard.Languages.Resource.Categoryies</label>
                             <select asp-for="CategoryId" asp-items="list" class="form-select"></select>
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group ">
                             <p>Specifications</p>
                             <div class="row">
@@ -101,15 +169,15 @@
                         </div>
                     </div>
 
-
-
+                        </div>
+</div>
 
                     <button type="submit" class="btn btn-info  text-white ">@AdminDashBoard.Languages.Resource.Update</button>
                 </div>
             </form>
         </div>
     </div>
-</div>
+
 
 @if (TempData["SuccessMessage"] != null)
 {
@@ -123,4 +191,3 @@
     </div>
 }
 
->
