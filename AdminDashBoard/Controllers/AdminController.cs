@@ -243,7 +243,7 @@ namespace AdminDashBoard.Controllers
                 var result = await _userManager.ChangePasswordAsync(user, changePassword.Currentpassword, changePassword.NewPassword);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction(nameof(Admin));
+                    return RedirectToAction("Login","Account");
                 }
                 else
                 {
