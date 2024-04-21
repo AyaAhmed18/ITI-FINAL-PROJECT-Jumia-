@@ -381,6 +381,9 @@
   <data name="UpdateSubCategory" xml:space="preserve">
     <value>Update SubCategory</value>
   </data>
+  <data name="UpdateUser" xml:space="preserve">
+    <value>Update User</value>
+  </data>
   <data name="UserId" xml:space="preserve">
     <value>UserId</value>
   </data>

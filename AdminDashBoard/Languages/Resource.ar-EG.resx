@@ -381,6 +381,9 @@
   <data name="UpdateSubCategory" xml:space="preserve">
     <value>تعديل الفئه الفرعيه</value>
   </data>
+  <data name="UpdateUser" xml:space="preserve">
+    <value>تعديل المستخدم</value>
+  </data>
   <data name="UserId" xml:space="preserve">
     <value>بطاقة تعريف المستخدم</value>
   </data>

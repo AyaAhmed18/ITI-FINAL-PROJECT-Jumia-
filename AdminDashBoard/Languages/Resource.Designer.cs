@@ -853,6 +853,15 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update User.
+        /// </summary>
+        public static string UpdateUser {
+            get {
+                return ResourceManager.GetString("UpdateUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UserId.
         /// </summary>
         public static string UserId {
