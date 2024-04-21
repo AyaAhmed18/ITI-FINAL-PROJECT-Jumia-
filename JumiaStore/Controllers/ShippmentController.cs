@@ -47,9 +47,9 @@ namespace JumiaStore.Controllers
                     if (createOrUpdateShipmentDto != null)
                     {
                         var ship=await _shippmentService.Create(createOrUpdateShipmentDto);
-                        if (ship.IsSuccess && ship.Entity==null)
+                        if (ship.IsSuccess)
                         {
-                            return Ok(ship);
+                            return (Ok(ship));
 
                         }
                         else if (!ship.IsSuccess && ship.Entity != null)

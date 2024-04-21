@@ -20,6 +20,7 @@ export class CartService {
      this.calculateTotalCartPrice();
      this.calculateTotalCartNumber();
       this.cartSubject.next([...this.cartItems]);
+
     }
   }
 

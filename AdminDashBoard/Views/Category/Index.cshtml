@@ -16,21 +16,41 @@
         white-space: nowrap;
         text-overflow: ellipsis;
     }
+
+    .btn-warning {
+        background-color: white
+    }
 </style>
 
-
+   @* <a id="exportButton" class="btn btn-primary" href="#">Export to Excel</a> *@
+<a href="#" id="exportButton" class="btn btn-success text-white me-0"><i class="icon-download"></i> @AdminDashBoard.Languages.Resource.Export</a>
 
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <a id="exportButton" class="btn btn-primary" href="#">Export to Excel</a>
-            <h4 class="card-title">@AdminDashBoard.Languages.Resource.AllCategory</h4>
-            <p class="card-description">
-               @*  length: <span style="color:red">@AdminDashBoard.Languages.Resource.AllCategory</span> *@
-                <a asp-action="Create" asp-controller="Category" class="btn btn-success p-3">@AdminDashBoard.Languages.Resource.AddCategory</a>
-               
-        
-            </p>
+         
+
+
+            <div class="row">
+                <div class="col-8">
+                    <h4 class="card-title">@AdminDashBoard.Languages.Resource.AllCategory</h4>
+                    <p class="card-description">
+                        Table: <span style="color:red">@AdminDashBoard.Languages.Resource.AllCategory</span>
+                    </p>
+                  
+                </div>
+                <div class="col-4">
+                    <div class="centered-container">
+                        <button type="button" onclick="location.href='@Url.Action("Create", "Category")'" class="icon-btn add-btn">
+                            <div class="add-icon"></div>
+                            <div class="btn-txt">@AdminDashBoard.Languages.Resource.AddCategory</div>
+                        </button>
+                    </div>
+                    
+                </div>
+
+            </div>
+
             <div class="table-responsive pt-3">
             
 
@@ -56,10 +76,16 @@
                                 <td class="p-1"><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="200px" , height="200px" alt="Category Image" /></td>
                                
                                 <td class="p-1">
-                                    <a asp-action="Update" asp-controller="Category" asp-route-id="@item.Id" class="btn btn-info  btn-sm m-0">@AdminDashBoard.Languages.Resource.Update</a>
+                                    <a asp-action="Update" asp-controller="Category" asp-route-id="@item.Id" class="btn btn-info  btn-sm m-0">
+                                        <i class="fa fa-edit"></i>
+                                        @AdminDashBoard.Languages.Resource.Update
+                                    </a>
                                 </td>
                                 <td class="p-1">
-                                    <a asp-action="Delete" asp-controller="Category" asp-route-id="@item.Id" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger disabled btn-sm m-0">@AdminDashBoard.Languages.Resource.Delete</a>
+                                    <a asp-action="Delete" asp-controller="Category" asp-route-id="@item.Id" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger disabled btn-sm m-0">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        @AdminDashBoard.Languages.Resource.Delete
+                                    </a>
                                 </td>
                             </tr>
 
