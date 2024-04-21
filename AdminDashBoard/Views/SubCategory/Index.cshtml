@@ -23,9 +23,31 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <a id="exportButton" class="btn btn-primary" href="#">Export to Excel</a>
-        <h1>@AdminDashBoard.Languages.Resource.AllSubCategory</h1>
-        <a asp-action="Create" asp-controller="SubCategory" class="btn btn-success p-3">@AdminDashBoard.Languages.Resource.AddSubCategory</a>
+
+            <div class="row">
+                <div class="col-8">
+                    <h4 class="card-title">@AdminDashBoard.Languages.Resource.AllSubCategory</h4>
+                    <p class="card-description">
+                        Table: <span style="color:red">@AdminDashBoard.Languages.Resource.AllSubCategory</span>
+                    </p>
+                </div>
+                <div class="col-4">
+                    <div class="centered-container">
+                        <button type="button" onclick="location.href='@Url.Action("Create", "SubCategory")'" class="icon-btn add-btn">
+                            <div class="add-icon"></div>
+                            <div class="btn-txt">@AdminDashBoard.Languages.Resource.AddSubCategory</div>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+            
+     
 <div class="table-responsive pt-3">
 <table class ="table table-bordered">
         <thead>
@@ -42,18 +64,24 @@
             @foreach (var item in Model.Entities)
             {
                 <tr>
-                    <td>@item.Name</td>
+                                <td class="p-1">@item.Name</td>
                     @* <td class="fifty-chars">@item.Description</td> *@
                                 <td class="p-1"><p class="fifty-chars">@item.Description</p> </td>
 
-                                <td><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="100px" , height="100px" alt="SubCategory Image" /></td>
-                    <td>@item.CategoryName</td>
-                    <td>
-                            <a asp-action="Update" asp-controller="SubCategory" asp-route-id="@item.Id" class="btn btn-info">@AdminDashBoard.Languages.Resource.Update</a>
-                    </td>
-                        <td>
-                            <a asp-action="Delete" asp-controller="SubCategory" asp-route-id="@item.Id" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger disabled">@AdminDashBoard.Languages.Resource.Delete</a>
-                        </td>
+                                <td class="p-1"><img src="data:image;base64,@Convert.ToBase64String(item.Image)" width="100px" , height="100px" alt="" /></td>
+                                <td class="p-1">@item.CategoryName</td>
+                                <td class="p-1">
+                                    <a asp-action="Update" asp-controller="SubCategory" asp-route-id="@item.Id" class="btn btn-info">
+                                        <i class="fa fa-edit"></i> 
+                                        @AdminDashBoard.Languages.Resource.Update
+                                       </a>
+                                  </td>
+                                <td class="p-1">
+                                    <a asp-action="Delete" asp-controller="SubCategory" asp-route-id="@item.Id" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger disabled">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        @AdminDashBoard.Languages.Resource.Delete
+                                    </a>
+                                 </td>
                 </tr>
             }
         </tbody>

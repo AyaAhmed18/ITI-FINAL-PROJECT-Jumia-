@@ -11,10 +11,8 @@
     }
 </style>
 
-<div class="main-panel ">
-    <div class="content-wrapper">
-        <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card">
+
+ 
                 
                 <div class="card">
                     <div class="card-body">
@@ -45,14 +43,18 @@
                                         {
 
                                             <tr>
-                                                <td>@item.Id</td>
-                                                <td>@item.Customer</td>
-                                                <td><label class="badge badge-danger">@item.Status</label></td>
-                                                <td><label class="badge badge-warning">@item.GetPaymentStatusWord()</label></td>
-                                                <td>@item.OrderDate</td>
-                                                <td><label class="badge badge-danger">@item.TotalOrderPrice</label></td>
-                                                <td class="text-danger"> @item.Discount % <i class="ti-arrow-down"></i></td>
-                                                <td><a asp-action="Edit" asp-controller="Order" asp-route-Id="@item.Id"> <i class="mdi mdi-eye"></i>  View </a> </td>
+                                                <td class="p-1">@item.Id</td>
+                                                <td class ="p-1">@item.Customer</td>
+                                                <td class="p-1"><label class="badge badge-danger">@item.Status</label></td>
+                                                <td class="p-1"><label class="badge badge-warning">@item.GetPaymentStatusWord()</label></td>
+                                                <td class="p-1">@item.OrderDate</td>
+                                                <td class="p-1"><label class="badge badge-danger">@item.TotalOrderPrice</label></td>
+                                                <td class="text-danger p-1"> @item.Discount % <i class="ti-arrow-down"></i></td>
+                                                <td class="p-1  ">
+                                                    <a asp-action="Edit" asp-controller="Order" asp-route-Id="@item.Id" class="btn btn-warning   btn-sm "> 
+                                                        <i class="mdi mdi-eye p-1"></i>  View 
+                                                        </a>
+                                                 </td>
 
                                             </tr>
                                         }
@@ -66,11 +68,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-</div>
+           
+   
 @if (TempData["SuccessMessage1"] != null)
 {
     <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
