@@ -22,7 +22,7 @@ export class WishlistService {
 //test
 
 initializeCartFromSession() {
-  const cartItemsFromSession = sessionStorage.getItem('cartItems');
+  const cartItemsFromSession = sessionStorage.getItem('wishlistItems');
   if (cartItemsFromSession) {
     this.wishlistItems = JSON.parse(cartItemsFromSession);
     this.wishlistSubject.next([...this.wishlistItems]);

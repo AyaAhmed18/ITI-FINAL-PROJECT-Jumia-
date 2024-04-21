@@ -220,9 +220,10 @@ export class ShippmentComponent implements OnInit{
    
     this._ShippmentService.AddClientAddress(clientAddress).subscribe({
       next: (res) => {
-        if (res.isSuccess && res.entity != null) {
+        if (res.isSuccess) {
           alert("Your Address Information Added Successfully");
           this.router.navigate(['/Delivary']);
+         
         } else if (!res.isSuccess && res.entity != null) {
          // alert("Your Address Information already Saved")
           //this.router.navigate(['/Delivary']);

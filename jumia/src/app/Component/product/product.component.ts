@@ -129,7 +129,7 @@ showAlert2: boolean = false;
     if(prod.stockQuantity>0){
       prod.cartQuantity = 1;
       prod.stockQuantity--;
-      // this._wishlist.removeProductFromWishlist(prod);
+       this._wishlist.removeProductFromWishlist(prod);
        this._cartService.addToCart(prod);
        this.showAlert1 = true;
        console.log(this.showAlert1);

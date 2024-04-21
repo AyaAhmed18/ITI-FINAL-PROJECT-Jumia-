@@ -119,14 +119,14 @@
 
   <div class="alert alert-danger alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert1" [class.rtl]="isArabic">
     <strong>{{'orderitem.Sorry' | translate}}</strong> {{'orderitem.you Cant Cancel This order' | translate}}
-    <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+    <button type="button" class="btn-close bg-info" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
         <i class="fa fa-times-circle text-danger" id="close"></i>
     </button>
   </div>
 
   <div class="alert alert-success alert-dismissible fade show fixed-top custom-alert" role="alert" id="customAlert" [hidden]="!showAlert2" [class.rtl]="isArabic">
-    <strong><i class="fa fa-check-circle text-success" id="acc"></i></strong> {{'orderitem.Your Order Is Cancelled' | translate}}
-    <button type="button" class="btn-close" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
+    <strong><i class="fa fa-check-circle text-success " id="acc"></i></strong> {{'orderitem.Your Order Is Cancelled' | translate}}
+    <button type="button" class="btn-close bg-info" data-bs-dismiss="alert"(click)="closeAlert()" aria-label="Close">
         <i class="fa fa-times-circle text-success" id="close"></i>
     </button>
   </div>
