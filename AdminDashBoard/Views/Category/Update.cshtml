@@ -95,8 +95,7 @@
         </div>
         
        @*  <div class="mb-3"> *@
-        @if (Model.Image != null && Model.Image.Length > 0)
-        {
+       
            @*  <label>Current Image:</label>
            <div> <img  src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Image)" width="200px" height="200px" alt="Current Image" class="img-fluid"> </div>
          *@
@@ -107,7 +106,7 @@
 
                         <label asp-for="Image" for="Image" class="upload-field">
                             <div class="file-thumbnail">
-                                    <img id="image-preview" src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Image)" src="https://www.btklsby.go.id/images/placeholder/basic.png" alt="">
+                                    <img id="image-preview"  src="https://www.btklsby.go.id/images/placeholder/basic.png" alt="">
                                 <h3 id="filename">
                                     Drag and Drop
                                 </h3>
@@ -116,7 +115,7 @@
                         </label>
                         <span asp-validation-for="Image" style="color:red"></span>
                     </div>
-                    }
+                   
        @*  <div class="mb-3">
             <label class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
             <input asp-for="Image" type="file" class="form-control">

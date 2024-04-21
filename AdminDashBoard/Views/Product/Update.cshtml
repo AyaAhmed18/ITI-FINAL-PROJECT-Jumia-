@@ -205,16 +205,18 @@
                             <label class=" col-form-label">Specifications</label>
                             <br />
                                 @if (ViewBag.prdSpecs != null)
-                                {
+                        {
+                            <div class="row">
                                     @foreach (var spec in ViewBag.prdSpecs)
                                     {
-                                        
+                                        <div class="col-md-6">
                                         <input type="checkbox" name="SpecificationName" checked disabled value="@spec.SpecificationName" id="spec_@spec.SpecificationName">
                                         <label for="spec_@spec.SpecificationName">@spec.SpecificationName</label>
                                         <label for="spec_@spec.Value">@spec.Value</label>
-                                        <br />
+</div>
 
                                     }
+                                    </div>
                                 }
                           
 

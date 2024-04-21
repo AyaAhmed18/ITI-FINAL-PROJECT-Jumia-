@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AdminDashBoard.Controllers
 {
     [Authorize(Roles = "Admin")]
+    
     public class AdminController : BaseController
     {
         private readonly IRoleService _roleService;
@@ -111,6 +112,7 @@ namespace AdminDashBoard.Controllers
 
             return View(getAllUsers);
         }
+
         public async Task<ActionResult> Delete(int id)
         {
             var res = await _userService.GetOne(id);

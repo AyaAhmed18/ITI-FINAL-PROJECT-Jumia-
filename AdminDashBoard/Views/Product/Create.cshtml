@@ -178,7 +178,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <label asp-for="SubCategoryID" class=" col-form-label">>@AdminDashBoard.Languages.Resource.SubCategory</label>
+                            <label asp-for="SubCategoryID" class=" col-form-label">@AdminDashBoard.Languages.Resource.SubCategory</label>
                             @* <input asp-for="SubCategoryID" class="form-control" hidden /> *@
                             <input name="selectedSubCategoryId" class="form-control" hidden />
                                 <select asp-for="SubCategoryID" asp-items="list" class="form-select" id="subCategorySelect"></select>
@@ -208,14 +208,18 @@
                           
                         </div>
                     </div> *@
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group ">
                             <label  class=" col-form-label">@AdminDashBoard.Languages.Resource.Specifications</label>
-                         
-                                <div id="subCategorySpecsContainer" style="display: none;">
-                                   
-                                    @Html.Partial("_SubCategorySpecsPartial")
-                                </div>
+                        
+
+                                    <div id="subCategorySpecsContainer" style="display: none;">
+
+                                        @Html.Partial("_SubCategorySpecsPartial")
+                                    </div>
+
+                             
+                                
                            
                         </div>
                     </div>
