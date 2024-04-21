@@ -183,8 +183,14 @@
   <data name="CategoryName" xml:space="preserve">
     <value>اسم الفئه</value>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>تغيير كلمة المرور</value>
+  </data>
   <data name="Confirm" xml:space="preserve">
     <value>تاكيد</value>
+  </data>
+  <data name="ConfirmnewPassword" xml:space="preserve">
+    <value>تاكيد كلمة المرور الجديدة</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>تأكيد كلمة المرور</value>
@@ -197,6 +203,9 @@
   </data>
   <data name="Create" xml:space="preserve">
     <value>انشاء</value>
+  </data>
+  <data name="Currentpassword" xml:space="preserve">
+    <value>كلمة المرور الحالية</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>لوحة التحكم</value>
@@ -272,6 +281,9 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>الاسم</value>
+  </data>
+  <data name="Newpassword" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>التالي</value>
