@@ -259,11 +259,29 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Password.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         public static string Confirm {
             get {
                 return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm new Password.
+        /// </summary>
+        public static string ConfirmnewPassword {
+            get {
+                return ResourceManager.GetString("ConfirmnewPassword", resourceCulture);
             }
         }
         
@@ -300,6 +318,15 @@ namespace AdminDashBoard.Languages {
         public static string Create {
             get {
                 return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current password.
+        /// </summary>
+        public static string Currentpassword {
+            get {
+                return ResourceManager.GetString("Currentpassword", resourceCulture);
             }
         }
         
@@ -525,6 +552,15 @@ namespace AdminDashBoard.Languages {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        public static string Newpassword {
+            get {
+                return ResourceManager.GetString("Newpassword", resourceCulture);
             }
         }
         

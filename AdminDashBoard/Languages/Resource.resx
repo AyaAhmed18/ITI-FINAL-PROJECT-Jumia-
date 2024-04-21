@@ -183,8 +183,14 @@
   <data name="CategoryName" xml:space="preserve">
     <value>Category Name</value>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
+  </data>
+  <data name="ConfirmnewPassword" xml:space="preserve">
+    <value>Confirm new Password</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Confirm Password</value>
@@ -197,6 +203,9 @@
   </data>
   <data name="Create" xml:space="preserve">
     <value>Create</value>
+  </data>
+  <data name="Currentpassword" xml:space="preserve">
+    <value>Current password</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
@@ -272,6 +281,9 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="Newpassword" xml:space="preserve">
+    <value>New password</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Next</value>

@@ -215,6 +215,49 @@ namespace AdminDashBoard.Controllers
 
             return View(userDto);
         }
+        //changepassword
+      
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePassword changePassword)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    return NotFound("Unable to load user.");
+                }
+
+                
+                var passwordCheckResult = await _userManager.CheckPasswordAsync(user, changePassword.Currentpassword);
+                if (!passwordCheckResult)
+                {
+                    ModelState.AddModelError(string.Empty, "The current password is incorrect.");
+                    return View(changePassword);
+                }
+
+            
+                var result = await _userManager.ChangePasswordAsync(user, changePassword.Currentpassword, changePassword.NewPassword);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Login","Account");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+            }
+
+            return View(changePassword);
+        }
 
 
     }
