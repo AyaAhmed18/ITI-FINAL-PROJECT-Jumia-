@@ -86,7 +86,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <label asp-for="NameAr" class=" col-form-label"></label>
+                            <label asp-for="NameAr" class=" col-form-label">@AdminDashBoard.Languages.Resource.Arabic_Name</label>
                             <input asp-for="NameAr" type="text" class="form-control" />
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
@@ -170,7 +170,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <label asp-for="SubCategoryID" class=" col-form-label"></label>
+                            <label asp-for="SubCategoryID" class=" col-form-label">@AdminDashBoard.Languages.Resource.SubCategory</label>
 
                             <select asp-for="SubCategoryID" asp-items="list" class="form-select" id="subCategorySelect"></select>
                             <span asp-validation-for="SubCategoryID" style="color:red"></span>
@@ -179,7 +179,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <label asp-for="BrandID" class=" col-form-label"></label>
+                            <label asp-for="BrandID" class=" col-form-label">Brand</label>
 
                             <select asp-for="BrandID" asp-items="list2" class="form-select"></select>
                             <span asp-validation-for="BrandID" class="text-danger"></span>
@@ -235,16 +235,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group ">
-                        <input type="submit" value="Update" class="btn btn-success text-white" />
+                        <input type="submit" value="Update" class="btn btn-success text-white  col-12 w-100" />
 
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group ">
-                            <a asp-action="GetPagination" class="btn btn-warning">Back to List</a>
-
-                        </div>
-                    </div>
+                   
                 </div>
 
             </form>
