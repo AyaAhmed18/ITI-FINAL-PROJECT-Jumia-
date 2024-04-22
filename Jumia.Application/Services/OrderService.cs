@@ -112,9 +112,21 @@ namespace Jumia.Application.Services
                                                       Discount=p.Discount
                                                      
                                                   }).ToList();
-                ResultDataForPagination<GetAllOrdersDTO> resultDataList = new ResultDataForPagination<GetAllOrdersDTO>();
-                resultDataList.Entities = Orders;
-                resultDataList.count = AlldAta.Count();
+
+                var totalItems = AlldAta.Count(c => c.IsDeleted != true);
+                var totalPages = (int)Math.Ceiling((double)totalItems / items);
+
+                var resultDataList = new ResultDataForPagination<GetAllOrdersDTO>
+                {
+                    Entities = Orders,
+                    count = totalItems,
+                    TotalPages = totalPages,
+                    CurrentPage = pagenumber,
+                    PageSize = items,
+
+                };
+                //resultDataList.Entities = Orders;
+                //resultDataList.count = AlldAta.Count();
                 return resultDataList;
             }
             catch (Exception ex)

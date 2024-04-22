@@ -11,5 +11,10 @@ namespace Jumia.Dtos.Reports
         public int Month { get; set; }
         public int Year { get; set; }
         public int NumberOfOrders { get; set; }
+        public int ProcessingOrders { get; set; }
+        public int ShippedOrders { get; set; }
+        public int DeliverdOrders { get; set; }
+        public int CancelledOrders { get; set; }
+        public int ReturnedOrders { get; set; }
     }
 }

@@ -603,11 +603,13 @@ namespace Jumia.Application.Services
 
         //
 
+        // ProductService.cs
+        
         public async Task<List<TopProductDTO>> GetTopProductsSold()
         {
-            // Fetch order items with products
+            // Fetch order items with products and related orders
             var orderItems = await _unitOfWork.OrderItemsRepository
-                .FindAll(includeProperties: "Product");
+                .FindAll(includeProperties: "Product,Order");
 
             // Check if there are no order items
             if (orderItems == null || !orderItems.Any())
@@ -618,20 +620,21 @@ namespace Jumia.Application.Services
             // Group order items by product ID and sum the quantities
             var topProductsSold = orderItems
                 .Where(detail => detail.Product != null) // Filter out null products
-                .GroupBy(detail => detail.ProductId)
+                .GroupBy(detail => new { detail.ProductId, detail.Order.Status })
+                .Where(group => group.Key.Status == "Delivered") // Filter by order status
                 .OrderByDescending(group => group.Sum(detail => detail.ProductQuantity))
                 .Take(5)
                 .Select(group => new TopProductDTO
                 {
-                    // Use the first item in the group to get the product name
+                    // Use the first item in the group to get the product name and status
                     ProductName = group.FirstOrDefault()?.Product?.Name ?? "Unknown",
-                    UnitsSold = group.Sum(detail => detail.ProductQuantity)
+                    UnitsSold = group.Sum(detail => detail.ProductQuantity),
+                    OrderStatus = group.Key.Status
                 })
                 .ToList();
 
             return topProductsSold;
         }
-
 
 
         // 
@@ -645,7 +648,13 @@ namespace Jumia.Application.Services
                 {
                     Month = group.Key.Month,
                     Year = group.Key.Year,
-                    NumberOfOrders = group.Count()
+                    NumberOfOrders = group.Count(),
+                    ProcessingOrders = group.Count(o => o.Status == "Processing"),
+                    ShippedOrders = group.Count(o => o.Status == "Shipped"),
+                    DeliverdOrders = group.Count(o => o.Status == "Deliverd"),
+                    CancelledOrders = group.Count(o => o.Status == "Cancelled"),
+                    ReturnedOrders = group.Count(o => o.Status == "Returned")
+
                 })
                 .ToList();
 

@@ -153,6 +153,12 @@
   <data name="AllSubCategory" xml:space="preserve">
     <value>All SubCategory</value>
   </data>
+  <data name="AlmostFinished" xml:space="preserve">
+    <value>Products Almost Finished</value>
+  </data>
+  <data name="AlmostFinished1" xml:space="preserve">
+    <value>Almost Finished</value>
+  </data>
   <data name="Already" xml:space="preserve">
     <value>Already</value>
   </data>
@@ -303,6 +309,12 @@
   <data name="Orders" xml:space="preserve">
     <value>Orders</value>
   </data>
+  <data name="Outofstock" xml:space="preserve">
+    <value>Out of Stock Products</value>
+  </data>
+  <data name="Outofstock1" xml:space="preserve">
+    <value>Out of stock</value>
+  </data>
   <data name="Overview" xml:space="preserve">
     <value>Overview</value>
   </data>
@@ -321,6 +333,9 @@
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
   <data name="Pricing" xml:space="preserve">
     <value>Pricing</value>
   </data>
@@ -329,6 +344,9 @@
   </data>
   <data name="Product" xml:space="preserve">
     <value>Product</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Product Name</value>
   </data>
   <data name="RealPrice" xml:space="preserve">
     <value>Real Price</value>
@@ -341,6 +359,9 @@
   </data>
   <data name="Registeryouraccount" xml:space="preserve">
     <value>Register your account</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Reports</value>
   </data>
   <data name="Role" xml:space="preserve">
     <value>Role</value>
@@ -386,6 +407,18 @@
   </data>
   <data name="SuccessMessage" xml:space="preserve">
     <value>Successeded</value>
+  </data>
+  <data name="Top5Products" xml:space="preserve">
+    <value>Top Products Sold</value>
+  </data>
+  <data name="Totalorders" xml:space="preserve">
+    <value>Total orders</value>
+  </data>
+  <data name="Totalsales" xml:space="preserve">
+    <value>Total sales</value>
+  </data>
+  <data name="UnitsSold" xml:space="preserve">
+    <value>Units Sold</value>
   </data>
   <data name="UpdataOrder" xml:space="preserve">
     <value>Updata Order</value>

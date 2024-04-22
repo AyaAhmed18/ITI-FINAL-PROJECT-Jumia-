@@ -153,6 +153,12 @@
   <data name="AllSubCategory" xml:space="preserve">
     <value>كل الفئات الفرعيه</value>
   </data>
+  <data name="AlmostFinished" xml:space="preserve">
+    <value>المنتجات على وشك الانتهاء</value>
+  </data>
+  <data name="AlmostFinished1" xml:space="preserve">
+    <value> على وشك الانتهاء</value>
+  </data>
   <data name="Already" xml:space="preserve">
     <value>بالتاكيد </value>
   </data>
@@ -303,6 +309,12 @@
   <data name="Orders" xml:space="preserve">
     <value>طلبات</value>
   </data>
+  <data name="Outofstock" xml:space="preserve">
+    <value>منتجات غير متوفرة في المخزن</value>
+  </data>
+  <data name="Outofstock1" xml:space="preserve">
+    <value>منتجات غير متوفرة</value>
+  </data>
   <data name="Overview" xml:space="preserve">
     <value>ملخص</value>
   </data>
@@ -321,6 +333,9 @@
   <data name="Previous" xml:space="preserve">
     <value>سابق</value>
   </data>
+  <data name="Price" xml:space="preserve">
+    <value>السعر</value>
+  </data>
   <data name="Pricing" xml:space="preserve">
     <value>التسعير</value>
   </data>
@@ -329,6 +344,9 @@
   </data>
   <data name="Product" xml:space="preserve">
     <value>منتج</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>اسم المنتج</value>
   </data>
   <data name="RealPrice" xml:space="preserve">
     <value>السعر</value>
@@ -341,6 +359,9 @@
   </data>
   <data name="Registeryouraccount" xml:space="preserve">
     <value>سجل حسابك</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>التقارير</value>
   </data>
   <data name="Role" xml:space="preserve">
     <value>الدور</value>
@@ -386,6 +407,18 @@
   </data>
   <data name="SuccessMessage" xml:space="preserve">
     <value>تم بنجاح</value>
+  </data>
+  <data name="Top5Products" xml:space="preserve">
+    <value>أعلى منتجات بيعت</value>
+  </data>
+  <data name="Totalorders" xml:space="preserve">
+    <value>اجمالى الطلبات</value>
+  </data>
+  <data name="Totalsales" xml:space="preserve">
+    <value>اجمالى المبيعات</value>
+  </data>
+  <data name="UnitsSold" xml:space="preserve">
+    <value>الوحدات المباعة</value>
   </data>
   <data name="UpdataOrder" xml:space="preserve">
     <value>تعديل طلب</value>
