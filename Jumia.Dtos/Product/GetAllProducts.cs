@@ -37,7 +37,7 @@ namespace Jumia.Dtos.Product
             Discount = product.Discount;
             SubCategoryID = product.SubCategoryId;
             BrandID = product.BrandId;
-            
+          //  BrandName = product.Brand.Name;
             // Include logic to populate SubCategoryName and BrandName based on your data access approach
             // (e.g., eager loading, separate queries)
             if (product.SubCategory != null)
