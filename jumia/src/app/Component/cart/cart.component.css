@@ -100,12 +100,18 @@ a{
     font-size:1vw;
   
    }
+ 
    .diccProduct{
     padding: 10px;
   }
   .cards-hover:hover {
     box-shadow: 0 0 11px rgba(33, 33, 33, .2);
   }
+  
+.card-img-top{
+  width: 90%;
+  height: 190px;
+}
 /* Extra small devices (phones) */
 @media only screen and (max-width:590px) {
  
@@ -123,9 +129,11 @@ a{
 .col-5-cart{
     width: 100%;
     -webkit-order:2;
+    text-align: center;
 }
 .col-4-cart{
-    width: 60%;
+    width: 50%;
+    padding: 20px;
 }
 
 
@@ -145,8 +153,12 @@ a{
    
   }
 
+  .col-3-cart{
+  width: 50%;
+ padding: 5px;
+  }
 
-
+ 
   .card-img-top{
     width: 90%;
     height: 60px;
@@ -174,6 +186,35 @@ a{
  margin-bottom: 0rem; 
     
 }
+
+
+a:link,
+a:visited {
+
+  
+  padding: 0px;
+
+  
+}
+.Link_hover{
+  padding: 3px;
+}
+
+
+
+
+.diccProduct{
+  padding: 1px;
+}
+.label-Cards-top {
+ 
+  background-color: rgba(255, 115, 0, 0.842);
+  color: #fff;
+  top: 2px;
+  left: 2px;
+
+}
+
      }
      
      /* Small devices (portrait tablets and large phones) */
@@ -226,5 +267,3 @@ a{
 
 
 
-
-     

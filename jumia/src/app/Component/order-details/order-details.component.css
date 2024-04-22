@@ -80,5 +80,10 @@
        .col-7{
          width: 80%;
        }
-      
+       .body-detels{
+        width: 70%;
+       }
+       .side-detels{
+        width: 25%;
+       }
      }
