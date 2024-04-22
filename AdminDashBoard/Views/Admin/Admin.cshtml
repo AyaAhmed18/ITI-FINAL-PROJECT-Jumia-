@@ -1,89 +1,96 @@
 ﻿@using Jumia.Dtos.User
-
 @model List<RoleUser>
 
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Users";
-
 }
 @foreach (var role in ViewBag.Roles)
 {
-
-<div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Users Role</h4>
-            <p class="card-description">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Users Role</h4>
+                <p class="card-description">
                     role is <code>.@role.Name</code>
-            </p>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                                <th>User Image</th>
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>@AdminDashBoard.Languages.Resource.Image</th>
                                 <th>@AdminDashBoard.Languages.Resource.UserId</th>
                                 <th>@AdminDashBoard.Languages.Resource.Name</th>
                                 <th>@AdminDashBoard.Languages.Resource.Role</th>
                                 <th>@AdminDashBoard.Languages.Resource.Email</th>
-                                <th>@AdminDashBoard.Languages.Resource.Phone Number</th>
-                                <th>@AdminDashBoard.Languages.Resource.Delete</th>
-                              @*   <th>@AdminDashBoard.Languages.Resource.Update</th> *@
-                        </tr>
-                    </thead>
-                    <tbody>
+                                <th>@AdminDashBoard.Languages.Resource.PhoneNumber</th>
+                                @if (role.Name == "Owner")
+                                {
+                                    <th>
+                                        Administrator
+                                    </th>
+                                }
+                                else
+                                {
+                                    <th>@AdminDashBoard.Languages.Resource.Delete</th>
+                                }
+                                @*<th>@AdminDashBoard.Languages.Resource.Update</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
                             @foreach (var item in Model.Where(u => u.RoleName == role.Name))
                             {
-                        <tr>
-                            <td class="py-1">
+                                <tr>
+                                    <td class="py-1">
                                         <img src="~/images/faces/profile/users.png" alt="image" />
                                     </td>
-                                   
-                                <td data-th=" UserId">
-                                    @item.Id
-                                </td>
-                                <td data-th=" User Name">
-                                    @item.UserName
-                                </td>
-                                <td data-th=" Role">
-                                    @item.RoleName
-                                </td>
-                                <td data-th=" Email">
-                                    @item.Email
-                                </td>
-
-                                <td data-th=" phone number">
-                                    @item.PhoneNumber
-                                </td>
-                                    <td class="p-1">
-                                        <a asp-action="Delete" asp-controller="Admin" asp-route-id="@item.Id" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger  btn-sm m-0">@AdminDashBoard.Languages.Resource.Delete</a>
+                                    <td data-th="UserId">
+                                        @item.Id
                                     </td>
-                                   @*  <td class="p-1">
-                                        <a asp-action="Update" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-info  btn-sm m-0 ">@AdminDashBoard.Languages.Resource.Update</a>
-                                    </td> *@
+                                    <td data-th="User Name">
+                                        @item.UserName
+                                    </td>
+                                    <td data-th="Role">
+                                        @item.RoleName
+                                    </td>
+                                    <td data-th="Email">
+                                        @item.Email
+                                    </td>
+                                    <td data-th="phone number">
+                                        @item.PhoneNumber
+                                    </td>
+                                    @if (item.RoleName == "Owner")
+                                    {
+                                        <td class="p-1" style="font-weight:900;font-size:13px;">
+                                            Administrator
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="p-1">
+                                            <a asp-action="Delete" asp-controller="Admin" asp-route-id="@item.Id" onclick="confirmDelete()" style="pointer-events: auto;" class="btn btn-danger btn-sm m-0">@AdminDashBoard.Languages.Resource.Delete</a>
+                                        </td>
+                                    }
                                 </tr>
-}
-                    </tbody>
-                </table>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 }
 @if (TempData["SuccessMessage"] != null)
 {
     <div class="alert alert-danger fixed-top" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-   
         <strong>success!</strong>   @TempData["SuccessMessage3"]
     </div>
 }
-
 @if (TempData["SuccessMessage1"] != null)
 {
     <div class="alert alert-success fixed-top" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      
         <strong>success!</strong>   @TempData["SuccessMessage1"]
     </div>
 }
@@ -91,7 +98,6 @@
 {
     <div class="alert alert-success fixed-top" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-
         <strong>success!</strong>   @TempData["SuccessMessage2"]
     </div>
 }
@@ -99,26 +105,16 @@
 {
     <div class="alert alert-success fixed-top" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-     
         <strong>success!</strong>   @TempData["SuccessMessage3"]
-        
     </div>
 }
 @if (TempData["ErrorMessage"] != null)
-    {
+{
     <div class="alert alert-danger fixed-top" role="alert">
         <button type="button" class="btn-close fixed-Lift" data-bs-dismiss="alert" aria-label="Close"></button>
         <strong>Error!</strong>  @TempData["ErrorMessage"]
     </div>
-
-        @* <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
-            <div>
-                @TempData["ErrorMessage"]
-            </div>
-        </div> *@
-    }
+}
 
 <script>
     function confirmDelete() {
@@ -128,64 +124,9 @@
         }
     }
 
-
     window.setTimeout(function () {
         $(".alert").fadeTo(500, 0).slideUp(500, function () {
             $(this).remove();
         });
     }, 2000);
-
 </script>
-
-
-@* 
-
-@foreach (var role in ViewBag.Roles)
-{
-    <div class="contTable m-5">
-        <h1>@role.Name</h1>
-        <table class="rwd-table">
-            <tbody>
-                <tr>
-                    <th>@AdminDashBoard.Languages.Resource.UserId</th>
-                    <th>@AdminDashBoard.Languages.Resource.Name</th>
-                    <th>@AdminDashBoard.Languages.Resource.Role</th>
-                    <th>@AdminDashBoard.Languages.Resource.Email</th>
-             
-                    <th>@AdminDashBoard.Languages.Resource.Phone Number</th>
-                   
-                </tr>
-                @foreach (var item in Model.Where(u => u.RoleName == role.Name))
-                {
-
-                <tr>
-                <td data-th=" UserId">
-                            @item.Id
-                    </td>
-                <td data-th=" User Name">
-                            @item.UserName
-                    </td>
-                <td data-th=" Role">
-                            @item.RoleName
-                    </td>
-                <td data-th=" Email">
-                            @item.Email
-                    </td>
-                       
-                <td data-th=" phone number">
-                            @item.PhoneNumber
-                    </td>
-                    
-
-                </tr>
-                 
-                 }
-            </tbody>
-        </table>
-
-    </div>
-    
-    }
-
-
-  *@

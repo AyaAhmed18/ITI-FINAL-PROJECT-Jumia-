@@ -141,6 +141,9 @@
   <data name="Admin" xml:space="preserve">
     <value>Admin</value>
   </data>
+  <data name="afternoon" xml:space="preserve">
+    <value>Good Afternoon</value>
+  </data>
   <data name="AllCategory" xml:space="preserve">
     <value>All Category</value>
   </data>
@@ -243,6 +246,9 @@
   <data name="EnterPhone" xml:space="preserve">
     <value>Enter Phone</value>
   </data>
+  <data name="evening" xml:space="preserve">
+    <value>Good Evening</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Export</value>
   </data>
@@ -278,6 +284,9 @@
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
+  </data>
+  <data name="morning" xml:space="preserve">
+    <value>Good Morning</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>

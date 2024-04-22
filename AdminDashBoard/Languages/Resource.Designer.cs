@@ -133,6 +133,15 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Good Afternoon.
+        /// </summary>
+        public static string afternoon {
+            get {
+                return ResourceManager.GetString("afternoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All Category.
         /// </summary>
         public static string AllCategory {
@@ -439,6 +448,15 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Good Evening.
+        /// </summary>
+        public static string evening {
+            get {
+                return ResourceManager.GetString("evening", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export.
         /// </summary>
         public static string Export {
@@ -543,6 +561,15 @@ namespace AdminDashBoard.Languages {
         public static string Login {
             get {
                 return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Good Morning.
+        /// </summary>
+        public static string morning {
+            get {
+                return ResourceManager.GetString("morning", resourceCulture);
             }
         }
         

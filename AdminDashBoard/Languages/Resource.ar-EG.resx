@@ -141,6 +141,9 @@
   <data name="Admin" xml:space="preserve">
     <value>ادمن</value>
   </data>
+  <data name="afternoon" xml:space="preserve">
+    <value>مساء الخير</value>
+  </data>
   <data name="AllCategory" xml:space="preserve">
     <value>كل الفئات</value>
   </data>
@@ -243,6 +246,9 @@
   <data name="EnterPhone" xml:space="preserve">
     <value>ادخل الهاتف</value>
   </data>
+  <data name="evening" xml:space="preserve">
+    <value>مساء الخير</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>تصدير</value>
   </data>
@@ -278,6 +284,9 @@
   </data>
   <data name="Login" xml:space="preserve">
     <value>تسجيل الدخول</value>
+  </data>
+  <data name="morning" xml:space="preserve">
+    <value>صباح الخير</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>الاسم</value>

@@ -64,15 +64,15 @@
 
                             if (currentTime.Hour < 12)
                             {
-                                greeting = "Good morning";
+                                greeting = @AdminDashBoard.Languages.Resource.morning;
                             }
                             else if (currentTime.Hour < 18)
                             {
-                                greeting = "Good afternoon";
+                                greeting = @AdminDashBoard.Languages.Resource.afternoon;
                             }
                             else
                             {
-                                greeting = "Good evening";
+                                greeting = @AdminDashBoard.Languages.Resource.evening;
                             }
                         }
 
@@ -479,7 +479,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item" >
                         <a asp-action="Index" asp-controller="SubCategory" class="nav-link">
                             <i class="menu-icon mdi mdi-drawing"></i>
                             <span class="menu-title">@AdminDashBoard.Languages.Resource.SubCategory</span>
