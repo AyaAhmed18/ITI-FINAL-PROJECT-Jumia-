@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AdminDashBoard.Controllers
 {
     [Authorize(Roles = "Admin")]
+    
     public class AdminController : BaseController
     {
         private readonly IRoleService _roleService;
@@ -111,8 +112,14 @@ namespace AdminDashBoard.Controllers
 
             return View(getAllUsers);
         }
+        
         public async Task<ActionResult> Delete(int id)
         {
+            if (!User.IsInRole("Owner"))
+            {
+                TempData["ErrorMessage"] = "You must be an owner to delete this user.";
+                return RedirectToAction(nameof(Admin));
+            }
             var res = await _userService.GetOne(id);
             if (res == null)
             {
@@ -128,9 +135,10 @@ namespace AdminDashBoard.Controllers
             }
             else
             {
-                TempData["SuccessMessage"] = "Sorry,Failed to Delete this User";
+                TempData["ErrorMessage"] = "Sorry, Failed to Delete this User";
                 return RedirectToAction(nameof(Admin));
             }
+
         }
 
 
@@ -212,6 +220,49 @@ namespace AdminDashBoard.Controllers
             ViewBag.Roles = roles;
 
             return View(userDto);
+        }
+        //changepassword
+      
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePassword changePassword)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    return NotFound("Unable to load user.");
+                }
+
+                
+                var passwordCheckResult = await _userManager.CheckPasswordAsync(user, changePassword.Currentpassword);
+                if (!passwordCheckResult)
+                {
+                    ModelState.AddModelError(string.Empty, "The current password is incorrect.");
+                    return View(changePassword);
+                }
+
+            
+                var result = await _userManager.ChangePasswordAsync(user, changePassword.Currentpassword, changePassword.NewPassword);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Login","Account");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+            }
+
+            return View(changePassword);
         }
 
 

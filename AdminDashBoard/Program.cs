@@ -48,6 +48,11 @@ namespace AdminDashBoard
             builder.Services.AddScoped<IProductSpecificationSubCategoryServices,ProductSpecificationSubCategoryServices>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOrOwner", policy =>
+                    policy.RequireRole("Admin", "Owner"));
+            });
 
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -105,7 +110,7 @@ namespace AdminDashBoard
             app.UseRouting();
             app.UseSession();
             app.UseAuthorization();
-            app.UseAuthorization();
+            
             var options = app.Services.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
             app.MapControllerRoute(

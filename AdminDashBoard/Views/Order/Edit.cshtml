@@ -58,7 +58,7 @@ select {
 
                             <br />
                     <div class="col-12">
-                    <button type="submit" class="btn btn-secondary">@Localizer["Update"]</button>
+                <button type="submit" class="btn btn-success text-white w-100">@Localizer["Update"]</button>
                </div>
                 </form>
             </ul>
@@ -77,3 +77,11 @@ select {
         </div>
     </div>
 }
+<script>
+
+    window.setTimeout(function () {
+        $(".alert").fadeTo(500, 0).slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 2000);
+</script>

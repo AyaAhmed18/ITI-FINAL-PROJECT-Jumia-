@@ -1,7 +1,7 @@
 ﻿@using Jumia.Dtos.User
 
 @model List<RoleUser>
-<link href="~/css/responcevtable.css" rel="stylesheet" />
+
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Users";
@@ -72,45 +72,54 @@
 }
 @if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+    <div class="alert alert-danger fixed-top" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
-        <div>
-            @TempData["SuccessMessage"]
-        </div>
+   
+        <strong>success!</strong>   @TempData["SuccessMessage3"]
     </div>
 }
 
 @if (TempData["SuccessMessage1"] != null)
 {
-    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+    <div class="alert alert-success fixed-top" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
-        <div>
-            @TempData["SuccessMessage1"]
-        </div>
+      
+        <strong>success!</strong>   @TempData["SuccessMessage1"]
     </div>
 }
 @if (TempData["SuccessMessage2"] != null)
 {
-    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+    <div class="alert alert-success fixed-top" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
-        <div>
-            @TempData["SuccessMessage2"]
-        </div>
+
+        <strong>success!</strong>   @TempData["SuccessMessage2"]
     </div>
 }
 @if (TempData["SuccessMessage3"] != null)
 {
-    <div class="alert alert-success alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+    <div class="alert alert-success fixed-top" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
-        <div>
-            @TempData["SuccessMessage3"]
-        </div>
+     
+        <strong>success!</strong>   @TempData["SuccessMessage3"]
+        
     </div>
 }
+@if (TempData["ErrorMessage"] != null)
+    {
+    <div class="alert alert-danger fixed-top" role="alert">
+        <button type="button" class="btn-close fixed-Lift" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>Error!</strong>  @TempData["ErrorMessage"]
+    </div>
+
+        @* <div class="alert alert-danger alert-dismissible fixed-top align-items-center" role="alert" id="customAlert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <svg class="bi flex-shrink-0 me0" width="24" height="15" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+            <div>
+                @TempData["ErrorMessage"]
+            </div>
+        </div> *@
+    }
+
 <script>
     function confirmDelete() {
         var acc = confirm("Are you sure you want delete this user?");
@@ -120,11 +129,17 @@
     }
 
 
+    window.setTimeout(function () {
+        $(".alert").fadeTo(500, 0).slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 2000);
+
 </script>
 
 
-
 @* 
+
 @foreach (var role in ViewBag.Roles)
 {
     <div class="contTable m-5">
@@ -173,4 +188,4 @@
     }
 
 
- *@
+  *@
