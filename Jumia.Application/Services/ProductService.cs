@@ -4,6 +4,7 @@ using Jumia.Application.IServices;
 using Jumia.Application.Services.IServices;
 using Jumia.Dtos.Product;
 using Jumia.Dtos.ProductSpecificationSubCategory;
+using Jumia.Dtos.Reports;
 using Jumia.Dtos.Specification;
 using Jumia.DTOS.ViewResultDtos;
 using Jumia.Model;
@@ -576,6 +577,121 @@ namespace Jumia.Application.Services
         //{
         //    Prds.Take(items);
         //}
+
+
+        public async Task<List<GetAllProducts>> GetOutOfStockProducts()
+        {
+            var outOfStockProducts = await _unitOfWork.ProductRepository.FindAll(
+                product => product.StockQuantity <= 0, null,null
+            ).Select(p => new GetAllProducts(p)).ToListAsync();
+
+            return outOfStockProducts;
+        }
+
+
+        //
+        public async Task<List<GetAllProducts>> GetProductsAlmostFinished(int threshold)
+        {
+            var almostFinishedProducts = await _unitOfWork.ProductRepository.FindAll(
+                product => product.StockQuantity > 0 && product.StockQuantity <= threshold, // Products with low stock
+                null,
+                null
+            ).Select(p => new GetAllProducts(p)).ToListAsync();
+
+            return almostFinishedProducts;
+        }
+
+        //
+
+        public async Task<List<TopProductDTO>> GetTopProductsSold()
+        {
+            // Fetch order items with products
+            var orderItems = await _unitOfWork.OrderItemsRepository
+                .FindAll(includeProperties: "Product");
+
+            // Check if there are no order items
+            if (orderItems == null || !orderItems.Any())
+            {
+                return new List<TopProductDTO>(); // Return an empty list
+            }
+
+            // Group order items by product ID and sum the quantities
+            var topProductsSold = orderItems
+                .Where(detail => detail.Product != null) // Filter out null products
+                .GroupBy(detail => detail.ProductId)
+                .OrderByDescending(group => group.Sum(detail => detail.ProductQuantity))
+                .Take(5)
+                .Select(group => new TopProductDTO
+                {
+                    // Use the first item in the group to get the product name
+                    ProductName = group.FirstOrDefault()?.Product?.Name ?? "Unknown",
+                    UnitsSold = group.Sum(detail => detail.ProductQuantity)
+                })
+                .ToList();
+
+            return topProductsSold;
+        }
+
+
+
+        // 
+        public async Task<List<OrdersPerMonthDTO>> GetOrdersPerMonth()
+        {
+            var orders = await _unitOfWork.OrderRepository.FindAll(null, null, null);
+
+            var ordersPerMonth = orders
+                .GroupBy(order => new { order.CreatedDate.Month, order.CreatedDate.Year })
+                .Select(group => new OrdersPerMonthDTO
+                {
+                    Month = group.Key.Month,
+                    Year = group.Key.Year,
+                    NumberOfOrders = group.Count()
+                })
+                .ToList();
+
+            return ordersPerMonth;
+        }
+
+        //
+        public async Task<TotalAmountDTO> GetTotalAmount()
+        {
+            var orderItems = await _unitOfWork.OrderItemsRepository.FindAll(null, null, null);
+
+            var totalAmount = orderItems
+                .Sum(detail => detail.ProductQuantity * detail.TotalPrice);
+
+            return new TotalAmountDTO { TotalAmount = totalAmount };
+        }
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 }

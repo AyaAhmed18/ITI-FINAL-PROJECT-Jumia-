@@ -32,7 +32,7 @@ export class ShippmentComponent implements OnInit{
   id:number=0
   isArabic: boolean = localStorage.getItem('isArabic') === 'true';
   citiesByRegion: { [key: string]: string[] } = {
-    'Sohag': ['Sohag City', 'Akhmim', 'Girga', 'Tahta', 'Dar El Salam', 'Saqil Qism Qena', 'Daraw', 'Juhaynah', 'Gerga', 'El Maragha', 'Tama', 'Al Monshah', 'Al Waily', 'Alawais', 'Al Hawarta', 'Dar El Salam Qism Sohag', 'Al Ghanayim', 'El Kossia', 'El Balayaza', 'Akhmim Qism Sohag', 'Sohag District', 'Akhmim District', 'Gerga District', 'El Maragha District', 'Tahta District', 'Dar El Salam District', 'Saqil Qism Qena District', 'Daraw District', 'Juhaynah District', 'Tama District'],
+    'Sohag': ['Sohag City', 'Akhmim', 'Girga', 'Tahta', 'Dar El Salam', 'Saqil Qism Qena', 'Daraw', 'Juhaynah', 'Gerga', 'El Maragha', 'Tama', 'Al Monshah', 'Al Waily', 'Alawais', 'Al Hawarta', 'Dar El Salam Qism Sohag', 'Al Ghanayim', 'El Kossia', 'El Balayana', 'Akhmim Qism Sohag', 'Sohag District', 'Akhmim District', 'Gerga District', 'El Maragha District', 'Tahta District', 'Dar El Salam District', 'Saqil Qism Qena District', 'Daraw District', 'Juhaynah District', 'Tama District'],
     'Cairo': [
       'Nasr City',
       'Maadi',
@@ -94,6 +94,7 @@ export class ShippmentComponent implements OnInit{
       'مديرية جرجا',
       'مديرية المراغة',
       'مديرية طهطا',
+      'البلينا ',
       'مديرية دار السلام',
       'مديرية ساقل قسم قنا',
       'مديرية درو',

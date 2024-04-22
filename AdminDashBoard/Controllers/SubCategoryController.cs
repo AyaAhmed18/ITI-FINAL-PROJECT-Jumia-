@@ -49,40 +49,7 @@ namespace AdminDashBoard.Controllers
             return View(SubCategoryes);
         }
 
-        public async Task<IActionResult> ExportToExcel()
-        {
-            var pageSize = 200;
-            var SubCategoryes = await _subCategoryService.GetAll(pageSize, 1);
-
-            ExcelPackage excelPackage = new ExcelPackage();
-            ExcelWorksheet Worksheet = excelPackage.Workbook.Worksheets.Add("SubCategoryes");
-
-            // Set column headers
-            Worksheet.Cells[1, 1].Value = "Name";
-            Worksheet.Cells[1, 2].Value = "Description";
-
-
-            // Populate the Excel worksheet with data from SubCategoryes
-            int row = 2;
-            foreach (var subcategory in SubCategoryes.Entities)
-            {
-                Worksheet.Cells[row, 1].Value = subcategory.Name;
-                Worksheet.Cells[row, 2].Value = subcategory.Description;
-
-
-
-                row++;
-            }
-
-            using (var memoryStream = new MemoryStream())
-            {
-                excelPackage.SaveAs(memoryStream);
-                memoryStream.Seek(0, SeekOrigin.Begin);
-                return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "SubCategories.xlsx");
-            }
-        }
-
-
+       
         public async Task<ActionResult> Create()
         {
             var Categories = await _categoryService.GetAll(30, 1);

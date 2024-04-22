@@ -1,0 +1,31 @@
+﻿@using Jumia.Dtos.Reports
+
+@model List<TopProductDTO>
+
+<h2>Top 5 Products Sold</h2>
+
+@if (Model.Count == 0)
+{
+    <p>No products sold yet.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Units Sold</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.ProductName</td>
+                    <td>@product.UnitsSold</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

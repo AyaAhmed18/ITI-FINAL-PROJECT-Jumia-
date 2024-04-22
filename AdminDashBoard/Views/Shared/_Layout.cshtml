@@ -516,6 +516,40 @@
                        
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#suptables" aria-expanded="false" aria-controls="tables">
+                            <i class="menu-icon mdi mdi-package-variant-closed"></i>
+                            <span class="menu-title">reports</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="suptables">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" asp-action="OutOfStock" asp-controller="Product">OutOfStock </a></li>
+                            </ul>
+                        </div>
+                        <div class="collapse" id="suptables">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" asp-action="AlmostFinished" asp-controller="Product">AlmostFinished</a></li>
+                            </ul>
+                        </div>
+                        <div class="collapse" id="suptables">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" asp-action="TopProductsSold" asp-controller="Product">TopProductsSelling</a></li>
+                            </ul>
+                        </div>
+                        <div class="collapse" id="suptables">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" asp-action="OrdersPerMonth" asp-controller="Product">OrdersPerMonth</a></li>
+                            </ul>
+                        </div>
+                        <div class="collapse" id="suptables">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" asp-action="TotalAmount" asp-controller="Product">TotalAmount</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+
 
 
                     @* <li class="nav-item">

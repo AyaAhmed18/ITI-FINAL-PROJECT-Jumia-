@@ -1,0 +1,34 @@
+﻿@using Jumia.Dtos.Reports
+@using System.Globalization
+
+@model List<OrdersPerMonthDTO>
+
+<h2>Orders Per Month</h2>
+
+@if (Model.Count == 0)
+{
+    <p>No orders yet.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Number of Orders</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(order.Month)</td>
+                    <td>@order.Year</td>
+                    <td>@order.NumberOfOrders</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
