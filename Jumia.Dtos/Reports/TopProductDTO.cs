@@ -10,5 +10,6 @@ namespace Jumia.Dtos.Reports
     {
         public string ProductName { get; set; }
         public int UnitsSold { get; set; }
+        public string OrderStatus { get; set; }
     }
 }

@@ -68,8 +68,10 @@
 }
 
 <div class="card container">
-    <div class="card-body">
-        <h4 class="card-title">@AdminDashBoard.Languages.Resource.AddCategory</h4>
+        <div class="card-body">
+       
+                <h4 class="card-title">@AdminDashBoard.Languages.Resource.AddCategory</h4>
+
         <form asp-action="Create" asp-controller="Category" method="post" enctype="multipart/form-data" id="createForm">
             <div class="mb-3">
                 <label asp-for="Name" class="form-label">@AdminDashBoard.Languages.Resource.English_Name</label>
@@ -89,6 +91,8 @@
 
             <button type="submit" class="btn btn-success text-white w-100 col-md-12">@AdminDashBoard.Languages.Resource.Create</button>
         </form>
+
+        </div>
     </div>
 </div>
 

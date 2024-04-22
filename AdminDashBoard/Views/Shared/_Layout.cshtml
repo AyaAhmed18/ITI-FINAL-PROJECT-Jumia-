@@ -486,6 +486,56 @@
                         </a>
                     </li>
 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="menu-icon mdi mdi-group"></i>
+                            <span class="menu-title">@AdminDashBoard.Languages.Resource.Reports</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="productDropdown">
+                            <li>
+                                <a asp-action="OutOfStock" asp-controller="Product" class="dropdown-item">
+                                   @*  <i class="menu-icon fas fa-exclamation-triangle"></i> *@
+                                    <span class="menu-title">@AdminDashBoard.Languages.Resource.Outofstock1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="AlmostFinished" asp-controller="Product" class="dropdown-item">
+                                   @*  <i class="menu-icon fas fa-hourglass-end"></i> *@
+                                    <span class="menu-title">@AdminDashBoard.Languages.Resource.AlmostFinished1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="TopProductsSold" asp-controller="Product" class="dropdown-item">
+                                    <i class="menu-icon fas fa-chart-line"></i>
+                                    <span class="menu-title">@AdminDashBoard.Languages.Resource.Top5Products</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="OrdersPerMonth" asp-controller="Product" class="dropdown-item">
+                                    <i class="menu-icon fas fa-calendar-alt"></i>
+                                    <span class="menu-title">@AdminDashBoard.Languages.Resource.Totalorders</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="TotalAmount" asp-controller="Product" class="dropdown-item">
+                                    <i class="menu-icon fas fa-dollar-sign"></i>
+                                    <span class="menu-title">@AdminDashBoard.Languages.Resource.Totalsales</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+
+
+
+
+
+
+
+
+
 @*                     <li class="nav-item nav-category">@AdminDashBoard.Languages.Resource.Admin</li> *@
                     @* <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">

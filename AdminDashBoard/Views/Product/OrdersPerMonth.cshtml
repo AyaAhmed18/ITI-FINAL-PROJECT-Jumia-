@@ -3,32 +3,98 @@
 
 @model List<OrdersPerMonthDTO>
 
-<h2>Orders Per Month</h2>
 
-@if (Model.Count == 0)
-{
-    <p>No orders yet.</p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Month</th>
-                <th>Year</th>
-                <th>Number of Orders</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var order in Model)
-            {
-                <tr>
-                    <td>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(order.Month)</td>
-                    <td>@order.Year</td>
-                    <td>@order.NumberOfOrders</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+
+
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Orders Per Month</h3>
+
+                <div class="table-responsive pt-3">
+
+                    @if (Model.Count == 0)
+                    {
+                        <p>No orders yet.</p>
+                    }
+                    else
+                    {
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+
+                                <th scope="col"><p class="fifty-chars">Month</p></th>
+                                <th scope="col"><p class="fifty-chars">Year</p></th>
+                                <th scope="col"><p class="fifty-chars">Total Orders</p></th>
+                                <th scope="col"><p class="fifty-chars">Processing Orders</p></th>
+                                <th scope="col"><p class="fifty-chars">Shipped Orders</p></th>
+                                <th scope="col"><p class="fifty-chars">Deliverd Orders</p></th>
+                                <th scope="col"><p class="fifty-chars">Cancelled Orders</p></th>
+                                <th scope="col"><p class="fifty-chars">Returned Orders</p></th>
+
+
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var order in Model)
+                                {
+                                    <tr>
+                                        <td class="p-1">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(order.Month)</td>
+                                        <td class="p-1">@order.Year</td>
+                                        <td class="p-1">@order.NumberOfOrders</td>
+                                    <td class="p-1">@order.ProcessingOrders</td>
+                                    <td class="p-1">@order.ShippedOrders</td>
+                                    <td class="p-1">@order.DeliverdOrders</td>
+                                    <td class="p-1">@order.CancelledOrders</td>
+                                    <td class="p-1">@order.ReturnedOrders</td>
+
+
+
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    }
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

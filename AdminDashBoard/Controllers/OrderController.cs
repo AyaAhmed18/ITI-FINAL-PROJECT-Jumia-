@@ -27,11 +27,12 @@ namespace AdminDashBoard.Controllers
         }
 
         // GET: OrderController
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int pageNumber = 1)
         {
             if (_orderService != null)
             {
-                var orders = await _orderService.GetAllOrders();
+                var pageSize = 10;
+                var orders = await _orderService.GetAllPagination(pageSize, pageNumber);
                 // var ord = orders.ToList();
                 return View(orders);
             }

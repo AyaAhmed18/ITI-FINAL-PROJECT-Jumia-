@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Jumia.Application.Contract;
 using Jumia.Application.IServices;
 using Jumia.Application.Services;
 using Jumia.Application.Services.IServices;
@@ -6,7 +7,9 @@ using Jumia.Context.Migrations;
 using Jumia.Dtos.Category;
 using Jumia.Dtos.Product;
 using Jumia.Dtos.ProductSpecificationSubCategory;
+using Jumia.Dtos.Reports;
 using Jumia.Dtos.SubCategorySpecifications;
+using Jumia.Infrastructure;
 using Jumia.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +28,7 @@ namespace AdminDashBoard.Controllers
         private readonly ISubCategorySpecificationsService _subCategorySpecificationsService;
         private readonly IProductSpecificationSubCategoryServices _productSpecificationSubCategoryServices;
         private readonly IOrderItemService _OrderServe;
+        private readonly IUnitOfWork _unitOfWork;
 
 
         public ProductController(IProductServices productService,
@@ -33,7 +37,7 @@ namespace AdminDashBoard.Controllers
             ISpecificationServices specificationServices,
             ISubCategorySpecificationsService subCategorySpecificationsService,
             IProductSpecificationSubCategoryServices productSpecificationSubCategoryServices,
-            IOrderItemService orderServe)
+            IOrderItemService orderServe, IUnitOfWork unitOfWork)
         {
             _productService = productService;
             _mapper = mapper;
@@ -43,6 +47,7 @@ namespace AdminDashBoard.Controllers
             _subCategorySpecificationsService = subCategorySpecificationsService;
             _productSpecificationSubCategoryServices = productSpecificationSubCategoryServices;
             _OrderServe = orderServe;
+            _unitOfWork = unitOfWork;
 
         }
         // GET: ProductController
@@ -271,24 +276,22 @@ namespace AdminDashBoard.Controllers
 
         public async Task<IActionResult> TotalAmount()
         {
-            var totalAmount = await _productService.GetTotalAmount();
-            return View(totalAmount);
+            var orderItems = await _unitOfWork.OrderItemsRepository.FindAll(
+        o => o.Order.Status == "Delivered", // Filter by order status
+        includeProperties: "Order"
+    );
+
+            // Calculate total amount
+            var totalAmount = orderItems
+                .Sum(detail => detail.ProductQuantity * detail.TotalPrice);
+
+            var totalAmountDto = new TotalAmountDTO { TotalAmount = totalAmount };
+            return View(totalAmountDto);
+
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+       
+        //
         public async Task<IActionResult> ExportToExcel()
         {
             var pageSize = 200;
