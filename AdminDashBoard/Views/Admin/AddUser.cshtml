@@ -59,10 +59,13 @@
                                 
                                 @foreach (var role in ViewBag.Roles)
                                 {
-                                    <li>
-                                        <input type="checkbox" name="SelectedRoles" value="@role.Name" id="role_@role.Name" class="fa">
-                                            <label for="role_@role.Name" class="fa">@role.Name</label>
-                                    </li>
+                                        @if(role.Name!="Owner"){
+                                            <li>
+                                                <input type="checkbox" name="SelectedRoles" value="@role.Name" id="role_@role.Name" class="fa">
+                                                <label for="role_@role.Name" class="fa">@role.Name</label>
+                                            </li>
+                                        }
+                                      
 
                                 }
                             </ul>

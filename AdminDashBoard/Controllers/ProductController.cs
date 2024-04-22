@@ -214,22 +214,32 @@ namespace AdminDashBoard.Controllers
             {
                 return NotFound();
             }
-
+            
             var ProductToDelete = _mapper.Map<CreateOrUpdateProductDto>(res.Entity);
-           
-           var del= await _productService.Delete(ProductToDelete);
-            if (del.IsSuccess)
+            var orderItems = (await _OrderServe.GetAllOrderItems()).Where(i => i.ProductName==ProductToDelete.Name);
+            if (orderItems== null)
             {
-                TempData["SuccessMessage3"] = "Product Deleted Successfully";
-                return RedirectToAction(nameof(GetPagination));
+                var del = await _productService.Delete(ProductToDelete);
+                if (del.IsSuccess)
+                {
+                    TempData["SuccessMessage3"] = "Product Deleted Successfully";
+                    return RedirectToAction(nameof(GetPagination));
+                }
+                else
+                {
+                    TempData["SuccessMessage"] = "Sorry, Failed to Delete this product";
+                    return RedirectToAction(nameof(GetPagination));
+                }
             }
             else
             {
                 TempData["SuccessMessage"] = "Sorry, Failed to Delete this product";
                 return RedirectToAction(nameof(GetPagination));
+
             }
 
-            
+
+
         }
 
 

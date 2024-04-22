@@ -61,7 +61,9 @@ select {
                 <li> <span>@Localizer["OrderStatus"] <i class="mdi mdi-help-circle"></i></span>   <select asp-for="Status" asp-items="ViewBag.OrderStatusOptions" class=" select"></select></li>
  
                 <li> <span>@Localizer["TotalPrice"]   <i class="mdi mdi-help-circle"></i></span>  $ @Model.TotalOrderPrice </li>
-                <li> <span>@Localizer["CreatedDate"]   <i class="mdi mdi-help-circle"></i></span>   @Model.CreatedDate</li>
+            <li> <span>@Localizer["Discount"]   <i class="mdi mdi-help-circle"></i></span>  @Model.Discount  % </li>
+
+            <li> <span>@Localizer["CreatedDate"]   <i class="mdi mdi-help-circle"></i></span>   @Model.CreatedDate</li>
 
                             <br />
                     <div class="col-12">
