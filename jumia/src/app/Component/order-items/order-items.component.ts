@@ -91,20 +91,23 @@ export class OrderItemsComponent implements OnInit{
     else{
       this.order.status=3
       this._OrderService.UpdateOrder(this.order).subscribe(order => {
+        this.OrderItems.forEach(e=>{
+          //Update product quantity
+          this._productService.getProductById(e.id).subscribe({
+           next:  (res: ProductDto) => {
+            console.log(e.productQuantity);
+            
+             res.stockQuantity+=e.productQuantity
+             this._productService.UpdateProductQuantity(res).subscribe({
+               next:(res:ProductDto)=>{
+                console.log(res.stockQuantity);
+               }
+               })
+             }}) 
+              //end Update product quantity
+        })
         this.order=order
-       this.OrderItems.forEach(e=>{
-         //Update product quantity
-         this._productService.getProductById(e.id).subscribe({
-          next:  (res: ProductDto) => {
-            res.stockQuantity+=e.productQuantity
-            this._productService.UpdateProductQuantity(res).subscribe({
-              next:(res:ProductDto)=>{
-               console.log(res.stockQuantity);
-              }
-              })
-            }}) 
-             //end Update product quantity
-       })
+      
         this.router.navigate(['/OrderDetails']);
         });
         this.showAlert2 = true;
