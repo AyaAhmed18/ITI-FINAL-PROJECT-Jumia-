@@ -24,6 +24,7 @@ namespace AdminDashBoard.Controllers
         private readonly ISpecificationServices _specificationServices;
         private readonly ISubCategorySpecificationsService _subCategorySpecificationsService;
         private readonly IProductSpecificationSubCategoryServices _productSpecificationSubCategoryServices;
+        private readonly IOrderItemService _OrderServe;
 
 
         public ProductController(IProductServices productService,
@@ -31,7 +32,8 @@ namespace AdminDashBoard.Controllers
             IMapper mapper, ISubCategoryService subCategoryService,
             ISpecificationServices specificationServices,
             ISubCategorySpecificationsService subCategorySpecificationsService,
-            IProductSpecificationSubCategoryServices productSpecificationSubCategoryServices)
+            IProductSpecificationSubCategoryServices productSpecificationSubCategoryServices,
+            IOrderItemService orderServe)
         {
             _productService = productService;
             _mapper = mapper;
@@ -40,6 +42,7 @@ namespace AdminDashBoard.Controllers
             _specificationServices = specificationServices;
             _subCategorySpecificationsService = subCategorySpecificationsService;
             _productSpecificationSubCategoryServices = productSpecificationSubCategoryServices;
+            _OrderServe = orderServe;
 
         }
         // GET: ProductController
@@ -209,6 +212,7 @@ namespace AdminDashBoard.Controllers
             }
 
             var ProductToDelete = _mapper.Map<CreateOrUpdateProductDto>(res.Entity);
+           
            var del= await _productService.Delete(ProductToDelete);
             if (del.IsSuccess)
             {
