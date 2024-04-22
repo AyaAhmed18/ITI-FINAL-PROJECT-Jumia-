@@ -85,12 +85,12 @@ export class FilterServiceService {
   }
   getProductByCatId(id: number): Observable<ProductDto> {
     console.log("getProductByCatId");
-    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=15&pageNumber=1`);
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=20&pageNumber=1`);
   }
   getProductBySubCatId(id: number): Observable<any> {
     console.log(id);
     
-    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbySubCategoryId?SubCatId=${id}&pageSize=15&pageNumber=1`);
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbySubCategoryId?SubCatId=${id}&pageSize=20&pageNumber=1`);
   }
   // filterByPriceRange(minPrice: number, maxPrice: number): Observable<any> {
   //   let allpro= this._httpClient.get<any>(`${this.apiUrl}/FilterByPriceRange?MinPrice=${minPrice}&MaxPrice=${maxPrice}`);

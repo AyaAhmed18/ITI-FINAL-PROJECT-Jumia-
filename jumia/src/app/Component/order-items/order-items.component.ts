@@ -8,6 +8,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ApiShippmentService } from '../../Services/api-shippment.service';
 import { IShippment } from '../../Models/ishippment';
+import { ProductDto } from '../../ViewModels/product-dto';
+import { ApiProductsService } from '../../Services/api-products.service';
 
 @Component({
   selector: 'app-order-items',
@@ -21,7 +23,8 @@ export class OrderItemsComponent implements OnInit{
   constructor(private _OrderService:APIOrderServiceService,private route: ActivatedRoute,
     private router:Router ,private  translate: TranslateService,
     private _sanitizer:DomSanitizer,
-    private _shippment:ApiShippmentService
+    private _shippment:ApiShippmentService,
+    private _productService:ApiProductsService
   ){}
   ordId:number=0
   ItemsNumber:number=0
@@ -89,6 +92,19 @@ export class OrderItemsComponent implements OnInit{
       this.order.status=3
       this._OrderService.UpdateOrder(this.order).subscribe(order => {
         this.order=order
+       this.OrderItems.forEach(e=>{
+         //Update product quantity
+         this._productService.getProductById(e.id).subscribe({
+          next:  (res: ProductDto) => {
+            res.stockQuantity+=e.productQuantity
+            this._productService.UpdateProductQuantity(res).subscribe({
+              next:(res:ProductDto)=>{
+               console.log(res.stockQuantity);
+              }
+              })
+            }}) 
+             //end Update product quantity
+       })
         this.router.navigate(['/OrderDetails']);
         });
         this.showAlert2 = true;

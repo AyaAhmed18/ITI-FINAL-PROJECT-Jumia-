@@ -36,7 +36,7 @@ export class FilterComponent  {
     pageNumber: number = 1;
     pageNumbers: number[]=[];
     AllProd:number=0;
-    pageSize:number = 10;
+    pageSize:number = 20;
    
     //@ViewChild('filterComponent') filterComponent: FilterComponent | undefined; // Replace with child component type
 

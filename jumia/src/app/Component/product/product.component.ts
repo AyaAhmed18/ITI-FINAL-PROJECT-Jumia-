@@ -33,7 +33,7 @@ export class ProductComponent implements  OnInit{
 
 
 searchResults: any[] = [];
-pageSize:number = 10;
+pageSize:number = 20;
 AllProd:number=0;
 totalPages: number = 0;
 pageNumber: number = 1;
