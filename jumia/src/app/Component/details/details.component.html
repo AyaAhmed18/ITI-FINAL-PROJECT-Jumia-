@@ -33,7 +33,7 @@
       </div>
 
 
-      <div class="col-9 card-res-size">
+      <div class="col-9 card-body-res-size">
         <div class="row">
           <div class="col-12">
             <p class="mb-1 h4">
@@ -53,7 +53,7 @@
 
 
           <div class="col-12 ">
-            <p> <strong class="h3 px-2">{{'details.EGP' | translate}} {{ product.realPrice }}</strong>
+            <p> <strong class="h3 px-2">{{'details.EGP' | translate}}  {{(product.realPrice-(product.realPrice*product.discount/100)).toFixed(2)}}</strong>
               <del class=" px-2 text-secondary ">{{'details.EGP' | translate}} {{product.realPrice}}</del>
               <strong class="offer-cards p-1"> -{{product.discount}}%</strong>
             </p>

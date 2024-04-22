@@ -67,9 +67,9 @@
                       {{ pro.stockQuantity < 5 ? pro.stockQuantity + ' Unifs Left' : 'Available' }}
                   </small> </i> </h6>
                 <p>Brand: <small style="color: grey;"> {{pro.brandName}}</small> </p>
-                <b><strong>{{'product.EGP' | translate}} {{pro.realPrice-(pro.realPrice*pro.discount/100)}}</strong></b>
+                <b><strong>{{'product.EGP' | translate}} {{(pro.realPrice-(pro.realPrice*pro.discount/100)).toFixed(2)}}</strong></b>
                 <ul class="list-inline">
-                    <li class="list-inline-item"><small><del>{{'product.EGP' | translate}} {{pro.realPrice}}</del> </small></li>
+                    <li class="list-inline-item"><small><del>{{'product.EGP' | translate}} {{pro.realPrice.toFixed(2)}}</del> </small></li>
                     <li class="list-inline-item offer-cards px-1"><small>-{{pro.discount}}%</small></li>
                 </ul>
                 <div class="stars">

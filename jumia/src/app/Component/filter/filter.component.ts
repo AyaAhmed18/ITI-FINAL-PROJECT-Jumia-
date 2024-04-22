@@ -11,14 +11,14 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NgxSliderModule, Options } from '@angular-slider/ngx-slider';
 import { CategoryserviceService } from '../../Services/categoryservice.service';
+import { ScrollToTopComponent } from "../scroll-to-top/scroll-to-top.component";
 
 @Component({
     selector: 'app-filter',
     standalone: true,
     templateUrl: './filter.component.html',
     styleUrl: './filter.component.css',
-    
-    imports: [ProductComponent,FormsModule,CommonModule,TranslateModule , NgxSliderModule]
+    imports: [ProductComponent, FormsModule, CommonModule, TranslateModule, NgxSliderModule, ScrollToTopComponent]
 })
 export class FilterComponent  {
 

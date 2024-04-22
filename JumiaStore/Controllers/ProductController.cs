@@ -144,7 +144,7 @@ namespace JumiaStore.Controllers
 
 
         [HttpGet("FilterByDiscountRangeToSlider")]
-        public async Task<IActionResult> FilterByDiscountRangeToSlider(int MinDisc=30, int pageSize=20, int pageNumber=1)
+        public async Task<IActionResult> FilterByDiscountRangeToSlider(int MinDisc=50, int pageSize=20, int pageNumber=1)
         {
             var Prds = await _productServices.FilterByDiscountRangeToSlider(MinDisc, pageSize, pageNumber);
             return Ok(Prds);

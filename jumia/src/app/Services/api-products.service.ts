@@ -87,7 +87,7 @@ getAllProductsWithOrderAascWithPagination(pageSize: number, pageNumber: number):
   }
 
   FilterByDiscountRangeToSlider(): Observable<ProductDto> {
-    return this._httpClient.get<ProductDto>(`${this.apiUrl}/Product/FilterByDiscountRangeToSlider?MinDisc=30&pageSize=20&pageNumber=1`);
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/Product/FilterByDiscountRangeToSlider?MinDisc=50&pageSize=20&pageNumber=1`);
   }
 
   GetNewestArrivalsToSlider(): Observable<ProductDto> {
