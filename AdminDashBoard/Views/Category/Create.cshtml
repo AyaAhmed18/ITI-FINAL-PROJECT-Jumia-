@@ -67,34 +67,91 @@
     </div>
 }
 
+
 <div class="card container">
-        <div class="card-body">
-       
-                <h4 class="card-title">@AdminDashBoard.Languages.Resource.AddCategory</h4>
+    <div class="card-body">
 
-        <form asp-action="Create" asp-controller="Category" method="post" enctype="multipart/form-data" id="createForm">
-            <div class="mb-3">
-                <label asp-for="Name" class="form-label">@AdminDashBoard.Languages.Resource.English_Name</label>
-                <input asp-for="Name" class="form-control">
-                <span asp-validation-for="Name" style="color:red"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="NameAr" class="form-label">@AdminDashBoard.Languages.Resource.Arabic_Name</label>
-                <input asp-for="NameAr" class="form-control">
-                <span asp-validation-for="NameAr" style="color:red"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Description" class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
-                <input asp-for="Description" class="form-control">
-                <span asp-validation-for="Description" style="color:red"></span>
-            </div>
+        <h4 class="card-title">@AdminDashBoard.Languages.Resource.AddCategory</h4>
 
-            <button type="submit" class="btn btn-success text-white w-100 col-md-12">@AdminDashBoard.Languages.Resource.Create</button>
+        <form asp-action="Create" asp-controller="Category" method="post" enctype="multipart/form-data" id="createForm" class="form-sample">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="form-group ">
+                                <label asp-for="Name" class="form-label">@AdminDashBoard.Languages.Resource.English_Name</label>
+                                <input asp-for="Name" class="form-control">
+                                <span asp-validation-for="Name" style="color:red"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="form-group ">
+                                <label asp-for="NameAr" class="form-label">@AdminDashBoard.Languages.Resource.Arabic_Name</label>
+                                <input asp-for="NameAr" class="form-control">
+                                <span asp-validation-for="NameAr" style="color:red"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group ">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="image-upload ">
+                                    <label asp-for="Image" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
+                                    <input asp-for="Image" id="Image" type="file" onchange="fileValue(this)">
+
+                                    <label asp-for="Image" for="Image" class="upload-field">
+                                        <div class="file-thumbnail">
+                                            <img id="image-preview" src="https://www.btklsby.go.id/images/placeholder/basic.png" alt="">
+                                            <h3 id="filename">
+                                                Drag and Drop
+                                            </h3>
+                                            <p>Supports JPG, PNG, SVG</p>
+                                        </div>
+                                    </label>
+                                    <span asp-validation-for="Image" style="color:red"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*  <div class="col-md-6">
+                <div class="row">
+                <div class="col-md-6">
+                <div class="form-group ">
+                <label asp-for="Image" class="form-label">@AdminDashBoard.Languages.Resource.Image</label>
+                <input asp-for="Image" type="file" class="form-control">
+                <span asp-validation-for="Image" style="color:red"></span>
+                </div>
+                </div>
+                </div>
+                </div> *@
+
+                <div class="col-md-12">
+                    <div class="form-group ">
+                        <label asp-for="Description" class="form-label">@AdminDashBoard.Languages.Resource.Description</label>
+                        <input asp-for="Description" class="form-control">
+                        <span asp-validation-for="Description" style="color:red"></span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success text-white w-100 col-md-12">@AdminDashBoard.Languages.Resource.Create</button>
+            </div>
         </form>
-
-        </div>
     </div>
+
 </div>
+
+
+
+
+
 
 @if (TempData["SuccessMessage"] != null)
 {
