@@ -125,7 +125,7 @@
        
         
         <br />
-                    <button type="submit" class="btn btn-info text-white">@AdminDashBoard.Languages.Resource.Update</button>
+                    <button type="submit" class="btn btn-success text-white w-100 col-md-12">@AdminDashBoard.Languages.Resource.Update</button>
     </form>
     </div>
     </div>
@@ -144,5 +144,12 @@
     }
 
 
+    <script>
 
+    window.setTimeout(function () {
+        $(".alert").fadeTo(500, 0).slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 2000);
+    </script>
 

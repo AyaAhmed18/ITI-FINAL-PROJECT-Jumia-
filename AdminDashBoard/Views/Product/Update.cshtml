@@ -234,20 +234,17 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group ">
-                        <input type="submit" value="Update" class="btn btn-success text-white" />
 
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group ">
-                            <a asp-action="GetPagination" class="btn btn-warning">Back to List</a>
-
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success text-white w-100">@AdminDashBoard.Languages.Resource.Update</button>
                 </div>
+                <div class="col-md-6">
+                    <a asp-action="GetPagination" class="btn btn-danger text-white w-100">@AdminDashBoard.Languages.Resource.Cancel</a>
+                </div>
+            </div>
+
+                
 
             </form>
 
@@ -282,3 +279,12 @@
         </div>
     </div>
 }
+
+<script>
+
+    window.setTimeout(function () {
+        $(".alert").fadeTo(500, 0).slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 2000);
+</script>

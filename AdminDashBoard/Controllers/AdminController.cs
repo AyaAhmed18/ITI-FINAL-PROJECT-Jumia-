@@ -112,9 +112,14 @@ namespace AdminDashBoard.Controllers
 
             return View(getAllUsers);
         }
-
+        
         public async Task<ActionResult> Delete(int id)
         {
+            if (!User.IsInRole("Owner"))
+            {
+                TempData["ErrorMessage"] = "You must be an owner to delete this user.";
+                return RedirectToAction(nameof(Admin));
+            }
             var res = await _userService.GetOne(id);
             if (res == null)
             {
@@ -130,9 +135,10 @@ namespace AdminDashBoard.Controllers
             }
             else
             {
-                TempData["SuccessMessage"] = "Sorry,Failed to Delete this User";
+                TempData["ErrorMessage"] = "Sorry, Failed to Delete this User";
                 return RedirectToAction(nameof(Admin));
             }
+
         }
 
 
