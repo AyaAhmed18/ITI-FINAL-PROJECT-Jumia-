@@ -52,6 +52,10 @@ namespace AdminDashBoard.Controllers
             var Prds = await _productService.GetAllPagination(pageSize, pageNumber);
             return View(Prds);
         }
+
+       
+
+
         //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
@@ -227,6 +231,53 @@ namespace AdminDashBoard.Controllers
 
             
         }
+
+
+        //
+        public async Task<IActionResult> OutOfStock()
+        {
+            var outOfStockProducts = await _productService.GetOutOfStockProducts();
+            return View(outOfStockProducts);
+        }
+
+        public async Task<IActionResult> AlmostFinished()
+        {
+            int threshold = 5; // Set your desired threshold here
+            var almostFinishedProducts = await _productService.GetProductsAlmostFinished(threshold);
+            return View(almostFinishedProducts);
+        }
+
+        public async Task<IActionResult> TopProductsSold()
+        {
+            var topProducts = await _productService.GetTopProductsSold();
+            return View(topProducts);
+        }
+
+        public async Task<IActionResult> OrdersPerMonth()
+        {
+            var ordersPerMonth = await _productService.GetOrdersPerMonth();
+            return View(ordersPerMonth);
+        }
+
+        public async Task<IActionResult> TotalAmount()
+        {
+            var totalAmount = await _productService.GetTotalAmount();
+            return View(totalAmount);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public async Task<IActionResult> ExportToExcel()
         {

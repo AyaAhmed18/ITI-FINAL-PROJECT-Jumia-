@@ -1,4 +1,5 @@
 ﻿using Jumia.Dtos.Product;
+using Jumia.Dtos.Reports;
 using Jumia.DTOS.ViewResultDtos;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -38,6 +39,11 @@ namespace Jumia.Application.IServices
         Task<ResultDataForPagination<GetAllProducts>> GetOrderedDscWithPagination(int items, int pagenumber);
         Task<ResultDataForPagination<GetAllProducts>> GetNewestArrivalsWithPagination(int items, int pagenumber);
         Task<ResultView<CreateOrUpdateProductDto>> UpdateQuantity(CreateOrUpdateProductDto productDto);
+        Task<List<GetAllProducts>> GetOutOfStockProducts();
+        Task<List<GetAllProducts>> GetProductsAlmostFinished(int threshold);
+        Task<List<TopProductDTO>> GetTopProductsSold();
+        Task<List<OrdersPerMonthDTO>> GetOrdersPerMonth();
+        Task<TotalAmountDTO> GetTotalAmount();
 
     }
 }
