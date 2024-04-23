@@ -188,9 +188,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <label asp-for="BrandID" class=" col-form-label"></label>
+                            <label asp-for="BrandID" class=" col-form-label">@AdminDashBoard.Languages.Resource.Brand</label>
                           
-                                <select asp-for="BrandID" asp-items="list2" class="form-select">@AdminDashBoard.Languages.Resource.Brand</select>
+                                <select asp-for="BrandID" asp-items="list2" class="form-select"></select>
                                 <span asp-validation-for="BrandID" class="text-danger"></span>
                           
                         </div>

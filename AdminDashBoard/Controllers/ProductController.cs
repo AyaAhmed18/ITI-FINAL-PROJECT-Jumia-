@@ -221,8 +221,8 @@ namespace AdminDashBoard.Controllers
             }
             
             var ProductToDelete = _mapper.Map<CreateOrUpdateProductDto>(res.Entity);
-            var orderItems = (await _OrderServe.GetAllOrderItems()).Where(i => i.ProductName==ProductToDelete.Name);
-            if (orderItems== null)
+            var orderItems = (await _OrderServe.GetAllOrderItems()).Where(i => i.ProductName==res.Entity.Name).ToList();
+            if (orderItems.Count== 0)
             {
                 var del = await _productService.Delete(ProductToDelete);
                 if (del.IsSuccess)
