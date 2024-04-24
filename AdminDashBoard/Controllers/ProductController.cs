@@ -309,7 +309,7 @@ namespace AdminDashBoard.Controllers
             Worksheet.Cells[1, 6].Value = "Brand";
 
 
-            // Populate the Excel worksheet with data from Categoryes
+            // Populate the Excel worksheet with data from Products
             int row = 2;
             foreach (var product in Prds.Entities)
             {

@@ -8,7 +8,7 @@ import { environment } from '../../environment/environment';
   providedIn: 'root'
 })
 export class FilterServiceService {
-  private apiUrl = 'http://localhost:64866/api/Product' ;
+  private apiUrl = 'http://localhost:5094/api/Product' ;
  //private apiUrl = `${environment.apiUrl}/Product`;
   constructor(private _httpClient: HttpClient) { }
   private ChangingPages = new BehaviorSubject<any>(null);
@@ -22,7 +22,7 @@ export class FilterServiceService {
   filterByAll(minDisc?: number,minPrice?: number, maxPrice?: number,BrandList? : string,pageNumber?: number ,pageSize? : number): Observable<any> {
 
   // this.apiUrl=`${this.apiUrl}/FilterByAllWithPagination?`
-    this.apiUrl = 'http://localhost:64866/api/Product/FilterByAllWithPagination?';
+    this.apiUrl = 'http://localhost:5094/api/Product/FilterByAllWithPagination?';
     if(BrandList!=undefined)
     {
       this.apiUrl+=`BrandList=${BrandList}`;

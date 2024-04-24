@@ -188,7 +188,34 @@
         }
     }
 
+    //
+    document.getElementById("exportButton").addEventListener("click", function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/Product/ExportToExcel", true);
+        xhr.responseType = "blob";
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+
+                var a = document.createElement("a");
+                var url = window.URL.createObjectURL(xhr.response);
+                a.href = url;
+                a.download = "Categoies.xlsx";
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
+        };
+
+        xhr.send();
+    });
 </script>
+
+
+
+
+
+
+
 
 
 
