@@ -78,6 +78,7 @@ showAlert2: boolean = false;
     // //
     // this.getAllProducts();
     this.Sershresult();
+    
     const currentRoute = this._route.url;
     // if (currentRoute.includes('GetSubCategory')) {
     //   this.products = []
@@ -352,6 +353,7 @@ if (page >= 1 && page <= this.totalPages) {
     this._ApiProductsService.SearchByNameOrDesc(searchTerm).subscribe(
       (data: any) => {
         this.products = data;
+        
       },
       (error: any) => {
         console.error('Error fetching search results:', error);
