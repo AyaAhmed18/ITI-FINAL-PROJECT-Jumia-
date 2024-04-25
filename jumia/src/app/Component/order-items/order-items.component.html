@@ -2,7 +2,7 @@
 <div  [class.rtl]="isArabic">
 <div class="container-fluid" >
     <div class="row ">
-        <div class="col-3 col-md shadow-sm rounded m-2 bg-body">
+        <div class="col-3 side-detels col-md shadow-sm rounded m-2 bg-body">
     
     
           <div class="row  rounded">
@@ -24,7 +24,7 @@
         <!-- body -->
        
         <!-- if there is order item -->
-        <div class="col-8 card-col col-md shadow-sm rounded m-2 bg-body" >
+        <div class="col-8 body-detels card-col col-md shadow-sm rounded m-2 bg-body" >
             <ul class="list-group list-group-flush">
                 <li class="list-group-item fs-3"><strong>{{'orderitem.Order Details' | translate}}</strong></li>
                 <li class="list-group-item ">
@@ -60,9 +60,51 @@
                 </li>
             }
             <br>
+            <div class="row ">
+             
+                <div class="card col-md-5 p-0 m-2">
+                  <h5 class="card-header"><strong>{{'orderitem.PAYMENT INFORMATION'| translate}}</strong></h5>
+                  <div class="card-body">
+                    <div>
+                      <h3 style="font-weight: 700;" >{{'orderitem.Payment Method'| translate}}</h3>
+                      <p style="color: rgb(145, 143, 140);">{{'orderitem.Pay by'| translate}} {{getPaymentStatusWord()}} </p>
+                 
+                  </div>
+                  <div>
+                      <h3 style="font-weight: 700;" >{{'orderitem.Payment Details'|translate}}</h3>
+                      <p style="color: rgb(145, 143, 140);">{{'orderitem.Total Amount EGP'|translate}} {{order.totalOrderPrice}} </p>
+                       <p style="color: rgb(145, 143, 140);">{{'orderitem.Delivery Fees 35 EGP'|translate}}  </p>
+                 
+                  </div>
+                   
+                  </div>
+                </div>
+             
+     
+                <div class="card col-md-6 p-0 m-2">
+                  <h5 class="card-header "><strong>{{'orderitem.DELIVERY INFORMATION'|translate}}</strong></h5>
+                  <div class="card-body">
+                    <div>
+                      <h3 style="font-weight: 700;" >{{'orderitem.Delivery Method'|translate}}</h3>
+                      <p style="color: rgb(145, 143, 140);">{{'orderitem.Door Delivery'|translate}}</p>                       
+                  </div>
+                  <div>
+                      <h3 style="font-weight: 700;" >{{'orderitem.Shipping Address'|translate}}</h3>
+                      <p style="color: rgb(145, 143, 140);">{{shippment.firstNameEn}} {{shippment.lastName}}</p>
+                       <p style="color: rgb(145, 143, 140);">{{shippment.phoneNumber}}</p>
+                         <p style="color: rgb(145, 143, 140);">{{shippment.city}} | {{shippment.region}}</p>  
+                         <p style="color: rgb(145, 143, 140);">{{shippment.address}} | {{shippment.adressInformation}}</p>                     
+                  </div>
+                  </div>
+                </div>
+             
 
-            <div class="container-fluid" >
-                <div class="row ">
+            </div>
+            
+
+            
+            <!-- <div class="container-fluid" >
+                 <div class="row ">
                     <div class="col border rounded">
                         <h2 style="font-weight: 700; padding: 10px;" >{{'orderitem.PAYMENT INFORMATION'| translate}}</h2>
                         <div>
@@ -92,10 +134,10 @@
                         </div>
                     </div>
                     
-                </div>
-            </div>
+                </div> 
+            </div> -->
             <br>
-            @if(order.status<2){
+            @if(order.status<1){
             <button class="btn me-2" (click)="cancelOrder()" >{{'orderitem.Cancel Order' | translate}}</button>
           }@else{
             <button class="btn me-2 hidden" (click)="cancelOrder()" >{{'orderitem.Cancel Order' | translate}}</button>

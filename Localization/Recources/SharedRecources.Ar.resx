@@ -187,7 +187,7 @@
     <value>طلب</value>
   </data>
   <data name="OrderDeliveryDetails" xml:space="preserve">
-    <value>تفاصيل توصيل الشحن</value>
+    <value>تفاصيل توصيل الطلب</value>
   </data>
   <data name="OrderInfo" xml:space="preserve">
     <value>تفاصيل الطلب</value>

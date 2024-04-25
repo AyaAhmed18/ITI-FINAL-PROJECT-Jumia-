@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Jumia.Application.Contract;
 using Jumia.Application.IServices;
 using Jumia.Application.Services;
 using Jumia.Application.Services.IServices;
@@ -6,7 +7,9 @@ using Jumia.Context.Migrations;
 using Jumia.Dtos.Category;
 using Jumia.Dtos.Product;
 using Jumia.Dtos.ProductSpecificationSubCategory;
+using Jumia.Dtos.Reports;
 using Jumia.Dtos.SubCategorySpecifications;
+using Jumia.Infrastructure;
 using Jumia.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +27,8 @@ namespace AdminDashBoard.Controllers
         private readonly ISpecificationServices _specificationServices;
         private readonly ISubCategorySpecificationsService _subCategorySpecificationsService;
         private readonly IProductSpecificationSubCategoryServices _productSpecificationSubCategoryServices;
+        private readonly IOrderItemService _OrderServe;
+        private readonly IUnitOfWork _unitOfWork;
 
 
         public ProductController(IProductServices productService,
@@ -31,7 +36,8 @@ namespace AdminDashBoard.Controllers
             IMapper mapper, ISubCategoryService subCategoryService,
             ISpecificationServices specificationServices,
             ISubCategorySpecificationsService subCategorySpecificationsService,
-            IProductSpecificationSubCategoryServices productSpecificationSubCategoryServices)
+            IProductSpecificationSubCategoryServices productSpecificationSubCategoryServices,
+            IOrderItemService orderServe, IUnitOfWork unitOfWork)
         {
             _productService = productService;
             _mapper = mapper;
@@ -40,6 +46,8 @@ namespace AdminDashBoard.Controllers
             _specificationServices = specificationServices;
             _subCategorySpecificationsService = subCategorySpecificationsService;
             _productSpecificationSubCategoryServices = productSpecificationSubCategoryServices;
+            _OrderServe = orderServe;
+            _unitOfWork = unitOfWork;
 
         }
         // GET: ProductController
@@ -49,11 +57,15 @@ namespace AdminDashBoard.Controllers
             var Prds = await _productService.GetAllPagination(pageSize, pageNumber);
             return View(Prds);
         }
+
+       
+
+
         //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
 
-            var subCategory = await _subCategoryService.GetAll(30, 1);
+            var subCategory = await _subCategoryService.GetAll(250, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
 
@@ -114,7 +126,7 @@ namespace AdminDashBoard.Controllers
 
 
             }
-            var subcategory = await _subCategoryService.GetAll(55, 1);
+            var subcategory = await _subCategoryService.GetAll(200, 1);
             var subcatname = subcategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.subcategory = subcatname;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
@@ -144,7 +156,7 @@ namespace AdminDashBoard.Controllers
                 return NotFound();
 
             }
-            var subCategory = await _subCategoryService.GetAll(100, 1);
+            var subCategory = await _subCategoryService.GetAll(200, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
@@ -183,7 +195,7 @@ namespace AdminDashBoard.Controllers
 
 
             }
-            var subCategory = await _subCategoryService.GetAll(100, 1);
+            var subCategory = await _subCategoryService.GetAll(200, 1);
             var subCatName = subCategory.Entities.Select(a => new { a.Id, a.Name }).ToList();
             ViewBag.SubCategory = subCatName;
             var brand = (await _brandService.GetAll()).Entities.Select(a => new { a.BrandID, a.Name }).ToList();
@@ -207,23 +219,79 @@ namespace AdminDashBoard.Controllers
             {
                 return NotFound();
             }
-
+            
             var ProductToDelete = _mapper.Map<CreateOrUpdateProductDto>(res.Entity);
-           var del= await _productService.Delete(ProductToDelete);
-            if (del.IsSuccess)
+            var orderItems = (await _OrderServe.GetAllOrderItems()).Where(i => i.ProductName==res.Entity.Name).ToList();
+            if (orderItems.Count== 0)
             {
-                TempData["SuccessMessage3"] = "Product Deleted Successfully";
-                return RedirectToAction(nameof(GetPagination));
+                var del = await _productService.Delete(ProductToDelete);
+                if (del.IsSuccess)
+                {
+                    TempData["SuccessMessage3"] = "Product Deleted Successfully";
+                    return RedirectToAction(nameof(GetPagination));
+                }
+                else
+                {
+                    TempData["SuccessMessage"] = "Sorry, Failed to Delete this product";
+                    return RedirectToAction(nameof(GetPagination));
+                }
             }
             else
             {
                 TempData["SuccessMessage"] = "Sorry, Failed to Delete this product";
                 return RedirectToAction(nameof(GetPagination));
+
             }
 
-            
+
+
         }
 
+
+        //
+        public async Task<IActionResult> OutOfStock()
+        {
+            var outOfStockProducts = await _productService.GetOutOfStockProducts();
+            return View(outOfStockProducts);
+        }
+
+        public async Task<IActionResult> AlmostFinished()
+        {
+            int threshold = 5; // Set your desired threshold here
+            var almostFinishedProducts = await _productService.GetProductsAlmostFinished(threshold);
+            return View(almostFinishedProducts);
+        }
+
+        public async Task<IActionResult> TopProductsSold()
+        {
+            var topProducts = await _productService.GetTopProductsSold();
+            return View(topProducts);
+        }
+
+        public async Task<IActionResult> OrdersPerMonth()
+        {
+            var ordersPerMonth = await _productService.GetOrdersPerMonth();
+            return View(ordersPerMonth);
+        }
+
+        public async Task<IActionResult> TotalAmount()
+        {
+            var orderItems = await _unitOfWork.OrderItemsRepository.FindAll(
+        o => o.Order.Status == "Delivered", // Filter by order status
+        includeProperties: "Order"
+    );
+
+            // Calculate total amount
+            var totalAmount = orderItems
+                .Sum(detail => detail.ProductQuantity * detail.TotalPrice);
+
+            var totalAmountDto = new TotalAmountDTO { TotalAmount = totalAmount };
+            return View(totalAmountDto);
+
+        }
+
+       
+        //
         public async Task<IActionResult> ExportToExcel()
         {
             var pageSize = 200;

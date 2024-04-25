@@ -11,59 +11,74 @@
 <link rel="stylesheet" href="~/css/AddUser.css">
 
 
-
+<html dir="@AdminDashBoard.Languages.Resource.dir">
 
 <div class="main-panel">
     <div class="content-wrapper ">
-        <div class="">
+        <div class="container">
             <div class=" grid-margin stretch-card">
-                <div class="card">
+                <div class="card ">
                     <div class="card-body">
-                        <h4 class="card-title">Add User</h4>
+                        <h4 class="card-title">@AdminDashBoard.Languages.Resource.AddUser</h4>
         
                         <form asp-action="Adduser" class="forms-sample" method="post">
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <div class="form-group">
-                                <label asp-for="UserName">User Name:</label>
+                                <label asp-for="UserName">@AdminDashBoard.Languages.Resource.UserName:</label>
                                 <input asp-for="UserName" class="form-control" />
                                 <span class="text-danger"><span asp-validation-for="UserName" style="color: red"></span></span>
                             </div>
 
                             <div class="form-group">
-                                <label asp-for="Email">Email:</label>
+                                <label asp-for="Email">@AdminDashBoard.Languages.Resource.Email:</label>
                                 <input asp-for="Email" class="form-control" />
                                 <span class="text-danger"><span asp-validation-for="Email" style="color: red"></span></span>
                             </div>
 
                             <div class="form-group">
-                                <label asp-for="PhoneNumber">Phone Number:</label>
+                                <label asp-for="PhoneNumber">@AdminDashBoard.Languages.Resource.PhoneNumber:</label>
                                 <input asp-for="PhoneNumber" class="form-control" />
                                 <span class="text-danger"><span asp-validation-for="PhoneNumber" style="color: red"></span></span>
                                 
                             </div>
 
                             <div class="form-group">
-                                <label asp-for="Password">Password:</label>
+                                <label asp-for="Password">@AdminDashBoard.Languages.Resource.Password:</label>
                                 <input asp-for="Password" type="password" class="form-control" />
                                 <span class="text-danger"><span asp-validation-for="Password" style="color: red"></span></span>
                             </div>
+                            <div class="form-group">
+                                <label asp-for="Confirmpass">@AdminDashBoard.Languages.Resource.ConfirmPassword:</label>
+                                <input asp-for="Confirmpass" type="password" class="form-control" />
+                                <span class="text-danger"><span asp-validation-for="Confirmpass" style="color: red"></span></span>
+                            </div>
                             <div class="container">
-                                <h4 class="card-title">Roles</h4>
+                                <h4 class="card-title">@AdminDashBoard.Languages.Resource.Roles</h4>
                             <ul class="form-group ks-cboxtags">
 
                                 
                                 @foreach (var role in ViewBag.Roles)
                                 {
-                                    <li>
-                                        <input type="checkbox" name="SelectedRoles" value="@role.Name" id="role_@role.Name">
-                                        <label for="role_@role.Name">@role.Name</label>
-                                    </li>
+                                        @if(role.Name!="Owner"){
+                                            <li>
+                                                <input type="checkbox" name="SelectedRoles" value="@role.Name" id="role_@role.Name" class="fa">
+                                                <label for="role_@role.Name" class="fa">@role.Name</label>
+                                            </li>
+                                        }
+                                      
 
                                 }
                             </ul>
-
-                                <button type="submit" class="btn btn-primary me-2">Submit</a></button>
-                                <button class="btn btn-light">Cancel</button>
+                            <div class="row">
+                                <div class="col-md-6">
+                                        <button type="submit" class="btn btn-success text-white w-100">@AdminDashBoard.Languages.Resource.Submit</button>
+                                </div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-danger text-white w-100">@AdminDashBoard.Languages.Resource.Cancel</button>
+                                    </div>
+                            </div>
+                              
+                               
                             </div>
 
 

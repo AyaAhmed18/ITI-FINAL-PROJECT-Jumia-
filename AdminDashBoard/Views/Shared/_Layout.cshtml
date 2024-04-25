@@ -27,15 +27,18 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="~/css/vertical-layout-light/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="~/images/logo.svg" />
-
+    <link rel="shortcut icon" href="~/images/star.png" />
+    
+    <link href="~/css/adduser.css" rel="stylesheet" />
+    <link href="~/css/btnandimg.css" rel="stylesheet" />
+    
 </head>
 <body dir="@AdminDashBoard.Languages.Resource.dir">
     <div class="container-scroller">
 
 
 
-        <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+        <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row bg-secondary">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
                 <div class="me-3">
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
@@ -43,19 +46,40 @@
                     </button>
                 </div>
                 <div>
-                    <a class="navbar-brand brand-logo" href="index.html">
+                    <a class="navbar-brand brand-logo" >
                         <!-- <img src="images/logo.svg" alt="logo" /> -->
                         <h3>@AdminDashBoard.Languages.Resource.JumiaAdmin</h3>
                     </a>
                     <a class="navbar-brand brand-logo-mini" href="index.html">
-                        <img src="images/logo-mini.svg" alt="logo" />
+                     <img src="~/images/star.png" />
                     </a>
                 </div>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-top">
                 <ul class="navbar-nav">
                     <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                        <h1 class="welcome-text">@AdminDashBoard.Languages.Resource.GoodMorning, <span class="text-black fw-bold">@name  </span></h1>
+                        @{
+                            var currentTime = DateTime.Now;
+                            var greeting = "";
+
+                            if (currentTime.Hour < 12)
+                            {
+                                greeting = @AdminDashBoard.Languages.Resource.morning;
+                            }
+                            else if (currentTime.Hour < 18)
+                            {
+                                greeting = @AdminDashBoard.Languages.Resource.afternoon;
+                            }
+                            else
+                            {
+                                greeting = @AdminDashBoard.Languages.Resource.evening;
+                            }
+                        }
+
+
+
+
+                        <h1 class="welcome-text">@greeting, <span class="text-black fw-bold">@name  </span></h1>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
@@ -64,8 +88,9 @@
                         <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
                             <span class="input-group-addon input-group-prepend border-right">
                                 <span class="icon-calendar input-group-text calendar-icon"></span>
+                               
                             </span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" placeholder="@currentTime">
                         </div>
                     </li>
                    @*  <li class="nav-item">
@@ -74,7 +99,7 @@
                             <input type="search" class="form-control" placeholder="Search here" title="@AdminDashBoard.Languages.Resource.SearchHere">
                         </form>
                     </li> *@
-                    <li class="nav-item dropdown">
+                 @*    <li class="nav-item dropdown">
                         <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
                             <i class="icon-mail icon-lg"></i>
                         </a>
@@ -111,8 +136,8 @@
                                 </div>
                             </a>
                         </div>
-                    </li>
-                    <li class="nav-item dropdown">
+                    </li> *@
+                  @*   <li class="nav-item dropdown">
                         <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="icon-bell"></i>
                             <span class="count"></span>
@@ -154,10 +179,10 @@
 
 
                         </div>
-                    </li>
+                    </li> *@
 
 
-                    @if (User.Identity.IsAuthenticated)
+                   @*  @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item">
                             <a asp-action="Login" asp-controller="Account" class="nav-link count-indicator" aria-expanded="false">
@@ -178,7 +203,7 @@
 
                         </li>
         
-                    }
+                    } *@
 
 
 
@@ -186,19 +211,36 @@
 
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="img-xs rounded-circle" src="~/images/dashboard/Admin_Avatar.png" alt="Profile image">
+                            <img class="img-xs rounded-circle" src="~/images/userLogo.jpg" alt="Profile image">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                             <div class="dropdown-header text-center">
-                                <img class="img-xs rounded-circle" src="~/images/dashboard/Admin_Avatar.png" alt="Profile image">
-                                <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
-                                <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
+                                <img class="img-xs rounded-circle" src="~/images/userLogo.jpg" alt="Profile image">
+                                <p class="mb-1 mt-3 font-weight-semibold">@name</p>
+                               
                             </div>
-                            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
-                            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
-                            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
-                            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a>
-                            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+    
+                            <a asp-action="ChangePassword" asp-controller="Admin" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-cached text-primary me-2"></i>ChangePassword</a>
+                           
+     
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-action="Login" asp-controller="Account" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-logout text-danger me-2"></i> Logout</a>
+                                
+
+                      
+                            }
+                            else
+                            {
+                                <a asp-action="Login" asp-controller="Account" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-login text-success me-2"></i> Logout</a>
+
+                                
+
+                      
+
+                            }
+
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -393,34 +435,129 @@
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
+
+
+
+                   
+
+
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="mdi mdi-grid-large menu-icon"></i>
-                            <span class="menu-title">@AdminDashBoard.Languages.Resource.Dashboard</span>
+                        <a asp-controller="Admin" asp-action="AddUser" class="nav-link">
+                            <i class="menu-icon mdi mdi-account-multiple-plus"></i>
+                            <span class="menu-title">@AdminDashBoard.Languages.Resource.AddUser</span>
                         </a>
                     </li>
-                    <li class="nav-item nav-category">@AdminDashBoard.Languages.Resource.Admin</li>
+
+
                     <li class="nav-item">
+                        <a asp-controller="Admin" asp-action="Admin" class="nav-link">
+                            <i class=" menu-icon mdi mdi-account-star"></i>
+                            <span class="menu-title">@AdminDashBoard.Languages.Resource.Users</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a asp-action="GetPagination" asp-controller="Product" class="nav-link">
+                            <i class="menu-icon mdi mdi-group"></i>
+                            <span class="menu-title">@AdminDashBoard.Languages.Resource.Product</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a asp-action="Index" asp-controller="Order" class="nav-link">
+                            <i class="menu-icon mdi mdi mdi-ambulance"></i>
+                            <span class="menu-title">@AdminDashBoard.Languages.Resource.Orders</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a asp-action="Index" asp-controller="Category" class="nav-link">
+                            <i class="menu-icon mdi mdi-collage"></i>
+                            <span class="menu-title">@AdminDashBoard.Languages.Resource.Category</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" >
+                        <a asp-action="Index" asp-controller="SubCategory" class="nav-link">
+                            <i class="menu-icon mdi mdi-drawing"></i>
+                            <span class="menu-title">@AdminDashBoard.Languages.Resource.SubCategory</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="menu-icon mdi mdi-group"></i>
+                            <span class="menu-title">@AdminDashBoard.Languages.Resource.Reports</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="productDropdown">
+                            <li>
+                                <a asp-action="OutOfStock" asp-controller="Product" class="dropdown-item">
+                                   @*  <i class="menu-icon fas fa-exclamation-triangle"></i> *@
+                                    <span class="menu-title">@AdminDashBoard.Languages.Resource.Outofstock1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="AlmostFinished" asp-controller="Product" class="dropdown-item">
+                                   @*  <i class="menu-icon fas fa-hourglass-end"></i> *@
+                                    <span class="menu-title">@AdminDashBoard.Languages.Resource.AlmostFinished1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="TopProductsSold" asp-controller="Product" class="dropdown-item">
+                                    <i class="menu-icon fas fa-chart-line"></i>
+                                    <span class="menu-title">@AdminDashBoard.Languages.Resource.Top5Products</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="OrdersPerMonth" asp-controller="Product" class="dropdown-item">
+                                    <i class="menu-icon fas fa-calendar-alt"></i>
+                                    <span class="menu-title">@AdminDashBoard.Languages.Resource.Totalorders</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="TotalAmount" asp-controller="Product" class="dropdown-item">
+                                    <i class="menu-icon fas fa-dollar-sign"></i>
+                                    <span class="menu-title">@AdminDashBoard.Languages.Resource.Totalsales</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+@*                     <li class="nav-item nav-category">@AdminDashBoard.Languages.Resource.Admin</li> *@
+                    @* <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i class="menu-icon mdi mdi-floor-plan"></i>
-                            <span class="menu-title">@AdminDashBoard.Languages.Resource.Admin</span>
+                            <span class="menu-title">@AdminDashBoard.Languages.Resource.AddUser</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
                                 @* <li class="nav-item"> <a class="nav-link" asp-controller="Account" asp-action="Login">@AdminDashBoard.Languages.Resource.Login</a></li> *@
-                                <li class="nav-item"> <a class="nav-link" asp-controller="Admin" asp-action="AddUser">@AdminDashBoard.Languages.Resource.AddUser</a></li>
+                               @*  <li class="nav-item"> <a class="nav-link" asp-controller="Admin" asp-action="AddUser">@AdminDashBoard.Languages.Resource.AddUser</a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-controller="Admin" asp-action="Admin">@AdminDashBoard.Languages.Resource.Users</a></li>
 
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item nav-category">@AdminDashBoard.Languages.Resource.sidebar </li>
+                    <li class="nav-item nav-category">@AdminDashBoard.Languages.Resource.sidebar </li>  *@
 
 
-                    <li class="nav-item">
+                    @* <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-shopping              -text-outline"></i>
+                            <i class="menu-icon mdi mdi-shopping-text-outline"></i>
                             <span class="menu-title">@AdminDashBoard.Languages.Resource.Product</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -433,7 +570,7 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"><a class="nav-link" asp-action="create" asp-controller="Product">@AdminDashBoard.Languages.Resource.AddProduct</a></li>
                             </ul>
-                        </div>
+                        </div> *@
                         @* <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"><a class="nav-link" href="#">@AdminDashBoard.Languages.Resource.UpdataProduct</a></li>
@@ -444,10 +581,10 @@
                         <li class="nav-item"><a class="nav-link" href="#">Delete Product</a></li>
                         </ul>
                         </div> *@
-                    </li>
+                    @* </li> *@
 
 
-                    <li class="nav-item">
+                    @* <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
                             <i class="menu-icon mdi mdi-cart-plus"></i>
                             <span class="menu-title">@AdminDashBoard.Languages.Resource.Order</span>
@@ -457,7 +594,7 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" asp-action="Index" asp-controller="Order"> @AdminDashBoard.Languages.Resource.Orders</a></li>
                             </ul>
-                        </div>
+                        </div> *@
                        @*  <div class="collapse" id="charts">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="#">@AdminDashBoard.Languages.Resource.UpdataOrder</a></li>
@@ -468,10 +605,10 @@
                                 <li class="nav-item"> <a class="nav-link" href="#">@AdminDashBoard.Languages.Resource.DeleteOrder</a></li>
                             </ul>
                         </div> *@
-                    </li>
+                    @* @* </li> *@ 
 
 
-                    <li class="nav-item">
+                  @*   <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
                             <i class="menu-icon mdi mdi-table"></i>
                             <span class="menu-title">@AdminDashBoard.Languages.Resource.Category</span>
@@ -486,16 +623,16 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" asp-action="create" asp-controller="Category">@AdminDashBoard.Languages.Resource.AddCategory</a></li>
                             </ul>
-                        </div>
+                        </div> *@
                        @*  <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">@AdminDashBoard.Languages.Resource.UpdateCategory</a></li>
                             </ul>
                         </div> *@
-                    </li>
+                    @* </li> *@
 
 
-                    <li class="nav-item">
+                   @*  <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#suptables" aria-expanded="false" aria-controls="tables">
                             <i class="menu-icon mdi mdi-package-variant-closed"></i>
                             <span class="menu-title">@AdminDashBoard.Languages.Resource.SubCategory</span>
@@ -513,7 +650,7 @@
                         </div>
                        
                     </li>
-
+ *@
 
 
                     @* <li class="nav-item">
@@ -649,7 +786,7 @@
     <script src="~/vendors/chart.js/Chart.min.js"></script>
     <script src="~/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script src="~/vendors/progressbar.js/progressbar.min.js"></script>
-
+    <script src="~/js/uplodeimages.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="~/js/off-canvas.js"></script>

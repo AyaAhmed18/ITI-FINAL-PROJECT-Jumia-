@@ -5,7 +5,7 @@
         <div class="container-fluid">
 
             <div class="row ">
-              <div class="col-3 col-md shadow-sm rounded m-2 bg-body">
+              <div class="col-3 side-detels col-md shadow-sm rounded m-2 bg-body">
           
           
                 <div class="row  rounded">
@@ -26,7 +26,7 @@
               </div>
             
         <!-- body -->
-        <div class="col-8 col-md shadow-sm rounded m-2 bg-body " *ngIf="OrdersNumbers === 0" style="background-color: white;">
+        <div class="col-8 body-detels col-md shadow-sm rounded m-2 bg-body " *ngIf="OrdersNumbers === 0" style="background-color: white;">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item fs-3">{{'orderdetails.Orders' | translate}}</li>
                 <li class="list-group-item">
@@ -42,7 +42,7 @@
               </ul>
         </div>
         <!-- if there is order item -->
-        <div class="col-8 col-md shadow-sm rounded m-2 bg-body" *ngIf="OrdersNumbers > 0" style="background-color: white;">
+        <div class="col-8 body-detels col-md shadow-sm rounded m-2 bg-body" *ngIf="OrdersNumbers > 0" style="background-color: white;">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item fs-3">{{'orderdetails.Orders' | translate}}</li>
                 <li class="list-group-item mb-3">

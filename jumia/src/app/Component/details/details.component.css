@@ -115,9 +115,13 @@
      width: 100%;
     
     }
+    .card-body-res-size{
+        width:100%; 
+    }
     .detImg{
         display: none;
      }
+
      }
      
     
@@ -125,18 +129,22 @@
      @media only screen and (min-width:600px) and (max-width:885px) {
         
            .img-focas{
-               width: 100%;
+               width: 30%;
            }
-           
+        
            .card-res-size{
-            width: 100%;
+            width:100%;
            
            }
-            
+            .card-body-res-size{
+                width:70%; 
+            }
            .detImg{
            width: 100%;
          }  
-          
+         .detImg{
+            display: none;
+         }
     }
      
      

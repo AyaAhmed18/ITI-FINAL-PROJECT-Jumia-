@@ -15,7 +15,7 @@ namespace Jumia.Dtos.Order
         public int TotalAmount { get; set; }
         public decimal TotalOrderPrice { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
-        // public int? Discount { get; set; }
+         public int? Discount { get; set; }
         public OrderStatus Status { get; set; }  //for admin only
        // public bool? Shipped { get; set; } //for admin only
        // public DateTime? ShippedDate { get; set; } 

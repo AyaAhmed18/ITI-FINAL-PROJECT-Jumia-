@@ -133,6 +133,15 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Good Afternoon.
+        /// </summary>
+        public static string afternoon {
+            get {
+                return ResourceManager.GetString("afternoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All Category.
         /// </summary>
         public static string AllCategory {
@@ -156,6 +165,24 @@ namespace AdminDashBoard.Languages {
         public static string AllSubCategory {
             get {
                 return ResourceManager.GetString("AllSubCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Products Almost Finished.
+        /// </summary>
+        public static string AlmostFinished {
+            get {
+                return ResourceManager.GetString("AlmostFinished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Almost Finished.
+        /// </summary>
+        public static string AlmostFinished1 {
+            get {
+                return ResourceManager.GetString("AlmostFinished1", resourceCulture);
             }
         }
         
@@ -223,6 +250,15 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category.
         /// </summary>
         public static string Category {
@@ -250,11 +286,29 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Password.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         public static string Confirm {
             get {
                 return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm new Password.
+        /// </summary>
+        public static string ConfirmnewPassword {
+            get {
+                return ResourceManager.GetString("ConfirmnewPassword", resourceCulture);
             }
         }
         
@@ -291,6 +345,15 @@ namespace AdminDashBoard.Languages {
         public static string Create {
             get {
                 return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current password.
+        /// </summary>
+        public static string Currentpassword {
+            get {
+                return ResourceManager.GetString("Currentpassword", resourceCulture);
             }
         }
         
@@ -403,6 +466,15 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Good Evening.
+        /// </summary>
+        public static string evening {
+            get {
+                return ResourceManager.GetString("evening", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export.
         /// </summary>
         public static string Export {
@@ -511,11 +583,29 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Good Morning.
+        /// </summary>
+        public static string morning {
+            get {
+                return ResourceManager.GetString("morning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        public static string Newpassword {
+            get {
+                return ResourceManager.GetString("Newpassword", resourceCulture);
             }
         }
         
@@ -543,6 +633,24 @@ namespace AdminDashBoard.Languages {
         public static string Orders {
             get {
                 return ResourceManager.GetString("Orders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Out of Stock Products.
+        /// </summary>
+        public static string Outofstock {
+            get {
+                return ResourceManager.GetString("Outofstock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Out of stock.
+        /// </summary>
+        public static string Outofstock1 {
+            get {
+                return ResourceManager.GetString("Outofstock1", resourceCulture);
             }
         }
         
@@ -583,11 +691,29 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Phone Number.
+        /// </summary>
+        public static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Previous.
         /// </summary>
         public static string Previous {
             get {
                 return ResourceManager.GetString("Previous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        public static string Price {
+            get {
+                return ResourceManager.GetString("Price", resourceCulture);
             }
         }
         
@@ -615,6 +741,15 @@ namespace AdminDashBoard.Languages {
         public static string Product {
             get {
                 return ResourceManager.GetString("Product", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product Name.
+        /// </summary>
+        public static string ProductName {
+            get {
+                return ResourceManager.GetString("ProductName", resourceCulture);
             }
         }
         
@@ -655,11 +790,29 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reports.
+        /// </summary>
+        public static string Reports {
+            get {
+                return ResourceManager.GetString("Reports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Role.
         /// </summary>
         public static string Role {
             get {
                 return ResourceManager.GetString("Role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roles.
+        /// </summary>
+        public static string Roles {
+            get {
+                return ResourceManager.GetString("Roles", resourceCulture);
             }
         }
         
@@ -781,6 +934,42 @@ namespace AdminDashBoard.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Top Products Sold.
+        /// </summary>
+        public static string Top5Products {
+            get {
+                return ResourceManager.GetString("Top5Products", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total orders.
+        /// </summary>
+        public static string Totalorders {
+            get {
+                return ResourceManager.GetString("Totalorders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total sales.
+        /// </summary>
+        public static string Totalsales {
+            get {
+                return ResourceManager.GetString("Totalsales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Units Sold.
+        /// </summary>
+        public static string UnitsSold {
+            get {
+                return ResourceManager.GetString("UnitsSold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updata Order.
         /// </summary>
         public static string UpdataOrder {
@@ -822,6 +1011,15 @@ namespace AdminDashBoard.Languages {
         public static string UpdateSubCategory {
             get {
                 return ResourceManager.GetString("UpdateSubCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update User.
+        /// </summary>
+        public static string UpdateUser {
+            get {
+                return ResourceManager.GetString("UpdateUser", resourceCulture);
             }
         }
         

@@ -18,6 +18,8 @@ namespace Jumia.Dtos.OrderItems
         public int ProductQuantity { get; set; }
         public decimal TotalPrice { get; set; }
         public int? Discount { get; set; }
+        public int? productId { get; set; }
+
 
     }
 }

@@ -8,8 +8,8 @@ import { environment } from '../../environment/environment';
   providedIn: 'root'
 })
 export class FilterServiceService {
- // private apiUrl = 'http://localhost:64866/api/Product' ;
- private apiUrl = `${environment.apiUrl}/Product`;
+  private apiUrl = 'http://localhost:64866/api/Product' ;
+ //private apiUrl = `${environment.apiUrl}/Product`;
   constructor(private _httpClient: HttpClient) { }
   private ChangingPages = new BehaviorSubject<any>(null);
   setValue(value: any) {
@@ -21,8 +21,8 @@ export class FilterServiceService {
   }
   filterByAll(minDisc?: number,minPrice?: number, maxPrice?: number,BrandList? : string,pageNumber?: number ,pageSize? : number): Observable<any> {
 
-   this.apiUrl=`${this.apiUrl}/FilterByAllWithPagination?`
-    //this.apiUrl = 'http://localhost:64866/api/Product/FilterByAllWithPagination?';
+  // this.apiUrl=`${this.apiUrl}/FilterByAllWithPagination?`
+    this.apiUrl = 'http://localhost:64866/api/Product/FilterByAllWithPagination?';
     if(BrandList!=undefined)
     {
       this.apiUrl+=`BrandList=${BrandList}`;
@@ -85,12 +85,12 @@ export class FilterServiceService {
   }
   getProductByCatId(id: number): Observable<ProductDto> {
     console.log("getProductByCatId");
-    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=15&pageNumber=1`);
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbyCategoryId?CatId=${id}&pageSize=20&pageNumber=1`);
   }
   getProductBySubCatId(id: number): Observable<any> {
     console.log(id);
     
-    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbySubCategoryId?SubCatId=${id}&pageSize=15&pageNumber=1`);
+    return this._httpClient.get<ProductDto>(`${this.apiUrl}/GetbySubCategoryId?SubCatId=${id}&pageSize=20&pageNumber=1`);
   }
   // filterByPriceRange(minPrice: number, maxPrice: number): Observable<any> {
   //   let allpro= this._httpClient.get<any>(`${this.apiUrl}/FilterByPriceRange?MinPrice=${minPrice}&MaxPrice=${maxPrice}`);

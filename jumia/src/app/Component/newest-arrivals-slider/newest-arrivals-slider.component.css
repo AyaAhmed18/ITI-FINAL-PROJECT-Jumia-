@@ -152,6 +152,12 @@ padding: 10px;
 box-shadow: 0 0 11px rgba(33, 33, 33, .2);
 }
 
+
+.card-img-top{
+width: 90%;
+height: 190px;
+}
+
 /* Extra small devices (phones) */
 @media only screen and (max-width:590px) {
 
@@ -212,7 +218,24 @@ left: 2px;
 
 
 
+.card-img-top{
+width: 90%;
+height: 60px;
+}
 
+.fixed-n-p {
+ 
+margin-top:30px;
+
+width: 3vw;
+height: 3vw;
+}
+
+.row {
+--bs-gutter-x:0rem;
+
+
+}
 
 }
 
@@ -258,11 +281,28 @@ a:visited {
 
 
 
+.card-img-top{
+  width: 90%;
+  height: 120px;
+}
 
 
 
 
 
+.fixed-n-p {
+ 
+  margin-top:50px;
 
+  width: 3vw;
+  height: 3vw;
+}
+
+
+.row {
+  --bs-gutter-x:0rem;
+
+
+}
 
 }

@@ -106,15 +106,31 @@ namespace Jumia.Application.Services
                                                   .Select(p => new GetAllOrdersDTO()
                                                   {
                                                       Id = p.Id,
-                                                      Customer=p.Customer.UserName,
-                                                      Status=p.Status.ToString(),
-                                                      TotalOrderPrice=p.TotalOrderPrice,
-                                                      Discount=p.Discount
-                                                     
+                                                      Customer = p.Customer.UserName,
+                                                      Status = p.Status.ToString(),
+                                                      paymentStatus = (GetAllOrdersDTO.PaymentStatus)p.paymentStatus,
+                                                      OrderDate = p.CreatedDate,
+                                                      TotalOrderPrice = p.TotalOrderPrice,
+                                                      Discount = p.Discount,
+                                                      CustomerId = p.CustomerId,
+                                                      TotalAmount = p.TotalAmount
+
                                                   }).ToList();
-                ResultDataForPagination<GetAllOrdersDTO> resultDataList = new ResultDataForPagination<GetAllOrdersDTO>();
-                resultDataList.Entities = Orders;
-                resultDataList.count = AlldAta.Count();
+
+                var totalItems = AlldAta.Count(c => c.IsDeleted != true);
+                var totalPages = (int)Math.Ceiling((double)totalItems / items);
+
+                var resultDataList = new ResultDataForPagination<GetAllOrdersDTO>
+                {
+                    Entities = Orders,
+                    count = totalItems,
+                    TotalPages = totalPages,
+                    CurrentPage = pagenumber,
+                    PageSize = items,
+
+                };
+                //resultDataList.Entities = Orders;
+                //resultDataList.count = AlldAta.Count();
                 return resultDataList;
             }
             catch (Exception ex)

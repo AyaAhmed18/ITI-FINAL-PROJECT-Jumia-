@@ -141,6 +141,9 @@
   <data name="Admin" xml:space="preserve">
     <value>Admin</value>
   </data>
+  <data name="afternoon" xml:space="preserve">
+    <value>Good Afternoon</value>
+  </data>
   <data name="AllCategory" xml:space="preserve">
     <value>All Category</value>
   </data>
@@ -149,6 +152,12 @@
   </data>
   <data name="AllSubCategory" xml:space="preserve">
     <value>All SubCategory</value>
+  </data>
+  <data name="AlmostFinished" xml:space="preserve">
+    <value>Products Almost Finished</value>
+  </data>
+  <data name="AlmostFinished1" xml:space="preserve">
+    <value>Almost Finished</value>
   </data>
   <data name="Already" xml:space="preserve">
     <value>Already</value>
@@ -171,6 +180,9 @@
   <data name="BrandName" xml:space="preserve">
     <value>Brand Name</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Category</value>
   </data>
@@ -180,8 +192,14 @@
   <data name="CategoryName" xml:space="preserve">
     <value>Category Name</value>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
+  </data>
+  <data name="ConfirmnewPassword" xml:space="preserve">
+    <value>Confirm new Password</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Confirm Password</value>
@@ -194,6 +212,9 @@
   </data>
   <data name="Create" xml:space="preserve">
     <value>Create</value>
+  </data>
+  <data name="Currentpassword" xml:space="preserve">
+    <value>Current password</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
@@ -231,6 +252,9 @@
   <data name="EnterPhone" xml:space="preserve">
     <value>Enter Phone</value>
   </data>
+  <data name="evening" xml:space="preserve">
+    <value>Good Evening</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Export</value>
   </data>
@@ -267,8 +291,14 @@
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="morning" xml:space="preserve">
+    <value>Good Morning</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="Newpassword" xml:space="preserve">
+    <value>New password</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Next</value>
@@ -278,6 +308,12 @@
   </data>
   <data name="Orders" xml:space="preserve">
     <value>Orders</value>
+  </data>
+  <data name="Outofstock" xml:space="preserve">
+    <value>Out of Stock Products</value>
+  </data>
+  <data name="Outofstock1" xml:space="preserve">
+    <value>Out of stock</value>
   </data>
   <data name="Overview" xml:space="preserve">
     <value>Overview</value>
@@ -291,8 +327,14 @@
   <data name="Phone" xml:space="preserve">
     <value>Phone</value>
   </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
   </data>
   <data name="Pricing" xml:space="preserve">
     <value>Pricing</value>
@@ -302,6 +344,9 @@
   </data>
   <data name="Product" xml:space="preserve">
     <value>Product</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Product Name</value>
   </data>
   <data name="RealPrice" xml:space="preserve">
     <value>Real Price</value>
@@ -315,8 +360,14 @@
   <data name="Registeryouraccount" xml:space="preserve">
     <value>Register your account</value>
   </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
   <data name="Role" xml:space="preserve">
     <value>Role</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Roles</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
@@ -357,6 +408,18 @@
   <data name="SuccessMessage" xml:space="preserve">
     <value>Successeded</value>
   </data>
+  <data name="Top5Products" xml:space="preserve">
+    <value>Top Products Sold</value>
+  </data>
+  <data name="Totalorders" xml:space="preserve">
+    <value>Total orders</value>
+  </data>
+  <data name="Totalsales" xml:space="preserve">
+    <value>Total sales</value>
+  </data>
+  <data name="UnitsSold" xml:space="preserve">
+    <value>Units Sold</value>
+  </data>
   <data name="UpdataOrder" xml:space="preserve">
     <value>Updata Order</value>
   </data>
@@ -371,6 +434,9 @@
   </data>
   <data name="UpdateSubCategory" xml:space="preserve">
     <value>Update SubCategory</value>
+  </data>
+  <data name="UpdateUser" xml:space="preserve">
+    <value>Update User</value>
   </data>
   <data name="UserId" xml:space="preserve">
     <value>UserId</value>

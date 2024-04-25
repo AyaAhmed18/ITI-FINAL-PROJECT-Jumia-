@@ -8,6 +8,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ApiShippmentService } from '../../Services/api-shippment.service';
 import { IShippment } from '../../Models/ishippment';
+import { ProductDto } from '../../ViewModels/product-dto';
+import { ApiProductsService } from '../../Services/api-products.service';
 
 @Component({
   selector: 'app-order-items',
@@ -21,7 +23,8 @@ export class OrderItemsComponent implements OnInit{
   constructor(private _OrderService:APIOrderServiceService,private route: ActivatedRoute,
     private router:Router ,private  translate: TranslateService,
     private _sanitizer:DomSanitizer,
-    private _shippment:ApiShippmentService
+    private _shippment:ApiShippmentService,
+    private _productService:ApiProductsService
   ){}
   ordId:number=0
   ItemsNumber:number=0
@@ -33,6 +36,7 @@ export class OrderItemsComponent implements OnInit{
  shippment:IShippment={} as IShippment
   order: IOrder  = {} as IOrder;
   ngOnInit(): void {
+    
     this.userId=Number(this.clientId)
     this.ordId = Number(this.route.snapshot.paramMap.get('ordId'));
     console.log('Order ID:', this.ordId);
@@ -49,7 +53,8 @@ export class OrderItemsComponent implements OnInit{
      this.ItemsNumber=OrderItems.length
      this.sanitizeImages()
     });
-
+    console.log("this.OrderItems");
+    console.log(this.OrderItems);
     this.translate.onLangChange.subscribe((Event)=>{
       this.isArabic = Event.lang === 'ar'
     })
@@ -86,9 +91,30 @@ export class OrderItemsComponent implements OnInit{
      // this.router.navigate(['/OrderDetails']);
     }
     else{
+      console.log("this.OrderItems");
+    console.log(this.OrderItems);
       this.order.status=3
+      this.OrderItems.forEach(e=>{
+        //Update product quantity
+        this._productService.getProductById(e.productId).subscribe({
+         next:  (res: ProductDto) => {
+          console.log("update products");
+          
+          console.log(e.productQuantity);
+          
+           res.stockQuantity+=e.productQuantity
+           this._productService.UpdateProductQuantity(res).subscribe({
+             next:(res:ProductDto)=>{
+              console.log(res.stockQuantity);
+             }
+             })
+           }}) 
+            //end Update product quantity
+      })
       this._OrderService.UpdateOrder(this.order).subscribe(order => {
+       
         this.order=order
+      
         this.router.navigate(['/OrderDetails']);
         });
         this.showAlert2 = true;

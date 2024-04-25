@@ -74,8 +74,8 @@ namespace JumiaStore
             {
                 op.AddPolicy("Default", policy =>
                 {
-                    // policy.WithHeaders("auth").WithOrigins("http://localhost:4200").WithMethods("Post")
-                    policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200", "https://steady-truffle-03caed.netlify.app");
+                    //policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
                 });
             });
 
@@ -150,9 +150,9 @@ namespace JumiaStore
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-           // app.UseRouting();
-            app.UseRequestLocalization();
+            // app.UseRouting();
             app.UseCors("Default");
+            app.UseRequestLocalization();
             app.UseAuthentication();
             app.UseAuthorization();
 
